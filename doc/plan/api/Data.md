@@ -1,7 +1,7 @@
 ### API for Data class
 
 ```java
-public class Data{
+public class GameConfig{
 //  API for class Data
 
   /**
@@ -9,7 +9,7 @@ public class Data{
    * @param location
    * @return
    */
-  public Data load (String location);
+  public void load (String location);
 
 }
 
