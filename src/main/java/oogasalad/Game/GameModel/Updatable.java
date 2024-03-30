@@ -2,6 +2,6 @@ package oogasalad.Game.GameModel;
 
 public interface Updatable {
 
-  void update(GameTime);
+  void update(GameTime g1);
 
 }
