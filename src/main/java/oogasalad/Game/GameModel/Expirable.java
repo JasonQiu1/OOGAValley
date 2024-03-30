@@ -1,4 +1,4 @@
-package oogasalad.Game;
+package oogasalad.Game.GameModel;
 
 public interface Expirable {
 
