@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import oogasalad.view.branch.ShoppingPageController;
 
 
 public class PlayingPageController {
@@ -52,11 +53,6 @@ public class PlayingPageController {
   public void setStage(Stage stage) {
     this.stage = stage;
   }
-
-  public Stage getStage() {
-    return stage;
-  }
-
 
   @FXML
   private void initialize() throws MalformedURLException {

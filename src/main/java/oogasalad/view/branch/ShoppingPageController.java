@@ -1,4 +1,4 @@
-package oogasalad.view.playing;
+package oogasalad.view.branch;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -18,16 +18,14 @@ import oogasalad.view.exception.FileNotPngException;
 /**
  * The view for the shopping page
  */
-public class ShoppingPageController {
+public class ShoppingPageController implements BranchBase {
 
   @FXML
   private GridPane shoppingItem;
 
-  private int column = 10;
+  private final int column = 10;
 
   private double width;
-
-  private Shop shop;
 
   @FXML
   private Button back;
@@ -38,7 +36,7 @@ public class ShoppingPageController {
 
   @FXML
   private void initialize() {
-    shop = new Shop();
+    Shop shop = new Shop();
     width = shoppingItem.getWidth() / 10;
     List<Item> itemList = shop.getItems();
     showItemOnScreen(itemList, 0, shoppingItem);
