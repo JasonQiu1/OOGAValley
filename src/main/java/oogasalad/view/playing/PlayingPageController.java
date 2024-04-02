@@ -3,7 +3,9 @@ package oogasalad.view.playing;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -31,6 +33,7 @@ public class PlayingPageController {
   private Label timeLabel;
   private int elapsedTimeSeconds = 0;
   private Timeline timeline;
+  private double timeInterval = 1;
 
   @FXML
   private ProgressBar energyProgressBar;
@@ -40,12 +43,16 @@ public class PlayingPageController {
 
   @FXML
   private GridPane toolGridPane;
+  @FXML
   private GridPane itemGridPane;
 
   private ImageView selectedCrop;
   private ImageView selectedTool;
   private double cellWidth;
   private double cellHeight;
+  private List<List<GridComponentView>> landGrid;
+  private List<List<GridComponentView>> cropGrid;
+  private Map<ImageView, GridComponentProperty> cropImagePropertyMap = new HashMap<>();
   private Map<ImageView, Integer> cropGrowthProgressMap = new HashMap<>();
 
   private Stage stage;
@@ -61,23 +68,47 @@ public class PlayingPageController {
     int numCols = 15;
     cellWidth = landGridPane.getPrefWidth() / numCols - 1;
     cellHeight = landGridPane.getPrefHeight() / numRows - 1;
-
+    landGrid = new ArrayList<>();
+    cropGrid = new ArrayList<>();
     for (int row = 0; row < numRows; row++) {
+      landGrid.add(new ArrayList<>());
+      cropGrid.add(new ArrayList<>());
       for (int col = 0; col < numCols; col++) {
-        Rectangle cell = new Rectangle(cellWidth, cellHeight, Color.WHITE);
+        ImageView cell = new ImageView(new Image(
+            String.valueOf(new File("src/main/resources/img/rectangle.png").toURI().toURL())));
+        cell.setFitWidth(cellWidth);
+        cell.setFitHeight(cellHeight);
         cell.setOnMouseClicked(this::handleCellClick);
-        landGridPane.add(cell, col, row);
+        List<ImageView> cellAnimation = new ArrayList<>();
+        cellAnimation.add(cell);
+        landGrid.get(row)
+            .add(new GridComponentView(0, new GridComponentProperty(cellAnimation, 0, 0)));
+        cropGrid.get(row).add(new GridComponentView(0, null));
       }
     }
 
     //timeline to update time label every second
-    timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-      elapsedTimeSeconds++;
+    timeline = new Timeline(new KeyFrame(Duration.seconds(timeInterval), event -> {
+      landGridPane.getChildren().clear();
+      elapsedTimeSeconds+= timeInterval;
       updateTimeLabel();
-      try {
-        updateCropGrowth();
-      } catch (MalformedURLException e) {
-        throw new RuntimeException(e);
+      updateCropGrowth();
+      for (int row = 0; row < numRows; row++) {
+        for (int col = 0; col < numCols; col++) {
+          ImageView landImageView = landGrid.get(row).get(col).getProperty().
+              getImageView().get(landGrid.get(row).get(col).getImageViewIndex());
+          landGridPane.add(landImageView, col, row);
+          if (cropGrid.get(row).get(col).getProperty() != null) {
+            // a deep copy, otherwise it raises errors
+            ImageView cropImageView = new ImageView(
+                cropGrid.get(row).get(col).getProperty().getImageView().
+                    get(cropGrid.get(row).get(col).getImageViewIndex()).getImage());
+            cropImageView.setFitWidth(cellWidth);
+            cropImageView.setFitHeight(cellHeight);
+            cropImageView.setOnMouseClicked(this::handleCellClick);
+            landGridPane.add(cropImageView, col, row);
+          }
+        }
       }
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
@@ -97,11 +128,29 @@ public class PlayingPageController {
       makeElementSelected(event);
     });
 
-    Image cropImage = new Image(
-        String.valueOf(new File("src/main/resources/img/panda.png").toURI().toURL()));
-    ImageView cropImageView = new ImageView(cropImage);
+    ImageView cropImageView0 = new ImageView(new Image(
+        String.valueOf(new File("src/main/resources/img/blank.png").toURI().toURL())));
+    ImageView cropImageView1 = new ImageView(new Image(
+        String.valueOf(new File("src/main/resources/img/half_panda.png").toURI().toURL())));
+    ImageView cropImageView2 = new ImageView(new Image(
+        String.valueOf(new File("src/main/resources/img/panda.png").toURI().toURL())));
+    cropImageView0.setFitWidth(cellWidth);
+    cropImageView0.setFitHeight(cellHeight);
+    cropImageView1.setFitWidth(cellWidth);
+    cropImageView1.setFitHeight(cellHeight);
+    cropImageView2.setFitWidth(cellWidth);
+    cropImageView2.setFitHeight(cellHeight);
+    List<ImageView> cropAnimation = new ArrayList<>();
+    cropAnimation.add(cropImageView0);
+    cropAnimation.add(cropImageView1);
+    cropAnimation.add(cropImageView2);
+
+    ImageView cropImageView = new ImageView(new Image(
+        String.valueOf(new File("src/main/resources/img/panda.png").toURI().toURL())));
     cropImageView.setFitWidth(toolGridPane.getColumnConstraints().get(0).getPrefWidth());
     cropImageView.setFitHeight(toolGridPane.getRowConstraints().get(0).getPrefHeight());
+    cropImagePropertyMap.put(cropImageView, new GridComponentProperty(cropAnimation, 5, 1));
+
     toolGridPane.add(cropImageView, 1, 0);
 
     cropImageView.setOnMousePressed(event -> {
@@ -130,23 +179,18 @@ public class PlayingPageController {
     int rowIndex = GridPane.getRowIndex(mouseEvent.getPickResult().getIntersectedNode());
 
     if (selectedCrop != null) {
-      ImageView plantedCrop = new ImageView(selectedCrop.getImage());
-      plantedCrop.setFitWidth(cellWidth);
-      plantedCrop.setFitHeight(cellHeight);
-      plantedCrop.setOnMouseClicked(this::handleCellClick);
 
       if (!isCellOccupied(columnIndex, rowIndex)) {
-        cropGrowthProgressMap.put(plantedCrop, 0);
-        landGridPane.add(plantedCrop, columnIndex, rowIndex);
+        cropGrid.get(rowIndex).get(columnIndex).setProperty(cropImagePropertyMap.get(selectedCrop));
       }
 
     } else if (selectedTool != null) {
-      for (Node node : landGridPane.getChildren()) {
-        if (GridPane.getColumnIndex(node) == columnIndex && GridPane.getRowIndex(node) == rowIndex
-            && node instanceof ImageView && cropGrowthProgressMap.get(node) == 5) {
-          landGridPane.getChildren().remove(node);
 
-          break;
+      if (cropGrid.get(rowIndex).get(columnIndex).getProperty() != null) {
+        if (cropGrid.get(rowIndex).get(columnIndex).getGrowthProgress() >=
+            cropGrid.get(rowIndex).get(columnIndex).getProperty().getGrowthTime() - 1) {
+          cropGrid.get(rowIndex).get(columnIndex).setProperty(null);
+          cropGrid.get(rowIndex).get(columnIndex).setGrowthProgress(0);
         }
       }
 
@@ -177,35 +221,20 @@ public class PlayingPageController {
     timeLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
   }
 
-  private void updateCropGrowth() throws MalformedURLException {
-    for (ImageView plantedCrop : cropGrowthProgressMap.keySet()) {
-      int growthProgress = cropGrowthProgressMap.get(plantedCrop);
-      if (growthProgress < 5) {
-        growthProgress++;
-        cropGrowthProgressMap.put(plantedCrop, growthProgress);
-        if (growthProgress < 2) {
-          plantedCrop.setImage(null);
-        } else if (growthProgress == 3) {
-          // Update to show half grown crop after 5 seconds
-          plantedCrop.setImage(new Image(
-              String.valueOf(new File("src/main/resources/img/half_panda.png").toURI().toURL())));
-        } else if (growthProgress == 4) {
-          // Update to show fully grown crop after another 5 seconds
-          plantedCrop.setImage(new Image(
-              String.valueOf(new File("src/main/resources/img/panda.png").toURI().toURL())));
+  private void updateCropGrowth() {
+    for (int row = 0; row < cropGrid.size(); row++) {
+      for (int col = 0; col < cropGrid.get(row).size(); col++) {
+        if (cropGrid.get(row).get(col).getProperty() != null &&
+            cropGrid.get(row).get(col).getGrowthProgress()
+                < cropGrid.get(row).get(col).getProperty().getGrowthTime() - 1) {
+          cropGrid.get(row).get(col)
+              .setGrowthProgress(cropGrid.get(row).get(col).getGrowthProgress() + timeInterval);
         }
       }
     }
   }
 
   private boolean isCellOccupied(int column, int row) {
-    boolean res = false;
-    for (Node node : landGridPane.getChildren()) {
-      if (GridPane.getColumnIndex(node) == column &&
-          GridPane.getRowIndex(node) == row && node instanceof ImageView) {
-        res = true;
-      }
-    }
-    return res;
+    return cropGrid.get(row).get(column).getProperty() != null;
   }
 }
