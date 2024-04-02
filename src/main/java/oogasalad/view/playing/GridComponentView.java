@@ -1,7 +1,8 @@
 package oogasalad.view.playing;
 
-import java.util.List;
-import javafx.scene.image.ImageView;
+/**
+ * This class is used to store the properties of a grid component
+ */
 
 public class GridComponentView {
 

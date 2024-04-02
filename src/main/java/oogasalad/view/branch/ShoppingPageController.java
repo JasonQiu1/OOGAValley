@@ -20,11 +20,9 @@ import oogasalad.view.exception.FileNotPngException;
  */
 public class ShoppingPageController implements BranchBase {
 
+  private final int column = 10;
   @FXML
   private GridPane shoppingItem;
-
-  private final int column = 10;
-
   private double width;
 
   @FXML

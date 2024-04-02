@@ -26,6 +26,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.view.branch.ShoppingPageController;
 
+/**
+ * The controller for the playing page
+ */
 
 public class PlayingPageController {
 
@@ -90,7 +93,7 @@ public class PlayingPageController {
     //timeline to update time label every second
     timeline = new Timeline(new KeyFrame(Duration.seconds(timeInterval), event -> {
       landGridPane.getChildren().clear();
-      elapsedTimeSeconds+= timeInterval;
+      elapsedTimeSeconds += timeInterval;
       updateTimeLabel();
       updateCropGrowth();
       for (int row = 0; row < numRows; row++) {
@@ -167,9 +170,9 @@ public class PlayingPageController {
         break;
       }
     }
-    Rectangle choose_bg = new Rectangle(toolGridPane.getColumnConstraints().get(0).getPrefWidth(),
+    Rectangle chooseBg = new Rectangle(toolGridPane.getColumnConstraints().get(0).getPrefWidth(),
         toolGridPane.getRowConstraints().get(0).getPrefHeight(), Color.web("#0D47A1", 0.5));
-    toolGridPane.add(choose_bg,
+    toolGridPane.add(chooseBg,
         GridPane.getColumnIndex(event.getPickResult().getIntersectedNode()),
         GridPane.getRowIndex(event.getPickResult().getIntersectedNode()));
   }
