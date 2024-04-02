@@ -1,17 +1,17 @@
 package oogasalad.view.playing;
 
 import java.io.File;
-import java.io.OutputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -20,8 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
-import jdk.jfr.Event;
 
 
 public class PlayingPageController {
@@ -47,6 +47,15 @@ public class PlayingPageController {
   private double cellHeight;
   private Map<ImageView, Integer> cropGrowthProgressMap = new HashMap<>();
 
+  private Stage stage;
+
+  public void setStage(Stage stage) {
+    this.stage = stage;
+  }
+
+  public Stage getStage() {
+    return stage;
+  }
 
 
   @FXML
@@ -106,7 +115,7 @@ public class PlayingPageController {
     });
   }
 
-  private void makeElementSelected(javafx.scene.input.MouseEvent event){
+  private void makeElementSelected(javafx.scene.input.MouseEvent event) {
     for (Node node : toolGridPane.getChildren()) {
       if (node instanceof Rectangle) {
         toolGridPane.getChildren().remove(node);
@@ -130,7 +139,6 @@ public class PlayingPageController {
       plantedCrop.setFitHeight(cellHeight);
       plantedCrop.setOnMouseClicked(this::handleCellClick);
 
-
       if (!isCellOccupied(columnIndex, rowIndex)) {
         cropGrowthProgressMap.put(plantedCrop, 0);
         landGridPane.add(plantedCrop, columnIndex, rowIndex);
@@ -142,7 +150,6 @@ public class PlayingPageController {
             && node instanceof ImageView && cropGrowthProgressMap.get(node) == 5) {
           landGridPane.getChildren().remove(node);
 
-
           break;
         }
       }
@@ -150,10 +157,21 @@ public class PlayingPageController {
     }
   }
 
-
   @FXML
   private void openShop() {
-    System.out.println("Opening shop...");
+    Scene scene = stage.getScene();
+    try {
+      FXMLLoader fxmlLoader = new FXMLLoader(
+          new File("src/main/resources/fxml/shopping_view.fxml").toURI().toURL());
+      Parent root = fxmlLoader.load();
+      ShoppingPageController shoppingPageController = fxmlLoader.getController();
+      shoppingPageController.setStage(stage);
+      shoppingPageController.setPreviousScene(scene);
+      stage.setScene(new Scene(root));
+      stage.show();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   private void updateTimeLabel() {
@@ -169,9 +187,9 @@ public class PlayingPageController {
       if (growthProgress < 5) {
         growthProgress++;
         cropGrowthProgressMap.put(plantedCrop, growthProgress);
-        if(growthProgress < 2){
+        if (growthProgress < 2) {
           plantedCrop.setImage(null);
-        }else if (growthProgress == 3) {
+        } else if (growthProgress == 3) {
           // Update to show half grown crop after 5 seconds
           plantedCrop.setImage(new Image(
               String.valueOf(new File("src/main/resources/img/half_panda.png").toURI().toURL())));
@@ -183,6 +201,7 @@ public class PlayingPageController {
       }
     }
   }
+
   private boolean isCellOccupied(int column, int row) {
     boolean res = false;
     for (Node node : landGridPane.getChildren()) {

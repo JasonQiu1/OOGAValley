@@ -1,7 +1,6 @@
 package oogasalad.view.playing;
 
 import java.io.File;
-import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +11,14 @@ public class PlayingView extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
-    URL url = new File("src/main/resources/fxml/playing_page.fxml").toURI().toURL();
-    Parent root = FXMLLoader.load(url);
+    FXMLLoader fxmlLoader = new FXMLLoader(
+        new File("src/main/resources/fxml/playing_page.fxml").toURI().toURL());
+    Parent root = fxmlLoader.load();
+    PlayingPageController playingPageController = fxmlLoader.getController();
+    playingPageController.setStage(primaryStage);
     primaryStage.setTitle("Playing Mode");
     primaryStage.setScene(new Scene(root));
+
     primaryStage.show();
   }
 
