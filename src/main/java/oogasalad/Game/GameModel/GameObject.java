@@ -1,19 +1,22 @@
 package oogasalad.Game.GameModel;
 
-import java.util.prefs.Preferences;
+public abstract class GameObject implements Interactable, Expirable, Updatable {
 
-public abstract class GameObject implements ObjectsOfGame {
-
-  private String id;
   private boolean expired;
-  private Preferences preferences;
   int state;
-  CoordinateOfGameObjectRecord coordinates;
+  private String id;
+  private GameObjectProperties properties;
 
 
-  public GameObject(CoordinateOfGameObjectRecord coordinates) {
-    this.coordinates = coordinates;
+  public GameObject(String id, int startState, GameObjectProperties properties) {
+    this.id = id;
+    state = startState;
+    this.properties = properties;
+    expired = false;
+  }
 
+  public String getId() {
+    return id;
   }
 
   @Override
@@ -21,21 +24,9 @@ public abstract class GameObject implements ObjectsOfGame {
     return expired;
   }
 
-
-  abtract void interact(Item i1);
-
   @Override
-  public String getId() {
-    return id;
+  public int getState() {
+    return state;
   }
 
-  @Override
-  public CoordinateOfGameObjectRecord getCoordinates() {
-    return coordinates;
-  }
-
-  @Override
-  public void update(GameTime gameTime) {
-
-  }
 }
