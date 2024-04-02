@@ -158,7 +158,7 @@ public class PlayingPageController {
     Scene scene = stage.getScene();
     try {
       FXMLLoader fxmlLoader = new FXMLLoader(
-          new File("src/main/resources/fxml/shopping_view.fxml").toURI().toURL());
+          new File("src/main/resources/fxml/shop/shopping_view.fxml").toURI().toURL());
       Parent root = fxmlLoader.load();
       ShoppingPageController shoppingPageController = fxmlLoader.getController();
       shoppingPageController.setStage(stage);

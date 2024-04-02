@@ -65,6 +65,9 @@ public class ShoppingPageController implements BranchBase {
       VBox vBox = new VBox();
       vBox.getChildren().add(imageView);
       vBox.getChildren().add(text);
+      vBox.setOnMouseClicked(event -> {
+        System.out.println(item.getPrices());
+      });
       shoppingItem.add(vBox, idx % column, idx / column);
       showItemOnScreen(itemList, idx + 1, shoppingItem);
     } catch (FileNotPngException e) {
