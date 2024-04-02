@@ -1,9 +1,8 @@
-package oogasalad.view;
+package oogasalad.view.start;
 
 import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.animation.SequentialTransition;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -17,8 +16,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import oogasalad.view.playing.PlayingView;
-
-import java.util.function.Consumer;
 
 
 public class StartScreen {

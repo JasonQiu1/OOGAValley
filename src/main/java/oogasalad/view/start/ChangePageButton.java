@@ -1,4 +1,4 @@
-package oogasalad.view;
+package oogasalad.view.start;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

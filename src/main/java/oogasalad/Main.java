@@ -3,7 +3,7 @@ package oogasalad;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import oogasalad.view.StartScreen;
+import oogasalad.view.start.StartScreen;
 
 /**
  * Feel free to completely change this code or delete it entirely.
