@@ -63,7 +63,7 @@ public class StartScreen {
         int initialStartScreenHeight = (int) (screenBounds.getHeight() * DEFAULT_HEIGHT_PORTION);
 
         // Create Start Buttons
-        createButtonsFromFile(DEFAULT_RESOURCE_FOLDER + "StartScreenButtonsInfo.csv", hb);
+        createButtonsFromFile(DEFAULT_RESOURCE_FOLDER + "StartScreenButtonsInfo.csv", hb, stage);
 
 
         //Create title
@@ -108,14 +108,14 @@ public class StartScreen {
     }
 
 
-    public static void createButtonsFromFile(String filename, HBox root) {
+    public static void createButtonsFromFile(String filename, HBox root, Stage stage) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",\\s*");
                 if (parts.length == 4) {
-                    makeButton(parts[0], parts[1], parts[2], parts[3], root, new Stage());
+                    makeButton(parts[0], parts[1], parts[2], parts[3], root, stage);
                 }
             }
             reader.close();
