@@ -3,6 +3,7 @@ package oogasalad.view;
 import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.animation.SequentialTransition;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -15,12 +16,16 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import oogasalad.view.playing.PlayingView;
+
+import java.util.function.Consumer;
 
 
 public class StartScreen {
     public static final double DEFAULT_WIDTH_PORTION = 0.65;
     public static final double DEFAULT_HEIGHT_PORTION = 0.9;
     private final Stage stage;
+    private PlayingView playingView;
 
     /**
      * Creates StartScreen
@@ -28,6 +33,7 @@ public class StartScreen {
      */
     public StartScreen(Stage stageToUse) {
         stage = stageToUse;
+        playingView = new PlayingView();
     }
 
     /**
@@ -36,19 +42,43 @@ public class StartScreen {
     public void open() {
         VBox vb = new VBox();
         vb.setAlignment(Pos.CENTER);
+        vb.setSpacing(75);
         HBox hb = new HBox();
+        hb.setSpacing(320);
+        hb.setAlignment(Pos.CENTER);
 
         //Create the scene, initialized to a reasonable size.
         Rectangle2D screenBounds = Screen.getPrimary().getBounds();
         int initialStartScreenWidth = (int) (screenBounds.getWidth() * DEFAULT_WIDTH_PORTION);
         int initialStartScreenHeight = (int) (screenBounds.getHeight() * DEFAULT_HEIGHT_PORTION);
 
-        //Create title and put it in the scene
+        //Create Page Change Buttons
+        ChangePageButton playGame = new ChangePageButton("Play", "lightgreen", e -> {
+            try {
+                playingView.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        ChangePageButton createGame = new ChangePageButton("Create", "lightblue", e -> {
+            try {
+                playingView.start(stage);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        hb.getChildren().add(createGame);
+        hb.getChildren().add(playGame);
+
+        //Create title
         //TODO: Resources bundle this
         Label title = new Label("OOGAVALLEY");
         title.getStyleClass().add("title-label");
         title.widthProperty().addListener((obs, oldVal, newVal) -> titleBob(title, newVal));
+
+        //create scene
         vb.getChildren().add(title);
+        vb.getChildren().add(hb);
         Scene startScreen = new Scene(vb, initialStartScreenWidth,
                 initialStartScreenHeight);
 

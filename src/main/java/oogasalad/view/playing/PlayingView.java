@@ -12,6 +12,9 @@ import javafx.stage.Stage;
  */
 public class PlayingView extends Application {
 
+  public PlayingView(){
+  }
+
   public static void main(String[] args) {
     launch(args);
   }
