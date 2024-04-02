@@ -15,6 +15,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import oogasalad.view.editor.EditorScene;
+import oogasalad.view.editor.EditorWindow;
 import oogasalad.view.playing.PlayingView;
 
 
@@ -23,6 +25,7 @@ public class StartScreen {
     public static final double DEFAULT_HEIGHT_PORTION = 0.9;
     private final Stage stage;
     private PlayingView playingView;
+    private EditorScene editorScene;
 
     /**
      * Creates StartScreen
@@ -31,6 +34,7 @@ public class StartScreen {
     public StartScreen(Stage stageToUse) {
         stage = stageToUse;
         playingView = new PlayingView();
+        editorScene = new EditorScene();
     }
 
     /**
@@ -58,11 +62,7 @@ public class StartScreen {
             }
         });
         ChangePageButton createGame = new ChangePageButton("Create", "lightblue", e -> {
-            try {
-                playingView.start(stage);
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
-            }
+            stage.setScene(editorScene);
         });
         hb.getChildren().add(createGame);
         hb.getChildren().add(playGame);
