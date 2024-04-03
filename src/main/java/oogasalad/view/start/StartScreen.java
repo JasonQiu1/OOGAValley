@@ -63,7 +63,8 @@ public class StartScreen {
         int initialStartScreenHeight = (int) (screenBounds.getHeight() * DEFAULT_HEIGHT_PORTION);
 
         // Create Start Buttons
-        createButtonsFromFile(DEFAULT_RESOURCE_FOLDER + "StartScreenButtonsInfo.csv", hb, stage);
+        createButtonsFromFile(DEFAULT_RESOURCE_FOLDER + "StartScreenButtonsInfo.csv",
+            hb, stage);
 
 
         //Create title
