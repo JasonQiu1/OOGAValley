@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 public class PlayingView extends Application {
 
   public PlayingView(){
+    super();
   }
 
   public static void main(String[] args) {

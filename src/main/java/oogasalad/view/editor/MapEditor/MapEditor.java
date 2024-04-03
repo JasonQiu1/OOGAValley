@@ -10,15 +10,16 @@ import javafx.scene.layout.VBox;
 
 public class MapEditor extends VBox {
     //TODO: make this work
-    /**
-     * use modelAPI to load starting map data and types of tiles
-     */
-    TileSelector ts = new TileSelector();
+
     public MapEditor(){
         super();
         super.setAlignment(Pos.CENTER);
         Label l = new Label("Map Editor"); //Resource Bundle This
         l.getStyleClass().add("map-label");
+        /**
+         * use modelAPI to load starting map data and types of tiles
+         */
+        TileSelector ts = new TileSelector();
         BuildableMap bm = new BuildableMap(ts);
         HBox bhbm = new HBox(bm);
         bhbm.setAlignment(Pos.CENTER);

@@ -8,8 +8,8 @@ import javafx.scene.shape.Rectangle;
 public class Cell extends StackPane {
     private ImageView image;
     private final Rectangle base;
-    final int HEIGHT = 37; //read from file
-    final int WIDTH = 50;
+    private final int HEIGHT = 37; //read from file
+    private final int WIDTH = 50;
     private final int i;
     private final int j;
 
