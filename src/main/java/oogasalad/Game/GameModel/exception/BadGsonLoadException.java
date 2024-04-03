@@ -1,20 +1,33 @@
 package oogasalad.Game.GameModel.exception;
 
+/**
+ * Thrown when Gson fails to parse a json file into the given class.
+ *
+ * @author Jason Qiu
+ */
 public class BadGsonLoadException extends RuntimeException {
 
-  public BadGsonLoadException(String key) {
+  public BadGsonLoadException(String filePath, String className) {
     super(BadGsonLoadException.class.getSimpleName());
-    filePath = key;
+    this.filePath = filePath;
+    this.className = className;
   }
 
-  public BadGsonLoadException(String key, Exception exception) {
+  public BadGsonLoadException(String filePath, String className, Exception exception) {
     super(BadGsonLoadException.class.getSimpleName(), exception);
-    filePath = key;
+    this.filePath = filePath;
+    this.className = className;
   }
 
   public String getFilePath() {
     return filePath;
   }
 
+  public String getClassName() {
+    return className;
+  }
+
+
   private final String filePath;
+  private final String className;
 }

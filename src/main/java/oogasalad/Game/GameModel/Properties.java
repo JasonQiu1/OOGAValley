@@ -37,7 +37,7 @@ public class Properties {
       return gson.fromJson(filePath, Properties.class);
     } catch (JsonSyntaxException e) {
       // TODO: LOG MESSAGES AND HANDLE ERROR
-      throw new BadGsonLoadException(filePath, e);
+      throw new BadGsonLoadException(filePath, Properties.class.getSimpleName(), e);
     }
   }
 

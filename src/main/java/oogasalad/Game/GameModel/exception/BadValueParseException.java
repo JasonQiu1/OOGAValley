@@ -1,17 +1,22 @@
 package oogasalad.Game.GameModel.exception;
 
+/**
+ * Thrown when failed trying to parse a String value into some different type.
+ *
+ * @author Jason Qiu
+ */
 public class BadValueParseException extends RuntimeException {
 
-  public BadValueParseException(String value, String type) {
+  public BadValueParseException(String badValue, String parseType) {
     super(BadValueParseException.class.getSimpleName());
-    badValue = value;
-    parseType = type;
+    this.badValue = badValue;
+    this.parseType = parseType;
   }
 
-  public BadValueParseException(String value, String type, Exception exception) {
+  public BadValueParseException(String badValue, String parseType, Exception exception) {
     super(BadValueParseException.class.getSimpleName(), exception);
-    badValue = value;
-    parseType = type;
+    this.badValue = badValue;
+    this.parseType = parseType;
   }
 
   public String getBadValue() {

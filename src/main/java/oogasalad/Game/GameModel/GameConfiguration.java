@@ -37,7 +37,7 @@ public class GameConfiguration {
       return gson.fromJson(filePath, GameConfiguration.class);
     } catch (JsonSyntaxException e) {
       // TODO: LOG MESSAGES AND HANDLE ERROR
-      throw new BadGsonLoadException(filePath, e);
+      throw new BadGsonLoadException(filePath, GameConfiguration.class.getSimpleName(), e);
     }
   }
 
