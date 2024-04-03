@@ -6,13 +6,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Cell extends StackPane {
-    ImageView image;
-    Rectangle base;
+    private ImageView image;
+    private final Rectangle base;
     final int HEIGHT = 37; //read from file
     final int WIDTH = 50;
+    private final int i;
+    private final int j;
 
-    public Cell(TileSelector ts) {
+    public Cell(TileSelector ts, int i, int j) {
         super();
+        this.i = i;
+        this.j = j;
         base = new Rectangle(WIDTH, HEIGHT);
         base.setFill(Color.WHITE);
         base.setStroke(Color.BLACK);
@@ -52,5 +56,13 @@ public class Cell extends StackPane {
         image.setFitHeight(HEIGHT);
         image.setFitWidth(WIDTH);
         return image;
+    }
+
+    public int getI(){
+        return i;
+    }
+
+    public int getJ(){
+        return j;
     }
 }

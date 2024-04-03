@@ -3,10 +3,10 @@ package oogasalad.view.editor.MapEditor;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 
-import java.net.MalformedURLException;
 
 public class MapEditor extends VBox {
     //TODO: make this work
@@ -19,8 +19,23 @@ public class MapEditor extends VBox {
         super.setAlignment(Pos.CENTER);
         Label l = new Label("Map Editor"); //Resource Bundle This
         l.getStyleClass().add("map-label");
-        getChildren().add(l);
-        getChildren().add(new BuildableMap(ts));
+        BuildableMap bm = new BuildableMap(ts);
+        HBox hb = new HBox();
+        SizeChangeButton scb = new SizeChangeButton((newI, newJ) -> {
+            // Show dialog to get new grid size
+            DialogBox dialog = new DialogBox();
+            int[] newSize = dialog.getNewSize();
+            if (newSize != null) {
+                // If user inputs new size, call modifyGridSize method
+                bm.modifyGridSize(newSize[1], newSize[0]);
+            }
+        });
+
+
+        hb.getChildren().add(scb);
+        hb.setAlignment(Pos.BOTTOM_RIGHT);
+        getChildren().add(new StackPane(l, hb));
+        getChildren().add(bm);
         getChildren().add(new ScrollPane(new Tiles(ts)));
     }
 }
