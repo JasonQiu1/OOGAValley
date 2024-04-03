@@ -21,8 +21,9 @@ public abstract class GameObject implements ObjectsOfGame {
     return expired;
   }
 
-
-  abtract void interact(Item i1);
+  @Override
+  public void interact(Item i1) {
+  }
 
   @Override
   public String getId() {
