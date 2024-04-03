@@ -4,7 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
+import oogasalad.Game.GameModel.exception.BadGsonLoadException;
+import oogasalad.Game.GameModel.exception.BadValueParseException;
+import oogasalad.Game.GameModel.exception.KeyNotFoundException;
 
 /**
  * A general class that provides functions to get typed values of a map. Intended to be used in
@@ -12,7 +14,7 @@ import java.util.Optional;
  *
  * @author Jason Qiu
  */
-class Properties {
+public class Properties {
 
   /**
    * Initializes with no entries.
@@ -22,64 +24,71 @@ class Properties {
   }
 
   /**
-   * Creates and returns an instance of Properties from a JSON file.
+   * Creates and returns an instance of {@link Properties} from a JSON file.
    *
    * @param filePath the path to the JSON file.
-   * @return an {@link Optional} describing the created instance of {@link Properties}.
+   * @return the created instance of {@link Properties}.
+   * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
+   *                              {@link Properties}
    */
-  public static Optional<Properties> load(String filePath) {
+  public static Properties of(String filePath) throws BadGsonLoadException {
     Gson gson = new Gson();
-    Properties loaded = null;
     try {
-      loaded = gson.fromJson(filePath, Properties.class);
+      return gson.fromJson(filePath, Properties.class);
     } catch (JsonSyntaxException e) {
-      // LOG MESSAGES AND HANDLE ERROR
+      // TODO: LOG MESSAGES AND HANDLE ERROR
+      throw new BadGsonLoadException(filePath, e);
     }
-    return Optional.ofNullable(loaded);
   }
 
   /**
    * Returns the raw string value of the property if found.
    *
    * @param key the key of the property to access.
-   * @return an {@link Optional} describing the property's value.
+   * @return the property's value's raw string.
+   * @throws KeyNotFoundException if the key does not exist.
    */
-  public Optional<String> getString(String key) {
-    // TODO: MAYBE THROW A KEYNOTFOUND ERROR INSTEAD SO THE CALLER KNOWS
-    return properties.get(key).describeConstable();
+  public String getString(String key) throws KeyNotFoundException {
+    if (!properties.containsKey(key)) {
+      throw new KeyNotFoundException(key);
+    }
+    return properties.get(key);
   }
 
   /**
    * Returns the boolean representation of the property's value.
    *
    * @param key the key of the property to access.
-   * @return an {@link Optional} describing the boolean representation of the property's value.
+   * @return the boolean representation of the property's value.
+   * @throws KeyNotFoundException   if the key does not exist.
+   * @throws BadValueParseException if the string value cannot be parsed into a boolean.
    */
-  public Optional<Boolean> getBoolean(String key) {
-    return getString(key).map(rawString -> {
-      if (rawString.equals("true")) {
-        return true;
-      }
-      if (rawString.equals("false")) {
-        return false;
-      }
+  public boolean getBoolean(String key) throws KeyNotFoundException, BadValueParseException {
+    final String rawValue = getString(key);
+
+    return switch (rawValue.toLowerCase()) {
+      case "true" -> true;
+      case "false" -> false;
       // TODO: LOG MESSAGES AND HANDLE VALIDATION ERROR
-      return null;
-    });
+      default -> throw new BadValueParseException(rawValue, Boolean.class.getSimpleName());
+    };
   }
 
   /**
    * Returns the double representation of the property's value.
    *
    * @param key the key of the property to access.
-   * @return an {@link Optional} describing the double representation of the property's value.
+   * @return the double representation of the property's value.
+   * @throws KeyNotFoundException   if the key does not exist.
+   * @throws BadValueParseException if the string value cannot be parsed into a double.
    */
-  public Optional<Double> getDouble(String key) {
+  public double getDouble(String key) throws KeyNotFoundException, BadValueParseException {
+    final String rawValue = getString(key);
     try {
-      return getString(key).map(Double::parseDouble);
+      return Double.parseDouble(rawValue);
     } catch (NumberFormatException e) {
       // TODO: LOG MESSAGES AND HANDLE VALIDATION ERROR
-      return Optional.empty();
+      throw new BadValueParseException(rawValue, Double.class.getSimpleName(), e);
     }
   }
 
@@ -87,14 +96,17 @@ class Properties {
    * Returns the integer representation of the property's value.
    *
    * @param key the key of the property to access.
-   * @return an {@link Optional} describing the integer representation of the property's value.
+   * @return the integer representation of the property's value.
+   * @throws KeyNotFoundException   if the key does not exist.
+   * @throws BadValueParseException if the string value cannot be parsed into an integer.
    */
-  public Optional<Integer> getInteger(String key) {
+  public int getInteger(String key) throws KeyNotFoundException, BadValueParseException {
+    final String rawValue = getString(key);
     try {
-      return getString(key).map(Integer::parseInt);
+      return Integer.parseInt(rawValue);
     } catch (NumberFormatException e) {
       // TODO: LOG MESSAGES AND HANDLE VALIDATION ERROR
-      return Optional.empty();
+      throw new BadValueParseException(rawValue, Integer.class.getSimpleName(), e);
     }
   }
 
@@ -103,14 +115,13 @@ class Properties {
    *
    * @param key   the queried key.
    * @param value the value to set.
-   * @return false if the key does not exist, otherwise true.
+   * @throws KeyNotFoundException if the key does not exist.
    */
-  public boolean update(String key, String value) {
+  public void update(String key, String value) throws KeyNotFoundException {
     if (!properties.containsKey(key)) {
-      return false;
+      throw new KeyNotFoundException(key);
     }
     properties.put(key, value);
-    return true;
   }
 
   private final Map<String, String> properties;
