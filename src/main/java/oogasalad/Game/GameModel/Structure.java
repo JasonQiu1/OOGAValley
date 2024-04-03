@@ -9,12 +9,9 @@ public class Structure extends GameObject {
   }
 
   @Override
-  public void interact(Item i1) {
-
+  public String interact(Item i1) {
+    super.interact(i1);
+    return "";
   }
 
-  @Override
-  public void update(GameTime gameTime) {
-
-  }
 }

@@ -14,15 +14,11 @@ public class Tile extends GameObject {
   }
 
   @Override
-  void interact(Item selectedItem) {
+  public String interact(Item selectedItem) {
     if (properties.getCorrectSeeds().contains(selectedItem) && ) {
-      setPlanted
+
     }
 
   }
 
-  @Override
-  public void update(GameTime gameTime) {
-
-  }
 }

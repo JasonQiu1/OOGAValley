@@ -2,7 +2,7 @@ package oogasalad.Game.GameModel;
 
 public interface Updatable {
 
-  void update(GameTime gameTime);
+  String update(GameTime gameTime);
 
   int getState();
 

@@ -12,24 +12,12 @@ public class Land extends GameObject implements Plantable {
   public Land(String id, int startState, LandProperties properties, boolean isPlantable) {
     super(id, startState, properties);
     this.isPlantable = isPlantable;
-    prope
+    this.properties = properties;
   }
 
   @Override
   public void interact(Item i1) {
-    if (getProperties().interactingItems(i1)) {
-      setState(getProperties().nextInteractingState(getState()));
-    }
-  }
 
-  @Override
-  public void update(GameTime gameTime) {
-    if (gameTime.getTime() / <= getProperties().modifiedTimeToUpdate(gameTime)) {
-      setState(getProperties().nextUpdatingState(getState()));
-    }
-    if (getProperties().expiringState()) {
-      setExpired(true);
-    }
   }
 
   @Override

@@ -5,9 +5,10 @@ import oogasalad.Game.GameModel.Properties.GameObjectProperties;
 public abstract class GameObject implements Interactable, Expirable, Updatable {
 
   private boolean expired;
-  int state;
+  private int state;
   private String id;
   private GameObjectProperties properties;
+  private long timeSinceExpiringState;
 
 
   public GameObject(String id, int startState, GameObjectProperties properties) {
@@ -23,7 +24,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
 
   @Override
   public boolean isExpired() {
-    return expired;
+    if (expired && System.currentTimeMillis() - timeSinceExpiringState >
+        properties.getTimeToExpired()) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   @Override
@@ -42,17 +49,34 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
   }
 
   @Override
-  public void update(GameTime gameTime) {
-    if (gameTime.getTime() != 0 &&
-    gameTime.getTime() % properties.modifiedTimeToUpdate(gameTime) == 0) {
-     state = properties.nextUpdatingState(state);
+  public String update(GameTime gameTime) {
+    String newId = id;
+    if (gameTime.getTime() != 0 && gameTime.getTime() % properties.modifiedTimeToUpdate(gameTime) == 0) {
+      if (properties.nextStateIsNewGameObject(state)) {
+        newId = properties.nextUpdatingGameObject(state);
+      }
+      state = properties.nextUpdatingState(state);
     }
-    if (getProperties().expiringState()) {
-      setExpired(true);
+    if (!expired && properties.getExpiringState() == state) {
+      expired = true;
+      timeSinceExpiringState = System.currentTimeMillis();
     }
+    return newId;
   }
 
-  public GameObjectProperties getProperties() {
-    return properties;
+  @Override
+  public String interact(Item item) {
+    String newId = id;
+    if (properties.validInteractingItem(state, item)) {
+      if (properties.nextInteractingStateIsNewGameObject(state, item)) {
+        newId = properties.nextInteractingGameObject(state, item);
+      }
+      state = properties.nextInteractingState(state, item);
+    }
+    if (!expired && properties.getExpiringState() == state) {
+      expired = true;
+      timeSinceExpiringState = System.currentTimeMillis();
+    }
+    return newId;
   }
 }
