@@ -6,4 +6,6 @@ public interface Updatable {
 
   int getState();
 
+  void setState(int newState);
+
 }

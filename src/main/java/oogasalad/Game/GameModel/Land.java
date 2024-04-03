@@ -1,14 +1,25 @@
 package oogasalad.Game.GameModel;
 
-public class Land extends GameObject {
+import oogasalad.Game.GameModel.Properties.LandProperties;
 
-  @Override
-  public void interact(Item i1) {
+public class Land extends GameObject implements Plantable {
 
+  private final boolean isPlantable;
+
+  public Land(String id, int startState, LandProperties properties, boolean isPlantable) {
+    super(id, startState, properties);
+    this.isPlantable = isPlantable;
   }
 
   @Override
-  public void update(GameTime gameTime) {
+  public void interact(Item i1) {
+    if (getProperties().getInteractingItems.conatins(i1)) {
 
+    }
+  }
+
+  @Override
+  public boolean getIsPlantable() {
+    return isPlantable;
   }
 }

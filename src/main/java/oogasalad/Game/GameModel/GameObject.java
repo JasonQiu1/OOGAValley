@@ -1,5 +1,7 @@
 package oogasalad.Game.GameModel;
 
+import oogasalad.Game.GameModel.Properties.GameObjectProperties;
+
 public abstract class GameObject implements Interactable, Expirable, Updatable {
 
   private boolean expired;
@@ -29,4 +31,17 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
     return state;
   }
 
+  @Override
+  public void setState(int newState) {
+    state = newState;
+  }
+
+  @Override
+  public void update(GameTime gameTime) {
+    setState(getProperties().nextState());
+  }
+
+  public GameObjectProperties getProperties() {
+    return properties;
+  }
 }
