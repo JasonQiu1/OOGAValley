@@ -20,7 +20,10 @@ public class MapEditor extends VBox {
         Label l = new Label("Map Editor"); //Resource Bundle This
         l.getStyleClass().add("map-label");
         BuildableMap bm = new BuildableMap(ts);
-        HBox hb = new HBox();
+        HBox bhbm = new HBox(bm);
+        bhbm.setAlignment(Pos.CENTER);
+        HBox hbscb = new HBox();
+        hbscb.setMinWidth(650);
         SizeChangeButton scb = new SizeChangeButton((newI, newJ) -> {
             // Show dialog to get new grid size
             DialogBox dialog = new DialogBox();
@@ -32,10 +35,10 @@ public class MapEditor extends VBox {
         });
 
 
-        hb.getChildren().add(scb);
-        hb.setAlignment(Pos.BOTTOM_RIGHT);
-        getChildren().add(new StackPane(l, hb));
-        getChildren().add(bm);
+        hbscb.getChildren().add(scb);
+        hbscb.setAlignment(Pos.BOTTOM_RIGHT);
+        getChildren().add(new StackPane(l, hbscb));
+        getChildren().add(bhbm);
         getChildren().add(new ScrollPane(new Tiles(ts)));
     }
 }
