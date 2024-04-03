@@ -8,10 +8,4 @@ public class Structure extends GameObject {
     super(id, startState, properties);
   }
 
-  @Override
-  public String interact(Item i1) {
-    super.interact(i1);
-    return "";
-  }
-
 }

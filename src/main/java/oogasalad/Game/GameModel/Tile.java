@@ -12,13 +12,4 @@ public class Tile extends GameObject {
       GameObjectProperties properties) {
     super(id, startState, properties);
   }
-
-  @Override
-  public String interact(Item selectedItem) {
-    if (properties.getCorrectSeeds().contains(selectedItem) && ) {
-
-    }
-
-  }
-
 }

@@ -16,11 +16,6 @@ public class Land extends GameObject implements Plantable {
   }
 
   @Override
-  public void interact(Item i1) {
-
-  }
-
-  @Override
   public boolean getIsPlantable() {
     return isPlantable;
   }
