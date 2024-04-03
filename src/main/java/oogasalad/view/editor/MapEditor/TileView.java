@@ -6,11 +6,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 public class TileView extends VBox {
-    private ImageView icon;
+    private final ImageView icon;
     public TileView(ImageView pic, String title){ //resource bundle this
         super();
         super.setAlignment(Pos.CENTER);
-        pic.setFitHeight(37);
+        pic.setFitHeight(37); //get rid of magic number
         pic.setFitWidth(50);
         icon = pic;
         super.getChildren().add(pic);

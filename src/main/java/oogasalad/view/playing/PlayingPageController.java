@@ -189,13 +189,13 @@ public class PlayingPageController {
 
     } else if (selectedTool != null) {
 
-      if (cropGrid.get(rowIndex).get(columnIndex).getProperty() != null) {
-        if (cropGrid.get(rowIndex).get(columnIndex).getGrowthProgress() >=
-            cropGrid.get(rowIndex).get(columnIndex).getProperty().getGrowthTime() - 1) {
-          cropGrid.get(rowIndex).get(columnIndex).setProperty(null);
-          cropGrid.get(rowIndex).get(columnIndex).setGrowthProgress(0);
-        }
+      if (cropGrid.get(rowIndex).get(columnIndex).getProperty() != null &&
+              cropGrid.get(rowIndex).get(columnIndex).getGrowthProgress() >=
+                      cropGrid.get(rowIndex).get(columnIndex).getProperty().getGrowthTime() - 1) {
+        cropGrid.get(rowIndex).get(columnIndex).setProperty(null);
+        cropGrid.get(rowIndex).get(columnIndex).setGrowthProgress(0);
       }
+
 
     }
   }
