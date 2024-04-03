@@ -9,8 +9,10 @@ public abstract class GameObjectProperties {
   private Map<Integer, String> updatingNewGameObjectMapings;
   private Map<WrapperStateAndItem, Integer> interactingStateMapings;
   private Map<WrapperStateAndItem, String> interactingNewGameObjectMapings;
+  private Map<String, Double> conditionalPreferenceMultipliers;
   private int expiringState;
   private long expiringTime;
+  private long defaultUpdateTime;
 
   public long modifiedTimeToUpdate(GameTime gameTime) {
     return 0;

@@ -5,7 +5,7 @@ import oogasalad.Game.GameModel.Item;
 
 
 
-public class LandProperties implements GameObjectProperties {
+public class LandProperties {
 
   List<Item> interactingItems;
 
