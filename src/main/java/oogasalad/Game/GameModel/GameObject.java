@@ -27,6 +27,11 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
   }
 
   @Override
+  public void setExpired(boolean expired) {
+    this.expired = expired;
+  }
+
+  @Override
   public int getState() {
     return state;
   }
@@ -38,7 +43,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
 
   @Override
   public void update(GameTime gameTime) {
-    setState(getProperties().nextState());
+    if (gameTime.getTime() != 0 &&
+    gameTime.getTime() % properties.modifiedTimeToUpdate(gameTime) == 0) {
+     state = properties.nextUpdatingState(state);
+    }
+    if (getProperties().expiringState()) {
+      setExpired(true);
+    }
   }
 
   public GameObjectProperties getProperties() {

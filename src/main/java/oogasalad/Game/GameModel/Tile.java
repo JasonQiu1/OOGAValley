@@ -3,6 +3,10 @@ package oogasalad.Game.GameModel;
 import oogasalad.Game.GameModel.Properties.GameObjectProperties;
 
 public class Tile extends GameObject {
+  
+  private GameObject collectable;
+  private GameObject structure;
+  private GameObject land;
 
   public Tile(String id, int startState,
       GameObjectProperties properties) {
@@ -11,7 +15,7 @@ public class Tile extends GameObject {
 
   @Override
   void interact(Item selectedItem) {
-    if (properties.getCorrectSeeds().contains(selectedItem) && plantable) {
+    if (properties.getCorrectSeeds().contains(selectedItem) && ) {
       setPlanted
     }
 
