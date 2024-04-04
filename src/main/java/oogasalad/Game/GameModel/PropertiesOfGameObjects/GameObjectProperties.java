@@ -1,10 +1,12 @@
 package oogasalad.Game.GameModel.PropertiesOfGameObjects;
+
 import java.util.Map;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
 import oogasalad.Game.GameModel.WrapperStateAndItem;
 
 public abstract class GameObjectProperties {
+
   private Map<Integer, Integer> updatingStateMapings;
   private Map<Integer, String> updatingNewGameObjectMapings;
   private Map<WrapperStateAndItem, Integer> interactingStateMapings;

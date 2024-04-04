@@ -23,6 +23,7 @@ public class WrapperStateAndItem {
   public String getItem() {
     return item.toString();
   }
+
   @Override
   public int hashCode() {
     return Objects.hash(item.toString(), state);

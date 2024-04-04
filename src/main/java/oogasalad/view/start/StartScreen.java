@@ -21,7 +21,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.view.editor.EditorScene;
-import oogasalad.view.playing.PlayingView;
+import oogasalad.view.playing.PlayingPageView;
 
 
 public class StartScreen {
@@ -30,7 +30,7 @@ public class StartScreen {
   public static final double DEFAULT_WIDTH_PORTION = 0.65;
   public static final double DEFAULT_HEIGHT_PORTION = 0.9;
   private final Stage stage;
-  private final PlayingView playingView;
+  private final PlayingPageView playingPageView;
   private final EditorScene editorScene;
   private Scene startScreen;
 
@@ -41,7 +41,7 @@ public class StartScreen {
    */
   public StartScreen(Stage stageToUse) {
     stage = stageToUse;
-    playingView = new PlayingView();
+    playingPageView = new PlayingPageView();
     editorScene = new EditorScene();
   }
 

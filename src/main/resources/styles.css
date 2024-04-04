@@ -1,22 +1,22 @@
 /* styles.css */
 @font-face {
-    font-family: "Press Start 2P";
-    src: url("PressStart2P-Regular.ttf");
+  font-family: "Press Start 2P";
+  src: url("PressStart2P-Regular.ttf");
 }
 
 .title-label {
-    -fx-font-size: 72px;
-    -fx-font-family: "Press Start 2P";
-    -fx-font-weight: bold;
-    -fx-text-fill: green; /* Text color */
+  -fx-font-size: 72px;
+  -fx-font-family: "Press Start 2P";
+  -fx-font-weight: bold;
+  -fx-text-fill: green; /* Text color */
 
-    /* Box shadow */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 15, 0, 3, 3);
+  /* Box shadow */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 15, 0, 3, 3);
 }
 
 .map-label {
-    -fx-font-size: 40px;
-    -fx-font-family: "Press Start 2P";
-    -fx-font-weight: bold;
-    -fx-text-fill: black;
+  -fx-font-size: 40px;
+  -fx-font-family: "Press Start 2P";
+  -fx-font-weight: bold;
+  -fx-text-fill: black;
 }

@@ -27,8 +27,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
     if (expired && System.currentTimeMillis() - timeSinceExpiringState >
         properties.getTimeToExpired()) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
@@ -51,7 +50,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
   @Override
   public String update(GameTime gameTime) {
     String newId = id;
-    if (gameTime.getTime() != 0 && gameTime.getTime() % properties.modifiedTimeToUpdate(gameTime) == 0) {
+    if (gameTime.getTime() != 0
+        && gameTime.getTime() % properties.modifiedTimeToUpdate(gameTime) == 0) {
       if (properties.nextStateIsNewGameObject(state)) {
         newId = properties.nextUpdatingGameObject(state);
       }
