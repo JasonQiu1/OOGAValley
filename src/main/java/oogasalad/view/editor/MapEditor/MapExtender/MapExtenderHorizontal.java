@@ -20,7 +20,6 @@ public class MapExtenderHorizontal extends MapExtenderAbstract {
             adder.setWidth(newValue.doubleValue() / 2);
             adder.setX(newValue.doubleValue() / 2);
             remover.setWidth(newValue.doubleValue() / 2);
-            System.out.println("Size Change");
         });
 
     }

@@ -1,4 +1,5 @@
 package oogasalad.view.editor.MapEditor;
+import javafx.application.Platform;
 import javafx.scene.layout.GridPane;
 
 public class BuildableMap extends GridPane {
@@ -34,61 +35,61 @@ public class BuildableMap extends GridPane {
         }
         currentColumns = newI;
         currentRows = newJ;
-        super.getScene().getWindow().sizeToScene();
+        //Platform.runLater(() -> super.getScene().getWindow().sizeToScene());
     }
 
     public void addRowTop(){
         meh.addRowTop(this, currentRows, currentColumns);
         currentRows++;
-        super.getScene().getWindow().sizeToScene();
+        //super.getScene().getWindow().sizeToScene();
     }
 
     public void removeRowTop(){
         meh.removeRowTop(this, currentRows, currentColumns);
         currentRows--;
-        super.getScene().getWindow().sizeToScene();
+        //super.getScene().getWindow().sizeToScene();
     }
 
     public void addRowBottom(){
         if(currentRows + 1 < 21){
             modifyGridSize(currentColumns, currentRows + 1);
         }
-        super.getScene().getWindow().sizeToScene();
+        //super.getScene().getWindow().sizeToScene();
     }
 
     public void removeRowBottom(){
+        System.out.println("Before: " + this.getHeight());
         if(currentRows - 1 > 0){
             modifyGridSize(currentColumns, currentRows - 1);
         }
-        super.getScene().getWindow().sizeToScene();
+        //super.getScene().getWindow().sizeToScene();
+        System.out.println("After: " + this.getHeight() + "\n");
     }
 
     public void addColumnLeft(){
         meh.addColumnLeft(this, currentRows, currentColumns);
         currentColumns++;
-        super.getScene().getWindow().sizeToScene();
+        //super.getScene().getWindow().sizeToScene();
     }
 
     public void removeColumnLeft(){
         meh.removeColumnLeft(this, currentRows, currentColumns);
         currentColumns--;
-        super.getScene().getWindow().sizeToScene();
+        //super.getScene().getWindow().sizeToScene();
     }
 
     public void addColumnRight(){
         if(currentColumns + 1 < 21){
             modifyGridSize(currentColumns + 1, currentRows);
         }
-        super.getScene().getWindow().sizeToScene();
+        //super.getScene().getWindow().sizeToScene();
     }
 
     public void removeColumnRight(){
-        System.out.println(this.getWidth());
         if(currentColumns - 1 > 0){
             modifyGridSize(currentColumns -1, currentRows);
         }
-        super.getScene().getWindow().sizeToScene();
-        System.out.println(this.getWidth());
+        //super.getScene().getWindow().sizeToScene();
     }
 
 
