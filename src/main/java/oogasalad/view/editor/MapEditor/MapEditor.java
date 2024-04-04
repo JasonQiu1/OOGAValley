@@ -6,6 +6,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 
 
 public class MapEditor extends VBox {
@@ -25,5 +26,6 @@ public class MapEditor extends VBox {
         getChildren().add(tp);
         getChildren().add(bmw);
         getChildren().add(bp);
+        //getChildren().add(new MapExtender(bm));
     }
 }

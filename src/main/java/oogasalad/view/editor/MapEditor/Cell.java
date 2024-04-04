@@ -10,13 +10,13 @@ public class Cell extends StackPane {
     private final Rectangle base;
     private final int HEIGHT = 37; //read from file
     private final int WIDTH = 50;
-    private final int i;
-    private final int j;
+    private int column;
+    private int row;
 
     public Cell(TileSelector ts, int i, int j) {
         super();
-        this.i = i;
-        this.j = j;
+        column = i;
+        row = j;
         base = new Rectangle(WIDTH, HEIGHT);
         base.setFill(Color.WHITE);
         base.setStroke(Color.BLACK);
@@ -58,11 +58,27 @@ public class Cell extends StackPane {
         return image;
     }
 
-    public int getI(){
-        return i;
+    public int getColumn(){
+        return column;
     }
 
-    public int getJ(){
-        return j;
+    public int getRow(){
+        return row;
+    }
+
+    public void incrementRow(){
+        row++;
+    }
+
+    public void incrementColumn(){
+        column++;
+    }
+
+    public void decrementRow() {
+        row--;
+    }
+
+    public void decrementColumn(){
+        column++;
     }
 }

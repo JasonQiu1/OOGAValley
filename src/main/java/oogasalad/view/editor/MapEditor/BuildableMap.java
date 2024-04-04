@@ -1,16 +1,19 @@
 package oogasalad.view.editor.MapEditor;
 import javafx.scene.layout.GridPane;
+import oogasalad.view.editor.MapEditor.MapExtender.MapExtensionHandler;
 
 public class BuildableMap extends GridPane {
     private final TileSelector ts;
-    private int i;
-    private int j;
+    private int currentColumns;
+    private int currentRows;
+    private final MapExtensionHandler meh;
     public BuildableMap(TileSelector ts) {
         super();
         this.ts = ts;
+        meh = new MapExtensionHandler(ts);
         createGrid();
-        i = 13;
-        j = 10;
+        currentColumns = 13;
+        currentRows = 10;
     }
 
     private void createGrid() {
@@ -22,17 +25,63 @@ public class BuildableMap extends GridPane {
     }
 
     public void modifyGridSize(int newI, int newJ){
-        super.getChildren().removeIf(node -> ((Cell)node).getI() >= newI || ((Cell)node).getJ() >= newJ);
-        for(int ii = 0; ii < newI; ii++){
-            for(int jj = 0; jj < newJ; jj++){
-                if(ii >= i || jj >= j){
-                    super.add(new Cell(ts, ii, jj), ii, jj);
+        super.getChildren().removeIf(node -> ((Cell)node).getColumn() >= newI || ((Cell)node).getRow() >= newJ);
+        for(int i = 0; i < newI; i++){
+            for(int j = 0; j < newJ; j++){
+                if(i >= currentColumns || j >= currentRows){
+                    super.add(new Cell(ts, i, j), i, j);
                 }
             }
         }
-        i = newI;
-        j = newJ;
+        currentColumns = newI;
+        currentRows = newJ;
         super.getScene().getWindow().sizeToScene();
     }
+
+    public void addRowTop(){
+        meh.addRowTop(this, currentRows, currentColumns);
+        currentRows++;
+    }
+
+    public void removeRowTop(){
+        meh.removeRowTop(this, currentRows, currentColumns);
+        currentRows--;
+    }
+
+    public void addRowBottom(){
+        if(currentRows + 1 < 20){
+            modifyGridSize(currentColumns, currentRows + 1);
+        }
+    }
+
+    public void removeRowBottom(){
+        if(currentRows - 1 > 1){
+            modifyGridSize(currentColumns, currentRows - 1);
+        }
+    }
+
+    public void addColumnLeft(){
+        meh.addColumnLeft(this, currentRows, currentColumns);
+        currentColumns++;
+    }
+
+    public void removeColumnLeft(){
+        meh.removeColumnLeft(this, currentRows, currentColumns);
+        currentColumns--;
+    }
+
+    public void addColumnRight(){
+        if(currentColumns + 1 < 20){
+            modifyGridSize(currentColumns + 1, currentRows);
+        }
+    }
+
+    public void removeColumnRight(){
+        if(currentColumns - 1 > 1){
+            modifyGridSize(currentColumns -1, currentRows);
+        }
+    }
+
+
 
 }
