@@ -13,6 +13,9 @@ import oogasalad.Game.GameModel.exception.BadGsonLoadException;
  */
 public class GameConfiguration {
 
+  private Properties rules;
+  private GameState initialState;
+
   /**
    * Initializes the game configuration to a set of default rules and initial state.
    */
@@ -45,19 +48,16 @@ public class GameConfiguration {
     return rules;
   }
 
-  public GameState getInitialState() {
-    return initialState;
-  }
-
   public void setRules(Properties rules) {
     // TODO: VALIDATE RULES BEFORE SETTING THEM
     this.rules = rules;
   }
 
+  public GameState getInitialState() {
+    return initialState;
+  }
+
   public void setInitialState(GameState initialState) {
     this.initialState = initialState;
   }
-
-  private Properties rules;
-  private GameState initialState;
 }

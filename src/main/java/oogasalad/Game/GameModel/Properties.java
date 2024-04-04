@@ -16,6 +16,8 @@ import oogasalad.Game.GameModel.exception.KeyNotFoundException;
  */
 public class Properties {
 
+  private final Map<String, String> properties;
+
   /**
    * Initializes with no entries.
    */
@@ -123,6 +125,4 @@ public class Properties {
     }
     properties.put(key, value);
   }
-
-  private final Map<String, String> properties;
 }

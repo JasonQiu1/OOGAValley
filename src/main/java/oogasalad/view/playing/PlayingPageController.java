@@ -33,7 +33,7 @@ public class PlayingPageController {
   private Label timeLabel;
   private int elapsedTimeSeconds = 0;
   private Timeline timeline;
-  private double timeInterval = 1;
+  private final double timeInterval = 1;
 
   @FXML
   private ProgressBar energyProgressBar;
@@ -52,8 +52,8 @@ public class PlayingPageController {
   private double cellHeight;
   private List<List<GridComponentView>> landGrid;
   private List<List<GridComponentView>> cropGrid;
-  private Map<ImageView, GridComponentProperty> cropImagePropertyMap = new HashMap<>();
-  private Map<ImageView, Integer> cropGrowthProgressMap = new HashMap<>();
+  private final Map<ImageView, GridComponentProperty> cropImagePropertyMap = new HashMap<>();
+  private final Map<ImageView, Integer> cropGrowthProgressMap = new HashMap<>();
 
   private Stage stage;
 

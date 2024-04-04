@@ -8,9 +8,9 @@ import javafx.stage.Stage;
  */
 public abstract class BranchBase {
 
-  private Stage stage;
+  private final Stage stage;
 
-  private Scene previousScene;
+  private final Scene previousScene;
 
   public BranchBase(Stage stage, Scene previousScene) {
     this.stage = stage;

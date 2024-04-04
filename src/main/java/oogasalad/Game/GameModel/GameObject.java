@@ -4,11 +4,11 @@ import java.util.prefs.Preferences;
 
 public abstract class GameObject implements ObjectsOfGame {
 
+  private int state;
+  private CoordinateOfGameObjectRecord coordinates;
   private String id;
   private boolean expired;
   private Preferences preferences;
-  int state;
-  CoordinateOfGameObjectRecord coordinates;
 
 
   public GameObject(CoordinateOfGameObjectRecord coordinates) {
