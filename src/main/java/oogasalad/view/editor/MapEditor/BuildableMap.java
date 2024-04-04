@@ -94,7 +94,7 @@ public class BuildableMap extends GridPane {
     }
 
     private void updateScreen() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.03), event -> {
             getScene().getWindow().sizeToScene();
         }));
         timeline.play();

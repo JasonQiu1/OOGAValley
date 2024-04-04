@@ -1,7 +1,10 @@
 package oogasalad.view.editor.MapEditor.MapExtender;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import oogasalad.view.editor.MapEditor.BuildableMap;
 
 public class MapExtenderHorizontal extends MapExtenderAbstract {
@@ -16,10 +19,12 @@ public class MapExtenderHorizontal extends MapExtenderAbstract {
 
         //listen for propertyChanges
         bm.widthProperty().addListener((observable, oldValue, newValue) -> {
-            // Update rectangles according to the new width
-            adder.setWidth(newValue.doubleValue() / 2);
-            adder.setX(newValue.doubleValue() / 2);
-            remover.setWidth(newValue.doubleValue() / 2);
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> {
+                adder.setWidth(newValue.doubleValue() / 2);
+                adder.setX(newValue.doubleValue() / 2);
+                remover.setWidth(newValue.doubleValue() / 2);
+            }));
+            timeline.play();
         });
 
     }
