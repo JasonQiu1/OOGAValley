@@ -2,6 +2,6 @@ package oogasalad.Game.GameModel;
 
 public interface Interactable {
 
-  void interact(Item i1);
+  String interact(Item item);
 
 }
