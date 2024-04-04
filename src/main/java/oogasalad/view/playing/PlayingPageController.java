@@ -1,7 +1,6 @@
 package oogasalad.view.playing;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,9 +9,7 @@ import java.util.Map;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -24,7 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import oogasalad.view.branch.ShoppingPageController;
+import oogasalad.view.branch.ShoppingPageView;
 
 /**
  * The controller for the playing page
@@ -36,7 +33,7 @@ public class PlayingPageController {
   private Label timeLabel;
   private int elapsedTimeSeconds = 0;
   private Timeline timeline;
-  private double timeInterval = 1;
+  private final double timeInterval = 1;
 
   @FXML
   private ProgressBar energyProgressBar;
@@ -55,8 +52,8 @@ public class PlayingPageController {
   private double cellHeight;
   private List<List<GridComponentView>> landGrid;
   private List<List<GridComponentView>> cropGrid;
-  private Map<ImageView, GridComponentProperty> cropImagePropertyMap = new HashMap<>();
-  private Map<ImageView, Integer> cropGrowthProgressMap = new HashMap<>();
+  private final Map<ImageView, GridComponentProperty> cropImagePropertyMap = new HashMap<>();
+  private final Map<ImageView, Integer> cropGrowthProgressMap = new HashMap<>();
 
   private Stage stage;
 
@@ -189,13 +186,13 @@ public class PlayingPageController {
 
     } else if (selectedTool != null) {
 
-      if (cropGrid.get(rowIndex).get(columnIndex).getProperty() != null) {
-        if (cropGrid.get(rowIndex).get(columnIndex).getGrowthProgress() >=
-            cropGrid.get(rowIndex).get(columnIndex).getProperty().getGrowthTime() - 1) {
-          cropGrid.get(rowIndex).get(columnIndex).setProperty(null);
-          cropGrid.get(rowIndex).get(columnIndex).setGrowthProgress(0);
-        }
+      if (cropGrid.get(rowIndex).get(columnIndex).getProperty() != null &&
+          cropGrid.get(rowIndex).get(columnIndex).getGrowthProgress() >=
+              cropGrid.get(rowIndex).get(columnIndex).getProperty().getGrowthTime() - 1) {
+        cropGrid.get(rowIndex).get(columnIndex).setProperty(null);
+        cropGrid.get(rowIndex).get(columnIndex).setGrowthProgress(0);
       }
+
 
     }
   }
@@ -203,18 +200,9 @@ public class PlayingPageController {
   @FXML
   private void openShop() {
     Scene scene = stage.getScene();
-    try {
-      FXMLLoader fxmlLoader = new FXMLLoader(
-          new File("src/main/resources/fxml/shop/shopping_view.fxml").toURI().toURL());
-      Parent root = fxmlLoader.load();
-      ShoppingPageController shoppingPageController = fxmlLoader.getController();
-      shoppingPageController.setStage(stage);
-      shoppingPageController.setPreviousScene(scene);
-      stage.setScene(new Scene(root));
-      stage.show();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    ShoppingPageView shoppingPageView = new ShoppingPageView(stage, scene);
+    stage.setScene(new Scene(shoppingPageView.getScene()));
+    stage.show();
   }
 
   private void updateTimeLabel() {
@@ -241,3 +229,4 @@ public class PlayingPageController {
     return cropGrid.get(row).get(column).getProperty() != null;
   }
 }
+
