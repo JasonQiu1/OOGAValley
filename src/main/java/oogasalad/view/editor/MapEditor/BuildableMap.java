@@ -1,6 +1,9 @@
 package oogasalad.view.editor.MapEditor;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 public class BuildableMap extends GridPane {
     private final TileSelector ts;
@@ -35,19 +38,19 @@ public class BuildableMap extends GridPane {
         }
         currentColumns = newI;
         currentRows = newJ;
-        //Platform.runLater(() -> super.getScene().getWindow().sizeToScene());
+        updateScreen();
     }
 
     public void addRowTop(){
         meh.addRowTop(this, currentRows, currentColumns);
         currentRows++;
-        //super.getScene().getWindow().sizeToScene();
+        updateScreen();
     }
 
     public void removeRowTop(){
         meh.removeRowTop(this, currentRows, currentColumns);
         currentRows--;
-        //super.getScene().getWindow().sizeToScene();
+        updateScreen();
     }
 
     public void addRowBottom(){
@@ -58,38 +61,43 @@ public class BuildableMap extends GridPane {
     }
 
     public void removeRowBottom(){
-        System.out.println("Before: " + this.getHeight());
+        //System.out.println("Before: " + this.getHeight());
         if(currentRows - 1 > 0){
             modifyGridSize(currentColumns, currentRows - 1);
         }
         //super.getScene().getWindow().sizeToScene();
-        System.out.println("After: " + this.getHeight() + "\n");
+        //System.out.println("After: " + this.getHeight() + "\n");
     }
 
     public void addColumnLeft(){
         meh.addColumnLeft(this, currentRows, currentColumns);
         currentColumns++;
-        //super.getScene().getWindow().sizeToScene();
+        updateScreen();
     }
 
     public void removeColumnLeft(){
         meh.removeColumnLeft(this, currentRows, currentColumns);
         currentColumns--;
-        //super.getScene().getWindow().sizeToScene();
+        updateScreen();
     }
 
     public void addColumnRight(){
         if(currentColumns + 1 < 21){
             modifyGridSize(currentColumns + 1, currentRows);
         }
-        //super.getScene().getWindow().sizeToScene();
     }
 
     public void removeColumnRight(){
         if(currentColumns - 1 > 0){
             modifyGridSize(currentColumns -1, currentRows);
         }
-        //super.getScene().getWindow().sizeToScene();
+    }
+
+    private void updateScreen() {
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
+            getScene().getWindow().sizeToScene();
+        }));
+        timeline.play();
     }
 
 
