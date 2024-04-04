@@ -6,6 +6,7 @@ import javafx.scene.layout.StackPane;
 public class TopPanel extends StackPane {
 
     public TopPanel(BuildableMap bm){
+        super();
         Label l = new Label("Map Editor"); //Resource Bundle This
         l.getStyleClass().add("map-label");
         SizeChangeButtonWrapper scbw = new SizeChangeButtonWrapper(new SizeChangeButton((newI, newJ) -> {
