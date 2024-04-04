@@ -13,12 +13,12 @@ public class MapExtenderHorizontal extends MapExtenderAbstract {
         super(bm, onActionAdd, onActionRemove);
         adder.setHeight(10);
         remover.setHeight(10);
-        adder.setWidth(bm.getWidth());
-        remover.setWidth(bm.getWidth());
+        adder.setWidth(bm.getGridPane().getWidth());
+        remover.setWidth(bm.getGridPane().getWidth());
 
 
         //listen for propertyChanges
-        bm.widthProperty().addListener((observable, oldValue, newValue) -> {
+        bm.getGridPane().maxWidthProperty().addListener((observable, oldValue, newValue) -> {
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> {
                 adder.setWidth(newValue.doubleValue() / 2);
                 adder.setX(newValue.doubleValue() / 2);
