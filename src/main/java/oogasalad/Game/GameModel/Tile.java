@@ -1,6 +1,6 @@
 package oogasalad.Game.GameModel;
 
-import oogasalad.Game.GameModel.Properties.GameObjectProperties;
+import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
 public class Tile extends GameObject {
   

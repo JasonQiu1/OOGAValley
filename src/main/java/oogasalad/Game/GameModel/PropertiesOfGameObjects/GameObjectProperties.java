@@ -1,4 +1,4 @@
-package oogasalad.Game.GameModel.Properties;
+package oogasalad.Game.GameModel.PropertiesOfGameObjects;
 import java.util.Map;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;

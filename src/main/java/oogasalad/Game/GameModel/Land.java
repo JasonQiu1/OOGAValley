@@ -1,8 +1,6 @@
 package oogasalad.Game.GameModel;
 
-import java.util.Properties;
-import oogasalad.Game.GameModel.Properties.GameObjectProperties;
-import oogasalad.Game.GameModel.Properties.LandProperties;
+import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
 public class Land extends GameObject implements Plantable {
 
