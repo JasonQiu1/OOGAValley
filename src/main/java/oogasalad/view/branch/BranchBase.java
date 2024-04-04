@@ -6,11 +6,24 @@ import javafx.stage.Stage;
 /**
  * Branch page (the page that is a branch to the main playing page, like map, shop, etc.)
  */
-public interface BranchBase {
+public abstract class BranchBase {
 
-  void setPreviousScene(Scene scene);
+  private Stage stage;
 
-  void setStage(Stage stage);
+  private Scene previousScene;
+
+  public BranchBase(Stage stage, Scene previousScene) {
+    this.stage = stage;
+    this.previousScene = previousScene;
+  }
+
+  protected Stage getStage() {
+    return stage;
+  }
+
+  protected Scene getPreviousScene() {
+    return previousScene;
+  }
 
 
 }
