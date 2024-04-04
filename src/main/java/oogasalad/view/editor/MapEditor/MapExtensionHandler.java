@@ -1,4 +1,4 @@
-package oogasalad.view.editor.MapEditor.MapExtender;
+package oogasalad.view.editor.MapEditor;
 
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;

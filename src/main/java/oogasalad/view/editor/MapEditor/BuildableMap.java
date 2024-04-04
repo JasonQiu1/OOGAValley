@@ -1,6 +1,5 @@
 package oogasalad.view.editor.MapEditor;
 import javafx.scene.layout.GridPane;
-import oogasalad.view.editor.MapEditor.MapExtender.MapExtensionHandler;
 
 public class BuildableMap extends GridPane {
     private final TileSelector ts;
@@ -41,45 +40,55 @@ public class BuildableMap extends GridPane {
     public void addRowTop(){
         meh.addRowTop(this, currentRows, currentColumns);
         currentRows++;
+        super.getScene().getWindow().sizeToScene();
     }
 
     public void removeRowTop(){
         meh.removeRowTop(this, currentRows, currentColumns);
         currentRows--;
+        super.getScene().getWindow().sizeToScene();
     }
 
     public void addRowBottom(){
-        if(currentRows + 1 < 20){
+        if(currentRows + 1 < 21){
             modifyGridSize(currentColumns, currentRows + 1);
         }
+        super.getScene().getWindow().sizeToScene();
     }
 
     public void removeRowBottom(){
-        if(currentRows - 1 > 1){
+        if(currentRows - 1 > 0){
             modifyGridSize(currentColumns, currentRows - 1);
         }
+        super.getScene().getWindow().sizeToScene();
     }
 
     public void addColumnLeft(){
         meh.addColumnLeft(this, currentRows, currentColumns);
         currentColumns++;
+        super.getScene().getWindow().sizeToScene();
     }
 
     public void removeColumnLeft(){
         meh.removeColumnLeft(this, currentRows, currentColumns);
         currentColumns--;
+        super.getScene().getWindow().sizeToScene();
     }
 
     public void addColumnRight(){
-        if(currentColumns + 1 < 20){
+        if(currentColumns + 1 < 21){
             modifyGridSize(currentColumns + 1, currentRows);
         }
+        super.getScene().getWindow().sizeToScene();
     }
 
     public void removeColumnRight(){
-        if(currentColumns - 1 > 1){
+        System.out.println(this.getWidth());
+        if(currentColumns - 1 > 0){
             modifyGridSize(currentColumns -1, currentRows);
         }
+        super.getScene().getWindow().sizeToScene();
+        System.out.println(this.getWidth());
     }
 
 

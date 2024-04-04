@@ -4,9 +4,9 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import oogasalad.view.editor.MapEditor.BuildableMap;
 
-public abstract class MapExtenderVerticalAbstract extends MapExtenderAbstract {
-    public MapExtenderVerticalAbstract(BuildableMap bm, EventHandler<MouseEvent> onActionAdd,
-                                       EventHandler<MouseEvent> onActionRemove){
+public class MapExtenderVertical extends MapExtenderAbstract {
+    public MapExtenderVertical(BuildableMap bm, EventHandler<MouseEvent> onActionAdd,
+                               EventHandler<MouseEvent> onActionRemove){
         super(bm, onActionAdd, onActionRemove);
         adder.setHeight(bm.getHeight());
         remover.setHeight(bm.getHeight());
