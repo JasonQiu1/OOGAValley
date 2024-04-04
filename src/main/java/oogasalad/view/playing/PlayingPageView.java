@@ -1,8 +1,5 @@
 package oogasalad.view.playing;
 
-
-import java.io.File;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +25,12 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.view.branch.ShoppingPageView;
 
+/**
+ * This class is the view for the playing page. It displays the land grid, tools, and items. It also
+ * has a timer and a progress bar for energy. It has a timeline that updates the land grid every
+ * second.
+ */
+
 public class PlayingPageView extends Application {
 
   private Stage stage;
@@ -39,20 +42,28 @@ public class PlayingPageView extends Application {
   private GridPane landGridPane;
   private GridPane toolGridPane;
   private GridPane itemGridPane;
-  private double cellWidth = 50;
-  private double cellHeight = 50;
-  private int numRows = 10;
-  private int numCols = 15;
+  private double landCellWidth = 50;
+  private double landCellHeight = 50;
+  private double bottomCellWidth = 30;
+  private double bottomCellHeight = 30;
+
+  private int landNumRows = 10;
+  private int landNumCols = 15;
+  private int toolNumRows = 2;
+  private int toolNumCols = 5;
+  private int itemNumRows = 2;
+  private int itemNumCols = 5;
   private double leftRightWidth = 50;
   private double leftRightHeight = 300;
   private double topHeight = 50;
   private double topWidth = 800;
   private double bottomHeight = 80;
   private double bottomWidth = 800;
-  private double landGridPaneWidth = cellWidth * numCols;
+  private double padding = 10;
+  private double landGridPaneWidth = landCellWidth * landNumCols;
   private double windowWidth = landGridPaneWidth + leftRightWidth * 2;
-  private double landGridPaneHeight = cellHeight * numRows;
-  private double windowHeight = landGridPaneHeight + topHeight + bottomHeight;
+  private double landGridPaneHeight = landCellHeight * landNumRows;
+  private double windowHeight = landGridPaneHeight + topHeight + bottomHeight + padding * 2;
   private List<List<GridComponentView>> landGrid;
   private List<List<GridComponentView>> cropGrid;
   private Map<ImageView, GridComponentProperty> cropImagePropertyMap = new HashMap<>();
@@ -65,7 +76,7 @@ public class PlayingPageView extends Application {
   }
 
   @Override
-  public void start(Stage primaryStage) throws MalformedURLException {
+  public void start(Stage primaryStage) {
     stage = primaryStage;
     BorderPane root = new BorderPane();
     setupTop(root);
@@ -75,13 +86,19 @@ public class PlayingPageView extends Application {
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("css/playing_css.css");
     primaryStage.setTitle("Playing Mode");
+    setUpTimeline();
+    primaryStage.setScene(scene);
+    primaryStage.show();
+  }
+
+  private void setUpTimeline() {
     timeline = new Timeline(new KeyFrame(Duration.seconds(timeInterval), event -> {
       landGridPane.getChildren().clear();
       elapsedTimeSeconds += timeInterval;
       updateTimeLabel();
       updateCropGrowth();
-      for (int row = 0; row < numRows; row++) {
-        for (int col = 0; col < numCols; col++) {
+      for (int row = 0; row < landNumRows; row++) {
+        for (int col = 0; col < landNumCols; col++) {
           ImageView landImageView = landGrid.get(row).get(col).getProperty().
               getImageView().get(landGrid.get(row).get(col).getImageViewIndex());
           landGridPane.add(landImageView, col, row);
@@ -90,8 +107,8 @@ public class PlayingPageView extends Application {
             ImageView cropImageView = new ImageView(
                 cropGrid.get(row).get(col).getProperty().getImageView().
                     get(cropGrid.get(row).get(col).getImageViewIndex()).getImage());
-            cropImageView.setFitWidth(cellWidth);
-            cropImageView.setFitHeight(cellHeight);
+            cropImageView.setFitWidth(landCellWidth);
+            cropImageView.setFitHeight(landCellHeight);
             cropImageView.setOnMouseClicked(this::handleCellClick);
             landGridPane.add(cropImageView, col, row);
           }
@@ -100,48 +117,6 @@ public class PlayingPageView extends Application {
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
-    //set up tool grid
-    Image tool = new Image(
-        String.valueOf(new File("src/main/resources/img/tool.png").toURI().toURL()));
-    ImageView toolView = new ImageView(tool);
-    toolView.setFitWidth(cellWidth);
-    toolView.setFitHeight(cellHeight);
-    toolGridPane.add(toolView, 0, 0);
-
-    toolView.setOnMousePressed(event -> {
-      selectedTool = (ImageView) event.getSource();
-      selectedCrop = null;
-      makeElementSelected(event);
-    });
-
-    ImageView cropImageView0 = new ImageView(new Image("img/blank.png"));
-    ImageView cropImageView1 = new ImageView(new Image("/img/half_panda.png"));
-    ImageView cropImageView2 = new ImageView(new Image("img/panda.png"));
-    cropImageView0.setFitWidth(cellWidth);
-    cropImageView0.setFitHeight(cellHeight);
-    cropImageView1.setFitWidth(cellWidth);
-    cropImageView1.setFitHeight(cellHeight);
-    cropImageView2.setFitWidth(cellWidth);
-    cropImageView2.setFitHeight(cellHeight);
-    List<ImageView> cropAnimation = new ArrayList<>();
-    cropAnimation.add(cropImageView0);
-    cropAnimation.add(cropImageView1);
-    cropAnimation.add(cropImageView2);
-
-    ImageView cropImageView = new ImageView(new Image("img/panda.png"));
-    cropImageView.setFitWidth(cellWidth);
-    cropImageView.setFitHeight(cellHeight);
-    cropImagePropertyMap.put(cropImageView, new GridComponentProperty(cropAnimation, 5, 1));
-
-    toolGridPane.add(cropImageView, 1, 0);
-
-    cropImageView.setOnMousePressed(event -> {
-      selectedCrop = (ImageView) event.getSource();
-      selectedTool = null;
-      makeElementSelected(event);
-    });
-    primaryStage.setScene(scene);
-    primaryStage.show();
   }
 
   private void makeElementSelected(javafx.scene.input.MouseEvent event) {
@@ -151,7 +126,8 @@ public class PlayingPageView extends Application {
         break;
       }
     }
-    Rectangle chooseBg = new Rectangle(cellWidth, cellHeight, Color.web("#0D47A1", 0.5));
+    Rectangle chooseBg = new Rectangle(bottomCellWidth, bottomCellHeight,
+        Color.web("#0D47A1", 0.5));
     toolGridPane.add(chooseBg,
         GridPane.getColumnIndex(event.getPickResult().getIntersectedNode()),
         GridPane.getRowIndex(event.getPickResult().getIntersectedNode()));
@@ -217,22 +193,23 @@ public class PlayingPageView extends Application {
   private void setupCenter(BorderPane root) {
     landGridPane = new GridPane();
     landGridPane.setPrefSize(landGridPaneWidth, landGridPaneHeight);
-    cellWidth = landGridPane.getPrefWidth() / numCols - 1;
-    cellHeight = landGridPane.getPrefHeight() / numRows - 1;
+    landCellWidth = landGridPane.getPrefWidth() / landNumCols - 1;
+    landCellHeight = landGridPane.getPrefHeight() / landNumRows - 1;
     landGrid = new ArrayList<>();
     cropGrid = new ArrayList<>();
-    for (int row = 0; row < numRows; row++) {
+    for (int row = 0; row < landNumRows; row++) {
       landGrid.add(new ArrayList<>());
       cropGrid.add(new ArrayList<>());
-      for (int col = 0; col < numCols; col++) {
+      for (int col = 0; col < landNumCols; col++) {
         ImageView cell = new ImageView(new Image("img/rectangle.png"));
-        cell.setFitWidth(cellWidth);
-        cell.setFitHeight(cellHeight);
+        cell.setFitWidth(landCellWidth);
+        cell.setFitHeight(landCellHeight);
         cell.setOnMouseClicked(this::handleCellClick);
         List<ImageView> cellAnimation = new ArrayList<>();
         cellAnimation.add(cell);
         landGrid.get(row)
-            .add(new GridComponentView(0, new GridComponentProperty(cellAnimation, 0, 0)));
+            .add(new GridComponentView(0, new GridComponentProperty(cellAnimation,
+                0, 0)));
         cropGrid.get(row).add(new GridComponentView(0, null));
       }
     }
@@ -242,7 +219,49 @@ public class PlayingPageView extends Application {
 
   private void setupBottom(BorderPane root) {
     toolGridPane = new GridPane();
+    toolGridPane.getStyleClass().add("tool-grid-pane");
     itemGridPane = new GridPane();
+    itemGridPane.getStyleClass().add("item-grid-pane");
+    Image tool = new Image("img/tool.png");
+    ImageView toolView = new ImageView(tool);
+    toolView.setFitWidth(bottomCellWidth);
+    toolView.setFitHeight(bottomCellHeight);
+    toolGridPane.add(toolView, 0, 0);
+
+    toolView.setOnMousePressed(event -> {
+      selectedTool = (ImageView) event.getSource();
+      selectedCrop = null;
+      makeElementSelected(event);
+    });
+
+    ImageView cropImageView0 = new ImageView(new Image("img/blank.png"));
+    ImageView cropImageView1 = new ImageView(new Image("/img/half_panda.png"));
+    ImageView cropImageView2 = new ImageView(new Image("img/panda.png"));
+    cropImageView0.setFitWidth(landCellWidth);
+    cropImageView0.setFitHeight(landCellHeight);
+    cropImageView1.setFitWidth(landCellWidth);
+    cropImageView1.setFitHeight(landCellHeight);
+    cropImageView2.setFitWidth(landCellWidth);
+    cropImageView2.setFitHeight(landCellHeight);
+    List<ImageView> cropAnimation = new ArrayList<>();
+    cropAnimation.add(cropImageView0);
+    cropAnimation.add(cropImageView1);
+    cropAnimation.add(cropImageView2);
+
+    ImageView cropImageView = new ImageView(new Image("img/panda.png"));
+    cropImageView.setFitWidth(bottomCellWidth);
+    cropImageView.setFitHeight(bottomCellHeight);
+    cropImagePropertyMap.put(cropImageView,
+        new GridComponentProperty(cropAnimation, 5, 1));
+
+    toolGridPane.add(cropImageView, 1, 0);
+
+    cropImageView.setOnMousePressed(event -> {
+      selectedCrop = (ImageView) event.getSource();
+      selectedTool = null;
+      makeElementSelected(event);
+    });
+
     HBox bottomBox = new HBox();
     bottomBox.setPrefSize(bottomWidth, bottomHeight);
     bottomBox.getStyleClass().add("bottom-box");

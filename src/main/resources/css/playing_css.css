@@ -11,10 +11,27 @@
 }
 
 .land-grid-pane {
+  -fx-padding: 10px;
   -fx-hgap: 1;
   -fx-vgap: 1;
   -fx-background-color: #365FB7;
 }
+
+.tool-grid-pane {
+  -fx-padding: 10px;
+  -fx-border-color: black;
+  -fx-hgap: 1;
+  -fx-vgap: 1;
+}
+
+
+.item-grid-pane {
+  -fx-padding: 10px;
+  -fx-border-color: black;
+  -fx-hgap: 1;
+  -fx-vgap: 1;
+}
+
 
 .side-box {
   -fx-pref-width: 40;
