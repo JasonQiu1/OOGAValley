@@ -2,11 +2,13 @@ package oogasalad.view.branch;
 
 import java.io.FileNotFoundException;
 import java.util.List;
-import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -18,37 +20,38 @@ import oogasalad.view.exception.FileNotPngException;
 /**
  * The view for the shopping page
  */
-public class ShoppingPageController implements BranchBase {
+public class ShoppingPageView extends BranchBase {
+
 
   private final int column = 10;
-  @FXML
   private GridPane shoppingItem;
   private double width;
 
-  @FXML
-  private Button back;
+  private HBox hBox = new HBox();
 
-  private Stage stage;
+  private BorderPane borderPane = new BorderPane();
 
-  private Scene previousScene;
+  private Button back = new Button("back");
 
-  @FXML
-  private void initialize() {
+  public ShoppingPageView(Stage stage, Scene previousScene) {
+    super(stage, previousScene);
     Shop shop = new Shop();
+    shoppingItem = new GridPane();
+    shoppingItem.setPrefWidth(800.0);
+    shoppingItem.setPrefHeight(500.0);
     width = shoppingItem.getWidth() / 10;
+    borderPane.setTop(new Text("Shop"));
+    borderPane.setCenter(shoppingItem);
+    borderPane.setBottom(back);
     List<Item> itemList = shop.getItems();
     showItemOnScreen(itemList, 0, shoppingItem);
     back.setOnMouseClicked(event -> {
-      stage.setScene(previousScene);
+      getStage().setScene(getPreviousScene());
     });
   }
 
-  public void setStage(Stage stage) {
-    this.stage = stage;
-  }
-
-  public void setPreviousScene(Scene scene) {
-    this.previousScene = scene;
+  public Parent getScene() {
+    return borderPane;
   }
 
   private void showItemOnScreen(List<Item> itemList, int idx, GridPane shoppingItem) {
@@ -68,9 +71,7 @@ public class ShoppingPageController implements BranchBase {
       });
       shoppingItem.add(vBox, idx % column, idx / column);
       showItemOnScreen(itemList, idx + 1, shoppingItem);
-    } catch (FileNotPngException e) {
-      throw new RuntimeException(e);
-    } catch (FileNotFoundException e) {
+    } catch (FileNotPngException | FileNotFoundException e) {
       throw new RuntimeException(e);
     }
   }
