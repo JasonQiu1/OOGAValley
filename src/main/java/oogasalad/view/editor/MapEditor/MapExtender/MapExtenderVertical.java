@@ -25,5 +25,15 @@ public class MapExtenderVertical extends MapExtenderAbstract {
             }));
             timeline.play();
         });
+
+        bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(newValue.getHeight());
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
+                adder.setHeight(newValue.getHeight() / 2);
+                remover.setHeight(newValue.getHeight() / 2);
+                remover.setY(newValue.getHeight() / 2);
+            }));
+            timeline.play();
+        });
     }
 }

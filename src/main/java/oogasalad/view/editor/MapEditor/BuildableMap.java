@@ -1,28 +1,26 @@
 package oogasalad.view.editor.MapEditor;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
-import java.beans.PropertyChangeEvent;
 import java.util.Optional;
 
 public class BuildableMap {
     private final TileSelector ts;
     private int currentColumns;
     private int currentRows;
-    private final MapExtensionHandler meh;
+    private final GridPaneProperty gridPaneProperty;
 
-    private BuildableMapWrapper bmw;
-    
     private GridPane gp;
     public BuildableMap(TileSelector ts) {
         gp = new GridPane();
+        this.gridPaneProperty = new GridPaneProperty(gp);
         this.ts = ts;
-        meh = new MapExtensionHandler(ts);
         createGrid();
+        gp.setMaxWidth(Cell.getSize()[0] * currentColumns);
+        gp.setMaxHeight(Cell.getSize()[1] * currentRows);
         currentColumns = 13;
         currentRows = 10;
     }
@@ -35,8 +33,7 @@ public class BuildableMap {
         }
     }
 
-    public void modifyGridSize(int newI, int newJ){
-        //System.out.println("OG: " + gp.getWidth());
+    public void modifyGridSizeBL(int newI, int newJ){
         GridPane temp = new GridPane();
         for(int i = 0; i < newI; i++){
             for(int j = 0; j < newJ; j++){
@@ -48,16 +45,20 @@ public class BuildableMap {
                 }
             }
         }
-        gp = temp;
-        bmw.updateGrid(gp);
-        currentColumns = newI;
-        currentRows = newJ;
+        updateGrid(temp);
+    }
+
+
+    private void updateGrid(GridPane temp) {
+        setGridPane(temp);
+        currentColumns = temp.getColumnCount();
+        currentRows = temp.getRowCount();
         gp.setMaxWidth(Cell.getSize()[0] * currentColumns);
         gp.setMaxHeight(Cell.getSize()[1] * currentRows);
         updateScreen();
     }
 
-    public Node findCell(int x, int y) {
+    private Node findCell(int x, int y) {
         Optional<Node> optionalNode = gp.getChildren().stream()
                 .filter(node -> ((Cell) node).getColumn() == x && ((Cell) node).getRow() == y)
                 .findFirst();
@@ -67,62 +68,87 @@ public class BuildableMap {
 
 
     public void addRowTop(){
-        meh.addRowTop(gp, currentRows, currentColumns);
-        currentRows++;
-        updateScreen();
+        if(currentRows + 1 < 21){
+            gp.getChildren().forEach(node -> ((Cell)node).incrementRow());
+            GridPane temp = new GridPane();
+            for(int i = 0; i < currentColumns; i++){
+                temp.add(new Cell(ts, i, 0), i, 0);
+            }
+            for(int i = 0; i < currentColumns; i++){
+                for(int j = 1; j < currentRows + 1; j++){
+                    temp.add(findCell(i, j), i, j);
+                }
+            }
+            updateGrid(temp);
+        }
     }
 
     public void removeRowTop(){
-        meh.removeRowTop(gp, currentRows, currentColumns);
-        currentRows--;
-        updateScreen();
+        if(currentRows - 1 > 0){
+            gp.getChildren().forEach(node -> ((Cell)node).decrementRow());
+            remove(currentColumns, currentRows - 1);
+        }
     }
 
     public void addRowBottom(){
         if(currentRows + 1 < 21){
-            modifyGridSize(currentColumns, currentRows + 1);
+            modifyGridSizeBL(currentColumns, currentRows + 1);
         }
-        //gp.getScene().getWindow().sizeToScene();
     }
 
     public void removeRowBottom(){
-        //System.out.println("Before: " + this.getHeight());
         if(currentRows - 1 > 0){
-            modifyGridSize(currentColumns, currentRows - 1);
+            modifyGridSizeBL(currentColumns, currentRows - 1);
         }
-        //gp.getScene().getWindow().sizeToScene();
-        //System.out.println("After: " + this.getHeight() + "\n");
     }
 
     public void addColumnLeft(){
-        meh.addColumnLeft(gp, currentRows, currentColumns);
-        currentColumns++;
-        updateScreen();
+        if(currentColumns + 1 < 21){
+            gp.getChildren().forEach(node -> ((Cell)node).incrementColumn());
+            GridPane temp = new GridPane();
+            for(int j = 0; j < currentRows; j++){
+                temp.add(new Cell(ts, 0, j), 0, j);
+            }
+            for(int i = 1; i < currentColumns + 1; i++){
+                for(int j = 0; j < currentRows; j++){
+                    temp.add(findCell(i, j), i, j);
+                }
+            }
+            updateGrid(temp);
+        }
     }
 
     public void removeColumnLeft(){
-        meh.removeColumnLeft(gp, currentRows, currentColumns);
-        currentColumns--;
-        updateScreen();
+        if(currentColumns - 1 > 0){
+            gp.getChildren().forEach(node -> ((Cell)node).decrementColumn());
+            remove(currentColumns - 1, currentRows);
+        }
+    }
+
+    private void remove(int i2, int currentRows) {
+        GridPane temp = new GridPane();
+        for(int i = 0; i < i2; i++){
+            for(int j = 0; j < currentRows; j++){
+                temp.add(findCell(i, j), i, j);
+            }
+        }
+        updateGrid(temp);
     }
 
     public void addColumnRight(){
         if(currentColumns + 1 < 21){
-            modifyGridSize(currentColumns + 1, currentRows);
+            modifyGridSizeBL(currentColumns + 1, currentRows);
         }
     }
 
     public void removeColumnRight(){
         if(currentColumns - 1 > 0){
-            modifyGridSize(currentColumns -1, currentRows);
+            modifyGridSizeBL(currentColumns -1, currentRows);
         }
     }
 
     private void updateScreen() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.03), event -> {
-            gp.getScene().getWindow().sizeToScene();
-            //System.out.println("New: " + gp.getWidth());
-        }));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.03), event -> gp.getScene().getWindow().sizeToScene()));
         timeline.play();
     }
 
@@ -130,8 +156,15 @@ public class BuildableMap {
         return gp;
     }
 
-    public void setBmw(BuildableMapWrapper bmw){
-        this.bmw = bmw;
+
+    public GridPaneProperty getGridPaneProperty() {
+        return gridPaneProperty;
     }
+
+    public void setGridPane(GridPane newGridPane) {
+        gp = newGridPane;
+        gridPaneProperty.set(newGridPane);
+    }
+
 
 }

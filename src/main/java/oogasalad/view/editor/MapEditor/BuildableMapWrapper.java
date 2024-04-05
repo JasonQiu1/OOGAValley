@@ -1,5 +1,7 @@
 package oogasalad.view.editor.MapEditor;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
@@ -7,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderAbstract;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderHorizontal;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderVertical;
@@ -19,7 +22,10 @@ public class BuildableMapWrapper extends HBox {
         super.getChildren().add(bp);
         super.setAlignment(Pos.CENTER);
         super.setMinSize(bm.getGridPane().getPrefWidth(), bm.getGridPane().getPrefHeight());
-        bm.setBmw(this);
+
+        bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> {
+            bp.setCenter(newValue);
+        });
     }
 
     private BorderPane getBorderPane(BuildableMap bm) {
@@ -50,7 +56,4 @@ public class BuildableMapWrapper extends HBox {
         BorderPane.setAlignment(n, Pos.CENTER);
     }
 
-    public void updateGrid(GridPane gp){
-        bp.setCenter(gp);
-    }
 }

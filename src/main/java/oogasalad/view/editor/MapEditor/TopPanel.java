@@ -1,8 +1,6 @@
 package oogasalad.view.editor.MapEditor;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 public class TopPanel extends StackPane {
@@ -17,7 +15,7 @@ public class TopPanel extends StackPane {
             int[] newSize = dialog.getNewSize();
             if (newSize != null) {
                 // If user inputs new size, call modifyGridSize method
-                bm.modifyGridSize(newSize[1], newSize[0]);
+                bm.modifyGridSizeBL(newSize[1], newSize[0]);
             }
         }));
         super.getChildren().addAll(l, scbw);

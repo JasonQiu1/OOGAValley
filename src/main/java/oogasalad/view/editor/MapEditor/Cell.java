@@ -79,7 +79,7 @@ public class Cell extends StackPane {
     }
 
     public void decrementColumn(){
-        column++;
+        column--;
     }
 
     public static double[] getSize() {
