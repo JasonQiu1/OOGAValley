@@ -24,14 +24,14 @@ public class ShoppingPageView extends BranchBase {
 
 
   private final int column = 10;
-  private GridPane shoppingItem;
-  private double width;
+  private final GridPane shoppingItem;
+  private final double width;
 
-  private HBox hBox = new HBox();
+  private final HBox hBox = new HBox();
 
-  private BorderPane borderPane = new BorderPane();
+  private final BorderPane borderPane = new BorderPane();
 
-  private Button back = new Button("back");
+  private final Button back = new Button("back");
 
   public ShoppingPageView(Stage stage, Scene previousScene) {
     super(stage, previousScene);

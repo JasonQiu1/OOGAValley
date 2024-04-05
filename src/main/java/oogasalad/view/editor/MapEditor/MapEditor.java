@@ -11,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 
 
 public class MapEditor extends VBox {
-    //TODO: make this work
+  //TODO: make this work
 
     public MapEditor(){
         super();
