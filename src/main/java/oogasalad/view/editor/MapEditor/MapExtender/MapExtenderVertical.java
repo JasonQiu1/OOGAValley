@@ -11,27 +11,26 @@ public class MapExtenderVertical extends MapExtenderAbstract {
     public MapExtenderVertical(BuildableMap bm, EventHandler<MouseEvent> onActionAdd,
                                EventHandler<MouseEvent> onActionRemove){
         super(bm, onActionAdd, onActionRemove);
-        adder.setHeight(bm.getGridPane().getHeight());
-        remover.setHeight(bm.getGridPane().getHeight());
-        adder.setWidth(10);
-        remover.setWidth(10);
+        getAdder().setHeight(bm.getGridPane().getHeight());
+        getRemover().setHeight(bm.getGridPane().getHeight());
+        getAdder().setWidth(10);
+        getRemover().setWidth(10);
 
         //listen for propertyChanges
         bm.getGridPane().heightProperty().addListener((observable, oldValue, newValue) -> {
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> {
-                adder.setHeight(newValue.doubleValue() / 2);
-                remover.setHeight(newValue.doubleValue() / 2);
-                remover.setY(newValue.doubleValue() / 2);
+                getAdder().setHeight(newValue.doubleValue() / 2);
+                getRemover().setHeight(newValue.doubleValue() / 2);
+                getRemover().setY(newValue.doubleValue() / 2);
             }));
             timeline.play();
         });
 
         bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(newValue.getHeight());
             Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.02), event -> {
-                adder.setHeight(newValue.getHeight() / 2);
-                remover.setHeight(newValue.getHeight() / 2);
-                remover.setY(newValue.getHeight() / 2);
+                getAdder().setHeight(newValue.getHeight() / 2);
+                getRemover().setHeight(newValue.getHeight() / 2);
+                getRemover().setY(newValue.getHeight() / 2);
             }));
             timeline.play();
         });
