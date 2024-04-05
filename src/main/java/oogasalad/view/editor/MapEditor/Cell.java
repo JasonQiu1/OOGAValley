@@ -7,13 +7,35 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Cell extends StackPane {
+    private ImageView image;
+    private final Rectangle base;
+    private static final int HEIGHT = 37; //read from file
+    private static final int WIDTH = 50;
+    private int column;
+    private int row;
 
-  private final Rectangle base;
-  private final int HEIGHT = 37; //read from file
-  private final int WIDTH = 50;
-  private final int i;
-  private final int j;
-  private ImageView image;
+    public Cell(TileSelector ts, int i, int j) {
+        super();
+        column = i;
+        row = j;
+        base = new Rectangle(WIDTH, HEIGHT);
+        base.setFill(Color.WHITE);
+        base.setStroke(Color.BLACK);
+        base.setStrokeWidth(2);
+        super.getChildren().add(base);
+        setOnMouseClicked(event -> {
+            if(ts.getLastTileSelected() != null){
+                super.getChildren().remove(image);
+                if(event.getButton() == MouseButton.SECONDARY){
+                    image = null;
+                }
+                else{
+                    ImageView formattedImage = this.format(ts.getLastTileSelected().getImage());
+                    image = formattedImage;
+                    super.getChildren().add(formattedImage);
+                }
+            }
+        });
 
   public Cell(TileSelector ts, int i, int j) {
     super();
@@ -59,11 +81,32 @@ public class Cell extends StackPane {
     return image;
   }
 
-  public int getI() {
-    return i;
-  }
+    public int getColumn(){
+        return column;
+    }
 
-  public int getJ() {
-    return j;
-  }
+    public int getRow(){
+        return row;
+    }
+
+    public void incrementRow(){
+        row++;
+    }
+
+    public void incrementColumn(){
+        column++;
+    }
+
+    public void decrementRow() {
+        row--;
+    }
+
+    public void decrementColumn(){
+        column--;
+    }
+
+    public static double[] getSize() {
+        return new double[]{WIDTH, HEIGHT};
+    }
+
 }
