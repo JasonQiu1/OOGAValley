@@ -7,11 +7,11 @@ import javafx.scene.layout.VBox;
 
 public class TilesWrapper extends VBox {
 
-  public TilesWrapper(Tiles t) {
+  public TilesWrapper(SelectableViews t, String title) {
     super();
     ScrollPane sp = new ScrollPane(t);
-    Label tile = new Label("Tiles");
-    tile.getStyleClass().add("tile-title");
+    Label tile = new Label(title);
+    tile.getStyleClass().add(title + "-title");
     super.getChildren().addAll(tile, sp);
     super.setMinHeight(70);
   }

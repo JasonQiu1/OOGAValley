@@ -5,13 +5,13 @@ import javafx.beans.property.SimpleObjectProperty;
 
 public class TileSelector {
 
-  private final ObjectProperty<TileView> lastTileSelected;
+  private final ObjectProperty<SelectableView> lastTileSelected;
 
   public TileSelector() {
     lastTileSelected = new SimpleObjectProperty<>();
   }
 
-  public void addTile(TileView tile) {
+  public void addTile(SelectableView tile) {
     tile.setOnMouseClicked(event -> {
       if (getLastTileSelected() != null) {
         getLastTileSelected().setStyle("-fx-border-color: transparent;");
@@ -21,11 +21,11 @@ public class TileSelector {
     });
   }
 
-  public TileView getLastTileSelected() {
+  public SelectableView getLastTileSelected() {
     return lastTileSelected.get();
   }
 
-  public ObjectProperty<TileView> lastTileSelectedProperty() {
+  public ObjectProperty<SelectableView> lastTileSelectedProperty() {
     return lastTileSelected;
   }
 }
