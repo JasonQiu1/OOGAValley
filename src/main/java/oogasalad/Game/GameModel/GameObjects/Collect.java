@@ -6,4 +6,6 @@ public interface Collect {
 
   String getItemIdOnCollection();
 
+  boolean shouldICollect();
+
 }

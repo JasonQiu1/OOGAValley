@@ -21,7 +21,7 @@ public class Tile {
 
   }
 
-  public ImageRecord update(GameTime gameTime) {
+  public void update(GameTime gameTime) {
    String newCollectable = collectable.update(gameTime);
    String newStructure = structure.update(gameTime);
    String newLand = land.update(gameTime);
@@ -30,12 +30,21 @@ public class Tile {
    setNewGameObject(newStructure, structure.getId());
    setNewGameObject(newLand, land.getId());
 
-   updateExpired()
+   updateExpired();
   }
 
-  public void setNewGameObject(String newGameObject,String prevGameObject) {
+  private void setNewGameObject(String newGameObject,String prevGameObject) {
     if (!newGameObject.equals(prevGameObject)) {
       factory.createNewGameObject(newGameObject);
     }
+  }
+
+  private void updateExpired() {
+
+  }
+
+  public ImageRecord getImages() {
+    return new ImageRecord(collectable.getImagePath(), structure.getImagePath(),
+        land.getImagePath());
   }
 }
