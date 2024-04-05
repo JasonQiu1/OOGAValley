@@ -2,13 +2,14 @@ package oogasalad.Game.GameModel;
 
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
-public abstract class GameObject implements Interactable, Expirable, Updatable {
+public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
   private boolean expired;
   private int state;
   private String id;
   private GameObjectProperties properties;
   private long timeSinceExpiringState;
+  private String imagePath;
 
 
   public GameObject(String id, int startState, GameObjectProperties properties) {
@@ -16,6 +17,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
     state = startState;
     this.properties = properties;
     expired = false;
+    imagePath = null;
   }
 
   public String getId() {
@@ -78,5 +80,10 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
       timeSinceExpiringState = System.currentTimeMillis();
     }
     return newId;
+  }
+
+  @Override
+  public String getImagePath() {
+    return imagePath;
   }
 }
