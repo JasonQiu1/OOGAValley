@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.view.editor.EditorScene;
 import oogasalad.view.playing.PlayingPageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class StartScreen {
@@ -33,6 +35,8 @@ public class StartScreen {
   private final PlayingPageView playingPageView;
   private final EditorScene editorScene;
   private Scene startScreen;
+
+  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
 
   /**
    * Creates StartScreen
@@ -64,7 +68,7 @@ public class StartScreen {
   public static void makeButton(String label, String color, String className, String methodName,
       HBox root, Stage stage) {
     try {
-      System.out.println(className);
+      LOG.info(className);
       // Load the class dynamically
       Class<?> handlerClass = Class.forName(className);
       Object handlerInstance = handlerClass.getDeclaredConstructor().newInstance();
