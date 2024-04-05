@@ -27,7 +27,7 @@ import oogasalad.view.editor.EditorWindow;
 import oogasalad.view.playing.PlayingView;
 
 
-public class StartScreen {
+public class StartScreen{
 
     public static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/";
     public static final double DEFAULT_WIDTH_PORTION = 0.65;
@@ -35,6 +35,7 @@ public class StartScreen {
     private final Stage stage;
     private PlayingView playingView;
     private EditorScene editorScene;
+    private Scene startScreen;
 
     /**
      * Creates StartScreen
@@ -75,7 +76,7 @@ public class StartScreen {
         //create scene
         vb.getChildren().add(title);
         vb.getChildren().add(hb);
-        Scene startScreen = new Scene(vb, initialStartScreenWidth,
+        startScreen = new Scene(vb, initialStartScreenWidth,
                 initialStartScreenHeight);
 
         //link scene and css
@@ -137,6 +138,7 @@ public class StartScreen {
 
             // Create button
             ChangePageButton button = new ChangePageButton(label, color);
+            button.setId(label);
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
@@ -153,6 +155,10 @@ public class StartScreen {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Scene getStartScreen(){
+        return startScreen;
     }
 
 }
