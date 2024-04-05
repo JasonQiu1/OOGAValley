@@ -7,26 +7,26 @@ import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderHorizontal;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderVertical;
 
 public class MapExtensionContainer extends StackPane {
-    public MapExtensionContainer(BuildableMap bm){
-        super();
-        HBox topBox = new HBox(new MapExtenderHorizontal(bm,
-                e -> bm.addRowTop(), e -> bm.removeRowTop()));
-        topBox.setAlignment(Pos.TOP_CENTER);
 
-        HBox bottomBox = new HBox(new MapExtenderHorizontal(bm,
-                e -> bm.addRowBottom(), e -> bm.removeRowBottom()));
-        bottomBox.setAlignment(Pos.BOTTOM_CENTER);
+  public MapExtensionContainer(BuildableMap bm) {
+    super();
+    HBox topBox = new HBox(new MapExtenderHorizontal(bm,
+        e -> bm.addRowTop(), e -> bm.removeRowTop()));
+    topBox.setAlignment(Pos.TOP_CENTER);
 
-        HBox rightBox = new HBox(new MapExtenderVertical(bm,
-                e -> bm.addColumnRight(), e -> bm.removeColumnRight()));
-        rightBox.setAlignment(Pos.CENTER_RIGHT);
+    HBox bottomBox = new HBox(new MapExtenderHorizontal(bm,
+        e -> bm.addRowBottom(), e -> bm.removeRowBottom()));
+    bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 
-        HBox leftBox = new HBox(new MapExtenderVertical(bm,
-                e -> bm.addColumnLeft(), e -> bm.removeColumnLeft()));
-        leftBox.setAlignment(Pos.CENTER_LEFT);
+    HBox rightBox = new HBox(new MapExtenderVertical(bm,
+        e -> bm.addColumnRight(), e -> bm.removeColumnRight()));
+    rightBox.setAlignment(Pos.CENTER_RIGHT);
 
+    HBox leftBox = new HBox(new MapExtenderVertical(bm,
+        e -> bm.addColumnLeft(), e -> bm.removeColumnLeft()));
+    leftBox.setAlignment(Pos.CENTER_LEFT);
 
-        super.getChildren().addAll(topBox, bottomBox, leftBox, rightBox);
+    super.getChildren().addAll(topBox, bottomBox, leftBox, rightBox);
 
 //        bm.widthProperty().addListener((observable, oldValue, newValue) -> {
 //            super.setWidth(newValue.doubleValue());
@@ -42,5 +42,5 @@ public class MapExtensionContainer extends StackPane {
 //            leftBox.setMinHeight(newValue.doubleValue());
 //            rightBox.setMinHeight(newValue.doubleValue());
 //        });
-    }
+  }
 }

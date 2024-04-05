@@ -7,36 +7,35 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Cell extends StackPane {
-    private ImageView image;
-    private final Rectangle base;
-    private static final int HEIGHT = 37; //read from file
-    private static final int WIDTH = 50;
-    private int column;
-    private int row;
 
-    public Cell(TileSelector ts, int i, int j) {
-        super();
-        column = i;
-        row = j;
-        base = new Rectangle(WIDTH, HEIGHT);
-        base.setFill(Color.WHITE);
-        base.setStroke(Color.BLACK);
-        base.setStrokeWidth(2);
-        super.getChildren().add(base);
-        setOnMouseClicked(event -> {
-            if(ts.getLastTileSelected() != null){
-                super.getChildren().remove(image);
-                if(event.getButton() == MouseButton.SECONDARY){
-                    image = null;
-                }
-                else{
-                    ImageView formattedImage = this.format(ts.getLastTileSelected().getImage());
-                    image = formattedImage;
-                    super.getChildren().add(formattedImage);
-                }
-            }
-        });
+  private static final int HEIGHT = 37; //read from file
+  private static final int WIDTH = 50;
+  private final Rectangle base;
+  private ImageView image;
+  private int column;
+  private int row;
 
+  public Cell(TileSelector ts, int i, int j) {
+    super();
+    column = i;
+    row = j;
+    base = new Rectangle(WIDTH, HEIGHT);
+    base.setFill(Color.WHITE);
+    base.setStroke(Color.BLACK);
+    base.setStrokeWidth(2);
+    super.getChildren().add(base);
+    setOnMouseClicked(event -> {
+      if (ts.getLastTileSelected() != null) {
+        super.getChildren().remove(image);
+        if (event.getButton() == MouseButton.SECONDARY) {
+          image = null;
+        } else {
+          ImageView formattedImage = this.format(ts.getLastTileSelected().getImage());
+          image = formattedImage;
+          super.getChildren().add(formattedImage);
+        }
+      }
+    });
 
     setOnMouseEntered(event -> {
       base.setFill(Color.GRAY);
@@ -54,38 +53,38 @@ public class Cell extends StackPane {
 
   }
 
+  public static double[] getSize() {
+    return new double[]{WIDTH, HEIGHT};
+  }
+
   private ImageView format(ImageView image) {
     image.setFitHeight(HEIGHT);
     image.setFitWidth(WIDTH);
     return image;
   }
 
-    public int getColumn(){
-        return column;
-    }
+  public int getColumn() {
+    return column;
+  }
 
-    public int getRow(){
-        return row;
-    }
+  public int getRow() {
+    return row;
+  }
 
-    public void incrementRow(){
-        row++;
-    }
+  public void incrementRow() {
+    row++;
+  }
 
-    public void incrementColumn(){
-        column++;
-    }
+  public void incrementColumn() {
+    column++;
+  }
 
-    public void decrementRow() {
-        row--;
-    }
+  public void decrementRow() {
+    row--;
+  }
 
-    public void decrementColumn(){
-        column--;
-    }
-
-    public static double[] getSize() {
-        return new double[]{WIDTH, HEIGHT};
-    }
+  public void decrementColumn() {
+    column--;
+  }
 
 }

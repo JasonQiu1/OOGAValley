@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class WrapperStateAndItem {
 
-  private Item item;
-  private int state;
+  private final Item item;
+  private final int state;
 
   public WrapperStateAndItem(Item item, int state) {
     this.item = item;
@@ -29,4 +29,15 @@ public class WrapperStateAndItem {
     return Objects.hash(item.toString(), state);
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    WrapperStateAndItem that = (WrapperStateAndItem) o;
+    return state == that.state && Objects.equals(item, that.item);
+  }
 }

@@ -1,59 +1,54 @@
 package oogasalad.view.editor.MapEditor;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
-import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderAbstract;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderHorizontal;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderVertical;
 
 public class BuildableMapWrapper extends HBox {
-    private BorderPane bp;
-    public BuildableMapWrapper(BuildableMap bm){
-        super();
-        bp = getBorderPane(bm);
-        super.getChildren().add(bp);
-        super.setAlignment(Pos.CENTER);
-        super.setMinSize(bm.getGridPane().getPrefWidth(), bm.getGridPane().getPrefHeight());
 
-        bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> {
-            bp.setCenter(newValue);
-        });
-    }
+  private final BorderPane bp;
 
-    private BorderPane getBorderPane(BuildableMap bm) {
-        BorderPane bp = new BorderPane();
-        bp.setCenter(bm.getGridPane());
-        setAlignment(bm.getGridPane());
+  public BuildableMapWrapper(BuildableMap bm) {
+    super();
+    bp = getBorderPane(bm);
+    super.getChildren().add(bp);
+    super.setAlignment(Pos.CENTER);
+    super.setMinSize(bm.getGridPane().getPrefWidth(), bm.getGridPane().getPrefHeight());
 
-        bp.setRight(new MapExtenderVertical(bm,
-                e -> bm.addColumnRight(), e -> bm.removeColumnRight()));
-        setAlignment(bp.getRight());
+    bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> {
+      bp.setCenter(newValue);
+    });
+  }
 
-        bp.setLeft(new MapExtenderVertical(bm,
-                e -> bm.addColumnLeft(), e -> bm.removeColumnLeft()));
-        setAlignment(bp.getLeft());
+  private BorderPane getBorderPane(BuildableMap bm) {
+    BorderPane bp = new BorderPane();
+    bp.setCenter(bm.getGridPane());
+    setAlignment(bm.getGridPane());
 
-        bp.setTop(new MapExtenderHorizontal(bm,
-                e -> bm.addRowTop(), e -> bm.removeRowTop()));
-        setAlignment(bp.getTop());
+    bp.setRight(new MapExtenderVertical(bm,
+        e -> bm.addColumnRight(), e -> bm.removeColumnRight()));
+    setAlignment(bp.getRight());
 
-        bp.setBottom(new MapExtenderHorizontal(bm,
-                e -> bm.addRowBottom(), e -> bm.removeRowBottom()));
-        setAlignment(bp.getBottom());
+    bp.setLeft(new MapExtenderVertical(bm,
+        e -> bm.addColumnLeft(), e -> bm.removeColumnLeft()));
+    setAlignment(bp.getLeft());
 
-        return bp;
-    }
+    bp.setTop(new MapExtenderHorizontal(bm,
+        e -> bm.addRowTop(), e -> bm.removeRowTop()));
+    setAlignment(bp.getTop());
 
-    private void setAlignment(Node n){
-        BorderPane.setAlignment(n, Pos.CENTER);
-    }
+    bp.setBottom(new MapExtenderHorizontal(bm,
+        e -> bm.addRowBottom(), e -> bm.removeRowBottom()));
+    setAlignment(bp.getBottom());
+
+    return bp;
+  }
+
+  private void setAlignment(Node n) {
+    BorderPane.setAlignment(n, Pos.CENTER);
+  }
 
 }

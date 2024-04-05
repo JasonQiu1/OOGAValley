@@ -4,8 +4,9 @@ import javafx.scene.control.ScrollPane;
 
 
 public class TilesWrapper extends ScrollPane {
-    public TilesWrapper(Tiles t){
-        super(t);
-        super.setMinHeight(70);
-    }
+
+  public TilesWrapper(Tiles t) {
+    super(t);
+    super.setMinHeight(70);
+  }
 }
