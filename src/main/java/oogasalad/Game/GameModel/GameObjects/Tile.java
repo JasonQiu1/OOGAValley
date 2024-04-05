@@ -10,28 +10,32 @@ public class Tile {
   private GameObject collectable;
   private GameObject structure;
   private GameObject land;
+  private GameObjectFactory factory;
 
   public Tile(String id, int startState, GameObjectProperties properties) {
     super(id, startState, properties);
+    factory = new GameObjectFactory();
   }
 
   public void interact(Item item) {
 
   }
 
-  public void update(GameTime gameTime) {
+  public ImageRecord update(GameTime gameTime) {
    String newCollectable = collectable.update(gameTime);
    String newStructure = structure.update(gameTime);
    String newLand = land.update(gameTime);
 
-   updateExpired();
+   setNewGameObject(newCollectable, collectable.getId());
+   setNewGameObject(newStructure, structure.getId());
+   setNewGameObject(newLand, land.getId());
+
+   updateExpired()
   }
 
-  public void setNewGameObject(String newGameObject, GameObject prevGameObject) {
-    if (newGameObject != )
-  }
-
-  public void updateExpired() {
-    if ()
+  public void setNewGameObject(String newGameObject,String prevGameObject) {
+    if (!newGameObject.equals(prevGameObject)) {
+      factory.createNewGameObject(newGameObject);
+    }
   }
 }

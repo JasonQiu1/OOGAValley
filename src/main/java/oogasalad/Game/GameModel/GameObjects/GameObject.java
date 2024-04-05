@@ -56,10 +56,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public String update(GameTime gameTime) {
     String newId = id;
     if (gameTime.getTime() != 0 && gameTime.getTime() % properties.modifiedTimeToUpdate(gameTime) == 0) {
-      if (properties.nextStateIsNewGameObject(state)) {
-        newId = properties.nextUpdatingGameObject(state);
-      }
       state = properties.nextUpdatingState(state);
+      imagePath = properties.newImagePath(state);
     }
     if (!expired && properties.getExpiringState() == state) {
       expired = true;
