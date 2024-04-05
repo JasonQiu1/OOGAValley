@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
 
 public class SelectableViews extends HBox {
 
-  public SelectableViews(TileSelector ts) {
+  public SelectableViews(Selector ts) {
     super();
     super.setSpacing(8);
     try {
@@ -18,30 +18,30 @@ public class SelectableViews extends HBox {
     }
   }
 
-  private void mockTiles(TileSelector ts) throws MalformedURLException {
+  private void mockTiles(Selector ts) throws MalformedURLException {
     SelectableView t1 = new TileView(new ImageView(new Image(
         String.valueOf(new File("src/main/resources/img/dirt.jpg").toURI().toURL()))), "Dirt");
-    ts.addTile(t1);
+    ts.add(t1);
     super.getChildren().add(t1);
 
     SelectableView t2 = new TileView(new ImageView(new Image(
         String.valueOf(new File("src/main/resources/img/grass.jpg").toURI().toURL()))), "Grass");
-    ts.addTile(t2);
+    ts.add(t2);
     super.getChildren().add(t2);
 
     SelectableView t3 = new TileView(new ImageView(new Image(
         String.valueOf(new File("src/main/resources/img/lava.jpg").toURI().toURL()))), "Lava");
-    ts.addTile(t3);
+    ts.add(t3);
     super.getChildren().add(t3);
 
     SelectableView t4 = new TileView(new ImageView(new Image(
         String.valueOf(new File("src/main/resources/img/sand.jpg").toURI().toURL()))), "Sand");
-    ts.addTile(t4);
+    ts.add(t4);
     super.getChildren().add(t4);
 
     SelectableView t5 = new TileView(new ImageView(new Image(
         String.valueOf(new File("src/main/resources/img/water.jpg").toURI().toURL()))), "Water");
-    ts.addTile(t5);
+    ts.add(t5);
     super.getChildren().add(t5);
   }
 

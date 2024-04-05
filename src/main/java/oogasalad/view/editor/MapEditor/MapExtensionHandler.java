@@ -5,9 +5,9 @@ import javafx.scene.layout.GridPane;
 
 public class MapExtensionHandler {
 
-  private final TileSelector ts;
+  private final Selector ts;
 
-  public MapExtensionHandler(TileSelector ts) {
+  public MapExtensionHandler(Selector ts) {
     this.ts = ts;
   }
 

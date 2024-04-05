@@ -8,19 +8,25 @@ import javafx.scene.layout.VBox;
 public abstract class SelectableView extends VBox {
 
   private final ImageView icon;
-
+  private final double width;
+  private final double height;
   public SelectableView(ImageView pic, String title, double width, double height) { //resource bundle this
     super();
     super.setAlignment(Pos.CENTER);
-    pic.setFitWidth(width);
-    pic.setFitHeight(height);
     icon = pic;
-    super.getChildren().add(pic);
+    this.width = width;
+    this.height = height;
+    icon.setFitWidth(width);
+    icon.setFitHeight(height);
+    super.getChildren().add(icon);
     super.getChildren().add(new Label(title));
   }
 
   public ImageView getImage() {
-    return new ImageView(icon.getImage());
+    ImageView temp = new ImageView(icon.getImage());
+    temp.setFitWidth(width);
+    temp.setFitHeight(height);
+    return temp;
   }
 
 

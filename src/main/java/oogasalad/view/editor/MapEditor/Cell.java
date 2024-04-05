@@ -15,7 +15,7 @@ public class Cell extends StackPane {
   private int column;
   private int row;
 
-  public Cell(TileSelector ts, int i, int j) {
+  public Cell(Selector ts, int i, int j) {
     super();
     column = i;
     row = j;
@@ -25,14 +25,12 @@ public class Cell extends StackPane {
     base.setStrokeWidth(2);
     super.getChildren().add(base);
     setOnMouseClicked(event -> {
-      if (ts.getLastTileSelected() != null) {
+      if (ts.getLastSelected() != null) {
         super.getChildren().remove(image);
         if (event.getButton() == MouseButton.SECONDARY) {
           image = null;
         } else {
-          ImageView formattedImage = this.format(ts.getLastTileSelected().getImage());
-          image = formattedImage;
-          super.getChildren().add(formattedImage);
+          super.getChildren().add(ts.getLastSelected().getImage());
         }
       }
     });

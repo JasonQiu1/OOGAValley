@@ -4,7 +4,7 @@ import javafx.scene.layout.StackPane;
 
 public class BottomPanel extends StackPane {
 
-  public BottomPanel(TileSelector ts) {
+  public BottomPanel(Selector ts) {
     super(new TilesWrapper(new SelectableViews(ts), "Tiles"));
   }
 }
