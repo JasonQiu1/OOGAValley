@@ -47,22 +47,7 @@ public class BuildableMap {
         }
         updateGrid(temp);
     }
-  }
 
-  public void modifyGridSize(int newI, int newJ) {
-    super.getChildren()
-        .removeIf(node -> ((Cell) node).getI() >= newI || ((Cell) node).getJ() >= newJ);
-    for (int ii = 0; ii < newI; ii++) {
-      for (int jj = 0; jj < newJ; jj++) {
-        if (ii >= i || jj >= j) {
-          super.add(new Cell(ts, ii, jj), ii, jj);
-        }
-      }
-    }
-    i = newI;
-    j = newJ;
-    super.getScene().getWindow().sizeToScene();
-  }
 
 
     private void updateGrid(GridPane temp) {

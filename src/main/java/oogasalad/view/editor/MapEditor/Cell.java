@@ -37,27 +37,6 @@ public class Cell extends StackPane {
             }
         });
 
-  public Cell(TileSelector ts, int i, int j) {
-    super();
-    this.i = i;
-    this.j = j;
-    base = new Rectangle(WIDTH, HEIGHT);
-    base.setFill(Color.WHITE);
-    base.setStroke(Color.BLACK);
-    base.setStrokeWidth(2);
-    super.getChildren().add(base);
-    setOnMouseClicked(event -> {
-      if (ts.getLastTileSelected() != null) {
-        super.getChildren().remove(image);
-        if (event.getButton() == MouseButton.SECONDARY) {
-          image = null;
-        } else {
-          ImageView formattedImage = this.format(ts.getLastTileSelected().getImage());
-          image = formattedImage;
-          super.getChildren().add(formattedImage);
-        }
-      }
-    });
 
     setOnMouseEntered(event -> {
       base.setFill(Color.GRAY);
