@@ -10,8 +10,7 @@ import oogasalad.view.editor.MapEditor.BuildableMap;
 public abstract class MapExtenderAbstract extends Group {
     private final Rectangle adder;
     private final Rectangle remover;
-    private BuildableMap bm;
-    public MapExtenderAbstract(BuildableMap bm, EventHandler<MouseEvent> onActionAdd, EventHandler<MouseEvent> onActionRemove) {
+    public MapExtenderAbstract(EventHandler<MouseEvent> onActionAdd, EventHandler<MouseEvent> onActionRemove) {
         super();
         adder = new Rectangle();
         remover = new Rectangle();

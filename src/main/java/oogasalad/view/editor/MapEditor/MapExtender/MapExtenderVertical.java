@@ -10,7 +10,7 @@ import oogasalad.view.editor.MapEditor.BuildableMap;
 public class MapExtenderVertical extends MapExtenderAbstract {
     public MapExtenderVertical(BuildableMap bm, EventHandler<MouseEvent> onActionAdd,
                                EventHandler<MouseEvent> onActionRemove){
-        super(bm, onActionAdd, onActionRemove);
+        super(onActionAdd, onActionRemove);
         getAdder().setHeight(bm.getGridPane().getHeight());
         getRemover().setHeight(bm.getGridPane().getHeight());
         getAdder().setWidth(10);
