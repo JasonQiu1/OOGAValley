@@ -3,8 +3,6 @@ package oogasalad.Game.GameModel;
 
 import java.time.Duration;
 import java.time.Instant;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class GameTime implements GameTimeInterface {
 
@@ -15,8 +13,6 @@ public class GameTime implements GameTimeInterface {
   // by default, the unit is 10.
   private static final double rate = 43000.0 / 6.0;
   private static final int unit = 10;
-
-  private static final Logger LOG = LogManager.getLogger(GameTime.class);
 
   private Instant previous;
 
