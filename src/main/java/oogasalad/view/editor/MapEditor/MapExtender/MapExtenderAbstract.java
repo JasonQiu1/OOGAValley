@@ -8,8 +8,8 @@ import javafx.scene.shape.Rectangle;
 import oogasalad.view.editor.MapEditor.BuildableMap;
 
 public abstract class MapExtenderAbstract extends Group {
-    private Rectangle adder;
-    private Rectangle remover;
+    private final Rectangle adder;
+    private final Rectangle remover;
     private BuildableMap bm;
     public MapExtenderAbstract(BuildableMap bm, EventHandler<MouseEvent> onActionAdd, EventHandler<MouseEvent> onActionRemove) {
         super();
@@ -17,9 +17,23 @@ public abstract class MapExtenderAbstract extends Group {
         remover = new Rectangle();
         adder.setFill(Color.GREEN);
         remover.setFill(Color.RED);
+        adder.setStroke(Color.BLACK);
+        remover.setStroke(Color.BLACK);
+        adder.setStrokeWidth(2);
+        remover.setStrokeWidth(2);
         adder.setOnMouseClicked(onActionAdd);
         remover.setOnMouseClicked(onActionRemove);
         super.getChildren().addAll(adder, remover);
+        super.setOpacity(0);
+
+        super.setOnMouseEntered(e -> super.setOpacity(1));
+        super.setOnMouseExited(e -> super.setOpacity(0));
+
+        adder.setOnMouseEntered(e -> adder.setOpacity(.5));
+        adder.setOnMouseExited(e -> adder.setOpacity(1));
+
+        remover.setOnMouseEntered(e -> remover.setOpacity(.5));
+        remover.setOnMouseExited(e -> remover.setOpacity(1));
     }
 
     protected Rectangle getAdder(){
