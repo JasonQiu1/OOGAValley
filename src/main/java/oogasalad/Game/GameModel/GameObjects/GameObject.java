@@ -1,5 +1,7 @@
-package oogasalad.Game.GameModel;
+package oogasalad.Game.GameModel.GameObjects;
 
+import oogasalad.Game.GameModel.GameTime;
+import oogasalad.Game.GameModel.Item;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
 public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
