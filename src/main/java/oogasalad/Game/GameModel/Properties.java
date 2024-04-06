@@ -11,8 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * A general class that provides functions to get typed values of a map. Intended to be used in
- * conjunction with JSON.
+ * A general class that acts as a simple JSON store. Helper functions convert values into types.
  *
  * @author Jason Qiu
  */
@@ -25,9 +24,10 @@ public class Properties {
    * @return the created instance of {@link Properties}.
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link Properties}
+   * @throws IOException          if the filePath could not be opened.
    */
   public static Properties of(String dataFilePath) throws BadGsonLoadException, IOException {
-    return FACTORY.load(dataFilePath, Properties.class);
+    return FACTORY.load(dataFilePath);
   }
 
   /**
@@ -168,10 +168,22 @@ public class Properties {
     mapProperties.put(key, Map.copyOf(map));
   }
 
+  public Map<String, String> getCopyOfProperties() {
+    return Map.copyOf(properties);
+  }
+
+  public Map<String, List<String>> getCopyOfListProperties() {
+    return Map.copyOf(listProperties);
+  }
+
+  public Map<String, Map<String, String>> getCopyOfMapProperties() {
+    return Map.copyOf(mapProperties);
+  }
+
   private final Map<String, String> properties;
   private final Map<String, List<String>> listProperties;
   private final Map<String, Map<String, String>> mapProperties;
-  private static final DataFactory<Properties> FACTORY = new DataFactory<>();
+  private static final DataFactory<Properties> FACTORY = new DataFactory<>(Properties.class);
   private static final Logger LOG = LogManager.getLogger(Properties.class);
 
   /**

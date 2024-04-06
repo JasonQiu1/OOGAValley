@@ -35,10 +35,10 @@ public class GameConfiguration {
    * @return the created instance of {@link GameConfiguration}.
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link GameConfiguration}
+   * @throws IOException          if the filePath could not be opened.
    */
   public static GameConfiguration of(String dataFilePath) throws BadGsonLoadException, IOException {
-    return FACTORY.load(Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(),
-        GameConfiguration.class);
+    return FACTORY.load(Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString());
   }
 
   /**
@@ -70,6 +70,7 @@ public class GameConfiguration {
 
   private Properties rules;
   private GameState initialState;
-  private static final DataFactory<GameConfiguration> FACTORY = new DataFactory<>();
+  private static final DataFactory<GameConfiguration> FACTORY =
+      new DataFactory<>(GameConfiguration.class);
   private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
 }
