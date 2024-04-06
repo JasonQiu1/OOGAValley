@@ -1,7 +1,6 @@
 package oogasalad.Game.GameModel;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import java.nio.file.Paths;
 import oogasalad.Game.GameModel.exception.BadGsonLoadException;
 
 /**
@@ -13,8 +12,9 @@ import oogasalad.Game.GameModel.exception.BadGsonLoadException;
  */
 public class GameConfiguration {
 
-  private Properties rules;
-  private GameState initialState;
+  // TODO: Externalize this to a configuration file.
+  // The path to the game configurations directory from the data directory.
+  public static String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
 
   /**
    * Initializes the game configuration to a set of default rules and initial state.
@@ -28,19 +28,14 @@ public class GameConfiguration {
   /**
    * Creates and returns an instance of {@link GameConfiguration} from a JSON file.
    *
-   * @param filePath the path to the JSON file.
+   * @param dataFilePath the path to the JSON file.
    * @return the created instance of {@link GameConfiguration}.
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link GameConfiguration}
    */
-  public static GameConfiguration of(String filePath) throws BadGsonLoadException {
-    Gson gson = new Gson();
-    try {
-      return gson.fromJson(filePath, GameConfiguration.class);
-    } catch (JsonSyntaxException e) {
-      // TODO: LOG MESSAGES AND HANDLE ERROR
-      throw new BadGsonLoadException(filePath, GameConfiguration.class.getSimpleName(), e);
-    }
+  public static GameConfiguration of(String dataFilePath) throws BadGsonLoadException {
+    return new DataFactory<GameConfiguration>().load(
+        Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(), GameConfiguration.class);
   }
 
   public Properties getRules() {
@@ -59,4 +54,7 @@ public class GameConfiguration {
   public void setInitialState(GameState initialState) {
     this.initialState = initialState;
   }
+
+  private Properties rules;
+  private GameState initialState;
 }

@@ -1,11 +1,5 @@
 package oogasalad.Game.GameModel;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,13 +26,7 @@ public class Properties {
    *                              {@link Properties}
    */
   public static Properties of(String dataFilePath) throws BadGsonLoadException {
-    File dataFile = new File(DATA_DIRECTORY, dataFilePath);
-    try (Reader dataReader = new FileReader(dataFile)) {
-      return new Gson().fromJson(dataReader, Properties.class);
-    } catch (JsonSyntaxException | IOException e) {
-      LOG.error("Couldn't load `{}` as an instance of Properties using Gson.", dataFile.toString());
-      throw new BadGsonLoadException(dataFile.toString(), Properties.class.getSimpleName(), e);
-    }
+    return new DataFactory<Properties>().load(dataFilePath, Properties.class);
   }
 
   /**
