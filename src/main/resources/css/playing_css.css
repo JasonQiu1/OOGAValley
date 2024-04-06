@@ -1,0 +1,40 @@
+.top-box {
+  -fx-alignment: center;
+  -fx-spacing: 10;
+  -fx-background-color: #7FB2F0;
+}
+
+.bottom-box {
+  -fx-alignment: center;
+  -fx-spacing: 10;
+  -fx-background-color: #7FB2F0;
+}
+
+.land-grid-pane {
+  -fx-padding: 10px;
+  -fx-hgap: 1;
+  -fx-vgap: 1;
+  -fx-background-color: #365FB7;
+}
+
+.tool-grid-pane {
+  -fx-padding: 10px;
+  -fx-border-color: black;
+  -fx-hgap: 1;
+  -fx-vgap: 1;
+}
+
+
+.item-grid-pane {
+  -fx-padding: 10px;
+  -fx-border-color: black;
+  -fx-hgap: 1;
+  -fx-vgap: 1;
+}
+
+
+.side-box {
+  -fx-pref-width: 40;
+  -fx-background-color: #7ABAF2;
+}
+

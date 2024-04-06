@@ -8,8 +8,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   private boolean expired;
   private int state;
-  private String id;
-  private GameObjectProperties properties;
+  private final String id;
+  private final GameObjectProperties properties;
   private long timeSinceExpiringState;
   private String imagePath;
 
@@ -28,13 +28,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   @Override
   public boolean isExpired() {
-    if (expired && System.currentTimeMillis() - timeSinceExpiringState >
-        properties.getTimeToExpired()) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return expired && System.currentTimeMillis() - timeSinceExpiringState >
+        properties.getTimeToExpired();
   }
 
   @Override
@@ -50,7 +45,11 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public String update(GameTime gameTime) {
     String newId = id;
-    if (gameTime.getTime() != 0 && gameTime.getTime() % properties.modifiedTimeToUpdate(gameTime) == 0) {
+    if (gameTime.getMinute() != 0
+        && gameTime.getMinute() % properties.modifiedTimeToUpdate(gameTime) == 0) {
+      if (properties.nextStateIsNewGameObject(state)) {
+        newId = properties.nextUpdatingGameObject(state);
+      }
       state = properties.nextUpdatingState(state);
       imagePath = properties.newImagePath(state);
     }

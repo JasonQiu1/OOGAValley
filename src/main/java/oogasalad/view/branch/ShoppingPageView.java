@@ -16,6 +16,8 @@ import oogasalad.Game.GameModel.shop.Item;
 import oogasalad.Game.GameModel.shop.Shop;
 import oogasalad.view.ViewablePng;
 import oogasalad.view.exception.FileNotPngException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The view for the shopping page
@@ -32,6 +34,8 @@ public class ShoppingPageView extends BranchBase {
   private final BorderPane borderPane = new BorderPane();
 
   private final Button back = new Button("back");
+
+  private static final Logger LOG = LogManager.getLogger(ShoppingPageView.class);
 
   public ShoppingPageView(Stage stage, Scene previousScene) {
     super(stage, previousScene);
@@ -67,7 +71,7 @@ public class ShoppingPageView extends BranchBase {
       vBox.getChildren().add(imageView);
       vBox.getChildren().add(text);
       vBox.setOnMouseClicked(event -> {
-        System.out.println(item.getPrices());
+        LOG.info(item.getPrices());
       });
       shoppingItem.add(vBox, idx % column, idx / column);
       showItemOnScreen(itemList, idx + 1, shoppingItem);

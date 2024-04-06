@@ -20,9 +20,8 @@ public class GameConfiguration {
    * Initializes the game configuration to a set of default rules and initial state.
    */
   public GameConfiguration() {
-    // TODO: INITIALIZE RULES WITH DEFAULT PROPERTIES AND VALIDATE THEM
-    // e.g. rules = new Properties("pathToDefaultRules");
-    rules = new Properties();
+    // TODO: MAKE DEFAULT RULES FILE TO LOAD BY DEFAULT, THEN UNCOMMENT BELOW
+    // rules = Properties.of("pathToDefaultRules");
     initialState = new GameState();
   }
 

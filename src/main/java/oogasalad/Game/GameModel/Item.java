@@ -1,7 +1,8 @@
 package oogasalad.Game.GameModel;
 
 public class Item {
-  String itemId;
+
+  private String itemId;
 
   boolean isSeed;
 
