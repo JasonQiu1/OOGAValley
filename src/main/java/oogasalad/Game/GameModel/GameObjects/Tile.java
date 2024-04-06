@@ -1,5 +1,6 @@
 package oogasalad.Game.GameModel.GameObjects;
 
+import java.util.List;
 import oogasalad.Game.GameModel.GameObjects.GameObject;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
@@ -7,13 +8,12 @@ import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
 public class Tile {
   
-  private GameObject collectable;
-  private GameObject structure;
-  private GameObject land;
+  private Collectable collectable;
+  private Structure structure;
+  private Land land;
   private GameObjectFactory factory;
 
   public Tile(String id, int startState, GameObjectProperties properties) {
-    super(id, startState, properties);
     factory = new GameObjectFactory();
   }
 
@@ -21,7 +21,7 @@ public class Tile {
 
   }
 
-  public void update(GameTime gameTime) {
+  public ItemsToAdd update(GameTime gameTime) {
    String newCollectable = collectable.update(gameTime);
    String newStructure = structure.update(gameTime);
    String newLand = land.update(gameTime);
@@ -30,7 +30,7 @@ public class Tile {
    setNewGameObject(newStructure, structure.getId());
    setNewGameObject(newLand, land.getId());
 
-   updateExpired();
+   return updateExpired();
   }
 
   private void setNewGameObject(String newGameObject,String prevGameObject) {
@@ -39,9 +39,27 @@ public class Tile {
     }
   }
 
-  private void updateExpired() {
-
+  private ItemsToAdd updateExpired() {
+    ItemsToAdd items = null;
+    if (collectable.isExpired() || collectable.shouldICollect()) {
+      if (collectable.shouldICollect()) {
+        items = new ItemsToAdd(collectable.getQuantityOnCollection(),
+            collectable.getItemIdOnCollection());
+      }
+      collectable = (Collectable) factory.createNewGameObject(
+          collectable.getGameObjectAfterExpiration());
+    }
+    if (structure.isExpired()) {
+      structure = (Structure) factory.createNewGameObject(
+          structure.getGameObjectAfterExpiration());
+    }
+    if (land.isExpired()) {
+      land = (Land) factory.createNewGameObject(
+          land.getGameObjectAfterExpiration());
+    }
+    return items;
   }
+
 
   public ImageRecord getImages() {
     return new ImageRecord(collectable.getImagePath(), structure.getImagePath(),

@@ -38,11 +38,6 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   }
 
   @Override
-  public void setExpired(boolean expired) {
-    this.expired = expired;
-  }
-
-  @Override
   public int getState() {
     return state;
   }
@@ -88,6 +83,11 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public String getImagePath() {
     return imagePath;
+  }
+
+  @Override
+  public String getGameObjectAfterExpiration() {
+    return properties.getGameObjectAfterExpiration();
   }
 
   public long getTimeSinceExpiringState() {
