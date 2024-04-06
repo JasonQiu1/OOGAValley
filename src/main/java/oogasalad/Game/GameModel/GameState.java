@@ -10,7 +10,7 @@ public class GameState {
 
   // TODO: Externalize this to a configuration file.
   // The path to the gamesaves directory from the data directory.
-  public static String GAMESTATE_DIRECTORY_PATH = "gamesaves";
+  public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
 
   /**
    * Creates and returns an instance of {@link GameState} from a JSON file.

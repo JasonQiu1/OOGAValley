@@ -17,7 +17,7 @@ public class GameConfiguration {
 
   // TODO: Externalize this to a configuration file.
   // The path to the game configurations directory from the data directory.
-  public static String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
+  public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
 
   /**
    * Initializes the game configuration to a set of default rules and initial state.
