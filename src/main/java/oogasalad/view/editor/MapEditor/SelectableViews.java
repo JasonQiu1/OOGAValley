@@ -25,8 +25,4 @@ public class SelectableViews extends HBox {
             .forEach(super.getChildren()::add);
     super.setSpacing(8);
   }
-
-
-  //TODO: get tiles from model
-
 }
