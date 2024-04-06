@@ -18,16 +18,6 @@ import org.apache.logging.log4j.Logger;
  * @author Jason Qiu
  */
 public class Properties {
-
-  /**
-   * Initializes with no entries.
-   */
-  public Properties() {
-    properties = new HashMap<>();
-    listProperties = new HashMap<>();
-    mapProperties = new HashMap<>();
-  }
-
   /**
    * Creates and returns an instance of {@link Properties} from a JSON file.
    *
@@ -178,6 +168,15 @@ public class Properties {
   private final Map<String, List<String>> listProperties;
   private final Map<String, Map<String, String>> mapProperties;
   private static final Logger LOG = LogManager.getLogger(Properties.class);
+
+  /**
+   * Initializes with no entries. Should not be used.
+   */
+  private Properties() {
+    properties = new HashMap<>();
+    listProperties = new HashMap<>();
+    mapProperties = new HashMap<>();
+  }
 
   private void throwIfKeyNotFound(Map<String, ?> map, String key) throws KeyNotFoundException {
     if (!map.containsKey(key)) {
