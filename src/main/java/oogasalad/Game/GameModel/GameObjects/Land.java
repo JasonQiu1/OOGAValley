@@ -1,4 +1,4 @@
-package oogasalad.Game.GameModel;
+package oogasalad.Game.GameModel.GameObjects;
 
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
