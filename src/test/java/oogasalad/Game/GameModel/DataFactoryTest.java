@@ -13,6 +13,7 @@ import oogasalad.Game.GameModel.exception.KeyNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,8 +50,19 @@ class DataFactoryTest {
   public MockProperties filledProperties;
   private static final String TEST_DATA_DIRECTORY = "test";
 
+  @BeforeAll
+  static void start() {
+    // Make sure the test directory exists in the data directory
+    File testDirectory =
+        new File(Paths.get(DataFactory.DATA_DIRECTORY, TEST_DATA_DIRECTORY).toString());
+    if (!testDirectory.exists()) {
+      testDirectory.mkdirs();
+    }
+  }
+
   @BeforeEach
   void setUp() {
+
     propertiesDataFactory = new DataFactory<>(Properties.class);
     mockPropertiesDataFactory = new DataFactory<>(MockProperties.class);
     emptyProperties = new MockProperties();
