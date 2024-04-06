@@ -3,6 +3,7 @@ package oogasalad.Game.GameModel;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import oogasalad.Game.GameModel.exception.BadGsonLoadException;
 import oogasalad.Game.GameModel.exception.BadValueParseException;
@@ -23,6 +24,8 @@ public class Properties {
    */
   public Properties() {
     properties = new HashMap<>();
+    listProperties = new HashMap<>();
+    mapProperties = new HashMap<>();
   }
 
   /**
@@ -51,10 +54,7 @@ public class Properties {
    * @throws KeyNotFoundException if the key does not exist.
    */
   public String getString(String key) throws KeyNotFoundException {
-    if (!properties.containsKey(key)) {
-      LOG.error("Couldn't find key '{}'.", key);
-      throw new KeyNotFoundException(key);
-    }
+    throwIfKeyNotFound(properties, key);
     return properties.get(key);
   }
 
@@ -97,6 +97,30 @@ public class Properties {
   }
 
   /**
+   * Returns the raw string list value of the property if found.
+   *
+   * @param key the key of the property to access.
+   * @return the property's value's raw string list.
+   * @throws KeyNotFoundException if the key does not exist.
+   */
+  public List<String> getStringList(String key) throws KeyNotFoundException {
+    throwIfKeyNotFound(listProperties, key);
+    return listProperties.get(key);
+  }
+
+  /**
+   * Returns the raw string map value of the property if found.
+   *
+   * @param key the key of the property to access.
+   * @return the property's value's raw string map.
+   * @throws KeyNotFoundException if the key does not exist.
+   */
+  public Map<String, String> getStringMap(String key) throws KeyNotFoundException {
+    throwIfKeyNotFound(mapProperties, key);
+    return mapProperties.get(key);
+  }
+
+  /**
    * Returns the integer representation of the property's value.
    *
    * @param key the key of the property to access.
@@ -122,13 +146,43 @@ public class Properties {
    * @throws KeyNotFoundException if the key does not exist.
    */
   public void update(String key, String value) throws KeyNotFoundException {
-    if (!properties.containsKey(key)) {
-      LOG.error("Couldn't find key '{}'.", key);
-      throw new KeyNotFoundException(key);
-    }
+    throwIfKeyNotFound(properties, key);
     properties.put(key, value);
   }
 
+  /**
+   * Updates a property only if it already exists. For list values.
+   *
+   * @param key  the queried key.
+   * @param list the list to set the key to.
+   * @throws KeyNotFoundException if the key does not exist.
+   */
+  public void update(String key, List<String> list) throws KeyNotFoundException {
+    throwIfKeyNotFound(listProperties, key);
+    listProperties.put(key, List.copyOf(list));
+  }
+
+  /**
+   * Updates a property only if it already exists. For map values.
+   *
+   * @param key the queried key.
+   * @param map the map to set the key to.
+   * @throws KeyNotFoundException if the key does not exist.
+   */
+  public void update(String key, Map<String, String> map) throws KeyNotFoundException {
+    throwIfKeyNotFound(mapProperties, key);
+    mapProperties.put(key, Map.copyOf(map));
+  }
+
   private final Map<String, String> properties;
+  private final Map<String, List<String>> listProperties;
+  private final Map<String, Map<String, String>> mapProperties;
   private static final Logger LOG = LogManager.getLogger(Properties.class);
+
+  private void throwIfKeyNotFound(Map<String, ?> map, String key) throws KeyNotFoundException {
+    if (!map.containsKey(key)) {
+      LOG.error("Couldn't find key '{}'.", key);
+      throw new KeyNotFoundException(key);
+    }
+  }
 }
