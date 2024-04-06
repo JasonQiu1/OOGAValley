@@ -23,6 +23,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import oogasalad.Game.GameModel.GameTime;
+import oogasalad.Game.GameModel.GameTimeInterface;
 import oogasalad.view.branch.ShoppingPageView;
 
 /**
@@ -42,6 +44,8 @@ public class PlayingPageView extends Application {
   private GridPane landGridPane;
   private GridPane toolGridPane;
   private GridPane itemGridPane;
+
+  private GameTimeInterface gameTime = new GameTime(1, 8, 0);
   private double landCellWidth = 50;
   private double landCellHeight = 50;
   private double bottomCellWidth = 30;
@@ -92,9 +96,10 @@ public class PlayingPageView extends Application {
   }
 
   private void setUpTimeline() {
-    timeline = new Timeline(new KeyFrame(Duration.seconds(timeInterval), event -> {
+    timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
       landGridPane.getChildren().clear();
       elapsedTimeSeconds += timeInterval;
+      gameTime.update();
       updateTimeLabel();
       updateCropGrowth();
       for (int row = 0; row < landNumRows; row++) {
@@ -134,10 +139,7 @@ public class PlayingPageView extends Application {
   }
 
   private void updateTimeLabel() {
-    int hours = elapsedTimeSeconds / 3600;
-    int minutes = (elapsedTimeSeconds % 3600) / 60;
-    int seconds = elapsedTimeSeconds % 60;
-    timeLabel.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+    timeLabel.setText(gameTime.toString());
   }
 
   private void updateCropGrowth() {
