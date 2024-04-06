@@ -2,6 +2,10 @@ package oogasalad.Game.GameModel;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +22,7 @@ import org.apache.logging.log4j.Logger;
  * @author Jason Qiu
  */
 public class Properties {
+
   /**
    * Creates and returns an instance of {@link Properties} from a JSON file.
    *
@@ -27,12 +32,12 @@ public class Properties {
    *                              {@link Properties}
    */
   public static Properties of(String dataFilePath) throws BadGsonLoadException {
-    Gson gson = new Gson();
-    try {
-      return gson.fromJson(dataFilePath, Properties.class);
-    } catch (JsonSyntaxException e) {
-      LOG.error("Couldn't load `{}` as an instance of Properties using Gson.", dataFilePath);
-      throw new BadGsonLoadException(dataFilePath, Properties.class.getSimpleName(), e);
+    File dataFile = new File(DATA_DIRECTORY, dataFilePath);
+    try (Reader dataReader = new FileReader(dataFile)) {
+      return new Gson().fromJson(dataReader, Properties.class);
+    } catch (JsonSyntaxException | IOException e) {
+      LOG.error("Couldn't load `{}` as an instance of Properties using Gson.", dataFile.toString());
+      throw new BadGsonLoadException(dataFile.toString(), Properties.class.getSimpleName(), e);
     }
   }
 
@@ -167,6 +172,7 @@ public class Properties {
   private final Map<String, String> properties;
   private final Map<String, List<String>> listProperties;
   private final Map<String, Map<String, String>> mapProperties;
+  public static final String DATA_DIRECTORY = "data";
   private static final Logger LOG = LogManager.getLogger(Properties.class);
 
   /**
