@@ -1,8 +1,10 @@
 package oogasalad.Game.GameModel;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+import java.io.IOException;
+import java.nio.file.Paths;
 import oogasalad.Game.GameModel.exception.BadGsonLoadException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A class that represents the set of all configurations for a game in the framework.
@@ -13,8 +15,9 @@ import oogasalad.Game.GameModel.exception.BadGsonLoadException;
  */
 public class GameConfiguration {
 
-  private Properties rules;
-  private GameState initialState;
+  // TODO: Externalize this to a configuration file.
+  // The path to the game configurations directory from the data directory.
+  public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
 
   /**
    * Initializes the game configuration to a set of default rules and initial state.
@@ -28,28 +31,28 @@ public class GameConfiguration {
   /**
    * Creates and returns an instance of {@link GameConfiguration} from a JSON file.
    *
-   * @param filePath the path to the JSON file.
+   * @param dataFilePath the path to the JSON file.
    * @return the created instance of {@link GameConfiguration}.
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link GameConfiguration}
+   * @throws IOException          if the filePath could not be opened.
    */
-  public static GameConfiguration of(String filePath) throws BadGsonLoadException {
-    Gson gson = new Gson();
-    try {
-      return gson.fromJson(filePath, GameConfiguration.class);
-    } catch (JsonSyntaxException e) {
-      // TODO: LOG MESSAGES AND HANDLE ERROR
-      throw new BadGsonLoadException(filePath, GameConfiguration.class.getSimpleName(), e);
-    }
+  public static GameConfiguration of(String dataFilePath) throws BadGsonLoadException, IOException {
+    return FACTORY.load(Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString());
+  }
+
+  /**
+   * Serializes the instance to a JSON file.
+   *
+   * @param dataFilePath the path to the JSON file with the data directory as the root.
+   * @throws IOException if there is an issue writing to the given dataFilePath.
+   */
+  public void save(String dataFilePath) throws IOException {
+    FACTORY.save(Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(), this);
   }
 
   public Properties getRules() {
     return rules;
-  }
-
-  public void setRules(Properties rules) {
-    // TODO: VALIDATE RULES BEFORE SETTING THEM
-    this.rules = rules;
   }
 
   public GameState getInitialState() {
@@ -59,4 +62,15 @@ public class GameConfiguration {
   public void setInitialState(GameState initialState) {
     this.initialState = initialState;
   }
+
+  public void setRules(Properties rules) {
+    // TODO: VALIDATE RULES BEFORE SETTING THEM
+    this.rules = rules;
+  }
+
+  private Properties rules;
+  private GameState initialState;
+  private static final DataFactory<GameConfiguration> FACTORY =
+      new DataFactory<>(GameConfiguration.class);
+  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
 }

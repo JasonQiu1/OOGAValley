@@ -1,11 +1,6 @@
 package oogasalad.Game.GameModel;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * A general class that provides functions to get typed values of a map. Intended to be used in
- * conjunction with JSON.
+ * A general class that acts as a simple JSON store. Helper functions convert values into types.
  *
  * @author Jason Qiu
  */
@@ -30,15 +24,20 @@ public class Properties {
    * @return the created instance of {@link Properties}.
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link Properties}
+   * @throws IOException          if the filePath could not be opened.
    */
-  public static Properties of(String dataFilePath) throws BadGsonLoadException {
-    File dataFile = new File(DATA_DIRECTORY, dataFilePath);
-    try (Reader dataReader = new FileReader(dataFile)) {
-      return new Gson().fromJson(dataReader, Properties.class);
-    } catch (JsonSyntaxException | IOException e) {
-      LOG.error("Couldn't load `{}` as an instance of Properties using Gson.", dataFile.toString());
-      throw new BadGsonLoadException(dataFile.toString(), Properties.class.getSimpleName(), e);
-    }
+  public static Properties of(String dataFilePath) throws BadGsonLoadException, IOException {
+    return FACTORY.load(dataFilePath);
+  }
+
+  /**
+   * Serializes the instance to a JSON file.
+   *
+   * @param dataFilePath the path to the JSON file with the data directory as the root.
+   * @throws IOException if there is an issue writing to the given dataFilePath.
+   */
+  public void save(String dataFilePath) throws IOException {
+    FACTORY.save(dataFilePath, this);
   }
 
   /**
@@ -169,10 +168,22 @@ public class Properties {
     mapProperties.put(key, Map.copyOf(map));
   }
 
+  public Map<String, String> getCopyOfProperties() {
+    return Map.copyOf(properties);
+  }
+
+  public Map<String, List<String>> getCopyOfListProperties() {
+    return Map.copyOf(listProperties);
+  }
+
+  public Map<String, Map<String, String>> getCopyOfMapProperties() {
+    return Map.copyOf(mapProperties);
+  }
+
   private final Map<String, String> properties;
   private final Map<String, List<String>> listProperties;
   private final Map<String, Map<String, String>> mapProperties;
-  public static final String DATA_DIRECTORY = "data";
+  private static final DataFactory<Properties> FACTORY = new DataFactory<>(Properties.class);
   private static final Logger LOG = LogManager.getLogger(Properties.class);
 
   /**
