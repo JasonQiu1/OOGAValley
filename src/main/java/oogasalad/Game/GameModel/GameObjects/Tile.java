@@ -22,13 +22,13 @@ public class Tile {
   }
 
   public ItemsToAdd update(GameTime gameTime) {
-   String newCollectable = collectable.update(gameTime);
-   String newStructure = structure.update(gameTime);
-   String newLand = land.update(gameTime);
+   collectable.update(gameTime);
+   structure.update(gameTime);
+   land.update(gameTime);
 
-   setNewGameObject(newCollectable, collectable.getId());
-   setNewGameObject(newStructure, structure.getId());
-   setNewGameObject(newLand, land.getId());
+//   setNewGameObject(newCollectable, collectable.getId());
+//   setNewGameObject(newStructure, structure.getId());
+//   setNewGameObject(newLand, land.getId());
 
    return updateExpired();
   }

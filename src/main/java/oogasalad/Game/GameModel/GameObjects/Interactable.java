@@ -6,4 +6,5 @@ public interface Interactable {
 
   String interact(Item item);
 
+  boolean interactionValid(Item item);
 }

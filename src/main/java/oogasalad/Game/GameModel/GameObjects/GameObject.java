@@ -43,19 +43,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   }
 
   @Override
-  public String update(GameTime gameTime) {
-    String newId = id;
+  public void update(GameTime gameTime) {
     if (gameTime.getMinute() != 0
         && gameTime.getMinute() % properties.modifiedTimeToUpdate(gameTime) == 0) {
-      if (properties.nextStateIsNewGameObject(state)) {
-        newId = properties.nextUpdatingGameObject(state);
-      }
       state = properties.nextUpdatingState(state);
       imagePath = properties.newImagePath(state);
     }
     updateExpired();
-
-    return newId;
   }
 
   @Override
@@ -71,6 +65,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
     return newId;
   }
+
+  @Override
+  public boolean interactionValid(Item item) {
+    return properties.validInteractingItem(state, item);
+  }
+
 
   private void updateExpired() {
     if (!expired && properties.getExpiringState() == state) {

@@ -4,7 +4,7 @@ import oogasalad.Game.GameModel.GameTime;
 
 public interface Updatable {
 
-  String update(GameTime gameTime);
+  void update(GameTime gameTime);
 
   int getState();
 
