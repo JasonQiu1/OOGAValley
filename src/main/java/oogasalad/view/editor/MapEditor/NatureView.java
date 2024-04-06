@@ -2,24 +2,22 @@ package oogasalad.view.editor.MapEditor;
 
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
 
-public class TileView extends SelectableView{
+public class NatureView extends SelectableView{
     private ImageView icon;
     private String title;
-    public TileView(ImageView pic, String title){
-        super(pic, title, 50, 37);
+    public NatureView(ImageView pic, String title){
+        super(pic, title, 30, 35);
         icon = pic;
         this.title = title;
     }
-
     @Override
     boolean canBePlacedOn(Node node) {
-        return node instanceof Rectangle;
+        return node instanceof TileView;
     }
 
     @Override
     public SelectableView getNew() {
-        return new TileView(icon, title);
+        return new NatureView(icon, title);
     }
 }

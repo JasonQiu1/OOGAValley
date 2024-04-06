@@ -11,7 +11,6 @@ public class Cell extends StackPane {
   private static final int HEIGHT = 37; //read from file
   private static final int WIDTH = 50;
   private final Rectangle base;
-  private ImageView image;
   private int column;
   private int row;
 
@@ -25,27 +24,29 @@ public class Cell extends StackPane {
     base.setStrokeWidth(2);
     super.getChildren().add(base);
     setOnMouseClicked(event -> {
-      if (ts.getLastSelected() != null) {
-        super.getChildren().remove(image);
-        if (event.getButton() == MouseButton.SECONDARY) {
-          image = null;
-        } else {
-          super.getChildren().add(ts.getLastSelected().getImage());
+      if(event.getButton() == MouseButton.SECONDARY){
+        if(super.getChildren().size() > 1){
+          super.getChildren().remove(super.getChildren().get(super.getChildren().size()-1));
         }
+      }
+      else if (ts.getLastSelectedSelectable() != null && ts.getLastSelectedSelectable()
+              .canBePlacedOn(super.getChildren().get(super.getChildren().size()-1))) {
+        super.getChildren().add(ts.getLastSelectedSelectable());
       }
     });
 
     setOnMouseEntered(event -> {
       base.setFill(Color.GRAY);
-      if (image != null) {
-        image.setOpacity(.5);
-      }
+      super.getChildren().stream()
+              .skip(1) // Skip the first element
+              .forEach(node -> node.setOpacity(0.5));
     });
+
     setOnMouseExited(event -> {
       base.setFill(Color.WHITE);
-      if (image != null) {
-        image.setOpacity(1);
-      }
+      super.getChildren().stream()
+              .skip(1) // Skip the first element
+              .forEach(node -> node.setOpacity(1));
     });
 
 
@@ -53,12 +54,6 @@ public class Cell extends StackPane {
 
   public static double[] getSize() {
     return new double[]{WIDTH, HEIGHT};
-  }
-
-  private ImageView format(ImageView image) {
-    image.setFitHeight(HEIGHT);
-    image.setFitWidth(WIDTH);
-    return image;
   }
 
   public int getColumn() {
