@@ -68,9 +68,9 @@ public class PlayingPageView extends Application {
   public void start(Stage primaryStage) {
     stage = primaryStage;
     BorderPane root = new BorderPane();
+    setupBottom(root);
     initModel();
     setupTop(root);
-    setupBottom(root);
     setupLeftRight(root);
     setupCenter(root);
     Scene scene = new Scene(root, windowWidth, windowHeight);
