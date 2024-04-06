@@ -1,6 +1,8 @@
 package oogasalad.Game.GameModel;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import java.io.File;
 import java.io.FileReader;
@@ -14,6 +16,8 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * Factory for serializing and deserializing data objects to and from the data directory.
+ * <p>
+ * This should be the only class that depends on Gson.
  *
  * @param <T> The object type to serialize/deserialize.
  * @author Jason Qiu
@@ -26,7 +30,12 @@ class DataFactory<T> {
    * @param clazz the class that the DataFactory is (de)serializing instances of.
    */
   public DataFactory(Class<T> clazz) {
-    this.gson = new Gson();
+    this.gson =
+        new GsonBuilder().setPrettyPrinting().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+            .serializeNulls()
+            // LENIENT MAY INTRODUCE BUGS, BUT ALSO MAKES MANUALLY EDITING DATA FILES MORE FORGIVING
+            .setLenient()
+            .create();
     this.clazz = clazz;
   }
 
