@@ -9,13 +9,13 @@ import javafx.util.Duration;
 
 public class BuildableMap {
 
-  private final TileSelector ts;
+  private final Selector ts;
   private final GridPaneProperty gridPaneProperty;
   private int currentColumns;
   private int currentRows;
   private GridPane gp;
 
-  public BuildableMap(TileSelector ts) {
+  public BuildableMap(Selector ts) {
     gp = new GridPane();
     this.gridPaneProperty = new GridPaneProperty(gp);
     this.ts = ts;

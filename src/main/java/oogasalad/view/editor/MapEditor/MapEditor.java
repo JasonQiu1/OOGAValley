@@ -13,7 +13,7 @@ public class MapEditor extends VBox {
     /**
      * use modelAPI to load starting map data and types of tiles
      */
-    TileSelector ts = new TileSelector();
+    Selector ts = new Selector();
     BuildableMap bm = new BuildableMap(ts);
     TopPanel tp = new TopPanel(bm);
     BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
