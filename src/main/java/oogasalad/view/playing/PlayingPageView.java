@@ -96,29 +96,30 @@ public class PlayingPageView extends Application {
   }
 
   private void setUpTimeline() {
+    for (int row = 0; row < landNumRows; row++) {
+      for (int col = 0; col < landNumCols; col++) {
+        ImageView landImageView = landGrid.get(row).get(col).getProperty().
+            getImageView().get(landGrid.get(row).get(col).getImageViewIndex());
+        landGridPane.add(landImageView, col, row);
+        if (cropGrid.get(row).get(col).getProperty() != null) {
+          // a deep copy, otherwise it raises errors
+          ImageView cropImageView = new ImageView(
+              cropGrid.get(row).get(col).getProperty().getImageView().
+                  get(cropGrid.get(row).get(col).getImageViewIndex()).getImage());
+          cropImageView.setFitWidth(landCellWidth);
+          cropImageView.setFitHeight(landCellHeight);
+          cropImageView.setOnMouseClicked(this::handleCellClick);
+          landGridPane.add(cropImageView, col, row);
+        }
+      }
+    }
     timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
       landGridPane.getChildren().clear();
       elapsedTimeSeconds += timeInterval;
       gameTime.update();
       updateTimeLabel();
       updateCropGrowth();
-      for (int row = 0; row < landNumRows; row++) {
-        for (int col = 0; col < landNumCols; col++) {
-          ImageView landImageView = landGrid.get(row).get(col).getProperty().
-              getImageView().get(landGrid.get(row).get(col).getImageViewIndex());
-          landGridPane.add(landImageView, col, row);
-          if (cropGrid.get(row).get(col).getProperty() != null) {
-            // a deep copy, otherwise it raises errors
-            ImageView cropImageView = new ImageView(
-                cropGrid.get(row).get(col).getProperty().getImageView().
-                    get(cropGrid.get(row).get(col).getImageViewIndex()).getImage());
-            cropImageView.setFitWidth(landCellWidth);
-            cropImageView.setFitHeight(landCellHeight);
-            cropImageView.setOnMouseClicked(this::handleCellClick);
-            landGridPane.add(cropImageView, col, row);
-          }
-        }
-      }
+
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
