@@ -22,5 +22,7 @@ public interface GameTimeInterface {
    */
   int getDifferenceInMinutes(GameTimeInterface gameTime);
 
+  int convertInMinutes();
+
 
 }
