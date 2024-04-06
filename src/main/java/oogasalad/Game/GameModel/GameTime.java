@@ -4,6 +4,9 @@ package oogasalad.Game.GameModel;
 import java.time.Duration;
 import java.time.Instant;
 
+/**
+ * Game Time class controlling the game time
+ */
 public class GameTime implements GameTimeInterface {
 
 
@@ -92,7 +95,16 @@ public class GameTime implements GameTimeInterface {
   }
 
   @Override
+  public int convertInMinutes() {
+    return getMinute() + getHour() * 60 + getDay() * 24 * 60;
+  }
+
+  @Override
   public String toString() {
     return String.format("Day: %d; Hour: %d, Minute: %d", day, hour, minute);
+  }
+
+  public GameTime copy() {
+    return new GameTime(this.getDay(), this.getHour(), this.getMinute());
   }
 }
