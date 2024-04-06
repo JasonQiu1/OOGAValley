@@ -1,7 +1,10 @@
 package oogasalad.Game.GameModel;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import oogasalad.Game.GameModel.exception.BadGsonLoadException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class GameState {
 
@@ -18,7 +21,20 @@ public class GameState {
    *                              {@link GameState}
    */
   public static GameState of(String dataFilePath) throws BadGsonLoadException {
-    return new DataFactory<GameState>().load(
-        Paths.get(GAMESTATE_DIRECTORY_PATH, dataFilePath).toString(), GameState.class);
+    return FACTORY.load(Paths.get(GAMESTATE_DIRECTORY_PATH, dataFilePath).toString(),
+        GameState.class);
   }
+
+  /**
+   * Serializes the instance to a JSON file.
+   *
+   * @param dataFilePath the path to the JSON file with the data directory as the root.
+   * @throws IOException if there is an issue writing to the given dataFilePath.
+   */
+  public void save(String dataFilePath) throws IOException {
+    FACTORY.save(Paths.get(GAMESTATE_DIRECTORY_PATH, dataFilePath).toString(), this);
+  }
+
+  private static final DataFactory<GameState> FACTORY = new DataFactory<>();
+  private static final Logger LOG = LogManager.getLogger(GameState.class);
 }

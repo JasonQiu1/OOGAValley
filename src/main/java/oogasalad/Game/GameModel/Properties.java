@@ -1,5 +1,6 @@
 package oogasalad.Game.GameModel;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,17 @@ public class Properties {
    *                              {@link Properties}
    */
   public static Properties of(String dataFilePath) throws BadGsonLoadException {
-    return new DataFactory<Properties>().load(dataFilePath, Properties.class);
+    return FACTORY.load(dataFilePath, Properties.class);
+  }
+
+  /**
+   * Serializes the instance to a JSON file.
+   *
+   * @param dataFilePath the path to the JSON file with the data directory as the root.
+   * @throws IOException if there is an issue writing to the given dataFilePath.
+   */
+  public void save(String dataFilePath) throws IOException {
+    FACTORY.save(dataFilePath, this);
   }
 
   /**
@@ -160,7 +171,7 @@ public class Properties {
   private final Map<String, String> properties;
   private final Map<String, List<String>> listProperties;
   private final Map<String, Map<String, String>> mapProperties;
-  public static final String DATA_DIRECTORY = "data";
+  private static final DataFactory<Properties> FACTORY = new DataFactory<>();
   private static final Logger LOG = LogManager.getLogger(Properties.class);
 
   /**

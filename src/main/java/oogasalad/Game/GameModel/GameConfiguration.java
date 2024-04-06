@@ -1,7 +1,10 @@
 package oogasalad.Game.GameModel;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import oogasalad.Game.GameModel.exception.BadGsonLoadException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A class that represents the set of all configurations for a game in the framework.
@@ -34,17 +37,22 @@ public class GameConfiguration {
    *                              {@link GameConfiguration}
    */
   public static GameConfiguration of(String dataFilePath) throws BadGsonLoadException {
-    return new DataFactory<GameConfiguration>().load(
-        Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(), GameConfiguration.class);
+    return FACTORY.load(Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(),
+        GameConfiguration.class);
+  }
+
+  /**
+   * Serializes the instance to a JSON file.
+   *
+   * @param dataFilePath the path to the JSON file with the data directory as the root.
+   * @throws IOException if there is an issue writing to the given dataFilePath.
+   */
+  public void save(String dataFilePath) throws IOException {
+    FACTORY.save(Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(), this);
   }
 
   public Properties getRules() {
     return rules;
-  }
-
-  public void setRules(Properties rules) {
-    // TODO: VALIDATE RULES BEFORE SETTING THEM
-    this.rules = rules;
   }
 
   public GameState getInitialState() {
@@ -55,6 +63,13 @@ public class GameConfiguration {
     this.initialState = initialState;
   }
 
+  public void setRules(Properties rules) {
+    // TODO: VALIDATE RULES BEFORE SETTING THEM
+    this.rules = rules;
+  }
+
   private Properties rules;
   private GameState initialState;
+  private static final DataFactory<GameConfiguration> FACTORY = new DataFactory<>();
+  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
 }
