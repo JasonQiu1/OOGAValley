@@ -17,18 +17,31 @@ public class Tile {
     factory = new GameObjectFactory();
   }
 
-  public void interact(Item item) {
+  public ItemsToAdd interact(Item item) {
+    // need checks for if each thing is empty == null or perhaps there is an empty state
+    if (collectable != null && collectable.interactionValid(item)) {
+      String newCollectable = collectable.interact(item);
+      setNewGameObject(newCollectable, collectable.getId());
+    }
+    else if (structure != null && structure.interactionValid(item)) {
+      String newStructure = structure.interact(item);
+      setNewGameObject(newStructure, structure.getId());
+    }
+    else if (land.getIsPlantable() && item.getIsSeed() && structure == null) {
+      structure = (Structure) factory.createNewGameObject(item.toString());
+    }
+    else {
+      String newLand = land.interact(item);
+      setNewGameObject(newLand, land.getId());
+    }
 
+    return updateExpired();
   }
 
   public ItemsToAdd update(GameTime gameTime) {
    collectable.update(gameTime);
    structure.update(gameTime);
    land.update(gameTime);
-
-//   setNewGameObject(newCollectable, collectable.getId());
-//   setNewGameObject(newStructure, structure.getId());
-//   setNewGameObject(newLand, land.getId());
 
    return updateExpired();
   }
