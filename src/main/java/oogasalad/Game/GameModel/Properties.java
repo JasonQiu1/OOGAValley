@@ -26,7 +26,7 @@ public class Properties {
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link Properties}
    */
-  public static Properties of(String dataFilePath) throws BadGsonLoadException {
+  public static Properties of(String dataFilePath) throws BadGsonLoadException, IOException {
     return FACTORY.load(dataFilePath, Properties.class);
   }
 

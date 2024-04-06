@@ -20,7 +20,7 @@ public class GameState {
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link GameState}
    */
-  public static GameState of(String dataFilePath) throws BadGsonLoadException {
+  public static GameState of(String dataFilePath) throws BadGsonLoadException, IOException {
     return FACTORY.load(Paths.get(GAMESTATE_DIRECTORY_PATH, dataFilePath).toString(),
         GameState.class);
   }

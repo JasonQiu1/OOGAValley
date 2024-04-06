@@ -36,7 +36,7 @@ public class GameConfiguration {
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link GameConfiguration}
    */
-  public static GameConfiguration of(String dataFilePath) throws BadGsonLoadException {
+  public static GameConfiguration of(String dataFilePath) throws BadGsonLoadException, IOException {
     return FACTORY.load(Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(),
         GameConfiguration.class);
   }

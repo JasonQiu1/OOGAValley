@@ -32,14 +32,18 @@ class DataFactory<T> {
    * @throws BadGsonLoadException if the filePath is unable to be parsed into an instance of
    *                              {@link Properties}
    */
-  public T load(String dataFilePath, Class<T> clazz) throws BadGsonLoadException {
+  public T load(String dataFilePath, Class<T> clazz) throws BadGsonLoadException, IOException {
     File dataFile = new File(DATA_DIRECTORY, dataFilePath);
     try (Reader dataReader = new FileReader(dataFile)) {
       return gson.fromJson(dataReader, clazz);
-    } catch (JsonSyntaxException | IOException e) {
+    } catch (JsonSyntaxException e) {
       LOG.error("Couldn't load `{}` as an instance of {} using Gson.", dataFile.toString(),
           clazz.getSimpleName());
       throw new BadGsonLoadException(dataFile.toString(), clazz.getSimpleName(), e);
+    } catch (IOException e) {
+      LOG.error("Error writing to '{}' when trying to deserialize as class '{}'.",
+          dataFile.getAbsolutePath(), clazz.getSimpleName());
+      throw e;
     }
   }
 
@@ -55,7 +59,7 @@ class DataFactory<T> {
     try (Writer writer = new FileWriter(dataFile, false)) {
       writer.write(gson.toJson(object));
     } catch (IOException e) {
-      LOG.error("Error writing to '{}' when trying to serialize object {}.",
+      LOG.error("Error writing to '{}' when trying to serialize object '{}'.",
           dataFile.getAbsolutePath(), object.toString());
       throw e;
     }
