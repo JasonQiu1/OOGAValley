@@ -61,6 +61,7 @@ public class Tile {
   }
 
 
+
   public ImageRecord getImages() {
     return new ImageRecord(collectable.getImagePath(), structure.getImagePath(),
         land.getImagePath());
