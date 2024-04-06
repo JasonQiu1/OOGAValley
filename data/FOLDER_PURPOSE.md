@@ -1,5 +1,11 @@
 # data
 
-Put your example games and user saved preferences or other files here.
-
-This file is for informational purposes only and does not need to be modified.
+Structure of the data folder:
+gameconfigurations/
+- Holds all game config .json files
+gamesaves/
+- Holds all game state .json files for saved games
+images/
+- Holds all images referenced in configs
+viewconfigurations/
+- Configurations for the view
