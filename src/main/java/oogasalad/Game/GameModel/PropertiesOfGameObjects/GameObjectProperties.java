@@ -1,5 +1,6 @@
 package oogasalad.Game.GameModel.PropertiesOfGameObjects;
 
+import java.util.List;
 import java.util.Map;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
@@ -12,6 +13,8 @@ public abstract class GameObjectProperties {
   private Map<WrapperStateAndItem, Integer> interactingStateMapings;
   private Map<WrapperStateAndItem, String> interactingNewGameObjectMapings;
   private Map<String, Double> conditionalPreferenceMultipliers;
+  private List<String> images;
+  private String gameObjectAfterExpiration;
   private int expiringState;
   private long expiringTime;
   private long defaultUpdateTime;
@@ -54,5 +57,13 @@ public abstract class GameObjectProperties {
 
   public int nextInteractingState(int state, Item item) {
     return interactingStateMapings.get(new WrapperStateAndItem(item, state));
+  }
+
+  public String newImagePath(int state) {
+    return images.get(state);
+  }
+
+  public String getGameObjectAfterExpiration() {
+    return gameObjectAfterExpiration;
   }
 }

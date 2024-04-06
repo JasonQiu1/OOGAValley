@@ -1,14 +1,17 @@
-package oogasalad.Game.GameModel;
+package oogasalad.Game.GameModel.GameObjects;
 
+import oogasalad.Game.GameModel.GameTime;
+import oogasalad.Game.GameModel.Item;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
-public abstract class GameObject implements Interactable, Expirable, Updatable {
+public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
   private boolean expired;
   private int state;
   private final String id;
   private final GameObjectProperties properties;
   private long timeSinceExpiringState;
+  private String imagePath;
 
 
   public GameObject(String id, int startState, GameObjectProperties properties) {
@@ -16,6 +19,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
     state = startState;
     this.properties = properties;
     expired = false;
+    imagePath = null;
   }
 
   public String getId() {
@@ -29,11 +33,6 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
   }
 
   @Override
-  public void setExpired(boolean expired) {
-    this.expired = expired;
-  }
-
-  @Override
   public int getState() {
     return state;
   }
@@ -44,20 +43,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
   }
 
   @Override
-  public String update(GameTime gameTime) {
-    String newId = id;
+  public void update(GameTime gameTime) {
     if (gameTime.getMinute() != 0
         && gameTime.getMinute() % properties.modifiedTimeToUpdate(gameTime) == 0) {
-      if (properties.nextStateIsNewGameObject(state)) {
-        newId = properties.nextUpdatingGameObject(state);
-      }
       state = properties.nextUpdatingState(state);
+      imagePath = properties.newImagePath(state);
     }
-    if (!expired && properties.getExpiringState() == state) {
-      expired = true;
-      timeSinceExpiringState = System.currentTimeMillis();
-    }
-    return newId;
+    updateExpired();
   }
 
   @Override
@@ -69,10 +61,35 @@ public abstract class GameObject implements Interactable, Expirable, Updatable {
       }
       state = properties.nextInteractingState(state, item);
     }
+    updateExpired();
+
+    return newId;
+  }
+
+  @Override
+  public boolean interactionValid(Item item) {
+    return properties.validInteractingItem(state, item);
+  }
+
+
+  private void updateExpired() {
     if (!expired && properties.getExpiringState() == state) {
       expired = true;
       timeSinceExpiringState = System.currentTimeMillis();
     }
-    return newId;
+  }
+
+  @Override
+  public String getImagePath() {
+    return imagePath;
+  }
+
+  @Override
+  public String getGameObjectAfterExpiration() {
+    return properties.getGameObjectAfterExpiration();
+  }
+
+  public long getTimeSinceExpiringState() {
+    return timeSinceExpiringState;
   }
 }
