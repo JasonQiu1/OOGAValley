@@ -13,6 +13,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -24,6 +25,7 @@ import oogasalad.view.item.LandView;
 import oogasalad.view.item.SelectedItem;
 import oogasalad.view.item.Tool;
 import oogasalad.view.item.ToolView;
+import oogasalad.view.item.TopAnimationView;
 
 /**
  * This class is the view for the playing page. It displays the land grid, tools, and items. It also
@@ -45,12 +47,13 @@ public class PlayingPageView extends Application {
   public static final double bottomWidth = 800;
   public static final double padding = 10;
   public static final double landGridPaneWidth = landCellWidth * landNumCols;
+  public static final double leftRightWidth = 50;
+  public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
   public static final double landGridPaneHeight = landCellHeight * landNumRows;
   public static final double windowHeight =
       landGridPaneHeight + topHeight + bottomHeight;
-  private static final double leftRightWidth = 50;
-  public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
-  private static final double leftRightHeight = 300;
+  public static final double leftRightHeight = 300;
+  public static final double bottomBoxPadding = 50;
   private Stage stage;
   private Label timeLabel = new Label();
   private ProgressBar energyProgressBar = new ProgressBar(0.62);
@@ -58,6 +61,7 @@ public class PlayingPageView extends Application {
   private LandView landView;
   private ToolView toolView;
   private ItemView itemView;
+  private TopAnimationView topAnimationView;
   private GameTime gameTime = new GameTime(1, 8, 0);
   private List<PlantModel> plantModelList;
 
@@ -68,12 +72,16 @@ public class PlayingPageView extends Application {
   @Override
   public void start(Stage primaryStage) {
     stage = primaryStage;
-    BorderPane root = new BorderPane();
+    StackPane root = new StackPane();
+    BorderPane borderPane = new BorderPane();
     initModel();
-    setupTop(root);
-    setupLeftRight(root);
-    setupCenter(root);
-    setupBottom(root);
+    setupTop(borderPane);
+    setupLeftRight(borderPane);
+    setupCenter(borderPane);
+    setupBottom(borderPane);
+    root.getChildren().addAll(borderPane, topAnimationView);
+    StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
+    StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("css/playing_css.css");
     scene.setOnMouseClicked(event -> {
@@ -95,6 +103,7 @@ public class PlayingPageView extends Application {
 
     String[] imagePath = {"/img/half_panda.png", "/img/panda.png"};
     itemView = new ItemView(new ArrayList<>(), 5, 1);
+    topAnimationView = new TopAnimationView(landView, itemView, windowWidth, windowHeight);
 
     plantModelList = new ArrayList<>();
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
@@ -103,7 +112,7 @@ public class PlayingPageView extends Application {
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
         new GameTime(0, 15, 30), imagePath, "img/tool.png",
         "img/wheat.png", 1, 0));
-    landView = new LandView(plantModelList, gameTime, selectedItem, itemView);
+    landView = new LandView(plantModelList, gameTime, selectedItem, itemView, topAnimationView);
   }
 
   private void setUpdate() {
@@ -145,7 +154,7 @@ public class PlayingPageView extends Application {
     GridPane itemGridPane = itemView.getItemGridPane();
     toolGridPane.setStyle("-fx-background-color: lightgray;" + "-fx-padding: 10;");
     itemGridPane.setStyle("-fx-background-color: lightgray;");
-    HBox.setMargin(itemGridPane, new javafx.geometry.Insets(0, 0, 0, 50));
+    HBox.setMargin(itemGridPane, new javafx.geometry.Insets(0, 0, 0, bottomBoxPadding));
     bottomBox.getChildren().addAll(toolGridPane, itemGridPane);
     root.setBottom(bottomBox);
   }

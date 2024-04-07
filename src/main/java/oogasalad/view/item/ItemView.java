@@ -34,11 +34,20 @@ public class ItemView {
     return itemGridPane;
   }
 
-  public void addItem(String itemUrl) {
+  public double[] getAddRealLocation() {
+    double[] location = new double[2];
+    location[0] = PlayingPageView.windowHeight - PlayingPageView.bottomHeight
+        + PlayingPageView.bottomBoxPadding / 2;
+    location[1] = PlayingPageView.windowWidth / 2 + PlayingPageView.bottomBoxPadding;
+    return location;
+  }
+
+
+  public void addItem(Item item) {
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
         if (itemPiles[i][j].getItem() != null && itemPiles[i][j].getItem().getUrl()
-            .equals(itemUrl)) {
+            .equals(item.getUrl())) {
           itemPiles[i][j].getItem().addOne();
           return;
         }
@@ -48,7 +57,8 @@ public class ItemView {
       for (int j = 0; j < rowNum; j++) {
         if (itemPiles[i][j].getItem() == null) {
           itemPiles[i][j].setItem(
-              new Item(itemUrl, PlayingPageView.bottomCellWidth, PlayingPageView.bottomCellHeight,
+              new Item(item.getUrl(), PlayingPageView.bottomCellWidth,
+                  PlayingPageView.bottomCellHeight,
                   1));
           return;
         }

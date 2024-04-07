@@ -37,6 +37,10 @@ public class Item {
     return container;
   }
 
+  public ImageView getImageView() {
+    return (ImageView) container.getChildren().get(0);
+  }
+
   public String getUrl() {
     return url;
   }

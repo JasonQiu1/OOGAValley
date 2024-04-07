@@ -17,7 +17,7 @@ public class LandView {
 
   private final List<PlantView> plantViewList;
   private final ItemView itemView;
-
+  private final TopAnimationView topAnimationView;
   private Pile[][] piles;
 
   private SelectedItem selectedItem;
@@ -33,7 +33,7 @@ public class LandView {
    *                       tile
    */
   public LandView(List<PlantModel> plantModelList, GameTime gameTime, SelectedItem selectedItem,
-      ItemView itemView) {
+      ItemView itemView, TopAnimationView topAnimationView) {
     double height = PlayingPageView.landGridPaneHeight;
     double width = PlayingPageView.landGridPaneWidth;
     int column = PlayingPageView.landNumCols;
@@ -61,6 +61,7 @@ public class LandView {
       plantViewList.add(plantView);
     }
     this.itemView = itemView;
+    this.topAnimationView = topAnimationView;
   }
 
   /**
@@ -102,7 +103,14 @@ public class LandView {
           pile.getPlantView().getProgress(gameTime) == 1.0 &&
           pile.getPlantView().getToolUrl().equals(selectedItem.getSelected())) {
         plantViewList.remove(pile.getPlantView());
-        itemView.addItem(pile.getPlantView().getItemUrl());
+        Item newItem = new Item(pile.getPlantView().getItemUrl(), PlayingPageView.bottomCellWidth,
+            PlayingPageView.bottomCellHeight, 1);
+
+        topAnimationView.collectItemAnimation(newItem,
+            pile.getCellPosition()[1] - PlayingPageView.windowWidth / 2,
+            pile.getCellPosition()[0] - PlayingPageView.windowHeight / 2,
+            itemView.getAddRealLocation()[1] - PlayingPageView.windowWidth / 2,
+            itemView.getAddRealLocation()[0] - PlayingPageView.windowHeight / 2, 3.0);
         pile.removePlant();
       }
     }
