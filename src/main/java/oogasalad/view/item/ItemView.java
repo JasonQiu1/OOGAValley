@@ -34,10 +34,6 @@ public class ItemView {
     return itemGridPane;
   }
 
-  public void setItem(Item item, int x, int y) {
-    itemPiles[x][y].setItem(item);
-  }
-
   public void addItem(String itemUrl) {
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {

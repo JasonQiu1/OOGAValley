@@ -99,10 +99,10 @@ public class PlayingPageView extends Application {
     plantModelList = new ArrayList<>();
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
         new GameTime(0, 6, 30), imagePath, "img/tool.png",
-        "img/plant.png", 0, 0));
+        "img/wheat.png", 0, 0));
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
         new GameTime(0, 15, 30), imagePath, "img/tool.png",
-        "img/plant.png", 1, 0));
+        "img/wheat.png", 1, 0));
     landView = new LandView(plantModelList, gameTime, selectedItem, itemView);
   }
 
