@@ -9,21 +9,14 @@ import oogasalad.Game.GameModel.gameplay.PlantModel;
 
 public class PlantView {
 
-  private PlantModel plantModel;
-
   private final boolean DEBUG = true;
-
+  private final double height;
+  private final double width;
+  private PlantModel plantModel;
   // the progress bar for debug usage
   private ProgressBar progressBar;
-
   private ImageView imageView;
-
   private StackPane stackPane;
-
-  private final double height;
-
-  private final double width;
-
   private String imagePath = "";
 
   /**
@@ -69,11 +62,16 @@ public class PlantView {
   public StackPane getView() {
     return stackPane;
   }
+
   public double getProgress(GameTimeInterface gameTime) {
     return plantModel.getProgress(gameTime);
   }
 
   public String getToolUrl() {
-    return imagePath;
+    return plantModel.getToolUrl();
+  }
+
+  public String getItemUrl() {
+    return plantModel.getItemUrl();
   }
 }

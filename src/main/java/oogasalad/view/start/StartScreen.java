@@ -31,12 +31,11 @@ public class StartScreen {
   public static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/";
   public static final double DEFAULT_WIDTH_PORTION = 0.65;
   public static final double DEFAULT_HEIGHT_PORTION = 0.9;
+  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
   private final Stage stage;
   private final PlayingPageView playingPageView;
   private final EditorScene editorScene;
   private Scene startScreen;
-
-  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
 
   /**
    * Creates StartScreen

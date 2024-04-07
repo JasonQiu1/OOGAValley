@@ -25,17 +25,13 @@ import org.apache.logging.log4j.Logger;
 public class ShoppingPageView extends BranchBase {
 
 
+  private static final Logger LOG = LogManager.getLogger(ShoppingPageView.class);
   private final int column = 10;
   private final GridPane shoppingItem;
   private final double width;
-
   private final HBox hBox = new HBox();
-
   private final BorderPane borderPane = new BorderPane();
-
   private final Button back = new Button("back");
-
-  private static final Logger LOG = LogManager.getLogger(ShoppingPageView.class);
 
   public ShoppingPageView(Stage stage, Scene previousScene) {
     super(stage, previousScene);

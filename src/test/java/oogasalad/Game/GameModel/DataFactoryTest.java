@@ -20,35 +20,33 @@ import org.junit.jupiter.api.Test;
 // MAKE SURE THIS HAS THE SAME FIELDS AS PROPERTIES
 class MockProperties {
 
+  private static final DataFactory<MockProperties> FACTORY =
+      new DataFactory<>(MockProperties.class);
+  private static final Logger LOG = LogManager.getLogger(Properties.class);
+  public final Map<String, String> properties;
+  public final Map<String, List<String>> listProperties;
+  public final Map<String, Map<String, String>> mapProperties;
   public MockProperties() {
     this.properties = new HashMap<>();
     this.listProperties = new HashMap<>();
     this.mapProperties = new HashMap<>();
   }
-
   public MockProperties(Map<String, String> properties, Map<String, List<String>> listProperties,
       Map<String, Map<String, String>> mapProperties) {
     this.properties = properties;
     this.listProperties = listProperties;
     this.mapProperties = mapProperties;
   }
-
-  public final Map<String, String> properties;
-  public final Map<String, List<String>> listProperties;
-  public final Map<String, Map<String, String>> mapProperties;
-  private static final DataFactory<MockProperties> FACTORY =
-      new DataFactory<>(MockProperties.class);
-  private static final Logger LOG = LogManager.getLogger(Properties.class);
 }
 
 
 class DataFactoryTest {
 
+  private static final String TEST_DATA_DIRECTORY = "test";
   public DataFactory<Properties> propertiesDataFactory;
   public DataFactory<MockProperties> mockPropertiesDataFactory;
   public MockProperties emptyProperties;
   public MockProperties filledProperties;
-  private static final String TEST_DATA_DIRECTORY = "test";
 
   @BeforeAll
   static void start() {

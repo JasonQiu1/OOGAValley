@@ -10,12 +10,11 @@ import javafx.scene.shape.Rectangle;
  */
 public class Pile extends StackPane {
 
-  private PlantView plantView;
-
-  private Land land;
-
   private final int x;
   private final int y;
+  private PlantView plantView;
+  private Land land;
+
 
   public Pile(PlantView plantView, Land land,
       LandView landView, int x, int y) {
@@ -50,11 +49,6 @@ public class Pile extends StackPane {
     return y;
   }
 
-  public void setPlantView(PlantView plantView) {
-    this.plantView = plantView;
-    this.getChildren().add(1, plantView.getView());
-  }
-
   public void removePlant() {
     this.getChildren().remove(1);
     plantView = null;
@@ -66,5 +60,10 @@ public class Pile extends StackPane {
 
   public PlantView getPlantView() {
     return plantView;
+  }
+
+  public void setPlantView(PlantView plantView) {
+    this.plantView = plantView;
+    this.getChildren().add(1, plantView.getView());
   }
 }

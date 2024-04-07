@@ -11,7 +11,8 @@ public class PlantModel implements PlantModelInterface {
   private GameTime matureTime;
 
   private String[] statusImagePath;
-  private String toolUrl; // just represent the name of the tool
+  private String toolUrl;
+  private String itemUrl;
 
   private int x;
   private int y;
@@ -23,13 +24,15 @@ public class PlantModel implements PlantModelInterface {
    * @param matureTime      the time this plant will be matured
    * @param statusImagePath a list of images that the view will use to show
    */
-  public PlantModel(GameTime plantedTime, GameTime matureTime, String[] statusImagePath, String toolUrl, int x,
+  public PlantModel(GameTime plantedTime, GameTime matureTime, String[] statusImagePath,
+      String toolUrl, String itemUrl, int x,
       int y) {
     this.plantedTime = plantedTime;
     this.matureTime = matureTime;
     this.statusImagePath = statusImagePath.clone();
     assert statusImagePath.length >= 1;
     this.toolUrl = toolUrl;
+    this.itemUrl = itemUrl;
     this.x = x;
     this.y = y;
   }
@@ -78,5 +81,9 @@ public class PlantModel implements PlantModelInterface {
 
   public String getToolUrl() {
     return toolUrl;
+  }
+
+  public String getItemUrl() {
+    return itemUrl;
   }
 }

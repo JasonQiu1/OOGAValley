@@ -1,6 +1,5 @@
 package oogasalad.view.editor.MapEditor;
 
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -24,13 +23,12 @@ public class Cell extends StackPane {
     base.setStrokeWidth(2);
     super.getChildren().add(base);
     setOnMouseClicked(event -> {
-      if(event.getButton() == MouseButton.SECONDARY){
-        if(super.getChildren().size() > 1){
-          super.getChildren().remove(super.getChildren().get(super.getChildren().size()-1));
+      if (event.getButton() == MouseButton.SECONDARY) {
+        if (super.getChildren().size() > 1) {
+          super.getChildren().remove(super.getChildren().get(super.getChildren().size() - 1));
         }
-      }
-      else if (ts.getLastSelectedSelectable() != null && ts.getLastSelectedSelectable()
-              .canBePlacedOn(super.getChildren().get(super.getChildren().size()-1))) {
+      } else if (ts.getLastSelectedSelectable() != null && ts.getLastSelectedSelectable()
+          .canBePlacedOn(super.getChildren().get(super.getChildren().size() - 1))) {
         super.getChildren().add(ts.getLastSelectedSelectable());
       }
     });
@@ -38,15 +36,15 @@ public class Cell extends StackPane {
     setOnMouseEntered(event -> {
       base.setFill(Color.GRAY);
       super.getChildren().stream()
-              .skip(1) // Skip the first element
-              .forEach(node -> node.setOpacity(0.5));
+          .skip(1) // Skip the first element
+          .forEach(node -> node.setOpacity(0.5));
     });
 
     setOnMouseExited(event -> {
       base.setFill(Color.WHITE);
       super.getChildren().stream()
-              .skip(1) // Skip the first element
-              .forEach(node -> node.setOpacity(1));
+          .skip(1) // Skip the first element
+          .forEach(node -> node.setOpacity(1));
     });
 
 

@@ -18,6 +18,11 @@ public class GameConfiguration {
   // TODO: Externalize this to a configuration file.
   // The path to the game configurations directory from the data directory.
   public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
+  private static final DataFactory<GameConfiguration> FACTORY =
+      new DataFactory<>(GameConfiguration.class);
+  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
+  private Properties rules;
+  private GameState initialState;
 
   /**
    * Initializes the game configuration to a set of default rules and initial state.
@@ -55,6 +60,11 @@ public class GameConfiguration {
     return rules;
   }
 
+  public void setRules(Properties rules) {
+    // TODO: VALIDATE RULES BEFORE SETTING THEM
+    this.rules = rules;
+  }
+
   public GameState getInitialState() {
     return initialState;
   }
@@ -62,15 +72,4 @@ public class GameConfiguration {
   public void setInitialState(GameState initialState) {
     this.initialState = initialState;
   }
-
-  public void setRules(Properties rules) {
-    // TODO: VALIDATE RULES BEFORE SETTING THEM
-    this.rules = rules;
-  }
-
-  private Properties rules;
-  private GameState initialState;
-  private static final DataFactory<GameConfiguration> FACTORY =
-      new DataFactory<>(GameConfiguration.class);
-  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
 }

@@ -27,6 +27,17 @@ public class GameTime implements GameTimeInterface {
 
   private int minute;
 
+  /**
+   * @param day    the day
+   * @param hour   the hour
+   * @param minute the minute
+   */
+  public GameTime(int day, int hour, int minute) {
+    this.day = day;
+    this.hour = hour;
+    this.minute = minute;
+  }
+
   private void updateTime() {
     minute += unit;
     if (minute >= 60) {
@@ -37,17 +48,6 @@ public class GameTime implements GameTimeInterface {
       hour = 0;
       day += 1;
     }
-  }
-
-  /**
-   * @param day    the day
-   * @param hour   the hour
-   * @param minute the minute
-   */
-  public GameTime(int day, int hour, int minute) {
-    this.day = day;
-    this.hour = hour;
-    this.minute = minute;
   }
 
   /**

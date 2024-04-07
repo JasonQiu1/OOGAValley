@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -34,6 +33,24 @@ import oogasalad.view.item.ToolView;
 
 public class PlayingPageView extends Application {
 
+  public static final double landCellWidth = 50;
+  public static final double landCellHeight = 50;
+  public static final double bottomCellWidth = 30;
+  public static final double bottomCellHeight = 30;
+  public static final int landNumRows = 10;
+  public static final int landNumCols = 15;
+  public static final double topHeight = 50;
+  public static final double topWidth = 800;
+  public static final double bottomHeight = 80;
+  public static final double bottomWidth = 800;
+  public static final double padding = 10;
+  public static final double landGridPaneWidth = landCellWidth * landNumCols;
+  public static final double landGridPaneHeight = landCellHeight * landNumRows;
+  public static final double windowHeight =
+      landGridPaneHeight + topHeight + bottomHeight;
+  private static final double leftRightWidth = 50;
+  public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
+  private static final double leftRightHeight = 300;
   private Stage stage;
   private Label timeLabel = new Label();
   private ProgressBar energyProgressBar = new ProgressBar(0.62);
@@ -41,26 +58,7 @@ public class PlayingPageView extends Application {
   private LandView landView;
   private ToolView toolView;
   private ItemView itemView;
-
   private GameTime gameTime = new GameTime(1, 8, 0);
-  public static final double landCellWidth = 50;
-  public static final double landCellHeight = 50;
-  public static final double bottomCellWidth = 30;
-  public static final double bottomCellHeight = 30;
-  public static final int landNumRows = 10;
-  public static final int landNumCols = 15;
-  private static final double leftRightWidth = 50;
-  private static final double leftRightHeight = 300;
-  public static final double topHeight = 50;
-  public static final double topWidth = 800;
-  public static final double bottomHeight = 80;
-  public static final double bottomWidth = 800;
-  public static final double padding = 10;
-  public static final double landGridPaneWidth = landCellWidth * landNumCols;
-  public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
-  public static final double landGridPaneHeight = landCellHeight * landNumRows;
-  public static final double windowHeight =
-      landGridPaneHeight + topHeight + bottomHeight;
   private List<PlantModel> plantModelList;
 
   private String selectedTools = "plant";
@@ -87,20 +85,25 @@ public class PlayingPageView extends Application {
   }
 
   private void initModel() {
-    toolView = new ToolView();
-    Tool tool1 = new Tool("img/tool.png", bottomCellHeight, bottomCellWidth, selectedItem,
-        toolView);
-    Tool tool2 = new Tool("img/panda.png", bottomCellHeight, bottomCellWidth, selectedItem,
-        toolView);
+
+    Tool tool1 = new Tool("img/tool.png", bottomCellHeight, bottomCellWidth, selectedItem);
+    Tool tool2 = new Tool("img/panda.png", bottomCellHeight, bottomCellWidth, selectedItem);
+    List<Tool> tools = new ArrayList<>();
+    tools.add(tool1);
+    tools.add(tool2);
+    toolView = new ToolView(tools, 5, 1);
+
     String[] imagePath = {"/img/half_panda.png", "/img/panda.png"};
-    itemView = new ItemView();
+    itemView = new ItemView(new ArrayList<>(), 5, 1);
 
     plantModelList = new ArrayList<>();
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
-        new GameTime(0, 6, 30), imagePath, "img/tool.png", 0, 0));
+        new GameTime(0, 6, 30), imagePath, "img/tool.png",
+        "img/plant.png", 0, 0));
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
-        new GameTime(0, 15, 30), imagePath, "img/tool.png", 1, 0));
-    landView = new LandView(plantModelList, gameTime, selectedItem);
+        new GameTime(0, 15, 30), imagePath, "img/tool.png",
+        "img/plant.png", 1, 0));
+    landView = new LandView(plantModelList, gameTime, selectedItem, itemView);
   }
 
   private void setUpdate() {
@@ -140,7 +143,7 @@ public class PlayingPageView extends Application {
     bottomBox.getStyleClass().add("bottom-box");
     GridPane toolGridPane = toolView.getToolGridPane();
     GridPane itemGridPane = itemView.getItemGridPane();
-    toolGridPane.setStyle("-fx-background-color: lightgray;"+"-fx-padding: 10;");
+    toolGridPane.setStyle("-fx-background-color: lightgray;" + "-fx-padding: 10;");
     itemGridPane.setStyle("-fx-background-color: lightgray;");
     HBox.setMargin(itemGridPane, new javafx.geometry.Insets(0, 0, 0, 50));
     bottomBox.getChildren().addAll(toolGridPane, itemGridPane);

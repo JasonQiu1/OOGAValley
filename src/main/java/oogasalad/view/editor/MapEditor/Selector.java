@@ -23,10 +23,10 @@ public class Selector {
   }
 
   public SelectableView getLastSelectedSelectable() {
-    if(lastSelected.get() == null){
+    if (lastSelected.get() == null) {
       return null;
     }
-    return ((SelectableView)lastSelected.get().getChildren().get(0)).getNew();
+    return ((SelectableView) lastSelected.get().getChildren().get(0)).getNew();
   }
 
   public VBox getLastSelected() {

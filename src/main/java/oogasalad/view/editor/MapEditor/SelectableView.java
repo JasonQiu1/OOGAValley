@@ -1,16 +1,16 @@
 package oogasalad.view.editor.MapEditor;
 
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 
 public abstract class SelectableView extends ImageView {
 
   private final ImageView icon;
   private final Label title;
-  public SelectableView(ImageView pic, String title, double width, double height) { //resource bundle this
+
+  public SelectableView(ImageView pic, String title, double width,
+      double height) { //resource bundle this
     super();
     icon = pic;
     super.setImage(icon.getImage());
@@ -22,7 +22,7 @@ public abstract class SelectableView extends ImageView {
   abstract boolean canBePlacedOn(Node node);
 
 
-  public Label getLabel(){
+  public Label getLabel() {
     return title;
   }
 

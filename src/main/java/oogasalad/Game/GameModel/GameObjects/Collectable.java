@@ -22,6 +22,7 @@ public class Collectable extends GameObject implements Collect {
     }
     return null;
   }
+
   @Override
   public int getQuantityOnCollection() {
     return 0;

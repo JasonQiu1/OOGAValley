@@ -6,10 +6,10 @@ import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
 public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
-  private boolean expired;
-  private int state;
   private final String id;
   private final GameObjectProperties properties;
+  private boolean expired;
+  private int state;
   private long timeSinceExpiringState;
   private String imagePath;
 

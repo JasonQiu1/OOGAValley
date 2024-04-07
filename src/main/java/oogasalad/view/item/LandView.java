@@ -16,6 +16,7 @@ public class LandView {
   private final GridPane landGridPane;
 
   private final List<PlantView> plantViewList;
+  private final ItemView itemView;
 
   private Pile[][] piles;
 
@@ -31,7 +32,8 @@ public class LandView {
    * @param selectedItem   the selected item used later for checking if the tool can work on the
    *                       tile
    */
-  public LandView(List<PlantModel> plantModelList, GameTime gameTime, SelectedItem selectedItem) {
+  public LandView(List<PlantModel> plantModelList, GameTime gameTime, SelectedItem selectedItem,
+      ItemView itemView) {
     double height = PlayingPageView.landGridPaneHeight;
     double width = PlayingPageView.landGridPaneWidth;
     int column = PlayingPageView.landNumCols;
@@ -58,6 +60,7 @@ public class LandView {
       this.piles[p.getX()][p.getY()].setPlantView(plantView);
       plantViewList.add(plantView);
     }
+    this.itemView = itemView;
   }
 
   /**
@@ -86,16 +89,20 @@ public class LandView {
   public void check(Pile pile) {
     if (selectedItem.getSelected().equals("img/panda.png")) {
       if (pile.getPlantView() == null) {
-        PlantModel plantModel = new PlantModel(gameTime.copy(), new GameTime(0, 1, 0),
-            new String[]{"img/half_panda.png", "img/panda.png"}, "img/tool.png", pile.getX(), pile.getY());
+        PlantModel plantModel = new PlantModel(gameTime.copy(), new GameTime(0, 0, 1),
+            new String[]{"img/half_panda.png", "img/panda.png"}, "img/tool.png", "img/wheat.png",
+            pile.getX(),
+            pile.getY());
         PlantView p = new PlantView(plantModel, pile.getHeight(), pile.getWidth());
         pile.setPlantView(p);
         plantViewList.add(p);
       }
     } else if (selectedItem.getSelected().equals("img/tool.png")) {
-      if (pile.getPlantView() != null && pile.getPlantView().getProgress(gameTime) == 1.0 &&
-      pile.getPlantView().getToolUrl().equals("img/tool.png")) {
+      if (pile.getPlantView() != null &&
+          pile.getPlantView().getProgress(gameTime) == 1.0 &&
+          pile.getPlantView().getToolUrl().equals(selectedItem.getSelected())) {
         plantViewList.remove(pile.getPlantView());
+        itemView.addItem(pile.getPlantView().getItemUrl());
         pile.removePlant();
       }
     }

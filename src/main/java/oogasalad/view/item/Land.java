@@ -15,19 +15,19 @@ public class Land {
 
   private double width;
 
+  public Land(double width, double height, int column, int row, String url) {
+    Image image = new Image(url, width, height, false, true);
+    land = new ImageView(image);
+    this.height = height;
+    this.width = width;
+  }
+
   public double getHeight() {
     return height;
   }
 
   public double getWidth() {
     return width;
-  }
-
-  public Land(double width, double height, int column, int row, String url) {
-    Image image = new Image(url, width, height, false, true);
-    land = new ImageView(image);
-    this.height = height;
-    this.width = width;
   }
 
   public ImageView getImage() {

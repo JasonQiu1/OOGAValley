@@ -1,36 +1,46 @@
 package oogasalad.view.item;
 
-import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import oogasalad.view.playing.PlayingPageView;
 
 /**
  * The tool view that controls all the tools (panda and Pickaxe)
  */
 public class ToolView {
+
   private final GridPane toolGridPane;
   private List<Tool> toolList;
-  private int numTools;
+  private ToolPile[][] toolPiles;
 
-  public ToolView() {
-    numTools = 0;
-    this.toolList = new ArrayList<>();
+  public ToolView(List<Tool> tools, int colNum, int rowNum) {
+    this.toolList = tools;
     this.toolGridPane = new GridPane();
+    toolPiles = new ToolPile[colNum][rowNum];
+    for (int i = 0; i < colNum; i++) {
+      for (int j = 0; j < rowNum; j++) {
+        ToolPile p = new ToolPile(null, i, j);
+        p.setPrefHeight(PlayingPageView.bottomCellHeight);
+        p.setPrefWidth(PlayingPageView.bottomCellWidth);
+        toolPiles[i][j] = p;
+        toolGridPane.add(p, i, j);
+      }
+    }
+    for (int i = 0; i < tools.size(); i++) {
+      toolPiles[i][0].setTool(tools.get(i));
+      int finalI = i;
+      toolPiles[i][0].getTool().getView().setOnMouseClicked(event -> {
+        reset();
+        toolPiles[finalI][0].getTool().setSelected();
+      });
+    }
 
   }
 
   public GridPane getToolGridPane() {
     return toolGridPane;
   }
-  public void add(Tool tool) {
-    toolList.add(tool);
-    toolGridPane.add(toolList.get(numTools).getImageView(), numTools, 0);
-    numTools++;
-  }
+
 
   public void reset() {
     for (Tool tool : toolList) {

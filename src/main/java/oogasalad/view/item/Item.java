@@ -1,22 +1,43 @@
 package oogasalad.view.item;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.VBox;
+import oogasalad.view.playing.PlayingPageView;
 
 public class Item {
-  private StackPane stackPane;
 
-  public Item(String url, double width, double height) {
+  private VBox container;
+  private int num;
+  private String url;
+
+  public Item(String url, double width, double height, int num) {
+    this.url = url;
     Image image = new Image(url, width, height, false, true);
     ImageView imageView = new ImageView(image);
-    stackPane = new StackPane();
-    stackPane.getChildren().add(imageView);
-    Rectangle rectangle = new Rectangle(width, height, Color.BLUE);
-    rectangle.setOpacity(0);
-    stackPane.getChildren().add(rectangle);
+    this.num = num;
+    Label label = new Label(num + "");
 
+    container = new VBox(5);
+    container.setAlignment(Pos.CENTER);
+    container.setPadding(new Insets(5));
+    container.getChildren().addAll(imageView, label);
+    container.setPrefSize(PlayingPageView.bottomCellWidth, PlayingPageView.bottomCellHeight);
+  }
+
+  public void addOne() {
+    num++;
+    ((Label) container.getChildren().get(1)).setText(num + "");
+  }
+
+  public VBox getView() {
+    return container;
+  }
+
+  public String getUrl() {
+    return url;
   }
 }
