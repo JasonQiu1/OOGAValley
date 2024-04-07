@@ -5,10 +5,12 @@ import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -18,6 +20,7 @@ import javafx.util.Duration;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.gameplay.PlantModel;
 import oogasalad.view.branch.ShoppingPageView;
+import oogasalad.view.item.ItemView;
 import oogasalad.view.item.LandView;
 import oogasalad.view.item.SelectedItem;
 import oogasalad.view.item.Tool;
@@ -36,8 +39,8 @@ public class PlayingPageView extends Application {
   private ProgressBar energyProgressBar = new ProgressBar(0.62);
   private Timeline timeline;
   private LandView landView;
-  private GridPane toolGridPane;
-  private GridPane itemGridPane;
+  private ToolView toolView;
+  private ItemView itemView;
 
   private GameTime gameTime = new GameTime(1, 8, 0);
   public static final double landCellWidth = 50;
@@ -54,10 +57,10 @@ public class PlayingPageView extends Application {
   public static final double bottomWidth = 800;
   public static final double padding = 10;
   public static final double landGridPaneWidth = landCellWidth * landNumCols;
-  public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2;
+  public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
   public static final double landGridPaneHeight = landCellHeight * landNumRows;
   public static final double windowHeight =
-      landGridPaneHeight + topHeight + bottomHeight + padding * 2;
+      landGridPaneHeight + topHeight + bottomHeight;
   private List<PlantModel> plantModelList;
 
   private String selectedTools = "plant";
@@ -68,11 +71,11 @@ public class PlayingPageView extends Application {
   public void start(Stage primaryStage) {
     stage = primaryStage;
     BorderPane root = new BorderPane();
-    setupBottom(root);
     initModel();
     setupTop(root);
     setupLeftRight(root);
     setupCenter(root);
+    setupBottom(root);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("css/playing_css.css");
     scene.setOnMouseClicked(event -> {
@@ -84,19 +87,19 @@ public class PlayingPageView extends Application {
   }
 
   private void initModel() {
-    ToolView toolView1 = new ToolView();
+    toolView = new ToolView();
     Tool tool1 = new Tool("img/tool.png", bottomCellHeight, bottomCellWidth, selectedItem,
-        toolView1);
+        toolView);
     Tool tool2 = new Tool("img/panda.png", bottomCellHeight, bottomCellWidth, selectedItem,
-        toolView1);
+        toolView);
     String[] imagePath = {"/img/half_panda.png", "/img/panda.png"};
-    toolGridPane.add(tool1.getImageView(), 0, 0);
-    toolGridPane.add(tool2.getImageView(), 1, 0);
+    itemView = new ItemView();
+
     plantModelList = new ArrayList<>();
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
-        new GameTime(0, 6, 30), imagePath, 0, 0));
+        new GameTime(0, 6, 30), imagePath, "img/tool.png", 0, 0));
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
-        new GameTime(0, 15, 30), imagePath, 1, 0));
+        new GameTime(0, 15, 30), imagePath, "img/tool.png", 1, 0));
     landView = new LandView(plantModelList, gameTime, selectedItem);
   }
 
@@ -131,14 +134,15 @@ public class PlayingPageView extends Application {
   }
 
   private void setupBottom(BorderPane root) {
-    toolGridPane = new GridPane();
-    toolGridPane.getStyleClass().add("tool-grid-pane");
-    itemGridPane = new GridPane();
-    itemGridPane.getStyleClass().add("item-grid-pane");
-
     HBox bottomBox = new HBox();
+    bottomBox.setPadding(new Insets(padding));
     bottomBox.setPrefSize(bottomWidth, bottomHeight);
     bottomBox.getStyleClass().add("bottom-box");
+    GridPane toolGridPane = toolView.getToolGridPane();
+    GridPane itemGridPane = itemView.getItemGridPane();
+    toolGridPane.setStyle("-fx-background-color: lightgray;"+"-fx-padding: 10;");
+    itemGridPane.setStyle("-fx-background-color: lightgray;");
+    HBox.setMargin(itemGridPane, new javafx.geometry.Insets(0, 0, 0, 50));
     bottomBox.getChildren().addAll(toolGridPane, itemGridPane);
     root.setBottom(bottomBox);
   }

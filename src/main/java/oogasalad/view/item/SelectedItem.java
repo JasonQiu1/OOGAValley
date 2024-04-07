@@ -1,5 +1,8 @@
 package oogasalad.view.item;
 
+import java.util.Map;
+import oogasalad.Game.GameModel.gameplay.PropertyReader;
+
 /**
  * The selected item denoting the selected item
  */
@@ -14,4 +17,5 @@ public class SelectedItem {
   public String getSelected() {
     return selected;
   }
+
 }

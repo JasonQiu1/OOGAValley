@@ -12,32 +12,32 @@ public class Pile extends StackPane {
 
   private PlantView plantView;
 
-  private Land landView;
+  private Land land;
 
   private final int x;
   private final int y;
 
-  public Pile(PlantView plantView, Land landView,
-      LandView landController, int x, int y) {
+  public Pile(PlantView plantView, Land land,
+      LandView landView, int x, int y) {
     super();
-    double width = landView.getWidth();
-    double height = landView.getHeight();
+    double width = land.getWidth();
+    double height = land.getHeight();
     this.plantView = plantView;
-    this.landView = landView;
+    this.land = land;
     Rectangle rectangle = new Rectangle(width, height);
     rectangle.setOpacity(0);
     rectangle.setFill(Color.BLUE);
     this.x = x;
     this.y = y;
 
-    this.getChildren().add(landView.getImage());
+    this.getChildren().add(land.getImage());
     if (plantView != null) {
       this.getChildren().add(plantView.getView());
     }
     this.getChildren().add(rectangle);
     setPrefHeight(height);
     setPrefWidth(width);
-    setOnMouseClicked(event -> landController.check(this));
+    setOnMouseClicked(event -> landView.check(this));
     setOnMouseEntered(event -> rectangle.setOpacity(0.2));
     setOnMouseExited(event -> rectangle.setOpacity(0));
   }
@@ -58,12 +58,10 @@ public class Pile extends StackPane {
   public void removePlant() {
     this.getChildren().remove(1);
     plantView = null;
-
-
   }
 
-  public Land getLandView() {
-    return landView;
+  public Land getLand() {
+    return land;
   }
 
   public PlantView getPlantView() {

@@ -13,7 +13,7 @@ import oogasalad.view.playing.PlayingPageView;
  */
 public class LandView {
 
-  private final GridPane land;
+  private final GridPane landGridPane;
 
   private final List<PlantView> plantViewList;
 
@@ -36,9 +36,9 @@ public class LandView {
     double width = PlayingPageView.landGridPaneWidth;
     int column = PlayingPageView.landNumCols;
     int row = PlayingPageView.landNumRows;
-    land = new GridPane();
-    land.setPrefHeight(height);
-    land.setPrefWidth(width);
+    landGridPane = new GridPane();
+    landGridPane.setPrefHeight(height);
+    landGridPane.setPrefWidth(width);
     plantViewList = new ArrayList<>();
     piles = new Pile[column][row];
     this.selectedItem = selectedItem;
@@ -50,7 +50,7 @@ public class LandView {
         Land land = new Land(widthSingle, heightSingle, i, j, "img/grass.jpg");
         Pile p = new Pile(null, land, this, i, j);
         this.piles[i][j] = p;
-        this.land.add(p, i, j);
+        this.landGridPane.add(p, i, j);
       }
     }
     for (PlantModel p : plantModelList) {
@@ -75,7 +75,7 @@ public class LandView {
    * @return the grid view to be displayed by javafx
    */
   public GridPane getGridView() {
-    return land;
+    return landGridPane;
   }
 
   /**
@@ -87,13 +87,14 @@ public class LandView {
     if (selectedItem.getSelected().equals("img/panda.png")) {
       if (pile.getPlantView() == null) {
         PlantModel plantModel = new PlantModel(gameTime.copy(), new GameTime(0, 1, 0),
-            new String[]{"img/half_panda.png", "img/panda.png"}, pile.getX(), pile.getY());
+            new String[]{"img/half_panda.png", "img/panda.png"}, "img/tool.png", pile.getX(), pile.getY());
         PlantView p = new PlantView(plantModel, pile.getHeight(), pile.getWidth());
         pile.setPlantView(p);
         plantViewList.add(p);
       }
     } else if (selectedItem.getSelected().equals("img/tool.png")) {
-      if (pile.getPlantView() != null) {
+      if (pile.getPlantView() != null && pile.getPlantView().getProgress(gameTime) == 1.0 &&
+      pile.getPlantView().getToolUrl().equals("img/tool.png")) {
         plantViewList.remove(pile.getPlantView());
         pile.removePlant();
       }

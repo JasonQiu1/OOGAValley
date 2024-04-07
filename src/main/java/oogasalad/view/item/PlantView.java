@@ -69,4 +69,11 @@ public class PlantView {
   public StackPane getView() {
     return stackPane;
   }
+  public double getProgress(GameTimeInterface gameTime) {
+    return plantModel.getProgress(gameTime);
+  }
+
+  public String getToolUrl() {
+    return imagePath;
+  }
 }
