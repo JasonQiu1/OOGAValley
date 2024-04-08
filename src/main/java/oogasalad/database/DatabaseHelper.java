@@ -16,11 +16,25 @@ public class DatabaseHelper {
   private static final String USER = "CS308";
   private static final String PASS = "CS308Farm";
 
+  /**
+   * Get a connection to the database.
+   *
+   * @return the connection
+   * @throws SQLException           if the connection fails
+   * @throws ClassNotFoundException if the driver is not found
+   */
+
   public static Connection getConnection() throws SQLException, ClassNotFoundException {
     Class.forName(JDBC_DRIVER);
     return DriverManager.getConnection(DB_URL, USER, PASS);
   }
 
+  /**
+   * Check if a user exists in the database.
+   *
+   * @param username the username to check
+   * @return true if the user exists, false otherwise
+   */
   public static boolean userExists(String username) {
     String sql = "SELECT * FROM user WHERE username=?";
     try (Connection conn = getConnection();
@@ -35,6 +49,13 @@ public class DatabaseHelper {
     }
   }
 
+  /**
+   * Check if a user is valid.
+   *
+   * @param username the username
+   * @param password the password
+   * @return true if the user is valid, false otherwise
+   */
   public static boolean isValidUser(String username, String password) {
     String sql = "SELECT * FROM user WHERE username=? AND password=?";
     try (Connection conn = getConnection();
@@ -49,6 +70,13 @@ public class DatabaseHelper {
       return false;
     }
   }
+
+  /**
+   * Get the user id.
+   *
+   * @param username the username
+   * @return the user id
+   */
 
   public static int getUserId(String username) {
     String sql = "SELECT id FROM user WHERE username=?";
@@ -66,7 +94,14 @@ public class DatabaseHelper {
     return -1;
   }
 
-
+  /**
+   * Add a user to the database.
+   *
+   * @param username the username
+   * @param email    the email
+   * @param password the password
+   * @return true if the user is added, false otherwise
+   */
   public static boolean addUser(String username, String email, String password) {
     if (userExists(username)) {
       return false;

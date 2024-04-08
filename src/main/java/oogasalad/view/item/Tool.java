@@ -15,12 +15,13 @@ public class Tool {
   private Rectangle selectedRectangle;
   private SelectedItem selectedItem;
   private String url;
+
   /**
    * Constructor for the Tool class.
    *
-   * @param url the url of the tool
-   * @param width the width of the tool
-   * @param height the height of the tool
+   * @param url          the url of the tool
+   * @param width        the width of the tool
+   * @param height       the height of the tool
    * @param selectedItem the selected item
    */
   public Tool(String url, double width, double height, SelectedItem selectedItem) {

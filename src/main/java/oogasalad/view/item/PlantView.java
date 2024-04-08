@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import oogasalad.Game.GameModel.GameTimeInterface;
 import oogasalad.Game.GameModel.gameplay.PlantModel;
+
 /**
  * Represents a plant in the game.
  */

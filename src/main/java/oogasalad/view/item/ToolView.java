@@ -12,10 +12,11 @@ public class ToolView {
   private final GridPane toolGridPane;
   private List<Tool> toolList;
   private ToolPile[][] toolPiles;
+
   /**
    * Constructor for the ToolView class.
    *
-   * @param tools the list of tools
+   * @param tools  the list of tools
    * @param colNum the number of columns
    * @param rowNum the number of rows
    */

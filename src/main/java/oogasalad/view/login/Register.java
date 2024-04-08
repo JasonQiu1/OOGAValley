@@ -21,6 +21,12 @@ public class Register extends BranchBase {
 
   private final Button back = new Button("Back");
 
+  /**
+   * This is the constructor for the Register class.
+   *
+   * @param stage
+   * @param previousScene
+   */
   public Register(Stage stage, Scene previousScene) {
     super(stage, previousScene);
     back.setOnMouseClicked(event -> {

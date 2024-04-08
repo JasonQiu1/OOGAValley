@@ -13,6 +13,7 @@ public class ItemView {
   private final ItemPile[][] itemPiles;
   private final int colNum;
   private final int rowNum;
+
   /**
    * Constructor for the ItemView class.
    *
@@ -39,6 +40,7 @@ public class ItemView {
   public GridPane getItemGridPane() {
     return itemGridPane;
   }
+
   /**
    * This method is responsible for resetting the item.
    *

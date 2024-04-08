@@ -25,6 +25,12 @@ public class Login extends BranchBase {
   private int id;
   private BiConsumer<String, Integer> onLoginSuccessCallback;
 
+  /**
+   * This is the constructor for the Login class.
+   *
+   * @param stage
+   * @param previousScene
+   */
   public Login(Stage stage, Scene previousScene) {
     super(stage, previousScene);
   }
