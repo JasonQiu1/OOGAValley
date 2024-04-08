@@ -20,6 +20,11 @@ public class Tile {
       String newCollectable = collectable.interact(item);
       setNewGameObject(newCollectable, collectable.getId());
     } else if (structure != null && structure.interactionValid(item)) {
+      if (collectable == null && structure.getIsExpiringState() &&
+          structure.isHarvestable()) {
+        String newCollectable = structure.getCollectableOnDestruction();
+        setNewGameObject(newCollectable, collectable.getId());
+      }
       String newStructure = structure.interact(item);
       setNewGameObject(newStructure, structure.getId());
     } else if (land.getIsPlantable() && item.getIsSeed() && structure == null) {

@@ -4,9 +4,11 @@ import java.util.List;
 import oogasalad.Game.GameModel.Item;
 
 
-public class LandProperties {
+public class LandProperties extends GameObjectProperties {
 
-  private List<Item> interactingItems;
+  private boolean isPlantable;
 
-
+  public boolean getIsPlantable() {
+    return isPlantable;
+  }
 }
