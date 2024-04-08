@@ -24,13 +24,6 @@ import org.apache.logging.log4j.Logger;
  */
 class DataFactory<T> {
 
-  // TODO: Maybe externalize this to a config? I can't see this directory ever changing though.
-  public static final String DATA_DIRECTORY = "data";
-  public static final String DATA_FILE_EXTENSION = "json";
-  private static final Logger LOG = LogManager.getLogger(DataFactory.class);
-  private final Class<T> clazz;
-  private final Gson gson;
-
   /**
    * Initialization.
    *
@@ -87,6 +80,14 @@ class DataFactory<T> {
       throw e;
     }
   }
+
+  private final Class<T> clazz;
+  private final Gson gson;
+  // TODO: Maybe externalize this to a config? I can't see this directory ever changing though.
+  public static final String DATA_DIRECTORY = "data";
+  public static final String DATA_FILE_EXTENSION = "json";
+
+  private static final Logger LOG = LogManager.getLogger(DataFactory.class);
 
   // makes sure the filePath ends with the given extension
   private String addDataFileExtension(String filePath) {
