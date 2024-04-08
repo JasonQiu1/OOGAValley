@@ -14,13 +14,12 @@ public class MapEditor extends VBox {
      * use modelAPI to load starting map data and types of tiles
      */
     Selector ts = new Selector();
-    BuildableMap bm = new BuildableMap(ts);
+    CellInfoPane cip = new CellInfoPane();
+    BuildableMap bm = new BuildableMap(ts, cip);
     TopPanel tp = new TopPanel(bm);
     BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
     BottomPanel bp = new BottomPanel(ts);
-    getChildren().add(tp);
-    getChildren().add((bmw));
-    getChildren().add(bp);
+    getChildren().addAll(tp, bmw, bp, cip);
     //getChildren().add(new MapExtender(bm));
   }
 }
