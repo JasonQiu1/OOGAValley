@@ -16,7 +16,7 @@ import oogasalad.view.login.UserInfo;
 /**
  * This class is responsible for displaying the new load screen for the game. This screen will allow
  * the user to either login, start a new game, load a game, or go back to the previous screen. This
- * class is dependent on the Login class and the PlayingPage
+ * class is dependent on the Login class and the PlayingPage.
  */
 
 public class NewLoadScreen extends Application {

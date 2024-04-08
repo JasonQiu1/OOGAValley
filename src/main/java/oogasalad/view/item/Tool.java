@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
- * Represents a tool in the game
+ * Represents a tool in the game.
  */
 public class Tool {
 
@@ -15,7 +15,14 @@ public class Tool {
   private Rectangle selectedRectangle;
   private SelectedItem selectedItem;
   private String url;
-
+  /**
+   * Constructor for the Tool class.
+   *
+   * @param url the url of the tool
+   * @param width the width of the tool
+   * @param height the height of the tool
+   * @param selectedItem the selected item
+   */
   public Tool(String url, double width, double height, SelectedItem selectedItem) {
     this.url = url;
     this.selectedItem = selectedItem;

@@ -1,7 +1,7 @@
 package oogasalad.view.login;
 
 /**
- * This class is used to store the user information
+ * This class is used to store the user information.
  */
 public class UserInfo {
 

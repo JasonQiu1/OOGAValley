@@ -13,7 +13,12 @@ public class ItemView {
   private final ItemPile[][] itemPiles;
   private final int colNum;
   private final int rowNum;
-
+  /**
+   * Constructor for the ItemView class.
+   *
+   * @param colNum the number of columns
+   * @param rowNum the number of rows
+   */
   public ItemView(int colNum, int rowNum) {
     this.itemGridPane = new GridPane();
     this.colNum = colNum;
@@ -34,7 +39,11 @@ public class ItemView {
   public GridPane getItemGridPane() {
     return itemGridPane;
   }
-
+  /**
+   * This method is responsible for resetting the item.
+   *
+   * @param item the item
+   */
   public double[] getAddRealLocation(Item item) {
     double[] location = new double[2];
     double[] index = new double[2];
@@ -55,7 +64,11 @@ public class ItemView {
     return location;
   }
 
-
+  /**
+   * This method is responsible for adding an item.
+   *
+   * @param item the item
+   */
   public void addItem(Item item) {
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {

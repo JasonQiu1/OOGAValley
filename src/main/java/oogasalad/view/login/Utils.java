@@ -3,7 +3,7 @@ package oogasalad.view.login;
 import javafx.scene.control.Alert;
 
 /**
- * This class is used to store the user information
+ * This class is used to store utils functions.
  */
 public class Utils {
 

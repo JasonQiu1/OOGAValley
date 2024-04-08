@@ -9,7 +9,7 @@ import oogasalad.Game.GameModel.gameplay.PlantModel;
 import oogasalad.view.playing.PlayingPageView;
 
 /**
- * A 2d grid representing the land and the plants (buildings)
+ * A 2d grid representing the land and the plants (buildings).
  */
 public class LandView {
 
@@ -25,7 +25,7 @@ public class LandView {
   private GameTime gameTime;
 
   /**
-   * Initialize a land with some plants and lands already defined
+   * Initialize a land with some plants and lands already defined.
    *
    * @param plantModelList the plants to be grown
    * @param gameTime       the current game time
@@ -65,7 +65,7 @@ public class LandView {
   }
 
   /**
-   * Update the plants according to game Time
+   * Update the plants according to game Time.
    *
    * @param gameTime
    */
@@ -76,6 +76,8 @@ public class LandView {
   }
 
   /**
+   * Get the grid view to be displayed by javafx.
+   *
    * @return the grid view to be displayed by javafx
    */
   public GridPane getGridView() {
@@ -83,7 +85,7 @@ public class LandView {
   }
 
   /**
-   * Set the onclick method for a chosen item
+   * Set the onclick method for a chosen item.
    *
    * @param pile the pile to be updated
    */

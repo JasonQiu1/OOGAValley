@@ -12,13 +12,29 @@ import javafx.util.Duration;
 public class TopAnimationView extends StackPane {
 
   private final ItemView itemView;
-
+  /**
+   * Constructor for the TopAnimationView class.
+   *
+   * @param itemView the itemView that the animation will be displayed on
+   * @param width the width of the animation
+   * @param height the height of the animation
+   */
   public TopAnimationView(ItemView itemView, double width, double height) {
     this.itemView = itemView;
     this.setPrefSize(width, height);
     this.setPickOnBounds(false);
   }
-
+  /**
+   * This method is responsible for creating an animation that will be displayed on the top of the
+   * screen when an item is collected.
+   *
+   * @param item the item that is collected
+   * @param startX the x-coordinate of the start of the animation
+   * @param startY the y-coordinate of the start of the animation
+   * @param endX the x-coordinate of the end of the animation
+   * @param endY the y-coordinate of the end of the animation
+   * @param speed the speed of the animation
+   */
   public void collectItemAnimation(Item item, double startX, double startY, double endX,
       double endY, double speed) {
     TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(speed),

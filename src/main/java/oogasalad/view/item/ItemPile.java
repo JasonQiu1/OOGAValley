@@ -3,7 +3,7 @@ package oogasalad.view.item;
 import javafx.scene.layout.StackPane;
 
 /**
- * Represents a pile of items in the game
+ * Represents a pile of items in the game.
  */
 public class ItemPile extends StackPane {
 

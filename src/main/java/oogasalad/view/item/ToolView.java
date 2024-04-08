@@ -5,13 +5,20 @@ import javafx.scene.layout.GridPane;
 import oogasalad.view.playing.PlayingPageView;
 
 /**
- * The tool view that controls all the tools (panda and Pickaxe)
+ * The tool view that controls all the tools (panda and Pickaxe).
  */
 public class ToolView {
 
   private final GridPane toolGridPane;
   private List<Tool> toolList;
   private ToolPile[][] toolPiles;
+  /**
+   * Constructor for the ToolView class.
+   *
+   * @param tools the list of tools
+   * @param colNum the number of columns
+   * @param rowNum the number of rows
+   */
 
   public ToolView(List<Tool> tools, int colNum, int rowNum) {
     this.toolList = tools;

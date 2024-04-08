@@ -1,7 +1,7 @@
 package oogasalad.view.item;
 
 /**
- * The selected item denoting the selected item
+ * The selected item denoting the selected item.
  */
 public class SelectedItem {
 

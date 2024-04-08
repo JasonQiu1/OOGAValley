@@ -17,6 +17,14 @@ public class Item {
   private final VBox container;
   private final String url;
   private int num;
+  /**
+   * Constructor for the Item class.
+   *
+   * @param url the url of the item
+   * @param width the width of the item
+   * @param height the height of the item
+   * @param num the number of the item
+   */
 
   public Item(String url, double width, double height, int num) {
     this.url = url;

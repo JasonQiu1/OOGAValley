@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
- * A pile class containing the land and the plants (buildings), it is a stack pane basically
+ * A pile class containing the land and the plants (buildings), it is a stack pane basically.
  */
 public class Pile extends StackPane {
 
