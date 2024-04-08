@@ -14,11 +14,13 @@ public class BuildableMap {
   private int currentColumns;
   private int currentRows;
   private GridPane gp;
+  private final CellInfoPane cip;
 
-  public BuildableMap(Selector ts) {
+  public BuildableMap(Selector ts, CellInfoPane cip) {
     gp = new GridPane();
     this.gridPaneProperty = new GridPaneProperty(gp);
     this.ts = ts;
+    this.cip = cip;
     createGrid();
     gp.setMaxWidth(Cell.getSize()[0] * currentColumns);
     gp.setMaxHeight(Cell.getSize()[1] * currentRows);
@@ -29,7 +31,7 @@ public class BuildableMap {
   private void createGrid() {
     for (int i = 0; i < 13; i++) {
       for (int j = 0; j < 10; j++) {
-        gp.add(new Cell(ts, i, j), i, j);
+        gp.add(new Cell(ts, cip, i, j), i, j);
       }
     }
   }
@@ -39,7 +41,7 @@ public class BuildableMap {
     for (int i = 0; i < newI; i++) {
       for (int j = 0; j < newJ; j++) {
         if (i >= currentColumns || j >= currentRows) {
-          temp.add(new Cell(ts, i, j), i, j);
+          temp.add(new Cell(ts, cip, i, j), i, j);
         } else {
           temp.add(findCell(i, j), i, j);
         }
@@ -71,7 +73,7 @@ public class BuildableMap {
       gp.getChildren().forEach(node -> ((Cell) node).incrementRow());
       GridPane temp = new GridPane();
       for (int i = 0; i < currentColumns; i++) {
-        temp.add(new Cell(ts, i, 0), i, 0);
+        temp.add(new Cell(ts, cip, i, 0), i, 0);
       }
       for (int i = 0; i < currentColumns; i++) {
         for (int j = 1; j < currentRows + 1; j++) {
@@ -106,7 +108,7 @@ public class BuildableMap {
       gp.getChildren().forEach(node -> ((Cell) node).incrementColumn());
       GridPane temp = new GridPane();
       for (int j = 0; j < currentRows; j++) {
-        temp.add(new Cell(ts, 0, j), 0, j);
+        temp.add(new Cell(ts, cip, 0, j), 0, j);
       }
       for (int i = 1; i < currentColumns + 1; i++) {
         for (int j = 0; j < currentRows; j++) {

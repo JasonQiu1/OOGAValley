@@ -1,9 +1,14 @@
 package oogasalad.view.editor.MapEditor;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import java.util.List;
 
 public class Cell extends StackPane {
 
@@ -13,7 +18,7 @@ public class Cell extends StackPane {
   private int column;
   private int row;
 
-  public Cell(Selector ts, int i, int j) {
+  public Cell(Selector ts, CellInfoPane cip, int i, int j) {
     super();
     column = i;
     row = j;
@@ -26,14 +31,17 @@ public class Cell extends StackPane {
       if (event.getButton() == MouseButton.SECONDARY) {
         if (super.getChildren().size() > 1) {
           super.getChildren().remove(super.getChildren().get(super.getChildren().size() - 1));
+          setDisplayPanel(cip);
         }
       } else if (ts.getLastSelectedSelectable() != null && ts.getLastSelectedSelectable()
           .canBePlacedOn(super.getChildren().get(super.getChildren().size() - 1))) {
         super.getChildren().add(ts.getLastSelectedSelectable());
+        setDisplayPanel(cip);
       }
     });
 
     setOnMouseEntered(event -> {
+      setDisplayPanel(cip);
       base.setFill(Color.GRAY);
       super.getChildren().stream()
           .skip(1) // Skip the first element
@@ -41,6 +49,7 @@ public class Cell extends StackPane {
     });
 
     setOnMouseExited(event -> {
+      cip.clearDisplay();
       base.setFill(Color.WHITE);
       super.getChildren().stream()
           .skip(1) // Skip the first element
@@ -48,6 +57,12 @@ public class Cell extends StackPane {
     });
 
 
+  }
+
+  private void setDisplayPanel(CellInfoPane cip) {
+    ObservableList<Node> content =  FXCollections.observableArrayList(super.getChildren());
+    content.remove(base);
+    cip.setDisplay(column, row, content);
   }
 
   public static double[] getSize() {
