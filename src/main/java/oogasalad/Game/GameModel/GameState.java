@@ -6,6 +6,14 @@ import oogasalad.Game.GameModel.exception.BadGsonLoadException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Represents the state of a particular game save.
+ * <p>
+ * This includes the current game world (and any modifications made to it), the current time, stats,
+ * etc.
+ *
+ * @author Jason Qiu
+ */
 public class GameState {
 
   // TODO: Externalize this to a configuration file.
