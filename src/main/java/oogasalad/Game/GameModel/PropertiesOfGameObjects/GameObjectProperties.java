@@ -9,7 +9,6 @@ import oogasalad.Game.GameModel.WrapperStateAndItem;
 public abstract class GameObjectProperties {
 
   private Map<Integer, Integer> updatingStateMapings;
-  private Map<Integer, String> updatingNewGameObjectMapings;
   private Map<WrapperStateAndItem, Integer> interactingStateMapings;
   private Map<WrapperStateAndItem, String> interactingNewGameObjectMapings;
   private Map<String, Double> conditionalPreferenceMultipliers;
@@ -20,7 +19,7 @@ public abstract class GameObjectProperties {
   private long defaultUpdateTime;
 
   public long modifiedTimeToUpdate(GameTime gameTime) {
-    return 0;
+    return defaultUpdateTime;
   }
 
   public int nextUpdatingState(int state) {
@@ -29,14 +28,6 @@ public abstract class GameObjectProperties {
 
   public int getExpiringState() {
     return expiringState;
-  }
-
-  public boolean nextStateIsNewGameObject(int state) {
-    return updatingNewGameObjectMapings.containsKey(state);
-  }
-
-  public String nextUpdatingGameObject(int state) {
-    return updatingNewGameObjectMapings.get(state);
   }
 
   public long getTimeToExpired() {
