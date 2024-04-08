@@ -8,18 +8,22 @@ import javafx.scene.image.ImageView;
  */
 public class Land {
 
-  private ImageView land;
+  private final ImageView land;
 
 
-  private double height;
+  private final double height;
 
-  private double width;
+  private final double width;
+  private final int column;
+  private final int row;
 
   public Land(double width, double height, int column, int row, String url) {
     Image image = new Image(url, width, height, false, true);
     land = new ImageView(image);
     this.height = height;
     this.width = width;
+    this.column = column;
+    this.row = row;
   }
 
   public double getHeight() {

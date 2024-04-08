@@ -26,11 +26,13 @@ class MockProperties {
   public final Map<String, String> properties;
   public final Map<String, List<String>> listProperties;
   public final Map<String, Map<String, String>> mapProperties;
+
   public MockProperties() {
     this.properties = new HashMap<>();
     this.listProperties = new HashMap<>();
     this.mapProperties = new HashMap<>();
   }
+
   public MockProperties(Map<String, String> properties, Map<String, List<String>> listProperties,
       Map<String, Map<String, String>> mapProperties) {
     this.properties = properties;

@@ -46,28 +46,25 @@ public class PlayingPageView extends Application {
   public static final double bottomHeight = 80;
   public static final double bottomWidth = 800;
   public static final double padding = 10;
-  public static final double landGridPaneWidth = landCellWidth * landNumCols;
   public static final double leftRightWidth = 50;
+  public static final double landGridPaneWidth = landCellWidth * landNumCols;
+
   public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
   public static final double landGridPaneHeight = landCellHeight * landNumRows;
   public static final double windowHeight =
       landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
+  private final Label timeLabel = new Label();
+  private final ProgressBar energyProgressBar = new ProgressBar(0.62);
+  private final GameTime gameTime = new GameTime(1, 8, 0);
+  private final String selectedTools = "plant";
+  private final SelectedItem selectedItem = new SelectedItem();
   private Stage stage;
-  private Label timeLabel = new Label();
-  private ProgressBar energyProgressBar = new ProgressBar(0.62);
-  private Timeline timeline;
   private LandView landView;
   private ToolView toolView;
   private ItemView itemView;
   private TopAnimationView topAnimationView;
-  private GameTime gameTime = new GameTime(1, 8, 0);
-  private List<PlantModel> plantModelList;
-
-  private String selectedTools = "plant";
-
-  private SelectedItem selectedItem = new SelectedItem();
 
   @Override
   public void start(Stage primaryStage) {
@@ -102,10 +99,10 @@ public class PlayingPageView extends Application {
     toolView = new ToolView(tools, 5, 1);
 
     String[] imagePath = {"/img/half_panda.png", "/img/panda.png"};
-    itemView = new ItemView(new ArrayList<>(), 5, 1);
-    topAnimationView = new TopAnimationView(landView, itemView, windowWidth, windowHeight);
+    itemView = new ItemView(5, 1);
+    topAnimationView = new TopAnimationView(itemView, windowWidth, windowHeight);
 
-    plantModelList = new ArrayList<>();
+    List<PlantModel> plantModelList = new ArrayList<>();
     plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
         new GameTime(0, 6, 30), imagePath, "img/tool.png",
         "img/wheat.png", 0, 0));
@@ -116,7 +113,7 @@ public class PlayingPageView extends Application {
   }
 
   private void setUpdate() {
-    timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
+    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
       gameTime.update();
       updateTimeLabel();
       landView.update(gameTime);

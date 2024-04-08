@@ -2,6 +2,9 @@ package oogasalad.view.item;
 
 import javafx.scene.layout.StackPane;
 
+/**
+ * Represents a pile of tools in the game
+ */
 public class ToolPile extends StackPane {
 
   private final int x;

@@ -3,8 +3,6 @@ package oogasalad.Game.GameModel;
 import java.io.IOException;
 import java.nio.file.Paths;
 import oogasalad.Game.GameModel.exception.BadGsonLoadException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class GameState {
 
@@ -12,7 +10,6 @@ public class GameState {
   // The path to the gamesaves directory from the data directory.
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
-  private static final Logger LOG = LogManager.getLogger(GameState.class);
 
   /**
    * Creates and returns an instance of {@link GameState} from a JSON file.

@@ -5,18 +5,16 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
+/**
+ * This class is responsible for creating an animation that will be displayed on the top of the
+ * screen when an item is collected. This class is dependent on the ItemView class.
+ */
 public class TopAnimationView extends StackPane {
 
-  private LandView landView;
-  private ItemView itemView;
-  private double width;
-  private double height;
+  private final ItemView itemView;
 
-  public TopAnimationView(LandView landView, ItemView itemView, double width, double height) {
-    this.landView = landView;
+  public TopAnimationView(ItemView itemView, double width, double height) {
     this.itemView = itemView;
-    this.width = width;
-    this.height = height;
     this.setPrefSize(width, height);
     this.setPickOnBounds(false);
   }

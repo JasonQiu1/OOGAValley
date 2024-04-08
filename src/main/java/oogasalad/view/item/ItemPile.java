@@ -2,6 +2,9 @@ package oogasalad.view.item;
 
 import javafx.scene.layout.StackPane;
 
+/**
+ * Represents a pile of items in the game
+ */
 public class ItemPile extends StackPane {
 
   private final int x;
@@ -21,5 +24,13 @@ public class ItemPile extends StackPane {
   public void setItem(Item item) {
     this.item = item;
     this.getChildren().add(0, item.getView());
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
   }
 }

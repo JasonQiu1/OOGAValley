@@ -109,8 +109,8 @@ public class LandView {
         topAnimationView.collectItemAnimation(newItem,
             pile.getCellPosition()[1] - PlayingPageView.windowWidth / 2,
             pile.getCellPosition()[0] - PlayingPageView.windowHeight / 2,
-            itemView.getAddRealLocation()[1] - PlayingPageView.windowWidth / 2,
-            itemView.getAddRealLocation()[0] - PlayingPageView.windowHeight / 2, 3.0);
+            itemView.getAddRealLocation(newItem)[1] - PlayingPageView.windowWidth / 2,
+            itemView.getAddRealLocation(newItem)[0] - PlayingPageView.windowHeight / 2, 3.0);
         pile.removePlant();
       }
     }

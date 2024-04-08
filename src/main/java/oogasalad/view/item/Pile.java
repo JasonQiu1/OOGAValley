@@ -12,10 +12,9 @@ public class Pile extends StackPane {
 
   private final int x;
   private final int y;
+  private final Land land;
+  private final double[] position = new double[2];
   private PlantView plantView;
-  private Land land;
-
-  private double[] position = new double[2];
 
   public Pile(PlantView plantView, Land land,
       LandView landView, int x, int y) {

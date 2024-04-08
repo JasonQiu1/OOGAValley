@@ -3,8 +3,6 @@ package oogasalad.Game.GameModel;
 import java.io.IOException;
 import java.nio.file.Paths;
 import oogasalad.Game.GameModel.exception.BadGsonLoadException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * A class that represents the set of all configurations for a game in the framework.
@@ -20,7 +18,6 @@ public class GameConfiguration {
   public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
   private static final DataFactory<GameConfiguration> FACTORY =
       new DataFactory<>(GameConfiguration.class);
-  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
   private Properties rules;
   private GameState initialState;
 

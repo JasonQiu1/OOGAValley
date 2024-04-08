@@ -8,11 +8,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import oogasalad.view.playing.PlayingPageView;
 
+/**
+ * This class is responsible for creating an item object that will be displayed in the bottom of the
+ * screen. This class is dependent on the PlayingPageView class.
+ */
 public class Item {
 
-  private VBox container;
+  private final VBox container;
+  private final String url;
   private int num;
-  private String url;
 
   public Item(String url, double width, double height, int num) {
     this.url = url;

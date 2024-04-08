@@ -6,6 +6,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * Represents a tool in the game
+ */
 public class Tool {
 
   private StackPane stackPane;

@@ -1,19 +1,20 @@
 package oogasalad.view.item;
 
-import java.util.List;
 import javafx.scene.layout.GridPane;
 import oogasalad.view.playing.PlayingPageView;
 
+/**
+ * This class is responsible for creating an item object that will be displayed in the bottom of the
+ * screen. This class is dependent on the PlayingPageView class.
+ */
 public class ItemView {
 
   private final GridPane itemGridPane;
-  private List<Item> itemList;
-  private ItemPile[][] itemPiles;
-  private int colNum;
-  private int rowNum;
+  private final ItemPile[][] itemPiles;
+  private final int colNum;
+  private final int rowNum;
 
-  public ItemView(List<Item> itemList, int colNum, int rowNum) {
-    this.itemList = itemList;
+  public ItemView(int colNum, int rowNum) {
     this.itemGridPane = new GridPane();
     this.colNum = colNum;
     this.rowNum = rowNum;
@@ -34,11 +35,23 @@ public class ItemView {
     return itemGridPane;
   }
 
-  public double[] getAddRealLocation() {
+  public double[] getAddRealLocation(Item item) {
     double[] location = new double[2];
+    double[] index = new double[2];
+    for (int i = 0; i < colNum; i++) {
+      for (int j = 0; j < rowNum; j++) {
+        if (itemPiles[i][j].getItem() != null && itemPiles[i][j].getItem().getUrl()
+            .equals(item.getUrl())) {
+          index[0] = i;
+          index[1] = j;
+          break;
+        }
+      }
+    }
     location[0] = PlayingPageView.windowHeight - PlayingPageView.bottomHeight
-        + PlayingPageView.bottomBoxPadding / 2;
-    location[1] = PlayingPageView.windowWidth / 2 + PlayingPageView.bottomBoxPadding;
+        + PlayingPageView.bottomBoxPadding / 2 + index[0] * PlayingPageView.bottomCellHeight;
+    location[1] = PlayingPageView.windowWidth / 2 + PlayingPageView.bottomBoxPadding + index[1]
+        * PlayingPageView.bottomCellWidth;
     return location;
   }
 

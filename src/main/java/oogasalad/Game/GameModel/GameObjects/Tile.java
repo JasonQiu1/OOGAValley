@@ -2,7 +2,6 @@ package oogasalad.Game.GameModel.GameObjects;
 
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
-import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 
 public class Tile {
 
@@ -11,7 +10,7 @@ public class Tile {
   private Land land;
   private GameObjectFactory factory;
 
-  public Tile(String id, int startState, GameObjectProperties properties) {
+  public Tile() {
     factory = new GameObjectFactory();
   }
 
