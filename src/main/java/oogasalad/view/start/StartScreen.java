@@ -48,84 +48,21 @@ public class StartScreen {
     editorScene = new EditorScene();
   }
 
-    /**
-     * Opens StartScreen
-     */
-    public void open() {
-        VBox vb = new VBox();
-        vb.setAlignment(Pos.CENTER);
-        vb.setSpacing(75);
-        HBox hb = new HBox();
-        hb.setSpacing(320);
-        hb.setAlignment(Pos.CENTER);
-
-        //Create the scene, initialized to a reasonable size.
-        Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-        int initialStartScreenWidth = (int) (screenBounds.getWidth() * DEFAULT_WIDTH_PORTION);
-        int initialStartScreenHeight = (int) (screenBounds.getHeight() * DEFAULT_HEIGHT_PORTION);
-
-        // Create Start Buttons
-        createButtonsFromFile(DEFAULT_RESOURCE_FOLDER + "StartScreenButtonsInfo.csv",
-            hb, stage);
-
-
-        //Create title
-        //TODO: Resources bundle this
-        Label title = new Label("OOGAVALLEY");
-        title.getStyleClass().add("title-label");
-        title.widthProperty().addListener((obs, oldVal, newVal) -> titleBob(title, newVal));
-
-        //create scene
-        vb.getChildren().add(title);
-        vb.getChildren().add(hb);
-        Scene startScreen = new Scene(vb, initialStartScreenWidth,
-                initialStartScreenHeight);
-
-        //link scene and css
-        startScreen.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-
-
-
-        stage.setTitle("OOGAVALLEY 2024");
-        stage.setScene(startScreen);
-        stage.show();
-    }
-
-    private void titleBob(Label l, Number newVal){
-        Animation animation = createAnimation(l, newVal);
-        animation.play();
-        animation.setOnFinished(event -> {
-            animation.setRate(-animation.getRate());
-            animation.play();
-        });
-    }
-
-    private Animation createAnimation(Label l, Number newVal) {
-        Path path = new Path();
-        path.getElements().addAll(
-                new MoveTo(l.getLayoutX() + newVal.doubleValue() /2, l.getLayoutY()),
-                new LineTo(l.getLayoutX() + newVal.doubleValue() /2, l.getLayoutY() + 10));
-
-        PathTransition pt = new PathTransition(Duration.seconds(1), path, l);
-        return new SequentialTransition(l, pt);
-    }
-
-
-    public static void createButtonsFromFile(String filename, HBox root, Stage stage) {
-      try {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
-        String line;
-        while ((line = reader.readLine()) != null) {
-          String[] parts = line.split(",\\s*");
-          if (parts.length == 4) {
-            makeButton(parts[0], parts[1], parts[2], parts[3], root, stage);
-          }
+  public static void createButtonsFromFile(String filename, HBox root, Stage stage) {
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(filename));
+      String line;
+      while ((line = reader.readLine()) != null) {
+        String[] parts = line.split(",\\s*");
+        if (parts.length == 4) {
+          makeButton(parts[0], parts[1], parts[2], parts[3], root, stage);
         }
-        reader.close();
-      } catch (Exception e) {
-        e.printStackTrace();
       }
+      reader.close();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
+  }
 
   public static void makeButton(String label, String color, String className, String methodName,
       HBox root, Stage stage) {
