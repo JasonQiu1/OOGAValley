@@ -1,16 +1,17 @@
 package oogasalad.view.shopping.components.shopblock;
 
+import java.util.List;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import java.util.List;
 import oogasalad.Game.GameModel.shop.Item;
 import oogasalad.Game.GameModel.shop.Shop;
 
 public class ShopStackPane extends StackPane {
+
   private Shop shop;
   private GridPane gridPane;
 
@@ -32,6 +33,9 @@ public class ShopStackPane extends StackPane {
     int row = 0;
     for (Item item : items) {
       SellItemVbox sellItemVbox = new SellItemVbox(item);
+      sellItemVbox.getSellButton().setOnAction(e -> {
+        shop.addMoney(item.getPrices());
+      });
       gridPane.add(sellItemVbox, column, row);
       column++;
       if (column == 2) {

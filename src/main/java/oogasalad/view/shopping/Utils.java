@@ -1,6 +1,7 @@
 package oogasalad.view.shopping;
 
 public class Utils {
+
   public static final double progressBarWidth = 100;
   public static final double progressBarHeight = 30;
   public static final double coinImageWidth = 25;

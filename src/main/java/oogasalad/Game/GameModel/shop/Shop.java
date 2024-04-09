@@ -32,7 +32,9 @@ public class Shop {
   public double getCurrentMoney() {
     return currentMoney;
   }
-
+  public void addMoney(double money) {
+    currentMoney += money;
+  }
   public double getCurrentEnergy() {
     return currentEnergy;
   }

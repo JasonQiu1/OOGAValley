@@ -3,12 +3,12 @@ package oogasalad.view.shopping.components.top;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import oogasalad.Game.GameModel.shop.Shop;
 import oogasalad.view.shopping.Utils;
 
 public class TopHbox extends HBox {
+
   private CurrentMoneyHbox currentMoneyHbox;
   private ProgressBarHbox progressBarHbox;
 
@@ -36,5 +36,10 @@ public class TopHbox extends HBox {
 
   public ProgressBarHbox getProgressBarHbox() {
     return progressBarHbox;
+  }
+
+  public void update() {
+    currentMoneyHbox.update();
+    progressBarHbox.update(1);
   }
 }
