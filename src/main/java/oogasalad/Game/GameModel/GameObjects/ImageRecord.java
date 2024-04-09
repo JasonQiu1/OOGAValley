@@ -4,7 +4,6 @@ package oogasalad.Game.GameModel.GameObjects;
  * A record that encapsulates the image identifiers for various types of game objects within a single tile or unit of game space.
  * This record is designed to streamline the process of retrieving and displaying the images associated with the different
  * elements that can exist within the same location in the game world, such as collectables, structures, and land.
- *
  * By grouping these image identifiers together, the {@code ImageRecord} facilitates efficient access and management of
  * visual representations, especially useful in rendering the game's graphical interface.
  *

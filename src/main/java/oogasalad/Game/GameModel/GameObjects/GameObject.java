@@ -14,23 +14,22 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   private final String id;
   private final GameObjectProperties properties;
   private boolean expired;
-  private int state;
   private long timeSinceExpiringState;
   private String imagePath;
+  private GameTime creationTime;
 
   /**
    * Constructs a new GameObject with the specified initial state and properties.
    *
    * @param id The unique identifier for this game object.
-   * @param startState The initial state of the game object.
    * @param properties The properties defining the behavior and attributes of the game object.
    */
-  public GameObject(String id, int startState, GameObjectProperties properties) {
+  public GameObject(String id, GameObjectProperties properties, GameTime creationTime) {
     this.id = id;
-    state = startState;
     this.properties = properties;
+    this.creationTime = creationTime;
     expired = false;
-    imagePath = null;
+    imagePath = getImagePath();
   }
 
   /**
@@ -56,29 +55,22 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   }
 
   /**
-   * Retrieves the current state of the game object.
-   *
-   * @return An integer representing the current state of the game object.
-   */
-  @Override
-  public int getState() {
-    return state;
-  }
-
-  /**
    * Updates the game object based on the current game time. This method should be called
    * periodically to allow the game object to change its state and behavior over time.
    *
    * @param gameTime The current game time.
+   * @return A string representing the new ID of the game object, if it changes as a result
+   * of the update; otherwise, returns the current ID.
    */
   @Override
-  public void update(GameTime gameTime) {
-    if (gameTime.getMinute() != 0
-        && gameTime.getMinute() % properties.modifiedTimeToUpdate(gameTime) == 0) {
-      state = properties.nextUpdatingState(state);
-      imagePath = properties.newImagePath(state);
+  public String update(GameTime gameTime) {
+    String newId = id;
+    if (creationTime.getDifferenceInMinutes(gameTime) > properties.modifiedTimeToUpdate(gameTime)) {
+      newId = properties.getNextUpdateGameObject();
     }
     updateExpired();
+
+    return newId;
   }
 
   /**
@@ -93,11 +85,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public String interact(Item item) {
     String newId = id;
-    if (properties.validInteractingItem(state, item)) {
-      if (properties.nextInteractingStateIsNewGameObject(state, item)) {
-        newId = properties.nextInteractingGameObject(state, item);
-      }
-      state = properties.nextInteractingState(state, item);
+    if (properties.validInteractingItem(item)) {
+        newId = properties.nextInteractingGameObject(item);
     }
     updateExpired();
 
@@ -113,7 +102,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public boolean interactionValid(Item item) {
-    return properties.validInteractingItem(state, item);
+    return properties.validInteractingItem(item);
   }
 
   /**
@@ -121,7 +110,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * has reached its expiring state and, if so, marks it as expired after a defined period.
    */
   private void updateExpired() {
-    if (!expired && properties.getExpiringState() == state) {
+    if (!expired && properties.doesExpire()) {
       expired = true;
       timeSinceExpiringState = System.currentTimeMillis();
     }

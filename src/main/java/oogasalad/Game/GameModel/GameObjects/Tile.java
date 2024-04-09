@@ -36,7 +36,7 @@ public class Tile {
       String newCollectable = collectable.interact(item);
       setNewGameObject(newCollectable, collectable.getId());
     } else if (structure != null && structure.interactionValid(item)) {
-      if (collectable == null && structure.getIsExpiringState() &&
+      if (collectable == null &&
           structure.isHarvestable()) {
         String newCollectable = structure.getCollectableOnDestruction();
         setNewGameObject(newCollectable, collectable.getId());
@@ -75,6 +75,7 @@ public class Tile {
     }
   }
 
+  // make map
   private ItemsToAdd updateExpired() {
     ItemsToAdd items = null;
     if (collectable.isExpired() || collectable.shouldICollect()) {
