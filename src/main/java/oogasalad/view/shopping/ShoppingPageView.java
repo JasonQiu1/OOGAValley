@@ -12,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import oogasalad.Game.GameModel.shop.Item;
+import oogasalad.Game.GameModel.shop.SellItem;
 import oogasalad.Game.GameModel.shop.Shop;
 import oogasalad.view.ViewablePng;
 import oogasalad.view.branch.BranchBase;
@@ -44,8 +44,8 @@ public class ShoppingPageView extends BranchBase {
     borderPane.setTop(new Text("Shop"));
     borderPane.setCenter(shoppingItem);
     borderPane.setBottom(back);
-    List<Item> itemList = shop.getItems();
-    showItemOnScreen(itemList, 0, shoppingItem);
+    List<SellItem> sellItemList = shop.getItems();
+    showItemOnScreen(sellItemList, 0, shoppingItem);
     back.setOnMouseClicked(event -> {
       getStage().setScene(getPreviousScene());
     });
@@ -55,23 +55,23 @@ public class ShoppingPageView extends BranchBase {
     return borderPane;
   }
 
-  private void showItemOnScreen(List<Item> itemList, int idx, GridPane shoppingItem) {
-    if (idx == itemList.size()) {
+  private void showItemOnScreen(List<SellItem> sellItemList, int idx, GridPane shoppingItem) {
+    if (idx == sellItemList.size()) {
       return;
     }
-    Item item = itemList.get(idx);
+    SellItem sellItem = sellItemList.get(idx);
     try {
-      ViewablePng viewablePng = new ViewablePng(item.getUrl(), width, 30);
-      Text text = new Text(item.getPrices() + "");
+      ViewablePng viewablePng = new ViewablePng(sellItem.getUrl(), width, 30);
+      Text text = new Text(sellItem.getPrices() + "");
       ImageView imageView = new ImageView(viewablePng.getImage());
       VBox vBox = new VBox();
       vBox.getChildren().add(imageView);
       vBox.getChildren().add(text);
       vBox.setOnMouseClicked(event -> {
-        LOG.info(item.getPrices());
+        LOG.info(sellItem.getPrices());
       });
       shoppingItem.add(vBox, idx % column, idx / column);
-      showItemOnScreen(itemList, idx + 1, shoppingItem);
+      showItemOnScreen(sellItemList, idx + 1, shoppingItem);
     } catch (FileNotPngException | FileNotFoundException e) {
       throw new RuntimeException(e);
     }

@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.gameplay.PlantModel;
+import oogasalad.Game.GameModel.shop.Bag;
 import oogasalad.view.shopping.ShoppingPageView;
 import oogasalad.view.item.BagItemView;
 import oogasalad.view.item.LandView;
@@ -65,6 +66,7 @@ public class PlayingPageView extends Application {
   private ToolView toolView;
   private BagItemView bagItemView;
   private TopAnimationView topAnimationView;
+  private Bag bag = new Bag();
 
   @Override
   public void start(Stage primaryStage) {
@@ -98,7 +100,7 @@ public class PlayingPageView extends Application {
     tools.add(tool2);
     toolView = new ToolView(tools, 5, 1);
 
-    bagItemView = new BagItemView(5, 1);
+    bagItemView = new BagItemView(5, 1, bag);
     topAnimationView = new TopAnimationView(bagItemView, windowWidth, windowHeight);
 
     List<PlantModel> plantModelList = new ArrayList<>();
