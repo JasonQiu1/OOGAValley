@@ -8,25 +8,20 @@ import oogasalad.Game.GameModel.WrapperStateAndItem;
 
 public abstract class GameObjectProperties {
 
-  private Map<Integer, Integer> updatingStateMapings;
-  private Map<WrapperStateAndItem, Integer> interactingStateMapings;
-  private Map<WrapperStateAndItem, String> interactingNewGameObjectMapings;
+  private String nextUpdateGameObject;
+  private Map<String, String> interactingNewGameObjectMapings;
   private Map<String, Double> conditionalPreferenceMultipliers;
-  private List<String> images;
+  private String image;
   private String gameObjectAfterExpiration;
-  private int expiringState;
-  private long expiringTime;
-  private long defaultUpdateTime;
+  private boolean expiringState;
+  private int expiringTime;
+  private int defaultUpdateTime;
 
   public long modifiedTimeToUpdate(GameTime gameTime) {
     return defaultUpdateTime;
   }
 
-  public int nextUpdatingState(int state) {
-    return updatingStateMapings.get(state);
-  }
-
-  public int getExpiringState() {
+  public boolean doesExpire() {
     return expiringState;
   }
 
@@ -34,24 +29,17 @@ public abstract class GameObjectProperties {
     return expiringTime;
   }
 
-  public boolean validInteractingItem(int state, Item item) {
-    return interactingStateMapings.containsKey(new WrapperStateAndItem(item, state));
+  public boolean validInteractingItem(Item item) {
+    return interactingNewGameObjectMapings.containsKey(item.toString());
   }
 
-  public boolean nextInteractingStateIsNewGameObject(int state, Item item) {
-    return interactingNewGameObjectMapings.containsKey(new WrapperStateAndItem(item, state));
+  public String nextInteractingGameObject(Item item) {
+    return interactingNewGameObjectMapings.get(item.toString()
+    );
   }
 
-  public String nextInteractingGameObject(int state, Item item) {
-    return interactingNewGameObjectMapings.get(new WrapperStateAndItem(item, state));
-  }
-
-  public int nextInteractingState(int state, Item item) {
-    return interactingStateMapings.get(new WrapperStateAndItem(item, state));
-  }
-
-  public String newImagePath(int state) {
-    return images.get(state);
+  public String getImagePath() {
+    return image;
   }
 
   public String getGameObjectAfterExpiration() {

@@ -75,6 +75,7 @@ public class Tile {
     }
   }
 
+  // make map
   private ItemsToAdd updateExpired() {
     ItemsToAdd items = null;
     if (collectable.isExpired() || collectable.shouldICollect()) {
