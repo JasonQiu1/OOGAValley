@@ -15,6 +15,8 @@ public class Utils {
   public static final double priceHeight = 80;
   public static final double sellButtonWidth = 100;
   public static final double sellButtonHeight = 30;
+  public static final double itemRemainWidth = 100;
+  public static final double itemRemainHeight = 40;
 
 
 }
