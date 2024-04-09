@@ -2,7 +2,10 @@ package oogasalad.Game.GameModel;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import oogasalad.Game.GameModel.exception.BadGsonLoadException;
+import oogasalad.Game.GameModel.exception.KeyNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,6 +32,7 @@ public class GameConfiguration {
       LOG.error("Couldn't load default GameRules 'templates/GameRules.json'.");
       throw new RuntimeException(e);
     }
+    gameConfigurables = new HashMap<>();
     initialState = new GameState();
   }
 
@@ -59,6 +63,22 @@ public class GameConfiguration {
     return rules;
   }
 
+  /**
+   * Gets the read-only version of a configurable (GameObject, Item, etc.) that exists in this game
+   * configuration.
+   *
+   * @param id the id of the configurable.
+   * @return the ReadOnlyProperties of the configurable.
+   * @throws KeyNotFoundException if the id does not exist.
+   */
+  public ReadOnlyProperties getConfigurable(String id) throws KeyNotFoundException {
+    if (!gameConfigurables.containsKey(id)) {
+      LOG.error("Could not find properties for id '{}'.", id);
+      throw new KeyNotFoundException(id);
+    }
+    return gameConfigurables.get(id);
+  }
+
   public GameState getInitialState() {
     return initialState;
   }
@@ -67,13 +87,9 @@ public class GameConfiguration {
     this.initialState = initialState;
   }
 
-  public void setRules(Properties rules) {
-    // TODO: VALIDATE RULES BEFORE SETTING THEM
-    this.rules = rules;
-  }
-
-  private Properties rules;
   private GameState initialState;
+  private final Properties rules;
+  private final Map<String, Properties> gameConfigurables;
   private static final DataFactory<GameConfiguration> FACTORY =
       new DataFactory<>(GameConfiguration.class);
   private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
