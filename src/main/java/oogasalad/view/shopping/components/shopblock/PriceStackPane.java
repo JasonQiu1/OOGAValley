@@ -8,6 +8,7 @@ import javafx.scene.layout.StackPane;
 import oogasalad.view.shopping.Utils;
 
 public class PriceStackPane extends StackPane {
+
   private Label priceLabel;
 
   public PriceStackPane(double price) {

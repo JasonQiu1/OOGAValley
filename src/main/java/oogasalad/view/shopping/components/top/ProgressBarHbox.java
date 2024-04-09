@@ -1,7 +1,5 @@
 package oogasalad.view.shopping.components.top;
 
-import javafx.scene.layout.HBox;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
@@ -9,6 +7,7 @@ import oogasalad.Game.GameModel.shop.Shop;
 import oogasalad.view.shopping.Utils;
 
 public class ProgressBarHbox extends HBox {
+
   private Button button;
   private ProgressBar progressBar;
   private Shop shop;
@@ -27,7 +26,7 @@ public class ProgressBarHbox extends HBox {
     getChildren().addAll(button, progressBar);
   }
 
-  public void updateProgress(double progress) {
+  public void update(double progress) {
     progressBar.setProgress(progress);
   }
 
