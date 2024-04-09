@@ -3,6 +3,7 @@ package oogasalad;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import oogasalad.view.start.PlayModeSplashScreen;
 import oogasalad.view.start.StartScreen;
 
 /**
@@ -25,7 +26,11 @@ public class Main extends Application {
   }
 
   @Override
+//  public void start(Stage primaryStage) {
+//    new StartScreen(primaryStage).open();
+//  }
+
   public void start(Stage primaryStage) {
-    new StartScreen(primaryStage).open();
+    new StartScreen().open(primaryStage);
   }
 }

@@ -18,8 +18,8 @@ public class ViewTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    ss = new StartScreen(stage);
-    ss.open();
+    ss = new StartScreen();
+    ss.open(stage);
     this.create = (ChangePageButton) lookup("#Create").queryButton();
   }
 
