@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
  *
  * @author Jason Qiu
  */
-public class Properties {
+class Properties implements ReadOnlyProperties {
 
   /**
    * Creates and returns an instance of {@link Properties} from a JSON file.
@@ -47,6 +47,7 @@ public class Properties {
    * @return the property's value's raw string.
    * @throws KeyNotFoundException if the key does not exist.
    */
+  @Override
   public String getString(String key) throws KeyNotFoundException {
     throwIfKeyNotFound(properties, key);
     return properties.get(key);
@@ -60,6 +61,7 @@ public class Properties {
    * @throws KeyNotFoundException   if the key does not exist.
    * @throws BadValueParseException if the string value cannot be parsed into a boolean.
    */
+  @Override
   public boolean getBoolean(String key) throws KeyNotFoundException, BadValueParseException {
     final String rawValue = getString(key);
     return switch (rawValue.toLowerCase()) {
@@ -80,6 +82,7 @@ public class Properties {
    * @throws KeyNotFoundException   if the key does not exist.
    * @throws BadValueParseException if the string value cannot be parsed into a double.
    */
+  @Override
   public double getDouble(String key) throws KeyNotFoundException, BadValueParseException {
     final String rawValue = getString(key);
     try {
@@ -97,6 +100,7 @@ public class Properties {
    * @return the property's value's raw string list.
    * @throws KeyNotFoundException if the key does not exist.
    */
+  @Override
   public List<String> getStringList(String key) throws KeyNotFoundException {
     throwIfKeyNotFound(listProperties, key);
     return listProperties.get(key);
@@ -109,6 +113,7 @@ public class Properties {
    * @return the property's value's raw string map.
    * @throws KeyNotFoundException if the key does not exist.
    */
+  @Override
   public Map<String, String> getStringMap(String key) throws KeyNotFoundException {
     throwIfKeyNotFound(mapProperties, key);
     return mapProperties.get(key);
@@ -122,6 +127,7 @@ public class Properties {
    * @throws KeyNotFoundException   if the key does not exist.
    * @throws BadValueParseException if the string value cannot be parsed into an integer.
    */
+  @Override
   public int getInteger(String key) throws KeyNotFoundException, BadValueParseException {
     final String rawValue = getString(key);
     try {
@@ -168,14 +174,17 @@ public class Properties {
     mapProperties.put(key, Map.copyOf(map));
   }
 
+  @Override
   public Map<String, String> getCopyOfProperties() {
     return Map.copyOf(properties);
   }
 
+  @Override
   public Map<String, List<String>> getCopyOfListProperties() {
     return Map.copyOf(listProperties);
   }
 
+  @Override
   public Map<String, Map<String, String>> getCopyOfMapProperties() {
     return Map.copyOf(mapProperties);
   }

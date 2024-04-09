@@ -51,7 +51,7 @@ public class GameConfiguration {
     FACTORY.save(Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(), this);
   }
 
-  public Properties getRules() {
+  public ReadOnlyProperties getRules() {
     return rules;
   }
 
