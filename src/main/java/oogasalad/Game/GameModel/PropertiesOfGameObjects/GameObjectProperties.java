@@ -25,6 +25,10 @@ public abstract class GameObjectProperties {
     return expiringState;
   }
 
+  public String getNextUpdateGameObject() {
+    return nextUpdateGameObject;
+  }
+
   public long getTimeToExpired() {
     return expiringTime;
   }

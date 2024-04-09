@@ -18,18 +18,9 @@ public interface Updatable {
    * such as moving, reacting to game events, or updating internal state.
    *
    * @param gameTime The current game time, providing context for time-based updates.
+   * @return The String id of the new GameObject that this will update into.
    */
-  void update(GameTime gameTime);
-
-  /**
-   * Retrieves the current state of the object. The specific meaning of the state value is
-   * defined by the implementing class. This could represent different stages in an object's
-   * lifecycle, various conditions it might be in, or other stateful distinctions relevant to
-   * the game's logic.
-   *
-   * @return An integer representing the current state of the object.
-   */
-  int getState();
+  String update(GameTime gameTime);
 
 }
 

@@ -1,5 +1,6 @@
 package oogasalad.Game.GameModel.GameObjects;
 
+import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.CollectableProperties;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
@@ -20,12 +21,11 @@ public class Collectable extends GameObject implements Collect {
    * properties that define its collectable nature.
    *
    * @param id The unique identifier for the collectable object.
-   * @param startState The initial state of the collectable, which may influence its interactions and collectability.
    * @param properties The properties defining the collectable behavior and attributes.
+   * @param creationTime The game time at which this object was created
    */
-  public Collectable(String id, int startState,
-      CollectableProperties properties) {
-    super(id, startState, properties);
+  public Collectable(String id, CollectableProperties properties, GameTime creationTime) {
+    super(id, properties, creationTime);
     this.properties = properties;
   }
 
@@ -38,7 +38,7 @@ public class Collectable extends GameObject implements Collect {
    */
   @Override
   public String interact(Item item) {
-    if (properties.validInteractingItem(getState(), item)) {
+    if (properties.validInteractingItem(item)) {
       interactingExpired = true;
     }
     return null;

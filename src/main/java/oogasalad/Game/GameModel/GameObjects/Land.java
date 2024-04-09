@@ -1,5 +1,6 @@
 package oogasalad.Game.GameModel.GameObjects;
 
+import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.LandProperties;
 
 /**
@@ -17,11 +18,11 @@ public class Land extends GameObject implements Plantable {
    * These properties determine the land's interactions within the game, such as its plantability.
    *
    * @param id The unique identifier for this piece of land.
-   * @param startState The initial state of the land, affecting its appearance and interactions.
    * @param properties The properties defining the behavior and characteristics of this land.
+   * @param creationTime The game time at which this object was created
    */
-  public Land(String id, int startState, LandProperties properties) {
-    super(id, startState, properties);
+  public Land(String id, LandProperties properties, GameTime creationTime) {
+    super(id, properties, creationTime);
     this.properties = properties;
   }
 
