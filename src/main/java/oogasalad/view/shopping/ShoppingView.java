@@ -14,14 +14,15 @@ public class ShoppingView extends BranchBase {
 
   private ShoppingBoaderPane root;
   private Bag bag;
+  private Shop shop;
 
-  public ShoppingView(Bag bag, Stage stage, Scene previousScene) {
+  public ShoppingView(Shop shop, Bag bag, Stage stage, Scene previousScene) {
     super(stage, previousScene);
     this.bag = bag;
+    this.shop = shop;
   }
 
   public Parent getScene() {
-    Shop shop = new Shop();
     root = new ShoppingBoaderPane(shop, bag, getStage(), getPreviousScene());
     setUpdate();
     return root;
