@@ -29,11 +29,13 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
       }
       Method method = clazz.getMethod(methodName, parameterTypes);
       Object instance = clazz.getDeclaredConstructor().newInstance();
-      if (parameters.length == 0) {
-        method.invoke(instance, stage);
-      } else {
-        method.invoke(instance, stage, (Object[]) parameters);
-      }
+
+      Object[] args = new Object[parameters.length + 1]; // +1 for the stage
+      args[0] = stage; // first argument is the stage
+      System.arraycopy(parameters, 0, args, 1, parameters.length); // copy remaining parameters
+
+      method.invoke(instance, args); // invoke the method with all parameters
+
     } catch (Exception ex) {
       ex.printStackTrace();
     }
