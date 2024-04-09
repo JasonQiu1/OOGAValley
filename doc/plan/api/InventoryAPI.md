@@ -8,7 +8,7 @@ public class InventoryAPI{
    * Removes one instance of parameter from the inventory
    * @param Item
    * @return
-   * true if item is removed
+   * true if bagItem is removed
    * false if no items are removed
    */
   public boolean consume (Item thing);
@@ -18,7 +18,7 @@ public class InventoryAPI{
  * Decrements durability of object
  * @param Item
  * @return
- * true if item durability is decremented
+ * true if bagItem durability is decremented
  * false if durability is not decremented
  */
 public boolean weaken (Item thing);

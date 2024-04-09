@@ -1,4 +1,4 @@
-package oogasalad.view.branch;
+package oogasalad.view.shopping;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import oogasalad.Game.GameModel.shop.Item;
 import oogasalad.Game.GameModel.shop.Shop;
 import oogasalad.view.ViewablePng;
+import oogasalad.view.branch.BranchBase;
 import oogasalad.view.exception.FileNotPngException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
