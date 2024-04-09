@@ -12,7 +12,7 @@ import oogasalad.view.playing.PlayingPageView;
  * This class is responsible for creating an item object that will be displayed in the bottom of the
  * screen. This class is dependent on the PlayingPageView class.
  */
-public class Item {
+public class BagItem {
 
   private final VBox container;
   private final String url;
@@ -27,7 +27,7 @@ public class Item {
    * @param num    the number of the item
    */
 
-  public Item(String url, double width, double height, int num) {
+  public BagItem(String url, double width, double height, int num) {
     this.url = url;
     Image image = new Image(url, width, height, false, true);
     ImageView imageView = new ImageView(image);

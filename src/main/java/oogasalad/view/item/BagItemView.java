@@ -7,10 +7,10 @@ import oogasalad.view.playing.PlayingPageView;
  * This class is responsible for creating an item object that will be displayed in the bottom of the
  * screen. This class is dependent on the PlayingPageView class.
  */
-public class ItemView {
+public class BagItemView {
 
   private final GridPane itemGridPane;
-  private final ItemPile[][] itemPiles;
+  private final BagItemPile[][] bagItemPiles;
   private final int colNum;
   private final int rowNum;
 
@@ -20,18 +20,18 @@ public class ItemView {
    * @param colNum the number of columns
    * @param rowNum the number of rows
    */
-  public ItemView(int colNum, int rowNum) {
+  public BagItemView(int colNum, int rowNum) {
     this.itemGridPane = new GridPane();
     this.colNum = colNum;
     this.rowNum = rowNum;
 
-    itemPiles = new ItemPile[colNum][rowNum];
+    bagItemPiles = new BagItemPile[colNum][rowNum];
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
-        ItemPile p = new ItemPile(null, i, j);
+        BagItemPile p = new BagItemPile(null, i, j);
         p.setPrefHeight(PlayingPageView.bottomCellHeight);
         p.setPrefWidth(PlayingPageView.bottomCellWidth);
-        itemPiles[i][j] = p;
+        bagItemPiles[i][j] = p;
         itemGridPane.add(p, i, j);
       }
     }
@@ -44,15 +44,15 @@ public class ItemView {
   /**
    * This method is responsible for resetting the item.
    *
-   * @param item the item
+   * @param bagItem the item
    */
-  public double[] getAddRealLocation(Item item) {
+  public double[] getAddRealLocation(BagItem bagItem) {
     double[] location = new double[2];
     double[] index = new double[2];
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
-        if (itemPiles[i][j].getItem() != null && itemPiles[i][j].getItem().getUrl()
-            .equals(item.getUrl())) {
+        if (bagItemPiles[i][j].getItem() != null && bagItemPiles[i][j].getItem().getUrl()
+            .equals(bagItem.getUrl())) {
           index[0] = i;
           index[1] = j;
           break;
@@ -69,23 +69,23 @@ public class ItemView {
   /**
    * This method is responsible for adding an item.
    *
-   * @param item the item
+   * @param bagItem the item
    */
-  public void addItem(Item item) {
+  public void addItem(BagItem bagItem) {
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
-        if (itemPiles[i][j].getItem() != null && itemPiles[i][j].getItem().getUrl()
-            .equals(item.getUrl())) {
-          itemPiles[i][j].getItem().addOne();
+        if (bagItemPiles[i][j].getItem() != null && bagItemPiles[i][j].getItem().getUrl()
+            .equals(bagItem.getUrl())) {
+          bagItemPiles[i][j].getItem().addOne();
           return;
         }
       }
     }
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
-        if (itemPiles[i][j].getItem() == null) {
-          itemPiles[i][j].setItem(
-              new Item(item.getUrl(), PlayingPageView.bottomCellWidth,
+        if (bagItemPiles[i][j].getItem() == null) {
+          bagItemPiles[i][j].setItem(
+              new BagItem(bagItem.getUrl(), PlayingPageView.bottomCellWidth,
                   PlayingPageView.bottomCellHeight,
                   1));
           return;

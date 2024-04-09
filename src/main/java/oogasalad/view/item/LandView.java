@@ -16,7 +16,7 @@ public class LandView {
   private final GridPane landGridPane;
 
   private final List<PlantView> plantViewList;
-  private final ItemView itemView;
+  private final BagItemView bagItemView;
   private final TopAnimationView topAnimationView;
   private Pile[][] piles;
 
@@ -33,7 +33,7 @@ public class LandView {
    *                       tile
    */
   public LandView(List<PlantModel> plantModelList, GameTime gameTime, SelectedItem selectedItem,
-      ItemView itemView, TopAnimationView topAnimationView) {
+      BagItemView bagItemView, TopAnimationView topAnimationView) {
     double height = PlayingPageView.landGridPaneHeight;
     double width = PlayingPageView.landGridPaneWidth;
     int column = PlayingPageView.landNumCols;
@@ -60,7 +60,7 @@ public class LandView {
       this.piles[p.getX()][p.getY()].setPlantView(plantView);
       plantViewList.add(plantView);
     }
-    this.itemView = itemView;
+    this.bagItemView = bagItemView;
     this.topAnimationView = topAnimationView;
   }
 
@@ -105,14 +105,14 @@ public class LandView {
           pile.getPlantView().getProgress(gameTime) == 1.0 &&
           pile.getPlantView().getToolUrl().equals(selectedItem.getSelected())) {
         plantViewList.remove(pile.getPlantView());
-        Item newItem = new Item(pile.getPlantView().getItemUrl(), PlayingPageView.bottomCellWidth,
+        BagItem newBagItem = new BagItem(pile.getPlantView().getItemUrl(), PlayingPageView.bottomCellWidth,
             PlayingPageView.bottomCellHeight, 1);
 
-        topAnimationView.collectItemAnimation(newItem,
+        topAnimationView.collectItemAnimation(newBagItem,
             pile.getCellPosition()[1] - PlayingPageView.windowWidth / 2,
             pile.getCellPosition()[0] - PlayingPageView.windowHeight / 2,
-            itemView.getAddRealLocation(newItem)[1] - PlayingPageView.windowWidth / 2,
-            itemView.getAddRealLocation(newItem)[0] - PlayingPageView.windowHeight / 2, 3.0);
+            bagItemView.getAddRealLocation(newBagItem)[1] - PlayingPageView.windowWidth / 2,
+            bagItemView.getAddRealLocation(newBagItem)[0] - PlayingPageView.windowHeight / 2, 3.0);
         pile.removePlant();
       }
     }
