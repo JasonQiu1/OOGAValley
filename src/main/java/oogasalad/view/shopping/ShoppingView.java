@@ -2,26 +2,29 @@ package oogasalad.view.shopping;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import oogasalad.Game.GameModel.shop.Bag;
 import oogasalad.Game.GameModel.shop.Shop;
+import oogasalad.view.branch.BranchBase;
 
-public class ShoppingView extends Application {
+public class ShoppingView extends BranchBase {
 
   private ShoppingBoaderPane root;
+  private Bag bag;
 
-  @Override
-  public void start(Stage primaryStage) throws Exception {
+  public ShoppingView(Bag bag, Stage stage, Scene previousScene) {
+    super(stage, previousScene);
+    this.bag = bag;
+  }
+
+  public Parent getScene() {
     Shop shop = new Shop();
-    root = new ShoppingBoaderPane(shop);
+    root = new ShoppingBoaderPane(shop, bag, getStage(), getPreviousScene());
     setUpdate();
-
-    Scene scene = new Scene(root, 800, 500);
-    scene.getStylesheets().add("styles.css");
-    primaryStage.setScene(scene);
-    primaryStage.show();
+    return root;
   }
 
   private void setUpdate() {

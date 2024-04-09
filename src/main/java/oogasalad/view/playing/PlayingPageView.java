@@ -20,13 +20,13 @@ import javafx.util.Duration;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.gameplay.PlantModel;
 import oogasalad.Game.GameModel.shop.Bag;
-import oogasalad.view.shopping.ShoppingPageView;
 import oogasalad.view.item.BagItemView;
 import oogasalad.view.item.LandView;
 import oogasalad.view.item.SelectedItem;
 import oogasalad.view.item.Tool;
 import oogasalad.view.item.ToolView;
 import oogasalad.view.item.TopAnimationView;
+import oogasalad.view.shopping.ShoppingView;
 
 /**
  * This class is the view for the playing page. It displays the land grid, tools, and items. It also
@@ -166,8 +166,10 @@ public class PlayingPageView extends Application {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingPageView shoppingPageView = new ShoppingPageView(stage, scene);
-    stage.setScene(new Scene(shoppingPageView.getScene()));
+    ShoppingView shoppingPageView = new ShoppingView(bag, stage, scene);
+    Scene shoppingScene = new Scene(shoppingPageView.getScene());
+    shoppingScene.getStylesheets().add("styles.css");
+    stage.setScene(shoppingScene);
     stage.show();
   }
 }
