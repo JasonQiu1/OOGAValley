@@ -30,12 +30,6 @@ class DataFactory<T> {
    * @param clazz the class that the DataFactory is (de)serializing instances of.
    */
   public DataFactory(Class<T> clazz) {
-    this.gson =
-        new GsonBuilder().setPrettyPrinting().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
-            .serializeNulls()
-            // LENIENT MAY INTRODUCE BUGS, BUT ALSO MAKES MANUALLY EDITING DATA FILES MORE FORGIVING
-            .setLenient()
-            .create();
     this.clazz = clazz;
   }
 
@@ -51,7 +45,7 @@ class DataFactory<T> {
   public T load(String dataFilePath) throws BadGsonLoadException, IOException {
     File dataFile = new File(DATA_DIRECTORY, addDataFileExtension(dataFilePath));
     try (Reader dataReader = new FileReader(dataFile)) {
-      return gson.fromJson(dataReader, clazz);
+      return GSON.fromJson(dataReader, clazz);
     } catch (JsonSyntaxException e) {
       LOG.error("Couldn't load `{}` as an instance of {} using Gson.", dataFile.toString(),
           clazz.getTypeName());
@@ -73,7 +67,7 @@ class DataFactory<T> {
   public void save(String dataFilePath, T object) throws IOException {
     File dataFile = new File(DATA_DIRECTORY, addDataFileExtension(dataFilePath));
     try (Writer writer = new FileWriter(dataFile, false)) {
-      writer.write(gson.toJson(object));
+      writer.write(GSON.toJson(object));
     } catch (IOException e) {
       LOG.error("Error writing to '{}' when trying to serialize object '{}'.",
           dataFile.getAbsolutePath(), object.toString());
@@ -82,7 +76,11 @@ class DataFactory<T> {
   }
 
   private final Class<T> clazz;
-  private final Gson gson;
+  private static final Gson GSON =
+      new GsonBuilder().setPrettyPrinting().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+          .serializeNulls()
+          // LENIENT MAY INTRODUCE BUGS, BUT ALSO MAKES MANUALLY EDITING DATA FILES MORE FORGIVING
+          .setLenient().create();
   // TODO: Maybe externalize this to a config? I can't see this directory ever changing though.
   public static final String DATA_DIRECTORY = "data";
   public static final String DATA_FILE_EXTENSION = "json";
