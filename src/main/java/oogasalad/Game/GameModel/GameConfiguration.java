@@ -23,8 +23,12 @@ public class GameConfiguration {
    * Initializes the game configuration to a set of default rules and initial state.
    */
   public GameConfiguration() {
-    // TODO: MAKE DEFAULT RULES FILE TO LOAD BY DEFAULT, THEN UNCOMMENT BELOW
-    // rules = Properties.of("pathToDefaultRules");
+    try {
+      rules = Properties.of(Paths.get("templates", "GameRules").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameRules 'templates/GameRules.json'.");
+      throw new RuntimeException(e);
+    }
     initialState = new GameState();
   }
 
