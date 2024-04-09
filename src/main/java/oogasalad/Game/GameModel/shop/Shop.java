@@ -23,6 +23,9 @@ public class Shop {
     sellItems.add(new SellItem(500, "img/tool.png"));
     sellItems.add(new SellItem(200, "img/rock.png"));
     sellItems.add(new SellItem(100, "img/panda.png"));
+    sellItems.add(new SellItem(500, "img/tool.png"));
+    sellItems.add(new SellItem(200, "img/rock.png"));
+    sellItems.add(new SellItem(100, "img/panda.png"));
   }
 
   public List<SellItem> getItems() {
