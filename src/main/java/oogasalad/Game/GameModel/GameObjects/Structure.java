@@ -8,7 +8,7 @@ import oogasalad.Game.GameModel.PropertiesOfGameObjects.StructureProperties;
  * and having a particular state that leads to expiration. This class encapsulates the behavior specific
  * to structures, including interactions that may result in the creation of collectable items upon destruction.
  */
-public class Structure extends GameObject {
+public class Structure extends GameObject implements StructureObject {
 
   private StructureProperties properties;
 
@@ -32,6 +32,7 @@ public class Structure extends GameObject {
    *
    * @return A String representing the ID of the collectable item produced upon the structure's destruction.
    */
+  @Override
   public String getCollectableOnDestruction() {
     return properties.getCollectableOnDestruction();
   }
@@ -42,6 +43,7 @@ public class Structure extends GameObject {
    *
    * @return {@code true} if the structure is in its expiring state, {@code false} otherwise.
    */
+  @Override
   public boolean getIsExpiringState() {
     return getState() == properties.getExpiringState();
   }
@@ -52,6 +54,7 @@ public class Structure extends GameObject {
    *
    * @return {@code true} if the structure is harvestable in its current state, {@code false} otherwise.
    */
+  @Override
   public boolean isHarvestable() {
     return properties.isHarvestable();
   }
