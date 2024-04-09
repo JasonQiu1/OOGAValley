@@ -1,12 +1,12 @@
 package oogasalad.view.shopping.components.shopblock;
 
+import java.util.List;
 import javafx.scene.layout.GridPane;
 import oogasalad.Game.GameModel.shop.SellItem;
 import oogasalad.Game.GameModel.shop.Shop;
 
-import java.util.List;
-
 public class SellGridPane extends GridPane {
+
   private Shop shop;
 
   public SellGridPane(Shop shop) {

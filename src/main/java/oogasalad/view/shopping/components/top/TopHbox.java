@@ -11,6 +11,7 @@ public class TopHbox extends HBox {
 
   private CurrentMoneyHbox currentMoneyHbox;
   private ProgressBarHbox progressBarHbox;
+  private Button backButton;
 
   public TopHbox(Shop shop) {
     super();
@@ -23,7 +24,7 @@ public class TopHbox extends HBox {
     setAlignment(Pos.CENTER_LEFT);
     currentMoneyHbox = new CurrentMoneyHbox(shop);
     progressBarHbox = new ProgressBarHbox(shop);
-    Button backButton = new BackButton();
+    backButton = new BackButton();
     getChildren().addAll(progressBarHbox, currentMoneyHbox, backButton);
 
     setMargin(this, new Insets(10));
@@ -41,5 +42,9 @@ public class TopHbox extends HBox {
   public void update() {
     currentMoneyHbox.update();
     progressBarHbox.update(1);
+  }
+
+  public Button getBackButton() {
+    return backButton;
   }
 }
