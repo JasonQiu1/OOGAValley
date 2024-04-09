@@ -3,13 +3,13 @@ package oogasalad.Game.GameModel.shop;
 /**
  * Items the shop provides
  */
-public class Item {
+public class SellItem {
 
   private final int prices;
 
   private final String url;
 
-  public Item(int prices, String url) {
+  public SellItem(int prices, String url) {
     this.prices = prices;
     this.url = url;
   }

@@ -19,13 +19,14 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.gameplay.PlantModel;
-import oogasalad.view.branch.ShoppingPageView;
-import oogasalad.view.item.ItemView;
+import oogasalad.Game.GameModel.shop.Bag;
+import oogasalad.view.item.BagItemView;
 import oogasalad.view.item.LandView;
 import oogasalad.view.item.SelectedItem;
 import oogasalad.view.item.Tool;
 import oogasalad.view.item.ToolView;
 import oogasalad.view.item.TopAnimationView;
+import oogasalad.view.shopping.ShoppingView;
 
 /**
  * This class is the view for the playing page. It displays the land grid, tools, and items. It also
@@ -63,8 +64,9 @@ public class PlayingPageView extends Application {
   private Stage stage;
   private LandView landView;
   private ToolView toolView;
-  private ItemView itemView;
+  private BagItemView bagItemView;
   private TopAnimationView topAnimationView;
+  private Bag bag = new Bag();
 
   @Override
   public void start(Stage primaryStage) {
@@ -80,7 +82,7 @@ public class PlayingPageView extends Application {
     StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
-    scene.getStylesheets().add("css/playing_css.css");
+    scene.getStylesheets().add("styles.css");
     scene.setOnMouseClicked(event -> {
     });
     primaryStage.setTitle("Playing Mode");
@@ -98,18 +100,11 @@ public class PlayingPageView extends Application {
     tools.add(tool2);
     toolView = new ToolView(tools, 5, 1);
 
-    String[] imagePath = {"/img/half_panda.png", "/img/panda.png"};
-    itemView = new ItemView(5, 1);
-    topAnimationView = new TopAnimationView(itemView, windowWidth, windowHeight);
+    bagItemView = new BagItemView(5, 1, bag);
+    topAnimationView = new TopAnimationView(bagItemView, windowWidth, windowHeight);
 
     List<PlantModel> plantModelList = new ArrayList<>();
-    plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
-        new GameTime(0, 6, 30), imagePath, "img/tool.png",
-        "img/wheat.png", 0, 0));
-    plantModelList.add(new PlantModel(new GameTime(1, 2, 0),
-        new GameTime(0, 15, 30), imagePath, "img/tool.png",
-        "img/wheat.png", 1, 0));
-    landView = new LandView(plantModelList, gameTime, selectedItem, itemView, topAnimationView);
+    landView = new LandView(plantModelList, gameTime, selectedItem, bagItemView, topAnimationView);
   }
 
   private void setUpdate() {
@@ -123,7 +118,7 @@ public class PlayingPageView extends Application {
   }
 
   private void updateTimeLabel() {
-    timeLabel.setText(gameTime.toString());
+    timeLabel.setText("Time: " + gameTime);
   }
 
 
@@ -131,9 +126,11 @@ public class PlayingPageView extends Application {
     HBox topBox = new HBox();
     topBox.setPrefSize(topWidth, topHeight);
     topBox.getStyleClass().add("top-box");
-    Button btnOpenShop = new Button("Shop");
+    Button btnOpenShop = new Button();
+    btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
-    topBox.getChildren().addAll(new Label("Time: "), timeLabel, energyProgressBar, btnOpenShop);
+    timeLabel.getStyleClass().add("play-top-label");
+    topBox.getChildren().addAll(timeLabel, energyProgressBar, btnOpenShop);
     root.setTop(topBox);
   }
 
@@ -148,7 +145,7 @@ public class PlayingPageView extends Application {
     bottomBox.setPrefSize(bottomWidth, bottomHeight);
     bottomBox.getStyleClass().add("bottom-box");
     GridPane toolGridPane = toolView.getToolGridPane();
-    GridPane itemGridPane = itemView.getItemGridPane();
+    GridPane itemGridPane = bagItemView.getItemGridPane();
     toolGridPane.setStyle("-fx-background-color: lightgray;" + "-fx-padding: 10;");
     itemGridPane.setStyle("-fx-background-color: lightgray;");
     HBox.setMargin(itemGridPane, new javafx.geometry.Insets(0, 0, 0, bottomBoxPadding));
@@ -169,8 +166,10 @@ public class PlayingPageView extends Application {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingPageView shoppingPageView = new ShoppingPageView(stage, scene);
-    stage.setScene(new Scene(shoppingPageView.getScene()));
+    ShoppingView shoppingPageView = new ShoppingView(bag, stage, scene);
+    Scene shoppingScene = new Scene(shoppingPageView.getScene());
+    shoppingScene.getStylesheets().add("styles.css");
+    stage.setScene(shoppingScene);
     stage.show();
   }
 }

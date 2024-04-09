@@ -26,3 +26,109 @@
   -fx-font-family: "Press Start 2P";
   -fx-text-fill: black;
 }
+
+.top-box {
+  -fx-alignment: center;
+  -fx-spacing: 10;
+}
+
+.bottom-box {
+  -fx-alignment: center;
+  -fx-spacing: 10;
+}
+
+.land-grid-pane {
+  -fx-padding: 10px;
+  -fx-hgap: 1;
+  -fx-vgap: 1;
+}
+
+.tool-grid-pane {
+  -fx-padding: 10px;
+  -fx-border-color: black;
+  -fx-hgap: 1;
+  -fx-vgap: 1;
+}
+
+
+.item-grid-pane {
+  -fx-padding: 10px;
+  -fx-border-color: black;
+  -fx-hgap: 1;
+  -fx-vgap: 1;
+}
+
+
+.side-box {
+  -fx-pref-width: 40;
+}
+
+.play-top-label {
+  -fx-font-size: 8px;
+  -fx-font-family: "Press Start 2P";
+  -fx-text-fill: black;
+}
+
+.shop-money-label {
+  -fx-font-size: 10px;
+  -fx-font-family: "Press Start 2P";
+  -fx-text-fill: white;
+}
+.shop-price-label {
+  -fx-font-size: 9px;
+  -fx-font-family: "Press Start 2P";
+  -fx-text-fill: white;
+}
+#shopButton {
+  -fx-background-image: url("img/shop/shopping-cart.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 30px;
+  -fx-min-height: 30px;
+  -fx-max-width: 40px;
+  -fx-max-height: 30px;
+}
+#shopAddButton {
+  -fx-background-image: url("img/shop/add-button.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 30px;
+  -fx-min-height: 30px;
+  -fx-max-width: 30px;
+  -fx-max-height: 30px;
+}
+
+#backButton {
+  -fx-background-image: url("img/shop/back.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 30px;
+  -fx-min-height: 30px;
+  -fx-max-width: 30px;
+  -fx-max-height: 30px;
+}
+
+.shop-boarder-pane {
+  -fx-background-image: url('img/shop/background.png');
+  -fx-background-size: cover;
+}
+
+.buy-button {
+  -fx-background-image: url('img/shop/buy-button.png');
+  -fx-background-size: cover;
+  -fx-font-family: "Press Start 2P";
+  -fx-font-size: 14px;
+  -fx-text-fill: white;
+}
+.shop-stack-pane {
+  -fx-min-width: 300px;
+  -fx-min-height: 300px;
+  -fx-background-image: url('img/shop/sell-background.png');
+  -fx-background-size: cover;
+}
+
+
+

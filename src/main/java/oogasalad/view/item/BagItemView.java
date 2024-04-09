@@ -1,18 +1,23 @@
 package oogasalad.view.item;
 
+import java.util.Map;
 import javafx.scene.layout.GridPane;
+import oogasalad.Game.GameModel.shop.Bag;
+import oogasalad.Game.GameModel.shop.BagItemModel;
+import oogasalad.Game.GameModel.shop.ItemType;
 import oogasalad.view.playing.PlayingPageView;
 
 /**
  * This class is responsible for creating an item object that will be displayed in the bottom of the
  * screen. This class is dependent on the PlayingPageView class.
  */
-public class ItemView {
+public class BagItemView {
 
   private final GridPane itemGridPane;
-  private final ItemPile[][] itemPiles;
+  private final BagItemPile[][] bagItemPiles;
   private final int colNum;
   private final int rowNum;
+  private Bag bag;
 
   /**
    * Constructor for the ItemView class.
@@ -20,21 +25,13 @@ public class ItemView {
    * @param colNum the number of columns
    * @param rowNum the number of rows
    */
-  public ItemView(int colNum, int rowNum) {
+  public BagItemView(int colNum, int rowNum, Bag bag) {
     this.itemGridPane = new GridPane();
     this.colNum = colNum;
     this.rowNum = rowNum;
-
-    itemPiles = new ItemPile[colNum][rowNum];
-    for (int i = 0; i < colNum; i++) {
-      for (int j = 0; j < rowNum; j++) {
-        ItemPile p = new ItemPile(null, i, j);
-        p.setPrefHeight(PlayingPageView.bottomCellHeight);
-        p.setPrefWidth(PlayingPageView.bottomCellWidth);
-        itemPiles[i][j] = p;
-        itemGridPane.add(p, i, j);
-      }
-    }
+    this.bag = bag;
+    bagItemPiles = new BagItemPile[colNum][rowNum];
+    update();
   }
 
   public GridPane getItemGridPane() {
@@ -44,15 +41,15 @@ public class ItemView {
   /**
    * This method is responsible for resetting the item.
    *
-   * @param item the item
+   * @param bagItem the item
    */
-  public double[] getAddRealLocation(Item item) {
+  public double[] getAddRealLocation(BagItem bagItem) {
     double[] location = new double[2];
     double[] index = new double[2];
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
-        if (itemPiles[i][j].getItem() != null && itemPiles[i][j].getItem().getUrl()
-            .equals(item.getUrl())) {
+        if (bagItemPiles[i][j].getItem() != null && bagItemPiles[i][j].getItem().getUrl()
+            .equals(bagItem.getUrl())) {
           index[0] = i;
           index[1] = j;
           break;
@@ -69,28 +66,35 @@ public class ItemView {
   /**
    * This method is responsible for adding an item.
    *
-   * @param item the item
+   * @param bagItem the item
    */
-  public void addItem(Item item) {
+  public void addItem(BagItem bagItem) {
+    bag.addItem(new BagItemModel(bagItem.getUrl(), ItemType.SELL), 1);
+    update();
+  }
+
+  public void update(){
+    int col = 0;
+    int row = 0;
+    itemGridPane.getChildren().clear();
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
-        if (itemPiles[i][j].getItem() != null && itemPiles[i][j].getItem().getUrl()
-            .equals(item.getUrl())) {
-          itemPiles[i][j].getItem().addOne();
-          return;
-        }
+        BagItemPile p = new BagItemPile(null, i, j);
+        p.setPrefHeight(PlayingPageView.bottomCellHeight);
+        p.setPrefWidth(PlayingPageView.bottomCellWidth);
+        bagItemPiles[i][j] = p;
+        itemGridPane.add(p, i, j);
       }
     }
-    for (int i = 0; i < colNum; i++) {
-      for (int j = 0; j < rowNum; j++) {
-        if (itemPiles[i][j].getItem() == null) {
-          itemPiles[i][j].setItem(
-              new Item(item.getUrl(), PlayingPageView.bottomCellWidth,
-                  PlayingPageView.bottomCellHeight,
-                  1));
-          return;
-        }
-      }
+    for (Map.Entry<BagItemModel, Integer> entry : bag.getItemMap().entrySet()) {
+      BagItemModel bagItemModel = entry.getKey();
+      int quantity = entry.getValue();
+      bagItemPiles[col][row].setItem(
+          new BagItem(bagItemModel.getUrl(), PlayingPageView.bottomCellWidth,
+              PlayingPageView.bottomCellHeight,
+              quantity
+          ));
+      col++;
     }
   }
 }
