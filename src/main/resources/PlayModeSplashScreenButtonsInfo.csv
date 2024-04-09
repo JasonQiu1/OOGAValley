@@ -1,2 +1,2 @@
-New, lightblue, oogasalad.view.playing.PlayingPageView, start
-Load, lightgreen, oogasalad.view.start.PlayModeSplashScreen, makeChooser, Load_Files
+New, pink, oogasalad.view.playing.PlayingPageView, start
+Load, lightgray, oogasalad.view.start.PlayModeSplashScreen, makeChooser, Load Window

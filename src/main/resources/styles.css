@@ -4,6 +4,10 @@
   src: url("PressStart2P-Regular.ttf");
 }
 
+.button {
+  -fx-font-family: "Press Start 2P";
+}
+
 .title-label {
   -fx-font-size: 72px;
   -fx-font-family: "Press Start 2P";
