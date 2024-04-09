@@ -67,12 +67,7 @@ public class GameConfiguration {
     this.initialState = initialState;
   }
 
-  public void setRules(Properties rules) {
-    // TODO: VALIDATE RULES BEFORE SETTING THEM
-    this.rules = rules;
-  }
-
-  private Properties rules;
+  private final Properties rules;
   private GameState initialState;
   private static final DataFactory<GameConfiguration> FACTORY =
       new DataFactory<>(GameConfiguration.class);
