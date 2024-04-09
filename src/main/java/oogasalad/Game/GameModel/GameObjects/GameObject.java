@@ -59,12 +59,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * periodically to allow the game object to change its state and behavior over time.
    *
    * @param gameTime The current game time.
+   * @return A string representing the new ID of the game object, if it changes as a result
+   * of the update; otherwise, returns the current ID.
    */
   @Override
   public String update(GameTime gameTime) {
     String newId = id;
-    if (gameTime.getMinute() != 0
-        && gameTime.getMinute() % properties.modifiedTimeToUpdate(gameTime) == 0) {
+    if (creationTime.getDifferenceInMinutes(gameTime) > properties.modifiedTimeToUpdate(gameTime)) {
       newId = properties.getNextUpdateGameObject();
     }
     updateExpired();
