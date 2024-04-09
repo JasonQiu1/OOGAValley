@@ -1,0 +1,60 @@
+package oogasalad.Game.GameModel.PropertiesOfGameObjects;
+
+import java.util.List;
+import java.util.Map;
+import oogasalad.Game.GameModel.GameTime;
+import oogasalad.Game.GameModel.Item;
+import oogasalad.Game.GameModel.WrapperStateAndItem;
+
+public abstract class GameObjectProperties {
+
+  private Map<Integer, Integer> updatingStateMapings;
+  private Map<WrapperStateAndItem, Integer> interactingStateMapings;
+  private Map<WrapperStateAndItem, String> interactingNewGameObjectMapings;
+  private Map<String, Double> conditionalPreferenceMultipliers;
+  private List<String> images;
+  private String gameObjectAfterExpiration;
+  private int expiringState;
+  private long expiringTime;
+  private long defaultUpdateTime;
+
+  public long modifiedTimeToUpdate(GameTime gameTime) {
+    return defaultUpdateTime;
+  }
+
+  public int nextUpdatingState(int state) {
+    return updatingStateMapings.get(state);
+  }
+
+  public int getExpiringState() {
+    return expiringState;
+  }
+
+  public long getTimeToExpired() {
+    return expiringTime;
+  }
+
+  public boolean validInteractingItem(int state, Item item) {
+    return interactingStateMapings.containsKey(new WrapperStateAndItem(item, state));
+  }
+
+  public boolean nextInteractingStateIsNewGameObject(int state, Item item) {
+    return interactingNewGameObjectMapings.containsKey(new WrapperStateAndItem(item, state));
+  }
+
+  public String nextInteractingGameObject(int state, Item item) {
+    return interactingNewGameObjectMapings.get(new WrapperStateAndItem(item, state));
+  }
+
+  public int nextInteractingState(int state, Item item) {
+    return interactingStateMapings.get(new WrapperStateAndItem(item, state));
+  }
+
+  public String newImagePath(int state) {
+    return images.get(state);
+  }
+
+  public String getGameObjectAfterExpiration() {
+    return gameObjectAfterExpiration;
+  }
+}

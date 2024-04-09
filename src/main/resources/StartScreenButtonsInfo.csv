@@ -1,2 +1,2 @@
 Create, lightblue, oogasalad.view.editor.EditorScene, start
-Play, lightgreen, oogasalad.view.playing.PlayingView, start
+Play, lightgreen, oogasalad.view.playing.PlayingPageView, start

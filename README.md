@@ -1,13 +1,13 @@
 # oogasalad
-## TEAM NAME
-## NAMES
+## Team 3
+## Jason Qiu (jq48), ...
 
 
-This project implements an authoring environment and player for multiple related games.
+This project implements an editor and player for 2D farming-type games like Stardew Valley, Harvest Moon, Farmville, etc.
 
 ### Timeline
 
- * Start Date: 
+ * Start Date: March 21, 2024
 
  * Finish Date: 
 
