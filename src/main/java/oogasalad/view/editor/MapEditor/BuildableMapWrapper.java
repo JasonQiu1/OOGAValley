@@ -26,6 +26,7 @@ public class BuildableMapWrapper extends ScrollPane {
     contentContainer.setAlignment(Pos.CENTER);
     VBox vbox = new VBox(contentContainer);
     vbox.setAlignment(Pos.CENTER);
+    //vbox.setPadding(new Insets(2,2,2,2));
     super.setContent(vbox); // Set the content container
 
     super.setOnMouseClicked(e -> rendered = true);
