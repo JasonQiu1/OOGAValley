@@ -2,7 +2,7 @@ package oogasalad.Game.GameModel;
 
 public class Item {
 
-  boolean isSeed;
+  private boolean isSeed;
   private String itemId;
 
   @Override
