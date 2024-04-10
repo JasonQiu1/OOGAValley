@@ -108,7 +108,6 @@ public abstract class AbstractSplashScreen {
 
     for (String[] data : buttonData) {
       ChangePageButton button = new ChangePageButton(data[0], data[1]);
-      button.setId(data[0]);
       String className = data[2];
       String methodName = data[3];
       String[] parameters = new String[data.length - 4];
