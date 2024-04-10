@@ -4,6 +4,7 @@ import static javafx.application.Application.launch;
 
 import java.io.File;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -34,11 +35,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   }
 
   public void makeChooser(Stage stage, String title) {
-    FileChooser result = new FileChooser();
-    result.setTitle(title);
-    result.setInitialDirectory(new File(DEFAULT_RESOURCE_FOLDER));
+    FileChooserContainer resultContainer = new FileChooserContainer(title, DEFAULT_RESOURCE_FOLDER);
 
-    result.showOpenDialog(stage);
+    resultContainer.showFileChooserDialog(stage);
   }
 
   public void goBackScene(Stage primaryStage) {
