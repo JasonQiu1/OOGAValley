@@ -1,4 +1,4 @@
-package oogasalad;
+package oogasalad.view;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

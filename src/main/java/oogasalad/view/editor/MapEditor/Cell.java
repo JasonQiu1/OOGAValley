@@ -17,9 +17,11 @@ public class Cell extends StackPane {
   private final Rectangle base;
   private int column;
   private int row;
+  private int[] id;
 
   public Cell(Selector ts, CellInfoPane cip, int i, int j) {
     super();
+    setId(i, j);
     column = i;
     row = j;
     base = new Rectangle(WIDTH, HEIGHT);
@@ -91,6 +93,11 @@ public class Cell extends StackPane {
 
   public void decrementColumn() {
     column--;
+  }
+  private void setId(int i, int j) {
+    id = new int[2];
+    id[0] = i;
+    id[1] = j;
   }
 
 }
