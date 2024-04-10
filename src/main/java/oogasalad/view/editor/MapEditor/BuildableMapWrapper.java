@@ -1,29 +1,78 @@
 package oogasalad.view.editor.MapEditor;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderHorizontal;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderVertical;
 
 public class BuildableMapWrapper extends ScrollPane {
 
   private final BorderPane bp;
-
+  private boolean rendered;
   public BuildableMapWrapper(BuildableMap bm) {
     super();
-    HBox hbox = new HBox();
     bp = getBorderPane(bm);
-    hbox.getChildren().add(bp);
-    hbox.setAlignment(Pos.CENTER);
-    hbox.setMinSize(bm.getGridPane().getPrefWidth(), bm.getGridPane().getPrefHeight());
-    Pane pane = new Pane(hbox);
-    super.setContent(pane);
-    bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> bp.setCenter(newValue));
+    HBox contentContainer = new HBox(bp); // Assuming BuildableMap extends Node
+    contentContainer.setPrefWidth(bp.getPrefWidth()); // Set initial preferred width
+    contentContainer.setPrefHeight(bp.getPrefHeight()); // Set initial preferred height
+    contentContainer.setAlignment(Pos.CENTER);
+    VBox vbox = new VBox(contentContainer);
+    vbox.setAlignment(Pos.CENTER);
+    super.setContent(vbox); // Set the content container
+
+    super.setOnMouseClicked(e -> rendered = true);
+
+    //Disable further resizing of the content
+    super.widthProperty().addListener((observable, oldValue, newValue) -> {
+      Timeline timeline = new Timeline(
+              new KeyFrame(Duration.seconds(.1), event -> {
+                if (!rendered) {
+                  super.setPrefSize(super.getWidth(), super.getHeight());
+                }
+              }));
+      timeline.play();
+    });
+
+    bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> {
+      bp.setCenter(newValue);
+      Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.04), e -> {
+          if (super.getWidth() > 3 + bp.getWidth()) {
+            double padding = (super.getWidth() - bp.getWidth()) / 2;
+            super.setPadding(new Insets(super.getPadding().getTop(),
+                    super.getPadding().getRight(),
+                    super.getPadding().getBottom(),
+                    padding));
+          } else {
+            super.setPadding(new Insets(super.getPadding().getTop(),
+                    super.getPadding().getRight(),
+                    super.getPadding().getBottom(),
+                    0));
+          }
+          if (super.getHeight() > 3 + bp.getHeight()) {
+            double padding = (super.getHeight() - bp.getHeight()) / 2;
+            super.setPadding(new Insets(padding,
+                    super.getPadding().getRight(),
+                    super.getPadding().getBottom(),
+                    super.getPadding().getLeft()));
+          } else {
+            super.setPadding(new Insets(0,
+                    super.getPadding().getRight(),
+                    super.getPadding().getBottom(),
+                    super.getPadding().getLeft()));
+          }
+      }));
+      timeline.play();
+    });
   }
+
 
   private BorderPane getBorderPane(BuildableMap bm) {
     BorderPane bp = new BorderPane();
