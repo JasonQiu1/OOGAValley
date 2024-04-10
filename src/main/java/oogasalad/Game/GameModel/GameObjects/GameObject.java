@@ -52,7 +52,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    *
    */
   @Override
-  public void isExpired() {
+  public void checkAndUpdateExpired() {
     if (expired && System.currentTimeMillis() - timeSinceExpiringState >
         properties.getTimeToExpired()) {
       changePropertiesOnNextIteration = true;
@@ -97,6 +97,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     if (changePropertiesIfApplicable()) {
       return;
     }
+    checkAndUpdateExpired();
     String newId = idGenerator.get();
     shouldIChangeProperties(newId);
     updateExpired();
@@ -141,6 +142,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
       nextId = newId;
     }
   }
+
   protected boolean changePropertiesIfApplicable() {
     if (changePropertiesOnNextIteration) {
       setProperties(propertiesFactory.createNewProperties(nextId));
@@ -148,8 +150,10 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     }
     return false;
   }
+
   protected void setProperties(GameObjectProperties properties) {
     changePropertiesOnNextIteration = false;
+    expired = false;
     this.properties = properties;
   }
 

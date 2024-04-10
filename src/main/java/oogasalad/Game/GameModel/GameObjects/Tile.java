@@ -42,9 +42,10 @@ public class Tile {
             (structure.getCollectableOnDestruction());
       }
       structure.interact(item);
-    } else if (land.getIsPlantable() && item.getIsSeed() && structure == null) {
+    } else if (land != null &&
+        land.getIsPlantable() && item.getIsSeed() && structure == null) {
       structure = (Structure) factory.createNewGameObject(item.toString());
-    } else {
+    } else if (land != null) {
       land.interact(item);
     }
 
@@ -60,12 +61,21 @@ public class Tile {
    * @return ItemsToAdd, which represents any items to be added to the game as a result of the update.
    */
   public ItemsToAdd update(GameTime gameTime) {
-    ItemsToAdd items = itemReturns();
-    collectable.update(gameTime);
-    structure.update(gameTime);
-    land.update(gameTime);
+    executeIfNotNull(() -> collectable.update(gameTime), collectable);
+    executeIfNotNull(() -> structure.update(gameTime), structure);
+    executeIfNotNull(() -> land.update(gameTime), land);
+    return itemReturns();
+  }
 
-    return items;
+  /**
+   * Executes the provided update logic if the object is not null.
+   * @param updateLogic A Runnable containing the update logic to be executed.
+   * @param gameObject The object to check for nullity before executing the update logic.
+   */
+  private void executeIfNotNull(Runnable updateLogic, GameObject gameObject) {
+    if (gameObject != null) {
+      updateLogic.run();
+    }
   }
 
   private ItemsToAdd itemReturns() {

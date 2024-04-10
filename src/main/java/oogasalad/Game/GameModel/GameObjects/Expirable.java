@@ -14,7 +14,7 @@ public interface Expirable {
    * the game's logic.
    *
    */
-  void isExpired();
+  void checkAndUpdateExpired();
 
 }
 
