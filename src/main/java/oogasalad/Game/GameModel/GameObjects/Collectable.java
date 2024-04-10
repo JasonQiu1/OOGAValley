@@ -4,6 +4,8 @@ import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.CollectableProperties;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
+import oogasalad.Game.GameModel.PropertiesOfGameObjects.StructureProperties;
+import oogasalad.Game.GameModel.exception.IncorrectPropertyFileType;
 
 /**
  * Represents a collectable game object that players can collect under certain conditions.
@@ -77,5 +79,22 @@ public class Collectable extends GameObject implements Collect {
   @Override
   public boolean shouldICollect() {
     return interactingExpired;
+  }
+
+
+  /**
+   * Overrides the setProperties method to update the structure's specific properties.
+   * Ensures the new properties are correctly cast to StructureProperties.
+   *
+   * @param properties The new properties to set for the structure.
+   */
+  @Override
+  public void setProperties(GameObjectProperties properties) {
+    super.setProperties(properties);
+    try {
+      this.properties = (CollectableProperties) properties;
+    } catch (ClassCastException e) {
+      throw new IncorrectPropertyFileType("Provided properties cannot be cast to StructureProperties.");
+    }
   }
 }

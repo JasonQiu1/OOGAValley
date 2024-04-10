@@ -1,7 +1,9 @@
 package oogasalad.Game.GameModel.GameObjects;
 
 import oogasalad.Game.GameModel.GameTime;
+import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.StructureProperties;
+import oogasalad.Game.GameModel.exception.IncorrectPropertyFileType;
 
 /**
  * Represents a structure within the game world, extending the general functionality of a {@link GameObject}.
@@ -49,5 +51,19 @@ public class Structure extends GameObject implements StructureObject {
     return properties.isHarvestable();
   }
 
-
+  /**
+   * Overrides the setProperties method to update the structure's specific properties.
+   * Ensures the new properties are correctly cast to StructureProperties.
+   *
+   * @param properties The new properties to set for the structure.
+   */
+  @Override
+  public void setProperties(GameObjectProperties properties) {
+    super.setProperties(properties);
+    try {
+      this.properties = (StructureProperties) properties;
+    } catch (ClassCastException e) {
+      throw new IncorrectPropertyFileType("Provided properties cannot be cast to StructureProperties.");
+    }
+  }
 }
