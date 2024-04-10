@@ -63,7 +63,7 @@ public class Structure extends GameObject implements StructureObject {
     try {
       this.properties = (StructureProperties) properties;
     } catch (ClassCastException e) {
-      throw new IncorrectPropertyFileType("Provided properties cannot be cast to StructureProperties.");
+      throw new IncorrectPropertyFileType("Provided properties cannot be cast to correct properties type");
     }
   }
 }

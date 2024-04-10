@@ -53,7 +53,7 @@ public class Land extends GameObject implements Plantable {
     try {
       this.properties = (LandProperties) properties;
     } catch (ClassCastException e) {
-      throw new IncorrectPropertyFileType("Provided properties cannot be cast to StructureProperties.");
+      throw new IncorrectPropertyFileType("Provided properties cannot be cast to correct properties type");
     }
   }
 }

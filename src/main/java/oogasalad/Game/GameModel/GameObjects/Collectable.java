@@ -94,7 +94,7 @@ public class Collectable extends GameObject implements Collect {
     try {
       this.properties = (CollectableProperties) properties;
     } catch (ClassCastException e) {
-      throw new IncorrectPropertyFileType("Provided properties cannot be cast to StructureProperties.");
+      throw new IncorrectPropertyFileType("Provided properties cannot be cast to correct properties type");
     }
   }
 }
