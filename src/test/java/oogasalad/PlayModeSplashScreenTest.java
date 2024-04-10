@@ -21,19 +21,21 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
   private PlayModeSplashScreen playModeSplashScreen;
   private ChangePageButton newGame;
   private ChangePageButton loadGame;
+  private ChangePageButton back;
 
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    playModeSplashScreen = new PlayModeSplashScreen();
-    playModeSplashScreen.open(stage);
+    playModeSplashScreen = new PlayModeSplashScreen(stage);
+    playModeSplashScreen.open();
     this.newGame = (ChangePageButton) lookup("#New").queryButton();
     this.loadGame = (ChangePageButton) lookup("#Load").queryButton();
+    this.back = (ChangePageButton) lookup("#Back").queryButton();
   }
 
   @Test
   @DisplayName("Test New Button")
-  public void openPlayingView() {
+  public void testOpenPlayingView() {
     sleep(3000);
     clickOn(newGame);
     sleep(3000);
@@ -52,5 +54,14 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
 //
 //    assertTrue(fileChooserContainer.getFileChooserTitle().equals("Load Window"));
 //  }
+
+  @Test
+  @DisplayName("Test Back Button")
+  public void testGoBack() {
+    sleep(3000);
+    clickOn(back);
+    sleep(3000);
+    assertTrue(stage.getTitle().equals("OOGAVALLEY"));
+  }
 }
 
