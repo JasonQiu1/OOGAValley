@@ -2,6 +2,7 @@
   "properties": {
     "configName": "DEFAULT_GAME_NAME",
     "author": "OOGAValley Devs",
+    "type": "rules",
 
     "doEnergy": true,
     "doEnergyRecovery": true,
