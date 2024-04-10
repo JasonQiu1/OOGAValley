@@ -1,5 +1,6 @@
 package oogasalad.Game.GameModel.GameObjects;
 
+import java.util.function.Supplier;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
@@ -67,13 +68,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public void update(GameTime gameTime) {
-    changePropertiesIfApplicable();
-    String newId = id;
-    if (creationTime.getDifferenceInMinutes(gameTime) > properties.modifiedTimeToUpdate(gameTime)) {
-      newId = properties.getNextUpdateGameObject();
-    }
-    shouldIChangeProperties(newId);
-    updateExpired();
+    updateAndInteract(() -> {
+      if (creationTime.getDifferenceInMinutes(gameTime) > properties.modifiedTimeToUpdate(gameTime)) {
+        return properties.getNextUpdateGameObject();
+      }
+      return id;
+    });
   }
 
   /**
@@ -85,11 +85,19 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public void interact(Item item) {
-    changePropertiesIfApplicable();
-    String newId = id;
-    if (properties.validInteractingItem(item)) {
-        newId = properties.nextInteractingGameObject(item);
+    updateAndInteract(() -> {
+      if (properties.validInteractingItem(item)) {
+        return properties.nextInteractingGameObject(item);
+      }
+      return id;
+    });
+  }
+
+  private void updateAndInteract(Supplier<String> idGenerator) {
+    if (changePropertiesIfApplicable()) {
+      return;
     }
+    String newId = idGenerator.get();
     shouldIChangeProperties(newId);
     updateExpired();
   }
@@ -133,10 +141,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
       nextId = newId;
     }
   }
-  protected void changePropertiesIfApplicable() {
+  protected boolean changePropertiesIfApplicable() {
     if (changePropertiesOnNextIteration) {
       setProperties(propertiesFactory.createNewProperties(nextId));
+      return true;
     }
+    return false;
   }
   protected void setProperties(GameObjectProperties properties) {
     changePropertiesOnNextIteration = false;

@@ -70,7 +70,7 @@ public class Tile {
 
   private ItemsToAdd itemReturns() {
     ItemsToAdd items = null;
-    if (collectable.shouldICollect()) {
+    if (collectable != null && collectable.shouldICollect()) {
       items = new ItemsToAdd(collectable.getQuantityOnCollection(),
           collectable.getItemIdOnCollection());
     }
