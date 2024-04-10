@@ -21,15 +21,5 @@ public interface Updatable {
    */
   void update(GameTime gameTime);
 
-  /**
-   * Retrieves the current state of the object. The specific meaning of the state value is
-   * defined by the implementing class. This could represent different stages in an object's
-   * lifecycle, various conditions it might be in, or other stateful distinctions relevant to
-   * the game's logic.
-   *
-   * @return An integer representing the current state of the object.
-   */
-  int getState();
-
 }
 

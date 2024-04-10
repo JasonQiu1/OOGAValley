@@ -13,7 +13,7 @@ public class Tile {
   private Collectable collectable;
   private Structure structure;
   private Land land;
-  private GameObjectFactory factory;
+  private final GameObjectFactory factory;
 
   /**
    * Constructs a new Tile with an associated GameObjectFactory for creating new game objects.
@@ -24,86 +24,120 @@ public class Tile {
 
   /**
    * Interacts with the provided item, potentially changing the state of the tile or its contents.
-   * This method can result in the creation, transformation, or removal of collectables or structures
-   * within the tile based on the item's properties and the current state of the tile's contents.
+   * This method checks each game object (collectable, structure, land) in the tile for interaction validity
+   * and processes the first valid interaction found. Collectable interactions can result in items being added
+   * to the game as a result of the interaction.
    *
    * @param item The item to interact with the tile's contents.
-   * @return ItemsToAdd, which represents any items to be added to the game as a result of the interaction.
+   * @return ItemsToAdd, representing any items to be added to the game as a result of the interaction.
+   *         Returns null if no items are to be added.
    */
   public ItemsToAdd interact(Item item) {
-    // need checks for if each thing is empty == null or perhaps there is an empty state
-    if (collectable != null && collectable.interactionValid(item)) {
-      String newCollectable = collectable.interact(item);
-      setNewGameObject(newCollectable, collectable.getId());
-    } else if (structure != null && structure.interactionValid(item)) {
-      if (collectable == null && structure.getIsExpiringState() &&
-          structure.isHarvestable()) {
-        String newCollectable = structure.getCollectableOnDestruction();
-        setNewGameObject(newCollectable, collectable.getId());
-      }
-      String newStructure = structure.interact(item);
-      setNewGameObject(newStructure, structure.getId());
-    } else if (land.getIsPlantable() && item.getIsSeed() && structure == null) {
-      structure = (Structure) factory.createNewGameObject(item.toString());
-    } else {
-      String newLand = land.interact(item);
-      setNewGameObject(newLand, land.getId());
-    }
+    boolean interactionHandled = handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item))
+        || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item))
+        || handleInteractionIfValid(land, item, () -> handleLandInteraction(item));
 
-    return updateExpired();
+    return interactionHandled && collectable != null ? itemReturns() : null;
   }
 
   /**
-   * Updates the state of the tile and its contents based on the given game time. This includes
-   * updating collectables, structures, and the land itself, potentially leading to changes in their
-   * state or interactions based on time progression.
+   * Executes interaction logic if the specified game object is valid for interaction with the given item.
    *
-   * @param gameTime The current game time, used to drive updates to the tile's contents.
-   * @return ItemsToAdd, which represents any items to be added to the game as a result of the update.
+   * @param gameObject The game object to check and interact with.
+   * @param item The item used for the interaction.
+   * @param interactionHandler The logic to execute for the interaction.
+   * @return True if the interaction was valid and handled, false otherwise.
+   */
+  private boolean handleInteractionIfValid(GameObject gameObject, Item item, Runnable interactionHandler) {
+    if (gameObject != null && gameObject.interactionValid(item)) {
+      interactionHandler.run();
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Handles the specific interaction logic for a collectable object within the tile.
+   *
+   * @param item The item interacting with the collectable.
+   */
+  private void handleCollectableInteraction(Item item) {
+    collectable.interact(item);
+  }
+
+  /**
+   * Handles the specific interaction logic for a structure object within the tile.
+   *
+   * @param item The item interacting with the structure.
+   */
+  private void handleStructureInteraction(Item item) {
+    if (collectable == null && structure.isHarvestable()) {
+      collectable = (Collectable) factory.createNewGameObject(structure.getCollectableOnDestruction());
+    }
+    structure.interact(item);
+  }
+
+  /**
+   * Handles the specific interaction logic for a land object within the tile.
+   *
+   * @param item The item interacting with the land.
+   */
+  private void handleLandInteraction(Item item) {
+    if (land.getIsPlantable() && item.getIsSeed() && structure == null) {
+      structure = (Structure) factory.createNewGameObject(item.toString());
+    }
+    land.interact(item);
+  }
+
+  /**
+   * Updates the state of the tile and its contents based on the current game time.
+   * This method is intended to be called periodically, allowing the game objects within the tile
+   * to update based on time progression and potentially change their state or interactions.
+   *
+   * @param gameTime The current game time.
+   * @return ItemsToAdd, which represents any items to be added to the game as a result of the updates.
    */
   public ItemsToAdd update(GameTime gameTime) {
-    collectable.update(gameTime);
-    structure.update(gameTime);
-    land.update(gameTime);
-
-    return updateExpired();
-  }
-
-  private void setNewGameObject(String newGameObject, String prevGameObject) {
-    if (!newGameObject.equals(prevGameObject)) {
-      factory.createNewGameObject(newGameObject);
-    }
-  }
-
-  private ItemsToAdd updateExpired() {
-    ItemsToAdd items = null;
-    if (collectable.isExpired() || collectable.shouldICollect()) {
-      if (collectable.shouldICollect()) {
-        items = new ItemsToAdd(collectable.getQuantityOnCollection(),
-            collectable.getItemIdOnCollection());
-      }
-      collectable = (Collectable) factory.createNewGameObject(
-          collectable.getGameObjectAfterExpiration());
-    }
-    if (structure.isExpired()) {
-      structure = (Structure) factory.createNewGameObject(
-          structure.getGameObjectAfterExpiration());
-    }
-    if (land.isExpired()) {
-      land = (Land) factory.createNewGameObject(
-          land.getGameObjectAfterExpiration());
-    }
-    return items;
+    executeIfNotNull(() -> collectable.update(gameTime), collectable);
+    executeIfNotNull(() -> structure.update(gameTime), structure);
+    executeIfNotNull(() -> land.update(gameTime), land);
+    return itemReturns();
   }
 
   /**
-   * Retrieves the paths to the images representing the current state of the tile's contents.
-   * This can be used for graphical representation of the tile in the game's user interface.
+   * Executes the given update logic for a game object if it is not null.
+   *
+   * @param updateLogic The update logic to be executed.
+   * @param gameObject The game object to check for nullity.
+   */
+  private void executeIfNotNull(Runnable updateLogic, GameObject gameObject) {
+    if (gameObject != null) {
+      updateLogic.run();
+    }
+  }
+
+  /**
+   * Determines if any items should be added to the game based on the interactions and updates
+   * that occurred within the tile, particularly with collectables.
+   *
+   * @return ItemsToAdd representing the items to be added as a result, or null if no items are to be added.
+   */
+  private ItemsToAdd itemReturns() {
+    if (collectable != null && collectable.shouldICollect()) {
+      return new ItemsToAdd(collectable.getQuantityOnCollection(), collectable.getItemIdOnCollection());
+    }
+    return null;
+  }
+
+  /**
+   * Retrieves the paths to the images representing the current state of the tile's contents,
+   * which can include collectables, structures, and land. This is useful for graphical
+   * representation of the tile in the game's user interface.
    *
    * @return An ImageRecord containing the image paths for the collectable, structure, and land on this tile.
    */
   public ImageRecord getImages() {
-    return new ImageRecord(collectable.getImagePath(), structure.getImagePath(),
-        land.getImagePath());
+    return new ImageRecord(collectable.getImagePath(), structure.getImagePath(), land.getImagePath());
   }
 }
+

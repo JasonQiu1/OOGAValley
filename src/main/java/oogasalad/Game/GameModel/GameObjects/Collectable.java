@@ -1,8 +1,11 @@
 package oogasalad.Game.GameModel.GameObjects;
 
+import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.CollectableProperties;
 import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
+import oogasalad.Game.GameModel.PropertiesOfGameObjects.StructureProperties;
+import oogasalad.Game.GameModel.exception.IncorrectPropertyFileType;
 
 /**
  * Represents a collectable game object that players can collect under certain conditions.
@@ -20,13 +23,13 @@ public class Collectable extends GameObject implements Collect {
    * properties that define its collectable nature.
    *
    * @param id The unique identifier for the collectable object.
-   * @param startState The initial state of the collectable, which may influence its interactions and collectability.
    * @param properties The properties defining the collectable behavior and attributes.
+   * @param creationTime The game time at which this object was created
    */
-  public Collectable(String id, int startState,
-      CollectableProperties properties) {
-    super(id, startState, properties);
+  public Collectable(String id, CollectableProperties properties, GameTime creationTime) {
+    super(id, properties, creationTime);
     this.properties = properties;
+    interactingExpired = false;
   }
 
   /**
@@ -34,14 +37,13 @@ public class Collectable extends GameObject implements Collect {
    * the conditions for making the collectable expired, which may affect its collectability.
    *
    * @param item The item interacting with the collectable.
-   * @return {@code null} as this method is used to update the state of the collectable rather than change its identifier.
    */
   @Override
-  public String interact(Item item) {
-    if (properties.validInteractingItem(getState(), item)) {
+  public void interact(Item item) {
+    if (properties.validInteractingItem(item)) {
       interactingExpired = true;
     }
-    return null;
+    shouldIChangeProperties(null);
   }
 
   /**
@@ -76,6 +78,23 @@ public class Collectable extends GameObject implements Collect {
 
   @Override
   public boolean shouldICollect() {
-    return !super.isExpired() && interactingExpired;
+    return interactingExpired;
+  }
+
+
+  /**
+   * Overrides the setProperties method to update the structure's specific properties.
+   * Ensures the new properties are correctly cast to StructureProperties.
+   *
+   * @param properties The new properties to set for the structure.
+   */
+  @Override
+  public void setProperties(GameObjectProperties properties) {
+    super.setProperties(properties);
+    try {
+      this.properties = (CollectableProperties) properties;
+    } catch (ClassCastException e) {
+      throw new IncorrectPropertyFileType("Provided properties cannot be cast to correct properties type");
+    }
   }
 }

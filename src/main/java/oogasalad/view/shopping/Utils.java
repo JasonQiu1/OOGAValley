@@ -18,5 +18,9 @@ public class Utils {
   public static final double itemRemainWidth = 100;
   public static final double itemRemainHeight = 40;
 
+  public static final double shopStackPaneWidth = 400;
+  public static final double shopStackPaneHeight = 400;
+  public static final double pageChangeBorderPaneWidth = 350;
+  public static final double pageChangeBorderPaneHeight = 350;
 
 }

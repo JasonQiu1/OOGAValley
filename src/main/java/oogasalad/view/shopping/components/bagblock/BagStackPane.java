@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import oogasalad.Game.GameModel.shop.Bag;
+import oogasalad.view.shopping.Utils;
 
 
 public class BagStackPane extends StackPane {
@@ -21,11 +22,12 @@ public class BagStackPane extends StackPane {
   private void initialize() {
     Image backgroundImage = new Image("img/shop/bag-background.png");
     ImageView backgroundImageView = new ImageView(backgroundImage);
-    backgroundImageView.setFitWidth(400);
-    backgroundImageView.setFitHeight(400);
+    backgroundImageView.setFitWidth(Utils.shopStackPaneWidth);
+    backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
     gridPane = new BagGridPane(bag);
     setAlignment(gridPane, Pos.TOP_LEFT);
     setAlignment(backgroundImageView, Pos.TOP_LEFT);
     getChildren().addAll(backgroundImageView, gridPane);
+
   }
 }

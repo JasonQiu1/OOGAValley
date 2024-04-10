@@ -12,10 +12,6 @@ public class WrapperStateAndItem {
     this.state = state;
   }
 
-  public boolean equals(WrapperStateAndItem stateAndItem) {
-    return state == stateAndItem.state && item.toString().equals(stateAndItem.getItem());
-  }
-
   public int getState() {
     return state;
   }
