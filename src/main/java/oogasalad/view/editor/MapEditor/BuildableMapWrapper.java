@@ -2,25 +2,27 @@ package oogasalad.view.editor.MapEditor;
 
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderHorizontal;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderVertical;
 
-public class BuildableMapWrapper extends HBox {
+public class BuildableMapWrapper extends ScrollPane {
 
   private final BorderPane bp;
 
   public BuildableMapWrapper(BuildableMap bm) {
     super();
+    HBox hbox = new HBox();
     bp = getBorderPane(bm);
-    super.getChildren().add(bp);
-    super.setAlignment(Pos.CENTER);
-    super.setMinSize(bm.getGridPane().getPrefWidth(), bm.getGridPane().getPrefHeight());
-
-    bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> {
-      bp.setCenter(newValue);
-    });
+    hbox.getChildren().add(bp);
+    hbox.setAlignment(Pos.CENTER);
+    hbox.setMinSize(bm.getGridPane().getPrefWidth(), bm.getGridPane().getPrefHeight());
+    Pane pane = new Pane(hbox);
+    super.setContent(pane);
+    bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> bp.setCenter(newValue));
   }
 
   private BorderPane getBorderPane(BuildableMap bm) {
