@@ -6,12 +6,14 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 public class ButtonActionHandler implements EventHandler<ActionEvent> {
-  private String className;
-  private String methodName;
-  private Stage stage;
-  private String[] parameters;
 
-  public ButtonActionHandler(String className, String methodName, Stage stage, String... parameters) {
+  private final String className;
+  private final String methodName;
+  private final Stage stage;
+  private final String[] parameters;
+
+  public ButtonActionHandler(String className, String methodName, Stage stage,
+      String... parameters) {
     this.className = className;
     this.methodName = methodName;
     this.stage = stage;

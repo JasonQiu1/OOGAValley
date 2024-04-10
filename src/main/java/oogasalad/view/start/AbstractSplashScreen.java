@@ -3,14 +3,11 @@ package oogasalad.view.start;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.animation.SequentialTransition;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -28,13 +25,12 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class AbstractSplashScreen {
 
-  private static final Logger LOG = LogManager.getLogger(AbstractSplashScreen.class); // should this be here
+  private static final Logger LOG = LogManager.getLogger(
+      AbstractSplashScreen.class); // should this be here
 
   public AbstractSplashScreen() {
     // do nothing
   }
-
-
 
 
   /**

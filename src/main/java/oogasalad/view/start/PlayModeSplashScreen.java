@@ -1,11 +1,6 @@
 package oogasalad.view.start;
 
-import static javafx.application.Application.launch;
-
-import java.io.File;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,14 +13,16 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private static final double DEFAULT_WIDTH_PORTION = 0.65;
   private static final double DEFAULT_HEIGHT_PORTION = 0.9;
   private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
-  private Stage stage;
   private final String myStageTitle;
+  private Stage stage;
   private Scene previousScene;
   private Scene playModeScreen;
+
   public PlayModeSplashScreen() {
     super();
     myStageTitle = "Play Mode";
   }
+
   @Override
   public void open(Stage stageToUse) {
     stage = stageToUse;
