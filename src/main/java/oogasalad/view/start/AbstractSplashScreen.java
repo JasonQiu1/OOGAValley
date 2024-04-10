@@ -49,7 +49,7 @@ public abstract class AbstractSplashScreen {
     vb.setAlignment(Pos.CENTER);
     vb.setSpacing(75);
     HBox hb = new HBox();
-    hb.setSpacing(320);
+    hb.setSpacing(100);
     hb.setAlignment(Pos.CENTER);
 
     //Create the scene, initialized to a reasonable size.
@@ -58,7 +58,7 @@ public abstract class AbstractSplashScreen {
     int initialStartScreenHeight = (int) (screenBounds.getHeight() * heightPortion);
 
     // Create Start Buttons
-    createButtonsFromFile(resourcePath + buttonsPath, hb);
+    createButtonsFromFile(resourcePath + buttonsPath, stage, hb);
 
     //Create title
     //TODO: Resources bundle this
@@ -99,12 +99,12 @@ public abstract class AbstractSplashScreen {
     return new SequentialTransition(l, pt);
   }
 
-  protected void createButtonsFromFile(String filename, HBox root) {
+  protected void createButtonsFromFile(String filename, Stage primaryStage, HBox root) {
     List<String[]> buttonData = readCSV(filename);
-    makeButton(buttonData, root);
+    makeButton(buttonData, primaryStage, root);
   }
 
-  protected void makeButton(List<String[]> buttonData, HBox root) {
+  protected void makeButton(List<String[]> buttonData, Stage primaryStage, HBox root) {
 
     for (String[] data : buttonData) {
       ChangePageButton button = new ChangePageButton(data[0], data[1]);
@@ -112,7 +112,7 @@ public abstract class AbstractSplashScreen {
       String methodName = data[3];
       String[] parameters = new String[data.length - 4];
       System.arraycopy(data, 4, parameters, 0, parameters.length);
-      button.setOnAction(new ButtonActionHandler(className, methodName, new Stage(), parameters));
+      button.setOnAction(new ButtonActionHandler(className, methodName, primaryStage, parameters));
 
       root.getChildren().add(button);
     }

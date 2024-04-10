@@ -19,6 +19,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
   private Stage stage;
   private final String myStageTitle;
+  private Scene previousScene;
   private Scene playModeScreen;
   public PlayModeSplashScreen() {
     super();
@@ -27,6 +28,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   @Override
   public void open(Stage stageToUse) {
     stage = stageToUse;
+    previousScene = stage.getScene();
     setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, DEFAULT_RESOURCE_FOLDER,
         BUTTONS_PATH, myStageTitle, STYLES);
   }
@@ -37,6 +39,17 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     result.setInitialDirectory(new File(DEFAULT_RESOURCE_FOLDER));
 
     result.showOpenDialog(stage);
+  }
+
+  public void goBackScene(Stage primaryStage) {
+//    primaryStage.setScene(previousScene);
+    Stage tempStage = new Stage();
+    tempStage.setScene(previousScene);
+    tempStage.show();
+  }
+
+  public String getMyStageTitle() {
+    return myStageTitle;
   }
 
 }

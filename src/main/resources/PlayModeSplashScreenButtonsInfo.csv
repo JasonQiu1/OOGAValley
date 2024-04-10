@@ -1,2 +1,3 @@
 New, pink, oogasalad.view.playing.PlayingPageView, start
 Load, lightgray, oogasalad.view.start.PlayModeSplashScreen, makeChooser, Load Window
+Back, lightblue, oogasalad.view.start.PlayModeSplashScreen, goBackScene

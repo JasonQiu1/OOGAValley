@@ -33,7 +33,7 @@ public class NewLoadScreen extends Application {
     Button newButton = new Button("New");
     Button loadButton = new Button("Load");
     Button backButton = new Button("Back");
-    userInfo = new UserInfo(-1, "Guest");
+    userInfo = new UserInfo(-1, "Guest"); // what does this do?
 
     loginButton.setOnAction(event -> {
       Login login = new Login(primaryStage, primaryStage.getScene());
