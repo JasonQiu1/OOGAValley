@@ -27,6 +27,7 @@ public class Collectable extends GameObject implements Collect {
   public Collectable(String id, CollectableProperties properties, GameTime creationTime) {
     super(id, properties, creationTime);
     this.properties = properties;
+    interactingExpired = false;
   }
 
   /**
@@ -75,6 +76,6 @@ public class Collectable extends GameObject implements Collect {
 
   @Override
   public boolean shouldICollect() {
-    return !super.isExpired() && interactingExpired;
+    return interactingExpired;
   }
 }

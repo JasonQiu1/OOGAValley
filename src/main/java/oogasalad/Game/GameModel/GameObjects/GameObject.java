@@ -49,12 +49,14 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * it has reached a state defined as expiring and a certain time has elapsed since entering
    * that state.
    *
-   * @return {@code true} if the game object has expired; {@code false} otherwise.
    */
   @Override
-  public boolean isExpired() {
-    return expired && System.currentTimeMillis() - timeSinceExpiringState >
-        properties.getTimeToExpired();
+  public void isExpired() {
+    if (expired && System.currentTimeMillis() - timeSinceExpiringState >
+        properties.getTimeToExpired()) {
+      changePropertiesOnNextIteration = true;
+      nextId = properties.getGameObjectAfterExpiration();
+    }
   }
 
   /**

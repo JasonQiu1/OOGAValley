@@ -13,9 +13,8 @@ public interface Expirable {
    * including but not limited to, time elapsed, interactions received, or other conditions defined within
    * the game's logic.
    *
-   * @return {@code true} if the object is in its expired state; {@code false} otherwise.
    */
-  boolean isExpired();
+  void isExpired();
 
 }
 

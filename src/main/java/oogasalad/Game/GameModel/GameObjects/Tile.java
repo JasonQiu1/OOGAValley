@@ -32,25 +32,23 @@ public class Tile {
    */
   public ItemsToAdd interact(Item item) {
     // need checks for if each thing is empty == null or perhaps there is an empty state
+    ItemsToAdd items = null;
     if (collectable != null && collectable.interactionValid(item)) {
-      String newCollectable = collectable.interact(item);
-      setNewGameObject(newCollectable, collectable.getId());
+      collectable.interact(item);
+      items = itemReturns();
     } else if (structure != null && structure.interactionValid(item)) {
-      if (collectable == null &&
-          structure.isHarvestable()) {
-        String newCollectable = structure.getCollectableOnDestruction();
-        setNewGameObject(newCollectable, collectable.getId());
+      if (collectable == null && structure.isHarvestable()) {
+        collectable = (Collectable) factory.createNewGameObject
+            (structure.getCollectableOnDestruction());
       }
-      String newStructure = structure.interact(item);
-      setNewGameObject(newStructure, structure.getId());
+      structure.interact(item);
     } else if (land.getIsPlantable() && item.getIsSeed() && structure == null) {
       structure = (Structure) factory.createNewGameObject(item.toString());
     } else {
-      String newLand = land.interact(item);
-      setNewGameObject(newLand, land.getId());
+      land.interact(item);
     }
 
-    return updateExpired();
+    return items;
   }
 
   /**
@@ -62,37 +60,19 @@ public class Tile {
    * @return ItemsToAdd, which represents any items to be added to the game as a result of the update.
    */
   public ItemsToAdd update(GameTime gameTime) {
+    ItemsToAdd items = itemReturns();
     collectable.update(gameTime);
     structure.update(gameTime);
     land.update(gameTime);
 
-    return updateExpired();
+    return items;
   }
 
-  private void setNewGameObject(String newGameObject, String prevGameObject) {
-    if (!newGameObject.equals(prevGameObject)) {
-      factory.createNewGameObject(newGameObject);
-    }
-  }
-
-  // make map
-  private ItemsToAdd updateExpired() {
+  private ItemsToAdd itemReturns() {
     ItemsToAdd items = null;
-    if (collectable.isExpired() || collectable.shouldICollect()) {
-      if (collectable.shouldICollect()) {
-        items = new ItemsToAdd(collectable.getQuantityOnCollection(),
-            collectable.getItemIdOnCollection());
-      }
-      collectable = (Collectable) factory.createNewGameObject(
-          collectable.getGameObjectAfterExpiration());
-    }
-    if (structure.isExpired()) {
-      structure = (Structure) factory.createNewGameObject(
-          structure.getGameObjectAfterExpiration());
-    }
-    if (land.isExpired()) {
-      land = (Land) factory.createNewGameObject(
-          land.getGameObjectAfterExpiration());
+    if (collectable.shouldICollect()) {
+      items = new ItemsToAdd(collectable.getQuantityOnCollection(),
+          collectable.getItemIdOnCollection());
     }
     return items;
   }
