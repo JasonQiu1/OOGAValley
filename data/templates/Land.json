@@ -17,7 +17,11 @@
     "expirable": true,
     "expireTime": 120,
     // or null
-    "expireTransformation": "GAME_OBJECT"
+    "expireTransformation": "GAME_OBJECT",
+
+    // LAND ONLY
+    // True if you can plant seeds on this land
+    "isPlantable": false
   },
   "listProperties": {},
   "mapProperties": {
@@ -47,11 +51,5 @@
     *  ]
     * },
     */
-
-    // MOVE TO STRUCTURES ONLY
-    "isDestructable": true,
-    "dropsOnDestruction": {
-      "OBJECT_NAME": 1
-    }
   }
 }

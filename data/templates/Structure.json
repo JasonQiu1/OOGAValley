@@ -48,7 +48,7 @@
     * },
     */
 
-    // MOVE TO STRUCTURES ONLY
+    // STRUCTURE ONLY
     "isDestructable": true,
     "dropsOnDestruction": {
       "OBJECT_NAME": 1
