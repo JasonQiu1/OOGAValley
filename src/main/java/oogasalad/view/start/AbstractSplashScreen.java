@@ -36,7 +36,7 @@ public abstract class AbstractSplashScreen {
   /**
    * Opens SplashScreen
    */
-  public abstract void open(Stage stageToUse);
+  public abstract void open();
 
   protected void setStage(Stage stage, double widthPortion, double heightPortion,
       String resourcePath, String buttonsPath, String stageTitle, String stylesCSS) {
@@ -67,6 +67,8 @@ public abstract class AbstractSplashScreen {
     vb.getChildren().add(hb);
     scene = new Scene(vb, initialStartScreenWidth,
         initialStartScreenHeight);
+
+    LOG.info(scene);
 
     //link scene and css
     scene.getStylesheets().add(getClass().getResource(stylesCSS).toExternalForm());

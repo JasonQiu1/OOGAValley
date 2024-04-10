@@ -5,14 +5,16 @@ import javafx.stage.Stage;
 
 public class EditorScene extends Scene {
 
-  public EditorScene() {
+  Stage stage;
+  public EditorScene(Stage primaryStage) {
     super(new EditorWindow());
     super.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+    stage = primaryStage;
 
   }
 
-  public void start(Stage primaryStage) {
-    primaryStage.setScene(this);
-    primaryStage.show();
+  public void start() {
+    stage.setScene(this);
+    stage.show();
   }
 }

@@ -46,8 +46,8 @@ public class NewLoadScreen extends Application {
     });
 
     newButton.setOnAction(event -> {
-      PlayingPageView playingPage = new PlayingPageView();
-      playingPage.start(primaryStage);
+      PlayingPageView playingPage = new PlayingPageView(primaryStage);
+      playingPage.start();
     });
 
     loadButton.setOnAction(event -> {

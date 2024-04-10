@@ -18,30 +18,33 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private Scene previousScene;
   private Scene playModeScreen;
 
-  public PlayModeSplashScreen() {
+  public PlayModeSplashScreen(Stage stageToUse) {
     super();
+    stage = stageToUse;
+    previousScene = stage.getScene();
     myStageTitle = "Play Mode";
   }
 
   @Override
-  public void open(Stage stageToUse) {
-    stage = stageToUse;
-    previousScene = stage.getScene();
+  public void open() {
+
+    LOG.info(String.valueOf(previousScene));
     setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, DEFAULT_RESOURCE_FOLDER,
         BUTTONS_PATH, myStageTitle, STYLES);
+    LOG.info(String.valueOf(previousScene));
   }
 
-  public void makeChooser(Stage stage, String title) {
+  public void makeChooser(String title) {
     FileChooserContainer resultContainer = new FileChooserContainer(title, DEFAULT_RESOURCE_FOLDER);
-
+    LOG.debug(previousScene);
     resultContainer.showFileChooserDialog(stage);
   }
 
-  public void goBackScene(Stage primaryStage) {
-//    primaryStage.setScene(previousScene);
-    Stage tempStage = new Stage();
-    tempStage.setScene(previousScene);
-    tempStage.show();
+  public void goBackScene() {
+//    LOG.debug(previousScene);
+//    stage.setScene(previousScene);
+//    stage.show();
+    new StartScreen(stage).open();
   }
 
   public String getMyStageTitle() {

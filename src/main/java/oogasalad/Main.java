@@ -31,6 +31,6 @@ public class Main extends Application {
 //  }
 
   public void start(Stage primaryStage) {
-    new StartScreen().open(primaryStage);
+    new StartScreen(primaryStage).open();
   }
 }

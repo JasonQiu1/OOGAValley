@@ -25,16 +25,16 @@ public class StartScreen extends AbstractSplashScreen {
   /**
    * Creates StartScreen
    */
-  public StartScreen() {
+  public StartScreen(Stage stageToUse) {
     super();
+    stage = stageToUse;
     myStageTitle = "OOGAVALLEY";
-    playingPageView = new PlayingPageView();
-    editorScene = new EditorScene();
+    playingPageView = new PlayingPageView(stageToUse);
+    editorScene = new EditorScene(stageToUse);
   }
 
   @Override
-  public void open(Stage stageToUse) {
-    stage = stageToUse;
+  public void open() {
     setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, DEFAULT_RESOURCE_FOLDER,
         BUTTONS_PATH, myStageTitle, STYLES);
   }
