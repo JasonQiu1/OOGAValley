@@ -57,7 +57,6 @@ public class BuildableMap {
     currentRows = temp.getRowCount();
     gp.setMaxWidth(Cell.getSize()[0] * currentColumns);
     gp.setMaxHeight(Cell.getSize()[1] * currentRows);
-    updateScreen();
   }
 
   private Node findCell(int x, int y) {
@@ -148,11 +147,6 @@ public class BuildableMap {
     }
   }
 
-  private void updateScreen() {
-    Timeline timeline = new Timeline(
-        new KeyFrame(Duration.seconds(.03), event -> gp.getScene().getWindow().sizeToScene()));
-    timeline.play();
-  }
 
   public GridPane getGridPane() {
     return gp;
