@@ -17,11 +17,8 @@ public interface Interactable {
    * properties and the current state of the object.
    *
    * @param item The item interacting with this object.
-   * @return A string identifier indicating the outcome of the interaction. This could be the ID
-   *         of a new object created as a result of the interaction, the ID of this object if it
-   *         remains unchanged, or any other relevant identifier as defined by the implementation.
    */
-  String interact(Item item);
+  void interact(Item item);
 
   /**
    * Determines whether an interaction with the specified item is valid at the current moment.

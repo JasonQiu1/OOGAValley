@@ -13,7 +13,7 @@ public class Tile {
   private Collectable collectable;
   private Structure structure;
   private Land land;
-  private GameObjectFactory factory;
+  private final GameObjectFactory factory;
 
   /**
    * Constructs a new Tile with an associated GameObjectFactory for creating new game objects.

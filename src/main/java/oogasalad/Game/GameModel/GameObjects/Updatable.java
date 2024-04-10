@@ -18,9 +18,8 @@ public interface Updatable {
    * such as moving, reacting to game events, or updating internal state.
    *
    * @param gameTime The current game time, providing context for time-based updates.
-   * @return The String id of the new GameObject that this will update into.
    */
-  String update(GameTime gameTime);
+  void update(GameTime gameTime);
 
 }
 

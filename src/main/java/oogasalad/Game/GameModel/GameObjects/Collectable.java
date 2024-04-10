@@ -34,14 +34,13 @@ public class Collectable extends GameObject implements Collect {
    * the conditions for making the collectable expired, which may affect its collectability.
    *
    * @param item The item interacting with the collectable.
-   * @return {@code null} as this method is used to update the state of the collectable rather than change its identifier.
    */
   @Override
-  public String interact(Item item) {
+  public void interact(Item item) {
     if (properties.validInteractingItem(item)) {
       interactingExpired = true;
     }
-    return null;
+    shouldIChangeProperties(null);
   }
 
   /**

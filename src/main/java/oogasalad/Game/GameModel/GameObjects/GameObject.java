@@ -12,11 +12,13 @@ import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
 public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
   private final String id;
-  private final GameObjectProperties properties;
+  private GameObjectProperties properties;
   private boolean expired;
   private long timeSinceExpiringState;
-  private String imagePath;
   private GameTime creationTime;
+  private final PropertiesFactory propertiesFactory;
+  private boolean changePropertiesOnNextIteration;
+  private String nextId;
 
   /**
    * Constructs a new GameObject with the specified initial state and properties.
@@ -29,7 +31,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     this.properties = properties;
     this.creationTime = creationTime;
     expired = false;
-    imagePath = getImagePath();
+    changePropertiesOnNextIteration = false;
+    propertiesFactory = new PropertiesFactory();
   }
 
   /**
@@ -59,18 +62,16 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * periodically to allow the game object to change its state and behavior over time.
    *
    * @param gameTime The current game time.
-   * @return A string representing the new ID of the game object, if it changes as a result
-   * of the update; otherwise, returns the current ID.
    */
   @Override
-  public String update(GameTime gameTime) {
+  public void update(GameTime gameTime) {
+    changePropertiesIfApplicable();
     String newId = id;
     if (creationTime.getDifferenceInMinutes(gameTime) > properties.modifiedTimeToUpdate(gameTime)) {
       newId = properties.getNextUpdateGameObject();
     }
+    shouldIChangeProperties(newId);
     updateExpired();
-
-    return newId;
   }
 
   /**
@@ -79,18 +80,16 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * and the properties of the item.
    *
    * @param item The item to interact with.
-   * @return A string representing the new ID of the game object, if it changes as a result
-   *         of the interaction; otherwise, returns the current ID.
    */
   @Override
-  public String interact(Item item) {
+  public void interact(Item item) {
+    changePropertiesIfApplicable();
     String newId = id;
     if (properties.validInteractingItem(item)) {
         newId = properties.nextInteractingGameObject(item);
     }
+    shouldIChangeProperties(newId);
     updateExpired();
-
-    return newId;
   }
 
   /**
@@ -123,17 +122,23 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public String getImagePath() {
-    return imagePath;
+    return properties.getImagePath();
   }
 
-  /**
-   * Returns the ID of a new game object to replace this one upon expiration.
-   *
-   * @return A string representing the ID of the replacement game object.
-   */
-  @Override
-  public String getGameObjectAfterExpiration() {
-    return properties.getGameObjectAfterExpiration();
+  protected void shouldIChangeProperties(String newId) {
+    if (newId == null || !newId.equals(id)) {
+      changePropertiesOnNextIteration = true;
+      nextId = newId;
+    }
+  }
+  protected void changePropertiesIfApplicable() {
+    if (changePropertiesOnNextIteration) {
+      setProperties(propertiesFactory.createNewProperties(nextId));
+    }
+  }
+  protected void setProperties(GameObjectProperties properties) {
+    changePropertiesOnNextIteration = false;
+    this.properties = properties;
   }
 
 }

@@ -17,16 +17,5 @@ public interface Expirable {
    */
   boolean isExpired();
 
-  /**
-   * Retrieves the identifier for what the game object should become or what action should be taken upon
-   * the expiration of this object. This might involve transforming the object into another type, removing it
-   * from the game, or other outcomes specific to the game's design.
-   *
-   * @return A String identifier representing the game object's state or type after expiration. This could be
-   *         an ID for a new type of game object, a special value indicating removal, or any other outcome as
-   *         defined by the implementation.
-   */
-  String getGameObjectAfterExpiration();
-
 }
 
