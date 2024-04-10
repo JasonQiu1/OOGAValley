@@ -81,23 +81,29 @@ public class Cell extends StackPane {
 
   public void incrementRow() {
     row++;
+    setId(row, column);
+
   }
 
   public void incrementColumn() {
     column++;
+    setId(row, column);
   }
 
   public void decrementRow() {
     row--;
+    setId(row, column);
   }
 
   public void decrementColumn() {
     column--;
+    setId(row, column);
   }
   private void setId(int i, int j) {
     id = new int[2];
     id[0] = i;
     id[1] = j;
   }
+
 
 }
