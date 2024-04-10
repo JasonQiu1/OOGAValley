@@ -1,52 +1,42 @@
 package oogasalad.Game.GameModel.PropertiesOfGameObjects;
 
-import java.util.List;
 import java.util.Map;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
-import oogasalad.Game.GameModel.WrapperStateAndItem;
+import oogasalad.Game.GameModel.ReadOnlyProperties;
 
 public abstract class GameObjectProperties {
-
-  private String nextUpdateGameObject;
-  private Map<String, String> interactingNewGameObjectMapings;
-  private Map<String, Double> conditionalPreferenceMultipliers;
-  private String image;
-  private String gameObjectAfterExpiration;
-  private boolean expiringState;
-  private int expiringTime;
-  private int defaultUpdateTime;
+  private ReadOnlyProperties properties;
 
   public long modifiedTimeToUpdate(GameTime gameTime) {
-    return defaultUpdateTime;
+    return properties.getInteger("updateTime");
   }
 
   public boolean doesExpire() {
-    return expiringState;
+    return properties.getBoolean("expirable");
   }
 
   public String getNextUpdateGameObject() {
-    return nextUpdateGameObject;
+    return properties.getString("updateTransformation");
   }
 
   public long getTimeToExpired() {
-    return expiringTime;
+    return properties.getInteger("expireTime");
   }
 
   public boolean validInteractingItem(Item item) {
-    return interactingNewGameObjectMapings.containsKey(item.toString());
+    return properties.getStringMap("interactTransformations").containsKey(item.toString());
   }
 
   public String nextInteractingGameObject(Item item) {
-    return interactingNewGameObjectMapings.get(item.toString()
-    );
+    return properties.getStringMap("interactTransformations").get(item.toString());
   }
 
   public String getImagePath() {
-    return image;
+    return properties.getString("image");
   }
 
   public String getGameObjectAfterExpiration() {
-    return gameObjectAfterExpiration;
+    return properties.getString("expireTransformation");
   }
 }
