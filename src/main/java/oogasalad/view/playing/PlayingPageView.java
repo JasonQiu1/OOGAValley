@@ -35,7 +35,7 @@ import oogasalad.view.shopping.ShoppingView;
  * second.
  */
 
-public class PlayingPageView extends Application {
+public class PlayingPageView {
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -70,9 +70,11 @@ public class PlayingPageView extends Application {
   private Bag bag = new Bag();
   private Shop shop = new Shop();
 
-  @Override
-  public void start(Stage primaryStage) {
+  public PlayingPageView(Stage primaryStage) {
     stage = primaryStage;
+  }
+
+  public void start() {
     StackPane root = new StackPane();
     BorderPane borderPane = new BorderPane();
     initModel();
@@ -87,10 +89,10 @@ public class PlayingPageView extends Application {
     scene.getStylesheets().add("styles.css");
     scene.setOnMouseClicked(event -> {
     });
-    primaryStage.setTitle("Playing Mode");
+    stage.setTitle("Playing Mode");
     setUpdate();
-    primaryStage.setScene(scene);
-    primaryStage.show();
+    stage.setScene(scene);
+    stage.show();
   }
 
   private void initModel() {
