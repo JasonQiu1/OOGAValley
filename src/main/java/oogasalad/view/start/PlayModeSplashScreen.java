@@ -44,6 +44,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //    LOG.debug(previousScene);
 //    stage.setScene(previousScene);
 //    stage.show();
+
     new StartScreen(stage).open();
   }
 
