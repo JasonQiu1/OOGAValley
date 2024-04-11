@@ -105,5 +105,13 @@ public class Cell extends StackPane {
     id[1] = j;
   }
 
+  public int[] getID() {
+    return id;
+  }
+
+  public Rectangle getBase() {
+    return base;
+  }
+
 
 }
