@@ -20,6 +20,5 @@ public class MapEditor extends VBox {
     BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
     BottomPanel bp = new BottomPanel(ts);
     getChildren().addAll(tp, bmw, bp, cip);
-    //getChildren().add(new MapExtender(bm));
   }
 }
