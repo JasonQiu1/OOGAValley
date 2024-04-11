@@ -36,9 +36,9 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
   @Test
   @DisplayName("Test New Button")
   public void testOpenPlayingView() {
-    sleep(3000);
+    sleep(500);
     clickOn(newGame);
-    sleep(3000);
+    sleep(500);
     assertTrue(stage.getTitle().equals("Playing Mode"));
   }
 
@@ -58,9 +58,9 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
   @Test
   @DisplayName("Test Back Button")
   public void testGoBack() {
-    sleep(3000);
+    sleep(500);
     clickOn(back);
-    sleep(3000);
+    sleep(500);
     assertTrue(stage.getTitle().equals("OOGAVALLEY"));
   }
 }

@@ -29,18 +29,18 @@ public class StartScreenTest extends DukeApplicationTest {
   @Test
   @DisplayName("Test Create Button")
   public void openEditor() {
-    sleep(3000);
+    sleep(500);
     clickOn(create);
-    sleep(3000);
+    sleep(500);
     assertNotEquals(stage.getScene(), ss.getStartScreen());
   }
 
   @Test
   @DisplayName("Test Play Button")
   public void openPlayMode() {
-    sleep(3000);
+    sleep(500);
     clickOn(play);
-    sleep(3000);
+    sleep(500);
     assertTrue(stage.getTitle().equals("Play Mode"));
   }
 }
