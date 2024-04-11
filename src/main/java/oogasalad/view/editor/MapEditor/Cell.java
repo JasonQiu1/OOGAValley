@@ -8,8 +8,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import java.util.List;
-
 public class Cell extends StackPane {
 
   private static final int HEIGHT = 37; //read from file
@@ -21,7 +19,7 @@ public class Cell extends StackPane {
 
   public Cell(Selector ts, CellInfoPane cip, int i, int j) {
     super();
-    setId(i, j);
+    setLocalId(i, j);
     column = i;
     row = j;
     base = new Rectangle(WIDTH, HEIGHT);
@@ -81,33 +79,41 @@ public class Cell extends StackPane {
 
   public void incrementRow() {
     row++;
-    setId(row, column);
+    setLocalId(row, column);
 
   }
 
   public void incrementColumn() {
     column++;
-    setId(row, column);
+    setLocalId(row, column);
   }
 
   public void decrementRow() {
     row--;
-    setId(row, column);
+    setLocalId(row, column);
   }
 
   public void decrementColumn() {
     column--;
-    setId(row, column);
+    setLocalId(row, column);
   }
-  private void setId(int i, int j) {
+  private void setLocalId(int i, int j) {
     id = new int[2];
     id[0] = i;
     id[1] = j;
+    setLookUpId();
   }
 
-  public int[] getID() {
+  private void setLookUpId() {
+    String lookUpId = String.format("%d_%d", id[0], id[1]);
+    this.setId(lookUpId);
+  }
+
+  public int[] getLocalId() {
     return id;
   }
+
+  public String getLookUpId() {return this.getId(); }
 
   public Rectangle getBase() {
     return base;

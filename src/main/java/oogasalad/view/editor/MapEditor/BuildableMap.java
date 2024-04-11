@@ -18,6 +18,7 @@ public class BuildableMap {
 
   public BuildableMap(Selector ts, CellInfoPane cip) {
     gp = new GridPane();
+    gp.setId("EditorGridPane");
     this.gridPaneProperty = new GridPaneProperty(gp);
     this.ts = ts;
     this.cip = cip;

@@ -11,6 +11,7 @@ public class TileView extends SelectableView {
 
   public TileView(ImageView pic, String title) {
     super(pic, title, 50, 37);
+    this.setId(title);
     icon = pic;
     this.title = title;
   }
