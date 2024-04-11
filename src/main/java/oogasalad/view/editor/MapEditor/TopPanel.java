@@ -6,6 +6,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import oogasalad.view.start.ChangePageButton;
+import oogasalad.view.start.PlayModeSplashScreen;
+import oogasalad.view.start.StartScreen;
 
 public class TopPanel extends StackPane {
 
@@ -61,4 +64,5 @@ public class TopPanel extends StackPane {
       BorderPane.setAlignment(scb, Pos.CENTER_RIGHT);
     super.getChildren().addAll(hbox, bp);
   }
+
 }

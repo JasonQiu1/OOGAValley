@@ -40,7 +40,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     resultContainer.showFileChooserDialog(stage);
   }
 
-  public void goBackScene() {
+  private void goBackScene() {
 //    LOG.debug(previousScene);
 //    stage.setScene(previousScene);
 //    stage.show();
