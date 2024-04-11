@@ -13,6 +13,7 @@ public class BottomPanel extends TabPane {
 
   public BottomPanel(Selector ts) {
     super();
+    this.setId("BottomPanel");
     Tab titlesTab = new Tab("Tiles");
     Tab natureTab = new Tab("Nature");
     Tab plantsTab = new Tab("Plants");
