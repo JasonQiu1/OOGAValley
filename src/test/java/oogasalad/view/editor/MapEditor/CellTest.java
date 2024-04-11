@@ -5,8 +5,6 @@ import javafx.scene.paint.Color;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import javafx.scene.input.MouseButton;
-import javafx.scene.layout.Pane;
 
 public class CellTest {
 
@@ -65,7 +63,7 @@ public class CellTest {
   @Test
   public void testIdInitialization() {
     Cell cell = new Cell(null, null, 3, 4);
-    int[] id = cell.getID();
+    int[] id = cell.getLocalId();
     assertEquals(3, id[0]);
     assertEquals(4, id[1]);
   }
@@ -76,6 +74,12 @@ public class CellTest {
     assertEquals(Color.WHITE, cell.getBase().getFill());
     assertEquals(Color.BLACK, cell.getBase().getStroke());
     assertEquals(2, cell.getBase().getStrokeWidth());
+  }
+
+  @Test
+  public void testLookUpId() {
+    Cell cell = new Cell(null, null, 0, 0);
+    assertTrue(cell.getId().equals("0_0"));
   }
 
   // Add more tests as needed
