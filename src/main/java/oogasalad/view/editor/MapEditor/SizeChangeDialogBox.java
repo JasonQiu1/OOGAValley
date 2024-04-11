@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
 //TODO: resource bundle this
-class DialogBox {
+class SizeChangeDialogBox {
 
   public int[] getNewSize() {
     TextField textField1 = new TextField();
