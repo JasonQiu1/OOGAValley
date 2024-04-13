@@ -21,7 +21,7 @@
 
     // LAND ONLY
     // True if you can plant seeds on this land
-    "isPlantable": false
+    "plantable": false
   },
   "listProperties": {},
   "mapProperties": {

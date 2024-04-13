@@ -17,7 +17,9 @@
     "expirable": true,
     "expireTime": 120,
     // or null
-    "expireTransformation": "GAME_OBJECT"
+    "expireTransformation": "GAME_OBJECT",
+    // STRUCTURE ONLY
+    "destructable": true
   },
   "listProperties": {},
   "mapProperties": {
@@ -49,7 +51,6 @@
     */
 
     // STRUCTURE ONLY
-    "isDestructable": true,
     "dropsOnDestruction": {
       "OBJECT_NAME": 1
     }
