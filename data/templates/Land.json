@@ -4,7 +4,7 @@
     // This is the id of the object and must be unique within the game configuration,
     // otherwise one will overwrite the other in an undefined way.
     "name": "OBJECT_NAME",
-    "type": "GameObject",
+    "type": "Land",
     // This is filename of the image which the view will use to display this object.
     // The file must exist in the `data/images` directory.
     "image": "OBJECT_IMAGE.png",
@@ -17,7 +17,11 @@
     "expirable": true,
     "expireTime": 120,
     // or null
-    "expireTransformation": "GAME_OBJECT"
+    "expireTransformation": "GAME_OBJECT",
+
+    // LAND ONLY
+    // True if you can plant seeds on this land
+    "plantable": false
   },
   "listProperties": {},
   "mapProperties": {
@@ -47,11 +51,5 @@
     *  ]
     * },
     */
-
-    // MOVE TO STRUCTURES ONLY
-    "isDestructable": true,
-    "dropsOnDestruction": {
-      "OBJECT_NAME": 1
-    }
   }
 }

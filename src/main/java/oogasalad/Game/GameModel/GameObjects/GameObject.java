@@ -3,37 +3,36 @@ package oogasalad.Game.GameModel.GameObjects;
 import java.util.function.Supplier;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
-import oogasalad.Game.GameModel.PropertiesOfGameObjects.GameObjectProperties;
+import oogasalad.Game.GameModel.ReadOnlyProperties;
+import oogasalad.Game.GameModel.exception.IncorrectPropertyFileType;
 
 /**
  * Abstract base class for all game objects within the game. This class defines the common behavior
- * and properties of game objects, such as interaction capabilities, expiration, and updating over time.
+ * and properties of game objects, such as interaction capabilities, expiration, and updating over
+ * time.
+ *
+ * @author Spencer Katz, Jason Qiu
  */
 public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
-  private final String id;
-  private GameObjectProperties properties;
+  private ReadOnlyProperties properties;
   private boolean expired;
   private long timeSinceExpiringState;
   private GameTime creationTime;
-  private final PropertiesFactory propertiesFactory;
   private boolean changePropertiesOnNextIteration;
   private String nextId;
 
   /**
    * Constructs a GameObject with specified properties and initial state.
    *
-   * @param id The unique identifier for the game object.
-   * @param properties The behavior and attributes of the game object.
+   * @param properties   The behavior and attributes of the game object.
    * @param creationTime The game time at which the object was created.
    */
-  public GameObject(String id, GameObjectProperties properties, GameTime creationTime) {
-    this.id = id;
+  public GameObject(ReadOnlyProperties properties, GameTime creationTime) {
     this.properties = properties;
     this.creationTime = creationTime;
     this.expired = false;
     this.changePropertiesOnNextIteration = false;
-    this.propertiesFactory = new PropertiesFactory();
   }
 
   /**
@@ -42,7 +41,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return The unique ID of the game object.
    */
   public String getId() {
-    return id;
+    return properties.getString("name");
   }
 
   /**
@@ -50,9 +49,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public void checkAndUpdateExpired() {
-    if (expired && System.currentTimeMillis() - timeSinceExpiringState > properties.getTimeToExpired()) {
+    if (expired && System.currentTimeMillis() - timeSinceExpiringState > getTimeToExpired()) {
       changePropertiesOnNextIteration = true;
-      nextId = properties.getGameObjectAfterExpiration();
+      nextId = getGameObjectAfterExpiration();
     }
   }
 
@@ -64,10 +63,10 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public void update(GameTime gameTime) {
     updateAndInteract(() -> {
-      if (creationTime.getDifferenceInMinutes(gameTime) > properties.modifiedTimeToUpdate(gameTime)) {
-        return properties.getNextUpdateGameObject();
+      if (creationTime.getDifferenceInMinutes(gameTime) > modifiedTimeToUpdate(gameTime)) {
+        return getNextUpdateGameObject();
       }
-      return id;
+      return getId();
     });
   }
 
@@ -79,10 +78,10 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public void interact(Item item) {
     updateAndInteract(() -> {
-      if (properties.validInteractingItem(item)) {
-        return properties.nextInteractingGameObject(item);
+      if (validInteractingItem(item)) {
+        return nextInteractingGameObject(item);
       }
-      return id;
+      return getId();
     });
   }
 
@@ -109,14 +108,14 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public boolean interactionValid(Item item) {
-    return properties.validInteractingItem(item);
+    return validInteractingItem(item);
   }
 
   /**
    * Updates the expiration status of the game object, marking it as expired if necessary.
    */
   private void updateExpired() {
-    if (!expired && properties.doesExpire()) {
+    if (!expired && doesExpire()) {
       expired = true;
       timeSinceExpiringState = System.currentTimeMillis();
     }
@@ -129,7 +128,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public String getImagePath() {
-    return properties.getImagePath();
+    return properties.getString("image");
   }
 
   /**
@@ -138,34 +137,73 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param newId The new ID to potentially switch to.
    */
   protected void shouldIChangeProperties(String newId) {
-    if (newId == null || !newId.equals(id)) {
+    if (newId == null || !newId.equals(getId())) {
       changePropertiesOnNextIteration = true;
       this.nextId = newId;
     }
   }
 
   /**
-   * Changes the properties of the game object if applicable, based on interaction or update conditions.
+   * Changes the properties of the game object if applicable, based on interaction or update
+   * conditions.
    *
    * @return true if properties were changed, false otherwise.
    */
   protected boolean changePropertiesIfApplicable() {
     if (changePropertiesOnNextIteration) {
-      setProperties(propertiesFactory.createNewProperties(nextId));
+      // TODO: GET THIS FROM GAMECONFIGURATION SOMEHOW
+      // setProperties(propertiesFactory.createNewProperties(nextId));
       return true;
     }
     return false;
   }
 
+  public ReadOnlyProperties getProperties() {
+    return properties;
+  }
+
   /**
-   * Sets new properties for the game object, updating its behavior and attributes.
+   * Sets new properties for the game object, updating its behavior and attributes. Ensures that the
+   * type of the Properties instance is the same as the subclass of GameObject.
    *
    * @param properties The new properties to set.
    */
-  protected void setProperties(GameObjectProperties properties) {
+  public void setProperties(ReadOnlyProperties properties) {
+    if (!properties.getString("type").equals(getClass().getSimpleName())) {
+      throw new IncorrectPropertyFileType(
+          "Provided properties cannot be cast to correct properties type");
+    }
     this.changePropertiesOnNextIteration = false;
     this.expired = false;
     this.properties = properties;
+  }
+
+  protected long modifiedTimeToUpdate(GameTime gameTime) {
+    return properties.getInteger("updateTime");
+  }
+
+  protected boolean doesExpire() {
+    return properties.getBoolean("expirable");
+  }
+
+  protected String getNextUpdateGameObject() {
+    return properties.getString("updateTransformation");
+  }
+
+  protected long getTimeToExpired() {
+    return properties.getInteger("expireTime");
+  }
+
+  protected boolean validInteractingItem(Item item) {
+    return properties.getStringMap("interactTransformations").containsKey(item.toString());
+  }
+
+  protected String nextInteractingGameObject(Item item) {
+    return properties.getStringMap("interactTransformations").get(item.toString());
+  }
+
+  protected String getGameObjectAfterExpiration() {
+    return properties.getString("expireTransformation");
   }
 }
 
