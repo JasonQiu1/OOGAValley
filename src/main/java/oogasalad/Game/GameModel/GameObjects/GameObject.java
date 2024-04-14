@@ -17,7 +17,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   private ReadOnlyProperties properties;
   private boolean expired;
-  private long timeSinceExpiringState;
+  private GameTime timeSinceExpiringState;
   private GameTime creationTime;
   private boolean changePropertiesOnNextIteration;
   private String nextId;
@@ -46,10 +46,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   /**
    * Checks and updates the expiration status of the game object based on the elapsed time.
+   * @param gameTime The current time of the game
    */
   @Override
-  public void checkAndUpdateExpired() {
-    if (expired && System.currentTimeMillis() - timeSinceExpiringState > getTimeToExpired()) {
+  public void checkAndUpdateExpired(GameTime gameTime) {
+    if (expired && timeSinceExpiringState.getDifferenceInMinutes(gameTime) >
+        getTimeToExpired()) {
       changePropertiesOnNextIteration = true;
       nextId = getGameObjectAfterExpiration();
     }
@@ -68,6 +70,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
       }
       return getId();
     });
+    updateExpired(gameTime);
   }
 
   /**
@@ -94,10 +97,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     if (changePropertiesIfApplicable()) {
       return;
     }
-    checkAndUpdateExpired();
     String newId = idGenerator.get();
     shouldIChangeProperties(newId);
-    updateExpired();
+
   }
 
   /**
@@ -113,11 +115,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   /**
    * Updates the expiration status of the game object, marking it as expired if necessary.
+   * @param gameTime The current time of the game.
    */
-  private void updateExpired() {
+  private void updateExpired(GameTime gameTime) {
     if (!expired && doesExpire()) {
       expired = true;
-      timeSinceExpiringState = System.currentTimeMillis();
+      timeSinceExpiringState = gameTime;
     }
   }
 

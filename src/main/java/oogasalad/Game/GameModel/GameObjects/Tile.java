@@ -103,9 +103,9 @@ public class Tile {
    * updates.
    */
   public ItemsToAdd update(GameTime gameTime) {
-    executeIfNotNull(() -> collectable.update(gameTime), collectable);
-    executeIfNotNull(() -> structure.update(gameTime), structure);
-    executeIfNotNull(() -> land.update(gameTime), land);
+    executeIfNotNull(() -> collectable.update(gameTime), collectable, gameTime);
+    executeIfNotNull(() -> structure.update(gameTime), structure, gameTime);
+    executeIfNotNull(() -> land.update(gameTime), land, gameTime);
     return itemReturns();
   }
 
@@ -114,10 +114,12 @@ public class Tile {
    *
    * @param updateLogic The update logic to be executed.
    * @param gameObject  The game object to check for nullity.
+   * @param gameTime The current game time.
    */
-  private void executeIfNotNull(Runnable updateLogic, GameObject gameObject) {
+  private void executeIfNotNull(Runnable updateLogic, GameObject gameObject, GameTime gameTime) {
     if (gameObject != null) {
       updateLogic.run();
+      gameObject.checkAndUpdateExpired(gameTime);
     }
   }
 
