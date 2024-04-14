@@ -1,5 +1,6 @@
 package oogasalad.Game.GameModel.GameObjects;
 
+import java.lang.reflect.Method;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
 
@@ -149,6 +150,36 @@ public class Tile {
   public ImageRecord getImages() {
     return new ImageRecord(collectable.getImagePath(), structure.getImagePath(),
         land.getImagePath());
+  }
+
+  /**
+   * Sets the collectable object for this tile.
+   * This method assigns a Collectable instance to the tile, potentially replacing an existing collectable.
+   *
+   * @param collectable The Collectable object to be set on this tile.
+   */
+  public void setCollectable(Collectable collectable) {
+    this.collectable = collectable;
+  }
+
+  /**
+   * Sets the structure object for this tile.
+   * This method assigns a Structure instance to the tile, potentially replacing an existing structure.
+   *
+   * @param structure The Structure object to be set on this tile.
+   */
+  public void setStructure(Structure structure) {
+    this.structure = structure;
+  }
+
+  /**
+   * Sets the land object for this tile.
+   * This method assigns a Land instance to the tile, potentially replacing an existing land type.
+   *
+   * @param land The Land object to be set on this tile.
+   */
+  public void setLand(Land land) {
+    this.land = land;
   }
 }
 
