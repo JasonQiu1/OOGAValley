@@ -40,7 +40,7 @@ public class Collectable extends GameObject implements Collect {
    */
   @Override
   public void interact(Item item) {
-    if (validInteractingItem(item)) {
+    if (interactionValid(item)) {
       interactingExpired = true;
     }
     shouldIChangeProperties(null);
