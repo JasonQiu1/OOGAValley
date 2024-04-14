@@ -81,7 +81,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public void interact(Item item) {
     updateAndInteract(() -> {
-      if (properties.getStringMap("interactTransformations").containsKey(item.toString())) {
+      if (interactionValid(item)) {
         return properties.getStringMap("interactTransformations").get(item.toString());
       }
       return getId();
