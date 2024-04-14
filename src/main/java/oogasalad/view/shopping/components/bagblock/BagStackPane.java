@@ -7,12 +7,19 @@ import javafx.scene.layout.StackPane;
 import oogasalad.Game.GameModel.shop.Bag;
 import oogasalad.view.shopping.Utils;
 
-
+/**
+ * This class is a StackPane that contains a background image and a BagGridPane. It is used to
+ * display the items in the bag block.
+ */
 public class BagStackPane extends StackPane {
 
-  private Bag bag;
-  private BagGridPane gridPane;
+  private final Bag bag;
 
+  /**
+   * Constructor for the BagStackPane
+   *
+   * @param bag the bag to be displayed
+   */
   public BagStackPane(Bag bag) {
     super();
     this.bag = bag;
@@ -24,10 +31,9 @@ public class BagStackPane extends StackPane {
     ImageView backgroundImageView = new ImageView(backgroundImage);
     backgroundImageView.setFitWidth(Utils.shopStackPaneWidth);
     backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
-    gridPane = new BagGridPane(bag);
+    BagGridPane gridPane = new BagGridPane(bag);
     setAlignment(gridPane, Pos.TOP_LEFT);
     setAlignment(backgroundImageView, Pos.TOP_LEFT);
     getChildren().addAll(backgroundImageView, gridPane);
-
   }
 }

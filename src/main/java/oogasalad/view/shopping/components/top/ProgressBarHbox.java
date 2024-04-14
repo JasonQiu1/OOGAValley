@@ -6,12 +6,20 @@ import javafx.scene.layout.HBox;
 import oogasalad.Game.GameModel.shop.Shop;
 import oogasalad.view.shopping.Utils;
 
+/**
+ * This class is a HBox that contains a button and a progress bar. It is used to display the current
+ * energy in the shop block.
+ */
 public class ProgressBarHbox extends HBox {
 
-  private Button button;
+  private final Shop shop;
   private ProgressBar progressBar;
-  private Shop shop;
 
+  /**
+   * Constructor for the ProgressBarHbox
+   *
+   * @param shop the shop to be displayed
+   */
   public ProgressBarHbox(Shop shop) {
     super();
     this.shop = shop;
@@ -19,7 +27,7 @@ public class ProgressBarHbox extends HBox {
   }
 
   private void initialize() {
-    button = new Button();
+    Button button = new Button();
     button.setId("shopAddButton");
     progressBar = new ProgressBar(shop.getCurrentEnergy());
     progressBar.setPrefSize(Utils.progressBarWidth, Utils.progressBarHeight);

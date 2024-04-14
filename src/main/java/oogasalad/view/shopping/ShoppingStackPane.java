@@ -11,15 +11,15 @@ import oogasalad.view.shopping.components.bagblock.BagStackPane;
 import oogasalad.view.shopping.components.shopblock.ShopStackPane;
 import oogasalad.view.shopping.components.top.TopHbox;
 
-public class ShoppingBoaderPane extends BorderPane {
+public class ShoppingStackPane extends StackPane {
 
+  private final Shop shop;
+  private final Bag bag;
+  private final Stage stage;
+  private final Scene previousScene;
   private TopHbox topHBox;
-  private Shop shop;
-  private Bag bag;
-  private Stage stage;
-  private Scene previousScene;
 
-  public ShoppingBoaderPane(Shop shop, Bag bag, Stage stage, Scene previousScene) {
+  public ShoppingStackPane(Shop shop, Bag bag, Stage stage, Scene previousScene) {
     super();
     this.getStyleClass().add("shop-boarder-pane");
     this.shop = shop;
@@ -30,19 +30,21 @@ public class ShoppingBoaderPane extends BorderPane {
   }
 
   private void initialize() {
+    BorderPane borderPane = new BorderPane();
     topHBox = new TopHbox(shop);
-    setTop(topHBox);
+    borderPane.setTop(topHBox);
     HBox centerHBox = new HBox();
-    StackPane sellItemStackPane = new ShopStackPane(shop);
+    StackPane sellItemStackPane = new ShopStackPane(shop, this);
     StackPane bagStackPane = new BagStackPane(bag);
     centerHBox.getChildren().addAll(sellItemStackPane, bagStackPane);
-    setCenter(centerHBox);
+    borderPane.setCenter(centerHBox);
     topHBox.getBackButton().setOnMouseClicked(event -> {
       stage.setScene(previousScene);
     });
+    getChildren().add(borderPane);
   }
 
-  public void update() {
+  protected void update() {
     topHBox.update();
   }
 

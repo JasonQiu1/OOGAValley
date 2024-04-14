@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -41,11 +39,13 @@ public class PlayingPageView {
   public static final double landCellHeight = 50;
   public static final double bottomCellWidth = 30;
   public static final double bottomCellHeight = 30;
+  public static final double bottomBoxWidth = 300;
+  public static final double bottomBoxHeight = 80;
   public static final int landNumRows = 10;
   public static final int landNumCols = 15;
   public static final double topHeight = 50;
   public static final double topWidth = 800;
-  public static final double bottomHeight = 80;
+  public static final double bottomHeight = 100;
   public static final double bottomWidth = 800;
   public static final double padding = 10;
   public static final double leftRightWidth = 50;
@@ -76,6 +76,7 @@ public class PlayingPageView {
 
   public void start() {
     StackPane root = new StackPane();
+    root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
     initModel();
     setupTop(borderPane);
@@ -148,12 +149,10 @@ public class PlayingPageView {
     bottomBox.setPadding(new Insets(padding));
     bottomBox.setPrefSize(bottomWidth, bottomHeight);
     bottomBox.getStyleClass().add("bottom-box");
-    GridPane toolGridPane = toolView.getToolGridPane();
-    GridPane itemGridPane = bagItemView.getItemGridPane();
-    toolGridPane.setStyle("-fx-background-color: lightgray;" + "-fx-padding: 10;");
-    itemGridPane.setStyle("-fx-background-color: lightgray;");
-    HBox.setMargin(itemGridPane, new javafx.geometry.Insets(0, 0, 0, bottomBoxPadding));
-    bottomBox.getChildren().addAll(toolGridPane, itemGridPane);
+    StackPane toolStackPane = toolView.getToolStackPane();
+    StackPane itemStackPane = bagItemView.getItemStackPane();
+    HBox.setMargin(itemStackPane, new javafx.geometry.Insets(0, 0, 0, bottomBoxPadding));
+    bottomBox.getChildren().addAll(toolStackPane, itemStackPane);
     root.setBottom(bottomBox);
   }
 

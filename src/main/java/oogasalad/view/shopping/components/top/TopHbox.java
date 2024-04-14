@@ -7,6 +7,10 @@ import javafx.scene.layout.HBox;
 import oogasalad.Game.GameModel.shop.Shop;
 import oogasalad.view.shopping.Utils;
 
+/**
+ * This class is a HBox that contains a CurrentMoneyHbox, a ProgressBarHbox, and a BackButton. It is
+ * used to display the top part of the shop block.
+ */
 public class TopHbox extends HBox {
 
   private CurrentMoneyHbox currentMoneyHbox;
@@ -18,6 +22,11 @@ public class TopHbox extends HBox {
     initialize(shop);
   }
 
+  /**
+   * Initializes the top HBox
+   *
+   * @param shop the shop to be displayed
+   */
   private void initialize(Shop shop) {
     setAlignment(Pos.CENTER);
     setSpacing(Utils.topHBoxSpacing);

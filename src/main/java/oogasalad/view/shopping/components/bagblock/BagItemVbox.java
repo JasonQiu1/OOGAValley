@@ -6,11 +6,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import oogasalad.view.shopping.Utils;
 
+/**
+ * This class is a VBox that contains an item image and a RemainNumStackPane. It is used to display
+ * an item in the bag block.
+ */
 public class BagItemVbox extends VBox {
 
-  private ImageView itemImage;
-  private RemainNumStackPane remainNumStackPane;
+  private final ImageView itemImage;
+  private final RemainNumStackPane remainNumStackPane;
 
+  /**
+   * Constructor for the BagItemVbox
+   *
+   * @param itemImage          the image of the item
+   * @param remainNumStackPane the RemainNumStackPane to display the number of items remaining
+   */
   public BagItemVbox(ImageView itemImage, RemainNumStackPane remainNumStackPane) {
     super();
     this.itemImage = itemImage;

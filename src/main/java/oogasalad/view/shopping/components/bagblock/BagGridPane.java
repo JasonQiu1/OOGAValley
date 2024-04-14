@@ -8,10 +8,19 @@ import javafx.scene.layout.GridPane;
 import oogasalad.Game.GameModel.shop.Bag;
 import oogasalad.Game.GameModel.shop.BagItemModel;
 
+/**
+ * This class is a GridPane that contains BagItemVboxes. It is used to display the items in the bag
+ * block.
+ */
 public class BagGridPane extends GridPane {
 
-  private Bag bag;
+  private final Bag bag;
 
+  /**
+   * Constructor for the BagGridPane
+   *
+   * @param bag the bag to be displayed
+   */
   public BagGridPane(Bag bag) {
     super();
     this.bag = bag;

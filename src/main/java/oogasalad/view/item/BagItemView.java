@@ -1,7 +1,11 @@
 package oogasalad.view.item;
 
 import java.util.Map;
+import javafx.geometry.Insets;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import oogasalad.Game.GameModel.shop.Bag;
 import oogasalad.Game.GameModel.shop.BagItemModel;
 import oogasalad.Game.GameModel.shop.ItemType;
@@ -14,6 +18,7 @@ import oogasalad.view.playing.PlayingPageView;
 public class BagItemView {
 
   private final GridPane itemGridPane;
+  private final StackPane itemStackPane;
   private final BagItemPile[][] bagItemPiles;
   private final int colNum;
   private final int rowNum;
@@ -27,15 +32,22 @@ public class BagItemView {
    */
   public BagItemView(int colNum, int rowNum, Bag bag) {
     this.itemGridPane = new GridPane();
+    this.itemStackPane = new StackPane();
     this.colNum = colNum;
     this.rowNum = rowNum;
     this.bag = bag;
     bagItemPiles = new BagItemPile[colNum][rowNum];
+    Image backgroundImage = new Image("img/playing/box-background.png");
+    ImageView backgroundImageView = new ImageView(backgroundImage);
+    backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
+    backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
+    StackPane.setMargin(itemGridPane, new Insets(10, 0, 0, 40));
+    itemStackPane.getChildren().addAll(backgroundImageView, itemGridPane);
     update();
   }
 
-  public GridPane getItemGridPane() {
-    return itemGridPane;
+  public StackPane getItemStackPane() {
+    return itemStackPane;
   }
 
   /**
@@ -58,7 +70,7 @@ public class BagItemView {
     }
     location[0] = PlayingPageView.windowHeight - PlayingPageView.bottomHeight
         + PlayingPageView.bottomBoxPadding / 2 + index[0] * PlayingPageView.bottomCellHeight;
-    location[1] = PlayingPageView.windowWidth / 2 + PlayingPageView.bottomBoxPadding + index[1]
+    location[1] = PlayingPageView.windowWidth / 2 + PlayingPageView.bottomBoxPadding * 2 + index[1]
         * PlayingPageView.bottomCellWidth;
     return location;
   }
