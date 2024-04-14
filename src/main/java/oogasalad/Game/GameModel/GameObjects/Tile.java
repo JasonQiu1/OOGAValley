@@ -1,5 +1,6 @@
 package oogasalad.Game.GameModel.GameObjects;
 
+import java.lang.reflect.Method;
 import oogasalad.Game.GameModel.GameTime;
 import oogasalad.Game.GameModel.Item;
 
@@ -149,6 +150,18 @@ public class Tile {
   public ImageRecord getImages() {
     return new ImageRecord(collectable.getImagePath(), structure.getImagePath(),
         land.getImagePath());
+  }
+
+  public void setCollectable(Collectable collectable) {
+    this.collectable = collectable;
+  }
+
+  public void setStructure(Structure structure) {
+    this.structure = structure;
+  }
+
+  public void setLand(Land land) {
+    this.land = land;
   }
 }
 
