@@ -1,7 +1,7 @@
 package oogasalad.model.api;
 
 /**
- * Read-only interface for game state.
+ * Provides read-only access to data in a game state.
  *
  * @author Jason Qiu
  */

@@ -3,7 +3,7 @@ package oogasalad.model.api;
 import java.io.IOException;
 
 /**
- * Read-only interface for game configuration.
+ * Provides read-only access to data in a game configuration.
  *
  * @author Jason Qiu
  */

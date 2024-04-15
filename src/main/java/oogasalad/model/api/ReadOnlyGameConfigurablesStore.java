@@ -3,13 +3,18 @@ package oogasalad.model.api;
 import java.util.Map;
 import oogasalad.model.api.exception.KeyNotFoundException;
 
+/**
+ * Provides read-only access to user-created configurables.
+ *
+ * @author Jason Qiu
+ */
 public interface ReadOnlyGameConfigurablesStore {
 
   /**
    * Gets the read-only version of a configurable (GameObject, Item, etc.) that exists in this game
    * configuration.
    *
-   * @param id the id of the configurable.
+   * @param id the id/map of the configurable.
    * @return the ReadOnlyProperties of the configurable.
    * @throws KeyNotFoundException if the id does not exist.
    */

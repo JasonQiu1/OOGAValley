@@ -5,6 +5,11 @@ import java.util.Map;
 import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.KeyNotFoundException;
 
+/**
+ * Provides read-only access to data in properties.
+ *
+ * @author Jason Qiu
+ */
 public interface ReadOnlyProperties {
 
   /**
