@@ -3,9 +3,9 @@ package oogasalad.view.item;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.layout.GridPane;
-import oogasalad.Game.GameModel.GameTime;
-import oogasalad.Game.GameModel.GameTimeInterface;
-import oogasalad.Game.GameModel.gameplay.PlantModel;
+import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.GameTimeInterface;
+import oogasalad.model.gameplay.PlantModel;
 import oogasalad.view.playing.PlayingPageView;
 
 /**

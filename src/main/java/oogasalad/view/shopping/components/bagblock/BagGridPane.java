@@ -5,8 +5,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import oogasalad.Game.GameModel.shop.Bag;
-import oogasalad.Game.GameModel.shop.BagItemModel;
+import oogasalad.model.shop.Bag;
+import oogasalad.model.shop.BagItemModel;
 
 /**
  * This class is a GridPane that contains BagItemVboxes. It is used to display the items in the bag

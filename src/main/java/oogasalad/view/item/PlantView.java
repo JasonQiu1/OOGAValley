@@ -4,8 +4,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import oogasalad.Game.GameModel.GameTimeInterface;
-import oogasalad.Game.GameModel.gameplay.PlantModel;
+import oogasalad.model.api.GameTimeInterface;
+import oogasalad.model.gameplay.PlantModel;
 
 /**
  * Represents a plant in the game.
