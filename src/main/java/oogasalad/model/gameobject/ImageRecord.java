@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjects;
+package oogasalad.model.gameobject;
 
 /**
  * A record that encapsulates the image identifiers for various types of game objects within a single tile or unit of game space.

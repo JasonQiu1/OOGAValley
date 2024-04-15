@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjects;
+package oogasalad.model.gameobject;
 
 import java.util.function.Supplier;
 import oogasalad.model.exception.IncorrectPropertyFileType;

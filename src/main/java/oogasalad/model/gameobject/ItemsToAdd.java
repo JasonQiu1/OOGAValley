@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjects;
+package oogasalad.model.gameobject;
 
 /**
  * Constructs an instance of {@code ItemsToAdd}.

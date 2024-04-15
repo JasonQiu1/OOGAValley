@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjects;
+package oogasalad.model.gameobject;
 
 /**
  * Provides the necessary contract for objects that can be collected in the game.

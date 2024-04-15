@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjects;
+package oogasalad.model.gameobject;
 
 /**
  * Represents an entity that can be visually represented within the game.

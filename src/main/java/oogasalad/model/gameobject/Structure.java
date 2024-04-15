@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjects;
+package oogasalad.model.gameobject;
 
 import oogasalad.model.GameTime;
 import oogasalad.model.ReadOnlyProperties;

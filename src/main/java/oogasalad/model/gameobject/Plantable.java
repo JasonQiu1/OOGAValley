@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjects;
+package oogasalad.model.gameobject;
 
 /**
  * Represents entities within the game that are capable of supporting planting operations.

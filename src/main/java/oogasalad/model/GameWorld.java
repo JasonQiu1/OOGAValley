@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import oogasalad.model.GameObjects.GameObject;
-import oogasalad.model.GameObjects.ItemsToAdd;
-import oogasalad.model.GameObjects.Tile;
+import oogasalad.model.gameobject.GameObject;
+import oogasalad.model.gameobject.ItemsToAdd;
+import oogasalad.model.gameobject.Tile;
 import oogasalad.model.exception.UnableToSetGameObject;
 
 /**
