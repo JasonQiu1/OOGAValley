@@ -71,7 +71,7 @@ public class GameConfiguration {
     return initialState;
   }
 
-  public GameConfigurablesStore getConfigurables() {
+  public GameConfigurablesStore getConfigurablesStore() {
     return configurablesStore;
   }
 
