@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import oogasalad.Game.GameModel.shop.Bag;
-import oogasalad.Game.GameModel.shop.Shop;
+import oogasalad.model.shop.Bag;
+import oogasalad.model.shop.Shop;
 import oogasalad.view.branch.BranchBase;
 
 public class ShoppingView extends BranchBase {

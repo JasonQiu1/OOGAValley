@@ -3,8 +3,8 @@ package oogasalad.view.shopping.components.shopblock;
 import java.util.List;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import oogasalad.Game.GameModel.shop.SellItem;
-import oogasalad.Game.GameModel.shop.Shop;
+import oogasalad.model.shop.SellItem;
+import oogasalad.model.shop.Shop;
 import oogasalad.view.popup.PopUpStackPane;
 
 public class SellGridPane extends GridPane {

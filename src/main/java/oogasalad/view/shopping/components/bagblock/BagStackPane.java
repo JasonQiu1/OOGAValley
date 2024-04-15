@@ -4,7 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import oogasalad.Game.GameModel.shop.Bag;
+import oogasalad.model.shop.Bag;
 import oogasalad.view.shopping.Utils;
 
 /**

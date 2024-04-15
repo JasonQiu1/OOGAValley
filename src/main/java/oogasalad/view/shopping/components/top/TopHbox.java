@@ -4,7 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import oogasalad.Game.GameModel.shop.Shop;
+import oogasalad.model.shop.Shop;
 import oogasalad.view.shopping.Utils;
 
 /**
