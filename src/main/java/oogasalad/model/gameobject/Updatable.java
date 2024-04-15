@@ -1,6 +1,6 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.GameTime;
+import oogasalad.model.gameplay.GameTime;
 
 /**
  * Defines an entity within the game that can be updated over time. Implementing this interface

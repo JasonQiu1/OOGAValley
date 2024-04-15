@@ -1,4 +1,4 @@
-package oogasalad.model;
+package oogasalad.model.gameobject;
 
 public class Item {
 

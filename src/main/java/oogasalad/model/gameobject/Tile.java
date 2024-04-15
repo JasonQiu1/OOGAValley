@@ -1,7 +1,6 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.GameTime;
-import oogasalad.model.Item;
+import oogasalad.model.gameplay.GameTime;
 
 /**
  * Represents a tile within the game world that can contain various game objects including

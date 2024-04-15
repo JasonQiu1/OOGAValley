@@ -1,6 +1,6 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.GameTime;
+import oogasalad.model.gameplay.GameTime;
 
 /**
  * Defines the contract for game objects that have an expirable nature within the game's environment.

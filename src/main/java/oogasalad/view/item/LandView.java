@@ -3,7 +3,7 @@ package oogasalad.view.item;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.layout.GridPane;
-import oogasalad.model.GameTime;
+import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.api.GameTimeInterface;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.view.playing.PlayingPageView;

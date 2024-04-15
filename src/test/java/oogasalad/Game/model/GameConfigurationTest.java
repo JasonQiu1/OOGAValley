@@ -2,7 +2,7 @@ package oogasalad.Game.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import oogasalad.model.GameConfiguration;
+import oogasalad.model.data.GameConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;

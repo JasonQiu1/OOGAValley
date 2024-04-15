@@ -1,8 +1,7 @@
 package oogasalad.model.gameobject;
 
 import java.util.Map;
-import oogasalad.model.GameTime;
-import oogasalad.model.Item;
+import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 
 /**

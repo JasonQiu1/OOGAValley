@@ -2,8 +2,7 @@ package oogasalad.model.gameobject;
 
 import java.util.function.Supplier;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
-import oogasalad.model.GameTime;
-import oogasalad.model.Item;
+import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 
 /**

@@ -1,7 +1,5 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.Item;
-
 /**
  * Defines the capability of an object to interact with items within the game.
  * Implementing this interface allows an object to respond to interactions with specific items,

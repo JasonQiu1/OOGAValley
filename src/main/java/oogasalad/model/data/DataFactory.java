@@ -1,4 +1,4 @@
-package oogasalad.model;
+package oogasalad.model.data;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -22,7 +22,7 @@ import org.apache.logging.log4j.Logger;
  * @param <T> The object type to serialize/deserialize.
  * @author Jason Qiu
  */
-class DataFactory<T> {
+public class DataFactory<T> {
 
   /**
    * Initialization.

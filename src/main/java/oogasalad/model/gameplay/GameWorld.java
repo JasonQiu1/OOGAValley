@@ -1,11 +1,13 @@
-package oogasalad.model;
+package oogasalad.model.gameplay;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
+import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameobject.Tile;
 import oogasalad.model.api.exception.UnableToSetGameObject;
