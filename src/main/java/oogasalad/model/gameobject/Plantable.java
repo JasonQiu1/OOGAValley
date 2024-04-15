@@ -9,9 +9,9 @@ package oogasalad.model.gameobject;
 public interface Plantable {
 
   /**
-   * Determines if the entity is currently in a state that allows planting operations.
-   * This method should be used to check if a planting action can be performed on the entity
-   * based on its current state, properties, or environmental conditions.
+   * Determines if the entity is currently in a state that allows planting operations. This method
+   * should be used to check if a planting action can be performed on the entity based on its
+   * current state, properties, or environmental conditions.
    *
    * @return {@code true} if the entity is plantable; {@code false} otherwise.
    */

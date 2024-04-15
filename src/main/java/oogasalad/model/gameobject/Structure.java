@@ -1,7 +1,7 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.gameplay.GameTime;
 
 /**
  * Represents a structure within the game world, extending the general functionality of a

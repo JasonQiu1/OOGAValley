@@ -1,7 +1,7 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.gameplay.GameTime;
 
 /**
  * Represents a piece of land within the game world, extending the {@link GameObject} class. This

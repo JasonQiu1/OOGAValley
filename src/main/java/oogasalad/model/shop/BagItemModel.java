@@ -1,6 +1,7 @@
 package oogasalad.model.shop;
 
 public class BagItemModel {
+
   private String url;
   private ItemType type;
 

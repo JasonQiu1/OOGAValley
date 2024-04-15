@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bag {
+
   private Map<BagItemModel, Integer> itemMap;
 
   public Bag() {

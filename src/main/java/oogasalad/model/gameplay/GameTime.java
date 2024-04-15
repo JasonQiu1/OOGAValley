@@ -11,7 +11,8 @@ import oogasalad.model.api.GameTimeInterface;
 public class GameTime implements GameTimeInterface {
 
 
-  // an hour of the game equals 43 seconds in real-time, (This is the default setting in Stardew valley).
+  // an hour of the game equals 43 seconds in real-time, (This is the default setting in Stardew
+  // valley).
   // this field stands for the real-time on behalf of the 10 minutes of game time
   // in other words, (unit) minute game time equals rate (in milliseconds)
   // by default, the unit is 10.

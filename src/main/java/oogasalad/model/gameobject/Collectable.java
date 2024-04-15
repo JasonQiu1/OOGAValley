@@ -1,8 +1,8 @@
 package oogasalad.model.gameobject;
 
 import java.util.Map;
-import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.gameplay.GameTime;
 
 /**
  * Represents a collectable game object that players can collect under certain conditions. This

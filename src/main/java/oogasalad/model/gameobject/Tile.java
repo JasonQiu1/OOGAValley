@@ -113,7 +113,7 @@ public class Tile {
    *
    * @param updateLogic The update logic to be executed.
    * @param gameObject  The game object to check for nullity.
-   * @param gameTime The current game time.
+   * @param gameTime    The current game time.
    */
   private void executeIfNotNull(Runnable updateLogic, GameObject gameObject, GameTime gameTime) {
     if (gameObject != null) {
@@ -151,8 +151,8 @@ public class Tile {
   }
 
   /**
-   * Sets the collectable object for this tile.
-   * This method assigns a Collectable instance to the tile, potentially replacing an existing collectable.
+   * Sets the collectable object for this tile. This method assigns a Collectable instance to the
+   * tile, potentially replacing an existing collectable.
    *
    * @param collectable The Collectable object to be set on this tile.
    */
@@ -161,8 +161,8 @@ public class Tile {
   }
 
   /**
-   * Sets the structure object for this tile.
-   * This method assigns a Structure instance to the tile, potentially replacing an existing structure.
+   * Sets the structure object for this tile. This method assigns a Structure instance to the tile,
+   * potentially replacing an existing structure.
    *
    * @param structure The Structure object to be set on this tile.
    */
@@ -171,8 +171,8 @@ public class Tile {
   }
 
   /**
-   * Sets the land object for this tile.
-   * This method assigns a Land instance to the tile, potentially replacing an existing land type.
+   * Sets the land object for this tile. This method assigns a Land instance to the tile,
+   * potentially replacing an existing land type.
    *
    * @param land The Land object to be set on this tile.
    */

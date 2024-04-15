@@ -1,9 +1,9 @@
 package oogasalad.model.gameobject;
 
 import java.util.function.Supplier;
+import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.gameplay.GameTime;
-import oogasalad.model.api.ReadOnlyProperties;
 
 /**
  * Abstract base class for all game objects within the game. This class defines the common behavior
@@ -45,12 +45,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   /**
    * Checks and updates the expiration status of the game object based on the elapsed time.
+   *
    * @param gameTime The current time of the game
    */
   @Override
   public void checkAndUpdateExpired(GameTime gameTime) {
-    if (expired && timeSinceExpiringState.getDifferenceInMinutes(gameTime) >
-        properties.getInteger("expireTime")) {
+    if (expired && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > properties.getInteger(
+        "expireTime")) {
       changePropertiesOnNextIteration = true;
       nextId = properties.getString("expireTransformation");
     }
@@ -114,6 +115,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   /**
    * Updates the expiration status of the game object, marking it as expired if necessary.
+   *
    * @param gameTime The current time of the game.
    */
   private void updateExpired(GameTime gameTime) {
@@ -162,6 +164,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   /**
    * Method to get the read only properties of the GameObject.
+   *
    * @return properties The read only properties of relevant to specific GameObject stored here.
    */
   public ReadOnlyProperties getProperties() {

@@ -25,8 +25,7 @@ public class PlantModel implements PlantModelInterface {
    * @param statusImagePath a list of images that the view will use to show
    */
   public PlantModel(GameTime plantedTime, GameTime matureTime, String[] statusImagePath,
-      String toolUrl, String itemUrl, int x,
-      int y) {
+      String toolUrl, String itemUrl, int x, int y) {
     this.plantedTime = plantedTime;
     this.matureTime = matureTime;
     this.statusImagePath = statusImagePath.clone();
