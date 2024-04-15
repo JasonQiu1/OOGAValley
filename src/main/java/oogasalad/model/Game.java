@@ -1,5 +1,7 @@
 package oogasalad.model;
 
-public class Game {
+import oogasalad.model.api.GameInterface;
+
+public class Game implements GameInterface {
 
 }
