@@ -1,4 +1,4 @@
-package oogasalad.Game.model;
+package oogasalad.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,9 +9,9 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import oogasalad.model.model.DataFactory;
-import oogasalad.model.data.Properties;
 import oogasalad.model.api.exception.KeyNotFoundException;
+import oogasalad.model.data.DataFactory;
+import oogasalad.model.data.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
