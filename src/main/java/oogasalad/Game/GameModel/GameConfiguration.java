@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
  *
  * @author Jason Qiu
  */
-public class GameConfiguration {
+public class GameConfiguration implements ReadOnlyGameConfiguration {
 
   // TODO: Externalize this to a configuration file.
   // The path to the game configurations directory from the data directory.
@@ -57,25 +57,29 @@ public class GameConfiguration {
    * @param dataFilePath the path to the JSON file with the data directory as the root.
    * @throws IOException if there is an issue writing to the given dataFilePath.
    */
+  @Override
   public void save(String dataFilePath) throws IOException {
     configurablesStore.save(dataFilePath);
     GAME_CONFIGURATION_DATA_FACTORY.save(
         Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString(), this);
   }
 
+  @Override
   public ReadOnlyProperties getRules() {
     return rules;
   }
 
-  public GameState getInitialState() {
+  @Override
+  public ReadOnlyGameState getInitialState() {
     return initialState;
   }
 
-  public GameConfigurablesStore getConfigurablesStore() {
+  @Override
+  public ReadOnlyGameConfigurablesStore getConfigurablesStore() {
     return configurablesStore;
   }
 
-  public void setInitialState(GameState initialState) {
+  public void getEditableInitialState(GameState initialState) {
     this.initialState = initialState;
   }
 

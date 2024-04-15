@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
  *
  * @author Jason Qiu
  */
-public class GameState {
+public class GameState implements ReadOnlyGameState {
 
   // TODO: Externalize this to a configuration file.
   // The path to the gamesaves directory from the data directory.
