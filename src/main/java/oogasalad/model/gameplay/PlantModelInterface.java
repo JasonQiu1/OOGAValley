@@ -1,7 +1,7 @@
 package oogasalad.model.gameplay;
 
 
-import oogasalad.model.GameTimeInterface;
+import oogasalad.model.api.GameTimeInterface;
 
 /**
  * The structures on the land, like plants,

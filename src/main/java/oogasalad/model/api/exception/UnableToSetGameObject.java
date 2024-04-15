@@ -1,4 +1,4 @@
-package oogasalad.model.exception;
+package oogasalad.model.api.exception;
 
 public class UnableToSetGameObject extends RuntimeException {
 

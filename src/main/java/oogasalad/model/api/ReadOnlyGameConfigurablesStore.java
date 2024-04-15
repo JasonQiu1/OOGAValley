@@ -1,7 +1,7 @@
-package oogasalad.model;
+package oogasalad.model.api;
 
 import java.util.Map;
-import oogasalad.model.exception.KeyNotFoundException;
+import oogasalad.model.api.exception.KeyNotFoundException;
 
 public interface ReadOnlyGameConfigurablesStore {
 

@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import oogasalad.model.exception.BadGsonLoadException;
-import oogasalad.model.exception.BadValueParseException;
-import oogasalad.model.exception.KeyNotFoundException;
+import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.api.exception.BadValueParseException;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

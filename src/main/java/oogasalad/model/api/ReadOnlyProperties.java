@@ -1,9 +1,9 @@
-package oogasalad.model;
+package oogasalad.model.api;
 
 import java.util.List;
 import java.util.Map;
-import oogasalad.model.exception.BadValueParseException;
-import oogasalad.model.exception.KeyNotFoundException;
+import oogasalad.model.api.exception.BadValueParseException;
+import oogasalad.model.api.exception.KeyNotFoundException;
 
 public interface ReadOnlyProperties {
 

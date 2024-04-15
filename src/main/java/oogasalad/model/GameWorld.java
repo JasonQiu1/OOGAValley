@@ -8,7 +8,7 @@ import java.util.Map;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameobject.Tile;
-import oogasalad.model.exception.UnableToSetGameObject;
+import oogasalad.model.api.exception.UnableToSetGameObject;
 
 /**
  * Represents the game world containing a grid of tiles, each potentially holding different game objects.

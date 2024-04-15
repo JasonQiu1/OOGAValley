@@ -1,4 +1,4 @@
-package oogasalad.model.exception;
+package oogasalad.model.api.exception;
 
 /**
  * Thrown when Gson fails to parse a json file into the given class.

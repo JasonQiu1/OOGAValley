@@ -1,10 +1,10 @@
 package oogasalad.model.gameobject;
 
 import java.util.function.Supplier;
-import oogasalad.model.exception.IncorrectPropertyFileType;
+import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.GameTime;
 import oogasalad.model.Item;
-import oogasalad.model.ReadOnlyProperties;
+import oogasalad.model.api.ReadOnlyProperties;
 
 /**
  * Abstract base class for all game objects within the game. This class defines the common behavior

@@ -1,4 +1,4 @@
-package oogasalad.model.exception;
+package oogasalad.model.api.exception;
 
 /**
  * Thrown when failed trying to parse a String value into some different type.

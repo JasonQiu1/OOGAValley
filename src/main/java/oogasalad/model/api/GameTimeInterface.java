@@ -1,4 +1,4 @@
-package oogasalad.model;
+package oogasalad.model.api;
 
 /**
  * Interfaces for Game Time object

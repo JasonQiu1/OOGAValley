@@ -1,4 +1,4 @@
-package oogasalad.model.exception;
+package oogasalad.model.api.exception;
 
 /**
  * Thrown when a key is not found in a collection.

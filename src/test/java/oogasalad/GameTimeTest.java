@@ -3,7 +3,7 @@ package oogasalad;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import oogasalad.model.GameTime;
-import oogasalad.model.GameTimeInterface;
+import oogasalad.model.api.GameTimeInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

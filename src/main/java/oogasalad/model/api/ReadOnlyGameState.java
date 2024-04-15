@@ -1,4 +1,4 @@
-package oogasalad.model;
+package oogasalad.model.api;
 
 /**
  * Read-only interface for game state.

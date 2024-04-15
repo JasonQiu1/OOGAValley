@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import oogasalad.model.model.DataFactory;
 import oogasalad.model.Properties;
-import oogasalad.model.exception.KeyNotFoundException;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;

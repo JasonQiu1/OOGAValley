@@ -3,6 +3,7 @@ package oogasalad.model;
 
 import java.time.Duration;
 import java.time.Instant;
+import oogasalad.model.api.GameTimeInterface;
 
 /**
  * Game Time class controlling the game time
