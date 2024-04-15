@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
  *
  * @author Jason Qiu
  */
-class Properties implements ReadOnlyProperties {
+public class Properties implements ReadOnlyProperties {
 
   /**
    * Creates and returns an instance of {@link Properties} from a JSON file.
