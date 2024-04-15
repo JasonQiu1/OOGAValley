@@ -1,4 +1,4 @@
-package oogasalad.model.gameplay;
+package oogasalad.model.api;
 
 
 import oogasalad.model.api.GameTimeInterface;
