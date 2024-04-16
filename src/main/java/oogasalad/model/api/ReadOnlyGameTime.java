@@ -1,7 +1,5 @@
 package oogasalad.model.api;
 
-import oogasalad.model.gameplay.GameTimeInterface;
-
 /**
  * Provides methods for accessing parts of the GameTime and perform arithmetic without being able to
  * modify it.
