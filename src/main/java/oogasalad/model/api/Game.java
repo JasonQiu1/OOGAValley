@@ -1,5 +1,9 @@
 package oogasalad.model.api;
 
+import java.io.IOException;
+import oogasalad.model.data.GameConfiguration;
+import oogasalad.model.data.GameState;
+
 /**
  * Implementation of GameInterface.
  * <p>
@@ -9,28 +13,32 @@ package oogasalad.model.api;
  */
 public class Game implements GameInterface {
 
-  public Game(String configName) {
-    // TODO: IMPLEMENT
+  public Game(String configName) throws IOException {
+    configuration = GameConfiguration.of(configName);
+    state = new GameState(configuration.getInitialState());
   }
 
-  public Game(String configName, String saveName) {
-    // TODO: IMPLEMENT
+  public Game(String configName, String saveName) throws IOException {
+    configuration = GameConfiguration.of(configName);
+    state = GameState.of(saveName);
   }
 
   @Override
   public void update() {
-    // TODO: IMPLEMENT
+    state.getEditableGameTime().update();
+    state.getEditableGameWorld().update(state.getGameTime());
   }
 
   @Override
   public ReadOnlyGameConfiguration getGameConfiguration() {
-    // TODO: IMPLEMENT
-    return null;
+    return configuration;
   }
 
   @Override
   public ReadOnlyGameState getGameState() {
-    // TODO: IMPLEMENT
-    return null;
+    return state;
   }
+
+  private final GameConfiguration configuration;
+  private final GameState state;
 }
