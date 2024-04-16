@@ -2,6 +2,7 @@ package oogasalad.model.gameobject;
 
 import java.util.HashMap;
 import oogasalad.model.GameObjectFactories.GameObjectFactory;
+import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.gameplay.GameTime;
 
 /**
@@ -38,8 +39,8 @@ public class Tile {
     boolean interactionHandled =
         handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item))
             || handleInteractionIfValid(structure, item,
-            () -> handleStructureInteraction(item, gameTime))
-            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item, gameTime));
+            () -> handleStructureInteraction(item, gameTime)) || handleInteractionIfValid(land,
+            item, () -> handleLandInteraction(item, gameTime));
 
     return interactionHandled && collectable != null ? itemReturns() : null;
   }
@@ -79,9 +80,7 @@ public class Tile {
    */
   private void handleStructureInteraction(Item item, GameTime gameTime) {
     if (collectable == null && structure.isHarvestable()) {
-      collectable =
-          (Collectable) factory.createNewGameObject(null, gameTime,
-              new HashMap<>());
+      collectable = (Collectable) factory.createNewGameObject(null, gameTime, new HashMap<>());
       // TODO: Instead of new HashMap, get HashMap from Structure.
       // TODO: Don't pass in null properties get that from somewhere
     }
@@ -96,8 +95,7 @@ public class Tile {
    */
   private void handleLandInteraction(Item item, GameTime gameTime) {
     if (land.getIsPlantable() && item.getIsSeed() && structure == null) {
-      structure = (Structure) factory.createNewGameObject(null, gameTime,
-          new HashMap<>());
+      structure = (Structure) factory.createNewGameObject(null, gameTime, new HashMap<>());
       // TODO: Don't pass in null properties get that from somewhere
       // TODO: item.toString() represents the name of the structure that will be planted here
     }
@@ -113,7 +111,7 @@ public class Tile {
    * @return ItemsToAdd, which represents any items to be added to the game as a result of the
    * updates.
    */
-  public ItemsToAdd update(GameTime gameTime) {
+  public ItemsToAdd update(ReadOnlyGameTime gameTime) {
     executeIfNotNull(() -> collectable.update(gameTime), collectable, gameTime);
     executeIfNotNull(() -> structure.update(gameTime), structure, gameTime);
     executeIfNotNull(() -> land.update(gameTime), land, gameTime);
@@ -127,7 +125,8 @@ public class Tile {
    * @param gameObject  The game object to check for nullity.
    * @param gameTime    The current game time.
    */
-  private void executeIfNotNull(Runnable updateLogic, GameObject gameObject, GameTime gameTime) {
+  private void executeIfNotNull(Runnable updateLogic, GameObject gameObject,
+      ReadOnlyGameTime gameTime) {
     if (gameObject != null) {
       updateLogic.run();
       gameObject.checkAndUpdateExpired(gameTime);

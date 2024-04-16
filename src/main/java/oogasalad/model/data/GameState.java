@@ -39,6 +39,13 @@ public class GameState implements ReadOnlyGameState {
   }
 
   /**
+   * Initializes a default GameState.
+   */
+  public GameState() {
+    // TODO: IMPLEMENT
+  }
+
+  /**
    * Initializes a copy of GameState from the original.
    *
    * @param original the original GameState to copy.
