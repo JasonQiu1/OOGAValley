@@ -22,14 +22,6 @@ public class GameConfigurablesStore implements ReadOnlyGameConfigurablesStore {
   // TODO: Externalize this to a configuration file.
   // The path to the game configurations directory from the data directory.
   public static final String GAMECONFIGURABLESSTORE_DIRECTORY_PATH = "configurablestores";
-  private static final DataFactory<GameConfigurablesStore> CONFIGURABLES_DATA_FACTORY =
-      new DataFactory<>(GameConfigurablesStore.class);
-  private static final Logger LOG = LogManager.getLogger(GameConfigurablesStore.class);
-  private final Map<String, Properties> configurables;
-
-  public GameConfigurablesStore() {
-    configurables = new HashMap<>();
-  }
 
   /**
    * Creates and returns an instance of {@link GameConfiguration} from a JSON file.
@@ -55,6 +47,10 @@ public class GameConfigurablesStore implements ReadOnlyGameConfigurablesStore {
   public void save(String dataFilePath) throws IOException {
     CONFIGURABLES_DATA_FACTORY.save(
         Paths.get(GAMECONFIGURABLESSTORE_DIRECTORY_PATH, dataFilePath).toString(), this);
+  }
+
+  public GameConfigurablesStore() {
+    configurables = new HashMap<>();
   }
 
   /**
@@ -92,4 +88,10 @@ public class GameConfigurablesStore implements ReadOnlyGameConfigurablesStore {
   public Map<String, Properties> getAllEditableConfigurables() {
     return configurables;
   }
+
+  private final Map<String, Properties> configurables;
+
+  private static final DataFactory<GameConfigurablesStore> CONFIGURABLES_DATA_FACTORY =
+      new DataFactory<>(GameConfigurablesStore.class);
+  private static final Logger LOG = LogManager.getLogger(GameConfigurablesStore.class);
 }

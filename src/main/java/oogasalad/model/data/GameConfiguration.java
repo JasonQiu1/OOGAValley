@@ -22,12 +22,6 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   // TODO: Externalize this to a configuration file.
   // The path to the game configurations directory from the data directory.
   public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
-  private static final DataFactory<GameConfiguration> GAME_CONFIGURATION_DATA_FACTORY =
-      new DataFactory<>(GameConfiguration.class);
-  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
-  private static GameConfigurablesStore configurablesStore;
-  private final Properties rules;
-  private GameState initialState;
 
   /**
    * Initializes the game configuration to a set of default rules and initial state.
@@ -92,4 +86,11 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   public void getEditableInitialState(GameState initialState) {
     this.initialState = initialState;
   }
+
+  private GameState initialState;
+  private final Properties rules;
+  private static GameConfigurablesStore configurablesStore;
+  private static final DataFactory<GameConfiguration> GAME_CONFIGURATION_DATA_FACTORY =
+      new DataFactory<>(GameConfiguration.class);
+  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
 }

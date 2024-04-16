@@ -1,7 +1,6 @@
 package oogasalad.model.gameplay;
 
 
-import oogasalad.model.api.GameTimeInterface;
 import oogasalad.model.api.PlantModelInterface;
 
 public class PlantModel implements PlantModelInterface {

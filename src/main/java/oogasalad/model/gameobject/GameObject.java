@@ -1,6 +1,7 @@
 package oogasalad.model.gameobject;
 
 import java.util.function.Supplier;
+import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.gameplay.GameTime;
@@ -16,7 +17,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   private ReadOnlyProperties properties;
   private boolean expired;
-  private GameTime timeSinceExpiringState;
+  private ReadOnlyGameTime timeSinceExpiringState;
   private final GameTime creationTime;
   private boolean changePropertiesOnNextIteration;
   private String nextId;
@@ -48,8 +49,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    *
    * @param gameTime The current time of the game
    */
-  @Override
-  public void checkAndUpdateExpired(GameTime gameTime) {
+  public void checkAndUpdateExpired(ReadOnlyGameTime gameTime) {
     if (expired && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > properties.getInteger(
         "expireTime")) {
       changePropertiesOnNextIteration = true;
@@ -63,7 +63,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param gameTime The current game time to base updates on.
    */
   @Override
-  public void update(GameTime gameTime) {
+  public void update(ReadOnlyGameTime gameTime) {
     updateAndInteract(() -> {
       if (creationTime.getDifferenceInMinutes(gameTime) > properties.getInteger("updateTime")) {
         return properties.getString("updateTransformation");
@@ -118,7 +118,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    *
    * @param gameTime The current time of the game.
    */
-  private void updateExpired(GameTime gameTime) {
+  private void updateExpired(ReadOnlyGameTime gameTime) {
     if (!expired && properties.getBoolean("expirable")) {
       expired = true;
       timeSinceExpiringState = gameTime;

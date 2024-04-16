@@ -1,6 +1,6 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Defines the contract for game objects that have an expirable nature within the game's
@@ -18,7 +18,7 @@ public interface Expirable {
    *
    * @param gameTime The current time of the game
    */
-  void checkAndUpdateExpired(GameTime gameTime);
+  void checkAndUpdateExpired(ReadOnlyGameTime gameTime);
 
 }
 

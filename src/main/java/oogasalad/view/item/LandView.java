@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import oogasalad.model.api.GameTimeInterface;
 import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.gameplay.GameTimeInterface;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.view.playing.PlayingPageView;
 
