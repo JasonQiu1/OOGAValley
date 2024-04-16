@@ -48,11 +48,6 @@ public class TopHbox extends HBox {
     return progressBarHbox;
   }
 
-  public void update() {
-    currentMoneyHbox.update();
-    progressBarHbox.update(1);
-  }
-
   public Button getBackButton() {
     return backButton;
   }

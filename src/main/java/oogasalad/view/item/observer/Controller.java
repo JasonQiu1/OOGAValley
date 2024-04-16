@@ -1,4 +1,4 @@
-package oogasalad.view.item;
+package oogasalad.view.item.observer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +9,14 @@ import java.util.List;
  */
 public abstract class Controller<T> {
 
-  private List<Observer> observerList = new ArrayList<>();
+  private List<Observer<T>> observerList = new ArrayList<>();
 
   /**
    * add observer to the observer list
    *
    * @param observer
    */
-  public void addObserver(Observer observer) {
+  public void addObserver(Observer<T> observer) {
     observerList.add(observer);
   }
 
@@ -24,7 +24,13 @@ public abstract class Controller<T> {
    * update all the observers
    */
   protected void update(T value) {
-    for (Observer observer : observerList) {
+    for (Observer<T> observer : observerList) {
+      observer.update(value);
+    }
+  }
+
+  public void init(T value) {
+    for (Observer<T> observer : observerList) {
       observer.update(value);
     }
   }

@@ -1,5 +1,7 @@
 package oogasalad.view.item;
 
+import oogasalad.view.item.observer.Controller;
+
 /**
  * Represents the global money
  */

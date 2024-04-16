@@ -7,8 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import oogasalad.model.shop.Shop;
-import oogasalad.view.item.Observer;
+import oogasalad.view.item.observer.Observer;
 import oogasalad.view.shopping.Utils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This class is a HBox that contains a button, a label, and an image view. It is used to display
@@ -18,6 +20,9 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
 
   private final Shop shop;
   private Label moneyLabel;
+
+  private static final Logger LOG = LogManager.getLogger(CurrentMoneyHbox.class);
+
 
   /**
    * Constructor for the CurrentMoneyHbox
@@ -37,22 +42,16 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
     moneyLabel = new Label();
     moneyLabel.setPadding(new Insets(10, 0, 10, 20));
     moneyLabel.getStyleClass().add("shop-money-label");
-    update();
     Image coinImage = new Image("img/shop/coin.png");
     ImageView coinImageView = new ImageView(coinImage);
     coinImageView.setFitHeight(Utils.coinImageHeight);
     coinImageView.setFitWidth(Utils.coinImageWidth);
-
     getChildren().addAll(addButton, moneyLabel, coinImageView);
   }
 
-  public void update() {
-    moneyLabel.setText("" + shop.getCurrentMoney());
-  }
-
-
   @Override
   public void update(Integer value) {
+    LOG.info("observer pattern: " + value);
     moneyLabel.setText("" + value);
   }
 }

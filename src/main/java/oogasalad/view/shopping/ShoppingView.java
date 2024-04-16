@@ -22,6 +22,7 @@ public class ShoppingView extends BranchBase {
   public Parent getScene() {
     root = new ShoppingStackPane(shop, bag, getStage(), getPreviousScene());
     shop.getMoneyModel().addObserver(root.getMoneyHbox());
+    shop.getMoneyModel().init(shop.getMoneyModel().getMoney());
     return root;
   }
 
