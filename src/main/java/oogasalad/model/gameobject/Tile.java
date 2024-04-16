@@ -83,11 +83,12 @@ public class Tile {
     if (collectable == null && structure.isHarvestable()) {
       collectable =
           (Collectable) factory.createNewGameObject(null, gameTime,
-             new HashMap<>());
-      // TODO: Instead of new HashMap, get HashMap from Structure.
+             structure.getItemsOnDestruction());
       // TODO: Don't pass in null properties get that from somewhere
     }
-    structure.interact(item);
+    else {
+      structure.interact(item);
+    }
   }
 
   /**
@@ -101,9 +102,10 @@ public class Tile {
       structure = (Structure) factory.createNewGameObject(null, gameTime,
           new HashMap<>());
       // TODO: Don't pass in null properties get that from somewhere
-      // TODO: item.toString() represents the name of the structure that will be planted here
     }
-    land.interact(item);
+    else {
+      land.interact(item);
+    }
   }
 
   /**
