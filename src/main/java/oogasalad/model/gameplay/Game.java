@@ -1,6 +1,9 @@
-package oogasalad.model.api;
+package oogasalad.model.gameplay;
 
 import java.io.IOException;
+import oogasalad.model.api.GameInterface;
+import oogasalad.model.api.ReadOnlyGameConfiguration;
+import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.GameState;
 
