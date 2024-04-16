@@ -13,7 +13,9 @@ import oogasalad.model.gameplay.GameTime;
  * its contents based on these interactions or over time.
  */
 public class Tile {
-
+  public static final String defaultCollectableID = "";
+  // TODO: Jason put correct defaultCollectableID
+  // TODO: Will eventually need to externalize
   private Collectable collectable;
   private Structure structure;
   private Land land;
