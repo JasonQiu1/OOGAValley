@@ -10,6 +10,7 @@ public class Money extends Controller<Integer> {
   private int money;
 
   public Money(int money) {
+    super();
     this.money = money;
   }
 
