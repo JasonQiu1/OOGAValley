@@ -17,8 +17,9 @@ public interface Expirable {
    * defined within the game's logic.
    *
    * @param gameTime The current time of the game
+   * @return Whether the gameObject is expired
    */
-  void checkAndUpdateExpired(GameTime gameTime);
+  boolean checkAndUpdateExpired(GameTime gameTime);
 
 }
 

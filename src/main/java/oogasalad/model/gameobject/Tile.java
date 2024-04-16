@@ -1,6 +1,8 @@
 package oogasalad.model.gameobject;
 
 import java.util.HashMap;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import oogasalad.model.GameObjectFactories.GameObjectFactory;
 import oogasalad.model.data.Properties;
 import oogasalad.model.gameplay.GameTime;
@@ -114,23 +116,31 @@ public class Tile {
    * updates.
    */
   public ItemsToAdd update(GameTime gameTime) {
-    executeIfNotNull(() -> collectable.update(gameTime), collectable, gameTime);
-    executeIfNotNull(() -> structure.update(gameTime), structure, gameTime);
-    executeIfNotNull(() -> land.update(gameTime), land, gameTime);
+    updateGameObject(() -> collectable, this::setCollectable, gameTime);
+    updateGameObject(() -> structure, this::setStructure, gameTime);
+    updateGameObject(() -> land, this::setLand, gameTime);
     return itemReturns();
   }
 
   /**
-   * Executes the given update logic for a game object if it is not null.
+   * Updates a specific game object within the tile if it is not null, checks for its expiration,
+   * and potentially sets it to null if it has expired. This method uses generic types to allow
+   * flexibility with different types of game objects.
    *
-   * @param updateLogic The update logic to be executed.
-   * @param gameObject  The game object to check for nullity.
-   * @param gameTime    The current game time.
+   * @param <T> The type of the game object, extending {@link GameObject}.
+   * @param getter A {@link Supplier} that returns the current game object of type T.
+   * @param setter A {@link Consumer} that accepts a game object of type T to set the object,
+   *               typically used to set the object to null if expired.
+   * @param gameTime The current game time, used to determine if the game object should update
+   *                 or expire based on the game logic.
    */
-  private void executeIfNotNull(Runnable updateLogic, GameObject gameObject, GameTime gameTime) {
+  private <T extends GameObject> void updateGameObject(Supplier<T> getter, Consumer<T> setter, GameTime gameTime) {
+    T gameObject = getter.get();
     if (gameObject != null) {
-      updateLogic.run();
-      gameObject.checkAndUpdateExpired(gameTime);
+      gameObject.update(gameTime);
+      if (gameObject.checkAndUpdateExpired(gameTime)) {
+        setter.accept(null);
+      }
     }
   }
 

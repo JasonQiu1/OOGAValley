@@ -47,14 +47,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * Checks and updates the expiration status of the game object based on the elapsed time.
    *
    * @param gameTime The current time of the game
+   * @return Whether this gameObject is expired and thus should be removed from the game.
    */
   @Override
-  public void checkAndUpdateExpired(GameTime gameTime) {
-    if (expired && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > properties.getInteger(
-        "expireTime")) {
-      changePropertiesOnNextIteration = true;
-      nextId = properties.getString("expireTransformation");
-    }
+  public boolean checkAndUpdateExpired(GameTime gameTime) {
+    return expired
+        && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > properties.getInteger(
+        "expireTime");
   }
 
   /**
