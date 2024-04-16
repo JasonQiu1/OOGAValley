@@ -57,8 +57,9 @@ public class GameObjectFactory {
    * @return A new instance of a GameObject.
    * @throws InvalidGameObjectType if the specified type is not recognized or supported.
    */
-  public GameObject createNewGameObject(ReadOnlyProperties properties, GameTime creationTime,
+  public GameObject createNewGameObject(String id, GameTime creationTime,
       Map<String, Integer> additionalParams) {
+    ReadOnlyProperties properties = GameConfiguration.getConfigurablesStore.getConfigurable(id);
     String type = properties.getString("type").toLowerCase();
     GameObjectCreator creator = creators.get(type);
     if (creator == null) {

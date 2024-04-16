@@ -4,6 +4,8 @@ import java.util.function.Supplier;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.data.GameConfiguration;
+import oogasalad.model.data.GameConfigurablesStore;
 
 /**
  * Abstract base class for all game objects within the game. This class defines the common behavior
@@ -14,21 +16,21 @@ import oogasalad.model.gameplay.GameTime;
  */
 public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
-  private ReadOnlyProperties properties;
   private boolean expired;
   private GameTime timeSinceExpiringState;
   private GameTime creationTime;
   private boolean changePropertiesOnNextIteration;
+  private String id;
   private String nextId;
 
   /**
    * Constructs a GameObject with specified properties and initial state.
    *
-   * @param properties   The behavior and attributes of the game object.
+   * @param id   The id of the GameObject.
    * @param creationTime The game time at which the object was created.
    */
-  public GameObject(ReadOnlyProperties properties, GameTime creationTime) {
-    this.properties = properties;
+  public GameObject(String id, GameTime creationTime) {
+    this.id = id;
     this.creationTime = creationTime;
     this.expired = false;
     this.changePropertiesOnNextIteration = false;
@@ -167,7 +169,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return properties The read only properties of relevant to specific GameObject stored here.
    */
   public ReadOnlyProperties getProperties() {
-    return properties;
+    return GameConfiguration.getConfigurablesStore.getConfigurable(id);
   }
 
   /**
