@@ -20,7 +20,7 @@ public interface ReadOnlyGameTime {
    * @param gameTime, another game time object
    * @return the difference between two gameTime objects in minutes
    */
-  int getDifferenceInMinutes(GameTimeInterface gameTime);
+  int getDifferenceInMinutes(ReadOnlyGameTime gameTime);
 
   int convertInMinutes();
 }

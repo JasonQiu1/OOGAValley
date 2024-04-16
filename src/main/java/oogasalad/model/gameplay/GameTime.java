@@ -3,6 +3,7 @@ package oogasalad.model.gameplay;
 
 import java.time.Duration;
 import java.time.Instant;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Game Time class controlling the game time
@@ -89,7 +90,7 @@ public class GameTime implements GameTimeInterface {
    * @return the (gameTime - this time)
    */
   @Override
-  public int getDifferenceInMinutes(GameTimeInterface gameTime) {
+  public int getDifferenceInMinutes(ReadOnlyGameTime gameTime) {
     int totalMinute2 = gameTime.getMinute() + gameTime.getHour() * 60 + gameTime.getDay() * 24 * 60;
     int totalMinute1 = getMinute() + getHour() * 60 + getDay() * 24 * 60;
     return totalMinute2 - totalMinute1;
