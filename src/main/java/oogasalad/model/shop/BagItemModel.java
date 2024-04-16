@@ -2,8 +2,8 @@ package oogasalad.model.shop;
 
 public class BagItemModel {
 
-  private String url;
-  private ItemType type;
+  private final String url;
+  private final ItemType type;
 
   public BagItemModel(String url, ItemType type) {
     this.url = url;

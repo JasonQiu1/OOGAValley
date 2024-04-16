@@ -2,7 +2,6 @@ package oogasalad.model.gameobject;
 
 import java.util.HashMap;
 import oogasalad.model.GameObjectFactories.GameObjectFactory;
-import oogasalad.model.data.Properties;
 import oogasalad.model.gameplay.GameTime;
 
 /**
@@ -12,10 +11,10 @@ import oogasalad.model.gameplay.GameTime;
  */
 public class Tile {
 
+  private final GameObjectFactory factory;
   private Collectable collectable;
   private Structure structure;
   private Land land;
-  private final GameObjectFactory factory;
 
   /**
    * Constructs a new Tile with an associated GameObjectFactory for creating new game objects.
@@ -30,7 +29,7 @@ public class Tile {
    * validity and processes the first valid interaction found. Collectable interactions can result
    * in items being added to the game as a result of the interaction.
    *
-   * @param item The item to interact with the tile's contents.
+   * @param item     The item to interact with the tile's contents.
    * @param gameTime The current GameTime of the game.
    * @return ItemsToAdd, representing any items to be added to the game as a result of the
    * interaction. Returns null if no items are to be added.
@@ -38,7 +37,8 @@ public class Tile {
   public ItemsToAdd interact(Item item, GameTime gameTime) {
     boolean interactionHandled =
         handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item))
-            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item, gameTime))
+            || handleInteractionIfValid(structure, item,
+            () -> handleStructureInteraction(item, gameTime))
             || handleInteractionIfValid(land, item, () -> handleLandInteraction(item, gameTime));
 
     return interactionHandled && collectable != null ? itemReturns() : null;
@@ -74,14 +74,14 @@ public class Tile {
   /**
    * Handles the specific interaction logic for a structure object within the tile.
    *
-   * @param item The item interacting with the structure.
+   * @param item     The item interacting with the structure.
    * @param gameTime The current GameTime of the game.
    */
   private void handleStructureInteraction(Item item, GameTime gameTime) {
     if (collectable == null && structure.isHarvestable()) {
       collectable =
           (Collectable) factory.createNewGameObject(null, gameTime,
-             new HashMap<>());
+              new HashMap<>());
       // TODO: Instead of new HashMap, get HashMap from Structure.
       // TODO: Don't pass in null properties get that from somewhere
     }
@@ -91,7 +91,7 @@ public class Tile {
   /**
    * Handles the specific interaction logic for a land object within the tile.
    *
-   * @param item The item interacting with the land.
+   * @param item     The item interacting with the land.
    * @param gameTime The current GameTime of the game.
    */
   private void handleLandInteraction(Item item, GameTime gameTime) {

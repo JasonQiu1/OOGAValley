@@ -11,10 +11,10 @@ import javafx.scene.shape.Rectangle;
  */
 public class Tool {
 
-  private StackPane stackPane;
-  private Rectangle selectedRectangle;
-  private SelectedItem selectedItem;
-  private String url;
+  private final StackPane stackPane;
+  private final Rectangle selectedRectangle;
+  private final SelectedItem selectedItem;
+  private final String url;
 
   /**
    * Constructor for the Tool class.

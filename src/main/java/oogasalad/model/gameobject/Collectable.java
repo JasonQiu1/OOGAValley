@@ -14,7 +14,7 @@ import oogasalad.model.gameplay.GameTime;
  */
 public class Collectable extends GameObject implements Collect {
 
-  private Map<String, Integer> items;
+  private final Map<String, Integer> items;
   private boolean interactingExpired;
 
   /**

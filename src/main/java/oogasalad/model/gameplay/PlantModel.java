@@ -6,34 +6,32 @@ import oogasalad.model.api.PlantModelInterface;
 
 public class PlantModel implements PlantModelInterface {
 
-  private GameTime plantedTime;
+  private final GameTime plantedTime;
 
-  private GameTime matureTime;
+  private final GameTime matureTime;
 
-  private String[] statusImagePath;
-  private String toolUrl;
-  private String itemUrl;
+  private final String[] statusImagePath;
+  private final String toolUrl;
+  private final String itemUrl;
 
-  private int x;
-  private int y;
+  private final int x;
+  private final int y;
+
 
   /**
-   * Initialize a plant model, this contains the information for a single plant
+   * Initialize the model using builder
    *
-   * @param plantedTime     the time this plant is planted
-   * @param matureTime      the time this plant will be matured
-   * @param statusImagePath a list of images that the view will use to show
+   * @param pb the plant builder class
    */
-  public PlantModel(GameTime plantedTime, GameTime matureTime, String[] statusImagePath,
-      String toolUrl, String itemUrl, int x, int y) {
-    this.plantedTime = plantedTime;
-    this.matureTime = matureTime;
-    this.statusImagePath = statusImagePath.clone();
+  public PlantModel(Builder pb) {
+    this.plantedTime = pb.plantedTime;
+    this.matureTime = pb.matureTime;
+    this.statusImagePath = pb.statusImagePath;
     assert statusImagePath.length >= 1;
-    this.toolUrl = toolUrl;
-    this.itemUrl = itemUrl;
-    this.x = x;
-    this.y = y;
+    this.toolUrl = pb.toolUrl;
+    this.itemUrl = pb.itemUrl;
+    this.x = pb.x;
+    this.y = pb.y;
   }
 
   public int getX() {
@@ -85,4 +83,62 @@ public class PlantModel implements PlantModelInterface {
   public String getItemUrl() {
     return itemUrl;
   }
+
+  /**
+   * Builder class to avoid long list of arguments, see pattern here
+   * https://www.digitalocean.com/community/tutorials/builder-design-pattern-in-java
+   */
+  public static class Builder {
+
+    private GameTime plantedTime;
+
+    private GameTime matureTime;
+
+    private String[] statusImagePath;
+    private String toolUrl;
+    private String itemUrl;
+
+    private int x;
+    private int y;
+
+    public Builder setX(int x) {
+      this.x = x;
+      return this;
+    }
+
+    public Builder setItemUrl(String itemUrl) {
+      this.itemUrl = itemUrl;
+      return this;
+    }
+
+    public Builder setMatureTime(GameTime matureTime) {
+      this.matureTime = matureTime;
+      return this;
+    }
+
+    public Builder setPlantedTime(GameTime plantedTime) {
+      this.plantedTime = plantedTime;
+      return this;
+    }
+
+    public Builder setStatusImagePath(String[] statusImagePath) {
+      this.statusImagePath = statusImagePath.clone();
+      return this;
+    }
+
+    public Builder setToolUrl(String toolUrl) {
+      this.toolUrl = toolUrl;
+      return this;
+    }
+
+    public Builder setY(int y) {
+      this.y = y;
+      return this;
+    }
+
+    public PlantModel build() {
+      return new PlantModel(this);
+    }
+  }
+
 }

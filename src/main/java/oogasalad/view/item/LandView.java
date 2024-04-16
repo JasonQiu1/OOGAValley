@@ -2,9 +2,10 @@ package oogasalad.view.item;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.api.GameTimeInterface;
+import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.view.playing.PlayingPageView;
 
@@ -18,11 +19,11 @@ public class LandView {
   private final List<PlantView> plantViewList;
   private final BagItemView bagItemView;
   private final TopAnimationView topAnimationView;
-  private Pile[][] piles;
+  private final Pile[][] piles;
 
-  private SelectedItem selectedItem;
+  private final SelectedItem selectedItem;
 
-  private GameTime gameTime;
+  private final GameTime gameTime;
 
   /**
    * Initialize a land with some plants and lands already defined.
@@ -89,13 +90,14 @@ public class LandView {
    *
    * @param pile the pile to be updated
    */
-  public void check(Pile pile) {
+  public void check(Pile pile, MouseEvent event) {
     if (selectedItem.getSelected().equals("img/panda.png")) {
       if (pile.getPlantView() == null) {
-        PlantModel plantModel = new PlantModel(gameTime.copy(), new GameTime(0, 0, 1),
-            new String[]{"img/half_panda.png", "img/panda.png"}, "img/tool.png", "img/wheat.png",
-            pile.getX(),
-            pile.getY());
+        PlantModel plantModel = new PlantModel.Builder().setPlantedTime(gameTime.copy())
+            .setMatureTime(new GameTime(0, 0, 1))
+            .setStatusImagePath(new String[]{"img/half_panda.png", "img/panda.png"})
+            .setItemUrl("img/wheat.png").setToolUrl("img/tool.png")
+            .setX(pile.getX()).setY(pile.getY()).build();
         PlantView p = new PlantView(plantModel, pile.getHeight(), pile.getWidth());
         pile.setPlantView(p);
         plantViewList.add(p);
@@ -105,12 +107,13 @@ public class LandView {
           pile.getPlantView().getProgress(gameTime) == 1.0 &&
           pile.getPlantView().getToolUrl().equals(selectedItem.getSelected())) {
         plantViewList.remove(pile.getPlantView());
-        BagItem newBagItem = new BagItem(pile.getPlantView().getItemUrl(), PlayingPageView.bottomCellWidth,
+        BagItem newBagItem = new BagItem(pile.getPlantView().getItemUrl(),
+            PlayingPageView.bottomCellWidth,
             PlayingPageView.bottomCellHeight, 1);
-
         topAnimationView.collectItemAnimation(newBagItem,
-            pile.getCellPosition()[1] - PlayingPageView.windowWidth / 2,
-            pile.getCellPosition()[0] - PlayingPageView.windowHeight / 2,
+
+            event.getSceneX() - PlayingPageView.windowWidth / 2,
+            event.getSceneY() - PlayingPageView.windowHeight / 2,
             bagItemView.getAddRealLocation(newBagItem)[1] - PlayingPageView.windowWidth / 2,
             bagItemView.getAddRealLocation(newBagItem)[0] - PlayingPageView.windowHeight / 2, 3.0);
         pile.removePlant();

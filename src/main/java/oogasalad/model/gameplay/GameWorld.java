@@ -78,11 +78,12 @@ public class GameWorld {
    *
    * @param item        The item used for interaction.
    * @param coordinates The coordinates of the tile to interact with.
-   * @param gameTime The current GameTime of the game.
+   * @param gameTime    The current GameTime of the game.
    * @return ItemsToAdd, representing any items to be added to the game as a result of the
    * interaction.
    */
-  public ItemsToAdd interact(Item item, CoordinateOfGameObjectRecord coordinates, GameTime gameTime) {
+  public ItemsToAdd interact(Item item, CoordinateOfGameObjectRecord coordinates,
+      GameTime gameTime) {
     return allTiles.get(coordinates).interact(item, gameTime);
   }
 

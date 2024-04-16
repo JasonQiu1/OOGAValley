@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Bag {
 
-  private Map<BagItemModel, Integer> itemMap;
+  private final Map<BagItemModel, Integer> itemMap;
 
   public Bag() {
     itemMap = new HashMap<>();

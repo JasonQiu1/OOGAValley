@@ -59,14 +59,14 @@ public class Cell extends StackPane {
 
   }
 
-  private void setDisplayPanel(CellInfoPane cip) {
-    ObservableList<Node> content =  FXCollections.observableArrayList(super.getChildren());
-    content.remove(base);
-    cip.setDisplay(column, row, content);
-  }
-
   public static double[] getSize() {
     return new double[]{WIDTH, HEIGHT};
+  }
+
+  private void setDisplayPanel(CellInfoPane cip) {
+    ObservableList<Node> content = FXCollections.observableArrayList(super.getChildren());
+    content.remove(base);
+    cip.setDisplay(column, row, content);
   }
 
   public int getColumn() {
@@ -97,6 +97,7 @@ public class Cell extends StackPane {
     column--;
     setLocalId(row, column);
   }
+
   private void setLocalId(int i, int j) {
     id = new int[2];
     id[0] = i;
@@ -110,10 +111,12 @@ public class Cell extends StackPane {
   }
 
   public int[] getLocalId() {
-    return id;
+    return id.clone();
   }
 
-  public String getLookUpId() {return this.getId(); }
+  public String getLookUpId() {
+    return this.getId();
+  }
 
   public Rectangle getBase() {
     return base;

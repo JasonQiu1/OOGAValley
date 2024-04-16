@@ -1,20 +1,17 @@
 package oogasalad.view.editor.MapEditor;
 
 import java.util.Optional;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
 
 public class BuildableMap {
 
   private final Selector ts;
   private final GridPaneProperty gridPaneProperty;
+  private final CellInfoPane cip;
   private int currentColumns;
   private int currentRows;
   private GridPane gp;
-  private final CellInfoPane cip;
 
   public BuildableMap(Selector ts, CellInfoPane cip) {
     gp = new GridPane();

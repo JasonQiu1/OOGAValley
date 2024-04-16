@@ -18,6 +18,21 @@ import org.apache.logging.log4j.Logger;
  */
 public class Properties implements ReadOnlyProperties {
 
+  private static final DataFactory<Properties> FACTORY = new DataFactory<>(Properties.class);
+  private static final Logger LOG = LogManager.getLogger(Properties.class);
+  private final Map<String, String> properties;
+  private final Map<String, List<String>> listProperties;
+  private final Map<String, Map<String, String>> mapProperties;
+
+  /**
+   * Initializes with no entries. Should not be used.
+   */
+  private Properties() {
+    properties = new HashMap<>();
+    listProperties = new HashMap<>();
+    mapProperties = new HashMap<>();
+  }
+
   /**
    * Creates and returns an instance of {@link Properties} from a JSON file.
    *
@@ -188,21 +203,6 @@ public class Properties implements ReadOnlyProperties {
   @Override
   public Map<String, Map<String, String>> getCopyOfMapProperties() {
     return Map.copyOf(mapProperties);
-  }
-
-  private final Map<String, String> properties;
-  private final Map<String, List<String>> listProperties;
-  private final Map<String, Map<String, String>> mapProperties;
-  private static final DataFactory<Properties> FACTORY = new DataFactory<>(Properties.class);
-  private static final Logger LOG = LogManager.getLogger(Properties.class);
-
-  /**
-   * Initializes with no entries. Should not be used.
-   */
-  private Properties() {
-    properties = new HashMap<>();
-    listProperties = new HashMap<>();
-    mapProperties = new HashMap<>();
   }
 
   private void throwIfKeyNotFound(Map<String, ?> map, String key) throws KeyNotFoundException {

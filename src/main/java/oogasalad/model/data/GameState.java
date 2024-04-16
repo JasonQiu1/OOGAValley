@@ -20,6 +20,8 @@ public class GameState implements ReadOnlyGameState {
   // TODO: Externalize this to a configuration file.
   // The path to the gamesaves directory from the data directory.
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
+  private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
+  private static final Logger LOG = LogManager.getLogger(GameState.class);
 
   /**
    * Creates and returns an instance of {@link GameState} from a JSON file.
@@ -43,7 +45,4 @@ public class GameState implements ReadOnlyGameState {
   public void save(String dataFilePath) throws IOException {
     FACTORY.save(Paths.get(GAMESTATE_DIRECTORY_PATH, dataFilePath).toString(), this);
   }
-
-  private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
-  private static final Logger LOG = LogManager.getLogger(GameState.class);
 }

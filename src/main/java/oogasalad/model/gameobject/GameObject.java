@@ -17,7 +17,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   private ReadOnlyProperties properties;
   private boolean expired;
   private GameTime timeSinceExpiringState;
-  private GameTime creationTime;
+  private final GameTime creationTime;
   private boolean changePropertiesOnNextIteration;
   private String nextId;
 
@@ -154,12 +154,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return true if properties were changed, false otherwise.
    */
   protected boolean changePropertiesIfApplicable() {
-    if (changePropertiesOnNextIteration) {
-      // TODO: GET THIS FROM GAMECONFIGURATION SOMEHOW
-      // setProperties(propertiesFactory.createNewProperties(nextId));
-      return true;
-    }
-    return false;
+    // TODO: GET THIS FROM GAMECONFIGURATION SOMEHOW
+    // setProperties(propertiesFactory.createNewProperties(nextId));
+    return changePropertiesOnNextIteration;
   }
 
   /**

@@ -5,8 +5,8 @@ import javafx.scene.image.ImageView;
 
 public class NatureView extends SelectableView {
 
-  private ImageView icon;
-  private String title;
+  private final ImageView icon;
+  private final String title;
 
   public NatureView(ImageView pic, String title) {
     super(pic, title, 30, 35);

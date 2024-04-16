@@ -22,7 +22,7 @@ public class BagItemView {
   private final BagItemPile[][] bagItemPiles;
   private final int colNum;
   private final int rowNum;
-  private Bag bag;
+  private final Bag bag;
 
   /**
    * Constructor for the ItemView class.
@@ -85,7 +85,7 @@ public class BagItemView {
     update();
   }
 
-  public void update(){
+  public void update() {
     int col = 0;
     int row = 0;
     itemGridPane.getChildren().clear();
