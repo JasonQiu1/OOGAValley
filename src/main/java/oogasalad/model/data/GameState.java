@@ -3,6 +3,8 @@ package oogasalad.model.data;
 import java.io.IOException;
 import java.nio.file.Paths;
 import oogasalad.model.api.ReadOnlyGameState;
+import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,6 +44,18 @@ public class GameState implements ReadOnlyGameState {
    */
   public void save(String dataFilePath) throws IOException {
     FACTORY.save(Paths.get(GAMESTATE_DIRECTORY_PATH, dataFilePath).toString(), this);
+  }
+
+  @Override
+  public ReadOnlyGameWorld getGameWorld() {
+    // TODO: IMPLEMENT
+    return null;
+  }
+
+  @Override
+  public ReadOnlyGameTime getGameTime() {
+    // TODO: IMPLEMENT
+    return null;
   }
 
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
