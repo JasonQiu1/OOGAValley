@@ -56,4 +56,8 @@ public class TopHbox extends HBox {
   public Button getBackButton() {
     return backButton;
   }
+
+  public CurrentMoneyHbox getMoneyHbox() {
+    return currentMoneyHbox;
+  }
 }

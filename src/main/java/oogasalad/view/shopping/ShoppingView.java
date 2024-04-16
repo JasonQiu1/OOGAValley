@@ -1,11 +1,8 @@
 package oogasalad.view.shopping;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.branch.BranchBase;
@@ -24,16 +21,9 @@ public class ShoppingView extends BranchBase {
 
   public Parent getScene() {
     root = new ShoppingStackPane(shop, bag, getStage(), getPreviousScene());
-    setUpdate();
+    shop.getMoneyModel().addObserver(root.getMoneyHbox());
     return root;
   }
 
-  private void setUpdate() {
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
-      root.update();
-    }));
-    timeline.setCycleCount(Timeline.INDEFINITE);
-    timeline.play();
-  }
 
 }

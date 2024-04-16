@@ -7,13 +7,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import oogasalad.model.shop.Shop;
+import oogasalad.view.item.Observer;
 import oogasalad.view.shopping.Utils;
 
 /**
  * This class is a HBox that contains a button, a label, and an image view. It is used to display
  * the current money in the shop block.
  */
-public class CurrentMoneyHbox extends HBox {
+public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
 
   private final Shop shop;
   private Label moneyLabel;
@@ -50,4 +51,8 @@ public class CurrentMoneyHbox extends HBox {
   }
 
 
+  @Override
+  public void update(Integer value) {
+    moneyLabel.setText("" + value);
+  }
 }

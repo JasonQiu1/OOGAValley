@@ -70,6 +70,8 @@ public class PlayingPageView {
   private final Bag bag = new Bag();
   private final Shop shop = new Shop();
 
+  private int money = 100;
+
   public PlayingPageView(Stage primaryStage) {
     stage = primaryStage;
   }

@@ -2,6 +2,7 @@ package oogasalad.model.shop;
 
 import java.util.ArrayList;
 import java.util.List;
+import oogasalad.view.item.Money;
 
 /**
  * The class on behalf of the shop
@@ -9,9 +10,8 @@ import java.util.List;
 public class Shop {
 
   private final List<SellItem> sellItems;
-  private double currentMoney = 270;
+  private final Money moneyModel = new Money(100);
   private final double currentEnergy = 1;
-
 
   public Shop(List<SellItem> sellItems) {
     this.sellItems = sellItems;
@@ -33,11 +33,16 @@ public class Shop {
   }
 
   public double getCurrentMoney() {
-    return currentMoney;
+    return moneyModel.getMoney();
   }
 
-  public void addMoney(double money) {
-    currentMoney += money;
+  public Money getMoneyModel() {
+    return moneyModel;
+  }
+
+  public void addMoney(int money) {
+    moneyModel.setMoney(moneyModel.getMoney() + money);
+
   }
 
   public double getCurrentEnergy() {
