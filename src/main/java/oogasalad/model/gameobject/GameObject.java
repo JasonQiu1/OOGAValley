@@ -14,6 +14,9 @@ import oogasalad.model.gameplay.GameTime;
  */
 public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
+  public static final String defaultCollectableID = "";
+  // TODO: Jason put correct defaultCollectableID
+  // TODO: Will eventually need to externalize
   private ReadOnlyProperties properties;
   private boolean expired;
   private GameTime timeSinceExpiringState;

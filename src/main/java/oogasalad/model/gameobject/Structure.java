@@ -35,7 +35,7 @@ public class Structure extends GameObject implements StructureObject {
    * destruction.
    */
   @Override
-  public String getCollectableOnDestruction() {
+  public String getItemsOnDestruction() {
     // TODO: EXTEND TO RETURN MULTIPLE DROPS OF DIFFERENT QUANTITIES
     // return properties.getStringMap("destructionDrops"); // e.g. {"item":"2", "otherItem":"1"}
     return getProperties().getString("dropsOnDestruction");

@@ -97,7 +97,7 @@ public class Tile {
    * @param gameTime The current GameTime of the game.
    */
   private void handleLandInteraction(Item item, GameTime gameTime) {
-    if (land.getIsPlantable() && item.getIsSeed() && structure == null) {
+    if (land.getIfItemCanBePlacedHere(item) && structure == null) {
       structure = (Structure) factory.createNewGameObject(null, gameTime,
           new HashMap<>());
       // TODO: Don't pass in null properties get that from somewhere
