@@ -21,11 +21,13 @@ import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.item.BagItemView;
 import oogasalad.view.item.LandView;
+import oogasalad.view.item.Money;
 import oogasalad.view.item.SelectedItem;
 import oogasalad.view.item.Tool;
 import oogasalad.view.item.ToolView;
 import oogasalad.view.item.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
+import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
 
 /**
  * This class is the view for the playing page. It displays the land grid, tools, and items. It also
@@ -67,10 +69,10 @@ public class PlayingPageView {
   private ToolView toolView;
   private BagItemView bagItemView;
   private TopAnimationView topAnimationView;
-  private final Bag bag = new Bag();
-  private final Shop shop = new Shop();
 
-  private int money = 100;
+  private Money money = new Money(100);
+  private final Bag bag = new Bag();
+  private final Shop shop = new Shop(money);
 
   public PlayingPageView(Stage primaryStage) {
     stage = primaryStage;
@@ -137,7 +139,9 @@ public class PlayingPageView {
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
-    topBox.getChildren().addAll(timeLabel, energyProgressBar, btnOpenShop);
+    CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
+    money.addObserver(currentMoneyHbox, money.getMoney());
+    topBox.getChildren().addAll(timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
     root.setTop(topBox);
   }
 
@@ -171,7 +175,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(shop, bag, stage, scene);
+    ShoppingView shoppingPageView = new ShoppingView(shop, bag, stage, scene, money);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);

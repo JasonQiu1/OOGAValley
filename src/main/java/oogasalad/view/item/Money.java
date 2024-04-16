@@ -22,6 +22,4 @@ public class Money extends Controller<Integer> {
     this.money = money;
     update(money);
   }
-
-
 }

@@ -10,15 +10,11 @@ import oogasalad.view.item.Money;
 public class Shop {
 
   private final List<SellItem> sellItems;
-  private final Money moneyModel = new Money(100);
+  private Money moneyModel;
   private final double currentEnergy = 1;
 
-  public Shop(List<SellItem> sellItems) {
-    this.sellItems = sellItems;
-  }
-
   //TODO: change the default initialization of the Shop object
-  public Shop() {
+  public Shop(Money money) {
     sellItems = new ArrayList<>();
     sellItems.add(new SellItem(500, "img/tool.png"));
     sellItems.add(new SellItem(200, "img/rock.png"));
@@ -26,6 +22,8 @@ public class Shop {
     sellItems.add(new SellItem(500, "img/tool.png"));
     sellItems.add(new SellItem(200, "img/rock.png"));
     sellItems.add(new SellItem(100, "img/panda.png"));
+    this.moneyModel = money;
+
   }
 
   public List<SellItem> getItems() {

@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.branch.BranchBase;
+import oogasalad.view.item.Money;
 
 public class ShoppingView extends BranchBase {
 
@@ -13,16 +14,15 @@ public class ShoppingView extends BranchBase {
   private final Shop shop;
   private ShoppingStackPane root;
 
-  public ShoppingView(Shop shop, Bag bag, Stage stage, Scene previousScene) {
+  public ShoppingView(Shop shop, Bag bag, Stage stage, Scene previousScene, Money money) {
     super(stage, previousScene);
     this.bag = bag;
     this.shop = shop;
+    root = new ShoppingStackPane(shop, bag, getStage(), getPreviousScene());
+    money.addObserver(root.getMoneyHbox(), money.getMoney());
   }
 
   public Parent getScene() {
-    root = new ShoppingStackPane(shop, bag, getStage(), getPreviousScene());
-    shop.getMoneyModel().addObserver(root.getMoneyHbox());
-    shop.getMoneyModel().init(shop.getMoneyModel().getMoney());
     return root;
   }
 

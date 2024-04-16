@@ -16,8 +16,9 @@ public abstract class Controller<T> {
    *
    * @param observer
    */
-  public void addObserver(Observer<T> observer) {
+  public void addObserver(Observer<T> observer, T value) {
     observerList.add(observer);
+    observer.update(value);
   }
 
   /**
@@ -29,10 +30,5 @@ public abstract class Controller<T> {
     }
   }
 
-  public void init(T value) {
-    for (Observer<T> observer : observerList) {
-      observer.update(value);
-    }
-  }
 
 }

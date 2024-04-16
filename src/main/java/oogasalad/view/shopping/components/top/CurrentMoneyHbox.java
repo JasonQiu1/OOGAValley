@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import oogasalad.model.shop.Shop;
 import oogasalad.view.item.observer.Observer;
 import oogasalad.view.shopping.Utils;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +17,6 @@ import org.apache.logging.log4j.Logger;
  */
 public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
 
-  private final Shop shop;
   private Label moneyLabel;
 
   private static final Logger LOG = LogManager.getLogger(CurrentMoneyHbox.class);
@@ -26,12 +24,9 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
 
   /**
    * Constructor for the CurrentMoneyHbox
-   *
-   * @param shop the shop that the money is being displayed for
    */
-  public CurrentMoneyHbox(Shop shop) {
+  public CurrentMoneyHbox() {
     super();
-    this.shop = shop;
     initialize();
   }
 
