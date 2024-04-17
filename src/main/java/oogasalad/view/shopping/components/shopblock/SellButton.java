@@ -14,6 +14,6 @@ public class SellButton extends Button {
 
   private void initialize(String name) {
     setText(name);
-    getStyleClass().add("buy-button");
+    setId("sellButton");
   }
 }
