@@ -16,6 +16,7 @@ public interface StructureObject {
    * @return A map where each key is an item ID and each value is the quantity of that item
    *         to be yielded upon the structure's destruction.
    */
+
   Map<String, Integer> getItemsOnDestruction();
 
   /**
