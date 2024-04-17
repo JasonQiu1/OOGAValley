@@ -7,9 +7,12 @@ import oogasalad.model.data.GameConfiguration;
 public class EditorScene extends Scene {
 
   private Stage stage;
+  private EditorWindow ew;
 
-  public EditorScene(Stage primaryStage, GameConfiguration gc) {
-    super(new EditorWindow(gc));
+  public EditorScene(Stage primaryStage) {
+    super(new EditorWindow(new GameConfiguration()));
+    ew = new EditorWindow(new GameConfiguration());
+    super.setRoot(ew);
     super.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
     stage = primaryStage;
 
@@ -18,5 +21,9 @@ public class EditorScene extends Scene {
   public void start() {
     stage.setScene(this);
     stage.show();
+  }
+
+  public void setConfig(GameConfiguration gc){
+      ew.setConfig(gc);
   }
 }

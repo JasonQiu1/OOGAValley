@@ -2,7 +2,6 @@ package oogasalad.view.start;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.EditorScene;
 import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
@@ -31,7 +30,7 @@ public class StartScreen extends AbstractSplashScreen {
     stage = stageToUse;
     myStageTitle = "OOGAVALLEY";
     playingPageView = new PlayingPageView(stageToUse);
-    editorScene = new EditorScene(stageToUse, new GameConfiguration());
+    editorScene = new EditorScene(stageToUse);
   }
 
   @Override

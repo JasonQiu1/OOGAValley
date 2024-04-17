@@ -9,11 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.EditorScene;
-import oogasalad.view.start.ChangePageButton;
-import oogasalad.view.start.StartScreen;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.testfx.api.FxRobot;
 import util.DukeApplicationTest;
 
 public class RuleChangeTest extends DukeApplicationTest {
@@ -25,7 +22,8 @@ public class RuleChangeTest extends DukeApplicationTest {
     public void start(Stage stage) {
         this.stage = stage;
         config = new GameConfiguration();
-        editorScene = new EditorScene(stage, config);
+        editorScene = new EditorScene(stage);
+        editorScene.setConfig(config);
         editorScene.start();
 
     }

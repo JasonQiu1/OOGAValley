@@ -5,13 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.stage.Stage;
-import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.EditorScene;
-import oogasalad.view.start.ChangePageButton;
-import oogasalad.view.start.StartScreen;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.testfx.api.FxRobot;
 import util.DukeApplicationTest;
 
 public class EditorSceneTest extends DukeApplicationTest {
@@ -23,7 +19,7 @@ public class EditorSceneTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    editorScene = new EditorScene(stage, new GameConfiguration());
+    editorScene = new EditorScene(stage);
     editorScene.start();
 //    this.cell = (Cell) lookup("#0 0").query();
 
