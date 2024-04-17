@@ -12,6 +12,7 @@ public class BagItemPile extends StackPane {
   private BagItem bagItem;
 
   public BagItemPile(BagItem bagItem, int x, int y) {
+    super();
     this.bagItem = bagItem;
     this.x = x;
     this.y = y;

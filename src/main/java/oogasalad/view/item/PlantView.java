@@ -4,8 +4,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import oogasalad.Game.GameModel.GameTimeInterface;
-import oogasalad.Game.GameModel.gameplay.PlantModel;
+import oogasalad.model.gameplay.GameTimeInterface;
+import oogasalad.model.gameplay.PlantModel;
 
 /**
  * Represents a plant in the game.
@@ -15,11 +15,11 @@ public class PlantView {
   private final boolean DEBUG = true;
   private final double height;
   private final double width;
-  private PlantModel plantModel;
+  private final PlantModel plantModel;
   // the progress bar for debug usage
-  private ProgressBar progressBar;
-  private ImageView imageView;
-  private StackPane stackPane;
+  private final ProgressBar progressBar;
+  private final ImageView imageView;
+  private final StackPane stackPane;
   private String imagePath = "";
 
   /**

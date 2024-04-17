@@ -7,10 +7,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import oogasalad.view.shopping.Utils;
 
+/**
+ * This class is a StackPane that contains a price label and a background image. It is used to
+ * display the price of a shop item in the shop block.
+ */
 public class PriceStackPane extends StackPane {
 
-  private Label priceLabel;
-
+  /**
+   * Constructor for the PriceStackPane
+   *
+   * @param price the price of the item
+   */
   public PriceStackPane(double price) {
     super();
     setPrefSize(Utils.priceStackPaneWidth, Utils.priceStackPaneHeight);
@@ -18,7 +25,7 @@ public class PriceStackPane extends StackPane {
   }
 
   private void initialize(double price) {
-    priceLabel = new Label("" + price);
+    Label priceLabel = new Label("" + price);
     priceLabel.getStyleClass().add("shop-price-label");
     priceLabel.setRotate(-9);
     Image backgroundImage = new Image("img/shop/price-label.png");

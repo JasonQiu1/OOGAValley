@@ -32,14 +32,13 @@ public abstract class AbstractSplashScreen {
     // do nothing
   }
 
-
   /**
    * Opens SplashScreen
    */
   public abstract void open();
 
   protected void setStage(Stage stage, double widthPortion, double heightPortion,
-      String resourcePath, String buttonsPath, String stageTitle, String stylesCSS) {
+      ResourceString resourceString) {
     Scene scene;
     VBox vb = new VBox();
     vb.setAlignment(Pos.CENTER);
@@ -54,11 +53,11 @@ public abstract class AbstractSplashScreen {
     int initialStartScreenHeight = (int) (screenBounds.getHeight() * heightPortion);
 
     // Create Start Buttons
-    createButtonsFromFile(resourcePath + buttonsPath, stage, hb);
+    createButtonsFromFile(resourceString.resourcePath() + resourceString.buttonsPath(), stage, hb);
 
     //Create title
     //TODO: Resources bundle this
-    Label title = new Label(stageTitle);
+    Label title = new Label(resourceString.stageTitle());
     title.getStyleClass().add("title-label");
     title.widthProperty().addListener((obs, oldVal, newVal) -> titleBob(title, newVal));
 
@@ -71,9 +70,9 @@ public abstract class AbstractSplashScreen {
     LOG.info(scene);
 
     //link scene and css
-    scene.getStylesheets().add(getClass().getResource(stylesCSS).toExternalForm());
+    scene.getStylesheets().add(getClass().getResource(resourceString.styleCss()).toExternalForm());
 
-    stage.setTitle(stageTitle);
+    stage.setTitle(resourceString.stageTitle());
     stage.setScene(scene);
     stage.show();
   }

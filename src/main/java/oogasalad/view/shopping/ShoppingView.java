@@ -6,15 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import oogasalad.Game.GameModel.shop.Bag;
-import oogasalad.Game.GameModel.shop.Shop;
+import oogasalad.model.shop.Bag;
+import oogasalad.model.shop.Shop;
 import oogasalad.view.branch.BranchBase;
 
 public class ShoppingView extends BranchBase {
 
-  private ShoppingBoaderPane root;
-  private Bag bag;
-  private Shop shop;
+  private final Bag bag;
+  private final Shop shop;
+  private ShoppingStackPane root;
 
   public ShoppingView(Shop shop, Bag bag, Stage stage, Scene previousScene) {
     super(stage, previousScene);
@@ -23,7 +23,7 @@ public class ShoppingView extends BranchBase {
   }
 
   public Parent getScene() {
-    root = new ShoppingBoaderPane(shop, bag, getStage(), getPreviousScene());
+    root = new ShoppingStackPane(shop, bag, getStage(), getPreviousScene());
     setUpdate();
     return root;
   }

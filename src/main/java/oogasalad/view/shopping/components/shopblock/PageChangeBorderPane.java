@@ -7,6 +7,10 @@ import oogasalad.view.shopping.Utils;
 import oogasalad.view.shopping.components.other.LeftPageChangeButton;
 import oogasalad.view.shopping.components.other.RightPageChangeButton;
 
+/**
+ * This class is responsible for creating the page change border pane that is used in the shop block
+ * to change pages.
+ */
 public class PageChangeBorderPane extends BorderPane {
 
   private LeftPageChangeButton leftButton;
@@ -18,7 +22,7 @@ public class PageChangeBorderPane extends BorderPane {
     this.setPickOnBounds(false);
   }
 
-  public void initialize() {
+  private void initialize() {
     leftButton = new LeftPageChangeButton();
     rightButton = new RightPageChangeButton();
     setAlignment(leftButton, Pos.CENTER_LEFT);

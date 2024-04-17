@@ -10,6 +10,7 @@ public class FileChooserContainer extends BorderPane {
   private final FileChooser fileChooser;
 
   public FileChooserContainer(String title, String defaultFolderPath) {
+    super();
     fileChooser = new FileChooser();
     fileChooser.setTitle(title);
     fileChooser.setInitialDirectory(new File(defaultFolderPath));

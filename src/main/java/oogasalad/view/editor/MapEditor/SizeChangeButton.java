@@ -1,8 +1,6 @@
 package oogasalad.view.editor.MapEditor;
 
 import java.util.function.BiConsumer;
-
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.text.TextAlignment;
 

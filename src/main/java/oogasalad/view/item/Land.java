@@ -10,7 +10,6 @@ public class Land {
 
   private final ImageView land;
 
-
   private final double height;
 
   private final double width;

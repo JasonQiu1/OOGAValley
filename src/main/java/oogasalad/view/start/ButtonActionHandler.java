@@ -10,18 +10,18 @@ import org.apache.logging.log4j.Logger;
 
 public class ButtonActionHandler implements EventHandler<ActionEvent> {
 
+  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
   private final String className;
   private final String methodName;
   private final Stage stage;
   private final String[] parameters;
-  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
 
   public ButtonActionHandler(String className, String methodName, Stage stage,
       String... parameters) {
     this.className = className;
     this.methodName = methodName;
     this.stage = stage;
-    this.parameters = parameters;
+    this.parameters = parameters.clone();
   }
 
   @Override

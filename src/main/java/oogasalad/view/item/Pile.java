@@ -13,7 +13,6 @@ public class Pile extends StackPane {
   private final int x;
   private final int y;
   private final Land land;
-  private final double[] position = new double[2];
   private PlantView plantView;
 
   public Pile(PlantView plantView, Land land,
@@ -37,9 +36,7 @@ public class Pile extends StackPane {
     setPrefHeight(height);
     setPrefWidth(width);
     setOnMouseClicked(event -> {
-      landView.check(this);
-      position[1] = event.getSceneX();
-      position[0] = event.getSceneY();
+      landView.check(this, event);
     });
     setOnMouseEntered(event -> rectangle.setOpacity(0.2));
     setOnMouseExited(event -> rectangle.setOpacity(0));
@@ -51,10 +48,6 @@ public class Pile extends StackPane {
 
   public int getY() {
     return y;
-  }
-
-  public double[] getCellPosition() {
-    return position;
   }
 
   public void removePlant() {

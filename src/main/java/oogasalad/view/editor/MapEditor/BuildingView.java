@@ -5,8 +5,8 @@ import javafx.scene.image.ImageView;
 
 public class BuildingView extends SelectableView {
 
-  private ImageView icon;
-  private String title;
+  private final ImageView icon;
+  private final String title;
 
   public BuildingView(ImageView pic, String title) {
     super(pic, title, 40, 35);
