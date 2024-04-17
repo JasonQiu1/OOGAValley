@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
@@ -60,17 +61,11 @@ public class GameWorld {
    * Updates the state of each tile in the game world based on the current game time.
    *
    * @param gameTime The current game time context.
-   * @return A list of items to add to the game as a result of the updates.
    */
-  public List<ItemsToAdd> update(GameTime gameTime) {
-    List<ItemsToAdd> items = new ArrayList<>();
+  public void update(GameTime gameTime) {
     for (Map.Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {
-      ItemsToAdd item = entry.getValue().update(gameTime);
-      if (item != null) {
-        items.add(item);
-      }
+      entry.getValue().update(gameTime);
     }
-    return items;
   }
 
   /**
@@ -78,12 +73,9 @@ public class GameWorld {
    *
    * @param item        The item used for interaction.
    * @param coordinates The coordinates of the tile to interact with.
-   * @param gameTime The current GameTime of the game.
-   * @return ItemsToAdd, representing any items to be added to the game as a result of the
-   * interaction.
    */
-  public ItemsToAdd interact(Item item, CoordinateOfGameObjectRecord coordinates, GameTime gameTime) {
-    return allTiles.get(coordinates).interact(item, gameTime);
+  public void interact(Item item, CoordinateOfGameObjectRecord coordinates) {
+    allTiles.get(coordinates).interact(item);
   }
 
   /**
@@ -97,6 +89,28 @@ public class GameWorld {
    */
   public List<String> getImagePath(int width, int height, int depth) {
     return allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).getImages();
+  }
+
+  /**
+   * Retrieves a list of all items from each tile that need to be added to the inventory.
+   * This method processes each tile, extracts items to be added, and returns them as a list of ItemsToAdd.
+   *
+   * @return A List of ItemsToAdd, each object representing a set of items to be added to the inventory,
+   *         characterized by their ID and quantity.
+   */
+  public List<ItemsToAdd> itemsToAddToInventory() {
+    List<ItemsToAdd> itemsToAddList = new ArrayList<>();
+    for (Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {
+      Map<String, Integer> tileItems = entry.getValue().itemReturns();
+      if (tileItems != null && !tileItems.isEmpty()) {
+        tileItems.forEach((id, quantity) -> {
+          if (quantity > 0) {
+            itemsToAddList.add(new ItemsToAdd(quantity, id));
+          }
+        });
+      }
+    }
+    return itemsToAddList;
   }
 
   /**

@@ -3,6 +3,7 @@ package oogasalad.model.gameobject;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -14,7 +15,7 @@ import oogasalad.model.gameplay.GameTime;
  * collectables, structures, and land. Each tile is capable of interacting with items and can change
  * its contents based on these interactions or over time.
  */
-public class Tile {
+public class Tile implements Updatable, Interactable {
   public static final String defaultCollectableID = "";
   // TODO: Jason put correct defaultCollectableID
   // TODO: Will eventually need to externalize
@@ -22,6 +23,7 @@ public class Tile {
   private Structure structure;
   private Land land;
   private final GameObjectFactory factory;
+  private GameTime lastUpdatingGameTime;
 
   /**
    * Constructs a new Tile with an associated GameObjectFactory for creating new game objects.
@@ -37,17 +39,19 @@ public class Tile {
    * in items being added to the game as a result of the interaction.
    *
    * @param item The item to interact with the tile's contents.
-   * @param gameTime The current GameTime of the game.
-   * @return ItemsToAdd, representing any items to be added to the game as a result of the
-   * interaction. Returns null if no items are to be added.
    */
-  public ItemsToAdd interact(Item item, GameTime gameTime) {
+  @Override
+  public void interact(Item item) {
     boolean interactionHandled =
         handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item))
-            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item, gameTime))
-            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item, gameTime));
+            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item))
+            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item));
+  }
 
-    return interactionHandled && collectable != null ? itemReturns() : null;
+  @Override
+  public boolean interactionValid(Item item) {
+    return collectable.interactionValid(item) || structure.interactionValid(item) ||
+        land.interactionValid(item);
   }
 
   /**
@@ -81,12 +85,11 @@ public class Tile {
    * Handles the specific interaction logic for a structure object within the tile.
    *
    * @param item The item interacting with the structure.
-   * @param gameTime The current GameTime of the game.
    */
-  private void handleStructureInteraction(Item item, GameTime gameTime) {
+  private void handleStructureInteraction(Item item) {
     if (collectable == null && structure.isHarvestable()) {
       collectable =
-          (Collectable) factory.createNewGameObject(null, gameTime,
+          (Collectable) factory.createNewGameObject(null, lastUpdatingGameTime,
              structure.getItemsOnDestruction());
       // TODO: Don't pass in null properties get that from somewhere
     }
@@ -99,11 +102,10 @@ public class Tile {
    * Handles the specific interaction logic for a land object within the tile.
    *
    * @param item The item interacting with the land.
-   * @param gameTime The current GameTime of the game.
    */
-  private void handleLandInteraction(Item item, GameTime gameTime) {
+  private void handleLandInteraction(Item item) {
     if (land.getIfItemCanBePlacedHere(item) && structure == null) {
-      structure = (Structure) factory.createNewGameObject(null, gameTime,
+      structure = (Structure) factory.createNewGameObject(null, lastUpdatingGameTime,
           new HashMap<>());
       // TODO: Don't pass in null properties get that from somewhere
     }
@@ -118,14 +120,13 @@ public class Tile {
    * on time progression and potentially change their state or interactions.
    *
    * @param gameTime The current game time.
-   * @return ItemsToAdd, which represents any items to be added to the game as a result of the
-   * updates.
    */
-  public ItemsToAdd update(GameTime gameTime) {
+  @Override
+  public void update(GameTime gameTime) {
+    lastUpdatingGameTime = gameTime;
     updateGameObject(() -> collectable, this::setCollectable, gameTime);
     updateGameObject(() -> structure, this::setStructure, gameTime);
     updateGameObject(() -> land, this::setLand, gameTime);
-    return itemReturns();
   }
 
   /**
@@ -154,13 +155,14 @@ public class Tile {
    * Determines if any items should be added to the game based on the interactions and updates that
    * occurred within the tile, particularly with collectables.
    *
-   * @return ItemsToAdd representing the items to be added as a result, or null if no items are to
-   * be added.
+   * @return A Map with every item id and their quantity to be added to the game as a result of a collectable
+   * being collected.
    */
-  private ItemsToAdd itemReturns() {
+  public Map<String, Integer> itemReturns() {
     if (collectable != null && collectable.shouldICollect()) {
-      return new ItemsToAdd(collectable.getQuantityOnCollection(),
-          collectable.getItemIdOnCollection());
+      Map<String, Integer> items = collectable.getItemsOnCollection();
+      collectable = null;
+      return items;
     }
     return null;
   }

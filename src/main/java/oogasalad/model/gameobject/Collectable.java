@@ -14,7 +14,7 @@ import oogasalad.model.gameplay.GameTime;
  */
 public class Collectable extends GameObject implements Collect {
 
-  private Map<String, Integer> items;
+  private final Map<String, Integer> items;
   private boolean interactingExpired;
 
   /**
@@ -42,31 +42,15 @@ public class Collectable extends GameObject implements Collect {
     if (interactionValid(item)) {
       interactingExpired = true;
     }
-    shouldIChangeProperties(null);
   }
 
   /**
-   * Retrieves the quantity of the item to be collected once the collectable is interacted with
-   * under the correct conditions.
-   *
-   * @return The quantity of the item to be collected.
+   * Retrieve the items and their quantities stored in the collectable.
+   * @return A Map of all items id to their quantities stored in collectable.
    */
   @Override
-  public int getQuantityOnCollection() {
-    // TODO: REFACTOR THIS FUNCTION TO RETURN MULTIPLE VALUES
-    return items.entrySet().iterator().next().getValue();
-  }
-
-  /**
-   * Gets the unique identifier of the item that should be added to the player's inventory upon
-   * collecting this collectable.
-   *
-   * @return A string representing the unique identifier of the item to be collected.
-   */
-  @Override
-  public String getItemIdOnCollection() {
-    // TODO: REFACTOR THIS FUNCTION TO RETURN MULTIPLE STRINGS
-    return items.entrySet().iterator().next().getKey();
+  public Map<String, Integer> getItemsOnCollection() {
+    return items;
   }
 
   /**
