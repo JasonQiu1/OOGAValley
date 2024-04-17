@@ -1,5 +1,6 @@
 package oogasalad.view.editor.MapEditor;
 
+import java.util.ResourceBundle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -9,14 +10,20 @@ import javafx.scene.layout.HBox;
 //TODO: resource bundle this
 class SizeChangeDialogBox {
 
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.SizeChangeDialogBox.";
+  private String displayTextLanguage = "EnglishDisplayText";
+  private ResourceBundle displayTextResource;
+
   public int[] getNewSize() {
+    displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + displayTextLanguage);
+
     TextField textField1 = new TextField();
     TextField textField2 = new TextField();
-    HBox hbox = new HBox(new Label("Enter new integer grid size (rows, columns):  "), textField1,
+    HBox hbox = new HBox(new Label(displayTextResource.getString("prompt") + "  "), textField1,
         textField2);
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.getDialogPane().setContent(hbox);
-    alert.setTitle("Change Grid Size");
+    alert.setTitle(displayTextResource.getString("change_grid_size"));
     alert.setHeaderText(null);
     alert.showAndWait();
 
@@ -26,12 +33,12 @@ class SizeChangeDialogBox {
         int newI = Integer.parseInt(textField1.getText());
         int newJ = Integer.parseInt(textField2.getText());
         if (checkOutOfBounds(newI, newJ)) {
-          showErrorPopup("Invalid Range", "Please enter an integer between 1 and 20");
+          showErrorPopup(displayTextResource.getString("invalid_range"), displayTextResource.getString("error_instruction"));
           return null;
         }
         return new int[]{newI, newJ};
       } catch (NumberFormatException e) {
-        showErrorPopup("Invalid Type", "Please enter an integer between 1 and 20");
+        showErrorPopup(displayTextResource.getString("invalid_type"), displayTextResource.getString("error_instruction"));
         return null; // Return null if parsing fails
       }
     } else {
