@@ -6,11 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.stage.Stage;
 import oogasalad.view.editor.EditorScene;
-import oogasalad.view.start.ChangePageButton;
-import oogasalad.view.start.StartScreen;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.testfx.api.FxRobot;
 import util.DukeApplicationTest;
 
 public class EditorSceneTest extends DukeApplicationTest {
