@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import oogasalad.model.data.GameConfiguration;
 
 public class RuleEditor extends HBox {
-    GameConfiguration config;
+    private GameConfiguration config;
     public RuleEditor(GameConfiguration gc){
         super();
         config = gc;
