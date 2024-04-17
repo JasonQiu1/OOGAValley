@@ -41,11 +41,12 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   }
 
   public void goBackScene() {
-//    LOG.debug(previousScene);
-//    stage.setScene(previousScene);
-//    stage.show();
+    LOG.debug(String.format("going back to %s", previousScene));
+    Stage news = new Stage();
+    news.setScene(previousScene);
+    news.show();
 
-    new StartScreen(stage).open();
+//    new StartScreen(stage).open();
   }
 
   public String getMyStageTitle() {
