@@ -87,6 +87,19 @@ public class GameWorld {
   }
 
   /**
+   * Retrieves the paths to the images representing the current state of a tile's contents
+   * denoted by its width, height, and depth, which
+   * can include collectables, structures, and land. This is useful for graphical representation of
+   * the tile in the game's user interface.
+   *
+   * @return A list containing the image paths for the collectable, structure, and land on this tile,
+   *         if available. The list may be empty if none of the components have an associated image.
+   */
+  public List<String> getImagePath(int width, int height, int depth) {
+    return allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).getImages();
+  }
+
+  /**
    * Sets the height of the game world and reinitializes the grid.
    *
    * @param height The new height of the game world.

@@ -186,8 +186,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
       throw new IncorrectPropertyFileType(
           "Provided properties cannot be cast to correct properties type");
     }
-    this.changePropertiesOnNextIteration = false;
-    this.expired = false;
+    changePropertiesOnNextIteration = false;
+    expired = false;
     id = nextId;
   }
 

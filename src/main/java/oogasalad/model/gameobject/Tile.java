@@ -1,8 +1,11 @@
 package oogasalad.model.gameobject;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameplay.GameTime;
 
@@ -167,12 +170,15 @@ public class Tile {
    * can include collectables, structures, and land. This is useful for graphical representation of
    * the tile in the game's user interface.
    *
-   * @return An ImageRecord containing the image paths for the collectable, structure, and land on
-   * this tile.
+   * @return A list containing the image paths for the collectable, structure, and land on this tile,
+   *         if available. The list may be empty if none of the components have an associated image.
    */
-  public ImageRecord getImages() {
-    return new ImageRecord(collectable.getImagePath(), structure.getImagePath(),
-        land.getImagePath());
+  public List<String> getImages() {
+    List<GameObject> gameObjects = Arrays.asList(collectable, structure, land);
+    return gameObjects.stream()
+        .filter(obj -> obj != null && obj.getImagePath() != null)
+        .map(GameObject::getImagePath)
+        .collect(Collectors.toList());
   }
 
   /**
