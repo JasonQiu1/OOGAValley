@@ -17,8 +17,7 @@ public class StructureCreator implements GameObjectCreator {
    * Creates a {@link Structure} object with the specified properties and game time.
    * This method initializes a Structure, setting up its state based on the properties provided.
    *
-   * @param properties The properties defining characteristics and behavior of the Structure.
-   *                    These properties should specify essential attributes.
+   * @param id The id of the gameObject to be created.
    * @param creationTime The game time at which the Structure is being created, which can influence
    *                     its initial conditions or how it interacts with the game environment.
    * @param additionalParams A map containing additional parameters required for creating the Structure.
@@ -27,9 +26,9 @@ public class StructureCreator implements GameObjectCreator {
    * @return A new {@link Structure} object, initialized and ready for game logic integration.
    */
   @Override
-  public GameObject create(ReadOnlyProperties properties, GameTime creationTime,
+  public GameObject create(String id, GameTime creationTime,
       Map<String, Integer> additionalParams) {
-    return new Structure(properties, creationTime);
+    return new Structure(id, creationTime);
   }
 }
 

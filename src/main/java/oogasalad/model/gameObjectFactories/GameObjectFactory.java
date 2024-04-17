@@ -51,7 +51,7 @@ public class GameObjectFactory {
   /**
    * Creates a new GameObject based on the type specified in the provided ReadOnlyProperties.
    *
-   * @param properties The properties defining the type of GameObject and other parameters.
+   * @param id The id of the gameObject to be created.
    * @param creationTime The game time at which the GameObject is being created.
    * @param additionalParams A map of additional parameters required for creating specific types of GameObjects.
    * @return A new instance of a GameObject.
@@ -59,7 +59,9 @@ public class GameObjectFactory {
    */
   public GameObject createNewGameObject(String id, GameTime creationTime,
       Map<String, Integer> additionalParams) {
-    ReadOnlyProperties properties = GameConfiguration.getConfigurablesStore.getConfigurable(id);
+    ReadOnlyProperties properties = null;
+    // TODO: UNCOMMENT WHEN YOU MAKE STATIC
+        // GameConfiguration.getConfigurablesStore.getConfigurable(id);
     String type = properties.getString("type").toLowerCase();
     GameObjectCreator creator = creators.get(type);
     if (creator == null) {

@@ -156,8 +156,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   protected boolean changePropertiesIfApplicable() {
     if (changePropertiesOnNextIteration) {
-      // TODO: GET THIS FROM GAMECONFIGURATION SOMEHOW
-      // setProperties(propertiesFactory.createNewProperties(nextId));
+      setProperties(null);
+      // TODO: JASON UNCOMMENT WHEN YOU MAKE STATIC. Replace null
+      //GameConfiguration.getConfigurablesStore.getConfigurable(nextId);
       return true;
     }
     return false;
@@ -169,7 +170,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return properties The read only properties of relevant to specific GameObject stored here.
    */
   public ReadOnlyProperties getProperties() {
-    return GameConfiguration.getConfigurablesStore.getConfigurable(id);
+    return null;
+    // TODO: JASON UNCOMMENT WHEN YOU MAKE STATIC
+    //GameConfiguration.getConfigurablesStore.getConfigurable(id);
   }
 
   /**

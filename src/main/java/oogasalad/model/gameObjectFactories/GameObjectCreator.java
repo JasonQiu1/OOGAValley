@@ -15,16 +15,14 @@ public interface GameObjectCreator {
   /**
    * Creates a GameObject with specified properties, creation time, and additional parameters.
    *
-   * @param properties Properties that define characteristics and behavior of the GameObject.
-   *                   These properties should include type-specific settings and attributes necessary
-   *                   for creating and initializing the GameObject.
+   * @param id The id of the gameObject to be created.
    * @param creationTime The game time at which the GameObject is being created. This can be used to
    *                     set initial states or effects that depend on the game's timing or logic phases.
    * @param additionalParams A map containing additional type-specific parameters that might be required
    *                         for creating the GameObject.
    * @return The newly created GameObject, fully initialized and ready to be used within the game environment.
    */
-  GameObject create(ReadOnlyProperties properties, GameTime creationTime,
+  GameObject create(String id, GameTime creationTime,
       Map<String, Integer> additionalParams);
 }
 
