@@ -17,10 +17,11 @@ public class TopAnimationView extends StackPane {
    * Constructor for the TopAnimationView class.
    *
    * @param bagItemView the itemView that the animation will be displayed on
-   * @param width    the width of the animation
-   * @param height   the height of the animation
+   * @param width       the width of the animation
+   * @param height      the height of the animation
    */
   public TopAnimationView(BagItemView bagItemView, double width, double height) {
+    super();
     this.bagItemView = bagItemView;
     this.setPrefSize(width, height);
     this.setPickOnBounds(false);
@@ -30,12 +31,12 @@ public class TopAnimationView extends StackPane {
    * This method is responsible for creating an animation that will be displayed on the top of the
    * screen when an item is collected.
    *
-   * @param bagItem   the item that is collected
-   * @param startX the x-coordinate of the start of the animation
-   * @param startY the y-coordinate of the start of the animation
-   * @param endX   the x-coordinate of the end of the animation
-   * @param endY   the y-coordinate of the end of the animation
-   * @param speed  the speed of the animation
+   * @param bagItem the item that is collected
+   * @param startX  the x-coordinate of the start of the animation
+   * @param startY  the y-coordinate of the start of the animation
+   * @param endX    the x-coordinate of the end of the animation
+   * @param endY    the y-coordinate of the end of the animation
+   * @param speed   the speed of the animation
    */
   public void collectItemAnimation(BagItem bagItem, double startX, double startY, double endX,
       double endY, double speed) {

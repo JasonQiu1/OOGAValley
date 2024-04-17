@@ -6,16 +6,23 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import oogasalad.Game.GameModel.shop.Shop;
+import oogasalad.model.shop.Shop;
 import oogasalad.view.shopping.Utils;
 
+/**
+ * This class is a HBox that contains a button, a label, and an image view. It is used to display
+ * the current money in the shop block.
+ */
 public class CurrentMoneyHbox extends HBox {
 
-  private Button addButton;
+  private final Shop shop;
   private Label moneyLabel;
-  private ImageView coinImageView;
-  private Shop shop;
 
+  /**
+   * Constructor for the CurrentMoneyHbox
+   *
+   * @param shop the shop that the money is being displayed for
+   */
   public CurrentMoneyHbox(Shop shop) {
     super();
     this.shop = shop;
@@ -24,14 +31,14 @@ public class CurrentMoneyHbox extends HBox {
 
   private void initialize() {
 
-    addButton = new Button();
+    Button addButton = new Button();
     addButton.setId("shopAddButton");
     moneyLabel = new Label();
     moneyLabel.setPadding(new Insets(10, 0, 10, 20));
     moneyLabel.getStyleClass().add("shop-money-label");
     update();
     Image coinImage = new Image("img/shop/coin.png");
-    coinImageView = new ImageView(coinImage);
+    ImageView coinImageView = new ImageView(coinImage);
     coinImageView.setFitHeight(Utils.coinImageHeight);
     coinImageView.setFitWidth(Utils.coinImageWidth);
 

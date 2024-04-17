@@ -4,9 +4,14 @@
     // This is the id of the object and must be unique within the game configuration,
     // otherwise one will overwrite the other in an undefined way.
     "name": "OBJECT_NAME",
+    "type": "GameObject",
     // This is filename of the image which the view will use to display this object.
     // The file must exist in the `data/images` directory.
     "image": "OBJECT_IMAGE.png",
+
+    "updatable": true,
+    "updateTime": 1500,
+    "updateTransformation":  "NEXT_GAME_OBJECT",
     // If true, then the object should expire "lifeDuration" time after the object was placed.
     // If "expireTransformation" is non-null, then the object transforms into "GAME_OBJECT" when
     "expirable": true,
@@ -42,7 +47,10 @@
     *  ]
     * },
     */
-    "defaultDrops": {
+
+    // MOVE TO STRUCTURES ONLY
+    "isDestructable": true,
+    "dropsOnDestruction": {
       "OBJECT_NAME": 1
     }
   }

@@ -70,7 +70,7 @@
 .play-top-label {
   -fx-font-size: 8px;
   -fx-font-family: "Press Start 2P";
-  -fx-text-fill: black;
+  -fx-text-fill: white;
 }
 
 .shop-money-label {
@@ -78,11 +78,31 @@
   -fx-font-family: "Press Start 2P";
   -fx-text-fill: white;
 }
+
+.playing-item-num-label {
+  -fx-font-size: 3px;
+  -fx-font-family: "Press Start 2P";
+  -fx-text-fill: white;
+}
+
 .shop-price-label {
   -fx-font-size: 9px;
   -fx-font-family: "Press Start 2P";
   -fx-text-fill: white;
 }
+
+.item-num-label {
+  -fx-font-size: 10px;
+  -fx-font-family: "Press Start 2P";
+  -fx-text-fill: black;
+}
+
+.pop-up-label {
+  -fx-font-size: 13px;
+  -fx-font-family: "Press Start 2P";
+  -fx-text-fill: Black;
+}
+
 #shopButton {
   -fx-background-image: url("img/shop/shopping-cart.png");
   -fx-background-size: cover;
@@ -93,6 +113,7 @@
   -fx-max-width: 40px;
   -fx-max-height: 30px;
 }
+
 #shopAddButton {
   -fx-background-image: url("img/shop/add-button.png");
   -fx-background-size: cover;
@@ -157,5 +178,43 @@
   -fx-background-size: cover;
 }
 
+.playing-root {
+  -fx-background-image: url('img/shop/background.png');
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+}
+
+#yes-button {
+  -fx-background-image: url("img/pop-up/Button-Yes.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 80px;
+  -fx-min-height: 30px;
+  -fx-max-width: 80px;
+  -fx-max-height: 30px;
+}
+#yes-button .text {
+  -fx-font-size: 10px;
+  -fx-font-family: "Press Start 2P";
+  -fx-fill: white;
+}
+
+#no-button {
+  -fx-background-image: url("img/pop-up/Button-No.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 80px;
+  -fx-min-height: 30px;
+  -fx-max-width: 80px;
+  -fx-max-height: 30px;
+}
+
+#no-button .text {
+  -fx-font-size: 10px;
+  -fx-font-family: "Press Start 2P";
+  -fx-fill: white;
+}
 
 

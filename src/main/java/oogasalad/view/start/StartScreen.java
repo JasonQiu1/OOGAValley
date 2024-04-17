@@ -19,7 +19,7 @@ public class StartScreen extends AbstractSplashScreen {
   private final String myStageTitle;
   private final PlayingPageView playingPageView;
   private final EditorScene editorScene;
-  private Stage stage;
+  private final Stage stage;
   private Scene startScreen;
 
   /**
@@ -35,8 +35,9 @@ public class StartScreen extends AbstractSplashScreen {
 
   @Override
   public void open() {
-    setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, DEFAULT_RESOURCE_FOLDER,
-        BUTTONS_PATH, myStageTitle, STYLES);
+    ResourceString resourceString = new ResourceString(DEFAULT_RESOURCE_FOLDER, BUTTONS_PATH,
+        myStageTitle, STYLES);
+    setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString);
   }
 
   public Scene getStartScreen() {

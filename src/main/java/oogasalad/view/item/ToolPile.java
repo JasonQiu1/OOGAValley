@@ -19,6 +19,7 @@ public class ToolPile extends StackPane {
    * @param y    the y-coordinate of the tool
    */
   public ToolPile(Tool tool, int x, int y) {
+    super();
     this.tool = tool;
     this.x = x;
     this.y = y;

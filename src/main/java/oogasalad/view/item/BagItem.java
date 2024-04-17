@@ -33,7 +33,7 @@ public class BagItem {
     ImageView imageView = new ImageView(image);
     this.num = num;
     Label label = new Label(num + "");
-
+    label.getStyleClass().add("item-num-label");
     container = new VBox(5);
     container.setAlignment(Pos.CENTER);
     container.setPadding(new Insets(5));
