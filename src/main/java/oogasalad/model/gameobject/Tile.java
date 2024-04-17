@@ -3,8 +3,7 @@ package oogasalad.model.gameobject;
 import java.util.HashMap;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import oogasalad.model.GameObjectFactories.GameObjectFactory;
-import oogasalad.model.data.Properties;
+import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameplay.GameTime;
 
 /**

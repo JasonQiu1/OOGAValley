@@ -19,13 +19,12 @@ public class Land extends GameObject implements Plantable {
    * determine the land's behavior within the game, such as its suitability for planting and other
    * interactions.
    *
-   * @param properties   The properties defining the behavior and characteristics of this land,
-   *                     including attributes like soil type and fertility.
+   * @param id   The id of the GameObject.
    * @param creationTime The game time at which this object was created, used to track age or
    *                     other time-sensitive characteristics.
    */
-  public Land(ReadOnlyProperties properties, GameTime creationTime) {
-    super(properties, creationTime);
+  public Land(String id, GameTime creationTime) {
+    super(id, creationTime);
   }
 
   /**

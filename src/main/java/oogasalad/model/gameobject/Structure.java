@@ -18,13 +18,11 @@ public class Structure extends GameObject implements StructureObject {
   /**
    * Constructs a new Structure with the given ID, initial state, and specific properties.
    *
-   * @param properties   The properties specific to this structure, defining its behavior upon
-   *                     interaction, conditions for harvesting, and what happens upon its
-   *                     destruction.
+   * @param id   The id of the GameObject.
    * @param creationTime The game time at which this object was created
    */
-  public Structure(ReadOnlyProperties properties, GameTime creationTime) {
-    super(properties, creationTime);
+  public Structure(String id, GameTime creationTime) {
+    super(id, creationTime);
   }
 
   /**

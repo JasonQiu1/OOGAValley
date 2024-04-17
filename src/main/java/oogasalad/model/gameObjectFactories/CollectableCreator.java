@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjectFactories;
+package oogasalad.model.gameObjectFactories;
 
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyProperties;

@@ -21,12 +21,12 @@ public class Collectable extends GameObject implements Collect {
    * Constructs a new Collectable object with the specified identifier, initial state, and
    * properties that define its collectable nature.
    *
-   * @param properties   The properties defining the collectable behavior and attributes.
+   * @param id   The id of the GameObject.
    * @param creationTime The game time at which this object was created
    */
-  public Collectable(ReadOnlyProperties properties, GameTime creationTime,
+  public Collectable(String id, GameTime creationTime,
       Map<String, Integer> items) {
-    super(properties, creationTime);
+    super(id, creationTime);
     this.items = items;
     interactingExpired = false;
   }

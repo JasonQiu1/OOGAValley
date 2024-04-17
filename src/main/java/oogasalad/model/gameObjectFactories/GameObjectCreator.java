@@ -1,4 +1,4 @@
-package oogasalad.model.GameObjectFactories;
+package oogasalad.model.gameObjectFactories;
 
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.gameplay.GameTime;

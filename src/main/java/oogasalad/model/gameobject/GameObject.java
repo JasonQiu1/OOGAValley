@@ -18,7 +18,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   private boolean expired;
   private GameTime timeSinceExpiringState;
-  private GameTime creationTime;
+  private final GameTime creationTime;
   private boolean changePropertiesOnNextIteration;
   private String id;
   private String nextId;
@@ -42,7 +42,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return The unique ID of the game object.
    */
   public String getId() {
-    return properties.getString("name");
+    return id;
   }
 
   /**
@@ -54,7 +54,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public boolean checkAndUpdateExpired(GameTime gameTime) {
     return expired
-        && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > properties.getInteger(
+        && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
         "expireTime");
   }
 
@@ -66,8 +66,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public void update(GameTime gameTime) {
     updateAndInteract(() -> {
-      if (creationTime.getDifferenceInMinutes(gameTime) > properties.getInteger("updateTime")) {
-        return properties.getString("updateTransformation");
+      if (creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger("updateTime")) {
+        return getProperties().getString("updateTransformation");
       }
       return getId();
     });
@@ -83,7 +83,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public void interact(Item item) {
     updateAndInteract(() -> {
       if (interactionValid(item)) {
-        return properties.getStringMap("interactTransformations").get(item.toString());
+        return getProperties().getStringMap("interactTransformations").get(item.toString());
       }
       return getId();
     });
@@ -111,7 +111,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public boolean interactionValid(Item item) {
-    return properties.getStringMap("interactTransformations").containsKey(item.toString());
+    return getProperties().getStringMap("interactTransformations").containsKey(item.toString());
   }
 
   /**
@@ -120,7 +120,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param gameTime The current time of the game.
    */
   private void updateExpired(GameTime gameTime) {
-    if (!expired && properties.getBoolean("expirable")) {
+    if (!expired && getProperties().getBoolean("expirable")) {
       expired = true;
       timeSinceExpiringState = gameTime;
     }
@@ -133,7 +133,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public String getImagePath() {
-    return properties.getString("image");
+    return getProperties().getString("image");
   }
 
   /**
@@ -173,7 +173,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   }
 
   /**
-   * Sets new properties for the game object, updating its behavior and attributes. Ensures that the
+   * Sets new id for the game object, updating its behavior and attributes. Ensures that the
    * type of the Properties instance is the same as the subclass of GameObject.
    *
    * @param properties The new properties to set.
@@ -185,7 +185,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     }
     this.changePropertiesOnNextIteration = false;
     this.expired = false;
-    this.properties = properties;
+    id = nextId;
   }
 
 }
