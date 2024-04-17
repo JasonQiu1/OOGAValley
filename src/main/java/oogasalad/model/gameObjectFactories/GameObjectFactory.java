@@ -67,7 +67,7 @@ public class GameObjectFactory {
     if (creator == null) {
       throw new InvalidGameObjectType("Could not create a gameObject of type: " + type);
     }
-    return creator.create(properties, creationTime, additionalParams);
+    return creator.create(id, creationTime, additionalParams);
   }
 }
 
