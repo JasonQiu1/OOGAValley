@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.stage.Stage;
+import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.EditorScene;
 import oogasalad.view.start.ChangePageButton;
 import oogasalad.view.start.StartScreen;
@@ -22,7 +23,7 @@ public class EditorSceneTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    editorScene = new EditorScene(stage);
+    editorScene = new EditorScene(stage, new GameConfiguration());
     editorScene.start();
 //    this.cell = (Cell) lookup("#0 0").query();
 

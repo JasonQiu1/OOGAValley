@@ -83,6 +83,11 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     return configurablesStore;
   }
 
+  @Override
+  public void updateRule(String rule, String newValue){
+    rules.update(rule, newValue);
+  }
+
   public void getEditableInitialState(GameState initialState) {
     this.initialState = initialState;
   }
