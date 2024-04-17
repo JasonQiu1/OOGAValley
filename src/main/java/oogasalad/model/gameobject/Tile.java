@@ -91,9 +91,8 @@ public class Tile implements Updatable, Interactable {
   private void handleStructureInteraction(Item item) {
     if (collectable == null && structure.isHarvestable()) {
       collectable =
-          (Collectable) factory.createNewGameObject(null, lastUpdatingGameTime,
+          (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
              structure.getItemsOnDestruction());
-      // TODO: Don't pass in null properties get that from somewhere
     }
     else {
       structure.interact(item);
@@ -107,9 +106,9 @@ public class Tile implements Updatable, Interactable {
    */
   private void handleLandInteraction(Item item) {
     if (land.getIfItemCanBePlacedHere(item) && structure == null) {
-      structure = (Structure) factory.createNewGameObject(null, lastUpdatingGameTime,
+      structure = (Structure) factory.createNewGameObject(
+          land.getStructureBasedOnItem(item), lastUpdatingGameTime,
           new HashMap<>());
-      // TODO: Don't pass in null properties get that from somewhere
     }
     else {
       land.interact(item);
