@@ -1,8 +1,7 @@
 package oogasalad.model.gameobject;
 
 import java.util.Map;
-import oogasalad.model.api.ReadOnlyProperties;
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Represents a collectable game object that players can collect under certain conditions. This
@@ -21,12 +20,12 @@ public class Collectable extends GameObject implements Collect {
    * Constructs a new Collectable object with the specified identifier, initial state, and
    * properties that define its collectable nature.
    *
-   * @param properties   The properties defining the collectable behavior and attributes.
+   * @param id   The id of the GameObject.
    * @param creationTime The game time at which this object was created
    */
-  public Collectable(ReadOnlyProperties properties, GameTime creationTime,
+  public Collectable(String id, ReadOnlyGameTime creationTime,
       Map<String, Integer> items) {
-    super(properties, creationTime);
+    super(id, creationTime);
     this.items = items;
     interactingExpired = false;
   }
@@ -42,31 +41,15 @@ public class Collectable extends GameObject implements Collect {
     if (interactionValid(item)) {
       interactingExpired = true;
     }
-    shouldIChangeProperties(null);
   }
 
   /**
-   * Retrieves the quantity of the item to be collected once the collectable is interacted with
-   * under the correct conditions.
-   *
-   * @return The quantity of the item to be collected.
+   * Retrieve the items and their quantities stored in the collectable.
+   * @return A Map of all items id to their quantities stored in collectable.
    */
   @Override
-  public int getQuantityOnCollection() {
-    // TODO: REFACTOR THIS FUNCTION TO RETURN MULTIPLE VALUES
-    return items.entrySet().iterator().next().getValue();
-  }
-
-  /**
-   * Gets the unique identifier of the item that should be added to the player's inventory upon
-   * collecting this collectable.
-   *
-   * @return A string representing the unique identifier of the item to be collected.
-   */
-  @Override
-  public String getItemIdOnCollection() {
-    // TODO: REFACTOR THIS FUNCTION TO RETURN MULTIPLE STRINGS
-    return items.entrySet().iterator().next().getKey();
+  public Map<String, Integer> getItemsOnCollection() {
+    return items;
   }
 
   /**

@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Abstract base class for all game objects within the game. This class defines the common behavior
@@ -15,21 +15,21 @@ import oogasalad.model.gameplay.GameTime;
  */
 public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
-  private ReadOnlyProperties properties;
   private boolean expired;
   private ReadOnlyGameTime timeSinceExpiringState;
-  private final GameTime creationTime;
+  private final ReadOnlyGameTime creationTime;
   private boolean changePropertiesOnNextIteration;
+  private String id;
   private String nextId;
 
   /**
    * Constructs a GameObject with specified properties and initial state.
    *
-   * @param properties   The behavior and attributes of the game object.
+   * @param id   The id of the GameObject.
    * @param creationTime The game time at which the object was created.
    */
-  public GameObject(ReadOnlyProperties properties, GameTime creationTime) {
-    this.properties = properties;
+  public GameObject(String id, ReadOnlyGameTime creationTime) {
+    this.id = id;
     this.creationTime = creationTime;
     this.expired = false;
     this.changePropertiesOnNextIteration = false;
@@ -41,20 +41,20 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return The unique ID of the game object.
    */
   public String getId() {
-    return properties.getString("name");
+    return id;
   }
 
   /**
    * Checks and updates the expiration status of the game object based on the elapsed time.
    *
    * @param gameTime The current time of the game
+   * @return Whether this gameObject is expired and thus should be removed from the game.
    */
-  public void checkAndUpdateExpired(ReadOnlyGameTime gameTime) {
-    if (expired && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > properties.getInteger(
-        "expireTime")) {
-      changePropertiesOnNextIteration = true;
-      nextId = properties.getString("expireTransformation");
-    }
+  @Override
+  public boolean checkAndUpdateExpired(ReadOnlyGameTime gameTime) {
+    return expired
+        && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
+        "expireTime");
   }
 
   /**
@@ -65,8 +65,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   @Override
   public void update(ReadOnlyGameTime gameTime) {
     updateAndInteract(() -> {
-      if (creationTime.getDifferenceInMinutes(gameTime) > properties.getInteger("updateTime")) {
-        return properties.getString("updateTransformation");
+      if (creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger("updateTime")) {
+        return getProperties().getString("updateTransformation");
       }
       return getId();
     });
@@ -82,7 +82,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public void interact(Item item) {
     updateAndInteract(() -> {
       if (interactionValid(item)) {
-        return properties.getStringMap("interactTransformations").get(item.toString());
+        return getProperties().getStringMap("interactTransformations").get(item.toString());
       }
       return getId();
     });
@@ -110,7 +110,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public boolean interactionValid(Item item) {
-    return properties.getStringMap("interactTransformations").containsKey(item.toString());
+    return getProperties().getStringMap("interactTransformations").containsKey(item.toString());
   }
 
   /**
@@ -119,7 +119,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param gameTime The current time of the game.
    */
   private void updateExpired(ReadOnlyGameTime gameTime) {
-    if (!expired && properties.getBoolean("expirable")) {
+    if (!expired && getProperties().getBoolean("expirable")) {
       expired = true;
       timeSinceExpiringState = gameTime;
     }
@@ -132,7 +132,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public String getImagePath() {
-    return properties.getString("image");
+    return getProperties().getString("image");
   }
 
   /**
@@ -154,9 +154,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return true if properties were changed, false otherwise.
    */
   protected boolean changePropertiesIfApplicable() {
-    // TODO: GET THIS FROM GAMECONFIGURATION SOMEHOW
-    // setProperties(propertiesFactory.createNewProperties(nextId));
-    return changePropertiesOnNextIteration;
+    if (changePropertiesOnNextIteration) {
+      setProperties(null);
+      // TODO: JASON UNCOMMENT WHEN YOU MAKE STATIC. Replace null
+      //GameConfiguration.getConfigurablesStore.getConfigurable(nextId);
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -165,11 +169,13 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return properties The read only properties of relevant to specific GameObject stored here.
    */
   public ReadOnlyProperties getProperties() {
-    return properties;
+    return null;
+    // TODO: JASON UNCOMMENT WHEN YOU MAKE STATIC
+    //GameConfiguration.getConfigurablesStore.getConfigurable(id);
   }
 
   /**
-   * Sets new properties for the game object, updating its behavior and attributes. Ensures that the
+   * Sets new id for the game object, updating its behavior and attributes. Ensures that the
    * type of the Properties instance is the same as the subclass of GameObject.
    *
    * @param properties The new properties to set.
@@ -179,9 +185,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
       throw new IncorrectPropertyFileType(
           "Provided properties cannot be cast to correct properties type");
     }
-    this.changePropertiesOnNextIteration = false;
-    this.expired = false;
-    this.properties = properties;
+    changePropertiesOnNextIteration = false;
+    expired = false;
+    id = nextId;
   }
 
 }

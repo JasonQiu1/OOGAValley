@@ -9,12 +9,25 @@ package oogasalad.model.gameobject;
 public interface Plantable {
 
   /**
-   * Determines if the entity is currently in a state that allows planting operations. This method
-   * should be used to check if a planting action can be performed on the entity based on its
-   * current state, properties, or environmental conditions.
+   * Determines if the entity is currently in a state that allows planting operations to be performed
+   * with a specific item. This method checks if a planting action can be performed on the entity
+   * based on its current state, the properties of the item, or environmental conditions.
    *
-   * @return {@code true} if the entity is plantable; {@code false} otherwise.
+   * @param item The item intended to be planted or placed on this entity.
+   * @return {@code true} if the entity can accept the item for planting; {@code false} otherwise.
    */
-  boolean getIsPlantable();
+  boolean getIfItemCanBePlacedHere(Item item);
+
+  /**
+   * Retrieves the identifier or name of the structure that will be based on the given item when
+   * planted or placed on this entity. This method should return a string that represents the
+   * specific type of structure or object that results from using the given item on the plantable
+   * entity.
+   *
+   * @param item The item that influences the type of structure to be created.
+   * @return A string representing the type of structure created based on the item, or {@code null}
+   *         if the item does not result in a structure.
+   */
+  String getStructureBasedOnItem(Item item);
 
 }

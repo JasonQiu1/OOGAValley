@@ -1,39 +1,58 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.api.ReadOnlyProperties;
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Represents a piece of land within the game world, extending the {@link GameObject} class. This
- * class encapsulates land-specific behaviors and properties, including the ability to be planted
- * upon. The {@link Plantable} interface implementation indicates that certain objects can be
- * planted on this land, depending on its properties.
+ * class encapsulates land-specific behaviors and properties, such as the ability to support planting
+ * operations. By implementing the {@link Plantable} interface, this class indicates that certain
+ * objects, depending on their properties and environmental conditions, can be planted on this land.
+ * Land-specific properties might include soil type, fertility, and other factors affecting plantability.
  *
  * @author Spencer Katz, Jason Qiu
  */
 public class Land extends GameObject implements Plantable {
 
   /**
-   * Constructs a new piece of Land with the specified ID, initial state, and land-specific
-   * properties. These properties determine the land's interactions within the game, such as its
-   * plantability.
+   * Constructs a new piece of Land with specified properties and the creation time. The properties
+   * determine the land's behavior within the game, such as its suitability for planting and other
+   * interactions.
    *
-   * @param properties   The properties defining the behavior and characteristics of this land.
-   * @param creationTime The game time at which this object was created
+   * @param id   The id of the GameObject.
+   * @param creationTime The game time at which this object was created, used to track age or
+   *                     other time-sensitive characteristics.
    */
-  public Land(ReadOnlyProperties properties, GameTime creationTime) {
-    super(properties, creationTime);
+  public Land(String id, ReadOnlyGameTime creationTime) {
+    super(id, creationTime);
   }
 
   /**
-   * Determines whether the land is currently plantable. The plantability of the land is defined by
-   * its specific properties, which can influence game dynamics by allowing or disallowing the
-   * planting of objects based on the current game state or conditions.
+   * Determines if a specific item can be placed or planted on this piece of land. This method
+   * assesses the item's characteristics against the land's properties to decide if the planting
+   * action is valid.
    *
-   * @return {@code true} if the land is plantable; {@code false} otherwise.
+   * @param item The item proposed to be planted on this land.
+   * @return {@code true} if the item can be successfully planted; {@code false} otherwise,
+   *         indicating that the conditions are not suitable for planting.
    */
   @Override
-  public boolean getIsPlantable() {
-    return getProperties().getBoolean("plantable");
+  public boolean getIfItemCanBePlacedHere(Item item) {
+    // TODO: JASON PUT RIGHT THING HERE
+    return false;
+  }
+
+  /**
+   * Retrieves the type of structure or growth that results from planting a specific item on this
+   * land. The output depends on both the item's properties and the land's characteristics.
+   *
+   * @param item The item used, influencing the type of structure or growth resulting.
+   * @return A string identifier of the structure or growth, or {@code null} if no structure
+   *         results from the item.
+   */
+  @Override
+  public String getStructureBasedOnItem(Item item) {
+    // TODO: JASON PUT RIGHT THING HERE
+    return null;
   }
 }
+
