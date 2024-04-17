@@ -3,6 +3,7 @@ package oogasalad.model.gameplay;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ResourceBundle;
 import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
@@ -16,6 +17,9 @@ public class GameTime implements GameTimeInterface {
   // this field stands for the real-time on behalf of the 10 minutes of game time
   // in other words, (unit) minute game time equals rate (in milliseconds)
   // by default, the unit is 10.
+  private static final String DEFAULT_RESOURCE_PACKAGE = "model.gameplay.";
+  private String myLanguage = "EnglishTimeText";
+  private ResourceBundle timeTextResource;
   private static final double rate = 43000.0 / 6.0;
   private static final int unit = 10;
 
@@ -35,6 +39,7 @@ public class GameTime implements GameTimeInterface {
    * @param minute the minute
    */
   public GameTime(int day, int hour, int minute) {
+    timeTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
     this.day = day;
     this.hour = hour;
     this.minute = minute;
@@ -103,7 +108,9 @@ public class GameTime implements GameTimeInterface {
 
   @Override
   public String toString() {
-    return String.format("Day: %d; Hour: %d, Minute: %d", day, hour, minute);
+    return String.format("%s: %d; %s: %d, %s: %d", timeTextResource.getString("day"), day,
+        timeTextResource.getString("hour"), hour, timeTextResource.getString("minute"),
+        minute);
   }
 
   public GameTime copy() {
