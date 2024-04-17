@@ -7,8 +7,8 @@ import javafx.scene.text.TextAlignment;
 
 public class HelpButton extends Button {
 
-  public HelpButton(Consumer<ActionEvent> onClick) {
-    super("Help");
+  public HelpButton(String name, Consumer<ActionEvent> onClick) {
+    super(name);
     super.setTextAlignment(TextAlignment.CENTER);
     this.setOnAction(onClick::accept);
   }
