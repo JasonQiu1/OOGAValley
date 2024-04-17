@@ -10,8 +10,8 @@ public class SizeChangeButton extends Button {
 //    super("Change \nGrid Size");
     super(name);
     super.setTextAlignment(TextAlignment.CENTER);
-    super.setPrefWidth(90);
-    super.setWrapText(true);
+    super.setPrefWidth(125);
+    //super.setWrapText(true);
     setOnAction(event -> action.accept(null, null)); // Pass null as placeholders for parameters
   }
 }
