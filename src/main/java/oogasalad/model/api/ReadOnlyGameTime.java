@@ -1,14 +1,12 @@
 package oogasalad.model.api;
 
 /**
- * Interfaces for Game Time object
+ * Provides methods for accessing parts of the GameTime and perform arithmetic without being able to
+ * modify it.
+ *
+ * @author Beilong Tang, Jason Qiu
  */
-public interface GameTimeInterface {
-
-  /**
-   * This should be called in the game loop in the UI to update the game time.
-   */
-  void update();
+public interface ReadOnlyGameTime {
 
   int getHour();
 
@@ -20,9 +18,7 @@ public interface GameTimeInterface {
    * @param gameTime, another game time object
    * @return the difference between two gameTime objects in minutes
    */
-  int getDifferenceInMinutes(GameTimeInterface gameTime);
+  int getDifferenceInMinutes(ReadOnlyGameTime gameTime);
 
   int convertInMinutes();
-
-
 }

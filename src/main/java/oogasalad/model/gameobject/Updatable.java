@@ -1,6 +1,6 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Defines an entity within the game that can be updated over time. Implementing this interface
@@ -19,7 +19,7 @@ public interface Updatable {
    *
    * @param gameTime The current game time, providing context for time-based updates.
    */
-  void update(GameTime gameTime);
+  void update(ReadOnlyGameTime gameTime);
 
 }
 

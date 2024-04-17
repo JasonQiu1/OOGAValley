@@ -1,8 +1,7 @@
 package oogasalad.model.gameobject;
 
 import java.util.Map;
-import oogasalad.model.api.ReadOnlyProperties;
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Represents a structure within the game world, extending the general functionality of a
@@ -21,7 +20,7 @@ public class Structure extends GameObject implements StructureObject {
    * @param id   The id of the GameObject.
    * @param creationTime The game time at which this object was created
    */
-  public Structure(String id, GameTime creationTime) {
+  public Structure(String id, ReadOnlyGameTime creationTime) {
     super(id, creationTime);
   }
 

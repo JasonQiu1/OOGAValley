@@ -62,13 +62,13 @@ public class PlayingPageView {
   private final GameTime gameTime = new GameTime(1, 8, 0);
   private final String selectedTools = "plant";
   private final SelectedItem selectedItem = new SelectedItem();
-  private Stage stage;
+  private final Stage stage;
   private LandView landView;
   private ToolView toolView;
   private BagItemView bagItemView;
   private TopAnimationView topAnimationView;
-  private Bag bag = new Bag();
-  private Shop shop = new Shop();
+  private final Bag bag = new Bag();
+  private final Shop shop = new Shop();
 
   public PlayingPageView(Stage primaryStage) {
     stage = primaryStage;

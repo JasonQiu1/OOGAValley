@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
@@ -19,7 +21,7 @@ import oogasalad.model.gameobject.Tile;
  * for initializing tiles, handling interactions, and updating game states based on game time or
  * interactions.
  */
-public class GameWorld {
+public class GameWorld implements ReadOnlyGameWorld {
 
   private Map<CoordinateOfGameObjectRecord, Tile> allTiles;
   private int height;
@@ -62,7 +64,7 @@ public class GameWorld {
    *
    * @param gameTime The current game time context.
    */
-  public void update(GameTime gameTime) {
+  public void update(ReadOnlyGameTime gameTime) {
     for (Map.Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {
       entry.getValue().update(gameTime);
     }

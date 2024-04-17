@@ -3,7 +3,11 @@ package oogasalad.model.data;
 import java.io.IOException;
 import java.nio.file.Paths;
 import oogasalad.model.api.ReadOnlyGameState;
+import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.gameplay.GameWorld;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,6 +39,22 @@ public class GameState implements ReadOnlyGameState {
   }
 
   /**
+   * Initializes a default GameState.
+   */
+  public GameState() {
+    // TODO: IMPLEMENT
+  }
+
+  /**
+   * Initializes a copy of GameState from the original.
+   *
+   * @param original the original GameState to copy.
+   */
+  public GameState(ReadOnlyGameState original) {
+    // TODO: IMPLEMENT
+  }
+
+  /**
    * Serializes the instance to a JSON file.
    *
    * @param dataFilePath the path to the JSON file with the data directory as the root.
@@ -42,6 +62,28 @@ public class GameState implements ReadOnlyGameState {
    */
   public void save(String dataFilePath) throws IOException {
     FACTORY.save(Paths.get(GAMESTATE_DIRECTORY_PATH, dataFilePath).toString(), this);
+  }
+
+  @Override
+  public ReadOnlyGameWorld getGameWorld() {
+    // TODO: IMPLEMENT
+    return null;
+  }
+
+  @Override
+  public ReadOnlyGameTime getGameTime() {
+    // TODO: IMPLEMENT
+    return null;
+  }
+
+  public GameWorld getEditableGameWorld() {
+    // TODO: IMPLEMENT
+    return null;
+  }
+
+  public GameTime getEditableGameTime() {
+    // TODO: IMPLEMENT
+    return null;
   }
 
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);

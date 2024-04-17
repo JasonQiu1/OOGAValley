@@ -5,7 +5,8 @@ import javafx.stage.Stage;
 
 public class EditorScene extends Scene {
 
-  Stage stage;
+  private Stage stage;
+
   public EditorScene(Stage primaryStage) {
     super(new EditorWindow());
     super.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());

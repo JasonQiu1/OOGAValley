@@ -8,13 +8,14 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Represents a tile within the game world that can contain various game objects including
  * collectables, structures, and land. Each tile is capable of interacting with items and can change
  * its contents based on these interactions or over time.
  */
+
 public class Tile implements Updatable, Interactable {
   public static final String defaultCollectableID = "";
   // TODO: Jason put correct defaultCollectableID
@@ -23,7 +24,8 @@ public class Tile implements Updatable, Interactable {
   private Structure structure;
   private Land land;
   private final GameObjectFactory factory;
-  private GameTime lastUpdatingGameTime;
+  private ReadOnlyGameTime lastUpdatingGameTime;
+
 
   /**
    * Constructs a new Tile with an associated GameObjectFactory for creating new game objects.
@@ -122,7 +124,7 @@ public class Tile implements Updatable, Interactable {
    * @param gameTime The current game time.
    */
   @Override
-  public void update(GameTime gameTime) {
+  public void update(ReadOnlyGameTime gameTime) {
     lastUpdatingGameTime = gameTime;
     updateGameObject(() -> collectable, this::setCollectable, gameTime);
     updateGameObject(() -> structure, this::setStructure, gameTime);
@@ -141,7 +143,8 @@ public class Tile implements Updatable, Interactable {
    * @param gameTime The current game time, used to determine if the game object should update
    *                 or expire based on the game logic.
    */
-  private <T extends GameObject> void updateGameObject(Supplier<T> getter, Consumer<T> setter, GameTime gameTime) {
+  private <T extends GameObject> void updateGameObject(Supplier<T> getter, Consumer<T> setter,
+      ReadOnlyGameTime gameTime) {
     T gameObject = getter.get();
     if (gameObject != null) {
       gameObject.update(gameTime);

@@ -6,8 +6,8 @@ import javafx.scene.shape.Rectangle;
 
 public class TileView extends SelectableView {
 
-  private ImageView icon;
-  private String title;
+  private final ImageView icon;
+  private final String title;
 
   public TileView(ImageView pic, String title) {
     super(pic, title, 50, 37);

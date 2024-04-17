@@ -1,11 +1,10 @@
 package oogasalad.model.gameobject;
 
 import java.util.function.Supplier;
+import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
-import oogasalad.model.gameplay.GameTime;
-import oogasalad.model.data.GameConfiguration;
-import oogasalad.model.data.GameConfigurablesStore;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Abstract base class for all game objects within the game. This class defines the common behavior
@@ -17,8 +16,8 @@ import oogasalad.model.data.GameConfigurablesStore;
 public abstract class GameObject implements Interactable, Expirable, Updatable, Viewable {
 
   private boolean expired;
-  private GameTime timeSinceExpiringState;
-  private final GameTime creationTime;
+  private ReadOnlyGameTime timeSinceExpiringState;
+  private final ReadOnlyGameTime creationTime;
   private boolean changePropertiesOnNextIteration;
   private String id;
   private String nextId;
@@ -29,7 +28,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param id   The id of the GameObject.
    * @param creationTime The game time at which the object was created.
    */
-  public GameObject(String id, GameTime creationTime) {
+  public GameObject(String id, ReadOnlyGameTime creationTime) {
     this.id = id;
     this.creationTime = creationTime;
     this.expired = false;
@@ -52,7 +51,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return Whether this gameObject is expired and thus should be removed from the game.
    */
   @Override
-  public boolean checkAndUpdateExpired(GameTime gameTime) {
+  public boolean checkAndUpdateExpired(ReadOnlyGameTime gameTime) {
     return expired
         && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
         "expireTime");
@@ -64,7 +63,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param gameTime The current game time to base updates on.
    */
   @Override
-  public void update(GameTime gameTime) {
+  public void update(ReadOnlyGameTime gameTime) {
     updateAndInteract(() -> {
       if (creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger("updateTime")) {
         return getProperties().getString("updateTransformation");
@@ -119,7 +118,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    *
    * @param gameTime The current time of the game.
    */
-  private void updateExpired(GameTime gameTime) {
+  private void updateExpired(ReadOnlyGameTime gameTime) {
     if (!expired && getProperties().getBoolean("expirable")) {
       expired = true;
       timeSinceExpiringState = gameTime;

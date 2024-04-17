@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import oogasalad.view.playing.PlayingPageView;
-import oogasalad.view.shopping.Utils;
 
 /**
  * The tool view that controls all the tools (panda and Pickaxe).
@@ -16,8 +15,8 @@ public class ToolView {
 
   private final GridPane toolGridPane;
   private final StackPane toolStackPane;
-  private List<Tool> toolList;
-  private ToolPile[][] toolPiles;
+  private final List<Tool> toolList;
+  private final ToolPile[][] toolPiles;
 
   /**
    * Constructor for the ToolView class.

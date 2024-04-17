@@ -10,7 +10,7 @@ public class Shop {
 
   private final List<SellItem> sellItems;
   private double currentMoney = 270;
-  private double currentEnergy = 1;
+  private final double currentEnergy = 1;
 
 
   public Shop(List<SellItem> sellItems) {

@@ -1,7 +1,6 @@
 package oogasalad.model.gameobject;
 
-import oogasalad.model.api.ReadOnlyProperties;
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Represents a piece of land within the game world, extending the {@link GameObject} class. This
@@ -23,7 +22,7 @@ public class Land extends GameObject implements Plantable {
    * @param creationTime The game time at which this object was created, used to track age or
    *                     other time-sensitive characteristics.
    */
-  public Land(String id, GameTime creationTime) {
+  public Land(String id, ReadOnlyGameTime creationTime) {
     super(id, creationTime);
   }
 
