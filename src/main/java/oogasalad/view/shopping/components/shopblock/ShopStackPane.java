@@ -46,6 +46,8 @@ public class ShopStackPane extends StackPane {
     List<SellItem> sellItems = shop.getItems();
     createSellGridPanes(sellItems);
     pageChangeBorderPane = new PageChangeBorderPane();
+    enableButtons();
+    setPageChangeButton();
     currentGridPane = gridPanes.get(0);
     setMargin(currentGridPane, new Insets(100, 0, 0, 50));
     setMargin(pageChangeBorderPane, new Insets(0, 0, 0, 0));
@@ -53,7 +55,6 @@ public class ShopStackPane extends StackPane {
     setAlignment(backgroundImageView, Pos.TOP_LEFT);
     setAlignment(pageChangeBorderPane, Pos.TOP_LEFT);
     getChildren().addAll(backgroundImageView, currentGridPane, pageChangeBorderPane);
-    setPageChangeButton();
   }
 
   private void createSellGridPanes(List<SellItem> sellItems) {
@@ -68,6 +69,11 @@ public class ShopStackPane extends StackPane {
     }
   }
 
+  private void enableButtons() {
+    pageChangeBorderPane.getLeftButton().setDisable(currentPageIndex == 0);
+    pageChangeBorderPane.getRightButton().setDisable(currentPageIndex == gridPanes.size() - 1);
+  }
+
   private void setPageChangeButton() {
     pageChangeBorderPane.getLeftButton().setOnAction(event -> {
       if (currentPageIndex == 0) {
@@ -75,6 +81,7 @@ public class ShopStackPane extends StackPane {
       }
       currentPageIndex--;
       changePage();
+      enableButtons();
     });
     pageChangeBorderPane.getRightButton().setOnAction(event -> {
       if (currentPageIndex == gridPanes.size() - 1) {
@@ -82,6 +89,7 @@ public class ShopStackPane extends StackPane {
       }
       currentPageIndex++;
       changePage();
+      enableButtons();
     });
   }
 
