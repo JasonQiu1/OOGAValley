@@ -64,6 +64,7 @@ public class GameWorld implements ReadOnlyGameWorld {
    *
    * @param gameTime The current game time context.
    */
+  @Override
   public void update(ReadOnlyGameTime gameTime) {
     for (Map.Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {
       entry.getValue().update(gameTime);
@@ -74,10 +75,13 @@ public class GameWorld implements ReadOnlyGameWorld {
    * Handles interaction with a specific tile at the given coordinates using an item.
    *
    * @param item        The item used for interaction.
-   * @param coordinates The coordinates of the tile to interact with.
+   * @param width The width coordinate of the interaction.
+   * @param height The height coordinate of the interaction.
+   * @param depth The depth coordinate of the interaction.
    */
-  public void interact(Item item, CoordinateOfGameObjectRecord coordinates) {
-    allTiles.get(coordinates).interact(item);
+  @Override
+  public void interact(Item item, int width, int height, int depth) {
+    allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
   }
 
   /**
@@ -89,6 +93,8 @@ public class GameWorld implements ReadOnlyGameWorld {
    * @return A list containing the image paths for the collectable, structure, and land on this tile,
    *         if available. The list may be empty if none of the components have an associated image.
    */
+  @Override
+
   public List<String> getImagePath(int width, int height, int depth) {
     return allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).getImages();
   }
@@ -100,6 +106,7 @@ public class GameWorld implements ReadOnlyGameWorld {
    * @return A List of ItemsToAdd, each object representing a set of items to be added to the inventory,
    *         characterized by their ID and quantity.
    */
+  @Override
   public List<ItemsToAdd> itemsToAddToInventory() {
     List<ItemsToAdd> itemsToAddList = new ArrayList<>();
     for (Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {
