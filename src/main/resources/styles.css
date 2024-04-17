@@ -154,7 +154,7 @@
   -fx-background-size: cover;
 }
 
-.buy-button {
+#sellButton {
   -fx-background-image: url('img/shop/buy-button.png');
   -fx-background-size: cover;
   -fx-font-family: "Press Start 2P";

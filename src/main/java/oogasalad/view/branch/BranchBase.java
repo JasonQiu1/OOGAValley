@@ -21,7 +21,7 @@ public abstract class BranchBase {
     return stage;
   }
 
-  protected Scene getPreviousScene() {
+  public Scene getPreviousScene() {
     return previousScene;
   }
 
