@@ -10,7 +10,7 @@ import oogasalad.view.popup.PopUpStackPane;
 
 public class SellGridPane extends GridPane {
 
-  private static final String DEFAULT_RESOURCE_PACKAGE = "view.popup.";
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.shopping.components.shopblock.";
   private String myLanguage = "EnglishPopUpText";
   private ResourceBundle popUpTextResource;
   private static final int COLUMN_COUNT = 2;
