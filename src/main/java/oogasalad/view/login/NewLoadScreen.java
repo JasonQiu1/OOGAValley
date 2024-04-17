@@ -1,4 +1,4 @@
-package oogasalad.view.playing;
+package oogasalad.view.login;
 
 import java.io.File;
 import javafx.application.Application;
@@ -12,6 +12,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import oogasalad.view.login.Login;
 import oogasalad.view.login.UserInfo;
+import oogasalad.view.playing.PlayingPageView;
 
 /**
  * This class is responsible for displaying the new load screen for the game. This screen will allow
@@ -30,10 +31,9 @@ public class NewLoadScreen extends Application {
   @Override
   public void start(Stage primaryStage) {
     Button loginButton = new Button("Login");
-    Button newButton = new Button("New");
-    Button loadButton = new Button("Load");
+
     Button backButton = new Button("Back");
-    userInfo = new UserInfo(-1, "Guest"); // what does this do?
+    userInfo = new UserInfo(-1, "Guest");
 
     loginButton.setOnAction(event -> {
       Login login = new Login(primaryStage, primaryStage.getScene());
@@ -45,26 +45,14 @@ public class NewLoadScreen extends Application {
       });
     });
 
-    newButton.setOnAction(event -> {
-      PlayingPageView playingPage = new PlayingPageView(primaryStage);
-      playingPage.start();
-    });
 
-    loadButton.setOnAction(event -> {
-      FileChooser fileChooser = new FileChooser();
-      fileChooser.setTitle("Load Game");
-      File selectedFile = fileChooser.showOpenDialog(primaryStage);
-      if (selectedFile != null) {
-        // Load the game
-      }
-    });
 
     backButton.setOnAction(event -> {
       // Go back to the splash screen
     });
 
     VBox vbox = new VBox(10);
-    vbox.getChildren().addAll(loginButton, newButton, loadButton, backButton);
+    vbox.getChildren().addAll(loginButton, backButton);
     vbox.setAlignment(Pos.CENTER);
     BorderPane root = new BorderPane();
     root.setCenter(vbox);
