@@ -1,5 +1,6 @@
 package oogasalad.view.editor.MapEditor;
 
+import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -10,6 +11,9 @@ import org.apache.logging.log4j.Logger;
 
 public class CellInfoPane extends HBox {
 
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.CellInfoPane.";
+  private String displayTextLanguage = "EnglishDisplayText";
+  private ResourceBundle displayTextResource;
   private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
   private final Label displayText;
   private String svsToStringCopy;
@@ -19,6 +23,9 @@ public class CellInfoPane extends HBox {
   public CellInfoPane() {
     super();
     this.setId("CellInfoPane");
+
+    displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + displayTextLanguage);
+
     displayText = new Label();
     super.getChildren().add(displayText);
     displayText.setStyle("-fx-font-size: 25");
@@ -31,8 +38,8 @@ public class CellInfoPane extends HBox {
     yCor = ypos;
     svsToStringCopy = svsToString(svs);
 
-    displayText.setText("Position (x,y): " + xCor + "," + yCor + "\n" +
-        "In Cell: " + svsToStringCopy);
+    displayText.setText(displayTextResource.getString("position") + " " + xCor + "," + yCor + "\n" +
+        displayTextResource.getString("cell") + " " + svsToStringCopy);
   }
 
   private String svsToString(ObservableList<Node> svs) {
@@ -47,8 +54,8 @@ public class CellInfoPane extends HBox {
   }
 
   public void clearDisplay() {
-    displayText.setText("Position (x,y): \n" +
-        "In Cell: ");
+    displayText.setText(displayTextResource.getString("position") +" \n" +
+        displayTextResource.getString("cell") + " ");
   }
 
   public int getxCor() {

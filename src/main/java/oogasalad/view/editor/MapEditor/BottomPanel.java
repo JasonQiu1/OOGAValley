@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class BottomPanel extends TabPane {
-  private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.";
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.BottomPanel.";
   private String tabLanguage = "EnglishTabs";
   private String tilesLanguage = "EnglishTiles";
   private String natureLanguage = "EnglishNature";
