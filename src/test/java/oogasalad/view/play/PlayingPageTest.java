@@ -32,6 +32,7 @@ public class PlayingPageTest extends DukeApplicationTest {
     Scene scene = stage.getScene();
     Button shoppingButton = (javafx.scene.control.Button) lookup("#shopButton").queryButton();
     clickOn(shoppingButton);
+    sleep(500);
     assertNotEquals(stage.getScene(), scene);
   }
 
