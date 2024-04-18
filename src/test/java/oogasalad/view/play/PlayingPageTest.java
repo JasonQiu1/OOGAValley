@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
@@ -28,11 +27,11 @@ public class PlayingPageTest extends DukeApplicationTest {
 
   @Test
   public void testShoppingButton() {
-    Scene scene = stage.getScene();
+    String scene = stage.getScene().toString();
     Button shoppingButton = (javafx.scene.control.Button) lookup("#shopButton").queryButton();
     clickOn(shoppingButton);
     sleep(500);
-    assertNotEquals(stage.getScene().toString(), scene.toString());
+    assertNotEquals(stage.getScene().toString(), scene);
   }
 
   @Test
