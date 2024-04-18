@@ -2,9 +2,11 @@ package oogasalad.model.data;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
+import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.GameWorld;
@@ -72,6 +74,50 @@ public class GameState implements ReadOnlyGameState {
 
   @Override
   public ReadOnlyGameTime getGameTime() {
+    // TODO: IMPLEMENT
+    return null;
+  }
+
+  /**
+   * Returns the current energy level.
+   *
+   * @return the current energy level.
+   */
+  @Override
+  public double getEnergy() {
+    // TODO: IMPLEMENT
+    return 0;
+  }
+
+  /**
+   * Returns the amount of money currently possessed.
+   *
+   * @return the amount of money currently possessed.
+   */
+  @Override
+  public int getMoney() {
+    // TODO: IMPLEMENT
+    return 0;
+  }
+
+  /**
+   * Returns the current shop, which contains items currently being sold.
+   *
+   * @return the current shop.
+   */
+  @Override
+  public ReadOnlyShop getShop() {
+    // TODO: IMPLEMENT
+    return null;
+  }
+
+  /**
+   * Returns the current bag, which contains items currently held.
+   *
+   * @return the current bag.
+   */
+  @Override
+  public ReadOnlyBag getBag() {
     // TODO: IMPLEMENT
     return null;
   }

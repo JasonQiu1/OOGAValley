@@ -1,9 +1,12 @@
 package oogasalad.model.gameplay;
 
 import java.io.IOException;
+import java.util.Optional;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.api.ReadOnlyGameState;
+import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.GameState;
 
@@ -15,6 +18,11 @@ import oogasalad.model.data.GameState;
  * @author Jason Qiu
  */
 public class Game implements GameInterface {
+
+  public Game() {
+    configuration = new GameConfiguration();
+    state = new GameState(configuration.getInitialState());
+  }
 
   public Game(String configName) throws IOException {
     configuration = GameConfiguration.of(configName);
@@ -30,6 +38,83 @@ public class Game implements GameInterface {
   public void update() {
     state.getEditableGameTime().update();
     state.getEditableGameWorld().update(state.getGameTime());
+  }
+
+  /**
+   * Selects an item in the bag.
+   *
+   * @param name the name of the item in the bag to select.
+   * @throws KeyNotFoundException if the item is not in the bag.
+   */
+  @Override
+  public void selectItem(String name) throws KeyNotFoundException {
+// TODO: IMPLEMENT
+  }
+
+  /**
+   * Interacts with the given coordinate at the world using the selected item.
+   *
+   * @param x     the interacted x-coordinate.
+   * @param y     the interacted y-coordinate.
+   * @param depth the interacted depth coordinate.
+   */
+  @Override
+  public void interact(int x, int y, int depth) {
+// TODO: IMPLEMENT
+  }
+
+  /**
+   * Restores all energy and passes game time.
+   */
+  @Override
+  public void sleep() {
+// TODO: IMPLEMENT
+  }
+
+  /**
+   * Tries to buy an item from the shop.
+   *
+   * @param name the name of the item to buy from the shop.
+   * @return true if successfully bought, false otherwise.
+   * @throws KeyNotFoundException if the item is not in the shop.
+   */
+  @Override
+  public boolean buyItem(String name) throws KeyNotFoundException {
+    // TODO: IMPLEMENT
+    return false;
+  }
+
+  /**
+   * Tries to sell an item from the bag.
+   *
+   * @param name the name of the item to sell from the bag.
+   * @throws KeyNotFoundException if the item is not in the bag.
+   */
+  @Override
+  public void sellItem(String name) throws KeyNotFoundException {
+    // TODO: IMPLEMENT
+  }
+
+  /**
+   * Returns true if the game is over, false otherwise.
+   *
+   * @return true if the game is over, false otherwise.
+   */
+  @Override
+  public boolean isGameOver() {
+    // TODO: IMPLEMENT
+    return false;
+  }
+
+  /**
+   * Returns the selected item, if there is one selected.
+   *
+   * @return the optional describing the selected item.
+   */
+  @Override
+  public Optional<ReadOnlyItem> getSelectedItem() {
+    // TODO: IMPLEMENT
+    return Optional.empty();
   }
 
   @Override
