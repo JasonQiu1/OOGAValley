@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "type": "rules"
+  },
+  "ruleProperties": {
+    "String": {
+      "configName": "DEFAULT_GAME_NAME",
+      "author": "OOGAValley Devs",
+      "goalCondition": "time"
+    },
+    "boolean": {
+      "doEnergy": true,
+      "doEnergyRecovery": true,
+      "doDeath": false,
+      "doExhaustedEnergyCollapse": true
+    },
+    "int": {
+      "energyAmount": 20,
+      "energyRecoveryRate": 720,
+      "exhaustedEnergyCollapseTimePenalty": 1440,
+      "timeMultiplier": 1,
+      "timeGoal": 525600
+    }
+  },
+  "listProperties": {},
+  "mapProperties": {
+    "initialItems": {
+      "Hoe": 1
+    }
+  }
+}

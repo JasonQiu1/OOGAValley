@@ -28,9 +28,9 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
    */
   public GameConfiguration() {
     try {
-      rules = Properties.of(Paths.get("templates", "GameRules").toString());
+      rules = Properties.of(Paths.get("templates", "GameRulesGrouped").toString());
     } catch (IOException e) {
-      LOG.error("Couldn't load default GameRules 'templates/GameRules.json'.");
+      LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
       throw new RuntimeException(e);
     }
     configurablesStore = new GameConfigurablesStore();
@@ -89,7 +89,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
 
   @Override
   public void updateRule(String rule, String newValue) {
-    rules.update(rule, newValue);
+    rules.updateRule(rule, newValue);
   }
 
 
