@@ -36,13 +36,6 @@ public interface ReadOnlyGameConfiguration {
   ReadOnlyGameState getInitialState();
 
   /**
-   * Get a read-only instance of the initial state.
-   *
-   * @return read-only instance of the initial state.
-   */
-  ReadOnlyGameConfigurablesStore getConfigurablesStore();
-
-  /**
    * Updates a rule only if it already exists.
    *
    * @param rule queried rule.
