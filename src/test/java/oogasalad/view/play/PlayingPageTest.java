@@ -37,6 +37,7 @@ public class PlayingPageTest extends DukeApplicationTest {
 
   @Test
   public void testSelected(){
+    // fixed
     StackPane panda = (StackPane) lookup("#Panda").query();
     StackPane hoe = (StackPane) lookup("#Hoe").query();
     clickOn(panda);
