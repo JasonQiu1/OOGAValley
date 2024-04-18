@@ -61,7 +61,7 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
     sleep(500);
     clickOn(back);
     sleep(500);
-    assertTrue(stage.getTitle().equals("OOGAVALLEY"));
+    assertTrue(stage.getTitle().equals("OOGAValley"));
   }
 }
 
