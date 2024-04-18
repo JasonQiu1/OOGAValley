@@ -46,7 +46,6 @@ public class Tool {
   }
 
   public void reset() {
-    Rectangle rec = (Rectangle) stackPane.getChildren().get(1);
-    rec.setOpacity(0);
+    selectedRectangle.setOpacity(0);
   }
 }

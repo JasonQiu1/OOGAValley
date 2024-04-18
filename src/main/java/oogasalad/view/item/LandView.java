@@ -52,6 +52,7 @@ public class LandView {
       for (int j = 0; j < row; j++) {
         Land land = new Land(widthSingle, heightSingle, i, j, "img/grass.jpg");
         Pile p = new Pile(null, land, this, i, j);
+        p.setId("pile" + i + j);
         this.piles[i][j] = p;
         this.landGridPane.add(p, i, j);
       }

@@ -52,6 +52,9 @@ public class ToolView {
         toolPiles[finalI][0].getTool().setSelected();
       });
     }
+    // for temp testing
+    toolPiles[0][0].getTool().getView().setId("Hoe");
+    toolPiles[1][0].getTool().getView().setId("Panda");
     StackPane.setMargin(toolGridPane, new Insets(20, 0, 0, 40));
     toolStackPane.getChildren().addAll(backgroundImageView, toolGridPane);
   }
