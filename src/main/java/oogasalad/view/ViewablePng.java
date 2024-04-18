@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ResourceBundle;
 import javafx.scene.image.Image;
 import oogasalad.view.exception.FileNotPngException;
 
@@ -11,6 +12,9 @@ import oogasalad.view.exception.FileNotPngException;
  * Wrapper for choosing a png image for an object
  */
 public class ViewablePng {
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.";
+  private String errorsLanguage = "EnglishViewablePngErrors";
+  private ResourceBundle errorsResource;
 
   private final Image image;
 
@@ -23,6 +27,9 @@ public class ViewablePng {
    */
   public ViewablePng(String url)
       throws FileNotPngException, FileNotFoundException {
+
+    errorsResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + errorsLanguage);
+
     checkUrl(url);
     InputStream inputStream = new FileInputStream(url);
     image = new Image(inputStream);
@@ -56,13 +63,13 @@ public class ViewablePng {
 
   private void checkUrl(String url) throws FileNotFoundException, FileNotPngException {
     if (url == null) {
-      throw new FileNotFoundException("file url cannot be null");
+      throw new FileNotFoundException(errorsResource.getString("file_url_cannot_be_null"));
     }
     File f = new File(url);
     if (!f.exists()) {
-      throw new FileNotFoundException("file not found");
+      throw new FileNotFoundException(errorsResource.getString("file_not_found"));
     } else if (!url.endsWith(".png")) {
-      throw new FileNotPngException("File type not png");
+      throw new FileNotPngException(errorsResource.getString("file_type_not_png"));
     }
   }
 }
