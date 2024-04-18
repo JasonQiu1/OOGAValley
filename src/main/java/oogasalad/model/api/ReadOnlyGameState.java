@@ -21,4 +21,31 @@ public interface ReadOnlyGameState {
    * @return the stored GameTime.
    */
   ReadOnlyGameTime getGameTime();
+
+  /**
+   * Returns the current energy level.
+   *
+   * @return the current energy level.
+   */
+  double getEnergy();
+
+  /**
+   * Returns the amount of money currently possessed.
+   * @return the amount of money currently possessed.
+   */
+  int getMoney();
+
+  /**
+   * Returns the current shop, which contains items currently being sold.
+   *
+   * @return the current shop.
+   */
+  ReadOnlyShop getShop();
+
+  /**
+   * Returns the current bag, which contains items currently held.
+   *
+   * @return the current bag.
+   */
+  ReadOnlyBag getBag();
 }

@@ -1,5 +1,8 @@
 package oogasalad.model.api;
 
+import java.util.Optional;
+import oogasalad.model.api.exception.KeyNotFoundException;
+
 /**
  * Main API for the view to interact with.
  * <p>
@@ -11,12 +14,12 @@ package oogasalad.model.api;
 public interface GameInterface {
 
   /**
-   * Updates the game model since the last time it was updated in realtime.
-   * <p>
-   * The implementation will independently keep track of time passed, so no delta time parameter is
-   * needed.
+   * Returns the selected item, if there is one selected.
+   *
+   * @return the optional describing the selected item.
    */
-  void update();
+  Optional<ReadOnlyItem> getSelectedItem();
+
 
   /**
    * Returns the currently loaded GameConfiguration, which provides methods to get the currently
@@ -33,4 +36,58 @@ public interface GameInterface {
    * @return the current GameState instance.
    */
   ReadOnlyGameState getGameState();
+
+  /**
+   * Updates the game model since the last time it was updated in realtime.
+   * <p>
+   * The implementation will independently keep track of time passed, so no delta time parameter is
+   * needed.
+   */
+  void update();
+
+  /**
+   * Selects an item in the bag.
+   *
+   * @param name the name of the item in the bag to select.
+   * @throws KeyNotFoundException if the item is not in the bag.
+   */
+  void selectItem(String name) throws KeyNotFoundException;
+
+  /**
+   * Interacts with the given coordinate at the world using the selected item.
+   *
+   * @param x     the interacted x-coordinate.
+   * @param y     the interacted y-coordinate.
+   * @param depth the interacted depth coordinate.
+   */
+  void interact(int x, int y, int depth);
+
+  /**
+   * Restores all energy and passes game time.
+   */
+  void sleep();
+
+  /**
+   * Tries to buy an item from the shop.
+   *
+   * @param name the name of the item to buy from the shop.
+   * @return true if successfully bought, false otherwise.
+   * @throws KeyNotFoundException if the item is not in the shop.
+   */
+  boolean buyItem(String name) throws KeyNotFoundException;
+
+  /**
+   * Tries to sell an item from the bag.
+   *
+   * @param name the name of the item to sell from the bag.
+   * @throws KeyNotFoundException if the item is not in the bag.
+   */
+  void sellItem(String name) throws KeyNotFoundException;
+
+  /**
+   * Returns true if the game is over, false otherwise.
+   *
+   * @return true if the game is over, false otherwise.
+   */
+  boolean isGameOver();
 }
