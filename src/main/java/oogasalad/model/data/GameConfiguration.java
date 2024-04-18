@@ -54,6 +54,15 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
   /**
+   * Returns the read-only ConfigurablesStore for the game configuration.
+   *
+   * @return the read-only ConfigurablesStore for the game configuration.
+   */
+  public static ReadOnlyGameConfigurablesStore getConfigurablesStore() {
+    return configurablesStore;
+  }
+
+  /**
    * Serializes the instance to a JSON file.
    * <p>
    * Also saves the configurables store of the same name.
@@ -79,17 +88,23 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
   @Override
-  public ReadOnlyGameConfigurablesStore getConfigurablesStore() {
-    return configurablesStore;
-  }
-
-  @Override
-  public void updateRule(String rule, String newValue){
+  public void updateRule(String rule, String newValue) {
     rules.update(rule, newValue);
   }
 
+
   public void getEditableInitialState(GameState initialState) {
     this.initialState = initialState;
+  }
+
+
+  /**
+   * Returns the editable ConfigurablesStore for the game configuration.
+   *
+   * @return the editable ConfigurablesStore for the game configuration.
+   */
+  public GameConfigurablesStore getEditableConfigurablesStore() {
+    return configurablesStore;
   }
 
   private GameState initialState;
