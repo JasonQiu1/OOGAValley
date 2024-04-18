@@ -47,20 +47,37 @@ public class RuleChangeTest extends DukeApplicationTest {
     @Test
     @DisplayName("Test all rule change")
     public void testAllRuleChange() {
-        for(String type: config.getRules().getCopyOfProperties().keySet()){
+        for(String type: config.getRules().getCopyOfRuleProperties().keySet()){
             if(type.equals("boolean")){
-            //    for(String rule : )
+                for(String rule : config.getRules().getCopyOfRuleProperties().get(type).keySet()){
+                    CheckBox ruleBox = lookup("#" + rule).queryAs(CheckBox.class);
+                    ruleBox.setSelected(false);
+                }
+            } else{
+                for(String rule : config.getRules().getCopyOfRuleProperties().get(type).keySet()){
+                    TextField ruleBox = lookup("#" + rule).queryAs(TextField.class);
+                    ruleBox.setText("CompSci 308");
+                }
             }
-            //TextField ruleBox = lookup("#" + rule).queryAs(TextField.class);
-            //ruleBox.setText("CompSci 308");
             sleep(1000);
         }
         sleep(2000);
         Button save = lookup("#SaveRules").queryButton();
         clickOn(save);
         sleep(2000);
-        for(String rule: config.getRules().getCopyOfProperties().keySet()){
-            assertEquals("CompSci 308", config.getRules().getCopyOfProperties().get(rule));
+        for(String type: config.getRules().getCopyOfRuleProperties().keySet()){
+            if(type.equals("boolean")){
+                for(String rule : config.getRules().getCopyOfRuleProperties().get(type).keySet()){
+                    CheckBox ruleBox = lookup("#" + rule).queryAs(CheckBox.class);
+                    ruleBox.setSelected(false);
+                }
+            } else{
+                for(String rule : config.getRules().getCopyOfRuleProperties().get(type).keySet()){
+                    TextField ruleBox = lookup("#" + rule).queryAs(TextField.class);
+                    ruleBox.setText("CompSci 308");
+                }
+            }
+            sleep(1000);
         }
     }
 
