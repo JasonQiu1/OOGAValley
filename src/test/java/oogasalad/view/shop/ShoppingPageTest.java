@@ -5,9 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javax.swing.text.html.ImageView;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.shopping.ShoppingView;
@@ -16,11 +14,13 @@ import org.junit.jupiter.api.Test;
 import util.DukeApplicationTest;
 
 public class ShoppingPageTest extends DukeApplicationTest {
+
   private Stage stage;
   private BackButton backButton;
   private ShoppingView shoppingView;
   private Scene scene;
   private Scene prev_scene;
+
   @Override
   public void start(Stage stage) {
     this.stage = stage;
@@ -41,7 +41,7 @@ public class ShoppingPageTest extends DukeApplicationTest {
   }
 
   @Test
-  public void testSellButton(){
+  public void testSellButton() {
     Button sellButton = (javafx.scene.control.Button) lookup("#sellButton").queryButton();
     clickOn(sellButton);
     sleep(1000);
@@ -52,12 +52,14 @@ public class ShoppingPageTest extends DukeApplicationTest {
   }
 
   @Test
-  public void testPageChangeButton(){
-    Button leftButton = (javafx.scene.control.Button) lookup("#left-page-change-button").queryButton();
+  public void testPageChangeButton() {
+    Button leftButton = (javafx.scene.control.Button) lookup(
+        "#left-page-change-button").queryButton();
     assertTrue(leftButton.isDisabled());
     clickOn(leftButton);
     sleep(1000);
-    Button rightButton = (javafx.scene.control.Button) lookup("#right-page-change-button").queryButton();
+    Button rightButton = (javafx.scene.control.Button) lookup(
+        "#right-page-change-button").queryButton();
     clickOn(rightButton);
     sleep(1000);
     assertTrue(rightButton.isDisabled());
