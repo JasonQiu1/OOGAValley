@@ -39,6 +39,7 @@ public class BagItemPile extends StackPane {
 
   public void setItem(BagItem bagItem) {
 
+
     this.bagItem = bagItem;
     this.getChildren().add(0, bagItem.getView());
   }

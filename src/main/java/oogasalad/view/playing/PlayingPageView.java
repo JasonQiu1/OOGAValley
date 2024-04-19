@@ -23,6 +23,7 @@ import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 
 
+
 import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;

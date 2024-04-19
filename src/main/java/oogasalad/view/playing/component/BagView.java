@@ -13,6 +13,7 @@ import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.BagItemModel;
 import oogasalad.model.shop.ItemType;
 
+
 import oogasalad.view.playing.PlayingPageView;
 
 /**
@@ -25,8 +26,8 @@ public class BagView {
   private final List<BagItem> bagItemList;
   private final BagItemPile[][] bagItemPiles;
 
-  private final Bag bag;
 
+  private final Bag bag;
 
   private final int colNum;
   private final int rowNum;
@@ -39,12 +40,12 @@ public class BagView {
    * @param rowNum   the number of rows
    */
 
-
   public BagView(List<BagItem> bagItems, int colNum, int rowNum, Bag bag) {
     this.bagItemList = bagItems;
     this.toolGridPane = new GridPane();
     this.bag = bag;
     bagItemPiles = new BagItemPile[colNum][rowNum];
+
     this.colNum = colNum;
     this.rowNum = rowNum;
     Image backgroundImage = new Image("img/playing/box-background.png");
@@ -52,6 +53,7 @@ public class BagView {
     backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
     toolStackPane = new StackPane();
+
     StackPane.setMargin(toolGridPane, new Insets(20, 0, 0, 40));
     toolStackPane.getChildren().addAll(backgroundImageView, toolGridPane);
     update();
@@ -69,6 +71,7 @@ public class BagView {
   }
 
   public void update() {
+
     toolGridPane.getChildren().clear();
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
@@ -90,7 +93,6 @@ public class BagView {
     // for temp testing
     bagItemPiles[0][0].getItem().getView().setId("Hoe");
     bagItemPiles[1][0].getItem().getView().setId("Panda");
-
   }
 
   public double[] getAddRealLocation(BagItem bagItem) {
