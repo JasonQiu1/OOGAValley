@@ -1,6 +1,6 @@
 package oogasalad.model.api;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * Provides an interface to get information about the player's bag and items within.
@@ -14,5 +14,5 @@ public interface ReadOnlyBag {
    *
    * @return the items currently held in the bag.
    */
-  List<ReadOnlyItem> getItems();
+  Map<ReadOnlyItem, Integer> getItems();
 }
