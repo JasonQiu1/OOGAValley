@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import oogasalad.view.item.Pile;
+import oogasalad.view.playing.component.Pile;
 import oogasalad.view.playing.PlayingPageView;
 import org.junit.jupiter.api.Test;
 import util.DukeApplicationTest;
