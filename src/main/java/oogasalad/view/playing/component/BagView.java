@@ -92,10 +92,12 @@ public class BagView {
 
   public double[] getAddRealLocation(BagItem bagItem) {
     double[] location = new double[2];
+
     int[] index = findIndex(bagItem);
     location[0] = PlayingPageView.windowHeight / 2 - PlayingPageView.bottomHeight
         + PlayingPageView.bottomBoxPadding - 30;
     location[1] = index[0] * PlayingPageView.bottomCellWidth - 80;
+
     return location;
   }
 

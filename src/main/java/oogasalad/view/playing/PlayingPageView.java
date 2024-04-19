@@ -21,7 +21,7 @@ import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
-<<<<<<< HEAD
+
 
 import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
@@ -30,13 +30,6 @@ import oogasalad.view.playing.component.Money;
 import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 
-=======
-import oogasalad.view.playing.component.BagItem;
-import oogasalad.view.playing.component.BagView;
-import oogasalad.view.playing.component.LandView;
-import oogasalad.view.playing.component.SelectedItem;
-import oogasalad.view.playing.component.TopAnimationView;
->>>>>>> 1008f66 (a quick combination of tool and bag)
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
 
