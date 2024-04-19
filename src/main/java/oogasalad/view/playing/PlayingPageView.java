@@ -118,7 +118,7 @@ public class PlayingPageView {
     List<BagItem> bagItems = new ArrayList<>();
     bagItems.add(bagItem1);
     bagItems.add(bagItem2);
-    bagView = new BagView(bagItems, 5, 1, bag);
+    bagView = new BagView(bagItems, 5, 1);
 
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
 
