@@ -56,14 +56,7 @@ public class GameState implements ReadOnlyGameState {
    * Initializes a default GameState.
    */
   public GameState() {
-    gameWorld = new GameWorld(height, width, depth);
-    gameTime = new GameTime(0,0,0);
-    energy = 100;
-    for (int i = 0; i < width; i++) {
-      for (int j = 0; j < height; j++) {
-        gameWorld.setTileGameObject(null, i, j, 0);
-      }
-    }
+
   }
 
   /**

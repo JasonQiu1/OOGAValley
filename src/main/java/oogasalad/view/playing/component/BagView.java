@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.BagItemModel;
 import oogasalad.model.shop.ItemType;
@@ -26,6 +27,7 @@ public class BagView {
 
   private final Bag bag;
 
+
   private final int colNum;
   private final int rowNum;
 
@@ -41,8 +43,8 @@ public class BagView {
   public BagView(List<BagItem> bagItems, int colNum, int rowNum, Bag bag) {
     this.bagItemList = bagItems;
     this.toolGridPane = new GridPane();
-    bagItemPiles = new BagItemPile[colNum][rowNum];
     this.bag = bag;
+    bagItemPiles = new BagItemPile[colNum][rowNum];
     this.colNum = colNum;
     this.rowNum = rowNum;
     Image backgroundImage = new Image("img/playing/box-background.png");
@@ -88,6 +90,7 @@ public class BagView {
     // for temp testing
     bagItemPiles[0][0].getItem().getView().setId("Hoe");
     bagItemPiles[1][0].getItem().getView().setId("Panda");
+
   }
 
   public double[] getAddRealLocation(BagItem bagItem) {

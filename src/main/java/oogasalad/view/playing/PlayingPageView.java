@@ -122,6 +122,7 @@ public class PlayingPageView {
 
     bagView = new BagView(bagItems, 5, 1, bag);
 
+
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
 
     List<PlantModel> plantModelList = new ArrayList<>();
