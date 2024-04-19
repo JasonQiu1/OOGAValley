@@ -17,10 +17,11 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   private boolean expired;
   private ReadOnlyGameTime timeSinceExpiringState;
-  private final ReadOnlyGameTime creationTime;
+  private ReadOnlyGameTime creationTime;
   private boolean changePropertiesOnNextIteration;
   private String id;
   private String nextId;
+  private ReadOnlyGameTime lastUpdateGameTime;
 
   /**
    * Constructs a GameObject with specified properties and initial state.
@@ -31,6 +32,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public GameObject(String id, ReadOnlyGameTime creationTime) {
     this.id = id;
     this.creationTime = creationTime;
+    lastUpdateGameTime = creationTime;
     this.expired = false;
     this.changePropertiesOnNextIteration = false;
   }
@@ -64,8 +66,10 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public void update(ReadOnlyGameTime gameTime) {
+    lastUpdateGameTime = gameTime;
     updateAndInteract(() -> {
-      if (creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
+      if (getProperties().getBoolean("updatable") &&
+          creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
           "updateTime")) {
         return getProperties().getString("updateTransformation");
       }
@@ -183,6 +187,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     }
     changePropertiesOnNextIteration = false;
     expired = false;
+    creationTime = lastUpdateGameTime;
     id = nextId;
   }
 
