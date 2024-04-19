@@ -17,9 +17,9 @@ import oogasalad.model.api.ReadOnlyGameTime;
  */
 
 public class Tile implements Updatable, Interactable {
-  public static final String defaultCollectableID = "";
-  // TODO: Jason put correct defaultCollectableID
-  // TODO: Will eventually need to externalize
+
+  // TODO: Will eventually need to externalize configuration
+  public static final String defaultCollectableID = "COLLECTABLE";
   private Collectable collectable;
   private Structure structure;
   private Land land;

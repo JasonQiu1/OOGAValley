@@ -1,5 +1,6 @@
 package oogasalad.model.gameobject;
 
+import java.util.HashMap;
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
 
@@ -34,10 +35,7 @@ public class Structure extends GameObject implements StructureObject {
    */
   @Override
   public Map<String, Integer> getItemsOnDestruction() {
-    // TODO: EXTEND TO RETURN MULTIPLE DROPS OF DIFFERENT QUANTITIES
-    // TODO: JASON FILL IN
-    // return properties.getStringMap("destructionDrops"); // e.g. {"item":"2", "otherItem":"1"}
-    return null;
+    return getProperties().getStringIntegerMap("dropsOnDestruction"); // e.g. {"item":"2", "otherItem":"1"}
   }
 
   /**
