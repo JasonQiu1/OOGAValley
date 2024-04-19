@@ -24,7 +24,6 @@ public class LandView {
   private final SelectedItem selectedItem;
 
   private final GameTime gameTime;
-
   /**
    * Initialize a land with some plants and lands already defined.
    *
@@ -110,12 +109,12 @@ public class LandView {
         plantViewList.remove(pile.getPlantView());
         BagItem newBagItem = new BagItem(pile.getPlantView().getItemUrl(),
             PlayingPageView.bottomCellWidth,
-            PlayingPageView.bottomCellHeight, new SelectedItem(), 1);
+            PlayingPageView.bottomCellHeight, selectedItem, 1);
         topAnimationView.collectItemAnimation(newBagItem,
             event.getSceneX() - PlayingPageView.windowWidth / 2,
             event.getSceneY() - PlayingPageView.windowHeight / 2,
-            bagView.getAddRealLocation(newBagItem)[1] - PlayingPageView.windowWidth / 2,
-            bagView.getAddRealLocation(newBagItem)[0] - PlayingPageView.windowHeight / 2, 3.0);
+            bagView.getAddRealLocation(newBagItem)[1],
+            bagView.getAddRealLocation(newBagItem)[0], 3.0);
         pile.removePlant();
       }
     }

@@ -33,14 +33,11 @@ public class BagItemPile extends StackPane {
     return y;
   }
 
-  public BagItem getTool() {
+  public BagItem getItem() {
     return bagItem;
   }
 
-  public void setTool(BagItem bagItem) {
-    if (this.bagItem != null) {
-      this.getChildren().remove(this.bagItem.getView());
-    }
+  public void setItem(BagItem bagItem) {
     this.bagItem = bagItem;
     this.getChildren().add(0, bagItem.getView());
   }
