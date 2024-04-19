@@ -5,6 +5,8 @@ import oogasalad.model.gameplay.GameTimeInterface;
 
 /**
  * The structures on the land, like plants,
+ *
+ * @deprecated SLATED TO GET DESTROYED
  */
 public interface PlantModelInterface {
 

@@ -3,6 +3,9 @@ package oogasalad.model.gameplay;
 
 import oogasalad.model.api.PlantModelInterface;
 
+/**
+ * @deprecated SLATED TO GET DESTROYED
+ */
 public class PlantModel implements PlantModelInterface {
 
   private final GameTime plantedTime;
