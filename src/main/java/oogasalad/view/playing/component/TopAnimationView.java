@@ -1,4 +1,4 @@
-package oogasalad.view.item;
+package oogasalad.view.playing.component;
 
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
@@ -11,18 +11,18 @@ import javafx.util.Duration;
  */
 public class TopAnimationView extends StackPane {
 
-  private final BagItemView bagItemView;
+  private final BagView bagView;
 
   /**
    * Constructor for the TopAnimationView class.
    *
-   * @param bagItemView the itemView that the animation will be displayed on
-   * @param width       the width of the animation
-   * @param height      the height of the animation
+   * @param bagView the itemView that the animation will be displayed on
+   * @param width   the width of the animation
+   * @param height  the height of the animation
    */
-  public TopAnimationView(BagItemView bagItemView, double width, double height) {
+  public TopAnimationView(BagView bagView, double width, double height) {
     super();
-    this.bagItemView = bagItemView;
+    this.bagView = bagView;
     this.setPrefSize(width, height);
     this.setPickOnBounds(false);
   }
@@ -51,7 +51,7 @@ public class TopAnimationView extends StackPane {
 
     translateTransition.setOnFinished(event -> {
       this.getChildren().remove(0);
-      bagItemView.addItem(bagItem);
+      bagView.addItem(bagItem);
     });
 
     this.getChildren().add(bagItem.getImageView());
