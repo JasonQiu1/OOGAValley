@@ -2,7 +2,8 @@ package oogasalad.model.shop;
 
 import java.util.ArrayList;
 import java.util.List;
-import oogasalad.view.item.Money;
+
+import oogasalad.view.playing.component.Money;
 
 /**
  * The class on behalf of the shop

@@ -1,4 +1,4 @@
-package oogasalad.view.item.observer;
+package oogasalad.view.playing.component.observer;
 
 import java.util.ArrayList;
 import java.util.List;

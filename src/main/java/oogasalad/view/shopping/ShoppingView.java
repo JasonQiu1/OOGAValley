@@ -6,7 +6,8 @@ import javafx.stage.Stage;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.branch.BranchBase;
-import oogasalad.view.item.Money;
+import oogasalad.view.playing.component.Money;
+
 
 public class ShoppingView extends BranchBase {
 

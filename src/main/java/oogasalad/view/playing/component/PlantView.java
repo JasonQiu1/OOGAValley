@@ -1,4 +1,4 @@
-package oogasalad.view.item;
+package oogasalad.view.playing.component;
 
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;

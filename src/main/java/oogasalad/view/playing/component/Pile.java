@@ -1,4 +1,4 @@
-package oogasalad.view.item;
+package oogasalad.view.playing.component;
 
 
 import javafx.scene.layout.StackPane;
