@@ -115,6 +115,7 @@ public class LandView {
             event.getSceneY() - PlayingPageView.windowHeight / 2,
             bagView.getAddRealLocation(newBagItem)[1],
             bagView.getAddRealLocation(newBagItem)[0], 3.0);
+
         pile.removePlant();
       }
     }
