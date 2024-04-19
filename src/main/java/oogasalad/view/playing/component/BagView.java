@@ -1,11 +1,13 @@
 package oogasalad.view.playing.component;
 
 import java.util.List;
+
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+
 import oogasalad.view.playing.PlayingPageView;
 
 /**
@@ -17,6 +19,7 @@ public class BagView {
   private final StackPane toolStackPane;
   private final List<BagItem> bagItemList;
   private final BagItemPile[][] bagItemPiles;
+
   private final int colNum;
   private final int rowNum;
 
@@ -28,10 +31,12 @@ public class BagView {
    * @param rowNum   the number of rows
    */
 
+
   public BagView(List<BagItem> bagItems, int colNum, int rowNum) {
     this.bagItemList = bagItems;
     this.toolGridPane = new GridPane();
     bagItemPiles = new BagItemPile[colNum][rowNum];
+
     this.colNum = colNum;
     this.rowNum = rowNum;
     Image backgroundImage = new Image("img/playing/box-background.png");
@@ -56,6 +61,7 @@ public class BagView {
   }
 
   public void update() {
+
     toolGridPane.getChildren().clear();
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
@@ -82,6 +88,7 @@ public class BagView {
 
   public double[] getAddRealLocation(BagItem bagItem) {
     double[] location = new double[2];
+
     int[] index = findIndex(bagItem);
     location[0] = PlayingPageView.windowHeight / 2 - PlayingPageView.bottomHeight
         + PlayingPageView.bottomBoxPadding - 30;
@@ -120,6 +127,7 @@ public class BagView {
         PlayingPageView.bottomCellHeight,
         new SelectedItem(), 1);
     bagItemList.add(new_bagItem);
+
     update();
   }
 }
