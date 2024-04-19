@@ -45,26 +45,6 @@ public class BagView {
     backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
     toolStackPane = new StackPane();
-    for (int i = 0; i < colNum; i++) {
-      for (int j = 0; j < rowNum; j++) {
-        BagItemPile p = new BagItemPile(null, i, j);
-        p.setPrefHeight(PlayingPageView.bottomCellHeight);
-        p.setPrefWidth(PlayingPageView.bottomCellWidth);
-        bagItemPiles[i][j] = p;
-        toolGridPane.add(p, i, j);
-      }
-    }
-    for (int i = 0; i < bagItems.size(); i++) {
-      bagItemPiles[i][0].setTool(bagItems.get(i));
-      int finalI = i;
-      bagItemPiles[i][0].getTool().getView().setOnMouseClicked(event -> {
-        reset();
-        bagItemPiles[finalI][0].getTool().setSelected();
-      });
-    }
-    // for temp testing
-    bagItemPiles[0][0].getTool().getView().setId("Hoe");
-    bagItemPiles[1][0].getTool().getView().setId("Panda");
     StackPane.setMargin(toolGridPane, new Insets(20, 0, 0, 40));
     toolStackPane.getChildren().addAll(backgroundImageView, toolGridPane);
     update();
@@ -135,8 +115,7 @@ public class BagView {
     }
     location[0] = PlayingPageView.windowHeight - PlayingPageView.bottomHeight
         + PlayingPageView.bottomBoxPadding / 2 + index[0] * PlayingPageView.bottomCellHeight;
-    location[1] = PlayingPageView.windowWidth / 2 + PlayingPageView.bottomBoxPadding * 2 + index[1]
-        * PlayingPageView.bottomCellWidth;
+    location[1] = PlayingPageView.windowWidth / 2 + index[1] * PlayingPageView.bottomCellWidth;
     return location;
   }
 
