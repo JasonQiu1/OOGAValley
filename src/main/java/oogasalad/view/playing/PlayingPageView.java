@@ -21,6 +21,7 @@ import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
+<<<<<<< HEAD
 
 import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
@@ -29,6 +30,13 @@ import oogasalad.view.playing.component.Money;
 import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 
+=======
+import oogasalad.view.playing.component.BagItem;
+import oogasalad.view.playing.component.BagView;
+import oogasalad.view.playing.component.LandView;
+import oogasalad.view.playing.component.SelectedItem;
+import oogasalad.view.playing.component.TopAnimationView;
+>>>>>>> 1008f66 (a quick combination of tool and bag)
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
 
@@ -68,6 +76,7 @@ public class PlayingPageView {
   private final String selectedTools = "plant";
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
+
   private LandView landView;
   private TopAnimationView topAnimationView;
 
@@ -78,7 +87,6 @@ public class PlayingPageView {
   private String myLanguage = "EnglishDisplayText";
   private ResourceBundle displayTextResource;
   private BagView bagView;
-
 
   public PlayingPageView(Stage primaryStage) {
     stage = primaryStage;
@@ -119,7 +127,7 @@ public class PlayingPageView {
     bagItems.add(bagItem1);
     bagItems.add(bagItem2);
 
-    bagView = new BagView(bagItems, 5, 1);
+    bagView = new BagView(bagItems, 5, 1, bag);
 
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
 

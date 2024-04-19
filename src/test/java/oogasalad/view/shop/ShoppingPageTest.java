@@ -24,6 +24,7 @@ public class ShoppingPageTest extends DukeApplicationTest {
 
   private Money money = new Money(100);
 
+
   @Override
   public void start(Stage stage) {
     this.stage = stage;

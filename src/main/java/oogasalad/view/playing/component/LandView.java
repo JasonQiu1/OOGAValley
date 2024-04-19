@@ -116,6 +116,7 @@ public class LandView {
             bagView.getAddRealLocation(newBagItem)[1],
             bagView.getAddRealLocation(newBagItem)[0], 3.0);
 
+
         pile.removePlant();
       }
     }

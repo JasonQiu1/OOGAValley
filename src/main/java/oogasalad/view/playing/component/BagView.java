@@ -8,6 +8,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+import oogasalad.model.shop.Bag;
+import oogasalad.model.shop.BagItemModel;
+import oogasalad.model.shop.ItemType;
+
 import oogasalad.view.playing.PlayingPageView;
 
 /**
@@ -19,6 +23,8 @@ public class BagView {
   private final StackPane toolStackPane;
   private final List<BagItem> bagItemList;
   private final BagItemPile[][] bagItemPiles;
+
+  private final Bag bag;
 
   private final int colNum;
   private final int rowNum;
@@ -32,11 +38,11 @@ public class BagView {
    */
 
 
-  public BagView(List<BagItem> bagItems, int colNum, int rowNum) {
+  public BagView(List<BagItem> bagItems, int colNum, int rowNum, Bag bag) {
     this.bagItemList = bagItems;
     this.toolGridPane = new GridPane();
     bagItemPiles = new BagItemPile[colNum][rowNum];
-
+    this.bag = bag;
     this.colNum = colNum;
     this.rowNum = rowNum;
     Image backgroundImage = new Image("img/playing/box-background.png");
@@ -61,7 +67,6 @@ public class BagView {
   }
 
   public void update() {
-
     toolGridPane.getChildren().clear();
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
@@ -83,12 +88,10 @@ public class BagView {
     // for temp testing
     bagItemPiles[0][0].getItem().getView().setId("Hoe");
     bagItemPiles[1][0].getItem().getView().setId("Panda");
-
   }
 
   public double[] getAddRealLocation(BagItem bagItem) {
     double[] location = new double[2];
-
     int[] index = findIndex(bagItem);
     location[0] = PlayingPageView.windowHeight / 2 - PlayingPageView.bottomHeight
         + PlayingPageView.bottomBoxPadding - 30;
@@ -127,7 +130,6 @@ public class BagView {
         PlayingPageView.bottomCellHeight,
         new SelectedItem(), 1);
     bagItemList.add(new_bagItem);
-
     update();
   }
 }
