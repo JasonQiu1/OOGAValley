@@ -37,8 +37,7 @@ public class Land extends GameObject implements Plantable {
    */
   @Override
   public boolean getIfItemCanBePlacedHere(Item item) {
-    // TODO: JASON PUT RIGHT THING HERE
-    return false;
+    return getProperties().getStringMap("plantableSeeds").containsKey(item.getName());
   }
 
   /**
@@ -51,8 +50,7 @@ public class Land extends GameObject implements Plantable {
    */
   @Override
   public String getStructureBasedOnItem(Item item) {
-    // TODO: JASON PUT RIGHT THING HERE
-    return null;
+    return getProperties().getStringMap("plantableSeeds").get(item.getName());
   }
 }
 

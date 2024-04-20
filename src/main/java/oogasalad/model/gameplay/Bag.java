@@ -1,6 +1,6 @@
 package oogasalad.model.gameplay;
 
-import java.util.List;
+import java.util.Map;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyItem;
 
@@ -17,7 +17,7 @@ public class Bag implements ReadOnlyBag {
    * @return the items currently held in the bag.
    */
   @Override
-  public List<ReadOnlyItem> getItems() {
+  public Map<ReadOnlyItem, Integer> getItems() {
     // TODO: IMPLEMENT
     return null;
   }
