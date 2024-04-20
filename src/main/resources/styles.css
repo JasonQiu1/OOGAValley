@@ -258,6 +258,7 @@
   -fx-max-height: 50px;
 }
 
+
 #end-restart-button {
   -fx-background-image: url("img/end/restart.png");
   -fx-background-size: cover;
