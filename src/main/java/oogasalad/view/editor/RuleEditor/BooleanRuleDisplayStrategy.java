@@ -11,6 +11,7 @@ public class BooleanRuleDisplayStrategy extends RuleDisplayStrategy {
     private final CheckBox cb;
     private final String name;
     public BooleanRuleDisplayStrategy(String key, String value, List<Node> elements){
+        super();
         Label rule = new Label(key);
         rule.getStyleClass().add("rule");
         BorderPane bp = new BorderPane();

@@ -12,6 +12,7 @@ public class TextRuleDisplayStrategy extends RuleDisplayStrategy {
     private final TextField tf;
     private final String name;
     public TextRuleDisplayStrategy(String key, String value, List<Node> elements){
+        super();
         Label rule = new Label(key);
         rule.getStyleClass().add("rule");
         BorderPane bp = new BorderPane();
