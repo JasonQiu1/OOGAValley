@@ -21,7 +21,7 @@ public class Game implements GameInterface {
 
   public Game() {
     configuration = new GameConfiguration();
-    state = new GameState(configuration.getInitialState());
+    state = new GameState();
   }
 
   public Game(String configName) throws IOException {
