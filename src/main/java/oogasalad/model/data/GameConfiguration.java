@@ -89,7 +89,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
 
   @Override
   public void updateRule(String rule, String newValue) {
-    rules.updateRule(rule, newValue);
+    rules.update(rule, newValue);
   }
 
 

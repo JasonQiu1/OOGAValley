@@ -35,29 +35,25 @@ public class RuleChangeTest extends DukeApplicationTest {
     @DisplayName("Test one rule change")
     public void testOneRuleChange() {
         CheckBox rule = lookup("#doEnergy").queryAs(CheckBox.class);
-        assertEquals("true", getRuleValue("doEnergy"));
+        assertEquals("true", config.getRules().getCopyOfProperties().get("doEnergy"));
         sleep(5000);
         clickOn(rule);
         Button save = lookup("#SaveRules").queryButton();
         clickOn(save);
-        sleep(5000);
-        assertEquals("false", getRuleValue("doEnergy"));
+        sleep(1000);
+        assertEquals("false", config.getRules().getCopyOfProperties().get("doEnergy"));
     }
 
     @Test
     @DisplayName("Test all rule change")
     public void testAllRuleChange() {
-        for(String type: config.getRules().getCopyOfRuleProperties().keySet()){
-            if(type.equals("boolean")){
-                for(String rule : config.getRules().getCopyOfRuleProperties().get(type).keySet()){
-                    CheckBox ruleBox = lookup("#" + rule).queryAs(CheckBox.class);
-                    ruleBox.setSelected(false);
-                }
-            } else{
-                for(String rule : config.getRules().getCopyOfRuleProperties().get(type).keySet()){
-                    TextField ruleBox = lookup("#" + rule).queryAs(TextField.class);
-                    ruleBox.setText("CompSci 308");
-                }
+        for(String key: config.getRules().getCopyOfProperties().keySet()){
+            if(config.getRules().getCopyOfListProperties().get("boolean").contains(key)){
+                CheckBox ruleBox = lookup("#" + key).queryAs(CheckBox.class);
+                ruleBox.setSelected(false);
+            }else{
+                TextField ruleBox = lookup("#" + key).queryAs(TextField.class);
+                ruleBox.setText("CompSci 308");
             }
             sleep(1000);
         }
@@ -65,31 +61,13 @@ public class RuleChangeTest extends DukeApplicationTest {
         Button save = lookup("#SaveRules").queryButton();
         clickOn(save);
         sleep(2000);
-        for(String type: config.getRules().getCopyOfRuleProperties().keySet()){
-            if(type.equals("boolean")){
-                for(String rule : config.getRules().getCopyOfRuleProperties().get(type).keySet()){
-                    CheckBox ruleBox = lookup("#" + rule).queryAs(CheckBox.class);
-                    ruleBox.setSelected(false);
-                }
-            } else{
-                for(String rule : config.getRules().getCopyOfRuleProperties().get(type).keySet()){
-                    TextField ruleBox = lookup("#" + rule).queryAs(TextField.class);
-                    ruleBox.setText("CompSci 308");
-                }
+        for(String key: config.getRules().getCopyOfProperties().keySet()){
+            if(config.getRules().getCopyOfListProperties().get("boolean").contains(key)){
+                assertEquals("false", config.getRules().getCopyOfProperties().get(key));
+            } else {
+                assertEquals("CompSci 308", config.getRules().getCopyOfProperties().get(key));
             }
-            sleep(1000);
+            sleep(100);
         }
     }
-
-    private String getRuleValue(String str){
-        for(Map.Entry<String, Map<String, String>> type : config.getRules().getCopyOfRuleProperties().entrySet()){
-            if(type.getValue().containsKey(str)){
-                return type.getValue().get(str);
-            }
-        }
-        return null;
-    }
-
-
-
 }

@@ -177,25 +177,6 @@ public class Properties implements ReadOnlyProperties {
     mapProperties.put(key, Map.copyOf(map));
   }
 
-  /**
-   * Updates a property only if it already exists. For rule values.
-   *
-   * @param key the queried key.
-   * @param value the value to set.
-   * @throws KeyNotFoundException if the key does not exist.
-   */
-  public void updateRule(String key, String value) throws KeyNotFoundException {
-    Map<String, String> rules = new TreeMap<>();
-    for (Map.Entry<String, Map<String, String>> entry : ruleProperties.entrySet()) {
-      if(entry.getValue().containsKey(key)) {
-        entry.getValue().put(key, value);
-        return;
-      }
-      rules.putAll(entry.getValue());
-    }
-    throwIfKeyNotFound(rules, key);
-  }
-
   @Override
   public Map<String, String> getCopyOfProperties() {
     return Map.copyOf(properties);
@@ -211,15 +192,9 @@ public class Properties implements ReadOnlyProperties {
     return Map.copyOf(mapProperties);
   }
 
-  @Override
-  public Map<String, Map<String, String>> getCopyOfRuleProperties() {
-    return Map.copyOf(ruleProperties);
-  }
-
   private final Map<String, String> properties;
   private final Map<String, List<String>> listProperties;
   private final Map<String, Map<String, String>> mapProperties;
-  private final Map<String, Map<String, String>> ruleProperties;
   private static final DataFactory<Properties> FACTORY = new DataFactory<>(Properties.class);
   private static final Logger LOG = LogManager.getLogger(Properties.class);
 
@@ -230,7 +205,6 @@ public class Properties implements ReadOnlyProperties {
     properties = new HashMap<>();
     listProperties = new HashMap<>();
     mapProperties = new HashMap<>();
-    ruleProperties = new TreeMap<>();
   }
 
   private void throwIfKeyNotFound(Map<String, ?> map, String key) throws KeyNotFoundException {
