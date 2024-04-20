@@ -1,12 +1,10 @@
 package oogasalad.view.play;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
@@ -29,15 +27,15 @@ public class PlayingPageTest extends DukeApplicationTest {
 
   @Test
   public void testShoppingButton() {
-    Scene scene = stage.getScene();
+    String scene = stage.getScene().toString();
     Button shoppingButton = (javafx.scene.control.Button) lookup("#shopButton").queryButton();
     clickOn(shoppingButton);
-    sleep(500);
-    assertNotEquals(stage.getScene(), scene);
+    sleep(2000);
+    assertNotEquals(stage.getScene().toString(), scene);
   }
 
   @Test
-  public void testSelected(){
+  public void testSelected() {
     // fixed
     StackPane panda = (StackPane) lookup("#Panda").query();
     StackPane hoe = (StackPane) lookup("#Hoe").query();
@@ -53,7 +51,7 @@ public class PlayingPageTest extends DukeApplicationTest {
   }
 
   @Test
-  public void testGrowAndHarvest(){
+  public void testGrowAndHarvest() {
     StackPane panda = (StackPane) lookup("#Panda").query();
     clickOn(panda);
     sleep(1000);

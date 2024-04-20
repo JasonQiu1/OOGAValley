@@ -11,6 +11,13 @@ import oogasalad.model.gameplay.Game;
 public class GameFactory {
 
   /**
+   * Creates a default instance of Game.
+   */
+  GameInterface createGame() throws IOException {
+    return new Game();
+  }
+
+  /**
    * Creates a new instance of Game from a config, automatically loading the default state as the
    * current state.
    *

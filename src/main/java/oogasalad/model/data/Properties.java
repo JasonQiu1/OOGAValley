@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.BadValueParseException;
@@ -137,6 +139,31 @@ public class Properties implements ReadOnlyProperties {
       LOG.error("Couldn't parse value '{}' as an integer (key = {}).", rawValue, key);
       throw new BadValueParseException(rawValue, Integer.class.getSimpleName(), e);
     }
+  }
+
+  /**
+   * Returns the parsed string-integer map of the property if found.
+   *
+   * @param key the key of the property to access.
+   * @return the property's value's string-integer map.
+   * @throws KeyNotFoundException if the key does not exist.
+   */
+  @Override
+  public Map<String, Integer> getStringIntegerMap(String key)
+      throws KeyNotFoundException, BadValueParseException {
+    final Map<String, String> rawValue = getStringMap(key);
+    Map<String, Integer> parsed = new HashMap<>();
+    try {
+      for (Map.Entry<String, String> entry : rawValue.entrySet()) {
+        parsed.put(entry.getKey(), Integer.parseInt(entry.getValue()));
+      }
+    } catch (NumberFormatException e) {
+      LOG.error("Couldn't parse some value in the map '{}' as an integer (key = {}).", rawValue,
+          key);
+      throw new BadValueParseException(rawValue.toString(), Integer.class.getSimpleName(), e);
+    }
+
+    return parsed;
   }
 
   /**

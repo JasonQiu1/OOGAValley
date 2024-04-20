@@ -9,15 +9,6 @@ import oogasalad.model.gameobject.ItemsToAdd;
  * allows querying and interacting with the game world without modifying its underlying state directly.
  */
 public interface ReadOnlyGameWorld {
-
-  /**
-   * Updates the state of the game world based on the given game time. This method is used to
-   * progress game mechanics tied to time without modifying the actual structure of the game world.
-   *
-   * @param gameTime The current game time used for updating game mechanics.
-   */
-  void update(ReadOnlyGameTime gameTime);
-
   /**
    * Retrieves a list of image paths that represent the visual state of the game world at the specified
    * location. This can be used for rendering the game world on a UI.
@@ -37,18 +28,5 @@ public interface ReadOnlyGameWorld {
    * @return A list of ItemsToAdd, each representing items that are to be added to the player's inventory.
    */
   List<ItemsToAdd> itemsToAddToInventory();
-
-  /**
-   * Interacts with the game world at a specified location using a given item. This method is used
-   * to simulate actions like placing, using, or manipulating items within the game world at
-   * specific coordinates.
-   *
-   * @param item The item used for the interaction.
-   * @param width The width coordinate of the interaction.
-   * @param height The height coordinate of the interaction.
-   * @param depth The depth coordinate of the interaction.
-   */
-  void interact(Item item, int width, int height, int depth);
-
 }
 

@@ -11,9 +11,11 @@ import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
+import oogasalad.model.gameobject.Interactable;
 import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameobject.Tile;
+import oogasalad.model.gameobject.Updatable;
 
 /**
  * Represents the game world containing a grid of tiles, each potentially holding different game
@@ -21,7 +23,7 @@ import oogasalad.model.gameobject.Tile;
  * for initializing tiles, handling interactions, and updating game states based on game time or
  * interactions.
  */
-public class GameWorld implements ReadOnlyGameWorld {
+public class GameWorld implements ReadOnlyGameWorld, Updatable {
 
   private Map<CoordinateOfGameObjectRecord, Tile> allTiles;
   private int height;
@@ -79,7 +81,6 @@ public class GameWorld implements ReadOnlyGameWorld {
    * @param height The height coordinate of the interaction.
    * @param depth The depth coordinate of the interaction.
    */
-  @Override
   public void interact(Item item, int width, int height, int depth) {
     allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
   }

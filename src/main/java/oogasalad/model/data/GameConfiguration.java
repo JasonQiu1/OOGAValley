@@ -28,9 +28,9 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
    */
   public GameConfiguration() {
     try {
-      rules = Properties.of(Paths.get("templates", "GameRules").toString());
+      rules = Properties.of(Paths.get("templates", "GameRulesGrouped").toString());
     } catch (IOException e) {
-      LOG.error("Couldn't load default GameRules 'templates/GameRules.json'.");
+      LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
       throw new RuntimeException(e);
     }
     configurablesStore = new GameConfigurablesStore();
@@ -51,6 +51,15 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     configurablesStore = GameConfigurablesStore.of(dataFilePath);
     return GAME_CONFIGURATION_DATA_FACTORY.load(
         Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString());
+  }
+
+  /**
+   * Returns the read-only ConfigurablesStore for the game configuration.
+   *
+   * @return the read-only ConfigurablesStore for the game configuration.
+   */
+  public static ReadOnlyGameConfigurablesStore getConfigurablesStore() {
+    return configurablesStore;
   }
 
   /**
@@ -79,17 +88,23 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
   @Override
-  public ReadOnlyGameConfigurablesStore getConfigurablesStore() {
-    return configurablesStore;
-  }
-
-  @Override
-  public void updateRule(String rule, String newValue){
+  public void updateRule(String rule, String newValue) {
     rules.update(rule, newValue);
   }
 
+
   public void getEditableInitialState(GameState initialState) {
     this.initialState = initialState;
+  }
+
+
+  /**
+   * Returns the editable ConfigurablesStore for the game configuration.
+   *
+   * @return the editable ConfigurablesStore for the game configuration.
+   */
+  public GameConfigurablesStore getEditableConfigurablesStore() {
+    return configurablesStore;
   }
 
   private GameState initialState;
