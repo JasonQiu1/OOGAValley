@@ -18,7 +18,7 @@ public class Bag implements ReadOnlyBag {
    */
   @Override
   public Map<ReadOnlyItem, Integer> getItems() {
-    // TODO: IMPLEMENT
+
     return null;
   }
 }
