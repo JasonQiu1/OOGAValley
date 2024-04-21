@@ -13,7 +13,7 @@ public class GameFactory {
   /**
    * Creates a default instance of Game.
    */
-  GameInterface createGame() throws IOException {
+  public GameInterface createGame() {
     return new Game();
   }
 
@@ -26,7 +26,7 @@ public class GameFactory {
    * current state.
    * @throws IOException if there was an issue loading the game configuration.
    */
-  GameInterface createGame(String configName) throws IOException {
+  public GameInterface createGame(String configName) throws IOException {
     return new Game(configName);
   }
 

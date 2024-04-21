@@ -16,6 +16,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import oogasalad.model.api.GameFactory;
+import oogasalad.model.api.GameInterface;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.model.shop.Bag;
@@ -37,6 +39,7 @@ import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
  */
 
 public class PlayingPageView {
+
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private String myLanguage = "EnglishDisplayText";
   private ResourceBundle displayTextResource;
@@ -78,11 +81,16 @@ public class PlayingPageView {
   private final Bag bag = new Bag();
   private final Shop shop = new Shop(money);
 
+  GameFactory gameFactory = new GameFactory();
+
+  GameInterface game;
+
   public PlayingPageView(Stage primaryStage) {
     stage = primaryStage;
   }
 
   public void start() {
+    game = gameFactory.createGame();
     displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
 
     StackPane root = new StackPane();
@@ -100,7 +108,8 @@ public class PlayingPageView {
     scene.getStylesheets().add("styles.css");
     scene.setOnMouseClicked(event -> {
     });
-    stage.setTitle(displayTextResource.getString("play_title"));;
+    stage.setTitle(displayTextResource.getString("play_title"));
+    ;
     setUpdate();
     stage.setScene(scene);
     stage.show();
