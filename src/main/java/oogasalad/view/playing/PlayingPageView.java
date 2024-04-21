@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,16 +20,12 @@ import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
-
-
-
 import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.Money;
 import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
-
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
 
@@ -70,12 +65,10 @@ public class PlayingPageView {
   private final String selectedTools = "plant";
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
-
+  private final Bag bag = new Bag();
   private LandView landView;
   private TopAnimationView topAnimationView;
-
   private Money money = new Money(100);
-  private final Bag bag = new Bag();
   private final Shop shop = new Shop(money);
 
   private String myLanguage = "EnglishDisplayText";
@@ -122,7 +115,6 @@ public class PlayingPageView {
     bagItems.add(bagItem2);
 
     bagView = new BagView(bagItems, 5, 1, bag);
-
 
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
 

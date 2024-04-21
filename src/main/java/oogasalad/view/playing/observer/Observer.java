@@ -1,4 +1,4 @@
-package oogasalad.view.playing.component.observer;
+package oogasalad.view.playing.observer;
 
 /**
  * The observer class to recive the update from the controller class

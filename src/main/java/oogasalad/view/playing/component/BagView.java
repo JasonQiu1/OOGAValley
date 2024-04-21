@@ -1,19 +1,12 @@
 package oogasalad.view.playing.component;
 
 import java.util.List;
-
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-
-
 import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.BagItemModel;
-import oogasalad.model.shop.ItemType;
-
-
 import oogasalad.view.playing.PlayingPageView;
 
 /**

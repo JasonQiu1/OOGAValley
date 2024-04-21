@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
-import oogasalad.view.playing.component.observer.Observer;
+import oogasalad.view.playing.observer.Observer;
 import oogasalad.view.shopping.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,7 +1,7 @@
 package oogasalad.view.playing.component;
 
 
-import oogasalad.view.playing.component.observer.Controller;
+import oogasalad.view.playing.observer.Controller;
 
 /**
  * Represents the global money
