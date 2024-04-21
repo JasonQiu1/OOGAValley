@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.GameTimeInterface;
 import oogasalad.model.gameplay.PlantModel;
@@ -65,6 +66,9 @@ public class LandView {
     this.bagItemView = bagItemView;
     this.topAnimationView = topAnimationView;
   }
+
+  public LandView (ReadOnlyGameWorld readOnlyGameWorld, )
+
 
   /**
    * Update the plants according to game Time.

@@ -85,6 +85,7 @@ public class PlayingPageView {
 
   GameInterface game;
 
+
   public PlayingPageView(Stage primaryStage) {
     stage = primaryStage;
   }
@@ -92,11 +93,10 @@ public class PlayingPageView {
   public void start() {
     game = gameFactory.createGame();
     displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-
+    initModel();
     StackPane root = new StackPane();
     root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
-    initModel();
     setupTop(borderPane);
     setupLeftRight(borderPane);
     setupCenter(borderPane);
