@@ -91,6 +91,7 @@ public class GameConfigurablesStore implements ReadOnlyGameConfigurablesStore {
 
   private final Map<String, Properties> configurables;
 
+
   private static final DataFactory<GameConfigurablesStore> CONFIGURABLES_DATA_FACTORY =
       new DataFactory<>(GameConfigurablesStore.class);
   private static final Logger LOG = LogManager.getLogger(GameConfigurablesStore.class);
