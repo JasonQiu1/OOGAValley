@@ -9,6 +9,7 @@ import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.shopping.components.bagblock.BagStackPane;
 import oogasalad.view.shopping.components.shopblock.ShopStackPane;
+import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
 import oogasalad.view.shopping.components.top.TopHbox;
 
 public class ShoppingStackPane extends StackPane {
@@ -29,6 +30,7 @@ public class ShoppingStackPane extends StackPane {
     initialize();
   }
 
+
   private void initialize() {
     BorderPane borderPane = new BorderPane();
     topHBox = new TopHbox(shop);
@@ -44,8 +46,8 @@ public class ShoppingStackPane extends StackPane {
     getChildren().add(borderPane);
   }
 
-  protected void update() {
-    topHBox.update();
+  public CurrentMoneyHbox getMoneyHbox() {
+    return this.topHBox.getMoneyHbox();
   }
 
 }
