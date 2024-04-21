@@ -12,7 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import oogasalad.database.DatabaseHelper;
+import oogasalad.database.info.InfoService;
 import oogasalad.view.branch.BranchBase;
 
 /**
@@ -72,9 +72,9 @@ public class Login extends BranchBase {
     submitButton.setOnAction(e -> {
       String username = usernameField.getText();
       String password = passwordField.getText();
-      if (DatabaseHelper.isValidUser(username, password)) {
+      if (InfoService.isValidUser(username, password)) {
         validUsername = username;
-        id = DatabaseHelper.getUserId(username);
+        id = InfoService.getUserId(username);
         invokeOnLoginSuccessCallback();
         getStage().setScene(getPreviousScene());
       } else {
