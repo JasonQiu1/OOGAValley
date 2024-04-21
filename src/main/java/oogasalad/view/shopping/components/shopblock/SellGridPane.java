@@ -1,6 +1,7 @@
 package oogasalad.view.shopping.components.shopblock;
 
 import java.util.List;
+import java.util.ResourceBundle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import oogasalad.model.shop.SellItem;
@@ -9,6 +10,9 @@ import oogasalad.view.popup.PopUpStackPane;
 
 public class SellGridPane extends GridPane {
 
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.shopping.components.shopblock.";
+  private String myLanguage = "EnglishPopUpText";
+  private ResourceBundle popUpTextResource;
   private static final int COLUMN_COUNT = 2;
   private static final int ROW_COUNT = 2;
   private final Shop shop;
@@ -29,13 +33,16 @@ public class SellGridPane extends GridPane {
   }
 
   private void initialize() {
+    popUpTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
+
     int column = 0;
     int row = 0;
     for (SellItem sellItem : sellItems) {
       SellItemVbox sellItemVbox = new SellItemVbox(sellItem);
       sellItemVbox.getSellButton().setOnAction(event -> {
-        PopUpStackPane popUp = new PopUpStackPane("Are you sure?", "Yes",
-            "No",
+        PopUpStackPane popUp = new PopUpStackPane(popUpTextResource.getString("are_you_sure"),
+            popUpTextResource.getString("yes"),
+            popUpTextResource.getString("no"),
             parentStackPane,
             choice -> {
               if (choice) {

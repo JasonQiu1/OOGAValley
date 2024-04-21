@@ -4,20 +4,40 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class BottomPanel extends TabPane {
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.BottomPanel.";
+  private String tabLanguage = "EnglishTabs";
+  private String tilesLanguage = "EnglishTiles";
+  private String natureLanguage = "EnglishNature";
+  private String buildingsLanguage = "EnglishBuildings";
+  private String plantsLanguage = "EnglishPlants";
+  private ResourceBundle tabResource;
+  private ResourceBundle tilesResource;
+  private ResourceBundle natureResource;
+  private ResourceBundle buildingsResource;
+  private ResourceBundle plantsResource;
 
   public BottomPanel(Selector ts) {
     super();
     this.setId("BottomPanel");
-    Tab titlesTab = new Tab("Tiles");
-    Tab natureTab = new Tab("Nature");
-    Tab plantsTab = new Tab("Plants");
-    Tab buildingsTab = new Tab("Buildings");
+
+    tabResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + tabLanguage);
+    tilesResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + tilesLanguage);
+    natureResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + natureLanguage);
+    plantsResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + plantsLanguage);
+    buildingsResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + buildingsLanguage);
+
+
+    Tab titlesTab = new Tab(tabResource.getString("tiles"));
+    Tab natureTab = new Tab(tabResource.getString("nature"));
+    Tab plantsTab = new Tab(tabResource.getString("plants"));
+    Tab buildingsTab = new Tab(tabResource.getString("buildings"));
 
     titlesTab.setClosable(false);
     natureTab.setClosable(false);
@@ -36,11 +56,11 @@ public class BottomPanel extends TabPane {
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }
-    titlesTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockTiles, ts), "Tiles"));
-    plantsTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockPlants, ts), "Plants"));
+    titlesTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockTiles, ts), tabResource.getString("tiles")));
+    plantsTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockPlants, ts), tabResource.getString("plants")));
     buildingsTab.setContent(
-        new SelectableViewsWrapper(new SelectableViews(mockBuildings, ts), "Buildings"));
-    natureTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockNature, ts), "Nature"));
+        new SelectableViewsWrapper(new SelectableViews(mockBuildings, ts), tabResource.getString("buildings")));
+    natureTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockNature, ts), tabResource.getString("nature")));
 
     super.getTabs().addAll(titlesTab, natureTab, plantsTab, buildingsTab);
   }
@@ -49,23 +69,23 @@ public class BottomPanel extends TabPane {
   private List<SelectableView> getMockTiles() throws MalformedURLException {
     List<SelectableView> temp = new ArrayList<>();
     SelectableView t1 = new TileView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/dirt.jpg").toURI().toURL()))), "Dirt");
+        String.valueOf(new File("src/main/resources/img/dirt.jpg").toURI().toURL()))), tilesResource.getString("dirt"));
     temp.add(t1);
 
     SelectableView t2 = new TileView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/grass.jpg").toURI().toURL()))), "Grass");
+        String.valueOf(new File("src/main/resources/img/grass.jpg").toURI().toURL()))), tilesResource.getString("grass"));
     temp.add(t2);
 
     SelectableView t3 = new TileView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/lava.jpg").toURI().toURL()))), "Lava");
+        String.valueOf(new File("src/main/resources/img/lava.jpg").toURI().toURL()))), tilesResource.getString("lava"));
     temp.add(t3);
 
     SelectableView t4 = new TileView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/sand.jpg").toURI().toURL()))), "Sand");
+        String.valueOf(new File("src/main/resources/img/sand.jpg").toURI().toURL()))), tilesResource.getString("sand"));
     temp.add(t4);
 
     SelectableView t5 = new TileView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/water.jpg").toURI().toURL()))), "Water");
+        String.valueOf(new File("src/main/resources/img/water.jpg").toURI().toURL()))), tilesResource.getString("water"));
     temp.add(t5);
     return temp;
   }
@@ -73,12 +93,12 @@ public class BottomPanel extends TabPane {
   private List<SelectableView> getMockNature() throws MalformedURLException {
     List<SelectableView> temp = new ArrayList<>();
     SelectableView t1 = new NatureView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/tree.png").toURI().toURL()))), "Tree");
+        String.valueOf(new File("src/main/resources/img/tree.png").toURI().toURL()))), natureResource.getString("tree"));
     temp.add(t1);
 
     SelectableView t2 = new NatureView(new ImageView(new Image(
         String.valueOf(new File("src/main/resources/img/boulder.png").toURI().toURL()))),
-        "Boulder");
+        natureResource.getString("boulder"));
     temp.add(t2);
     return temp;
   }
@@ -87,16 +107,16 @@ public class BottomPanel extends TabPane {
     List<SelectableView> temp = new ArrayList<>();
     SelectableView t1 = new PlantView(new ImageView(new Image(
         String.valueOf(new File("src/main/resources/img/watermelonplant.png").toURI().toURL()))),
-        "Watermelon");
+        plantsResource.getString("watermelon"));
     temp.add(t1);
 
     SelectableView t2 = new PlantView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/wheat.png").toURI().toURL()))), "Wheat");
+        String.valueOf(new File("src/main/resources/img/wheat.png").toURI().toURL()))), plantsResource.getString("wheat"));
     temp.add(t2);
 
     SelectableView t3 = new PlantView(new ImageView(new Image(
         String.valueOf(new File("src/main/resources/img/sunflower.png").toURI().toURL()))),
-        "Sunflower");
+        plantsResource.getString("sunflower"));
     temp.add(t3);
     return temp;
   }
@@ -104,15 +124,15 @@ public class BottomPanel extends TabPane {
   private List<SelectableView> getMockBuildings() throws MalformedURLException {
     List<SelectableView> temp = new ArrayList<>();
     SelectableView t1 = new BuildingView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/house.png").toURI().toURL()))), "House");
+        String.valueOf(new File("src/main/resources/img/house.png").toURI().toURL()))), buildingsResource.getString("house"));
     temp.add(t1);
 
     SelectableView t2 = new BuildingView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/barn.png").toURI().toURL()))), "Barn");
+        String.valueOf(new File("src/main/resources/img/barn.png").toURI().toURL()))), buildingsResource.getString("barn"));
     temp.add(t2);
 
     SelectableView t3 = new BuildingView(new ImageView(new Image(
-        String.valueOf(new File("src/main/resources/img/shed.png").toURI().toURL()))), "Shed");
+        String.valueOf(new File("src/main/resources/img/shed.png").toURI().toURL()))), buildingsResource.getString("shed"));
     temp.add(t3);
     return temp;
   }

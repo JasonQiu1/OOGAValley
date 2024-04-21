@@ -53,7 +53,7 @@ public abstract class AbstractSplashScreen {
     int initialStartScreenHeight = (int) (screenBounds.getHeight() * heightPortion);
 
     // Create Start Buttons
-    createButtonsFromFile(resourceString.resourcePath() + resourceString.buttonsPath(), stage, hb);
+    createButtonsFromFile(resourceString.buttonsPath(), stage, hb);
 
     //Create title
     //TODO: Resources bundle this

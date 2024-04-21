@@ -7,9 +7,6 @@ package oogasalad.model.api.exception;
  */
 public class BadValueParseException extends RuntimeException {
 
-  private final String badValue;
-  private final String parseType;
-
   public BadValueParseException(String badValue, String parseType) {
     super(BadValueParseException.class.getSimpleName());
     this.badValue = badValue;
@@ -29,4 +26,7 @@ public class BadValueParseException extends RuntimeException {
   public String getParseType() {
     return parseType;
   }
+
+  private final String badValue;
+  private final String parseType;
 }

@@ -7,13 +7,13 @@ import javafx.scene.control.Button;
  */
 public class SellButton extends Button {
 
-  public SellButton() {
+  public SellButton(String name) {
     super();
-    initialize();
+    initialize(name);
   }
 
-  private void initialize() {
-    setText("SELL");
-    getStyleClass().add("buy-button");
+  private void initialize(String name) {
+    setText(name);
+    setId("sellButton");
   }
 }

@@ -1,20 +1,31 @@
 package oogasalad.model.gameobject;
 
+import java.util.Arrays;
 import java.util.HashMap;
-import oogasalad.model.GameObjectFactories.GameObjectFactory;
-import oogasalad.model.gameplay.GameTime;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import oogasalad.model.gameObjectFactories.GameObjectFactory;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Represents a tile within the game world that can contain various game objects including
  * collectables, structures, and land. Each tile is capable of interacting with items and can change
  * its contents based on these interactions or over time.
  */
-public class Tile {
 
-  private final GameObjectFactory factory;
+public class Tile implements Updatable, Interactable {
+  public static final String defaultCollectableID = "";
+  // TODO: Jason put correct defaultCollectableID
+  // TODO: Will eventually need to externalize
   private Collectable collectable;
   private Structure structure;
   private Land land;
+  private final GameObjectFactory factory;
+  private ReadOnlyGameTime lastUpdatingGameTime;
+
 
   /**
    * Constructs a new Tile with an associated GameObjectFactory for creating new game objects.
@@ -29,19 +40,20 @@ public class Tile {
    * validity and processes the first valid interaction found. Collectable interactions can result
    * in items being added to the game as a result of the interaction.
    *
-   * @param item     The item to interact with the tile's contents.
-   * @param gameTime The current GameTime of the game.
-   * @return ItemsToAdd, representing any items to be added to the game as a result of the
-   * interaction. Returns null if no items are to be added.
+   * @param item The item to interact with the tile's contents.
    */
-  public ItemsToAdd interact(Item item, GameTime gameTime) {
+  @Override
+  public void interact(Item item) {
     boolean interactionHandled =
         handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item))
-            || handleInteractionIfValid(structure, item,
-            () -> handleStructureInteraction(item, gameTime))
-            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item, gameTime));
+            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item))
+            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item));
+  }
 
-    return interactionHandled && collectable != null ? itemReturns() : null;
+  @Override
+  public boolean interactionValid(Item item) {
+    return collectable.interactionValid(item) || structure.interactionValid(item) ||
+        land.interactionValid(item);
   }
 
   /**
@@ -74,34 +86,33 @@ public class Tile {
   /**
    * Handles the specific interaction logic for a structure object within the tile.
    *
-   * @param item     The item interacting with the structure.
-   * @param gameTime The current GameTime of the game.
+   * @param item The item interacting with the structure.
    */
-  private void handleStructureInteraction(Item item, GameTime gameTime) {
+  private void handleStructureInteraction(Item item) {
     if (collectable == null && structure.isHarvestable()) {
       collectable =
-          (Collectable) factory.createNewGameObject(null, gameTime,
-              new HashMap<>());
-      // TODO: Instead of new HashMap, get HashMap from Structure.
-      // TODO: Don't pass in null properties get that from somewhere
+          (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
+             structure.getItemsOnDestruction());
     }
-    structure.interact(item);
+    else {
+      structure.interact(item);
+    }
   }
 
   /**
    * Handles the specific interaction logic for a land object within the tile.
    *
-   * @param item     The item interacting with the land.
-   * @param gameTime The current GameTime of the game.
+   * @param item The item interacting with the land.
    */
-  private void handleLandInteraction(Item item, GameTime gameTime) {
-    if (land.getIsPlantable() && item.getIsSeed() && structure == null) {
-      structure = (Structure) factory.createNewGameObject(null, gameTime,
+  private void handleLandInteraction(Item item) {
+    if (land.getIfItemCanBePlacedHere(item) && structure == null) {
+      structure = (Structure) factory.createNewGameObject(
+          land.getStructureBasedOnItem(item), lastUpdatingGameTime,
           new HashMap<>());
-      // TODO: Don't pass in null properties get that from somewhere
-      // TODO: item.toString() represents the name of the structure that will be planted here
     }
-    land.interact(item);
+    else {
+      land.interact(item);
+    }
   }
 
   /**
@@ -110,27 +121,35 @@ public class Tile {
    * on time progression and potentially change their state or interactions.
    *
    * @param gameTime The current game time.
-   * @return ItemsToAdd, which represents any items to be added to the game as a result of the
-   * updates.
    */
-  public ItemsToAdd update(GameTime gameTime) {
-    executeIfNotNull(() -> collectable.update(gameTime), collectable, gameTime);
-    executeIfNotNull(() -> structure.update(gameTime), structure, gameTime);
-    executeIfNotNull(() -> land.update(gameTime), land, gameTime);
-    return itemReturns();
+  @Override
+  public void update(ReadOnlyGameTime gameTime) {
+    lastUpdatingGameTime = gameTime;
+    updateGameObject(() -> collectable, this::setCollectable, gameTime);
+    updateGameObject(() -> structure, this::setStructure, gameTime);
+    updateGameObject(() -> land, this::setLand, gameTime);
   }
 
   /**
-   * Executes the given update logic for a game object if it is not null.
+   * Updates a specific game object within the tile if it is not null, checks for its expiration,
+   * and potentially sets it to null if it has expired. This method uses generic types to allow
+   * flexibility with different types of game objects.
    *
-   * @param updateLogic The update logic to be executed.
-   * @param gameObject  The game object to check for nullity.
-   * @param gameTime    The current game time.
+   * @param <T> The type of the game object, extending {@link GameObject}.
+   * @param getter A {@link Supplier} that returns the current game object of type T.
+   * @param setter A {@link Consumer} that accepts a game object of type T to set the object,
+   *               typically used to set the object to null if expired.
+   * @param gameTime The current game time, used to determine if the game object should update
+   *                 or expire based on the game logic.
    */
-  private void executeIfNotNull(Runnable updateLogic, GameObject gameObject, GameTime gameTime) {
+  private <T extends GameObject> void updateGameObject(Supplier<T> getter, Consumer<T> setter,
+      ReadOnlyGameTime gameTime) {
+    T gameObject = getter.get();
     if (gameObject != null) {
-      updateLogic.run();
-      gameObject.checkAndUpdateExpired(gameTime);
+      gameObject.update(gameTime);
+      if (gameObject.checkAndUpdateExpired(gameTime)) {
+        setter.accept(null);
+      }
     }
   }
 
@@ -138,13 +157,14 @@ public class Tile {
    * Determines if any items should be added to the game based on the interactions and updates that
    * occurred within the tile, particularly with collectables.
    *
-   * @return ItemsToAdd representing the items to be added as a result, or null if no items are to
-   * be added.
+   * @return A Map with every item id and their quantity to be added to the game as a result of a collectable
+   * being collected.
    */
-  private ItemsToAdd itemReturns() {
+  public Map<String, Integer> itemReturns() {
     if (collectable != null && collectable.shouldICollect()) {
-      return new ItemsToAdd(collectable.getQuantityOnCollection(),
-          collectable.getItemIdOnCollection());
+      Map<String, Integer> items = collectable.getItemsOnCollection();
+      collectable = null;
+      return items;
     }
     return null;
   }
@@ -154,12 +174,15 @@ public class Tile {
    * can include collectables, structures, and land. This is useful for graphical representation of
    * the tile in the game's user interface.
    *
-   * @return An ImageRecord containing the image paths for the collectable, structure, and land on
-   * this tile.
+   * @return A list containing the image paths for the collectable, structure, and land on this tile,
+   *         if available. The list may be empty if none of the components have an associated image.
    */
-  public ImageRecord getImages() {
-    return new ImageRecord(collectable.getImagePath(), structure.getImagePath(),
-        land.getImagePath());
+  public List<String> getImages() {
+    List<GameObject> gameObjects = Arrays.asList(collectable, structure, land);
+    return gameObjects.stream()
+        .filter(obj -> obj != null && obj.getImagePath() != null)
+        .map(GameObject::getImagePath)
+        .collect(Collectors.toList());
   }
 
   /**

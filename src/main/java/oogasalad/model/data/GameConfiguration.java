@@ -22,12 +22,6 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   // TODO: Externalize this to a configuration file.
   // The path to the game configurations directory from the data directory.
   public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
-  private static final DataFactory<GameConfiguration> GAME_CONFIGURATION_DATA_FACTORY =
-      new DataFactory<>(GameConfiguration.class);
-  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
-  private static GameConfigurablesStore configurablesStore;
-  private final Properties rules;
-  private GameState initialState;
 
   /**
    * Initializes the game configuration to a set of default rules and initial state.
@@ -60,6 +54,15 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
   /**
+   * Returns the read-only ConfigurablesStore for the game configuration.
+   *
+   * @return the read-only ConfigurablesStore for the game configuration.
+   */
+  public static ReadOnlyGameConfigurablesStore getConfigurablesStore() {
+    return configurablesStore;
+  }
+
+  /**
    * Serializes the instance to a JSON file.
    * <p>
    * Also saves the configurables store of the same name.
@@ -85,11 +88,29 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
   @Override
-  public ReadOnlyGameConfigurablesStore getConfigurablesStore() {
-    return configurablesStore;
+  public void updateRule(String rule, String newValue) {
+    rules.update(rule, newValue);
   }
+
 
   public void getEditableInitialState(GameState initialState) {
     this.initialState = initialState;
   }
+
+
+  /**
+   * Returns the editable ConfigurablesStore for the game configuration.
+   *
+   * @return the editable ConfigurablesStore for the game configuration.
+   */
+  public GameConfigurablesStore getEditableConfigurablesStore() {
+    return configurablesStore;
+  }
+
+  private GameState initialState;
+  private final Properties rules;
+  private static GameConfigurablesStore configurablesStore;
+  private static final DataFactory<GameConfiguration> GAME_CONFIGURATION_DATA_FACTORY =
+      new DataFactory<>(GameConfiguration.class);
+  private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
 }

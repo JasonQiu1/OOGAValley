@@ -10,4 +10,27 @@ package oogasalad.model.api;
  */
 public interface GameInterface {
 
+  /**
+   * Updates the game model since the last time it was updated in realtime.
+   * <p>
+   * The implementation will independently keep track of time passed, so no delta time parameter is
+   * needed.
+   */
+  void update();
+
+  /**
+   * Returns the currently loaded GameConfiguration, which provides methods to get the currently
+   * configured rules, store of configurables, initial GameState, etc.
+   *
+   * @return the currently loaded GameConfiguration.
+   */
+  ReadOnlyGameConfiguration getGameConfiguration();
+
+  /**
+   * Returns the current GameState, from which GameTime, GameWorld, and other stateful information
+   * can be retrieved.
+   *
+   * @return the current GameState instance.
+   */
+  ReadOnlyGameState getGameState();
 }

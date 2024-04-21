@@ -1,13 +1,13 @@
-package oogasalad.model.GameObjectFactories;
+package oogasalad.model.gameObjectFactories;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.GameObjectFactoryInstantiationFailure;
 import oogasalad.model.api.exception.InvalidGameObjectType;
 import oogasalad.model.gameobject.GameObject;
-import oogasalad.model.gameplay.GameTime;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
@@ -56,21 +56,23 @@ public class GameObjectFactory {
   /**
    * Creates a new GameObject based on the type specified in the provided ReadOnlyProperties.
    *
-   * @param properties       The properties defining the type of GameObject and other parameters.
-   * @param creationTime     The game time at which the GameObject is being created.
-   * @param additionalParams A map of additional parameters required for creating specific types of
-   *                         GameObjects.
+   * @param id The id of the gameObject to be created.
+   * @param creationTime The game time at which the GameObject is being created.
+   * @param additionalParams A map of additional parameters required for creating specific types of GameObjects.
    * @return A new instance of a GameObject.
    * @throws InvalidGameObjectType if the specified type is not recognized or supported.
    */
-  public GameObject createNewGameObject(ReadOnlyProperties properties, GameTime creationTime,
+  public GameObject createNewGameObject(String id, ReadOnlyGameTime creationTime,
       Map<String, Integer> additionalParams) {
+    ReadOnlyProperties properties = null;
+    // TODO: UNCOMMENT WHEN YOU MAKE STATIC
+        // GameConfiguration.getConfigurablesStore.getConfigurable(id);
     String type = properties.getString("type").toLowerCase();
     GameObjectCreator creator = creators.get(type);
     if (creator == null) {
       throw new InvalidGameObjectType("Could not create a gameObject of type: " + type);
     }
-    return creator.create(properties, creationTime, additionalParams);
+    return creator.create(id, creationTime, additionalParams);
   }
 }
 

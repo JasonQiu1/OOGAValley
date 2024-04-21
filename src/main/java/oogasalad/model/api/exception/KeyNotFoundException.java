@@ -7,8 +7,6 @@ package oogasalad.model.api.exception;
  */
 public class KeyNotFoundException extends RuntimeException {
 
-  private final String invalidKey;
-
   public KeyNotFoundException(String invalidKey) {
     super(KeyNotFoundException.class.getSimpleName());
     this.invalidKey = invalidKey;
@@ -22,4 +20,6 @@ public class KeyNotFoundException extends RuntimeException {
   public String getInvalidKey() {
     return invalidKey;
   }
+
+  private final String invalidKey;
 }

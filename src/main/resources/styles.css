@@ -25,9 +25,22 @@
   -fx-text-fill: black;
 }
 
+.editor-label {
+  -fx-font-size: 40px;
+  -fx-font-family: "Press Start 2P";
+  -fx-font-weight: bold;
+  -fx-text-fill: black;
+}
+
 .selector-title {
   -fx-font-size: 15px;
   -fx-font-family: "Press Start 2P";
+  -fx-text-fill: black;
+}
+
+.rule {
+  -fx-font-size: 15px;
+  -fx-font-family: "fantasy";
   -fx-text-fill: black;
 }
 
@@ -141,7 +154,7 @@
   -fx-background-size: cover;
 }
 
-.buy-button {
+#sellButton {
   -fx-background-image: url('img/shop/buy-button.png');
   -fx-background-size: cover;
   -fx-font-family: "Press Start 2P";

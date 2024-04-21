@@ -2,6 +2,7 @@ package oogasalad.view.playing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
@@ -36,6 +37,9 @@ import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
  */
 
 public class PlayingPageView {
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
+  private String myLanguage = "EnglishDisplayText";
+  private ResourceBundle displayTextResource;
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -79,6 +83,8 @@ public class PlayingPageView {
   }
 
   public void start() {
+    displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
+
     StackPane root = new StackPane();
     root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
@@ -94,7 +100,7 @@ public class PlayingPageView {
     scene.getStylesheets().add("styles.css");
     scene.setOnMouseClicked(event -> {
     });
-    stage.setTitle("Playing Mode");
+    stage.setTitle(displayTextResource.getString("play_title"));;
     setUpdate();
     stage.setScene(scene);
     stage.show();
@@ -127,7 +133,7 @@ public class PlayingPageView {
   }
 
   private void updateTimeLabel() {
-    timeLabel.setText("Time: " + gameTime);
+    timeLabel.setText(displayTextResource.getString("time") + " " + gameTime);
   }
 
 
