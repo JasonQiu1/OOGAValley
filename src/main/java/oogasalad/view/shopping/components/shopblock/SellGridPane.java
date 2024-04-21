@@ -11,13 +11,13 @@ import oogasalad.view.popup.PopUpStackPane;
 public class SellGridPane extends GridPane {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.shopping.components.shopblock.";
-  private String myLanguage = "EnglishPopUpText";
-  private ResourceBundle popUpTextResource;
   private static final int COLUMN_COUNT = 2;
   private static final int ROW_COUNT = 2;
   private final Shop shop;
   private final List<SellItem> sellItems;
   private final StackPane parentStackPane;
+  private String myLanguage = "EnglishPopUpText";
+  private ResourceBundle popUpTextResource;
 
   /**
    * This class is a GridPane that contains SellItemVboxes. It is used to display the items that can

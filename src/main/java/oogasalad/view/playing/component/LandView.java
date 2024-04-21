@@ -1,4 +1,4 @@
-package oogasalad.view.item;
+package oogasalad.view.playing.component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class LandView {
   private final GridPane landGridPane;
 
   private final List<PlantView> plantViewList;
-  private final BagItemView bagItemView;
+  private final BagView bagView;
   private final TopAnimationView topAnimationView;
   private final Pile[][] piles;
 
@@ -34,7 +34,7 @@ public class LandView {
    *                       tile
    */
   public LandView(List<PlantModel> plantModelList, GameTime gameTime, SelectedItem selectedItem,
-      BagItemView bagItemView, TopAnimationView topAnimationView) {
+      BagView bagView, TopAnimationView topAnimationView) {
     double height = PlayingPageView.landGridPaneHeight;
     double width = PlayingPageView.landGridPaneWidth;
     int column = PlayingPageView.landNumCols;
@@ -62,7 +62,7 @@ public class LandView {
       this.piles[p.getX()][p.getY()].setPlantView(plantView);
       plantViewList.add(plantView);
     }
-    this.bagItemView = bagItemView;
+    this.bagView = bagView;
     this.topAnimationView = topAnimationView;
   }
 
@@ -110,13 +110,13 @@ public class LandView {
         plantViewList.remove(pile.getPlantView());
         BagItem newBagItem = new BagItem(pile.getPlantView().getItemUrl(),
             PlayingPageView.bottomCellWidth,
-            PlayingPageView.bottomCellHeight, 1);
+            PlayingPageView.bottomCellHeight, selectedItem, 1);
         topAnimationView.collectItemAnimation(newBagItem,
-
             event.getSceneX() - PlayingPageView.windowWidth / 2,
             event.getSceneY() - PlayingPageView.windowHeight / 2,
-            bagItemView.getAddRealLocation(newBagItem)[1] - PlayingPageView.windowWidth / 2,
-            bagItemView.getAddRealLocation(newBagItem)[0] - PlayingPageView.windowHeight / 2, 3.0);
+            bagView.getAddRealLocation(newBagItem)[1],
+            bagView.getAddRealLocation(newBagItem)[0], 3.0);
+
         pile.removePlant();
       }
     }
