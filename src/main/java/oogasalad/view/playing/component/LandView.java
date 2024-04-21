@@ -24,7 +24,6 @@ public class LandView {
   private final SelectedItem selectedItem;
 
   private final GameTime gameTime;
-
   /**
    * Initialize a land with some plants and lands already defined.
    *
