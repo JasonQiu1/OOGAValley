@@ -15,7 +15,7 @@ import oogasalad.view.shopping.Utils;
  */
 public class SellItemVbox extends VBox {
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.shopping.components.shopblock.";
-  private String myLanguage = "SellItemButtonText";
+  private String myLanguage = "sellItemButtonText";
   private ResourceBundle buttonTextResource;
 
   private final SellItem sellItem;
