@@ -15,16 +15,18 @@ import oogasalad.view.playing.PlayingPageView;
  */
 public class LandView {
 
-  private final GridPane landGridPane;
+  private GridPane landGridPane;
 
-  private final List<PlantView> plantViewList;
-  private final BagItemView bagItemView;
-  private final TopAnimationView topAnimationView;
-  private final Pile[][] piles;
+  private List<PlantView> plantViewList;
+  private BagItemView bagItemView;
+  private TopAnimationView topAnimationView;
+  private Pile[][] piles;
 
-  private final SelectedItem selectedItem;
+  private SelectedItem selectedItem;
 
-  private final GameTime gameTime;
+  private GameTime gameTime;
+
+  private ReadOnlyGameWorld readOnlyGameWorld;
 
   /**
    * Initialize a land with some plants and lands already defined.
@@ -67,7 +69,17 @@ public class LandView {
     this.topAnimationView = topAnimationView;
   }
 
-  public LandView (ReadOnlyGameWorld readOnlyGameWorld, )
+  public LandView(ReadOnlyGameWorld readOnlyGameWorld) {
+
+  }
+
+//  public void update() {
+//    for (int i = 0; i < readOnlyGameWorld.getHeight(); i++) {
+//      for (int j = 0; j < readOnlyGameWorld.getWidth(); j++) {
+//        piles[i][j].update()
+//      }
+//    }
+//  }
 
 
   /**
