@@ -1,4 +1,4 @@
-package oogasalad.database;
+package oogasalad.database.info;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * This class is used to interact with the database.
  */
-public class DatabaseHelper {
+public class InfoService {
 
   private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
   private static final String DB_URL = "jdbc:mysql://106.15.233.200:3306/CS308";

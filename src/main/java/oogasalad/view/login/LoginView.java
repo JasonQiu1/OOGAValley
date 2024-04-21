@@ -1,6 +1,5 @@
 package oogasalad.view.login;
 
-import java.io.File;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,18 +7,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import oogasalad.view.login.Login;
-import oogasalad.view.login.UserInfo;
-import oogasalad.view.playing.PlayingPageView;
+import oogasalad.database.realtime.Firebase;
 
 /**
  * This class is responsible for displaying the new load screen for the game. This screen will allow
  * the user to either login, start a new game, load a game, or go back to the previous screen.
  */
 
-public class NewLoadScreen extends Application {
+public class LoginView extends Application {
 
   private Label helloLabel;
   private UserInfo userInfo;
@@ -30,6 +26,7 @@ public class NewLoadScreen extends Application {
 
   @Override
   public void start(Stage primaryStage) {
+    Firebase.initializeFirebase();
     Button loginButton = new Button("Login");
 
     Button backButton = new Button("Back");
@@ -44,8 +41,6 @@ public class NewLoadScreen extends Application {
         userInfo = new UserInfo(id, username);
       });
     });
-
-
 
     backButton.setOnAction(event -> {
       // Go back to the splash screen
