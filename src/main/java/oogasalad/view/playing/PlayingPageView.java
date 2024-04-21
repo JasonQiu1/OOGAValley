@@ -77,9 +77,9 @@ public class PlayingPageView {
   private Money money = new Money(100);
   private final Shop shop = new Shop(money);
 
-  GameFactory gameFactory = new GameFactory();
+  private GameFactory gameFactory = new GameFactory();
 
-  GameInterface game;
+  private GameInterface game;
 
   private BagView bagView;
 
