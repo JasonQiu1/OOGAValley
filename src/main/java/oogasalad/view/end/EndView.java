@@ -33,7 +33,7 @@ public class EndView extends StackPane {
    * @param starNum the number of stars the player has
    */
   public EndView(double width, double height, int score, int starNum) {
-
+    super();
     Image backgroundImage = new Image("img/end/end" + starNum + ".png");
     ImageView backgroundImageView = new ImageView(backgroundImage);
     backgroundImageView.setFitWidth(width);
