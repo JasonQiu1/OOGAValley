@@ -11,6 +11,7 @@ import oogasalad.model.gameobject.GameObject;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
+import oogasalad.model.data.GameConfiguration;
 
 /**
  * Factory class for creating GameObject instances dynamically based on the type specified in
@@ -64,10 +65,9 @@ public class GameObjectFactory {
    */
   public GameObject createNewGameObject(String id, ReadOnlyGameTime creationTime,
       Map<String, Integer> additionalParams) {
-    ReadOnlyProperties properties = null;
-    // TODO: UNCOMMENT WHEN YOU MAKE STATIC
-        // GameConfiguration.getConfigurablesStore.getConfigurable(id);
-    String type = properties.getString("type").toLowerCase();
+    ReadOnlyProperties properties = GameConfiguration
+        .getConfigurablesStore().getConfigurableProperties(id)
+;    String type = properties.getString("type").toLowerCase();
     GameObjectCreator creator = creators.get(type);
     if (creator == null) {
       throw new InvalidGameObjectType("Could not create a gameObject of type: " + type);
