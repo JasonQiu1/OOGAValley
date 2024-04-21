@@ -60,6 +60,15 @@ public interface ReadOnlyProperties {
   Map<String, String> getStringMap(String key) throws KeyNotFoundException;
 
   /**
+   * Returns the parsed string-integer map of the property if found.
+   *
+   * @param key the key of the property to access.
+   * @return the property's value's string-integer map.
+   * @throws KeyNotFoundException if the key does not exist.
+   */
+  Map<String, Integer> getStringIntegerMap(String key) throws KeyNotFoundException;
+
+  /**
    * Returns the integer representation of the property's value.
    *
    * @param key the key of the property to access.

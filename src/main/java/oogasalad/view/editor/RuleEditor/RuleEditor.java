@@ -6,7 +6,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import oogasalad.model.data.GameConfiguration;
 
@@ -24,7 +23,7 @@ public class RuleEditor extends HBox {
         BorderPane bp = new BorderPane();
         Label l = new Label(RuleResource.getString("editor_title"));
         l.getStyleClass().add("editor-label");
-        RuleDisplay rd = new RuleDisplay(config.getRules().getCopyOfProperties());
+        AllRuleDisplay rd = new AllRuleDisplay(config.getRules().getCopyOfProperties(), config.getRules().getCopyOfListProperties());
         VBox vbox = new VBox();
         vbox.getChildren().addAll(l, rd);
         vbox.setSpacing(10);

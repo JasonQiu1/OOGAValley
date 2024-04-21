@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
-import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.data.GameConfiguration;
 
 /**
  * Abstract base class for all game objects within the game. This class defines the common behavior
@@ -17,20 +17,22 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
 
   private boolean expired;
   private ReadOnlyGameTime timeSinceExpiringState;
-  private final ReadOnlyGameTime creationTime;
+  private ReadOnlyGameTime creationTime;
   private boolean changePropertiesOnNextIteration;
   private String id;
   private String nextId;
+  private ReadOnlyGameTime lastUpdateGameTime;
 
   /**
    * Constructs a GameObject with specified properties and initial state.
    *
-   * @param id   The id of the GameObject.
+   * @param id           The id of the GameObject.
    * @param creationTime The game time at which the object was created.
    */
   public GameObject(String id, ReadOnlyGameTime creationTime) {
     this.id = id;
     this.creationTime = creationTime;
+    lastUpdateGameTime = creationTime;
     this.expired = false;
     this.changePropertiesOnNextIteration = false;
   }
@@ -64,8 +66,11 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public void update(ReadOnlyGameTime gameTime) {
+    lastUpdateGameTime = gameTime;
     updateAndInteract(() -> {
-      if (creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger("updateTime")) {
+      if (getProperties().getBoolean("updatable") &&
+          creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
+          "updateTime")) {
         return getProperties().getString("updateTransformation");
       }
       return getId();
@@ -155,12 +160,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   protected boolean changePropertiesIfApplicable() {
     if (changePropertiesOnNextIteration) {
-      setProperties(null);
-      // TODO: JASON UNCOMMENT WHEN YOU MAKE STATIC. Replace null
-      //GameConfiguration.getConfigurablesStore.getConfigurable(nextId);
+      setProperties(GameConfiguration.getConfigurablesStore().getConfigurableProperties(nextId));
       return true;
-    }
-    return false;
+    } return false;
   }
 
   /**
@@ -169,14 +171,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return properties The read only properties of relevant to specific GameObject stored here.
    */
   public ReadOnlyProperties getProperties() {
-    return null;
-    // TODO: JASON UNCOMMENT WHEN YOU MAKE STATIC
-    //GameConfiguration.getConfigurablesStore.getConfigurable(id);
+    return GameConfiguration.getConfigurablesStore().getConfigurableProperties(id);
   }
 
   /**
-   * Sets new id for the game object, updating its behavior and attributes. Ensures that the
-   * type of the Properties instance is the same as the subclass of GameObject.
+   * Sets new id for the game object, updating its behavior and attributes. Ensures that the type of
+   * the Properties instance is the same as the subclass of GameObject.
    *
    * @param properties The new properties to set.
    */
@@ -187,6 +187,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     }
     changePropertiesOnNextIteration = false;
     expired = false;
+    creationTime = lastUpdateGameTime;
     id = nextId;
   }
 

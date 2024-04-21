@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
@@ -12,6 +13,8 @@ import oogasalad.view.editor.EditorScene;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.DukeApplicationTest;
+
+import java.util.Map;
 
 public class RuleChangeTest extends DukeApplicationTest {
     private Stage stage;
@@ -31,33 +34,40 @@ public class RuleChangeTest extends DukeApplicationTest {
     @Test
     @DisplayName("Test one rule change")
     public void testOneRuleChange() {
-        TextField rule = lookup("#doEnergy").queryAs(TextField.class);
+        CheckBox rule = lookup("#doEnergy").queryAs(CheckBox.class);
         assertEquals("true", config.getRules().getCopyOfProperties().get("doEnergy"));
         sleep(5000);
-        rule.setText("false");
+        clickOn(rule);
         Button save = lookup("#SaveRules").queryButton();
         clickOn(save);
-        sleep(5000);
+        sleep(1000);
         assertEquals("false", config.getRules().getCopyOfProperties().get("doEnergy"));
     }
 
     @Test
     @DisplayName("Test all rule change")
     public void testAllRuleChange() {
-        for(String rule: config.getRules().getCopyOfProperties().keySet()){
-            TextField ruleBox = lookup("#" + rule).queryAs(TextField.class);
-            ruleBox.setText("CompSci 308");
+        for(String key: config.getRules().getCopyOfProperties().keySet()){
+            if(config.getRules().getCopyOfListProperties().get("boolean").contains(key)){
+                CheckBox ruleBox = lookup("#" + key).queryAs(CheckBox.class);
+                ruleBox.setSelected(false);
+            }else{
+                TextField ruleBox = lookup("#" + key).queryAs(TextField.class);
+                ruleBox.setText("CompSci 308");
+            }
             sleep(1000);
         }
         sleep(2000);
         Button save = lookup("#SaveRules").queryButton();
         clickOn(save);
         sleep(2000);
-        for(String rule: config.getRules().getCopyOfProperties().keySet()){
-            assertEquals("CompSci 308", config.getRules().getCopyOfProperties().get(rule));
+        for(String key: config.getRules().getCopyOfProperties().keySet()){
+            if(config.getRules().getCopyOfListProperties().get("boolean").contains(key)){
+                assertEquals("false", config.getRules().getCopyOfProperties().get(key));
+            } else {
+                assertEquals("CompSci 308", config.getRules().getCopyOfProperties().get(key));
+            }
+            sleep(100);
         }
     }
-
-
-
 }
