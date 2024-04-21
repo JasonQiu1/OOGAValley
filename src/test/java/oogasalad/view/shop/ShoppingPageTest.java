@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
-import oogasalad.view.item.Money;
+import oogasalad.view.playing.component.Money;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.BackButton;
 import org.junit.jupiter.api.Test;
@@ -23,6 +23,7 @@ public class ShoppingPageTest extends DukeApplicationTest {
   private Scene prev_scene;
 
   private Money money = new Money(100);
+
 
   @Override
   public void start(Stage stage) {

@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import oogasalad.view.item.observer.Observer;
+import oogasalad.view.playing.observer.Observer;
 import oogasalad.view.shopping.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,9 +17,8 @@ import org.apache.logging.log4j.Logger;
  */
 public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
 
-  private Label moneyLabel;
-
   private static final Logger LOG = LogManager.getLogger(CurrentMoneyHbox.class);
+  private Label moneyLabel;
 
 
   /**

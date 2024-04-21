@@ -230,4 +230,43 @@
   -fx-fill: white;
 }
 
+#end-scoreLabel {
+  -fx-font-family: "Press Start 2P";
+  -fx-text-fill: black;
+  -fx-font-size: 10px;
+ }
+
+#end-back-to-menu-button {
+  -fx-background-image: url("img/end/back-to-main-page.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 50px;
+  -fx-min-height: 50px;
+  -fx-max-width: 50px;
+  -fx-max-height: 50px;
+}
+
+#end-next-button {
+  -fx-background-image: url("img/end/next.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 50px;
+  -fx-min-height: 50px;
+  -fx-max-width: 50px;
+  -fx-max-height: 50px;
+}
+
+
+#end-restart-button {
+  -fx-background-image: url("img/end/restart.png");
+  -fx-background-size: cover;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 50px;
+  -fx-min-height: 50px;
+  -fx-max-width: 50px;
+  -fx-max-height: 50px;
+}
 
