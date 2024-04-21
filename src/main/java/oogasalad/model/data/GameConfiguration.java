@@ -48,9 +48,10 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
    * @throws IOException          if the filePath could not be opened.
    */
   public static GameConfiguration of(String dataFilePath) throws BadGsonLoadException, IOException {
-    configurablesStore = GameConfigurablesStore.of(dataFilePath);
-    return GAME_CONFIGURATION_DATA_FACTORY.load(
+    GameConfiguration load = GAME_CONFIGURATION_DATA_FACTORY.load(
         Paths.get(GAMECONFIGURATION_DIRECTORY_PATH, dataFilePath).toString());
+    configurablesStore = GameConfigurablesStore.of(dataFilePath);
+    return load;
   }
 
   /**
@@ -103,7 +104,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
    *
    * @return the editable ConfigurablesStore for the game configuration.
    */
-  public GameConfigurablesStore getEditableConfigurablesStore() {
+  public static GameConfigurablesStore getEditableConfigurablesStore() {
     return configurablesStore;
   }
 

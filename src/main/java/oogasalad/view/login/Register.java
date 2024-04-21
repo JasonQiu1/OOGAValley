@@ -11,7 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import oogasalad.database.DatabaseHelper;
+import oogasalad.database.info.InfoService;
 import oogasalad.view.branch.BranchBase;
 
 /**
@@ -61,7 +61,7 @@ public class Register extends BranchBase {
       String email = emailField.getText();
       String password = passwordField.getText();
 
-      if (DatabaseHelper.addUser(username, email, password)) {
+      if (InfoService.addUser(username, email, password)) {
         showAlert("Registration Successful", "User registered successfully");
       } else {
         showAlert("Registration Failed", "Username already exists");

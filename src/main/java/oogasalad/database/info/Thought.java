@@ -1,4 +1,4 @@
-package oogasalad.database;
+package oogasalad.database.info;
 
 public class Thought {
 

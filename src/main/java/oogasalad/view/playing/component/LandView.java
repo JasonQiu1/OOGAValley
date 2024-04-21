@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.GameTimeInterface;
 import oogasalad.model.gameplay.PlantModel;
@@ -14,16 +15,19 @@ import oogasalad.view.playing.PlayingPageView;
  */
 public class LandView {
 
-  private final GridPane landGridPane;
+  private GridPane landGridPane;
+
 
   private final List<PlantView> plantViewList;
   private final BagView bagView;
   private final TopAnimationView topAnimationView;
   private final Pile[][] piles;
 
-  private final SelectedItem selectedItem;
+  private SelectedItem selectedItem;
 
-  private final GameTime gameTime;
+  private GameTime gameTime;
+
+  private ReadOnlyGameWorld readOnlyGameWorld;
 
   /**
    * Initialize a land with some plants and lands already defined.
@@ -65,6 +69,19 @@ public class LandView {
     this.bagView = bagView;
     this.topAnimationView = topAnimationView;
   }
+
+//  public LandView(ReadOnlyGameWorld readOnlyGameWorld) {
+//
+//  }
+
+//  public void update() {
+//    for (int i = 0; i < readOnlyGameWorld.getHeight(); i++) {
+//      for (int j = 0; j < readOnlyGameWorld.getWidth(); j++) {
+//        piles[i][j].update()
+//      }
+//    }
+//  }
+
 
   /**
    * Update the plants according to game Time.

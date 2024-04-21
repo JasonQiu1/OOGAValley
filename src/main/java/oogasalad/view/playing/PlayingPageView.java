@@ -16,6 +16,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import oogasalad.model.api.GameFactory;
+import oogasalad.model.api.GameInterface;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.model.shop.Bag;
@@ -36,6 +38,11 @@ import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
  */
 
 public class PlayingPageView {
+
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
+  private String myLanguage = "EnglishDisplayText";
+  private ResourceBundle displayTextResource;
+
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -58,7 +65,6 @@ public class PlayingPageView {
       landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
-  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private final Label timeLabel = new Label();
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
   private final GameTime gameTime = new GameTime(1, 8, 0);
@@ -71,8 +77,10 @@ public class PlayingPageView {
   private Money money = new Money(100);
   private final Shop shop = new Shop(money);
 
-  private String myLanguage = "EnglishDisplayText";
-  private ResourceBundle displayTextResource;
+  private GameFactory gameFactory = new GameFactory();
+
+  private GameInterface game;
+
   private BagView bagView;
 
   public PlayingPageView(Stage primaryStage) {
@@ -80,12 +88,12 @@ public class PlayingPageView {
   }
 
   public void start() {
+    game = gameFactory.createGame();
     displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-
+    initModel();
     StackPane root = new StackPane();
     root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
-    initModel();
     setupTop(borderPane);
     setupLeftRight(borderPane);
     setupCenter(borderPane);

@@ -15,8 +15,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.BorderPane;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import oogasalad.database.DatabaseHelper;
-import oogasalad.database.Thought;
+import oogasalad.database.info.InfoService;
+import oogasalad.database.info.Thought;
 
 public class ThoughtsView extends Application {
 
@@ -49,7 +49,7 @@ public class ThoughtsView extends Application {
 
   private void updateThoughtsView(VBox thoughtBox) {
     thoughtBox.getChildren().clear();
-    List<Thought> thoughts = DatabaseHelper.getAllThoughts();
+    List<Thought> thoughts = InfoService.getAllThoughts();
 
     for (Thought thought : thoughts) {
       Label usernameLabel = new Label("Username: " + thought.getUsername());
@@ -77,7 +77,7 @@ public class ThoughtsView extends Application {
       LocalDateTime currentTime = LocalDateTime.now();
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
       String formattedTime = currentTime.format(formatter);
-      DatabaseHelper.addThought(userId, thoughtText, formattedTime);
+      InfoService.addThought(userId, thoughtText, formattedTime);
       updateThoughtsView((VBox)((ScrollPane)primaryStage.getScene().getRoot().
           getChildrenUnmodifiable().get(0)).getContent());
       popupStage.close();
