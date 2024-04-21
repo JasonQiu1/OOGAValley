@@ -1,6 +1,7 @@
 package oogasalad.view.playing.component;
 
 
+import java.util.List;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -14,6 +15,10 @@ public class Pile extends StackPane {
   private final int y;
   private final Land land;
   private PlantView plantView;
+
+  private String tile;
+
+//  private String
 
   public Pile(PlantView plantView, Land land,
       LandView landView, int x, int y) {
@@ -66,5 +71,14 @@ public class Pile extends StackPane {
   public void setPlantView(PlantView plantView) {
     this.plantView = plantView;
     this.getChildren().add(1, plantView.getView());
+  }
+
+  /**
+   * Update the pile by the list image path
+   *
+   * @param listImagePath
+   */
+  public void update(List<String> listImagePath) {
+
   }
 }
