@@ -22,7 +22,6 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   private String id;
   private String nextId;
 
-  private String imagePath;
 
   private ReadOnlyGameTime lastUpdateGameTime;
 
