@@ -1,6 +1,9 @@
 package oogasalad.model.gameobject;
 
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.api.exception.IncorrectPropertyFileType;
+import oogasalad.model.data.GameConfiguration;
 
 public class Item implements ReadOnlyItem {
   private final String itemId;
@@ -26,8 +29,7 @@ public class Item implements ReadOnlyItem {
    */
   @Override
   public double getWorth() {
-    // TODO: IMPLEMENT
-    return 0;
+    return getItemProperties().getDouble("worth");
   }
 
   /**
@@ -37,7 +39,10 @@ public class Item implements ReadOnlyItem {
    */
   @Override
   public String getImagePath() {
-    // TODO: IMPLEMENT
-    return null;
+    return getItemProperties().getString("image");
+  }
+
+  private ReadOnlyProperties getItemProperties() {
+    return GameConfiguration.getConfigurablesStore().getConfigurableProperties(itemId);
   }
 }
