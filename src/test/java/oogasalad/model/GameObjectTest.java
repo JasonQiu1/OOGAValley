@@ -123,16 +123,18 @@ public class GameObjectTest {
     property.getProperties().put("expirable", expirable);
     property.getProperties().put("updatable", updatable);
     property.getProperties().put("expireTime", expireTime);
+    property.getProperties().put("updateTransformation", "differentThing");
+    property.getProperties().put("updateTime", "2");
     allEditableConfigurables.put(id, property);
   }
-  private void createNextGameObjectFromTestingStructure() {
-    createNextGameObject("tilled_grass", "true", "Structure", "false", "10");
+  private void createNextGameObjectFromTestingStructure(String expirable, String updatable) {
+    createNextGameObject("tilled_grass", expirable , "Structure", updatable, "10");
     testingStructure.update(new GameTime(2, 2, 2));
     testingStructure.update(new GameTime(2, 2, 2));
   }
   @Test
   public void shouldBeExpired() {
-    createNextGameObjectFromTestingStructure();
+    createNextGameObjectFromTestingStructure("true", "false");
     assertEquals("tilled_grass", testingStructure.getId());
     assertFalse(testingStructure.checkAndUpdateExpired(new GameTime(2,2,2)));
     testingStructure.update(new GameTime(2,2,2));
@@ -144,5 +146,19 @@ public class GameObjectTest {
     createNextGameObject("tilled_grass", "false", "Land", "false", "10");
     testingStructure.update(new GameTime(2,2,2));
     assertThrows(IncorrectPropertyFileType.class, () -> testingStructure.update(new GameTime(2, 2, 2)));
+  }
+
+  @Test
+  public void testingUpdateAfterUpdate() {
+    createNextGameObjectFromTestingStructure("false", "true");
+    createNextGameObject("differentThing", "false" , "Structure", "true", "10");
+    assertEquals("tilled_grass", testingStructure.getId());
+    testingStructure.update(new GameTime(2,2,3));
+    testingStructure.update(new GameTime(2,2,3));
+    assertEquals("tilled_grass", testingStructure.getId());
+    testingStructure.update(new GameTime(2,2,5));
+    assertEquals("tilled_grass", testingStructure.getId());
+    testingStructure.update(new GameTime(2,2,5));
+    assertEquals("differentThing", testingStructure.getId());
   }
 }
