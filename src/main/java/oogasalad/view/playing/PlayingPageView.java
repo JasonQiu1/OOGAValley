@@ -139,7 +139,6 @@ public class PlayingPageView {
         displayTextResource.getString("time") + " " + game.getGameState().getGameTime());
   }
 
-
   private void setupTop(BorderPane root) {
     HBox topBox = new HBox();
     topBox.setPrefSize(topWidth, topHeight);
@@ -155,7 +154,6 @@ public class PlayingPageView {
   }
 
   private void setupCenter(BorderPane root) {
-
     root.setCenter(landView.getGridView());
   }
 
