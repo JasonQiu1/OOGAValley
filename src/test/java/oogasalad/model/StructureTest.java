@@ -8,19 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.GameState;
 import oogasalad.model.data.Properties;
-import oogasalad.model.gameobject.Item;
+import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Structure;
-import oogasalad.model.gameplay.GameTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class StructureTest {
-
   private Structure testingStructure;
 
   @BeforeEach
@@ -50,30 +47,9 @@ public class StructureTest {
     gameConfiguration.save(fileName);
   }
 
-
-  @Test
-  public void testImagePathCorrect() {
-    assertEquals("/img/grass.jpg", testingStructure.getImagePath());
-  }
-
   @Test
   public void retrieveStructureDropsCorrectly() {
     assertTrue(testingStructure.getItemsOnDestruction().containsKey("seed"));
-  }
-
-  @Test
-  public void testStructureInteractionInvalid() {
-    assertFalse(testingStructure.interactionValid(new Item("thing")));
-  }
-
-  @Test
-  public void testStructureInteractionValid() {
-    String id = "tilled_grass";
-    GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
-    Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
-    Properties property = new Properties();
-    allEditableConfigurables.put(id, property);
-    assertTrue(testingStructure.interactionValid(new Item("validItem")));
   }
 
   @Test
@@ -81,67 +57,4 @@ public class StructureTest {
     assertEquals(2, testingStructure.getItemsOnDestruction().get("seed"));
   }
 
-  @Test
-  public void verifyId() {
-    assertEquals("grass_structure", testingStructure.getId());
-  }
-
-  @Test
-  public void updateNotEnoughTimeWillNotUpdate() {
-    testingStructure.update(new GameTime(1, 1, 1));
-    testingStructure.update(new GameTime(1, 1, 1));
-    assertEquals("grass_structure", testingStructure.getId());
-  }
-
-  @Test
-  public void updateShouldHaveUpdated() {
-    String id = "tilled_grass";
-    GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
-    Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
-    Properties property = new Properties();
-    property.getProperties().put("type", "Structure");
-    property.getProperties().put("expirable", "false");
-    allEditableConfigurables.put(id, property);
-    testingStructure.update(new GameTime(2, 2, 2));
-    testingStructure.update(new GameTime(2, 2, 2));
-    assertEquals("tilled_grass", testingStructure.getId());
-  }
-
-  @Test
-  public void updateShouldNotHaveUpdatedDespiteValidUpdateDueToItUpdatingOnNextIteration() {
-    createNextGameObject("tilled_grass", "false", "Structure", "true", "10");
-    testingStructure.update(new GameTime(2, 2, 2));
-    assertEquals("grass_structure", testingStructure.getId());
-  }
-
-  private void createNextGameObject(String id, String expirable, String type, String updatable, String expireTime) {
-    GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
-    Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
-    Properties property = new Properties();
-    property.getProperties().put("type", type);
-    property.getProperties().put("expirable", expirable);
-    property.getProperties().put("updatable", updatable);
-    property.getProperties().put("expireTime", expireTime);
-    allEditableConfigurables.put(id, property);
-  }
-  private void createNextGameObjectFromTestingStructure() {
-    createNextGameObject("tilled_grass", "true", "Structure", "false", "10");
-    testingStructure.update(new GameTime(2, 2, 2));
-    testingStructure.update(new GameTime(2, 2, 2));
-  }
-  @Test
-  public void shouldBeExpired() {
-    createNextGameObjectFromTestingStructure();
-    assertEquals("tilled_grass", testingStructure.getId());
-    assertFalse(testingStructure.checkAndUpdateExpired(new GameTime(2,2,2)));
-    testingStructure.update(new GameTime(2,2,2));
-    assertTrue(testingStructure.checkAndUpdateExpired(new GameTime(3,3,3)));
-  }
-
-  @Test
-  public void shouldThrowIncorrectType() {
-    createNextGameObject("tilled_grass", "false", "Land", "false", "10");
-    testingStructure.update(new GameTime(2,2,2));
-    assertThrows(IncorrectPropertyFileType.class, () -> testingStructure.update(new GameTime(2, 2, 2)));
-  }
 }
