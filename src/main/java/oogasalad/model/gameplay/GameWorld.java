@@ -96,7 +96,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * tile, if available. The list may be empty if none of the components have an associated image.
    */
   @Override
-
   public List<String> getImagePath(int width, int height, int depth) {
     return allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).getImages();
   }
@@ -173,6 +172,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
       try {
         Method setMethod = Tile.class.getMethod(methodName, gameObjectClass);
         setMethod.invoke(tile, gameObject);
+        allTiles.put(coord, tile);
       } catch (Exception e) {
         throw new UnableToSetGameObject("Error Setting GameObject");
       }

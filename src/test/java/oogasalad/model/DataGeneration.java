@@ -10,6 +10,9 @@ import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Land;
 import oogasalad.model.gameplay.Game;
 import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.data.GameState;
+import oogasalad.model.gameobject.GameObject;
+import oogasalad.model.gameobject.Land;
 import oogasalad.model.gameplay.GameWorld;
 import org.junit.jupiter.api.Test;
 
@@ -51,7 +54,6 @@ public class DataGeneration {
   void testGeneratedWorld() {
 //    the code for the previous test
     String fileName = "testWorld1.json";
-    
   }
 
 }
