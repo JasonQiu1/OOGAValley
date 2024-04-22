@@ -93,7 +93,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * tile, if available. The list may be empty if none of the components have an associated image.
    */
   @Override
-
   public List<String> getImagePath(int width, int height, int depth) {
     return allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).getImages();
   }

@@ -1,12 +1,10 @@
 package oogasalad.view.playing.component;
 
-import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.gameplay.GameTime;
-import oogasalad.model.gameplay.GameTimeInterface;
 import oogasalad.model.gameplay.PlantModel;
 import oogasalad.view.playing.PlayingPageView;
 
@@ -18,10 +16,10 @@ public class LandView {
   private GridPane landGridPane;
 
 
-  private final List<PlantView> plantViewList;
-  private final BagView bagView;
-  private final TopAnimationView topAnimationView;
-  private final Pile[][] piles;
+  private List<PlantView> plantViewList;
+  private BagView bagView;
+  private TopAnimationView topAnimationView;
+  private Pile[][] piles;
 
   private SelectedItem selectedItem;
 
@@ -29,68 +27,24 @@ public class LandView {
 
   private ReadOnlyGameWorld readOnlyGameWorld;
 
-  /**
-   * Initialize a land with some plants and lands already defined.
-   *
-   * @param plantModelList the plants to be grown
-   * @param gameTime       the current game time
-   * @param selectedItem   the selected item used later for checking if the tool can work on the
-   *                       tile
-   */
-  public LandView(List<PlantModel> plantModelList, GameTime gameTime, SelectedItem selectedItem,
-      BagView bagView, TopAnimationView topAnimationView) {
-    double height = PlayingPageView.landGridPaneHeight;
-    double width = PlayingPageView.landGridPaneWidth;
-    int column = PlayingPageView.landNumCols;
-    int row = PlayingPageView.landNumRows;
-    landGridPane = new GridPane();
-    landGridPane.setPrefHeight(height);
-    landGridPane.setPrefWidth(width);
-    plantViewList = new ArrayList<>();
-    piles = new Pile[column][row];
-    this.selectedItem = selectedItem;
-    this.gameTime = gameTime;
-    double widthSingle = width / column;
-    double heightSingle = height / row;
-    for (int i = 0; i < column; i++) {
-      for (int j = 0; j < row; j++) {
-        Land land = new Land(widthSingle, heightSingle, i, j, "img/grass.jpg");
-        Pile p = new Pile(null, land, this, i, j);
-        p.setId("pile" + i + j);
-        this.piles[i][j] = p;
-        this.landGridPane.add(p, i, j);
+
+  public LandView(ReadOnlyGameWorld readOnlyGameWorld) {
+    System.out.println(1);
+    this.readOnlyGameWorld = readOnlyGameWorld;
+    piles = new Pile[readOnlyGameWorld.getHeight()][readOnlyGameWorld.getWidth()];
+    for (int i = 0; i < piles.length; i++) {
+      for (int j = 0; j < piles[0].length; j++) {
+        piles[i][j] = new Pile();
       }
     }
-    for (PlantModel p : plantModelList) {
-      PlantView plantView = new PlantView(p, heightSingle, widthSingle);
-      this.piles[p.getX()][p.getY()].setPlantView(plantView);
-      plantViewList.add(plantView);
-    }
-    this.bagView = bagView;
-    this.topAnimationView = topAnimationView;
+    System.out.println(2);
   }
 
-//  public LandView(ReadOnlyGameWorld readOnlyGameWorld) {
-//
-//  }
-
-//  public void update() {
-//    for (int i = 0; i < readOnlyGameWorld.getHeight(); i++) {
-//      for (int j = 0; j < readOnlyGameWorld.getWidth(); j++) {
-//        piles[i][j].update()
-//      }
-//    }
-//  }
-
-
-  /**
-   * Update the plants according to game Time.
-   *
-   * @param gameTime
-   */
-  public void update(GameTimeInterface gameTime) {
-    for (PlantView plantView : plantViewList) {
-      plantView.updateImage(gameTime);
+  public void update() {
+    for (int i = 0; i < readOnlyGameWorld.getHeight(); i++) {
+      for (int j = 0; j < readOnlyGameWorld.getWidth(); j++) {
+        piles[i][j].update(readOnlyGameWorld.getImagePath(j, i, 0));
+      }
     }
   }
 
