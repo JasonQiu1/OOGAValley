@@ -169,6 +169,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
       try {
         Method setMethod = Tile.class.getMethod(methodName, gameObjectClass);
         setMethod.invoke(tile, gameObject);
+        allTiles.put(coord, tile);
       } catch (Exception e) {
         throw new UnableToSetGameObject("Error Setting GameObject");
       }

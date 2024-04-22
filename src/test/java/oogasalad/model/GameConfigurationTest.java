@@ -68,6 +68,6 @@ class GameConfigurationTest {
 
   @Test
   void initializeBlock() {
-
+    
   }
 }
