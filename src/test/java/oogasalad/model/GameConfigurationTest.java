@@ -28,7 +28,7 @@ class GameConfigurationTest {
 
   @Test
   void addItemToGameStore() throws IOException {
-    GameConfiguration gameConfiguration = GameConfiguration.of("test");
+    GameConfiguration gameConfiguration = GameConfiguration.of("TempGameConfiguration.json");
     GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
     Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
     Properties properties = new Properties();
