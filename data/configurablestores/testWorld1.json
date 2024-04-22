@@ -1,6 +1,6 @@
 {
   "configurables": {
-    "grass_structure": {
+    "grass_land": {
       "properties": {
         "image": "/img/grass.jpg",
         "updateTransformation": "tilled_grass",
@@ -13,8 +13,8 @@
         "interactTransformations": {
           "validItem": "tilled_grass"
         },
-        "dropsOnDestruction": {
-          "seed": "2"
+        "plantableSeeds": {
+          "wheat_seed": "wheat"
         }
       }
     }

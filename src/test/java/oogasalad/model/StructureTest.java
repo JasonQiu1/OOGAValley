@@ -14,6 +14,7 @@ import oogasalad.model.data.GameState;
 import oogasalad.model.data.Properties;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Structure;
+import oogasalad.model.gameplay.GameTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,7 +44,7 @@ public class StructureTest {
     property.getMapProperties().put("interactTransformations", interactTransform);
     allEditableConfigurables.put(id, property);
     GameState gameState = new GameState();
-    testingStructure = new Structure(id, gameState.getEditableGameTime().copy());
+    testingStructure = new Structure(id, new GameTime(1,1,1));
     gameConfiguration.save(fileName);
   }
 
