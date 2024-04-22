@@ -26,7 +26,6 @@ class GameConfigurationTest {
         Assertions.assertDoesNotThrow(() -> config.getRules().getBoolean("doEnergy"));
     LOG.debug(config.getRules().getCopyOfProperties());
     assertTrue(doEnergy);
-    //config.getRules().update("doEnergy", true)
   }
 
   @Test

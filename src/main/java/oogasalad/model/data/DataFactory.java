@@ -10,9 +10,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.time.Instant;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.gameObjectFactories.GameObjectCreator;
 import oogasalad.model.gson.GameObjectCreatorAdapter;
+import oogasalad.model.gson.InstantAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -82,6 +84,7 @@ public class DataFactory<T> {
       new GsonBuilder().setPrettyPrinting().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
           .serializeNulls().enableComplexMapKeySerialization().registerTypeAdapter(
               GameObjectCreator.class, new GameObjectCreatorAdapter())
+          .registerTypeAdapter(Instant.class, new InstantAdapter())
           // LENIENT MAY INTRODUCE BUGS, BUT ALSO MAKES MANUALLY EDITING DATA FILES MORE FORGIVING
           .setLenient().create();
   // TODO: Maybe externalize this to a config? I can't see this directory ever changing though.
