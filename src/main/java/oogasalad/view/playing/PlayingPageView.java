@@ -23,6 +23,7 @@ import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
+import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;
@@ -43,10 +44,12 @@ import org.apache.logging.log4j.Logger;
 
 public class PlayingPageView {
 
+
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private final String myLanguage = "EnglishDisplayText";
   private final ResourceBundle displayTextResource = ResourceBundle.getBundle(
       DEFAULT_RESOURCE_PACKAGE + myLanguage);
+
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
   public static final double bottomCellWidth = 30;
@@ -68,12 +71,15 @@ public class PlayingPageView {
       landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
+
   private final Label timeLabel = new Label();
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
   private final GameTime gameTime = new GameTime(1, 8, 0);
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
   private final Bag bag = new Bag();
+
+  private Button helpButton;
   private LandView landView;
   private TopAnimationView topAnimationView;
   private final Money money = new Money(100);
@@ -144,13 +150,15 @@ public class PlayingPageView {
     HBox topBox = new HBox();
     topBox.setPrefSize(topWidth, topHeight);
     topBox.getStyleClass().add("top-box");
+    createHelpButton();
     Button btnOpenShop = new Button();
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
     money.addObserver(currentMoneyHbox, money.getMoney());
-    topBox.getChildren().addAll(timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
+    topBox.getChildren()
+        .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
     root.setTop(topBox);
   }
 
@@ -186,5 +194,15 @@ public class PlayingPageView {
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);
     stage.show();
+  }
+
+  private void createHelpButton() {
+    helpButton = new Button();
+    helpButton.setId("help-button");
+    helpButton.setOnAction(e -> {
+      Stage chatStage = new Stage();
+      Chat chatApp = new Chat(chatStage);
+      chatApp.start();
+    });
   }
 }
