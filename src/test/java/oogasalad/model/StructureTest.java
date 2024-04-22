@@ -31,7 +31,6 @@ public class StructureTest {
     allEditableConfigurables.put("store", properties);
     editableConfigurablesStore.save("test.json");
     gameConfiguration.save("test.json");
-    testingStructure
   }
 
   @Test

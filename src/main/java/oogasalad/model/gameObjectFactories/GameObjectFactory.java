@@ -1,8 +1,10 @@
 package oogasalad.model.gameObjectFactories;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.GameObjectFactoryInstantiationFailure;
@@ -73,6 +75,16 @@ public class GameObjectFactory {
       throw new InvalidGameObjectType("Could not create a gameObject of type: " + type);
     }
     return creator.create(id, creationTime, additionalParams);
+  }
+
+  /**
+   *
+   * @return A list of the class names of all creators stored in the Factory.
+   */
+  public List<String> getListOfCreators() {
+    return creators.values().stream()
+        .map(creator -> creator.getClass().getSimpleName())
+        .collect(Collectors.toList());
   }
 }
 
