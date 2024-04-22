@@ -123,7 +123,7 @@ public class PlayingPageView {
     List<BagItem> bagItems = new ArrayList<>();
     Map<ReadOnlyItem, Integer> items = game.getGameState().getBag().getItems();
     for (Map.Entry<ReadOnlyItem, Integer> item : items.entrySet()) {
-      bagItems.add(new BagItem(item.getKey().getImage(), bottomCellWidth, bottomCellWidth,
+      bagItems.add(new BagItem(item.getKey().getImagePath(), bottomCellWidth, bottomCellWidth,
           selectedItem, item.getValue()));
     }
     bagView = new BagView(bagItems, 5, 1, bag);

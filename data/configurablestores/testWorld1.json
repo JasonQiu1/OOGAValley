@@ -1,0 +1,22 @@
+{
+  "configurables": {
+    "grass_land": {
+      "properties": {
+        "image": "/img/grass.jpg",
+        "updateTransformation": "tilled_grass",
+        "expirable": "false",
+        "updatable": "true",
+        "updateTime": "10"
+      },
+      "listProperties": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "validItem": "tilled_grass"
+        },
+        "plantableSeeds": {
+          "wheat_seed": "wheat"
+        }
+      }
+    }
+  }
+}
