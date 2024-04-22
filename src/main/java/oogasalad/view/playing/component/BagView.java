@@ -84,8 +84,8 @@ public class BagView {
       });
     }
     // for temp testing
-    bagItemPiles[0][0].getItem().getView().setId("Hoe");
-    bagItemPiles[1][0].getItem().getView().setId("Panda");
+//    bagItemPiles[0][0].getItem().getView().setId("Hoe");
+//    bagItemPiles[1][0].getItem().getView().setId("Panda");
   }
 
   public double[] getAddRealLocation(BagItem bagItem) {

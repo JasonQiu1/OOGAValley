@@ -24,7 +24,7 @@ public class GameTime implements GameTimeInterface {
   private static final double rate = 43000.0 / 6.0;
   private static final int unit = 10;
 
-  private String prevString;
+  private Instant previous = Instant.now();
 
   private long accumulate;
 
@@ -62,15 +62,11 @@ public class GameTime implements GameTimeInterface {
    */
   @Override
   public void update() {
-    Instant previous;
-    if (prevString == null) {
+    if (previous == null) {
       previous = Instant.now();
-    } else {
-      previous = Instant.parse(prevString);
     }
     Instant now = Instant.now();
     long timeElapsedMillis = Duration.between(previous, now).toMillis();
-    prevString = now.toString();
     accumulate += timeElapsedMillis;
     if (accumulate >= rate) {
       accumulate = 0;
