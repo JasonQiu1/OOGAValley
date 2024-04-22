@@ -65,4 +65,9 @@ class GameConfigurationTest {
     ReadOnlyProperties test = gameConfigurablesStore.getConfigurableProperties("test");
     assertNotNull(test);
   }
+
+  @Test
+  void initializeBlock() {
+
+  }
 }
