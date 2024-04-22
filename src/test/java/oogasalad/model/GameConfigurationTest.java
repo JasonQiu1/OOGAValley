@@ -1,9 +1,12 @@
 package oogasalad.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.Map;
+import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.Properties;
@@ -44,7 +47,23 @@ class GameConfigurationTest {
     String fileName = "test.json";
     GameConfiguration gameConfiguration = GameConfiguration.of(fileName);
     GameConfigurablesStore gameConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
-    System.out.println(gameConfigurablesStore.getAllEditableConfigurables());
+    System.out.println(gameConfigurablesStore.getAllConfigurables());
+    assertEquals(gameConfigurablesStore.getAllConfigurables().size(), 1);
+  }
 
+  @Test
+  void addProperties() throws IOException {
+//    Create Game config and game config store from a file name
+    String fileName = "test.json";
+    GameConfiguration gameConfiguration = GameConfiguration.of(fileName);
+    GameConfigurablesStore gameConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
+//    get the map of the properties <id, properties>
+    Map<String, Properties> allConfigurables = gameConfigurablesStore.getAllEditableConfigurables();
+//    Put id and properties inside
+    Properties properties = new Properties();
+    allConfigurables.put("test", properties);
+//    Get the properties
+    ReadOnlyProperties test = gameConfigurablesStore.getConfigurableProperties("test");
+    assertNotNull(test);
   }
 }
