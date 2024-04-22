@@ -14,11 +14,11 @@ import oogasalad.view.shopping.Utils;
  * used to display a sellable item in the shop block.
  */
 public class SellItemVbox extends VBox {
+
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.shopping.components.shopblock.";
+  private final SellItem sellItem;
   private String myLanguage = "SellItemButtonText";
   private ResourceBundle buttonTextResource;
-
-  private final SellItem sellItem;
   private SellButton sellButton;
 
   /**

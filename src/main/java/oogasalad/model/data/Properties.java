@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.BadValueParseException;
@@ -224,9 +222,10 @@ public class Properties implements ReadOnlyProperties {
   private static final Logger LOG = LogManager.getLogger(Properties.class);
 
   /**
-   * Initializes with no entries. Should not be used.
+   * Initializes with no entries. Should not be used. If initialized with no entry, its usage is to
+   * create a property using the following proerties method
    */
-  private Properties() {
+  public Properties() {
     properties = new HashMap<>();
     listProperties = new HashMap<>();
     mapProperties = new HashMap<>();
@@ -237,5 +236,22 @@ public class Properties implements ReadOnlyProperties {
       LOG.error("Couldn't find key '{}'.", key);
       throw new KeyNotFoundException(key);
     }
+  }
+
+  /**
+   * Methods for editing properties.
+   *
+   * @return
+   */
+  public Map<String, String> getProperties() {
+    return properties;
+  }
+
+  public Map<String, List<String>> getListProperties() {
+    return listProperties;
+  }
+
+  public Map<String, Map<String, String>> getMapProperties() {
+    return mapProperties;
   }
 }

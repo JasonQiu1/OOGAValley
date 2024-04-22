@@ -11,7 +11,6 @@ import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
-import oogasalad.model.gameobject.Interactable;
 import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameobject.Tile;
@@ -76,23 +75,22 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   /**
    * Handles interaction with a specific tile at the given coordinates using an item.
    *
-   * @param item        The item used for interaction.
-   * @param width The width coordinate of the interaction.
+   * @param item   The item used for interaction.
+   * @param width  The width coordinate of the interaction.
    * @param height The height coordinate of the interaction.
-   * @param depth The depth coordinate of the interaction.
+   * @param depth  The depth coordinate of the interaction.
    */
   public void interact(Item item, int width, int height, int depth) {
     allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
   }
 
   /**
-   * Retrieves the paths to the images representing the current state of a tile's contents
-   * denoted by its width, height, and depth, which
-   * can include collectables, structures, and land. This is useful for graphical representation of
-   * the tile in the game's user interface.
+   * Retrieves the paths to the images representing the current state of a tile's contents denoted
+   * by its width, height, and depth, which can include collectables, structures, and land. This is
+   * useful for graphical representation of the tile in the game's user interface.
    *
-   * @return A list containing the image paths for the collectable, structure, and land on this tile,
-   *         if available. The list may be empty if none of the components have an associated image.
+   * @return A list containing the image paths for the collectable, structure, and land on this
+   * tile, if available. The list may be empty if none of the components have an associated image.
    */
   @Override
 
@@ -101,11 +99,12 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   }
 
   /**
-   * Retrieves a list of all items from each tile that need to be added to the inventory.
-   * This method processes each tile, extracts items to be added, and returns them as a list of ItemsToAdd.
+   * Retrieves a list of all items from each tile that need to be added to the inventory. This
+   * method processes each tile, extracts items to be added, and returns them as a list of
+   * ItemsToAdd.
    *
-   * @return A List of ItemsToAdd, each object representing a set of items to be added to the inventory,
-   *         characterized by their ID and quantity.
+   * @return A List of ItemsToAdd, each object representing a set of items to be added to the
+   * inventory, characterized by their ID and quantity.
    */
   @Override
   public List<ItemsToAdd> itemsToAddToInventory() {
@@ -175,6 +174,21 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
         throw new UnableToSetGameObject("Error Setting GameObject");
       }
     }
+  }
+
+  @Override
+  public int getHeight() {
+    return height;
+  }
+
+  @Override
+  public int getWidth() {
+    return width;
+  }
+
+  @Override
+  public int getDepth() {
+    return depth;
   }
 }
 

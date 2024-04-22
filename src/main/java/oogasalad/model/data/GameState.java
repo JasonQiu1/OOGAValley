@@ -8,8 +8,10 @@ import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.gameplay.Bag;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.GameWorld;
+import oogasalad.model.gameplay.Shop;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,6 +28,15 @@ public class GameState implements ReadOnlyGameState {
   // TODO: Externalize this to a configuration file.
   // The path to the gamesaves directory from the data directory.
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
+  private GameWorld gameWorld;
+  private GameTime gameTime;
+  private double energy;
+  private int money;
+  private Shop shop;
+  private Bag bag;
+  private int width = 15;
+  private int height = 10;
+  private int depth = 2;
 
   /**
    * Creates and returns an instance of {@link GameState} from a JSON file.
@@ -44,7 +55,7 @@ public class GameState implements ReadOnlyGameState {
    * Initializes a default GameState.
    */
   public GameState() {
-    // TODO: IMPLEMENT
+
   }
 
   /**
@@ -68,8 +79,7 @@ public class GameState implements ReadOnlyGameState {
 
   @Override
   public ReadOnlyGameWorld getGameWorld() {
-    // TODO: IMPLEMENT
-    return null;
+    return gameWorld;
   }
 
   @Override
@@ -118,7 +128,7 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public ReadOnlyBag getBag() {
-    // TODO: IMPLEMENT
+
     return null;
   }
 
