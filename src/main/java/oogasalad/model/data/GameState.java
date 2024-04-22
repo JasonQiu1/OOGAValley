@@ -8,7 +8,6 @@ import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
-import oogasalad.model.gameobject.Land;
 import oogasalad.model.gameplay.Bag;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.GameWorld;

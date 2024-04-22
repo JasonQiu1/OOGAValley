@@ -20,6 +20,7 @@ public class GameTimeTest {
   void testIfTheGameTimeHandlesDifference() {
     for (int i = 0; i < 100; i++) {
       gameTime.update();
+
     }
     assertEquals(gameTime.getMinute(), 0);
   }

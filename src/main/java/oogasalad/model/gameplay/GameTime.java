@@ -18,12 +18,13 @@ public class GameTime implements GameTimeInterface {
   // in other words, (unit) minute game time equals rate (in milliseconds)
   // by default, the unit is 10.
   private static final String DEFAULT_RESOURCE_PACKAGE = "model.gameplay.";
-  private String myLanguage = "EnglishTimeText";
-  private ResourceBundle timeTextResource;
+  private static String myLanguage = "EnglishTimeText";
+  private static final ResourceBundle timeTextResource = ResourceBundle.getBundle(
+      DEFAULT_RESOURCE_PACKAGE + myLanguage);
   private static final double rate = 43000.0 / 6.0;
   private static final int unit = 10;
 
-  private Instant previous;
+  private String prevString;
 
   private long accumulate;
 
@@ -39,7 +40,6 @@ public class GameTime implements GameTimeInterface {
    * @param minute the minute
    */
   public GameTime(int day, int hour, int minute) {
-    timeTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
     this.day = day;
     this.hour = hour;
     this.minute = minute;
@@ -62,12 +62,15 @@ public class GameTime implements GameTimeInterface {
    */
   @Override
   public void update() {
-    if (previous == null) {
+    Instant previous;
+    if (prevString == null) {
       previous = Instant.now();
+    } else {
+      previous = Instant.parse(prevString);
     }
     Instant now = Instant.now();
     long timeElapsedMillis = Duration.between(previous, now).toMillis();
-    previous = now;
+    prevString = now.toString();
     accumulate += timeElapsedMillis;
     if (accumulate >= rate) {
       accumulate = 0;
