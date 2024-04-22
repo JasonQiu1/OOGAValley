@@ -22,17 +22,6 @@ public class Item implements ReadOnlyItem {
   }
 
   /**
-   * Get the image file name that represents the item view. This file lives in `data/images`
-   *
-   * @return the image file name that represents the item view.
-   */
-  @Override
-  public String getImage() {
-    // TODO: IMPLEMENT
-    return null;
-  }
-
-  /**
    * Get how much money the item is worth.
    *
    * @return how much money the item is worth.
@@ -41,5 +30,16 @@ public class Item implements ReadOnlyItem {
   public double getWorth() {
     // TODO: IMPLEMENT
     return 0;
+  }
+
+  /**
+   * Get the image file name that represents the item view. This file lives in `data/images`
+   *
+   * @return the image file name that represents the item view.
+   */
+  @Override
+  public String getImagePath() {
+    // TODO: IMPLEMENT
+    return null;
   }
 }

@@ -1,11 +1,13 @@
 package oogasalad.model.api;
 
+import oogasalad.model.gameobject.Viewable;
+
 /**
  * Provides an interface to get information about an item.
  *
  * @author Jason Qiu
  */
-public interface ReadOnlyItem {
+public interface ReadOnlyItem extends Viewable {
 
   /**
    * Get the name/id of the item.
@@ -14,12 +16,6 @@ public interface ReadOnlyItem {
    */
   String getName();
 
-  /**
-   * Get the image file name that represents the item view. This file lives in `data/images`
-   *
-   * @return the image file name that represents the item view.
-   */
-  String getImage();
 
   /**
    * Get how much money the item is worth.
