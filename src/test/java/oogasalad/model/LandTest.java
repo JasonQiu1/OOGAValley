@@ -1,5 +1,6 @@
 package oogasalad.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -56,5 +57,10 @@ public class LandTest {
   @Test
   public void testInvalidSeed() {
     assertFalse(testingLand.getIfItemCanBePlacedHere(new Item("invalid")));
+  }
+
+  @Test
+  public void testGetStructureIdBasedOnPlantableItem() {
+    assertEquals("wheat", testingLand.getStructureBasedOnItem(new Item("wheat_seed")));
   }
 }
