@@ -78,7 +78,7 @@ public class DataFactory<T> {
   private final Class<T> clazz;
   private static final Gson GSON =
       new GsonBuilder().setPrettyPrinting().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
-          .serializeNulls()
+          .serializeNulls().enableComplexMapKeySerialization()
           // LENIENT MAY INTRODUCE BUGS, BUT ALSO MAKES MANUALLY EDITING DATA FILES MORE FORGIVING
           .setLenient().create();
   // TODO: Maybe externalize this to a config? I can't see this directory ever changing though.

@@ -128,6 +128,7 @@ public class PlayingPageView {
   private void setUpdate() {
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
       game.update();
+      landView.update();
       updateTimeLabel();
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);

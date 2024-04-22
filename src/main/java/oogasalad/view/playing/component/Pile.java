@@ -5,6 +5,7 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import oogasalad.view.playing.PlayingPageView;
 
@@ -22,8 +23,11 @@ public class Pile extends StackPane {
 
   public Pile() {
     super();
+    double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
+    double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
     for (int i = 0; i < 3; i++) {
-      Rectangle rectangle = new Rectangle();
+      Rectangle rectangle = new Rectangle(width, height);
+      rectangle.setFill(Color.PURPLE);
       this.getChildren().add(rectangle);
     }
   }
@@ -60,8 +64,8 @@ public class Pile extends StackPane {
   }
 
   public void updateImageView(int index, String url) {
-    double height = PlayingPageView.landGridPaneHeight;
-    double width = PlayingPageView.landGridPaneWidth;
+    double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
+    double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
     ImageView imageView = new ImageView();
     Image image = new Image(url, width, height, false, true);
     imageView.setImage(image);
