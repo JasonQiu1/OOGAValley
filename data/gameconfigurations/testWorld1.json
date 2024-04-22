@@ -1,0 +1,36 @@
+{
+  "initialState": {
+    "gameWorld": null,
+    "gameTime": null,
+    "energy": 0.0,
+    "money": 0,
+    "shop": null,
+    "bag": null,
+    "width": 15,
+    "height": 10,
+    "depth": 2
+  },
+  "rules": {
+    "properties": {
+      "configName": "DEFAULT_GAME_NAME",
+      "author": "OOGAValley Devs",
+      "type": "rules",
+      "doEnergy": "true",
+      "doEnergyRecovery": "true",
+      "energyAmount": "20",
+      "energyRecoveryRate": "720",
+      "doDeath": "false",
+      "doExhaustedEnergyCollapse": "true",
+      "exhaustedEnergyCollapseTimePenalty": "1440",
+      "timeMultiplier": "1",
+      "goalCondition": "time",
+      "timeGoal": "525600"
+    },
+    "listProperties": {},
+    "mapProperties": {
+      "initialItems": {
+        "Hoe": "1"
+      }
+    }
+  }
+}
