@@ -86,7 +86,14 @@ public class GameObjectTest {
     testingStructure.update(new GameTime(1, 1, 1));
     assertEquals("grass_structure", testingStructure.getId());
   }
-
+  @Test
+  public void interactShouldLeadToNewGameObject() {
+    createNextGameObject("tilled_grass", "false", "Structure", "true", "10");
+    testingStructure.interact(new Item("validItem"));
+    assertEquals("grass_structure", testingStructure.getId());
+    testingStructure.update(new GameTime(1,1,1));
+    assertEquals("tilled_grass", testingStructure.getId());
+  }
   @Test
   public void updateShouldHaveUpdated() {
     String id = "tilled_grass";
