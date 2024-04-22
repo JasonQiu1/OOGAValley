@@ -104,4 +104,19 @@ public class StructureTest {
     testingStructure.update(new GameTime(2, 2, 2));
     assertEquals("tilled_grass", testingStructure.getId());
   }
+
+  @Test
+  public void updateShouldNotHaveUpdatedDespiteValidUpdateDueToItUpdatingOnNextIteration() {
+    String id = "tilled_grass";
+    GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
+    Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
+    Properties property = new Properties();
+    property.getProperties().put("type", "Structure");
+    property.getProperties().put("expirable", "false");
+    allEditableConfigurables.put(id, property);
+    testingStructure.update(new GameTime(2, 2, 2));
+    assertEquals("grass_structure", testingStructure.getId());
+  }
+
+
 }
