@@ -88,7 +88,7 @@ public class GameState implements ReadOnlyGameState {
   @Override
   public ReadOnlyGameTime getGameTime() {
     // TODO: IMPLEMENT
-    return null;
+    return gameTime;
   }
 
   /**
@@ -137,14 +137,15 @@ public class GameState implements ReadOnlyGameState {
 
   public GameWorld getEditableGameWorld() {
     // TODO: IMPLEMENT
-    return null;
+    return gameWorld;
   }
 
   public GameTime getEditableGameTime() {
     // TODO: IMPLEMENT
-    return null;
+    return gameTime;
   }
 
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
   private static final Logger LOG = LogManager.getLogger(GameState.class);
+
 }

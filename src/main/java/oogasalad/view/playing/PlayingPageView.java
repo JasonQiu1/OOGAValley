@@ -44,11 +44,9 @@ import org.apache.logging.log4j.Logger;
 public class PlayingPageView {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
-  private String myLanguage = "EnglishDisplayText";
-  private ResourceBundle displayTextResource = ResourceBundle.getBundle(
+  private final String myLanguage = "EnglishDisplayText";
+  private final ResourceBundle displayTextResource = ResourceBundle.getBundle(
       DEFAULT_RESOURCE_PACKAGE + myLanguage);
-
-
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
   public static final double bottomCellWidth = 30;
@@ -129,16 +127,16 @@ public class PlayingPageView {
 
   private void setUpdate() {
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
-      gameTime.update();
+      game.update();
       updateTimeLabel();
-      landView.update();
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
   }
 
   private void updateTimeLabel() {
-    timeLabel.setText(displayTextResource.getString("time") + " " + gameTime);
+    timeLabel.setText(
+        displayTextResource.getString("time") + " " + game.getGameState().getGameTime());
   }
 
 
