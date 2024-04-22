@@ -3,22 +3,20 @@ package oogasalad.model.gameobject;
 import oogasalad.model.api.ReadOnlyItem;
 
 public class Item implements ReadOnlyItem {
-  private String itemId;
+  private final String itemId;
 
-  @Override
-  public String toString() {
-    return itemId;
+  public Item (String itemId) {
+    this.itemId = itemId;
   }
 
   /**
    * Get the name/id of the item.
    *
-   * @returnthe name/id of the item.
+   * @return the name/id of the item.
    */
   @Override
   public String getName() {
-    // TODO: IMPLEMENT
-    return null;
+    return itemId;
   }
 
   /**

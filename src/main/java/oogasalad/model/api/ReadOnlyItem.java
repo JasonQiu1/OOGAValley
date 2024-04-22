@@ -5,7 +5,7 @@ import oogasalad.model.gameobject.Viewable;
 /**
  * Provides an interface to get information about an item.
  *
- * @author Jason Qiu
+ * @author Jason Qiu, Spencer Katz
  */
 public interface ReadOnlyItem extends Viewable {
 
