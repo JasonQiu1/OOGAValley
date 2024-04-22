@@ -2,11 +2,13 @@ package oogasalad.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.GameState;
@@ -107,27 +109,23 @@ public class StructureTest {
 
   @Test
   public void updateShouldNotHaveUpdatedDespiteValidUpdateDueToItUpdatingOnNextIteration() {
-    String id = "tilled_grass";
-    GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
-    Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
-    Properties property = new Properties();
-    property.getProperties().put("type", "Structure");
-    property.getProperties().put("expirable", "false");
-    allEditableConfigurables.put(id, property);
+    createNextGameObject("tilled_grass", "false", "Structure", "true", "10");
     testingStructure.update(new GameTime(2, 2, 2));
     assertEquals("grass_structure", testingStructure.getId());
   }
 
-  private void createNextGameObjectFromTestingStructure() {
-    String id = "tilled_grass";
+  private void createNextGameObject(String id, String expirable, String type, String updatable, String expireTime) {
     GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
     Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
     Properties property = new Properties();
-    property.getProperties().put("type", "Structure");
-    property.getProperties().put("expirable", "true");
-    property.getProperties().put("updatable", "false");
-    property.getProperties().put("expireTime", "10");
+    property.getProperties().put("type", type);
+    property.getProperties().put("expirable", expirable);
+    property.getProperties().put("updatable", updatable);
+    property.getProperties().put("expireTime", expireTime);
     allEditableConfigurables.put(id, property);
+  }
+  private void createNextGameObjectFromTestingStructure() {
+    createNextGameObject("tilled_grass", "true", "Structure", "false", "10");
     testingStructure.update(new GameTime(2, 2, 2));
     testingStructure.update(new GameTime(2, 2, 2));
   }
@@ -138,5 +136,12 @@ public class StructureTest {
     assertFalse(testingStructure.checkAndUpdateExpired(new GameTime(2,2,2)));
     testingStructure.update(new GameTime(2,2,2));
     assertTrue(testingStructure.checkAndUpdateExpired(new GameTime(3,3,3)));
+  }
+
+  @Test
+  public void shouldThrowIncorrectType() {
+    createNextGameObject("tilled_grass", "false", "Land", "false", "10");
+    testingStructure.update(new GameTime(2,2,2));
+    assertThrows(IncorrectPropertyFileType.class, () -> testingStructure.update(new GameTime(2, 2, 2)));
   }
 }
