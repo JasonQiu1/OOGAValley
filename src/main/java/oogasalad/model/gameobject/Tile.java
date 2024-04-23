@@ -48,7 +48,7 @@ public class Tile implements Updatable, Interactable {
         handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item), false)
             || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item), false)
             || handleInteractionIfValid(land, item, () -> handleLandInteraction(item),
-            land.getIfItemCanBePlacedHere(item));
+            land != null && land.getIfItemCanBePlacedHere(item));
   }
 
   @Override
