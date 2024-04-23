@@ -15,7 +15,7 @@ public class PlayingPageTest extends DukeApplicationTest {
 
   public void start(Stage stage) {
     this.stage = stage;
-    playingPageView = new PlayingPageView(stage);
+    playingPageView = new PlayingPageView(stage, "English");
     playingPageView.start();
   }
 

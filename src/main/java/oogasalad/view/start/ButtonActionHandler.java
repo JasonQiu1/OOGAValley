@@ -14,13 +14,15 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
   private final String className;
   private final String methodName;
   private final Stage stage;
+  private String language;
   private final String[] parameters;
 
-  public ButtonActionHandler(String className, String methodName, Stage stage,
+  public ButtonActionHandler(String className, String methodName, Stage stage, String language,
       String... parameters) {
     this.className = className;
     this.methodName = methodName;
     this.stage = stage;
+    this.language = language;
     this.parameters = parameters.clone();
   }
 
@@ -36,8 +38,8 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
 //      LOG.info(parameterTypes[0]);
       Method method = clazz.getMethod(methodName, parameterTypes);
 
-      Constructor<?> constructor = clazz.getConstructor(Stage.class);
-      Object instance = constructor.newInstance(stage);
+      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class);
+      Object instance = constructor.newInstance(stage, language);
 
       Object[] args = new Object[parameters.length]; // +1 for the stage
       System.arraycopy(parameters, 0, args, 0, parameters.length); // copy remaining parameters

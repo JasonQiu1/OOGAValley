@@ -25,7 +25,7 @@ public class RuleChangeTest extends DukeApplicationTest {
     public void start(Stage stage) {
         this.stage = stage;
         config = new GameConfiguration();
-        editorScene = new EditorScene(stage);
+        editorScene = new EditorScene(stage, "English");
         editorScene.setConfig(config);
         editorScene.start();
 

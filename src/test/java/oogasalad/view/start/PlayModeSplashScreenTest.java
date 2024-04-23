@@ -26,7 +26,7 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    playModeSplashScreen = new PlayModeSplashScreen(stage);
+    playModeSplashScreen = new PlayModeSplashScreen(stage, "English");
     playModeSplashScreen.open();
     this.newGame = (ChangePageButton) lookup("#New").queryButton();
     this.loadGame = (ChangePageButton) lookup("#Load").queryButton();
