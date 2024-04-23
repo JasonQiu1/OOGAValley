@@ -1,27 +1,24 @@
 {
   "configurables": {
-    "grass_land": {
+    "grass_collectable": {
       "properties": {
-        "name": "grass_land",
-        "type": "Land",
+        "name": "grass_collectable",
+        "type": "Collectable",
         "image": "/img/grass.jpg",
         "updatable": "true",
         "updateTime": "10",
-        "updateTransformation": "tilled_grass",
+        "updateTransformation": "",
         "expirable": "false",
-        "expireTime": "0",
+        "expireTime": "120",
         "expireTransformation": ""
       },
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
-          "validItem": "tilled_grass"
+          "validItem": "empty"
         },
-        "interactDropMultipliers": {},
-        "plantableSeeds": {
-          "wheat_seed": "wheat"
-        }
+        "interactDropMultipliers": {}
       }
     }
   }
