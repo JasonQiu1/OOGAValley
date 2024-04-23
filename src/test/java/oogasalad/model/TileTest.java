@@ -145,11 +145,25 @@ public class TileTest extends BaseGameObjectTest {
     testingStructureProperties.update("expirable","true");
     testingStructureProperties.update("expireTime", "1");
     testingCollectableProperties.update("expirable", "false");
-    tileToTest.update(new GameTime(2,1,1));
-    tileToTest.update(new GameTime(2,1,1));
+    tileToTest.update(new GameTime(1,1,1));
+    tileToTest.update(new GameTime(1,1,5));
     assertNotNull(tileToTest.getLandId());
     assertNotNull(tileToTest.getCollectableId());
     assertNull(tileToTest.getStructureId());
+  }
+
+//  @Test
+//  public void structureDropsCollectableWhenCollectableIsNullAndStructureIsDestructable() {
+//    testingStructureProperties.update("destructable","true");
+//    tileToTest.setCollectable(null);
+//
+//  }
+  @Test
+  public void structurePlantedWhenValidSeedIsPutOnLandAndStructureIsNull() throws IOException {
+    addPropertiesToStore("wheat", "test/testingWheat.json");
+    tileToTest.setStructure(null);
+    tileToTest.interact(new Item("wheat_seed"));
+    assertEquals("wheat", tileToTest.getStructureId());
   }
 }
 

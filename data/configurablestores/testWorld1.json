@@ -8,8 +8,8 @@
         "updatable": "false",
         "updateTime": "1000",
         "updateTransformation": "wheat",
-        "expirable": "true",
-        "expireTime": "1",
+        "expirable": "false",
+        "expireTime": "0",
         "expireTransformation": "",
         "destructable": "false"
       },

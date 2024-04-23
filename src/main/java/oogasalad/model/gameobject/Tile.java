@@ -45,9 +45,10 @@ public class Tile implements Updatable, Interactable {
   @Override
   public void interact(Item item) {
     boolean interactionHandled =
-        handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item))
-            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item))
-            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item));
+        handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item), false)
+            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item), false)
+            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item),
+            land.getIfItemCanBePlacedHere(item));
   }
 
   @Override
@@ -63,11 +64,13 @@ public class Tile implements Updatable, Interactable {
    * @param gameObject         The game object to check and interact with.
    * @param item               The item used for the interaction.
    * @param interactionHandler The logic to execute for the interaction.
+   * @param additionalCheck    An additional boolean check for if an interaction is valid
+   *                           that is specific to each GameObject
    * @return True if the interaction was valid and handled, false otherwise.
    */
   private boolean handleInteractionIfValid(GameObject gameObject, Item item,
-      Runnable interactionHandler) {
-    if (gameObject != null && gameObject.interactionValid(item)) {
+      Runnable interactionHandler, boolean additionalCheck) {
+    if (gameObject != null && (gameObject.interactionValid(item) || additionalCheck)) {
       interactionHandler.run();
       return true;
     }
