@@ -1,9 +1,5 @@
 package oogasalad.view.start;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.PathTransition;
@@ -38,7 +34,7 @@ public abstract class AbstractSplashScreen {
   public abstract void open();
 
   protected void setStage(Stage stage, double widthPortion, double heightPortion,
-      ResourceString resourceString) {
+      ResourceString resourceString, String language) {
     Scene scene;
     VBox vb = new VBox();
     vb.setAlignment(Pos.CENTER);
@@ -53,7 +49,7 @@ public abstract class AbstractSplashScreen {
     int initialStartScreenHeight = (int) (screenBounds.getHeight() * heightPortion);
 
     // Create Start Buttons
-    createButtonsFromFile(resourceString.buttonsPath(), stage, hb);
+    createButtonsFromFile(resourceString.buttonsPath(), stage, hb, language);
 
     //Create title
     //TODO: Resources bundle this
@@ -96,12 +92,12 @@ public abstract class AbstractSplashScreen {
     return new SequentialTransition(l, pt);
   }
 
-  protected void createButtonsFromFile(String filename, Stage primaryStage, HBox root) {
-    List<String[]> buttonData = readCSV(filename);
-    makeButton(buttonData, primaryStage, root);
+  protected void createButtonsFromFile(String filename, Stage primaryStage, HBox root, String language) {
+    List<String[]> buttonData = SplashUtils.readCommaSeparatedCSVLines(filename);
+    makeButton(buttonData, primaryStage, root, language);
   }
 
-  protected void makeButton(List<String[]> buttonData, Stage primaryStage, HBox root) {
+  protected void makeButton(List<String[]> buttonData, Stage primaryStage, HBox root, String language) {
 
     for (String[] data : buttonData) {
       ChangePageButton button = new ChangePageButton(data[0], data[1]);
@@ -109,23 +105,11 @@ public abstract class AbstractSplashScreen {
       String methodName = data[3];
       String[] parameters = new String[data.length - 4];
       System.arraycopy(data, 4, parameters, 0, parameters.length);
-      button.setOnAction(new ButtonActionHandler(className, methodName, primaryStage, parameters));
+      button.setOnAction(new ButtonActionHandler(className, methodName, primaryStage, language, parameters));
 
       root.getChildren().add(button);
     }
   }
 
-  private List<String[]> readCSV(String filename) {
-    List<String[]> data = new ArrayList<>();
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-      String line;
-      while ((line = br.readLine()) != null) {
-        String[] values = line.split(", ");
-        data.add(values);
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return data;
-  }
+
 }

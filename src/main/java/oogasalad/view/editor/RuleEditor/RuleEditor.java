@@ -23,7 +23,7 @@ public class RuleEditor extends HBox {
         BorderPane bp = new BorderPane();
         Label l = new Label(RuleResource.getString("editor_title"));
         l.getStyleClass().add("editor-label");
-        AllRuleDisplay rd = new AllRuleDisplay(config.getRules().getCopyOfProperties(), config.getRules().getCopyOfListProperties());
+        AllRuleDisplay rd = new AllRuleDisplay(config.getRules().getCopyOfProperties(), config.getRules().getCopyOfPropertyTypes());
         VBox vbox = new VBox();
         vbox.getChildren().addAll(l, rd);
         vbox.setSpacing(10);
