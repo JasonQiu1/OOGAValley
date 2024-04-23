@@ -1,6 +1,7 @@
 package oogasalad.model.gameobject;
 
 /**
+ * @deprecated
  * A record that encapsulates the image identifiers for various types of game objects within a
  * single tile or unit of game space. This record is designed to streamline the process of
  * retrieving and displaying the images associated with the different elements that can exist within
