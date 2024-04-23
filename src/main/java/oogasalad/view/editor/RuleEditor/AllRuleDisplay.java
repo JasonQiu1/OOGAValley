@@ -1,6 +1,8 @@
 package oogasalad.view.editor.RuleEditor;
 
+import javafx.scene.control.Alert;
 import javafx.scene.layout.VBox;
+import oogasalad.model.api.exception.InvalidRuleType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,11 @@ public class AllRuleDisplay extends VBox {
 
     public void save(BiConsumer<String, String> updateRule) {
         for(RuleDisplayStrategy rd : rules){
-            updateRule.accept(rd.getName(), rd.getValue());
+            try {
+                updateRule.accept(rd.getName(), rd.getValue());
+            } catch (InvalidRuleType e){
+                new ValidationErrorAlert(e.getRuleName(), e.getRuleValue(), e.getType());
+            }
         }
     }
 

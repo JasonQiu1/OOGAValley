@@ -7,6 +7,7 @@ import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.api.exception.InvalidRuleType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,6 +34,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
       LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
       throw new RuntimeException(e);
     }
+    DataValidation.validateProperties(rules);
     configurablesStore = new GameConfigurablesStore();
     initialState = new GameState();
   }
@@ -80,7 +82,6 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
 
   @Override
   public ReadOnlyProperties getRules() {
-    DataValidation.validateProperties(rules);
     return rules;
   }
 
@@ -90,7 +91,8 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
   @Override
-  public void updateRule(String rule, String newValue) {
+  public void updateRule(String rule, String newValue) throws InvalidRuleType {
+    DataValidation.validate(rule, newValue);
     rules.update(rule, newValue);
   }
 
