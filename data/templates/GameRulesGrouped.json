@@ -7,7 +7,7 @@
     "doEnergyRecovery": true,
     "doDeath": false,
     "doExhaustedEnergyCollapse": true,
-    "energyAmount": 20,
+    "energyAmount": "we",
     "energyRecoveryRate": 720,
     "exhaustedEnergyCollapseTimePenalty": 1440,
     "timeMultiplier": 1,

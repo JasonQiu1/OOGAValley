@@ -80,6 +80,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
 
   @Override
   public ReadOnlyProperties getRules() {
+    DataValidation.validateProperties(rules);
     return rules;
   }
 
