@@ -216,36 +216,36 @@ public class Tile implements Updatable, Interactable {
   }
 
   /**
-   * Retrieves the current collectable object on this tile.
-   * This method returns the collectable if there is one present on the tile; otherwise, it returns null.
+   * Retrieves the ID of the current collectable object on this tile.
+   * This method returns the ID of the collectable if one is present; otherwise, it returns null.
    * Collectables are game objects that players can interact with to collect items or trigger events.
    *
-   * @return The current Collectable on the tile, or null if no collectable is present.
+   * @return The ID of the current Collectable on the tile, or null if no collectable is present.
    */
-  public Collectable getCollectable() {
-    return collectable;
+  public String getCollectableId() {
+    return collectable != null ? collectable.getId() : null;
   }
 
   /**
-   * Retrieves the current structure object on this tile.
-   * This method returns the structure if there is one present on the tile; otherwise, it returns null.
+   * Retrieves the ID of the current structure object on this tile.
+   * This method returns the ID of the structure if one is present; otherwise, it returns null.
    * Structures are static game objects that often interact with items or affect game mechanics on their tile.
    *
-   * @return The current Structure on the tile, or null if no structure is present.
+   * @return The ID of the current Structure on the tile, or null if no structure is present.
    */
-  public Structure getStructure() {
-    return structure;
+  public String getStructureId() {
+    return structure != null ? structure.getId() : null;
   }
 
   /**
-   * Retrieves the current land object on this tile.
-   * This method returns the land if there is one present on the tile; otherwise, it returns null.
+   * Retrieves the ID of the current land object on this tile.
+   * This method returns the ID of the land if one is present; otherwise, it returns null.
    * Land objects define the basic properties of the tile such as what can be placed or grown on it.
    *
-   * @return The current Land on the tile, or null if no land is present.
+   * @return The ID of the current Land on the tile, or null if no land is present.
    */
-  public Land getLand() {
-    return land;
+  public String getLandId() {
+    return land != null ? land.getId() : null;
   }
 }
 
