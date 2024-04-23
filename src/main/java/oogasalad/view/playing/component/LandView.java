@@ -8,12 +8,14 @@ import oogasalad.model.api.ReadOnlyGameWorld;
  */
 public class LandView {
 
+
   private final GridPane landGridPane = new GridPane();
 
   //  private TopAnimationView topAnimationView;
   private final Pile[][] piles;
 
   private final ReadOnlyGameWorld readOnlyGameWorld;
+
 
 
   public LandView(ReadOnlyGameWorld readOnlyGameWorld) {

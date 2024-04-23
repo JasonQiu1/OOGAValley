@@ -215,8 +215,15 @@ public class Properties implements ReadOnlyProperties {
     return Map.copyOf(mapProperties);
   }
 
+  @Override
+  public Map<String, List<String>> getCopyOfPropertyTypes() {
+    return Map.copyOf(propertiesType);
+  }
+
+
   private final Map<String, String> properties;
   private final Map<String, List<String>> listProperties;
+  private final Map<String, List<String>> propertiesType;
   private final Map<String, Map<String, String>> mapProperties;
   private static final DataFactory<Properties> FACTORY = new DataFactory<>(Properties.class);
   private static final Logger LOG = LogManager.getLogger(Properties.class);
@@ -229,6 +236,7 @@ public class Properties implements ReadOnlyProperties {
     properties = new HashMap<>();
     listProperties = new HashMap<>();
     mapProperties = new HashMap<>();
+    propertiesType = new HashMap<>();
   }
 
   private void throwIfKeyNotFound(Map<String, ?> map, String key) throws KeyNotFoundException {

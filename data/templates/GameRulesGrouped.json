@@ -13,7 +13,9 @@
     "timeMultiplier": 1,
     "timeGoal": 525600
   },
-  "listProperties": {
+  "listProperties": {},
+  "mapProperties": {},
+  "propertiesType": {
     "String": [
       "configName",
       "author",
@@ -32,6 +34,5 @@
       "timeMultiplier",
       "timeGoal"
     ]
-  },
-  "mapProperties": {}
+  }
 }

@@ -141,8 +141,7 @@ public class GameState implements ReadOnlyGameState {
   }
 
   public GameTime getEditableGameTime() {
-    // TODO: IMPLEMENT
-    return gameTime;
+    return new GameTime(1,1,1);
   }
 
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);

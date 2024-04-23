@@ -1,8 +1,10 @@
 package oogasalad.model.gameObjectFactories;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.GameObjectFactoryInstantiationFailure;
@@ -11,6 +13,7 @@ import oogasalad.model.gameobject.GameObject;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
+import oogasalad.model.data.GameConfiguration;
 
 /**
  * Factory class for creating GameObject instances dynamically based on the type specified in
@@ -64,15 +67,24 @@ public class GameObjectFactory {
    */
   public GameObject createNewGameObject(String id, ReadOnlyGameTime creationTime,
       Map<String, Integer> additionalParams) {
-    ReadOnlyProperties properties = null;
-    // TODO: UNCOMMENT WHEN YOU MAKE STATIC
-        // GameConfiguration.getConfigurablesStore.getConfigurable(id);
+    ReadOnlyProperties properties = GameConfiguration
+        .getConfigurablesStore().getConfigurableProperties(id);
     String type = properties.getString("type").toLowerCase();
     GameObjectCreator creator = creators.get(type);
     if (creator == null) {
       throw new InvalidGameObjectType("Could not create a gameObject of type: " + type);
     }
     return creator.create(id, creationTime, additionalParams);
+  }
+
+  /**
+   *
+   * @return A list of the class names of all creators stored in the Factory.
+   */
+  public List<String> getListOfCreators() {
+    return creators.values().stream()
+        .map(creator -> creator.getClass().getSimpleName())
+        .collect(Collectors.toList());
   }
 }
 

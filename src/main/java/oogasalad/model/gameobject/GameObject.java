@@ -89,7 +89,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public void interact(Item item) {
     updateAndInteract(() -> {
       if (interactionValid(item)) {
-        return getProperties().getStringMap("interactTransformations").get(item.toString());
+        return getProperties().getStringMap("interactTransformations").get(item.getName());
       }
       return getId();
     });
@@ -117,7 +117,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public boolean interactionValid(Item item) {
-    return getProperties().getStringMap("interactTransformations").containsKey(item.toString());
+    return getProperties().getStringMap("interactTransformations").containsKey(item.getName());
   }
 
   /**

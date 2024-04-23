@@ -1,35 +1,25 @@
 package oogasalad.model.gameobject;
 
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.api.exception.IncorrectPropertyFileType;
+import oogasalad.model.data.GameConfiguration;
 
 public class Item implements ReadOnlyItem {
-  private String itemId;
+  private final String itemId;
 
-  @Override
-  public String toString() {
-    return itemId;
+  public Item (String itemId) {
+    this.itemId = itemId;
   }
 
   /**
    * Get the name/id of the item.
    *
-   * @returnthe name/id of the item.
+   * @return the name/id of the item.
    */
   @Override
   public String getName() {
-    // TODO: IMPLEMENT
-    return null;
-  }
-
-  /**
-   * Get the image file name that represents the item view. This file lives in `data/images`
-   *
-   * @return the image file name that represents the item view.
-   */
-  @Override
-  public String getImage() {
-    // TODO: IMPLEMENT
-    return null;
+    return itemId;
   }
 
   /**
@@ -39,7 +29,20 @@ public class Item implements ReadOnlyItem {
    */
   @Override
   public double getWorth() {
-    // TODO: IMPLEMENT
-    return 0;
+    return getItemProperties().getDouble("worth");
+  }
+
+  /**
+   * Get the image file name that represents the item view. This file lives in `data/images`
+   *
+   * @return the image file name that represents the item view.
+   */
+  @Override
+  public String getImagePath() {
+    return getItemProperties().getString("image");
+  }
+
+  private ReadOnlyProperties getItemProperties() {
+    return GameConfiguration.getConfigurablesStore().getConfigurableProperties(itemId);
   }
 }
