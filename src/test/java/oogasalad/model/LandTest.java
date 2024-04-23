@@ -6,35 +6,19 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
-import oogasalad.model.data.GameConfigurablesStore;
-import oogasalad.model.data.GameConfiguration;
-import oogasalad.model.data.Properties;
-import oogasalad.model.gameObjectFactories.GameObjectFactory;
-import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.Land;
+import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameplay.GameTime;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class LandTest {
-  private Land testingLand;
-  private Properties testingLandProperties;
-  private GameConfigurablesStore editableConfigurablesStore;
-  private Map<String, Properties> allEditableConfigurables;
+public class LandTest extends BaseGameObjectTest {
 
-  @BeforeEach
-  public void setUp() throws IOException {
-    String fileName = "testWorld1.json";
-    GameConfiguration gameConfiguration = GameConfiguration.of("TempGameConfiguration.json");
-    editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
-    allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
-    testingLandProperties = Properties.of("test/testingGrassLand.json");
-    editableConfigurablesStore.getAllEditableConfigurables().put("grass_land", testingLandProperties);
-    allEditableConfigurables.put("grass_land", testingLandProperties);
-    GameObjectFactory factory = new GameObjectFactory();
-    testingLand = (Land) factory.createNewGameObject("grass_land", new GameTime(1,1,1), new HashMap<>());
-    gameConfiguration.save(fileName);
+  private Land testingLand;
+
+  @Override
+  protected void initializeGameObjects() throws IOException {
+    addPropertiesToStore("grass_land", "test/testingGrassLand.json");
+    testingLand = (Land) getFactory().createNewGameObject("grass_land", new GameTime(1,1,1), new HashMap<>());
   }
 
   @Test
@@ -52,3 +36,4 @@ public class LandTest {
     assertEquals("wheat", testingLand.getStructureBasedOnItem(new Item("wheat_seed")));
   }
 }
+

@@ -19,36 +19,26 @@ import oogasalad.model.gameplay.GameTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class GameObjectTest {
+public class GameObjectTest extends BaseGameObjectTest {
 
   private GameObject testingStructure;
   private Properties testingStructureProperties;
   private Properties tilledGrassProperties;
   private Properties differentThingProperties;
-  private GameConfigurablesStore editableConfigurablesStore;
-  private Map<String, Properties> allEditableConfigurables;
 
-  @BeforeEach
-  public void setUp() throws IOException {
-    String fileName = "testWorld1.json";
-    GameConfiguration gameConfiguration = GameConfiguration.of("TempGameConfiguration.json");
-    editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
-    allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
+  @Override
+  protected void initializeGameObjects() throws IOException {
     testingStructureProperties = Properties.of("test/testingGameObject.json");
     tilledGrassProperties = Properties.of("test/testingTilledGrass.json");
     differentThingProperties = Properties.of("test/testingDifferentThing.json");
-    addPropertiestoConfigurableStore("grass_structure", testingStructureProperties);
-    addPropertiestoConfigurableStore("tilled_grass", tilledGrassProperties);
-    addPropertiestoConfigurableStore("differentThing", differentThingProperties);
-    GameObjectFactory factory = new GameObjectFactory();
-    testingStructure = factory.createNewGameObject("grass_structure", new GameTime(1,1,1), new HashMap<>());
-    gameConfiguration.save(fileName);
+
+    addPropertiesToStoreWithAlreadyCreatedProperties("grass_structure", testingStructureProperties);
+    addPropertiesToStoreWithAlreadyCreatedProperties("tilled_grass", tilledGrassProperties);
+    addPropertiesToStoreWithAlreadyCreatedProperties("differentThing", differentThingProperties);
+
+    testingStructure = getFactory().createNewGameObject("grass_structure", new GameTime(1,1,1), new HashMap<>());
   }
 
-  private void addPropertiestoConfigurableStore(String id, Properties properties) {
-    editableConfigurablesStore.getAllEditableConfigurables().put(id, properties);
-    allEditableConfigurables.put(id, properties);
-  }
   @Test
   public void testImagePathCorrect() {
     assertEquals("/img/grass.jpg", testingStructure.getImagePath());
@@ -115,13 +105,13 @@ public class GameObjectTest {
 
   @Test
   public void testingUpdateAfterUpdate() {
-    assertEquals("tilled_grass", testingStructure.getId());
+    assertEquals("grass_structure", testingStructure.getId());
     testingStructure.update(new GameTime(2,2,3));
     testingStructure.update(new GameTime(2,2,3));
     assertEquals("tilled_grass", testingStructure.getId());
-    testingStructure.update(new GameTime(2,2,5));
+    testingStructure.update(new GameTime(2,2,10));
     assertEquals("tilled_grass", testingStructure.getId());
-    testingStructure.update(new GameTime(2,2,5));
+    testingStructure.update(new GameTime(2,2,10));
     assertEquals("differentThing", testingStructure.getId());
   }
 
