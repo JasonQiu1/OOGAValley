@@ -7,15 +7,16 @@ import oogasalad.model.data.GameConfiguration;
 public class EditorScene extends Scene {
 
   private Stage stage;
+  private String myPrimaryLanguage;
   private EditorWindow ew;
 
-  public EditorScene(Stage primaryStage) {
+  public EditorScene(Stage primaryStage, String language) {
     super(new EditorWindow(new GameConfiguration()));
+    stage = primaryStage;
+    myPrimaryLanguage = language;
     ew = new EditorWindow(new GameConfiguration());
     super.setRoot(ew);
     super.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-    stage = primaryStage;
-
   }
 
   public void start() {
