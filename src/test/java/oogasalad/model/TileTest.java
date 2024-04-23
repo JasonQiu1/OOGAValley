@@ -152,18 +152,32 @@ public class TileTest extends BaseGameObjectTest {
     assertNull(tileToTest.getStructureId());
   }
 
-//  @Test
-//  public void structureDropsCollectableWhenCollectableIsNullAndStructureIsDestructable() {
-//    testingStructureProperties.update("destructable","true");
-//    tileToTest.setCollectable(null);
-//
-//  }
+  @Test
+  public void structureDropsCollectableWhenCollectableIsNullAndStructureIsDestructable() {
+    testingStructureProperties.update("destructable","true");
+    tileToTest.setCollectable(null);
+    tileToTest.interact(new Item("validItem"));
+    Map<String, Integer> collectableItems = new HashMap<>();
+    collectableItems.put("seed", 2);
+    tileToTest.interact(new Item("validItem"));
+    Map<String, Integer> itemReturns = tileToTest.itemReturns();
+    assertEquals(collectableItems, itemReturns);
+    assertNull(tileToTest.getCollectableId());
+  }
+
   @Test
   public void structurePlantedWhenValidSeedIsPutOnLandAndStructureIsNull() throws IOException {
     addPropertiesToStore("wheat", "test/testingWheat.json");
     tileToTest.setStructure(null);
     tileToTest.interact(new Item("wheat_seed"));
     assertEquals("wheat", tileToTest.getStructureId());
+  }
+
+  @Test
+  public void structureNotPlantedWhenValidSeedIsPutOnLandAndStructureIsNotNull() throws IOException {
+    addPropertiesToStore("wheat", "test/testingWheat.json");
+    tileToTest.interact(new Item("wheat_seed"));
+    assertEquals(testingStructureProperties.getString("name"), tileToTest.getStructureId());
   }
 }
 

@@ -92,7 +92,7 @@ public class Tile implements Updatable, Interactable {
    * @param item The item interacting with the structure.
    */
   private void handleStructureInteraction(Item item) {
-    if (collectable == null && structure.isHarvestable()) {
+    if (collectable == null && structure.isHarvestable() && structure.interactionValid(item)) {
       collectable =
           (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
              structure.getItemsOnDestruction());
