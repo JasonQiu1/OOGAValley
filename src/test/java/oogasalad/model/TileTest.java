@@ -1,21 +1,27 @@
 package oogasalad.model;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import oogasalad.model.data.Properties;
+import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.Tile;
 import oogasalad.model.gameobject.Collectable;
 import oogasalad.model.gameobject.Structure;
 import oogasalad.model.gameobject.Land;
-import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameplay.GameTime;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class TileTest extends BaseGameObjectTest {
 
@@ -54,6 +60,96 @@ public class TileTest extends BaseGameObjectTest {
     tileToTest.setCollectable(tileCollectable);
     tileToTest.setLand(tileLand);
     tileToTest.setStructure(tileStructure);
+  }
+
+  @Test
+  public void testCorrectImageRetrieval() {
+    List<String> images = new ArrayList<>();
+    images.add(tileLand.getImagePath());
+    images.add(tileStructure.getImagePath());
+    images.add(tileCollectable.getImagePath());
+    assertEquals(images.toString(), tileToTest.getImages().toString());
+  }
+
+  @Test
+  public void testInteractionWillOnlyAffectCollectableIfCollectableIsNotNull() {
+    tileToTest.interact(new Item("validItem"));
+    tileToTest.update(new GameTime(1,1,1));
+    tileToTest.update(new GameTime(1,1,1));
+    assertEquals(testingStructureProperties.getString("name"), tileToTest.getStructureId());
+    assertEquals(testingLandProperties.getString("name"), tileToTest.getLandId());
+  }
+
+  @Test
+  public void testInteractionAffectsStructureWhenCollectableDoesNotInteractWithItem()
+      throws IOException {
+    addPropertiesToStore("wheat", "test/testingWheat.json");
+    tileToTest.interact(new Item("hoe"));
+    tileToTest.update(new GameTime(1,1,1));
+    assertEquals("wheat", tileToTest.getStructureId());
+    assertEquals(testingLandProperties.getString("name"), tileToTest.getLandId());
+  }
+  @Test
+  public void itemsReturnsShouldReturnNullWhenCollectableNotReadyToCollect() {
+    assertNull(tileToTest.itemReturns());
+  }
+
+  @Test
+  public void itemReturnsShouldBeWhatIsInCollectableAfterValidCollectableInteractionCollectableShouldBecomeNullAfter() {
+    tileToTest.interact(new Item("validItem"));
+    Map<String, Integer> collectableItems = new HashMap<>();
+    collectableItems.put("axe", 2);
+    Map<String, Integer> itemReturns = tileToTest.itemReturns();
+    assertNotNull(itemReturns);
+    assertEquals(collectableItems, itemReturns);
+    assertNull(tileToTest.getCollectableId());
+  }
+  @Test
+  public void thereShouldNotBeAnErrorDespiteAllGameObjectsBeingNull() {
+      tileToTest.setStructure(null);
+      tileToTest.setCollectable(null);
+      tileToTest.setLand(null);
+      try {
+        tileToTest.update(new GameTime(1,1,1));
+        tileToTest.interact(new Item("validItem"));
+        assertTrue(true, "No exceptions were thrown when all game objects are null.");
+      } catch (Exception e) {
+        fail("Should not have thrown any exception, but threw " + e.getClass().getSimpleName());
+    }
+  }
+
+  @Test
+  public void invalidItemShouldNotInteractWithGameObjects() {
+    Item invalid = new Item("invalidItem");
+    tileToTest.interact(invalid);
+    tileToTest.update(new GameTime(1,1,1));
+    assertEquals(testingLandProperties.getString("name"), tileToTest.getLandId());
+    assertEquals(testingStructureProperties.getString("name"), tileToTest.getStructureId());
+    assertEquals(testingCollectableProperties.getString("name"), tileToTest.getCollectableId());
+  }
+
+  @Test
+  public void validInteractionValidReturnsTrue() {
+    assertTrue(tileToTest.interactionValid(new Item("validItem")));
+    assertTrue(tileToTest.interactionValid(new Item("hoe")));
+  }
+
+  @Test
+  public void invalidItemInteractionValidReturnsFalse() {
+    assertFalse(tileToTest.interactionValid(new Item("invalidItem")));
+  }
+
+  @Test
+  public void expirationWillLeadToGameObjectsBecomingNullIfExpirable() {
+    testingLandProperties.update("expirable", "false");
+    testingStructureProperties.update("expirable","true");
+    testingStructureProperties.update("expireTime", "1");
+    testingCollectableProperties.update("expirable", "false");
+    tileToTest.update(new GameTime(2,1,1));
+    tileToTest.update(new GameTime(2,1,1));
+    assertNotNull(tileToTest.getLandId());
+    assertNotNull(tileToTest.getCollectableId());
+    assertNull(tileToTest.getStructureId());
   }
 }
 
