@@ -1,6 +1,7 @@
 package oogasalad.model.gameobject;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -213,6 +214,18 @@ public class Tile implements Updatable, Interactable {
    */
   public void setLand(Land land) {
     this.land = land;
+  }
+
+  public Collectable getCollectable() {
+    return collectable;
+  }
+
+  public Structure getStructure() {
+    return structure;
+  }
+
+  public Land getLand() {
+    return land;
   }
 }
 
