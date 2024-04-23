@@ -237,6 +237,7 @@ public class Properties implements ReadOnlyProperties {
     listProperties = new HashMap<>();
     mapProperties = new HashMap<>();
     propertiesType = new HashMap<>();
+    DataValidation.validateProperties(this);
   }
 
   private void throwIfKeyNotFound(Map<String, ?> map, String key) throws KeyNotFoundException {
