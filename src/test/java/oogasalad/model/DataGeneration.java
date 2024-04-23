@@ -4,19 +4,11 @@ import java.io.IOException;
 import java.util.Map;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
-<<<<<<< HEAD
-=======
 import oogasalad.model.data.GameState;
 import oogasalad.model.data.Properties;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Land;
-import oogasalad.model.gameplay.Game;
 import oogasalad.model.gameplay.GameTime;
->>>>>>> main
-import oogasalad.model.data.GameState;
-import oogasalad.model.data.Properties;
-import oogasalad.model.gameobject.GameObject;
-import oogasalad.model.gameobject.Land;
 import oogasalad.model.gameplay.GameWorld;
 import org.junit.jupiter.api.Test;
 
@@ -36,12 +28,9 @@ public class DataGeneration {
     Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
     Properties property = new Properties();
     property.getProperties().put("image", "/img/grass.jpg");
-<<<<<<< HEAD
-=======
     property.getProperties().put("updatable", "true");
     property.getProperties().put("updateTime", "10");
     property.getProperties().put("expirable", "false");
->>>>>>> main
     allEditableConfigurables.put(id, property);
     GameState gameState = new GameState();
     GameWorld gameWorld = gameState.getEditableGameWorld();
@@ -52,10 +41,8 @@ public class DataGeneration {
         gameWorld.setTileGameObject(land, i, j, 0);
       }
     }
-<<<<<<< HEAD
-=======
-    gameWorld.update(new GameTime(1,1,1));
->>>>>>> main
+
+    gameWorld.update(new GameTime(1, 1, 1));
     editableConfigurablesStore.save(fileName);
     gameState.save(fileName);
   }
@@ -64,10 +51,6 @@ public class DataGeneration {
   void testGeneratedWorld() {
 //    the code for the previous test
     String fileName = "testWorld1.json";
-<<<<<<< HEAD
-    
-=======
->>>>>>> main
   }
 
 }
