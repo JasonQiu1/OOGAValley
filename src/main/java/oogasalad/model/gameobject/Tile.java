@@ -1,7 +1,6 @@
 package oogasalad.model.gameobject;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -216,14 +215,35 @@ public class Tile implements Updatable, Interactable {
     this.land = land;
   }
 
+  /**
+   * Retrieves the current collectable object on this tile.
+   * This method returns the collectable if there is one present on the tile; otherwise, it returns null.
+   * Collectables are game objects that players can interact with to collect items or trigger events.
+   *
+   * @return The current Collectable on the tile, or null if no collectable is present.
+   */
   public Collectable getCollectable() {
     return collectable;
   }
 
+  /**
+   * Retrieves the current structure object on this tile.
+   * This method returns the structure if there is one present on the tile; otherwise, it returns null.
+   * Structures are static game objects that often interact with items or affect game mechanics on their tile.
+   *
+   * @return The current Structure on the tile, or null if no structure is present.
+   */
   public Structure getStructure() {
     return structure;
   }
 
+  /**
+   * Retrieves the current land object on this tile.
+   * This method returns the land if there is one present on the tile; otherwise, it returns null.
+   * Land objects define the basic properties of the tile such as what can be placed or grown on it.
+   *
+   * @return The current Land on the tile, or null if no land is present.
+   */
   public Land getLand() {
     return land;
   }
