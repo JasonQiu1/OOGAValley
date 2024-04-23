@@ -40,6 +40,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
     this.height = height;
     this.width = width;
     this.depth = depth;
+    allTiles = new HashMap<>();
     initialize();
   }
 
@@ -48,17 +49,19 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * specified dimensions.
    */
   private void initialize() {
-    allTiles = new HashMap<>();
+    Map<CoordinateOfGameObjectRecord, Tile> newTiles = new HashMap<>();
     for (int z = 0; z < depth; z++) {
       for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
           CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
-          Tile tile = new Tile();
-          allTiles.putIfAbsent(coord, tile);
+          Tile tile = allTiles.getOrDefault(coord, new Tile());
+          newTiles.putIfAbsent(coord, tile);
         }
       }
     }
+    allTiles = newTiles;
   }
+
 
   /**
    * Updates the state of each tile in the game world based on the current game time.
@@ -93,7 +96,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * tile, if available. The list may be empty if none of the components have an associated image.
    */
   @Override
-
   public List<String> getImagePath(int width, int height, int depth) {
     return allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).getImages();
   }
@@ -170,6 +172,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
       try {
         Method setMethod = Tile.class.getMethod(methodName, gameObjectClass);
         setMethod.invoke(tile, gameObject);
+        allTiles.put(coord, tile);
       } catch (Exception e) {
         throw new UnableToSetGameObject("Error Setting GameObject");
       }

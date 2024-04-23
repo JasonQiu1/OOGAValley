@@ -270,3 +270,14 @@
   -fx-max-height: 50px;
 }
 
+#help-button {
+  -fx-background-color: transparent;
+  -fx-background-image: url('img/playing/help.png');
+  -fx-background-size: 30px 30px;
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+  -fx-min-width: 30px;
+  -fx-min-height: 30px;
+  -fx-max-width: 30px;
+  -fx-max-height: 30px;
+}

@@ -21,6 +21,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   private boolean changePropertiesOnNextIteration;
   private String id;
   private String nextId;
+
+  private String imagePath;
+
   private ReadOnlyGameTime lastUpdateGameTime;
 
   /**
@@ -70,7 +73,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     updateAndInteract(() -> {
       if (getProperties().getBoolean("updatable") &&
           creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
-          "updateTime")) {
+              "updateTime")) {
         return getProperties().getString("updateTransformation");
       }
       return getId();
@@ -87,7 +90,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public void interact(Item item) {
     updateAndInteract(() -> {
       if (interactionValid(item)) {
-        return getProperties().getStringMap("interactTransformations").get(item.toString());
+        return getProperties().getStringMap("interactTransformations").get(item.getName());
       }
       return getId();
     });
@@ -115,7 +118,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public boolean interactionValid(Item item) {
-    return getProperties().getStringMap("interactTransformations").containsKey(item.toString());
+    return getProperties().getStringMap("interactTransformations").containsKey(item.getName());
   }
 
   /**
@@ -162,7 +165,8 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     if (changePropertiesOnNextIteration) {
       setProperties(GameConfiguration.getConfigurablesStore().getConfigurableProperties(nextId));
       return true;
-    } return false;
+    }
+    return false;
   }
 
   /**

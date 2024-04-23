@@ -2,6 +2,7 @@ package oogasalad.view.playing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -18,10 +19,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.gameplay.GameTime;
-import oogasalad.model.gameplay.PlantModel;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
+import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;
@@ -30,6 +32,9 @@ import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
+import oogasalad.view.start.StartScreen;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This class is the view for the playing page. It displays the land grid, tools, and items. It also
@@ -39,10 +44,11 @@ import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
 
 public class PlayingPageView {
 
-  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
-  private String myLanguage = "EnglishDisplayText";
-  private ResourceBundle displayTextResource;
 
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
+  private final String myLanguage = "EnglishDisplayText";
+  private final ResourceBundle displayTextResource = ResourceBundle.getBundle(
+      DEFAULT_RESOURCE_PACKAGE + myLanguage);
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -65,19 +71,22 @@ public class PlayingPageView {
       landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
+
   private final Label timeLabel = new Label();
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
   private final GameTime gameTime = new GameTime(1, 8, 0);
-  private final String selectedTools = "plant";
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
   private final Bag bag = new Bag();
+
+  private Button helpButton;
   private LandView landView;
   private TopAnimationView topAnimationView;
-  private Money money = new Money(100);
+  private final Money money = new Money(100);
   private final Shop shop = new Shop(money);
-
   private GameFactory gameFactory = new GameFactory();
+
+  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
 
   private GameInterface game;
 
@@ -88,8 +97,9 @@ public class PlayingPageView {
   }
 
   public void start() {
+    LOG.info("initializing game");
     game = gameFactory.createGame();
-    displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
+    LOG.info("finish loading game model");
     initModel();
     StackPane root = new StackPane();
     root.getStyleClass().add("playing-root");
@@ -103,64 +113,56 @@ public class PlayingPageView {
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
-    scene.setOnMouseClicked(event -> {
-    });
     stage.setTitle(displayTextResource.getString("play_title"));
-    ;
     setUpdate();
     stage.setScene(scene);
     stage.show();
   }
 
   private void initModel() {
-
-    BagItem bagItem1 = new BagItem("img/tool.png", bottomCellHeight, bottomCellWidth, selectedItem,
-        2);
-    BagItem bagItem2 = new BagItem("img/panda.png", bottomCellHeight, bottomCellWidth, selectedItem,
-        2);
     List<BagItem> bagItems = new ArrayList<>();
-    bagItems.add(bagItem1);
-    bagItems.add(bagItem2);
-
+    Map<ReadOnlyItem, Integer> items = game.getGameState().getBag().getItems();
+    for (Map.Entry<ReadOnlyItem, Integer> item : items.entrySet()) {
+      bagItems.add(new BagItem(item.getKey().getImagePath(), bottomCellWidth, bottomCellWidth,
+          selectedItem, item.getValue()));
+    }
     bagView = new BagView(bagItems, 5, 1, bag);
-
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
-
-    List<PlantModel> plantModelList = new ArrayList<>();
-    landView = new LandView(plantModelList, gameTime, selectedItem, bagView, topAnimationView);
+    landView = new LandView(game.getGameState().getGameWorld());
   }
 
   private void setUpdate() {
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
-      gameTime.update();
+      game.update();
+      landView.update();
       updateTimeLabel();
-      landView.update(gameTime);
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
   }
 
   private void updateTimeLabel() {
-    timeLabel.setText(displayTextResource.getString("time") + " " + gameTime);
+    timeLabel.setText(
+        displayTextResource.getString("time") + " " + game.getGameState().getGameTime());
   }
-
 
   private void setupTop(BorderPane root) {
     HBox topBox = new HBox();
     topBox.setPrefSize(topWidth, topHeight);
     topBox.getStyleClass().add("top-box");
+    createHelpButton();
     Button btnOpenShop = new Button();
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
     money.addObserver(currentMoneyHbox, money.getMoney());
-    topBox.getChildren().addAll(timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
+    topBox.getChildren()
+        .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
     root.setTop(topBox);
   }
 
   private void setupCenter(BorderPane root) {
-
     root.setCenter(landView.getGridView());
   }
 
@@ -192,5 +194,15 @@ public class PlayingPageView {
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);
     stage.show();
+  }
+
+  private void createHelpButton() {
+    helpButton = new Button();
+    helpButton.setId("help-button");
+    helpButton.setOnAction(e -> {
+      Stage chatStage = new Stage();
+      Chat chatApp = new Chat(chatStage);
+      chatApp.start();
+    });
   }
 }

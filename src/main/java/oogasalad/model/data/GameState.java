@@ -12,6 +12,7 @@ import oogasalad.model.gameplay.Bag;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.GameWorld;
 import oogasalad.model.gameplay.Shop;
+import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -55,7 +56,9 @@ public class GameState implements ReadOnlyGameState {
    * Initializes a default GameState.
    */
   public GameState() {
-
+    this.bag = new Bag();
+    this.gameWorld = new GameWorld(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
+    this.gameTime = new GameTime(1, 8, 0);
   }
 
   /**
@@ -85,7 +88,7 @@ public class GameState implements ReadOnlyGameState {
   @Override
   public ReadOnlyGameTime getGameTime() {
     // TODO: IMPLEMENT
-    return null;
+    return gameTime;
   }
 
   /**
@@ -129,19 +132,19 @@ public class GameState implements ReadOnlyGameState {
   @Override
   public ReadOnlyBag getBag() {
 
-    return null;
+    return bag;
   }
 
   public GameWorld getEditableGameWorld() {
     // TODO: IMPLEMENT
-    return null;
+    return gameWorld;
   }
 
   public GameTime getEditableGameTime() {
-    // TODO: IMPLEMENT
-    return null;
+    return new GameTime(1,1,1);
   }
 
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
   private static final Logger LOG = LogManager.getLogger(GameState.class);
+
 }
