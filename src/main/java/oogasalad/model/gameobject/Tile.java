@@ -179,7 +179,7 @@ public class Tile implements Updatable, Interactable {
    *         if available. The list may be empty if none of the components have an associated image.
    */
   public List<String> getImages() {
-    List<GameObject> gameObjects = Arrays.asList(collectable, structure, land);
+    List<GameObject> gameObjects = Arrays.asList(land, structure, collectable);
     return gameObjects.stream()
         .filter(obj -> obj != null && obj.getImagePath() != null)
         .map(GameObject::getImagePath)
