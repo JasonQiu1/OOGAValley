@@ -15,11 +15,6 @@ import oogasalad.view.playing.PlayingPageView;
  */
 public class Pile extends StackPane {
 
-  private int x;
-  private int y;
-  private Land land;
-  private PlantView plantView;
-
   private List<String> landImagePath = new ArrayList<>();
 
   public Pile() {
@@ -34,26 +29,12 @@ public class Pile extends StackPane {
     }
   }
 
-  public Land getLand() {
-    return land;
-  }
-
-  public PlantView getPlantView() {
-    return plantView;
-  }
-
-  public void setPlantView(PlantView plantView) {
-    this.plantView = plantView;
-    this.getChildren().add(1, plantView.getView());
-  }
-
   /**
    * Update the pile by the list image path
    *
-   * @param listImagePath
+   * @param listImagePath the list of image that comes from the model
    */
   public void update(List<String> listImagePath) {
-
     for (int i = 0; i < listImagePath.size(); i++) {
       if (landImagePath.get(i) == null) {
         landImagePath.set(i, listImagePath.get(i));
@@ -63,11 +44,15 @@ public class Pile extends StackPane {
         updateImageView(i, listImagePath.get(i));
       }
     }
-    System.out.println(landImagePath);
   }
 
+  /**
+   * Update the image view at the pile given index and the image url
+   *
+   * @param index 0 - land, 1 - structure, 2 - collectable
+   * @param url   the image url
+   */
   public void updateImageView(int index, String url) {
-    System.out.println(index);
     double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
     double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
     ImageView imageView = new ImageView();
