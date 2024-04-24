@@ -106,15 +106,15 @@ public class TileTest extends BaseGameObjectTest {
   }
   @Test
   public void thereShouldNotBeAnErrorDespiteAllGameObjectsBeingNull() {
-      tileToTest.setStructure(null);
-      tileToTest.setCollectable(null);
-      tileToTest.setLand(null);
-      try {
-        tileToTest.update(new GameTime(1,1,1));
-        tileToTest.interact(new Item("validItem"));
-        assertTrue(true, "No exceptions were thrown when all game objects are null.");
-      } catch (Exception e) {
-        fail("Should not have thrown any exception, but threw " + e.getClass().getSimpleName());
+    tileToTest.setStructure(null);
+    tileToTest.setCollectable(null);
+    tileToTest.setLand(null);
+    try {
+      tileToTest.update(new GameTime(1,1,1));
+      tileToTest.interact(new Item("validItem"));
+      assertTrue(true, "No exceptions were thrown when all game objects are null.");
+    } catch (Exception e) {
+      fail("Should not have thrown any exception, but threw " + e.getClass().getSimpleName());
     }
   }
 
