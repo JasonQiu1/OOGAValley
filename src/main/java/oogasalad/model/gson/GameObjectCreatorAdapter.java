@@ -7,38 +7,23 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import oogasalad.model.gameObjectFactories.GameObjectCreator;
 
+/**
+ * [IGNORE THIS FILE]. Adapter class for gson to save files.
+ */
 public class GameObjectCreatorAdapter extends TypeAdapter<GameObjectCreator> {
 
   private Gson gson = new Gson();
 
+  private InterfaceAdapter<GameObjectCreator> interfaceAdapter = new InterfaceAdapter<>();
+
+
   @Override
   public void write(JsonWriter out, GameObjectCreator value) throws IOException {
-    out.beginObject();
-    out.name("type").value(value.getClass().getName());
-    out.name("data").value(gson.toJson(value));
-    out.endObject();
+    interfaceAdapter.write(out, value, gson);
   }
 
   @Override
   public GameObjectCreator read(JsonReader in) throws IOException {
-    in.beginObject();
-    GameObjectCreator gameObjectCreator = null;
-    while (in.hasNext()) {
-      String name = in.nextName();
-      if ("type".equals(name)) {
-        String className = in.nextString();
-        try {
-          Class<?> clazz = Class.forName(className);
-          String data = in.nextName();
-          gameObjectCreator = (GameObjectCreator) gson.fromJson(in.nextString(), clazz);
-        } catch (ClassNotFoundException e) {
-          e.printStackTrace();
-        }
-      } else {
-        in.skipValue();
-      }
-    }
-    in.endObject();
-    return gameObjectCreator;
+    return interfaceAdapter.read(in, gson);
   }
 }

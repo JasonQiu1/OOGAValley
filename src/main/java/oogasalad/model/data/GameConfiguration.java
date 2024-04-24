@@ -34,7 +34,6 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
       throw new RuntimeException(e);
     }
     configurablesStore = new GameConfigurablesStore();
-    initialState = new GameState();
   }
 
   /**

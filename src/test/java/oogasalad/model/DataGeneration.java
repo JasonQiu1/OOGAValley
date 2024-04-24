@@ -1,14 +1,16 @@
 package oogasalad.model;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+import oogasalad.model.api.GameFactory;
+import oogasalad.model.api.GameInterface;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.GameState;
 import oogasalad.model.data.Properties;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Land;
-import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.GameWorld;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +25,9 @@ public class DataGeneration {
     String fileName = "testWorld1.json";
 //    the id for the grass land
     String id = "grass_land";
-    GameConfiguration gameConfiguration = GameConfiguration.of("TempGameConfiguration.json");
+
+    String configName = "TempGameConfiguration.json";
+    GameConfiguration gameConfiguration = GameConfiguration.of(configName);
     GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
     Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
     Properties property = new Properties();
@@ -41,16 +45,21 @@ public class DataGeneration {
         gameWorld.setTileGameObject(land, i, j, 0);
       }
     }
-
-    gameWorld.update(new GameTime(1, 1, 1));
-    editableConfigurablesStore.save(fileName);
+//    gameWorld.update(new GameTime(1, 1, 1));
+//    editableConfigurablesStore.save(fileName);
+    gameConfiguration.save(fileName);
     gameState.save(fileName);
   }
 
   @Test
-  void testGeneratedWorld() {
+  void testGeneratedWorld() throws IOException {
 //    the code for the previous test
     String fileName = "testWorld1.json";
+    GameConfiguration gameConfiguration = GameConfiguration.of("testWorld1.json");
+    GameFactory gameFactory = new GameFactory();
+    GameInterface game = gameFactory.createGame(fileName, fileName);
+    List<String> imagePath = game.getGameState().getGameWorld().getImagePath(1, 2, 0);
+    System.out.println(imagePath);
   }
 
 }
