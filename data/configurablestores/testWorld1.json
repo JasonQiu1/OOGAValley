@@ -1,0 +1,15 @@
+{
+  "configurables": {
+    "grass_land": {
+      "properties": {
+        "image": "/img/grass.jpg",
+        "expirable": "false",
+        "updatable": "false",
+        "updateTime": "10"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    }
+  }
+}
