@@ -79,7 +79,7 @@ public class PopUpStackPane extends StackPane {
 
   private void createMessageLabel() {
     messageLabel = new Label(resourceBundle.getString("are_you_sure"));
-    messageLabel.getStyleClass().add("pop-up-label");
+    messageLabel.setId("pop-up-label");
   }
 
   private void readAndCreateButtonsFromFile(String filePath) {
