@@ -33,7 +33,8 @@ public class TopHbox extends HBox {
     setAlignment(Pos.CENTER_LEFT);
     currentMoneyHbox = new CurrentMoneyHbox();
     progressBarHbox = new ProgressBarHbox(shop);
-    backButton = new BackButton();
+    backButton = new Button();
+    backButton.getStyleClass().add("backButton");
     getChildren().addAll(progressBarHbox, currentMoneyHbox, backButton);
 
     setMargin(this, new Insets(10));

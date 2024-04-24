@@ -10,14 +10,13 @@ import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.playing.component.Money;
 import oogasalad.view.shopping.ShoppingView;
-import oogasalad.view.shopping.components.top.BackButton;
 import org.junit.jupiter.api.Test;
 import util.DukeApplicationTest;
 
 public class ShoppingPageTest extends DukeApplicationTest {
 
   private Stage stage;
-  private BackButton backButton;
+  private Button backButton;
   private ShoppingView shoppingView;
   private Scene scene;
   private Scene prev_scene;
@@ -35,7 +34,7 @@ public class ShoppingPageTest extends DukeApplicationTest {
     this.stage.setScene(scene);
     this.stage.getScene().getStylesheets().add("styles.css");
     this.stage.show();
-    this.backButton = (BackButton) lookup("#backButton").queryButton();
+    this.backButton = lookup("#backButton").queryButton();
   }
 
   @Test
