@@ -6,6 +6,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.Instant;
 
+/**
+ * [IGNORE THIS FILE]. Adapter class for gson to save files.
+ */
 public class InstantAdapter extends TypeAdapter<Instant> {
 
   @Override

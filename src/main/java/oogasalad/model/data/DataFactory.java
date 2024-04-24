@@ -11,10 +11,12 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.time.Instant;
+import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.gameObjectFactories.GameObjectCreator;
 import oogasalad.model.gson.GameObjectCreatorAdapter;
 import oogasalad.model.gson.InstantAdapter;
+import oogasalad.model.gson.ReadOnlyGameTimeAdapter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -82,10 +84,12 @@ public class DataFactory<T> {
   private final Class<T> clazz;
   private static final Gson GSON =
       new GsonBuilder().setPrettyPrinting().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
-          .serializeNulls().enableComplexMapKeySerialization().registerTypeAdapter(
-              GameObjectCreator.class, new GameObjectCreatorAdapter())
+          .serializeNulls().enableComplexMapKeySerialization()
+          // TODO: this part add all classes that need to be initialized
           .registerTypeAdapter(Instant.class, new InstantAdapter())
-          // LENIENT MAY INTRODUCE BUGS, BUT ALSO MAKES MANUALLY EDITING DATA FILES MORE FORGIVING
+          .registerTypeAdapter(GameObjectCreator.class, new GameObjectCreatorAdapter())
+          .registerTypeAdapter(ReadOnlyGameTime.class, new ReadOnlyGameTimeAdapter())
+//           LENIENT MAY INTRODUCE BUGS, BUT ALSO MAKES MANUALLY EDITING DATA FILES MORE FORGIVING
           .setLenient().create();
   // TODO: Maybe externalize this to a config? I can't see this directory ever changing though.
   public static final String DATA_DIRECTORY = "data";

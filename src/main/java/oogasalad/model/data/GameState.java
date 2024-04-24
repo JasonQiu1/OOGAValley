@@ -59,6 +59,7 @@ public class GameState implements ReadOnlyGameState {
     this.bag = new Bag();
     this.gameWorld = new GameWorld(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
     this.gameTime = new GameTime(1, 8, 0);
+//    this.bag = new Bag();
   }
 
   /**

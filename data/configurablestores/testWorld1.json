@@ -1,29 +1,15 @@
 {
   "configurables": {
-    "grass_structure": {
+    "grass_land": {
       "properties": {
-        "name": "grass_structure",
-        "type": "Structure",
         "image": "/img/grass.jpg",
-        "updatable": "true",
-        "updateTime": "10",
-        "updateTransformation": "tilled_grass",
         "expirable": "false",
-        "expireTime": "120",
-        "expireTransformation": "",
-        "destructable": "true"
+        "updatable": "false",
+        "updateTime": "10"
       },
       "listProperties": {},
       "propertiesType": {},
-      "mapProperties": {
-        "interactTransformations": {
-          "validItem": "tilled_grass"
-        },
-        "interactDropMultipliers": {},
-        "dropsOnDestruction": {
-          "seed": "2"
-        }
-      }
+      "mapProperties": {}
     }
   }
 }

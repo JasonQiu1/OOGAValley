@@ -1,8 +1,8 @@
 package oogasalad.view.playing;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
-import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
@@ -99,8 +98,13 @@ public class PlayingPageView {
   }
 
   public void start() {
+    String fileName = "testWorld1.json";
     LOG.info("initializing game");
-    game = gameFactory.createGame();
+    try {
+      game = gameFactory.createGame(fileName, fileName);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
     LOG.info("finish loading game model");
     initModel();
     StackPane root = new StackPane();
@@ -123,11 +127,11 @@ public class PlayingPageView {
 
   private void initModel() {
     List<BagItem> bagItems = new ArrayList<>();
-    Map<ReadOnlyItem, Integer> items = game.getGameState().getBag().getItems();
-    for (Map.Entry<ReadOnlyItem, Integer> item : items.entrySet()) {
-      bagItems.add(new BagItem(item.getKey().getImagePath(), bottomCellWidth, bottomCellWidth,
-          selectedItem, item.getValue()));
-    }
+//    Map<ReadOnlyItem, Integer> items = game.getGameState().getBag().getItems();
+//    for (Map.Entry<ReadOnlyItem, Integer> item : items.entrySet()) {
+//      bagItems.add(new BagItem(item.getKey().getImagePath(), bottomCellWidth, bottomCellWidth,
+//          selectedItem, item.getValue()));
+//    }
     bagView = new BagView(bagItems, 5, 1, bag);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
     landView = new LandView(game.getGameState().getGameWorld());
