@@ -1,22 +1,14 @@
 package oogasalad.view.start;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.File;
-import javafx.scene.Node;
-import javafx.scene.layout.StackPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import oogasalad.view.start.ChangePageButton;
-import oogasalad.view.start.FileChooserContainer;
-import oogasalad.view.start.PlayModeSplashScreen;
-import oogasalad.view.start.StartScreen;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.DukeApplicationTest;
 
 public class PlayModeSplashScreenTest extends DukeApplicationTest {
+
   private Stage stage;
   private PlayModeSplashScreen playModeSplashScreen;
   private ChangePageButton newGame;
@@ -39,21 +31,9 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
     sleep(500);
     clickOn(newGame);
     sleep(500);
-    assertTrue(stage.getTitle().equals("Playing Mode"));
+    assertTrue(stage.getTitle().equals("Play Mode"));
   }
 
-//  @Test
-//  @DisplayName("Test Load Button")
-//  public void openLoadFileChooser() {
-//    sleep(3000);
-//    clickOn(loadGame);
-//    FileChooserContainer fileChooserContainer = (FileChooserContainer) lookup("Load Window").query();
-//    sleep(3000);
-//
-//
-//
-//    assertTrue(fileChooserContainer.getFileChooserTitle().equals("Load Window"));
-//  }
 
   @Test
   @DisplayName("Test Back Button")
