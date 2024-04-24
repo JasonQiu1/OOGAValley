@@ -1,11 +1,13 @@
 package oogasalad.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Set;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
@@ -29,10 +31,20 @@ class GameConfigurationTest {
   }
 
   @Test
+  void checkDefaultConfigurablesStore() throws IOException {
+    GameConfiguration defaultGame = new GameConfiguration();
+    assertNotEquals(GameConfiguration.getConfigurablesStore().getAllConfigurables().size(), 0);
+    assertEquals(GameConfiguration.getConfigurablesStore().getAllConfigurables().keySet(),
+        Set.of("Dirt", "Wheat"));
+  }
+
+  @Test
   void addItemToGameStore() throws IOException {
     GameConfiguration gameConfiguration = GameConfiguration.of("TempGameConfiguration.json");
-    GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
-    Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
+    GameConfigurablesStore editableConfigurablesStore =
+        GameConfiguration.getEditableConfigurablesStore();
+    Map<String, Properties> allEditableConfigurables =
+        editableConfigurablesStore.getAllEditableConfigurables();
     Properties properties = new Properties();
     System.out.println(allEditableConfigurables);
     properties.getProperties().put("wheat", "100");
@@ -45,7 +57,8 @@ class GameConfigurationTest {
   void testGameConfiguration() throws IOException {
     String fileName = "test.json";
     GameConfiguration gameConfiguration = GameConfiguration.of(fileName);
-    GameConfigurablesStore gameConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
+    GameConfigurablesStore gameConfigurablesStore =
+        GameConfiguration.getEditableConfigurablesStore();
     System.out.println(gameConfigurablesStore.getAllConfigurables());
     assertEquals(gameConfigurablesStore.getAllConfigurables().size(), 1);
   }
@@ -55,7 +68,8 @@ class GameConfigurationTest {
 //    Create Game config and game config store from a file name
     String fileName = "test.json";
     GameConfiguration gameConfiguration = GameConfiguration.of(fileName);
-    GameConfigurablesStore gameConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
+    GameConfigurablesStore gameConfigurablesStore =
+        GameConfiguration.getEditableConfigurablesStore();
 //    get the map of the properties <id, properties>
     Map<String, Properties> allConfigurables = gameConfigurablesStore.getAllEditableConfigurables();
 //    Put id and properties inside
@@ -68,6 +82,6 @@ class GameConfigurationTest {
 
   @Test
   void initializeBlock() {
-    
+
   }
 }

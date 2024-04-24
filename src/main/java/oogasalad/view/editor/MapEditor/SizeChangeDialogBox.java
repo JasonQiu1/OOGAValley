@@ -49,7 +49,7 @@ class SizeChangeDialogBox {
 
 
   private boolean checkOutOfBounds(int newI, int newJ) {
-    return newI < 1 || newJ < 1 || newI > 20 || newJ > 20;
+    return newI < 1 || newJ < 1;
   }
 
   private void showErrorPopup(String title, String message) {

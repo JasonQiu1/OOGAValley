@@ -9,8 +9,8 @@ import org.apache.logging.log4j.Logger;
 public class PlayModeSplashScreen extends AbstractSplashScreen {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.PlayModeSplashScreen.";
-  private String buttonLanguage = "EnglishButtons";
-  private String titleLanguage = "EnglishTitle";
+  private String buttonLanguage;
+  private String titleLanguage;
   private ResourceBundle buttonResource;
   private ResourceBundle titleResource;
 
@@ -22,13 +22,16 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
   private String myStageTitle;
   private final Stage stage;
+  private String primaryLanguage;
   private final Scene previousScene;
   private Scene playModeScreen;
 
-  public PlayModeSplashScreen(Stage stageToUse) {
+  public PlayModeSplashScreen(Stage stageToUse, String language) {
     super();
     stage = stageToUse;
+    primaryLanguage = language;
     previousScene = stage.getScene();
+    setFilesLanguage();
   }
 
   @Override
@@ -45,8 +48,13 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     ResourceString resourceString = new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath,
         myStageTitle, STYLES);
 
-    setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString);
+    setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString, primaryLanguage);
     LOG.info(String.valueOf(previousScene));
+  }
+
+  private void setFilesLanguage() {
+    titleLanguage = primaryLanguage + "Title";
+    buttonLanguage = primaryLanguage + "Buttons";
   }
 
   public void makeChooser(String title) {
@@ -60,7 +68,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //    Stage news = new Stage();
 //    news.setScene(previousScene);
 //    news.show();
-    new StartScreen(stage).open();
+    new StartScreen(stage, primaryLanguage).open();
   }
 
   public String getMyStageTitle() {

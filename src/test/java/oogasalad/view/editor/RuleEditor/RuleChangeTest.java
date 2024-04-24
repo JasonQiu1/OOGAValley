@@ -25,7 +25,7 @@ public class RuleChangeTest extends DukeApplicationTest {
     public void start(Stage stage) {
         this.stage = stage;
         config = new GameConfiguration();
-        editorScene = new EditorScene(stage);
+        editorScene = new EditorScene(stage, "English");
         editorScene.setConfig(config);
         editorScene.start();
 
@@ -51,7 +51,10 @@ public class RuleChangeTest extends DukeApplicationTest {
             if(config.getRules().getCopyOfListProperties().get("boolean").contains(key)){
                 CheckBox ruleBox = lookup("#" + key).queryAs(CheckBox.class);
                 ruleBox.setSelected(false);
-            }else{
+            }else if(config.getRules().getCopyOfListProperties().get("int").contains(key)){
+                TextField ruleBox = lookup("#" + key).queryAs(TextField.class);
+                ruleBox.setText("7");
+            }else {
                 TextField ruleBox = lookup("#" + key).queryAs(TextField.class);
                 ruleBox.setText("CompSci 308");
             }
@@ -64,6 +67,8 @@ public class RuleChangeTest extends DukeApplicationTest {
         for(String key: config.getRules().getCopyOfProperties().keySet()){
             if(config.getRules().getCopyOfListProperties().get("boolean").contains(key)){
                 assertEquals("false", config.getRules().getCopyOfProperties().get(key));
+            } else if(config.getRules().getCopyOfListProperties().get("int").contains(key)){
+                assertEquals("7", config.getRules().getCopyOfProperties().get(key));
             } else {
                 assertEquals("CompSci 308", config.getRules().getCopyOfProperties().get(key));
             }

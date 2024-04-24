@@ -30,6 +30,6 @@ public class Main extends Application {
 //  }
 
   public void start(Stage primaryStage) {
-    new StartScreen(primaryStage).open();
+    new StartScreen(primaryStage, "English").open();
   }
 }

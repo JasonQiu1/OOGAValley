@@ -76,6 +76,7 @@ public class PlayingPageView {
   private final GameTime gameTime = new GameTime(1, 8, 0);
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
+  private String primaryLanguage;
   private final Bag bag = new Bag();
 
   private Button helpButton;
@@ -91,8 +92,9 @@ public class PlayingPageView {
 
   private BagView bagView;
 
-  public PlayingPageView(Stage primaryStage) {
+  public PlayingPageView(Stage primaryStage, String language) {
     stage = primaryStage;
+    primaryLanguage = language;
   }
 
   public void start() {

@@ -1,15 +1,20 @@
 package oogasalad.view.editor.RuleEditor;
-
 import javafx.scene.layout.VBox;
-
+import oogasalad.model.api.exception.InvalidRuleType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.BiConsumer;
 
+
 public class AllRuleDisplay extends VBox {
     private final List<RuleDisplayStrategy> rules;
+    private static final Logger LOG = LogManager.getLogger(AllRuleDisplay.class);
+
 
     public AllRuleDisplay(Map<String, String> allRules, Map<String, List<String>> ruleTypes){
         super();
@@ -24,10 +29,30 @@ public class AllRuleDisplay extends VBox {
         }
     }
 
-    public void save(BiConsumer<String, String> updateRule) {
+    public void save(CheckedConsumer<String> saveAll, BiConsumer<String, String> updateRule) {
         for(RuleDisplayStrategy rd : rules){
-            updateRule.accept(rd.getName(), rd.getValue());
+            try {
+                updateRule.accept(rd.getName(), rd.getValue());
+            } catch (InvalidRuleType e){
+                LOG.error("Invalid Type for " + e.getRuleName());
+                new ValidationErrorAlert(e.getRuleName(), e.getRuleValue(), e.getType());
+            }
         }
+        try {
+            saveAll.accept(getName());
+        } catch (IOException e) {
+            LOG.error("Could not serialize data with name " + getName());
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String getName(){
+        for(RuleDisplayStrategy rds : rules){
+            if(rds.getName().equals("configName")) {
+                return rds.getValue();
+            }
+        }
+        return null;
     }
 
 }

@@ -21,8 +21,6 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   private boolean changePropertiesOnNextIteration;
   private String id;
   private String nextId;
-
-
   private ReadOnlyGameTime lastUpdateGameTime;
 
   /**
