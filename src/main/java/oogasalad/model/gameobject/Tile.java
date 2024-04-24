@@ -45,9 +45,10 @@ public class Tile implements Updatable, Interactable {
   @Override
   public void interact(Item item) {
     boolean interactionHandled =
-        handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item))
-            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item))
-            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item));
+        handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item), false)
+            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item), false)
+            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item),
+            land != null && land.getIfItemCanBePlacedHere(item));
   }
 
   @Override
@@ -63,11 +64,13 @@ public class Tile implements Updatable, Interactable {
    * @param gameObject         The game object to check and interact with.
    * @param item               The item used for the interaction.
    * @param interactionHandler The logic to execute for the interaction.
+   * @param additionalCheck    An additional boolean check for if an interaction is valid
+   *                           that is specific to each GameObject
    * @return True if the interaction was valid and handled, false otherwise.
    */
   private boolean handleInteractionIfValid(GameObject gameObject, Item item,
-      Runnable interactionHandler) {
-    if (gameObject != null && gameObject.interactionValid(item)) {
+      Runnable interactionHandler, boolean additionalCheck) {
+    if (gameObject != null && (gameObject.interactionValid(item) || additionalCheck)) {
       interactionHandler.run();
       return true;
     }
@@ -89,7 +92,7 @@ public class Tile implements Updatable, Interactable {
    * @param item The item interacting with the structure.
    */
   private void handleStructureInteraction(Item item) {
-    if (collectable == null && structure.isHarvestable()) {
+    if (collectable == null && structure.isHarvestable() && structure.interactionValid(item)) {
       collectable =
           (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
              structure.getItemsOnDestruction());
@@ -178,7 +181,7 @@ public class Tile implements Updatable, Interactable {
    *         if available. The list may be empty if none of the components have an associated image.
    */
   public List<String> getImages() {
-    List<GameObject> gameObjects = Arrays.asList(collectable, structure, land);
+    List<GameObject> gameObjects = Arrays.asList(land, structure, collectable);
     return gameObjects.stream()
         .filter(obj -> obj != null && obj.getImagePath() != null)
         .map(GameObject::getImagePath)
@@ -213,6 +216,39 @@ public class Tile implements Updatable, Interactable {
    */
   public void setLand(Land land) {
     this.land = land;
+  }
+
+  /**
+   * Retrieves the ID of the current collectable object on this tile.
+   * This method returns the ID of the collectable if one is present; otherwise, it returns null.
+   * Collectables are game objects that players can interact with to collect items or trigger events.
+   *
+   * @return The ID of the current Collectable on the tile, or null if no collectable is present.
+   */
+  public String getCollectableId() {
+    return collectable != null ? collectable.getId() : null;
+  }
+
+  /**
+   * Retrieves the ID of the current structure object on this tile.
+   * This method returns the ID of the structure if one is present; otherwise, it returns null.
+   * Structures are static game objects that often interact with items or affect game mechanics on their tile.
+   *
+   * @return The ID of the current Structure on the tile, or null if no structure is present.
+   */
+  public String getStructureId() {
+    return structure != null ? structure.getId() : null;
+  }
+
+  /**
+   * Retrieves the ID of the current land object on this tile.
+   * This method returns the ID of the land if one is present; otherwise, it returns null.
+   * Land objects define the basic properties of the tile such as what can be placed or grown on it.
+   *
+   * @return The ID of the current Land on the tile, or null if no land is present.
+   */
+  public String getLandId() {
+    return land != null ? land.getId() : null;
   }
 }
 
