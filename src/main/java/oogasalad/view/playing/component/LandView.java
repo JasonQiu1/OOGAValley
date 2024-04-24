@@ -17,7 +17,6 @@ public class LandView {
   private final ReadOnlyGameWorld readOnlyGameWorld;
 
 
-
   public LandView(ReadOnlyGameWorld readOnlyGameWorld) {
     this.readOnlyGameWorld = readOnlyGameWorld;
     piles = new Pile[readOnlyGameWorld.getHeight()][readOnlyGameWorld.getWidth()];

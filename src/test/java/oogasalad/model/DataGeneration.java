@@ -25,14 +25,13 @@ public class DataGeneration {
     String fileName = "testWorld1.json";
 //    the id for the grass land
     String id = "grass_land";
-
     String configName = "TempGameConfiguration.json";
     GameConfiguration gameConfiguration = GameConfiguration.of(configName);
     GameConfigurablesStore editableConfigurablesStore = GameConfiguration.getEditableConfigurablesStore();
     Map<String, Properties> allEditableConfigurables = editableConfigurablesStore.getAllEditableConfigurables();
     Properties property = new Properties();
     property.getProperties().put("image", "/img/grass.jpg");
-    property.getProperties().put("updatable", "true");
+    property.getProperties().put("updatable", "false");
     property.getProperties().put("updateTime", "10");
     property.getProperties().put("expirable", "false");
     allEditableConfigurables.put(id, property);

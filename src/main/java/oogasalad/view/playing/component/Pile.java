@@ -1,6 +1,7 @@
 package oogasalad.view.playing.component;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,15 +20,16 @@ public class Pile extends StackPane {
   private Land land;
   private PlantView plantView;
 
-  private List<String> landImagePath;
+  private List<String> landImagePath = new ArrayList<>();
 
   public Pile() {
     super();
     double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
     double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
     for (int i = 0; i < 3; i++) {
+      landImagePath.add(null);
       Rectangle rectangle = new Rectangle(width, height);
-      rectangle.setFill(Color.PURPLE);
+      rectangle.setFill(Color.TRANSPARENT);
       this.getChildren().add(rectangle);
     }
   }
@@ -51,6 +53,7 @@ public class Pile extends StackPane {
    * @param listImagePath
    */
   public void update(List<String> listImagePath) {
+
     for (int i = 0; i < listImagePath.size(); i++) {
       if (landImagePath.get(i) == null) {
         landImagePath.set(i, listImagePath.get(i));
@@ -60,10 +63,11 @@ public class Pile extends StackPane {
         updateImageView(i, listImagePath.get(i));
       }
     }
-
+    System.out.println(landImagePath);
   }
 
   public void updateImageView(int index, String url) {
+    System.out.println(index);
     double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
     double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
     ImageView imageView = new ImageView();
