@@ -67,6 +67,7 @@ public class GameTime implements GameTimeInterface {
     }
     Instant now = Instant.now();
     long timeElapsedMillis = Duration.between(previous, now).toMillis();
+    previous = Instant.now();
     accumulate += timeElapsedMillis;
     if (accumulate >= rate) {
       accumulate = 0;
