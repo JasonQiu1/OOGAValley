@@ -87,7 +87,6 @@ public class GameState implements ReadOnlyGameState {
 
   @Override
   public ReadOnlyGameTime getGameTime() {
-    // TODO: IMPLEMENT
     return gameTime;
   }
 
@@ -98,8 +97,7 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public double getEnergy() {
-    // TODO: IMPLEMENT
-    return 0;
+    return energy;
   }
 
   /**
@@ -109,8 +107,7 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public int getMoney() {
-    // TODO: IMPLEMENT
-    return 0;
+    return money;
   }
 
   /**
@@ -131,17 +128,15 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public ReadOnlyBag getBag() {
-
     return bag;
   }
 
   public GameWorld getEditableGameWorld() {
-    // TODO: IMPLEMENT
     return gameWorld;
   }
 
   public GameTime getEditableGameTime() {
-    return new GameTime(1,1,1);
+    return gameTime;
   }
 
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
