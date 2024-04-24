@@ -141,4 +141,6 @@ hs_err_pid*
 
 !data/*/TempGameConfiguration.json
 
+!data/test/*.json
+
 
