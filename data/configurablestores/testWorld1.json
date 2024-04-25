@@ -1,42 +1,17 @@
 {
   "configurables": {
-    "plant": {
+    "grass_structure": {
       "properties": {
-        "name": "plant",
+        "name": "grass_structure",
         "type": "Structure",
-        "image": "/img/plant.jpg",
-        "updatable": "false",
-        "updateTime": "1000",
-        "updateTransformation": "wheat",
-        "expirable": "false",
-        "expireTime": "0",
-        "expireTransformation": "",
-        "destructable": "false"
-      },
-      "listProperties": {},
-      "propertiesType": {},
-      "mapProperties": {
-        "interactTransformations": {
-          "validItem": "wheat",
-          "hoe": "wheat"
-        },
-        "interactDropMultipliers": {},
-        "dropsOnDestruction": {
-          "seed": "2"
-        }
-      }
-    },
-    "grass": {
-      "properties": {
-        "name": "grass",
-        "type": "Land",
         "image": "/img/grass.jpg",
-        "updatable": "false",
-        "updateTime": "0",
-        "updateTransformation": "",
+        "updatable": "true",
+        "updateTime": "10",
+        "updateTransformation": "tilled_grass",
         "expirable": "false",
-        "expireTime": "0",
-        "expireTransformation": ""
+        "expireTime": "120",
+        "expireTransformation": "",
+        "destructable": "true"
       },
       "listProperties": {},
       "propertiesType": {},
@@ -45,30 +20,59 @@
           "validItem": "tilled_grass"
         },
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-          "wheat_seed": "wheat"
+        "dropsOnDestruction": {
+          "seed": "2"
         }
       }
     },
-    "COLLECTABLE": {
+    "tilled_grass": {
       "properties": {
-        "name": "COLLECTABLE",
-        "type": "Collectable",
-        "image": "",
-        "updatable": "false",
-        "updateTime": "0",
-        "updateTransformation": "",
-        "expirable": "true",
+        "name": "tilled_grass",
+        "type": "Structure",
+        "image": "/img/grass.jpg",
+        "updatable": "true",
+        "updateTime": "1",
+        "updateTransformation": "differentThing",
+        "expirable": "false",
         "expireTime": "120",
-        "expireTransformation": ""
+        "expireTransformation": "",
+        "destructable": "true"
       },
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
-          "validItem": ""
+          "validItem": "tilled_grass"
         },
-        "interactDropMultipliers": {}
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "seed": "2"
+        }
+      }
+    },
+    "differentThing": {
+      "properties": {
+        "name": "tilled_grass",
+        "type": "Structure",
+        "image": "/img/grass.jpg",
+        "updatable": "true",
+        "updateTime": "10",
+        "updateTransformation": "tilled_grass",
+        "expirable": "false",
+        "expireTime": "120",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "validItem": "tilled_grass"
+        },
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "seed": "2"
+        }
       }
     }
   }

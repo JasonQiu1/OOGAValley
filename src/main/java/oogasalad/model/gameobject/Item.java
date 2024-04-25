@@ -42,6 +42,11 @@ public class Item implements ReadOnlyItem {
     return getItemProperties().getString("image");
   }
 
+  /**
+   * Method to get the read only properties of the Item.
+   *
+   * @return properties The read only properties of relevant to specific Item stored here.
+   */
   private ReadOnlyProperties getItemProperties() {
     return GameConfiguration.getConfigurablesStore().getConfigurableProperties(itemId);
   }
