@@ -52,5 +52,9 @@ public class SellItemVbox extends VBox {
     return sellButton;
   }
 
+  public void setSellButtonId(String id) {
+    sellButton.setId(id);
+  }
+
 }
 

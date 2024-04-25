@@ -49,6 +49,7 @@ public class SellGridPane extends GridPane {
             }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
         parentStackPane.getChildren().add(popUp);
       });
+      sellItemVbox.setSellButtonId(sellItem.getUrl()+"-sell-button");
       add(sellItemVbox, column, row);
       column++;
       if (column == COLUMN_COUNT) {

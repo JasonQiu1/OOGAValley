@@ -3,6 +3,7 @@ package oogasalad.view.popup;
 import java.util.function.Consumer;
 import javafx.scene.layout.StackPane;
 
+
 public class PopUpButtonActionHandler {
 
   private final Consumer<Boolean> choiceCallback;
@@ -26,7 +27,7 @@ public class PopUpButtonActionHandler {
     closePopup();
   }
 
-  private void closePopup() {
+  public void closePopup() {
     parentStackPane.getChildren().remove(popUpStackPane);
   }
 }

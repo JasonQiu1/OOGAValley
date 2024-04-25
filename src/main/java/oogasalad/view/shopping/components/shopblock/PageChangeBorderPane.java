@@ -24,8 +24,10 @@ public class PageChangeBorderPane extends BorderPane {
   private void initialize() {
     leftButton = new Button();
     leftButton.getStyleClass().add("left-page-change-button");
+    leftButton.setId("left-page-change-button");
     rightButton = new Button();
     rightButton.getStyleClass().add("right-page-change-button");
+    rightButton.setId("right-page-change-button");
     setAlignment(leftButton, Pos.CENTER_LEFT);
     setAlignment(rightButton, Pos.CENTER_RIGHT);
     setMargin(leftButton, new Insets(0, 0, 0, 10));
