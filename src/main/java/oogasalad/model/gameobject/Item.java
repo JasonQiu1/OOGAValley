@@ -5,6 +5,9 @@ import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.data.GameConfiguration;
 
+/**
+ * Represents an Item to be used during the game.
+ */
 public class Item implements ReadOnlyItem {
   private final String itemId;
 
@@ -49,5 +52,15 @@ public class Item implements ReadOnlyItem {
    */
   private ReadOnlyProperties getItemProperties() {
     return GameConfiguration.getConfigurablesStore().getConfigurableProperties(itemId);
+  }
+
+  /**
+   * Generates a hash code for this item based solely on its ItemId.
+   *
+   * @return A hash code value for this object
+   */
+  @Override
+  public int hashCode() {
+    return itemId.hashCode();
   }
 }
