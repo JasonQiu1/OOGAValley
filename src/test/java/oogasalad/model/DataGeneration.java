@@ -1,6 +1,7 @@
 package oogasalad.model;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import oogasalad.model.api.GameFactory;
@@ -10,7 +11,10 @@ import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.GameState;
 import oogasalad.model.data.Properties;
 import oogasalad.model.gameobject.GameObject;
+import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.Land;
+import oogasalad.model.gameobject.Tile;
+import oogasalad.model.gameplay.Bag;
 import oogasalad.model.gameplay.GameWorld;
 import org.junit.jupiter.api.Test;
 
@@ -38,6 +42,21 @@ public class DataGeneration {
     GameState gameState = new GameState();
     GameWorld gameWorld = gameState.getEditableGameWorld();
     GameObject land = new Land(id, gameState.getEditableGameTime().copy());
+    /**
+    String id2 = "panda";
+    Properties property2 = new Properties();
+    property2.getListProperties().put("image", List.of("/img/half_panda.png", "/img/panda.png"));
+    property2.getProperties().put("updatable", "true");
+    property2.getProperties().put("updateTime", "10");
+    property2.getProperties().put("expirable", "false");
+    property2.getProperties().put("worth", "20");
+    allEditableConfigurables.put(id2, property2);
+
+    Bag bag = gameState.getEditableBag();
+    Item item = new Item(id2);
+    bag.addItem(item, item.getWorth());
+    */
+
     //   horizontal -x, vertical  - y
     for (int i = 0; i < 15; i++) {
       for (int j = 0; j < 10; j++) {

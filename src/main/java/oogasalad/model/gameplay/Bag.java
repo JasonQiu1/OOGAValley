@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.gameobject.Item;
 
 /**
  * The player's bag that contains items.
@@ -27,6 +28,9 @@ public class Bag implements ReadOnlyBag {
   @Override
   public Map<ReadOnlyItem, Integer> getItems() {
     return itemMap;
+  }
 
+  public void addItem(ReadOnlyItem item, double worth) {
+    itemMap.put(item, (int) worth);
   }
 }

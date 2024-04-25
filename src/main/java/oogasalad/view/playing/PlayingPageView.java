@@ -134,13 +134,7 @@ public class PlayingPageView {
   }
 
   private void initModel() {
-    List<BagItem> bagItems = new ArrayList<>();
-//    Map<ReadOnlyItem, Integer> items = game.getGameState().getBag().getItems();
-//    for (Map.Entry<ReadOnlyItem, Integer> item : items.entrySet()) {
-//      bagItems.add(new BagItem(item.getKey().getImagePath(), bottomCellWidth, bottomCellWidth,
-//          selectedItem, item.getValue()));
-//    }
-    bagView = new BagView(bagItems, 5, 1, bag);
+    bagView = new BagView(game.getGameState().getBag(), 5, 1);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
     landView = new LandView(game.getGameState().getGameWorld());
   }

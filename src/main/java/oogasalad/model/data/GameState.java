@@ -143,4 +143,7 @@ public class GameState implements ReadOnlyGameState {
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
   private static final Logger LOG = LogManager.getLogger(GameState.class);
 
+  public Bag getEditableBag() {
+    return bag;
+  }
 }

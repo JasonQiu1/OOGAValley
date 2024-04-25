@@ -1,12 +1,15 @@
 package oogasalad.view.playing.component;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import oogasalad.model.shop.Bag;
+import oogasalad.model.api.ReadOnlyBag;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.view.playing.PlayingPageView;
 
 /**
@@ -16,29 +19,28 @@ public class BagView {
 
   private final GridPane toolGridPane;
   private final StackPane toolStackPane;
-  private final List<BagItem> bagItemList;
+  private final ReadOnlyBag bag;
   private final BagItemPile[][] bagItemPiles;
-
-
-  private final Bag bag;
+  private List<BagItem> bagItemList = new ArrayList<>();
 
   private final int colNum;
   private final int rowNum;
+  private final Map<ReadOnlyItem, Integer> itemIntegerMap;
 
   /**
    * Constructor for the ToolView class.
    *
-   * @param bagItems the list of tools
-   * @param colNum   the number of columns
-   * @param rowNum   the number of rows
+   * @param bag    ReadOnlybag
+   * @param colNum the number of columns
+   * @param rowNum the number of rows
    */
 
-  public BagView(List<BagItem> bagItems, int colNum, int rowNum, Bag bag) {
-    this.bagItemList = bagItems;
+  public BagView(ReadOnlyBag bag, int colNum, int rowNum) {
     this.toolGridPane = new GridPane();
     this.bag = bag;
+    itemIntegerMap = bag.getItems();
     bagItemPiles = new BagItemPile[colNum][rowNum];
-
+    setBagItemList();
     this.colNum = colNum;
     this.rowNum = rowNum;
     Image backgroundImage = new Image("img/playing/box-background.png");
@@ -50,6 +52,15 @@ public class BagView {
     StackPane.setMargin(toolGridPane, new Insets(20, 0, 0, 40));
     toolStackPane.getChildren().addAll(backgroundImageView, toolGridPane);
     update();
+  }
+
+  public void setBagItemList() {
+
+    for (ReadOnlyItem item : itemIntegerMap.keySet()) {
+      BagItem bagItem = new BagItem(item.getName(), PlayingPageView.bottomCellWidth,
+          PlayingPageView.bottomCellHeight, new SelectedItem(), itemIntegerMap.get(item));
+      bagItemList.add(bagItem);
+    }
   }
 
   public StackPane getToolStackPane() {
@@ -83,9 +94,6 @@ public class BagView {
         bagItemPiles[finalI][0].getItem().setSelected();
       });
     }
-    // for temp testing
-//    bagItemPiles[0][0].getItem().getView().setId("Hoe");
-//    bagItemPiles[1][0].getItem().getView().setId("Panda");
   }
 
   public double[] getAddRealLocation(BagItem bagItem) {
@@ -125,7 +133,6 @@ public class BagView {
         return;
       }
     }
-    // not sure why cannot use bagItem directly
     BagItem new_bagItem = new BagItem(bagItem.getUrl(), PlayingPageView.bottomCellWidth,
         PlayingPageView.bottomCellHeight,
         new SelectedItem(), 1);
