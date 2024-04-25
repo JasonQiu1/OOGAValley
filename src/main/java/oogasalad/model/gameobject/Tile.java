@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.api.ReadOnlyGameTime;
 
@@ -43,7 +44,7 @@ public class Tile implements Updatable, Interactable {
    * @param item The item to interact with the tile's contents.
    */
   @Override
-  public void interact(Item item) {
+  public void interact(ReadOnlyItem item) {
     boolean interactionHandled =
         handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item), false)
             || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item), false)
@@ -52,7 +53,7 @@ public class Tile implements Updatable, Interactable {
   }
 
   @Override
-  public boolean interactionValid(Item item) {
+  public boolean interactionValid(ReadOnlyItem item) {
     return collectable.interactionValid(item) || structure.interactionValid(item) ||
         land.interactionValid(item);
   }
@@ -68,7 +69,7 @@ public class Tile implements Updatable, Interactable {
    *                           that is specific to each GameObject
    * @return True if the interaction was valid and handled, false otherwise.
    */
-  private boolean handleInteractionIfValid(GameObject gameObject, Item item,
+  private boolean handleInteractionIfValid(GameObject gameObject, ReadOnlyItem item,
       Runnable interactionHandler, boolean additionalCheck) {
     if (gameObject != null && (gameObject.interactionValid(item) || additionalCheck)) {
       interactionHandler.run();
@@ -82,7 +83,7 @@ public class Tile implements Updatable, Interactable {
    *
    * @param item The item interacting with the collectable.
    */
-  private void handleCollectableInteraction(Item item) {
+  private void handleCollectableInteraction(ReadOnlyItem item) {
     collectable.interact(item);
   }
 
@@ -91,7 +92,7 @@ public class Tile implements Updatable, Interactable {
    *
    * @param item The item interacting with the structure.
    */
-  private void handleStructureInteraction(Item item) {
+  private void handleStructureInteraction(ReadOnlyItem item) {
     if (collectable == null && structure.isHarvestable() && structure.interactionValid(item)) {
       collectable =
           (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
@@ -107,7 +108,7 @@ public class Tile implements Updatable, Interactable {
    *
    * @param item The item interacting with the land.
    */
-  private void handleLandInteraction(Item item) {
+  private void handleLandInteraction(ReadOnlyItem item) {
     if (land.getIfItemCanBePlacedHere(item) && structure == null) {
       structure = (Structure) factory.createNewGameObject(
           land.getStructureBasedOnItem(item), lastUpdatingGameTime,
