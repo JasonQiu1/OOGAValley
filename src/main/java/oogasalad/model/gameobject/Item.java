@@ -46,13 +46,6 @@ public class Item implements ReadOnlyItem {
     return GameConfiguration.getConfigurablesStore().getConfigurableProperties(itemId);
   }
 
-  /**
-   * equals for item comparision, this is useful for the update of the view, if two objects have the
-   * same name, it should be the same, and there is no need to
-   *
-   * @param obj
-   * @return
-   */
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {

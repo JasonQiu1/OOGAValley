@@ -51,7 +51,7 @@ public class TopAnimationView extends StackPane {
 
     translateTransition.setOnFinished(event -> {
       this.getChildren().remove(0);
-      bagView.addItem(bagItem);
+//      bagView.addItem(bagItem);
     });
 
     this.getChildren().add(bagItem.getImageView());
