@@ -14,18 +14,15 @@ import oogasalad.model.gameobject.Item;
  */
 public class Bag implements ReadOnlyBag {
 
+  public Bag() {
+    this.items = new HashMap<>();
+  }
+
   /**
    * Returns the items currently held in the bag.
    *
    * @return the items currently held in the bag.
    */
-
-  public Bag() {
-    this.items = new HashMap<>();
-  }
-
-  private final Map<ReadOnlyItem, Integer> items;
-
   @Override
   public Map<ReadOnlyItem, Integer> getItems() {
     return Collections.unmodifiableMap(items);
@@ -56,7 +53,7 @@ public class Bag implements ReadOnlyBag {
   /**
    * Removes an amount of an item from the bag.
    *
-   * @param id the id of the item to remove.
+   * @param id             the id of the item to remove.
    * @param amountToRemove the amount of the item to remove.
    */
   public void removeItem(String id, int amountToRemove) {
@@ -76,4 +73,6 @@ public class Bag implements ReadOnlyBag {
   public void removeAllOfItem(String id) {
     items.remove(new Item(id));
   }
+
+  private final Map<ReadOnlyItem, Integer> items;
 }
