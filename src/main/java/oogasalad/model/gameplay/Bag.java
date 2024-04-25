@@ -2,10 +2,12 @@ package oogasalad.model.gameplay;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.gameobject.Item;
+import oogasalad.model.gameobject.ItemsToAdd;
 
 /**
  * The player's bag that contains items. Provides methods to add/remove items from the bag.
@@ -42,11 +44,11 @@ public class Bag implements ReadOnlyBag {
   /**
    * Adds multiple items of particular amounts to the bag.
    *
-   * @param itemsToAdd a map of items and amounts of them to add.
+   * @param itemsToAdd a list of items and amounts of them to add.
    */
-  public void addItems(Map<String, Integer> itemsToAdd) {
-    for (Map.Entry<String, Integer> entry : itemsToAdd.entrySet()) {
-      addItem(entry.getKey(), entry.getValue());
+  public void addItems(List<ItemsToAdd> itemsToAdd) {
+    for (ItemsToAdd items : itemsToAdd) {
+      addItem(items.id(), items.quantity());
     }
   }
 

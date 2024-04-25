@@ -130,10 +130,7 @@ public class GameState implements ReadOnlyGameState {
    * Add items from GameWorld to the player's bag.
    */
   public void addItemsToBag() {
-    for (ItemsToAdd itemsToAdd : gameWorld.itemsToAddToInventory()) {
-      ReadOnlyItem currentItem = new Item(itemsToAdd.id());
-      bag.getItems().merge(currentItem, itemsToAdd.quantity(), Integer::sum);
-    }
+    bag.addItems(gameWorld.itemsToAddToInventory());
   }
 
 
