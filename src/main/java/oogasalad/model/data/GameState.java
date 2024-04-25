@@ -118,8 +118,7 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public ReadOnlyShop getShop() {
-    // TODO: IMPLEMENT
-    return null;
+    return shop;
   }
 
   /**
