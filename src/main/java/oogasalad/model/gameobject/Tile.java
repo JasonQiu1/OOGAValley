@@ -24,7 +24,7 @@ public class Tile implements Updatable, Interactable {
   private Collectable collectable;
   private Structure structure;
   private Land land;
-  private final GameObjectFactory factory;
+  private static final GameObjectFactory factory = new GameObjectFactory();
   private ReadOnlyGameTime lastUpdatingGameTime;
 
 
@@ -32,7 +32,6 @@ public class Tile implements Updatable, Interactable {
    * Constructs a new Tile with an associated GameObjectFactory for creating new game objects.
    */
   public Tile() {
-    factory = new GameObjectFactory();
   }
 
   /**
