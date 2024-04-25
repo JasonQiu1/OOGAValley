@@ -1,6 +1,7 @@
 package oogasalad.model.gameobject;
 
 import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.ReadOnlyItem;
 
 /**
  * Represents a piece of land within the game world, extending the {@link GameObject} class. This
@@ -36,7 +37,7 @@ public class Land extends GameObject implements Plantable {
    *         indicating that the conditions are not suitable for planting.
    */
   @Override
-  public boolean getIfItemCanBePlacedHere(Item item) {
+  public boolean getIfItemCanBePlacedHere(ReadOnlyItem item) {
     return getProperties().getStringMap("plantableSeeds").containsKey(item.getName());
   }
 
@@ -49,7 +50,7 @@ public class Land extends GameObject implements Plantable {
    *         results from the item.
    */
   @Override
-  public String getStructureBasedOnItem(Item item) {
+  public String getStructureBasedOnItem(ReadOnlyItem item) {
     return getProperties().getStringMap("plantableSeeds").get(item.getName());
   }
 }

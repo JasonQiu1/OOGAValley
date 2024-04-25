@@ -5,6 +5,7 @@ import java.util.Optional;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.api.ReadOnlyGameState;
+import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.GameConfiguration;
@@ -18,6 +19,7 @@ import oogasalad.model.data.GameState;
  * @author Jason Qiu
  */
 public class Game implements GameInterface {
+  private ReadOnlyItem selectedItem;
 
   public Game() {
     configuration = new GameConfiguration();
@@ -37,7 +39,10 @@ public class Game implements GameInterface {
   @Override
   public void update() {
     state.getEditableGameTime().update();
-    state.getEditableGameWorld().update(state.getGameTime());
+    ReadOnlyGameTime currentGameTime = state.getGameTime();
+    ReadOnlyGameTime copyOfGameTime = new GameTime(currentGameTime.getDay(),
+        currentGameTime.getHour(), currentGameTime.getMinute());
+    state.getEditableGameWorld().update(copyOfGameTime);
   }
 
   /**
@@ -60,7 +65,9 @@ public class Game implements GameInterface {
    */
   @Override
   public void interact(int x, int y, int depth) {
-// TODO: IMPLEMENT
+    if (selectedItem != null) {
+      state.getEditableGameWorld().interact(selectedItem, x, y, depth);
+    }
   }
 
   /**

@@ -1,15 +1,75 @@
 {
   "configurables": {
-    "grass_land": {
+    "plant": {
       "properties": {
-        "image": "/img/grass.jpg",
-        "expirable": "false",
+        "name": "plant",
+        "type": "Structure",
+        "image": "/img/plant.jpg",
         "updatable": "false",
-        "updateTime": "10"
+        "updateTime": "1000",
+        "updateTransformation": "wheat",
+        "expirable": "false",
+        "expireTime": "0",
+        "expireTransformation": "",
+        "destructable": "false"
       },
       "listProperties": {},
       "propertiesType": {},
-      "mapProperties": {}
+      "mapProperties": {
+        "interactTransformations": {
+          "validItem": "wheat",
+          "hoe": "wheat"
+        },
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "seed": "2"
+        }
+      }
+    },
+    "grass": {
+      "properties": {
+        "name": "grass",
+        "type": "Land",
+        "image": "/img/grass.jpg",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "0",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "validItem": "tilled_grass"
+        },
+        "interactDropMultipliers": {},
+        "plantableSeeds": {
+          "wheat_seed": "wheat"
+        }
+      }
+    },
+    "COLLECTABLE": {
+      "properties": {
+        "name": "COLLECTABLE",
+        "type": "Collectable",
+        "image": "",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "true",
+        "expireTime": "120",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "validItem": ""
+        },
+        "interactDropMultipliers": {}
+      }
     }
   }
 }

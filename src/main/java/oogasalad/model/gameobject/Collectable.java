@@ -2,6 +2,7 @@ package oogasalad.model.gameobject;
 
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.ReadOnlyItem;
 
 /**
  * Represents a collectable game object that players can collect under certain conditions. This
@@ -37,7 +38,7 @@ public class Collectable extends GameObject implements Collect {
    * @param item The item interacting with the collectable.
    */
   @Override
-  public void interact(Item item) {
+  public void interact(ReadOnlyItem item) {
     if (interactionValid(item)) {
       interactingExpired = true;
     }
