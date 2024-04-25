@@ -43,11 +43,7 @@ public class Game implements GameInterface {
     ReadOnlyGameTime copyOfGameTime = new GameTime(currentGameTime.getDay(),
         currentGameTime.getHour(), currentGameTime.getMinute());
     state.getEditableGameWorld().update(copyOfGameTime);
-    addItemsToBag();
-  }
-
-  private void addItemsToBag() {
-
+    state.addItemsToBag();
   }
 
 
