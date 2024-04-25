@@ -6,7 +6,7 @@ import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyItem;
 
 /**
- * The player's bag that contains items.
+ * The player's bag that contains items. Provides methods to add/remove items from the bag.
  *
  * @author Jason Qiu
  */
@@ -19,14 +19,13 @@ public class Bag implements ReadOnlyBag {
    */
 
   public Bag() {
-    this.itemMap = new HashMap<>();
+    this.items = new HashMap<>();
   }
 
-  private Map<ReadOnlyItem, Integer> itemMap;
+  private Map<ReadOnlyItem, Integer> items;
 
   @Override
   public Map<ReadOnlyItem, Integer> getItems() {
-    return itemMap;
-
+    return items;
   }
 }
