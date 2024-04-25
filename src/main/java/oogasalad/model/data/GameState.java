@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
@@ -36,6 +37,7 @@ public class GameState implements ReadOnlyGameState {
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
   private GameWorld gameWorld;
   private GameTime gameTime;
+  private ReadOnlyItem selectedItem;
   private double energy;
   private int money;
   private Shop shop;
@@ -142,6 +144,16 @@ public class GameState implements ReadOnlyGameState {
   @Override
   public ReadOnlyBag getBag() {
     return bag;
+  }
+
+  /**
+   * Returns the selected item, if there is one selected.
+   *
+   * @return the optional describing the selected item.
+   */
+  @Override
+  public Optional<ReadOnlyItem> getSelectedItem() {
+    return Optional.of(selectedItem);
   }
 
   public GameWorld getEditableGameWorld() {

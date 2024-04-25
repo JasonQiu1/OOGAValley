@@ -19,7 +19,6 @@ import oogasalad.model.data.GameState;
  * @author Jason Qiu
  */
 public class Game implements GameInterface {
-  private ReadOnlyItem selectedItem;
 
   public Game() {
     configuration = new GameConfiguration();
@@ -40,8 +39,9 @@ public class Game implements GameInterface {
   public void update() {
     state.getEditableGameTime().update();
     ReadOnlyGameTime currentGameTime = state.getGameTime();
-    ReadOnlyGameTime copyOfGameTime = new GameTime(currentGameTime.getDay(),
-        currentGameTime.getHour(), currentGameTime.getMinute());
+    ReadOnlyGameTime copyOfGameTime =
+        new GameTime(currentGameTime.getDay(), currentGameTime.getHour(),
+            currentGameTime.getMinute());
     state.getEditableGameWorld().update(copyOfGameTime);
     state.addItemsToBag();
   }
@@ -67,9 +67,8 @@ public class Game implements GameInterface {
    */
   @Override
   public void interact(int x, int y, int depth) {
-    if (selectedItem != null) {
-      state.getEditableGameWorld().interact(selectedItem, x, y, depth);
-    }
+    state.getSelectedItem()
+        .ifPresent((ReadOnlyItem item) -> state.getEditableGameWorld().interact(item, x, y, depth));
   }
 
   /**
@@ -113,17 +112,6 @@ public class Game implements GameInterface {
   public boolean isGameOver() {
     // TODO: IMPLEMENT
     return false;
-  }
-
-  /**
-   * Returns the selected item, if there is one selected.
-   *
-   * @return the optional describing the selected item.
-   */
-  @Override
-  public Optional<ReadOnlyItem> getSelectedItem() {
-    // TODO: IMPLEMENT
-    return Optional.empty();
   }
 
   @Override
