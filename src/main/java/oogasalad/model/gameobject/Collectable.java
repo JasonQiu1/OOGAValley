@@ -1,5 +1,6 @@
 package oogasalad.model.gameobject;
 
+import java.util.Collections;
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
@@ -50,7 +51,7 @@ public class Collectable extends GameObject implements Collect {
    */
   @Override
   public Map<String, Integer> getItemsOnCollection() {
-    return items;
+    return Collections.unmodifiableMap(items);
   }
 
   /**
