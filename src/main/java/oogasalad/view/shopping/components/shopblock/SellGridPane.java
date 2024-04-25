@@ -40,17 +40,16 @@ public class SellGridPane extends GridPane {
     for (SellItem sellItem : sellItems) {
       SellItemVbox sellItemVbox = new SellItemVbox(sellItem);
       sellItemVbox.getSellButton().setOnAction(event -> {
-        PopUpStackPane popUp = new PopUpStackPane(popUpTextResource.getString("are_you_sure"),
-            popUpTextResource.getString("yes"),
-            popUpTextResource.getString("no"),
+        PopUpStackPane popUp = new PopUpStackPane(popUpTextResource,
             parentStackPane,
             choice -> {
               if (choice) {
                 shop.addMoney(sellItem.getPrices());
               }
-            });
+            }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
         parentStackPane.getChildren().add(popUp);
       });
+      sellItemVbox.setSellButtonId(sellItem.getUrl()+"-sell-button");
       add(sellItemVbox, column, row);
       column++;
       if (column == COLUMN_COUNT) {

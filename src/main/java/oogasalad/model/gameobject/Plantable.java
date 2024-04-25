@@ -1,5 +1,7 @@
 package oogasalad.model.gameobject;
 
+import oogasalad.model.api.ReadOnlyItem;
+
 /**
  * Represents entities within the game that are capable of supporting planting operations.
  * Implementing this interface indicates that the game object can be interacted with in a manner
@@ -16,7 +18,7 @@ public interface Plantable {
    * @param item The item intended to be planted or placed on this entity.
    * @return {@code true} if the entity can accept the item for planting; {@code false} otherwise.
    */
-  boolean getIfItemCanBePlacedHere(Item item);
+  boolean getIfItemCanBePlacedHere(ReadOnlyItem item);
 
   /**
    * Retrieves the identifier or name of the structure that will be based on the given item when
@@ -28,6 +30,6 @@ public interface Plantable {
    * @return A string representing the type of structure created based on the item, or {@code null}
    *         if the item does not result in a structure.
    */
-  String getStructureBasedOnItem(Item item);
+  String getStructureBasedOnItem(ReadOnlyItem item);
 
 }

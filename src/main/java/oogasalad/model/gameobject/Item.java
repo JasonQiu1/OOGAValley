@@ -4,6 +4,9 @@ import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.data.GameConfiguration;
 
+/**
+ * Represents an Item to be used during the game.
+ */
 public class Item implements ReadOnlyItem {
 
   private final String itemId;
@@ -42,6 +45,11 @@ public class Item implements ReadOnlyItem {
     return getItemProperties().getString("image");
   }
 
+  /**
+   * Method to get the read only properties of the Item.
+   *
+   * @return properties The read only properties of relevant to specific Item stored here.
+   */
   private ReadOnlyProperties getItemProperties() {
     return GameConfiguration.getConfigurablesStore().getConfigurableProperties(itemId);
   }
@@ -69,5 +77,4 @@ public class Item implements ReadOnlyItem {
     result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
     return result;
   }
-
 }

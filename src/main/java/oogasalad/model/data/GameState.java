@@ -2,12 +2,17 @@ package oogasalad.model.data;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.gameobject.Item;
+import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameplay.Bag;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.gameplay.GameWorld;
@@ -118,9 +123,19 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public ReadOnlyShop getShop() {
-    // TODO: IMPLEMENT
-    return null;
+    return shop;
   }
+
+  /**
+   * Add items from GameWorld to the player's bag.
+   */
+  public void addItemsToBag() {
+    for (ItemsToAdd itemsToAdd : gameWorld.itemsToAddToInventory()) {
+      ReadOnlyItem currentItem = new Item(itemsToAdd.id());
+      bag.getItems().merge(currentItem, itemsToAdd.quantity(), Integer::sum);
+    }
+  }
+
 
   /**
    * Returns the current bag, which contains items currently held.

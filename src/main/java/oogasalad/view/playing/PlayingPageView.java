@@ -81,13 +81,23 @@ public class PlayingPageView {
   private GameInterface game;
 
   private BagView bagView;
+  private String fileName;
+  private String primaryLanguage;
 
   public PlayingPageView(Stage primaryStage, String language) {
     stage = primaryStage;
+    primaryLanguage = language;
+    fileName = "testWorld1.json";
+  }
+
+  public PlayingPageView(Stage primaryStage, String language, String fileName) {
+    stage = primaryStage;
+    primaryLanguage = language;
+    this.fileName = fileName;
   }
 
   public void start() {
-    String fileName = "testWorld1.json";
+
     LOG.info("initializing game");
     try {
       game = gameFactory.createGame(fileName, fileName);
