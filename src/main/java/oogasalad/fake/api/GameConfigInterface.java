@@ -5,9 +5,9 @@ import oogasalad.fake.config.PlantConfig;
 
 public interface GameConfigInterface {
 
-  void addObject(LandConfig landConfig);
+  void addConfig(LandConfig config);
 
-  void addObject(PlantConfig plantConfig);
+  void addConfig(PlantConfig config);
 
   void save();
 }
