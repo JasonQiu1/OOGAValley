@@ -6,9 +6,7 @@
       "transFromLand" : {
         "hoe_bag" : "dirt_land"
       },
-      "seedGrown" : {
-        "wheat_seed_bag" : "wheat"
-      }
+      "seedGrown" : { }
     },
     "dirt_land" : {
       "imagePath" : "img/dirt.jpg",

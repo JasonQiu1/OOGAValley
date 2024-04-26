@@ -30,7 +30,7 @@ public class GameConfigParser {
     ObjectMapper objectMapper = new ObjectMapper();
     Map<String, Map<String, Object>> rawConfig = objectMapper.readValue(
         Paths.get(path).toFile(),
-        new TypeReference<Map<String, Map<String, Object>>>() {
+        new TypeReference<>() {
         });
 
     landConfigs = createLandConfig(rawConfig);

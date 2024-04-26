@@ -2,6 +2,7 @@ package oogasalad.fake.config;
 
 import java.util.List;
 import java.util.Map;
+import oogasalad.fake.api.exception.SaveNotValidException;
 import oogasalad.fake.config.farm.LandConfig;
 import oogasalad.fake.config.farm.PlantConfig;
 import oogasalad.fake.config.item.PlantItemConfig;
@@ -19,20 +20,18 @@ public class GameConfigValidator {
   private final Map<String, ToolConfig> toolConfigMap;
   private final Map<String, SeedConfig> seedConfigMap;
 
-  public GameConfigValidator(Map<String, LandConfig> landConfigMap,
-      Map<String, PlantConfig> plantConfigMap, Map<String, PlantItemConfig> plantItemConfigMap,
-      Map<String, ToolConfig> toolConfigMap, Map<String, SeedConfig> seedConfigMap) {
-    this.landConfigMap = landConfigMap;
-    this.plantConfigMap = plantConfigMap;
-    this.plantItemConfigMap = plantItemConfigMap;
-    this.toolConfigMap = toolConfigMap;
-    this.seedConfigMap = seedConfigMap;
+  public GameConfigValidator(GameConfig gameConfig) {
+    this.landConfigMap = gameConfig.getLandConfigMap();
+    this.plantConfigMap = gameConfig.getPlantConfigMap();
+    this.plantItemConfigMap = gameConfig.getPlantItemConfigMap();
+    this.toolConfigMap = gameConfig.getToolConfigMap();
+    this.seedConfigMap = gameConfig.getSeedConfigMap();
   }
 
   /**
    * Validate the game configuration.
    */
-  public void validate() {
+  public void validate() throws SaveNotValidException {
     for (Map.Entry<String, LandConfig> entry : landConfigMap.entrySet()) {
       checkTransFormLand(entry.getValue().getTransFromLand());
     }
@@ -41,29 +40,24 @@ public class GameConfigValidator {
     }
   }
 
-  private void checkTransFormLand(Map<String, String> transFromLand) {
-    if (transFromLand == null) {
-      return;
-    }
+  private void checkTransFormLand(Map<String, String> transFromLand) throws SaveNotValidException {
     for (Map.Entry<String, String> entry : transFromLand.entrySet()) {
       if (!toolConfigMap.containsKey(entry.getKey())) {
-        throw new IllegalArgumentException(
+        throw new SaveNotValidException(
             "Tool key '" + entry.getKey() + "' not found in ToolConfigMap");
       }
       if (!landConfigMap.containsKey(entry.getValue())) {
-        throw new IllegalArgumentException(
+        throw new SaveNotValidException(
             "Land key '" + entry.getValue() + "' not found in LandConfigMap");
       }
     }
   }
 
-  private void checkDropMap(Map<String, List<Map<String, Integer>>> dropMap) {
-    if (dropMap == null) {
-      return;
-    }
+  private void checkDropMap(Map<String, List<Map<String, Integer>>> dropMap)
+      throws SaveNotValidException {
     for (Map.Entry<String, List<Map<String, Integer>>> entry : dropMap.entrySet()) {
       if (!toolConfigMap.containsKey(entry.getKey())) {
-        throw new IllegalArgumentException(
+        throw new SaveNotValidException(
             "Tool key '" + entry.getKey() + "' not found in ToolConfigMap");
       }
       for (Map<String, Integer> itemMap : entry.getValue()) {

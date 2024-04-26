@@ -37,8 +37,7 @@ public class GameConfig implements GameConfigInterface {
   }
 
   public GameConfig(String filePath) throws SaveNotValidException, IOException {
-    File configFile = getConfigFile(filePath);
-    configFilePath = configFile.getAbsolutePath();
+    configFilePath = getConfigFile(filePath).getAbsolutePath();
     GameConfigParser parser = new GameConfigParser(configFilePath);
     landConfigMap = parser.getLandConfigs();
     plantConfigMap = parser.getPlantConfigs();
@@ -51,21 +50,44 @@ public class GameConfig implements GameConfigInterface {
 
   @Override
   public void addConfig(LandConfig config) {
-    this.landConfigMap.put(config.getId(), config);
-    validate();
+    landConfigMap.put(config.getId(), config);
   }
 
   @Override
   public void addConfig(PlantConfig config) {
-    this.plantConfigMap.put(config.getId(), config);
-    validate();
+    plantConfigMap.put(config.getId(), config);
+  }
+
+  @Override
+  public void addConfig(PlantItemConfig config) {
+    plantItemConfigMap.put(config.getId(), config);
+  }
+
+  @Override
+  public void addConfig(ToolConfig config) {
+    toolConfigMap.put(config.getId(), config);
+  }
+
+  @Override
+  public void addConfig(SeedConfig config) {
+    seedConfigMap.put(config.getId(), config);
   }
 
 
   @Override
-  public void save() throws IOException {
+  public void save() throws IOException, SaveNotValidException {
+    validate();
     ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.writeValue(Paths.get(configFilePath).toFile(), this);
+    objectMapper.writerWithDefaultPrettyPrinter()
+        .writeValue(Paths.get(configFilePath).toFile(), this);
+  }
+
+
+  @Override
+  public void save(String fileName) throws IOException, SaveNotValidException {
+    validate();
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get(fileName).toFile(), this);
   }
 
   /**
@@ -104,9 +126,8 @@ public class GameConfig implements GameConfigInterface {
     return seedConfigMap;
   }
 
-  private void validate() {
-    GameConfigValidator validator = new GameConfigValidator(landConfigMap, plantConfigMap,
-        plantItemConfigMap, toolConfigMap, seedConfigMap);
+  private void validate() throws SaveNotValidException {
+    GameConfigValidator validator = new GameConfigValidator(this);
     validator.validate();
   }
 }

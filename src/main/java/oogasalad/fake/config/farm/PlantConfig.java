@@ -1,5 +1,6 @@
 package oogasalad.fake.config.farm;
 
+import com.google.firebase.internal.NonNull;
 import java.util.List;
 import java.util.Map;
 import oogasalad.fake.GameTime;
@@ -11,6 +12,7 @@ public class PlantConfig extends BaseConfig {
   private final Map<String, List<Map<String, Integer>>> dropMap;
   private final GameTime gameTime;
 
+  @NonNull
   public PlantConfig(String imagePath, String id, Map<String, List<Map<String, Integer>>> dropMap,
       GameTime gameTime) {
     super(imagePath, id);
