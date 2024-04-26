@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import oogasalad.fake.api.exception.SaveNotValidException;
+import oogasalad.fake.json.GameStateParser;
 import oogasalad.fake.object.bag.BagItem;
 
 public class GameState {
@@ -23,6 +24,15 @@ public class GameState {
     this.money = money;
     this.energy = energy;
     savePath = findSavePath(filePath);
+  }
+
+  public GameState(String filePath) throws IOException, SaveNotValidException {
+    savePath = findSavePath(filePath);
+    GameStateParser gameStateParser = new GameStateParser(savePath);
+    this.gameTime = gameStateParser.getGameTime();
+    this.itemList = gameStateParser.getItemList();
+    this.money = gameStateParser.getMoney();
+    this.energy = gameStateParser.getEnergy();
   }
 
   private String findSavePath(String filePath) throws SaveNotValidException {

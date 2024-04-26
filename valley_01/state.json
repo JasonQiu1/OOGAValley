@@ -5,6 +5,7 @@
     "minute" : 0
   },
   "itemList" : [ {
+    "number" : 1,
     "toolConfig" : {
       "imagePath" : "img/tool.png",
       "id" : "hoe_bag",
@@ -16,12 +17,14 @@
       "energyConsume" : 10.0
     }
   }, {
+    "number" : 1,
     "seedConfig" : {
       "imagePath" : "img/panda.png",
       "id" : "wheat_seed_bag",
       "sellPrice" : 100.0
     }
   }, {
+    "number" : 1,
     "plantItemConfig" : {
       "imagePath" : "img/wheat.png",
       "id" : "wheat_bag",

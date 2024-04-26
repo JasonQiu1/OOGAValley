@@ -8,7 +8,8 @@ public class ToolItem extends BagItem {
 
   private final ToolConfig toolConfig;
 
-  public ToolItem(ToolConfig toolConfig) {
+  public ToolItem(ToolConfig toolConfig, int number) {
+    super(number);
     this.toolConfig = toolConfig;
   }
 

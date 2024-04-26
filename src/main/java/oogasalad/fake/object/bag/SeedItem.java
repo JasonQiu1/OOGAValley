@@ -8,7 +8,8 @@ public class SeedItem extends BagItem {
 
   private final SeedConfig seedConfig;
 
-  public SeedItem(SeedConfig seedConfig) {
+  public SeedItem(SeedConfig seedConfig, int number) {
+    super(number);
     this.seedConfig = seedConfig;
   }
 

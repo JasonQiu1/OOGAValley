@@ -8,7 +8,8 @@ public class PlantItem extends BagItem {
 
   private final PlantItemConfig plantItemConfig;
 
-  public PlantItem(PlantItemConfig plantItemConfig) {
+  public PlantItem(PlantItemConfig plantItemConfig,int number) {
+    super(number);
     this.plantItemConfig = plantItemConfig;
   }
 

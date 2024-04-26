@@ -19,12 +19,17 @@ public class GameStateTest {
   void createGameState() throws IOException, SaveNotValidException {
     GameConfig gameConfig = new GameConfig(path);
     List<BagItem> itemList = new ArrayList<>();
-    itemList.add(new ToolItem(gameConfig.getToolConfigMap().get("hoe_bag")));
-    itemList.add(new SeedItem(gameConfig.getSeedConfigMap().get("wheat_seed_bag")));
-    itemList.add(new PlantItem(gameConfig.getPlantItemConfigMap().get("wheat_bag")));
+    itemList.add(new ToolItem(gameConfig.getToolConfigMap().get("hoe_bag"), 1));
+    itemList.add(new SeedItem(gameConfig.getSeedConfigMap().get("wheat_seed_bag"), 1));
+    itemList.add(new PlantItem(gameConfig.getPlantItemConfigMap().get("wheat_bag"), 1));
 
     GameState gameState = new GameState(new GameTime(0,0,0),
         itemList, 100, 100, path);
+    gameState.save();
+  }
+  @Test
+  void testStateLoad() throws IOException, SaveNotValidException {
+    GameState gameState = new GameState(path);
     gameState.save();
   }
 }

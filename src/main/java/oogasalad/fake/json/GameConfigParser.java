@@ -69,8 +69,7 @@ public class GameConfigParser {
     for (Map.Entry<String, Object> seedEntry : seeds.entrySet()) {
       String seedKey = seedEntry.getKey();
       Map<String, Object> seedInfo = (Map<String, Object>) seedEntry.getValue();
-      SeedConfig seedConfig = new SeedConfig((String) seedInfo.get("imagePath"), seedKey,
-          (double) seedInfo.get("sellPrice"));
+      SeedConfig seedConfig = ParserTools.createSeedConfig(seedInfo);
       seedConfigMap.put(seedKey, seedConfig);
     }
     return seedConfigMap;
@@ -83,9 +82,7 @@ public class GameConfigParser {
     for (Map.Entry<String, Object> plantItemEntry : plantItems.entrySet()) {
       String plantItemKey = plantItemEntry.getKey();
       Map<String, Object> plantItemInfo = (Map<String, Object>) plantItemEntry.getValue();
-      PlantItemConfig plantItemConfig = new PlantItemConfig((String) plantItemInfo.get("imagePath"),
-          plantItemKey,
-          (double) plantItemInfo.get("sellPrice"), (double) plantItemInfo.get("eatEnergy"));
+      PlantItemConfig plantItemConfig = ParserTools.createPlantItemConfig(plantItemInfo);
       plantItemConfigs.put(plantItemKey, plantItemConfig);
     }
     return plantItemConfigs;
@@ -97,11 +94,7 @@ public class GameConfigParser {
     for (Map.Entry<String, Object> toolEntry : tools.entrySet()) {
       String toolKey = toolEntry.getKey();
       Map<String, Object> toolInfo = (Map<String, Object>) toolEntry.getValue();
-      Map<String, Integer> gameTime = (Map<String, Integer>) toolInfo.get("timeConsume");
-      GameTime game = new GameTime(gameTime.get("day"), gameTime.get("hour"),
-          gameTime.get("minute"));
-      ToolConfig toolConfig = new ToolConfig((String) toolInfo.get("imagePath"), toolKey, game,
-          (double) toolInfo.get("energyConsume"));
+      ToolConfig toolConfig = ParserTools.createToolConfig(toolInfo);
       toolConfigMap.put(toolKey, toolConfig);
     }
     return toolConfigMap;
