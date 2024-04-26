@@ -1,0 +1,35 @@
+{
+  "gameTime" : {
+    "day" : 0,
+    "hour" : 0,
+    "minute" : 0
+  },
+  "itemList" : [ {
+    "toolConfig" : {
+      "imagePath" : "img/tool.png",
+      "id" : "hoe_bag",
+      "timeConsume" : {
+        "day" : 0,
+        "hour" : 0,
+        "minute" : 1
+      },
+      "energyConsume" : 10.0
+    }
+  }, {
+    "seedConfig" : {
+      "imagePath" : "img/panda.png",
+      "id" : "wheat_seed_bag",
+      "sellPrice" : 100.0
+    }
+  }, {
+    "plantItemConfig" : {
+      "imagePath" : "img/wheat.png",
+      "id" : "wheat_bag",
+      "sellPrice" : 200.0,
+      "eatEnergy" : 10.0
+    }
+  } ],
+  "money" : 100,
+  "energy" : 100,
+  "savePath" : "valley_01/save/state.json"
+}
