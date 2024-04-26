@@ -63,6 +63,12 @@ public class Game implements GameInterface {
     gameState.save(folderName + "/state.json");
     File file = new File(folderName + "/save.farm");
     file.createNewFile();
+  }
 
+  /**
+   * Update method for the game
+   */
+  public void update() {
+    gameState.getGameTime().update();
   }
 }
