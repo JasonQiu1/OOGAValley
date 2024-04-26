@@ -69,9 +69,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public void update(ReadOnlyGameTime gameTime) {
     lastUpdateGameTime = gameTime;
     updateAndInteract(() -> {
-      if (getProperties().getBoolean("updatable") &&
-          creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
-              "updateTime")) {
+      if (getProperties().getBoolean("updatable")
+          && creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
+          "updateTime")) {
         return getProperties().getString("updateTransformation");
       }
       return getId();

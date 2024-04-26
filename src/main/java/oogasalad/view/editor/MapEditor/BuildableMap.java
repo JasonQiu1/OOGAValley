@@ -59,8 +59,7 @@ public class BuildableMap {
 
   private Node findCell(int x, int y) {
     Optional<Node> optionalNode = gp.getChildren().stream()
-        .filter(node -> ((Cell) node).getColumn() == x && ((Cell) node).getRow() == y)
-        .findFirst();
+        .filter(node -> ((Cell) node).getColumn() == x && ((Cell) node).getRow() == y).findFirst();
     return optionalNode.orElse(null);
   }
 

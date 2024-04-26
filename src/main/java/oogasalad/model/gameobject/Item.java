@@ -2,16 +2,16 @@ package oogasalad.model.gameobject;
 
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyProperties;
-import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.data.GameConfiguration;
 
 /**
  * Represents an Item to be used during the game.
  */
 public class Item implements ReadOnlyItem {
+
   private final String itemId;
 
-  public Item (String itemId) {
+  public Item(String itemId) {
     this.itemId = itemId;
   }
 

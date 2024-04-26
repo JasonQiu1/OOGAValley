@@ -26,7 +26,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
   private String myStageTitle;
   private final Stage stage;
-  private String primaryLanguage;
+  private final String primaryLanguage;
   private final Scene previousScene;
   private Scene playModeScreen;
 

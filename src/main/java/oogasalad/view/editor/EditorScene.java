@@ -6,9 +6,9 @@ import oogasalad.model.data.GameConfiguration;
 
 public class EditorScene extends Scene {
 
-  private Stage stage;
-  private String myPrimaryLanguage;
-  private EditorWindow ew;
+  private final Stage stage;
+  private final String myPrimaryLanguage;
+  private final EditorWindow ew;
 
   public EditorScene(Stage primaryStage, String language) {
     super(new EditorWindow(new GameConfiguration()));
@@ -24,7 +24,7 @@ public class EditorScene extends Scene {
     stage.show();
   }
 
-  public void setConfig(GameConfiguration gc){
-      ew.setConfig(gc);
+  public void setConfig(GameConfiguration gc) {
+    ew.setConfig(gc);
   }
 }

@@ -75,7 +75,7 @@ public class PlayingPageView {
   private final GameTime gameTime = new GameTime(1, 8, 0);
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
-  private String primaryLanguage;
+  private final String primaryLanguage;
   private final Bag bag = new Bag();
 
   private Button helpButton;
@@ -83,11 +83,11 @@ public class PlayingPageView {
   private TopAnimationView topAnimationView;
   private final Money money = new Money(100);
   private final Shop shop = new Shop(money);
-  private GameFactory gameFactory = new GameFactory();
+  private final GameFactory gameFactory = new GameFactory();
 
   private static final Logger LOG = LogManager.getLogger(StartScreen.class);
 
-  private GameInterface game;
+  private final GameInterface game;
 
   private BagView bagView;
   private String fileName;

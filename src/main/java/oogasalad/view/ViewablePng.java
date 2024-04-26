@@ -12,8 +12,9 @@ import oogasalad.view.exception.FileNotPngException;
  * Wrapper for choosing a png image for an object
  */
 public class ViewablePng {
+
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.ViewablePng.";
-  private String errorsLanguage = "EnglishViewablePngErrors";
+  private final String errorsLanguage = "EnglishViewablePngErrors";
   private ResourceBundle errorsResource;
 
   private final Image image;
@@ -25,8 +26,7 @@ public class ViewablePng {
    * @throws FileNotPngException
    * @throws FileNotFoundException
    */
-  public ViewablePng(String url)
-      throws FileNotPngException, FileNotFoundException {
+  public ViewablePng(String url) throws FileNotPngException, FileNotFoundException {
 
     errorsResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + errorsLanguage);
 
