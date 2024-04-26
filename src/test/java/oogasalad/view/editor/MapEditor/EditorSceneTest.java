@@ -23,7 +23,7 @@ public class EditorSceneTest extends DukeApplicationTest {
     editorScene = new EditorScene(stage, "English", new GameConfiguration());
     editorScene.start();
 //    this.cell = (Cell) lookup("#0 0").query();
-
+    sleep(1000);
     // When trying to find the Cell with id "0 0"
     cell = lookup("#EditorGridPane #0_0").queryAs(Cell.class);
     cellInfoPane = lookup("#CellInfoPane").queryAs(CellInfoPane.class);

@@ -171,6 +171,7 @@ public class BuildableMap {
     gridPaneProperty.set(newGridPane);
     gp.setMaxWidth(Cell.getSize()[0] * gameWorld.getWidth());
     gp.setMaxHeight(Cell.getSize()[1] * gameWorld.getHeight());
+    gp.setId("EditorGridPane");
   }
 
   public GridPaneProperty getGridPaneProperty() {

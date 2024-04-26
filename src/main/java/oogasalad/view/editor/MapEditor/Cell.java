@@ -82,7 +82,7 @@ public class Cell extends StackPane {
   }
 
   private void fill(){
-    if(!gameWorld.getImagePath(column, row, 0).isEmpty()){
+    if(gameWorld != null && !gameWorld.getImagePath(column, row, 0).isEmpty()){
       super.getChildren().addAll(getImages());
     }
   }
