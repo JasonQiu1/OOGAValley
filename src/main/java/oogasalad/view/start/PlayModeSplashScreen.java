@@ -1,16 +1,9 @@
 package oogasalad.view.start;
 
-import static java.lang.Thread.sleep;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
-import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,7 +28,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private Scene previousScene;
   private Scene playModeScreen;
 
-  public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene, GameConfiguration gameConfiguration) {
+  public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene,
+      GameConfiguration gameConfiguration) {
     super();
     stage = stageToUse;
     primaryLanguage = language;
@@ -56,7 +50,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     ResourceString resourceString =
         new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath, myStageTitle, STYLES);
 
-    myScene = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString, primaryLanguage, previousScene);
+    myScene = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
+        primaryLanguage, previousScene);
     LOG.info(String.format("the previous scene is still %s", previousScene));
 
     stage.setTitle(myStageTitle);
@@ -77,18 +72,18 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     buttonLanguage = primaryLanguage + "Buttons";
   }
 
-  public void makeChooser() {
-    FileChooserContainer resultContainer = new FileChooserContainer(null, DEFAULT_RESOURCE_FOLDER);
-    LOG.debug(previousScene);
-    Optional<File> file = resultContainer.showFileChooserDialog(stage);
-    String filePath = file.get().getName();
-    try {
-      new PlayingPageView(stage, primaryLanguage, filePath).start();
-    } catch (IOException exception) {
-      LOG.error("Failed to load configuration file!");
-      throw new RuntimeException(exception);
-    }
-  }
+//  public void makeChooser() {
+//    FileChooserContainer resultContainer = new FileChooserContainer(null, DEFAULT_RESOURCE_FOLDER);
+//    LOG.debug(previousScene);
+//    Optional<File> file = resultContainer.showFileChooserDialog(stage);
+//    String filePath = file.get().getName();
+//    try {
+//      new PlayingPageView(stage, primaryLanguage, filePath).start();
+//    } catch (IOException exception) {
+//      LOG.error("Failed to load configuration file!");
+//      throw new RuntimeException(exception);
+//    }
+//  }
 
   public void goBackScene() {
     LOG.debug(String.format("going back to %s", previousScene));

@@ -1,5 +1,7 @@
 package oogasalad.view.playing.component;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,10 +33,15 @@ public class BagItem extends StackPane {
    */
   public BagItem(String url, double width, double height, SelectedItem selectedItem, int num) {
     super();
-    this.url = url;
+    try {
+      this.url = (String.valueOf(new File("data/images/" + url).toURI().toURL()));
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
     this.selectedItem = selectedItem;
     this.num = num;
-    imageView = new ImageView(new Image(url, width, height, false, true));
+    System.out.println("test :" + this.url);
+    imageView = new ImageView(new Image(this.url, width, height, false, true));
     StackPane imageContainer = new StackPane();
     VBox vBox = new VBox();
     vBox.setAlignment(javafx.geometry.Pos.CENTER);
