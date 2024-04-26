@@ -44,6 +44,17 @@ public class Bag implements ReadOnlyBag {
   /**
    * Adds multiple items of particular amounts to the bag.
    *
+   * @param itemsToAdd a map of items and amounts of them to add.
+   */
+  public void addItems(Map<String, Integer> itemsToAdd) {
+    for (Map.Entry<String, Integer> entry : itemsToAdd.entrySet()) {
+      addItem(entry.getKey(), entry.getValue());
+    }
+  }
+
+  /**
+   * Adds multiple items of particular amounts to the bag.
+   *
    * @param itemsToAdd a list of items and amounts of them to add.
    */
   public void addItems(List<ItemsToAdd> itemsToAdd) {

@@ -23,7 +23,11 @@
       "Wheat Seeds"
     ]
   },
-  "mapProperties": {},
+  "mapProperties": {
+    "startingItems": {
+      "wheat_seeds": 5
+    }
+  },
   "propertiesType": {
     "String": [
       "configName",
