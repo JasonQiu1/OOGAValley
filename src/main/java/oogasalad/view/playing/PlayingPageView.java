@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,12 +16,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.fake.Game;
+import oogasalad.fake.GameInputHandler;
 import oogasalad.fake.api.exception.SaveNotValidException;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;
-import oogasalad.view.playing.component.Money;
 import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
@@ -37,7 +36,7 @@ import org.apache.logging.log4j.Logger;
  * second.
  */
 
-public class PlayingPageView{
+public class PlayingPageView {
 
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
@@ -82,6 +81,8 @@ public class PlayingPageView{
 
   private Game game;
 
+  private GameInputHandler gameInputHandler;
+
   private BagView bagView;
   private String fileName;
 
@@ -105,6 +106,7 @@ public class PlayingPageView{
     } catch (IOException | SaveNotValidException e) {
       throw new RuntimeException(e);
     }
+    gameInputHandler = new GameInputHandler(game);
     LOG.info("finish loading game model");
     initModel();
     StackPane root = new StackPane();
@@ -126,13 +128,14 @@ public class PlayingPageView{
   }
 
   private void initModel() {
-    bagView = new BagView(game.getGameState().getItemList(), 5, 1);
+    bagView = new BagView(game.getGameState().getItemList(), gameInputHandler, 5, 1);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
-    landView = new LandView(game.getGameMap());
+    landView = new LandView(game.getGameMap(), gameInputHandler);
   }
 
   private void setUpdate() {
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
+      game.update();
       landView.update();
       updateTimeLabel();
     }));

@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-
+import oogasalad.fake.GameInputHandler;
 import oogasalad.fake.object.bag.BagItem;
 import oogasalad.view.playing.PlayingPageView;
 
@@ -25,15 +25,19 @@ public class BagView {
   private final int colNum;
   private final int rowNum;
 
+  private final GameInputHandler gameInputHandler;
+
   /**
    * Constructor for the ToolView class.
    *
-   * @param itemList    Item list
-   * @param colNum the number of columns
-   * @param rowNum the number of rows
+   * @param itemList Item list
+   * @param colNum   the number of columns
+   * @param rowNum   the number of rows
    */
 
-  public BagView(List<BagItem> itemList, int colNum, int rowNum) {
+  public BagView(List<BagItem> itemList, GameInputHandler gameInputHandler, int colNum,
+      int rowNum) {
+    this.gameInputHandler = gameInputHandler;
     this.toolGridPane = new GridPane();
     this.itemList = itemList;
     bagItemPiles = new BagItemPile[colNum][rowNum];
@@ -45,7 +49,6 @@ public class BagView {
     backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
     toolStackPane = new StackPane();
-
     StackPane.setMargin(toolGridPane, new Insets(20, 0, 0, 40));
     toolStackPane.getChildren().addAll(backgroundImageView, toolGridPane);
     update();
@@ -73,7 +76,6 @@ public class BagView {
   }
 
   public void update() {
-
     toolGridPane.getChildren().clear();
     for (int i = 0; i < colNum; i++) {
       for (int j = 0; j < rowNum; j++) {
@@ -88,6 +90,8 @@ public class BagView {
       bagItemPiles[i][0].setItem(bagItemViewList.get(i));
       int finalI = i;
       bagItemPiles[i][0].getItem().getView().setOnMouseClicked(event -> {
+        gameInputHandler.selectItem(finalI);
+        System.out.println(finalI);
         reset();
         bagItemPiles[finalI][0].getItem().setSelected();
       });
@@ -131,7 +135,8 @@ public class BagView {
         return;
       }
     }
-    BagItemView new_bagItemView = new BagItemView(bagItemView.getUrl(), PlayingPageView.bottomCellWidth,
+    BagItemView new_bagItemView = new BagItemView(bagItemView.getUrl(),
+        PlayingPageView.bottomCellWidth,
         PlayingPageView.bottomCellHeight,
         new SelectedItem(), 1);
     bagItemViewList.add(new_bagItemView);
