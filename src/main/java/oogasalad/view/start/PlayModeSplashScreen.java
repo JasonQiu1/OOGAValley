@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,7 +31,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private final Scene previousScene;
   private Scene playModeScreen;
 
-  public PlayModeSplashScreen(Stage stageToUse, String language) {
+  public PlayModeSplashScreen(Stage stageToUse, String language, GameConfiguration gameConfiguration) {
     super();
     stage = stageToUse;
     primaryLanguage = language;

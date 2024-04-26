@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.playing.PlayingPageView;
 import org.junit.jupiter.api.Test;
 import util.DukeApplicationTest;
@@ -15,7 +16,7 @@ public class PlayingPageTest extends DukeApplicationTest {
 
   public void start(Stage stage) {
     this.stage = stage;
-    playingPageView = new PlayingPageView(stage, "English");
+    playingPageView = new PlayingPageView(stage, "English", new GameConfiguration());
     playingPageView.start();
   }
 

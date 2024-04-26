@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
+import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
@@ -92,7 +93,7 @@ public class PlayingPageView {
   private BagView bagView;
   private String fileName;
 
-  public PlayingPageView(Stage primaryStage, String language) {
+  public PlayingPageView(Stage primaryStage, String language, GameConfiguration gameConfiguration) {
     stage = primaryStage;
     primaryLanguage = language;
     game = gameFactory.createGame();
