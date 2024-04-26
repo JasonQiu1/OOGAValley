@@ -45,8 +45,7 @@ public class Cell extends StackPane {
           super.getChildren().remove(super.getChildren().get(super.getChildren().size() - 1));
           setDisplayPanel(cip);
         }
-      } else if (ts.getLastSelectedSelectable() != null && ts.getLastSelectedSelectable()
-          .canBePlacedOn(super.getChildren().get(super.getChildren().size() - 1))) {
+      } else if (ts.getLastSelectedSelectable() != null) {
         super.getChildren().add(ts.getLastSelectedSelectable());
         setDisplayPanel(cip);
       }

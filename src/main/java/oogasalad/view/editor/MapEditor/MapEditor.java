@@ -18,7 +18,7 @@ public class MapEditor extends VBox {
     BuildableMap bm = new BuildableMap(ts, cip, config.getInitialState().getGameWorld());
     TopPanel tp = new TopPanel(bm);
     BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
-    BottomPanel bp = new BottomPanel(ts);
+    BottomPanel bp = new BottomPanel(ts, GameConfiguration.getConfigurablesStore().getAllConfigurables());
     getChildren().addAll(tp, bmw, bp, cip);
     //getChildren().add(new MapExtender(bm));
   }
