@@ -30,8 +30,7 @@ public class Game implements GameInterface {
   public Game(String fileName) throws IOException, SaveNotValidException {
     gameMap = new GameMap(fileName);
     gameConfig = new GameConfig(fileName);
-    // TODO: gameState initialize
-    gameState = null;
+    gameState = new GameState(fileName);
   }
 
 
@@ -61,6 +60,7 @@ public class Game implements GameInterface {
   public void save(String folderName) throws IOException, SaveNotValidException {
     gameMap.save(folderName + "/map.json");
     gameConfig.save(folderName + "/config.json");
+    gameState.save(folderName + "/state.json");
     File file = new File(folderName + "/save.farm");
     file.createNewFile();
 
