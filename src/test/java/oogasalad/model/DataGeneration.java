@@ -7,7 +7,7 @@ import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
-import oogasalad.model.data.GameState;
+import oogasalad.model.gameplay.GameState;
 import oogasalad.model.data.Properties;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Land;

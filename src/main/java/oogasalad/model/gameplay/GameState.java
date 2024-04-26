@@ -1,9 +1,7 @@
-package oogasalad.model.data;
+package oogasalad.model.gameplay;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyGameState;
@@ -12,12 +10,7 @@ import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
-import oogasalad.model.gameobject.Item;
-import oogasalad.model.gameobject.ItemsToAdd;
-import oogasalad.model.gameplay.Bag;
-import oogasalad.model.gameplay.GameTime;
-import oogasalad.model.gameplay.GameWorld;
-import oogasalad.model.gameplay.Shop;
+import oogasalad.model.data.DataFactory;
 import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
