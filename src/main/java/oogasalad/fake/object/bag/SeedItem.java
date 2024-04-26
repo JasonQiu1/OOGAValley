@@ -14,8 +14,18 @@ public class SeedItem extends BagItem {
   }
 
   @Override
-  public void interact(Coord coord, Game game) {
+  public boolean interact(Coord coord, Game game) {
+    return false;
+  }
 
+  @Override
+  public boolean consume(Game game) {
+    return false;
+  }
+
+  @Override
+  public boolean sell(Game game) {
+    return false;
   }
 
   public SeedConfig getSeedConfig() {
