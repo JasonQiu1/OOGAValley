@@ -46,6 +46,7 @@ public class ToolItem extends BagItem {
         String landId = land.getLandConfig().getTransFromLand().get(toolConfig.getId());
         Land newLand = new Land(game.getGameConfig().getLandConfigMap().get(landId));
         game.getGameMap().setLand(coord, newLand);
+        game.getGameState().addEnergy(-toolConfig.getEnergyConsume());
         return true;
       }
     }
