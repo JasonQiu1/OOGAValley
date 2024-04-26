@@ -1936,42 +1936,6 @@
       },
       "plantTime" : null
     },
-    "Coord[x=9, y=2]" : {
-      "plantConfig" : {
-        "imagePath" : "img/wheat.png",
-        "id" : "wheat",
-        "dropMap" : {
-          "hoe_bag" : {
-            "wheat_seed_bag" : 1,
-            "wheat_bag" : 1
-          }
-        },
-        "growthTime" : {
-          "day" : 0,
-          "hour" : 0,
-          "minute" : 5
-        }
-      },
-      "plantTime" : null
-    },
-    "Coord[x=9, y=3]" : {
-      "plantConfig" : {
-        "imagePath" : "img/wheat.png",
-        "id" : "wheat",
-        "dropMap" : {
-          "hoe_bag" : {
-            "wheat_seed_bag" : 1,
-            "wheat_bag" : 1
-          }
-        },
-        "growthTime" : {
-          "day" : 0,
-          "hour" : 0,
-          "minute" : 5
-        }
-      },
-      "plantTime" : null
-    },
     "Coord[x=9, y=4]" : {
       "plantConfig" : {
         "imagePath" : "img/wheat.png",

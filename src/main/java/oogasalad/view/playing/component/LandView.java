@@ -43,12 +43,14 @@ public class LandView {
         Coord coord = new Coord(i, j);
         Land land = landPositionMap.get(coord);
         Plant plant = plantPositionMap.get(coord);
-       if(land == null || plant == null) {
-         System.out.println(i + " " + j);
+       if(land == null) {
          continue;
        }
-        List<String> listImagePath = List.of(land.getLandConfig().getImagePath(),
-            plant.getPlantConfig().getImagePath());
+       List<String> listImagePath = new java.util.ArrayList<>(
+           List.of(land.getLandConfig().getImagePath()));
+       if(plant != null) {
+         listImagePath.add(plant.getPlantConfig().getImagePath());
+       }
         piles[i][j].update(listImagePath);
       }
     }
