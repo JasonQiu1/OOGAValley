@@ -1,0 +1,39 @@
+{
+  "land": {
+    "grass_land": {
+      "imagePath": "img/grass.jpg",
+      "id": "grass_land",
+      "transFromLand": {
+        "hoe_bag": "dirt_land"
+      },
+      "seedGrown": {
+        "wheat_seed_bag": "wheat"
+      }
+    },
+    "dirt_land": {
+      "imagePath": "img/dirt.jpg",
+      "id": "dirt_land",
+      "transFromLand": {},
+      "seedGrown": {}
+    }
+  },
+  "plant": {
+    "wheat": {
+      "imagePath": "img/wheat.png",
+      "id": "wheat",
+      "dropMap": {
+        "hoe_bag": [
+          {
+            "wheat_seed_bag": 1,
+            "wheat_bag": 1
+          }
+        ]
+      },
+      "growthTime": {
+        "day": 0,
+        "hour": 0,
+        "minute": 5
+      }
+    }
+  }
+}

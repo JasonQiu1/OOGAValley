@@ -1,5 +1,7 @@
 package oogasalad.fake.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import oogasalad.fake.GameTime;
@@ -24,5 +26,6 @@ public class PlantConfig extends BaseConfig {
   public GameTime getGrowthTime() {
     return gameTime.copy();
   }
+
 
 }

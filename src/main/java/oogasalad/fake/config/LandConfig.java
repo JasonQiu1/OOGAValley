@@ -1,5 +1,7 @@
 package oogasalad.fake.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.util.Map;
 
 public class LandConfig extends BaseConfig {
@@ -21,5 +23,6 @@ public class LandConfig extends BaseConfig {
   public Map<String, String> getSeedGrown() {
     return seedGrown;
   }
+
 
 }

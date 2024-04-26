@@ -1,5 +1,8 @@
 package oogasalad.fake.json;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Map;
 import oogasalad.fake.config.LandConfig;
 import oogasalad.fake.config.PlantConfig;
@@ -30,5 +33,14 @@ public class FarmConfigurations {
   public void setPlant(
       Map<String, PlantConfig> plant) {
     this.plant = plant;
+  }
+  private String toJson() throws IOException {
+    ObjectMapper objectMapper = new ObjectMapper();
+    return objectMapper.writeValueAsString(this);
+  }
+
+  public void toJsonFile(String filePath) throws IOException {
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.writeValue(Paths.get(filePath).toFile(), this);
   }
 }
