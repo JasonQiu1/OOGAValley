@@ -131,7 +131,4 @@ public class GameConfig implements GameConfigInterface {
     validator.validate();
   }
 
-  public String getConfigFilePath() {
-    return configFilePath;
-  }
 }

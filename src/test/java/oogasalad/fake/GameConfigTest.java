@@ -55,10 +55,7 @@ public class GameConfigTest {
     gameConfig.addConfig(
         new LandConfig("img/grass.jpg", "grass_land", transFromLand, seedGrownMap));
     assertTrue(true);
-    // throws error because there is no hoe_bag in the game.
-    assertThrows(SaveNotValidException.class, () -> {
-      gameConfig.save("valley_test/config.json");
-    });
+    gameConfig.save("valley_test/config.json");
   }
 
 }

@@ -7,9 +7,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import oogasalad.fake.GameTime;
-import oogasalad.fake.config.farm.LandConfig;
 import oogasalad.fake.map.Coord;
-import oogasalad.fake.map.GameMap;
 import oogasalad.fake.object.Land;
 import oogasalad.fake.object.Plant;
 
@@ -17,8 +15,8 @@ public class GameMapConfigParser {
 
   private Map<Coord, Land> landPositionMapCreate;
   private Map<Coord, Plant> plantPositionMapCreate;
-  private int height;
-  private int width;
+  private final int height;
+  private final int width;
 
   public GameMapConfigParser(String path) throws IOException {
     ObjectMapper objectMapper = new ObjectMapper();
