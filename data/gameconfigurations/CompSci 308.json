@@ -1975,7 +1975,7 @@
     },
     "gameTime": {
       "previous": {
-        "data": "2024-04-26T16:06:35.463466600Z"
+        "data": "2024-04-26T16:28:55.135444300Z"
       },
       "accumulate": 0,
       "day": 1,
@@ -1994,7 +1994,7 @@
       ],
       "previousRotationTime": {
         "type": "oogasalad.model.gameplay.GameTime",
-        "data": "{\"previous\":{\"data\":\"2024-04-26T16:06:35.463466600Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
+        "data": "{\"previous\":{\"data\":\"2024-04-26T16:28:55.135444300Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
       },
       "shopRotationTime": 1440,
       "itemRotation": [
