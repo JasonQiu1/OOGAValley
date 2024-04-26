@@ -40,7 +40,6 @@ public class BagItem extends StackPane {
     }
     this.selectedItem = selectedItem;
     this.num = num;
-    System.out.println("test :" + this.url);
     imageView = new ImageView(new Image(this.url, width, height, false, true));
     StackPane imageContainer = new StackPane();
     VBox vBox = new VBox();
