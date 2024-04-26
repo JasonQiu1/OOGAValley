@@ -1,5 +1,7 @@
 package oogasalad.model.api;
 
+import java.util.Optional;
+
 /**
  * Provides read-only access to data in a game state.
  *
@@ -31,6 +33,7 @@ public interface ReadOnlyGameState {
 
   /**
    * Returns the amount of money currently possessed.
+   *
    * @return the amount of money currently possessed.
    */
   int getMoney();
@@ -48,4 +51,11 @@ public interface ReadOnlyGameState {
    * @return the current bag.
    */
   ReadOnlyBag getBag();
+
+  /**
+   * Returns the selected item, if there is one selected.
+   *
+   * @return the optional describing the selected item.
+   */
+  Optional<ReadOnlyItem> getSelectedItem();
 }

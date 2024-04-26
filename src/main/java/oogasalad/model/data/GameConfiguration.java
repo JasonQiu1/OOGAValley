@@ -8,6 +8,7 @@ import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.InvalidRuleType;
+import oogasalad.model.gameplay.GameState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,13 +37,13 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     }
     DataValidation.validateProperties(rules);
     try {
-      configurablesStore = CONFIGURABLES_DATA_FACTORY.load(
-          Paths.get("templates", "ConfigurablesStore").toString());
+      configurablesStore =
+          CONFIGURABLES_DATA_FACTORY.load(Paths.get("templates", "ConfigurablesStore").toString());
     } catch (IOException e) {
       LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
       throw new RuntimeException(e);
     }
-    initialState = new GameState();
+    initialState = new GameState(rules);
   }
 
   /**

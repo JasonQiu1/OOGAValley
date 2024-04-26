@@ -9,11 +9,11 @@ import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
-import oogasalad.model.data.GameState;
 import oogasalad.model.data.Properties;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.Land;
+import oogasalad.model.gameplay.GameState;
 import oogasalad.model.gameplay.GameWorld;
 import org.junit.jupiter.api.Test;
 
@@ -39,8 +39,7 @@ public class DataGeneration {
     property.getProperties().put("updateTime", "10");
     property.getProperties().put("expirable", "false");
     allEditableConfigurables.put(id, property);
-
-    GameState gameState = new GameState();
+    GameState gameState = new GameState(gameConfiguration.getRules());
     GameWorld gameWorld = gameState.getEditableGameWorld();
     GameObject land = new Land(id, gameState.getEditableGameTime().copy());
     //   horizontal -x, vertical  - y
@@ -53,17 +52,6 @@ public class DataGeneration {
 //    editableConfigurablesStore.save(fileName);
     gameConfiguration.save(fileName);
     gameState.save(fileName);
-  }
-
-  @Test
-  void testGeneratedWorld() throws IOException {
-//    the code for the previous test
-    String fileName = "testWorld1.json";
-    GameConfiguration gameConfiguration = GameConfiguration.of("testWorld1.json");
-    GameFactory gameFactory = new GameFactory();
-    GameInterface game = gameFactory.createGame(fileName, fileName);
-    List<String> imagePath = game.getGameState().getGameWorld().getImagePath(1, 2, 0);
-    
   }
 
   /**

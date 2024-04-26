@@ -6,16 +6,17 @@ import oogasalad.model.data.GameConfiguration;
 
 public class EditorScene extends Scene {
 
-  private Stage stage;
-  private String myPrimaryLanguage;
-  private EditorWindow ew;
+  private final Stage stage;
+  private Scene previousScene;
+  private final String myPrimaryLanguage;
 
-  public EditorScene(Stage primaryStage, String language) {
-    super(new EditorWindow(new GameConfiguration()));
+  public EditorScene(Stage primaryStage, String language, Scene backScene, GameConfiguration gc) {
+    super(new EditorWindow(gc));
     stage = primaryStage;
     myPrimaryLanguage = language;
-    ew = new EditorWindow(new GameConfiguration());
-    super.setRoot(ew);
+    previousScene = backScene;
+    //ew = new EditorWindow(new GameConfiguration());
+    //super.setRoot(ew);
     super.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
   }
 
@@ -24,7 +25,4 @@ public class EditorScene extends Scene {
     stage.show();
   }
 
-  public void setConfig(GameConfiguration gc){
-      ew.setConfig(gc);
-  }
 }

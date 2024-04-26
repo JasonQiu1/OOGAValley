@@ -1,5 +1,7 @@
 package oogasalad.model.gameobject;
 
+import oogasalad.model.api.ReadOnlyItem;
+
 /**
  * Defines the capability of an object to interact with items within the game. Implementing this
  * interface allows an object to respond to interactions with specific items, potentially changing
@@ -16,7 +18,7 @@ public interface Interactable {
    *
    * @param item The item interacting with this object.
    */
-  void interact(Item item);
+  void interact(ReadOnlyItem item);
 
   /**
    * Determines whether an interaction with the specified item is valid at the current moment. This
@@ -27,6 +29,6 @@ public interface Interactable {
    * @param item The item proposed to interact with this object.
    * @return {@code true} if the interaction with the item is valid; {@code false} otherwise.
    */
-  boolean interactionValid(Item item);
+  boolean interactionValid(ReadOnlyItem item);
 }
 

@@ -16,11 +16,9 @@ public class OpenAI {
   private static final String THREADS = "/threads/";
 
   public String createThread() throws Exception {
-    HttpResponse<JsonNode> response = Unirest.post(BASE_URL + "/threads")
-        .header(Authorization_S, Authorization_S1)
-        .header(CONTENT_TYPE, "application/json")
-        .header(OPENAI_BETA, "assistants=v1")
-        .asJson();
+    HttpResponse<JsonNode> response =
+        Unirest.post(BASE_URL + "/threads").header(Authorization_S, Authorization_S1)
+            .header(CONTENT_TYPE, "application/json").header(OPENAI_BETA, "assistants=v1").asJson();
 
     if (response.getStatus() == 200) {
       return response.getBody().getObject().getString("id");
@@ -31,11 +29,9 @@ public class OpenAI {
 
   public String executeThread(String threadId, String assistantId) throws Exception {
     HttpResponse<JsonNode> response = Unirest.post(BASE_URL + THREADS + threadId + "/runs")
-        .header(Authorization_S, Authorization_S1)
-        .header(CONTENT_TYPE, "application/json")
+        .header(Authorization_S, Authorization_S1).header(CONTENT_TYPE, "application/json")
         .header(OPENAI_BETA, ASSISTANT_V1)
-        .body(String.format("{\"assistant_id\": \"%s\"}", assistantId))
-        .asJson();
+        .body(String.format("{\"assistant_id\": \"%s\"}", assistantId)).asJson();
 
     if (response.getStatus() != 200) {
       throw new Exception("Failed to execute thread: " + response.getBody().getObject().toString());
@@ -46,13 +42,11 @@ public class OpenAI {
 
   public boolean checkCompletion(String threadId) throws Exception {
     HttpResponse<JsonNode> response = Unirest.get(BASE_URL + THREADS + threadId + "/runs")
-        .header(Authorization_S, Authorization_S1)
-        .header(OPENAI_BETA, ASSISTANT_V1)
-        .asJson();
+        .header(Authorization_S, Authorization_S1).header(OPENAI_BETA, ASSISTANT_V1).asJson();
 
     if (response.getStatus() == 200) {
-      String status = response.getBody().getObject().
-          getJSONArray("data").getJSONObject(0).getString("status");
+      String status =
+          response.getBody().getObject().getJSONArray("data").getJSONObject(0).getString("status");
       return "completed".equals(status);
     } else {
       throw new Exception(
@@ -62,14 +56,11 @@ public class OpenAI {
 
   public String getMessages(String threadId) throws Exception {
     HttpResponse<JsonNode> response = Unirest.get(BASE_URL + THREADS + threadId + "/messages")
-        .header(Authorization_S, Authorization_S1)
-        .header(OPENAI_BETA, ASSISTANT_V1)
-        .asJson();
+        .header(Authorization_S, Authorization_S1).header(OPENAI_BETA, ASSISTANT_V1).asJson();
 
     if (response.getStatus() == 200) {
-      return response.getBody().getObject()
-          .getJSONArray("data").getJSONObject(0).getJSONArray("content").getJSONObject(0)
-          .getJSONObject("text").getString("value");
+      return response.getBody().getObject().getJSONArray("data").getJSONObject(0)
+          .getJSONArray("content").getJSONObject(0).getJSONObject("text").getString("value");
     } else {
       throw new Exception(
           "Failed to retrieve messages: " + response.getBody().getObject().toString());

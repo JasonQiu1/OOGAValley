@@ -1,6 +1,5 @@
 package oogasalad.view.playing;
 
-import java.io.IOException;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -17,6 +16,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
+import oogasalad.model.data.GameConfiguration;
+import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
@@ -26,7 +27,6 @@ import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
-import oogasalad.view.start.StartScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -41,8 +41,8 @@ public class PlayingPageView {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private final String myLanguage = "EnglishDisplayText";
-  private final ResourceBundle displayTextResource = ResourceBundle.getBundle(
-      DEFAULT_RESOURCE_PACKAGE + myLanguage);
+  private final ResourceBundle displayTextResource =
+      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -61,39 +61,42 @@ public class PlayingPageView {
   public static final double landGridPaneWidth = landCellWidth * landNumCols;
   public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
   public static final double landGridPaneHeight = landCellHeight * landNumRows;
-  public static final double windowHeight =
-      landGridPaneHeight + topHeight + bottomHeight;
+  public static final double windowHeight = landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
   private final Label timeLabel = new Label();
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
+  private final String primaryLanguage;
+  private final Bag bag = new Bag();
+
   private Button helpButton;
   private LandView landView;
   private TopAnimationView topAnimationView;
   private final Money money = new Money(100);
   private final Shop shop = new Shop(money);
-  private GameFactory gameFactory = new GameFactory();
+  private final GameFactory gameFactory = new GameFactory();
 
-  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
+  private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
 
-  private GameInterface game;
+  private final GameInterface game;
 
   private BagView bagView;
+  private String fileName;
+  private Scene previousScene;
 
-  public PlayingPageView(Stage primaryStage, String language) {
+  public PlayingPageView(Stage primaryStage, String language, Scene backScene,
+      GameConfiguration gameConfiguration) {
     stage = primaryStage;
+    primaryLanguage = language;
+    this.previousScene = backScene;
+    game = gameFactory.createGame();
   }
 
   public void start() {
-    String fileName = "testWorld1.json";
+
     LOG.info("initializing game");
-    try {
-      game = gameFactory.createGame(fileName, fileName);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
     LOG.info("finish loading game model");
     initModel();
     StackPane root = new StackPane();

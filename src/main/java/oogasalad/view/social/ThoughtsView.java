@@ -1,5 +1,7 @@
 package oogasalad.view.social;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -7,14 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.Modality;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.BorderPane;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import oogasalad.database.info.InfoService;
 import oogasalad.database.info.Thought;
 
@@ -78,8 +78,9 @@ public class ThoughtsView extends Application {
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
       String formattedTime = currentTime.format(formatter);
       InfoService.addThought(userId, thoughtText, formattedTime);
-      updateThoughtsView((VBox)((ScrollPane)primaryStage.getScene().getRoot().
-          getChildrenUnmodifiable().get(0)).getContent());
+      updateThoughtsView(
+          (VBox) ((ScrollPane) primaryStage.getScene().getRoot().getChildrenUnmodifiable()
+              .get(0)).getContent());
       popupStage.close();
     });
 

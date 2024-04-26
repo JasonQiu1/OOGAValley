@@ -110,7 +110,7 @@
   -fx-text-fill: black;
 }
 
-.pop-up-label {
+#pop-up-label {
   -fx-font-size: 13px;
   -fx-font-family: "Press Start 2P";
   -fx-text-fill: Black;
@@ -138,7 +138,7 @@
   -fx-max-height: 30px;
 }
 
-#backButton {
+.backButton {
   -fx-background-image: url("img/shop/back.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
@@ -154,7 +154,7 @@
   -fx-background-size: cover;
 }
 
-#sellButton {
+.sellButton {
   -fx-background-image: url('img/shop/buy-button.png');
   -fx-background-size: cover;
   -fx-font-family: "Press Start 2P";
@@ -162,7 +162,7 @@
   -fx-text-fill: white;
 }
 
-#left-page-change-button {
+.left-page-change-button {
   -fx-background-image: url("img/shop/left-arrow.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
@@ -173,7 +173,7 @@
   -fx-max-height: 30px;
 }
 
-#right-page-change-button {
+.right-page-change-button {
   -fx-background-image: url("img/shop/right-arrow.png");
   -fx-background-size: cover;
   -fx-background-repeat: no-repeat;
@@ -207,6 +207,7 @@
   -fx-max-width: 80px;
   -fx-max-height: 30px;
 }
+
 #yes-button .text {
   -fx-font-size: 10px;
   -fx-font-family: "Press Start 2P";
@@ -234,7 +235,7 @@
   -fx-font-family: "Press Start 2P";
   -fx-text-fill: black;
   -fx-font-size: 10px;
- }
+}
 
 #end-back-to-menu-button {
   -fx-background-image: url("img/end/back-to-main-page.png");

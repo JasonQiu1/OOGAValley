@@ -2,10 +2,10 @@ package oogasalad.database.info;
 
 public class Thought {
 
-  private int id;
-  private String username;
-  private String text;
-  private String time;
+  private final int id;
+  private final String username;
+  private final String text;
+  private final String time;
 
   public Thought(int id, String username, String text, String time) {
     this.id = id;

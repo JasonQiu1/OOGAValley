@@ -1,7 +1,9 @@
 package oogasalad.model.gameobject;
 
+import java.util.Collections;
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.ReadOnlyItem;
 
 /**
  * Represents a collectable game object that players can collect under certain conditions. This
@@ -20,11 +22,10 @@ public class Collectable extends GameObject implements Collect {
    * Constructs a new Collectable object with the specified identifier, initial state, and
    * properties that define its collectable nature.
    *
-   * @param id   The id of the GameObject.
+   * @param id           The id of the GameObject.
    * @param creationTime The game time at which this object was created
    */
-  public Collectable(String id, ReadOnlyGameTime creationTime,
-      Map<String, Integer> items) {
+  public Collectable(String id, ReadOnlyGameTime creationTime, Map<String, Integer> items) {
     super(id, creationTime);
     this.items = items;
     interactingExpired = false;
@@ -37,7 +38,7 @@ public class Collectable extends GameObject implements Collect {
    * @param item The item interacting with the collectable.
    */
   @Override
-  public void interact(Item item) {
+  public void interact(ReadOnlyItem item) {
     if (interactionValid(item)) {
       interactingExpired = true;
     }
@@ -45,11 +46,12 @@ public class Collectable extends GameObject implements Collect {
 
   /**
    * Retrieve the items and their quantities stored in the collectable.
+   *
    * @return A Map of all items id to their quantities stored in collectable.
    */
   @Override
   public Map<String, Integer> getItemsOnCollection() {
-    return items;
+    return Collections.unmodifiableMap(items);
   }
 
   /**

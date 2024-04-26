@@ -4,6 +4,9 @@ import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.data.GameConfiguration;
 
+/**
+ * Represents an Item to be used during the game.
+ */
 public class Item implements ReadOnlyItem {
 
   private final String itemId;
@@ -42,32 +45,30 @@ public class Item implements ReadOnlyItem {
     return getItemProperties().getString("image");
   }
 
+  /**
+   * Method to get the read only properties of the Item.
+   *
+   * @return properties The read only properties of relevant to specific Item stored here.
+   */
   private ReadOnlyProperties getItemProperties() {
     return GameConfiguration.getConfigurablesStore().getConfigurableProperties(itemId);
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null || getClass() != obj.getClass()) {
-      return false;
-    }
-    Item other = (Item) obj;
-    if (itemId == null) {
-      return other.itemId == null;
-    } else {
-      return itemId.equals(other.itemId);
-    }
-  }
-
+  /**
+   * Generates a hash code for this item based solely on its ItemId.
+   *
+   * @return A hash code value for this object
+   */
   @Override
   public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
-    return result;
+    return itemId.hashCode();
   }
 
+  /**
+   * Equals is based on the id.
+   */
+  @Override
+  public boolean equals(Object obj) {
+    return itemId.equals(obj);
+  }
 }

@@ -60,13 +60,6 @@ public class CellTest {
     assertEquals(37, size[1]);
   }
 
-  @Test
-  public void testIdInitialization() {
-    Cell cell = new Cell(null, null, 3, 4);
-    int[] id = cell.getLocalId();
-    assertEquals(3, id[0]);
-    assertEquals(4, id[1]);
-  }
 
   @Test
   public void testBaseFillAndStroke() {

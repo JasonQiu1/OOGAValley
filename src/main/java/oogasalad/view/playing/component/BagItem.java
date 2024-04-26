@@ -18,8 +18,8 @@ public class BagItem extends StackPane {
   private final SelectedItem selectedItem;
   private final String url;
   private int num;
-  private Label numLabel;
-  private ImageView imageView;
+  private final Label numLabel;
+  private final ImageView imageView;
 
   /**
    * Constructor for the Tool class.

@@ -7,12 +7,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 
-public class SelectableViewsWrapper extends VBox {
+public class SelectableViewBoxWrapper extends VBox {
 
-  public SelectableViewsWrapper(SelectableViews t, String title) {
+  public SelectableViewBoxWrapper(SelectableViewBox t, String title) {
     super();
     super.setAlignment(Pos.CENTER);
-    setPadding(new Insets(10, 0, 0, 3));
+    setPadding(new Insets(10, 3, 0, 3));
     ScrollPane sp = new ScrollPane(t);
     Label tile = new Label(title);
     tile.getStyleClass().add("selector-title");

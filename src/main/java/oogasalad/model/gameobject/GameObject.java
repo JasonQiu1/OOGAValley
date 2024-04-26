@@ -2,6 +2,7 @@ package oogasalad.model.gameobject;
 
 import java.util.function.Supplier;
 import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
 import oogasalad.model.data.GameConfiguration;
@@ -68,9 +69,9 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public void update(ReadOnlyGameTime gameTime) {
     lastUpdateGameTime = gameTime;
     updateAndInteract(() -> {
-      if (getProperties().getBoolean("updatable") &&
-          creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
-              "updateTime")) {
+      if (getProperties().getBoolean("updatable")
+          && creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
+          "updateTime")) {
         return getProperties().getString("updateTransformation");
       }
       return getId();
@@ -84,7 +85,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param item The item to interact with.
    */
   @Override
-  public void interact(Item item) {
+  public void interact(ReadOnlyItem item) {
     updateAndInteract(() -> {
       if (interactionValid(item)) {
         return getProperties().getStringMap("interactTransformations").get(item.getName());
@@ -114,7 +115,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return true if the interaction is valid, false otherwise.
    */
   @Override
-  public boolean interactionValid(Item item) {
+  public boolean interactionValid(ReadOnlyItem item) {
     return getProperties().getStringMap("interactTransformations").containsKey(item.getName());
   }
 

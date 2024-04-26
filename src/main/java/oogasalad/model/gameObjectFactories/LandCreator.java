@@ -17,9 +17,9 @@ public class LandCreator implements GameObjectCreator {
    * Creates a {@link Land} object with the specified properties and game time. This method
    * initializes a Land, setting up its state based on the properties provided.
    *
-   * @param id The id of the gameObject to be created.
-   * @param creationTime The game time at which the Land is being created, which can influence
-   *                     its initial conditions or environmental settings.
+   * @param id               The id of the gameObject to be created.
+   * @param creationTime     The game time at which the Land is being created, which can influence
+   *                         its initial conditions or environmental settings.
    * @param additionalParams A map containing additional parameters required for creating the Land.
    *                         This implementation of Land does not utilize additionalParams, but the
    *                         parameter is included to maintain interface consistency.

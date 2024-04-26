@@ -1,10 +1,9 @@
 package oogasalad.model.gameObjectFactories;
 
 import java.util.Map;
-import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.gameobject.Collectable;
 import oogasalad.model.gameobject.GameObject;
-import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * A creator class for constructing {@link Collectable} game objects. Implements the
@@ -18,12 +17,13 @@ public class CollectableCreator implements GameObjectCreator {
    * parameters. This method fully initializes a Collectable, setting up its state based on the
    * parameters provided.
    *
-   * @param id The id of the Collectable to be created.
-   * @param creationTime The game time at which the Collectable is being created, which can influence
-   *                     its initial state or behaviors, such as start times for effects or conditions.
-   * @param additionalParams A map containing additional parameters required for creating the Collectable.
-   *                         Typically, includes information about which items with their corresponding
-   *                         quantity are contained within the Collectable.
+   * @param id               The id of the Collectable to be created.
+   * @param creationTime     The game time at which the Collectable is being created, which can
+   *                         influence its initial state or behaviors, such as start times for
+   *                         effects or conditions.
+   * @param additionalParams A map containing additional parameters required for creating the
+   *                         Collectable. Typically, includes information about which items with
+   *                         their corresponding quantity are contained within the Collectable.
    * @return A new {@link Collectable} object, initialized and ready for game logic integration.
    */
   @Override
