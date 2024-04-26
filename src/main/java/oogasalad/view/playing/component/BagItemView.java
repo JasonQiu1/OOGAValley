@@ -11,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 /**
  * Represents a tool in the game.
  */
-public class BagItem {
+public class BagItemView {
 
   private final StackPane root;
   private final Rectangle selectedRectangle;
@@ -29,7 +29,7 @@ public class BagItem {
    * @param height       the height of the tool
    * @param selectedItem the selected item
    */
-  public BagItem(String url, double width, double height, SelectedItem selectedItem, int num) {
+  public BagItemView(String url, double width, double height, SelectedItem selectedItem, int num) {
     this.url = url;
     this.selectedItem = selectedItem;
     this.num = num;

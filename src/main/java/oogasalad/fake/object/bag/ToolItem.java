@@ -28,7 +28,7 @@ public class ToolItem extends BagItem {
     return false;
   }
 
-  public ToolConfig getToolConfig() {
+  public ToolConfig getConfig() {
     return toolConfig;
   }
 }

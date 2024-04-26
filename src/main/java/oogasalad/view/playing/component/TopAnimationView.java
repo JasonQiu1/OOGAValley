@@ -31,17 +31,17 @@ public class TopAnimationView extends StackPane {
    * This method is responsible for creating an animation that will be displayed on the top of the
    * screen when an item is collected.
    *
-   * @param bagItem the item that is collected
+   * @param bagItemView the item that is collected
    * @param startX  the x-coordinate of the start of the animation
    * @param startY  the y-coordinate of the start of the animation
    * @param endX    the x-coordinate of the end of the animation
    * @param endY    the y-coordinate of the end of the animation
    * @param speed   the speed of the animation
    */
-  public void collectItemAnimation(BagItem bagItem, double startX, double startY, double endX,
+  public void collectItemAnimation(BagItemView bagItemView, double startX, double startY, double endX,
       double endY, double speed) {
     TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(speed),
-        bagItem.getImageView());
+        bagItemView.getImageView());
     translateTransition.setFromX(startX);
     translateTransition.setFromY(startY);
     translateTransition.setToX(endX);
@@ -51,10 +51,10 @@ public class TopAnimationView extends StackPane {
 
     translateTransition.setOnFinished(event -> {
       this.getChildren().remove(0);
-      bagView.addItem(bagItem);
+      bagView.addItem(bagItemView);
     });
 
-    this.getChildren().add(bagItem.getImageView());
+    this.getChildren().add(bagItemView.getImageView());
 
   }
 

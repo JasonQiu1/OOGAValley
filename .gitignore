@@ -110,7 +110,7 @@ local.properties
 .loadpath
 .project
 
-# External bagItem builders
+# External bagItemView builders
 .externalToolBuilders/
 
 # Locally stored "Eclipse launch configurations"

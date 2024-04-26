@@ -1,11 +1,10 @@
 package oogasalad.view.playing;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,13 +16,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import oogasalad.model.api.GameFactory;
-import oogasalad.model.api.GameInterface;
+import oogasalad.fake.Game;
+import oogasalad.fake.api.exception.SaveNotValidException;
 import oogasalad.model.gameplay.GameTime;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.Shop;
 import oogasalad.view.gpt.Chat;
-import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.Money;
@@ -41,7 +37,7 @@ import org.apache.logging.log4j.Logger;
  * second.
  */
 
-public class PlayingPageView {
+public class PlayingPageView{
 
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
@@ -77,18 +73,15 @@ public class PlayingPageView {
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
   private String primaryLanguage;
-  private final Bag bag = new Bag();
 
   private Button helpButton;
   private LandView landView;
   private TopAnimationView topAnimationView;
   private final Money money = new Money(100);
-  private final Shop shop = new Shop(money);
-  private GameFactory gameFactory = new GameFactory();
 
   private static final Logger LOG = LogManager.getLogger(StartScreen.class);
 
-  private GameInterface game;
+  private Game game;
 
   private BagView bagView;
   private String fileName;
@@ -96,7 +89,7 @@ public class PlayingPageView {
   public PlayingPageView(Stage primaryStage, String language) {
     stage = primaryStage;
     primaryLanguage = language;
-    fileName = "testWorld1.json";
+    fileName = "valley_01/save.farm";
   }
 
   public PlayingPageView(Stage primaryStage, String language, String fileName) {
@@ -109,8 +102,8 @@ public class PlayingPageView {
 
     LOG.info("initializing game");
     try {
-      game = gameFactory.createGame(fileName, fileName);
-    } catch (IOException e) {
+      game = new Game(fileName);
+    } catch (IOException | SaveNotValidException e) {
       throw new RuntimeException(e);
     }
     LOG.info("finish loading game model");
@@ -134,14 +127,14 @@ public class PlayingPageView {
   }
 
   private void initModel() {
-    bagView = new BagView(game.getGameState().getBag(), 5, 1);
+    bagView = new BagView(game.getGameState().getItemList(), 5, 1);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
-    landView = new LandView(game.getGameState().getGameWorld());
+    landView = new LandView(game.getGameMap());
   }
 
   private void setUpdate() {
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
-      game.update();
+      //game.update();
       landView.update();
       updateTimeLabel();
     }));
@@ -197,11 +190,11 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(shop, bag, stage, scene, money);
-    Scene shoppingScene = new Scene(shoppingPageView.getScene());
-    shoppingScene.getStylesheets().add("styles.css");
-    stage.setScene(shoppingScene);
-    stage.show();
+    //ShoppingView shoppingPageView = new ShoppingView(shop, bag, stage, scene, money);
+    //Scene shoppingScene = new Scene(shoppingPageView.getScene());
+    //shoppingScene.getStylesheets().add("styles.css");
+    //stage.setScene(shoppingScene);
+    //stage.show();
   }
 
   private void createHelpButton() {
@@ -213,4 +206,5 @@ public class PlayingPageView {
       chatApp.start();
     });
   }
+
 }

@@ -1,6 +1,7 @@
 package oogasalad.fake.object.bag;
 
 import oogasalad.fake.Game;
+import oogasalad.fake.config.BaseConfig;
 import oogasalad.fake.map.Coord;
 
 public abstract class BagItem {
@@ -20,4 +21,5 @@ public abstract class BagItem {
   public abstract boolean consume(Game game);
 
   public abstract boolean sell(Game game);
+  public abstract BaseConfig getConfig();
 }

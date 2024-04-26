@@ -1,6 +1,12 @@
 package oogasalad.view.playing.component;
 
+import java.util.List;
+import java.util.Map;
 import javafx.scene.layout.GridPane;
+import oogasalad.fake.map.Coord;
+import oogasalad.fake.map.GameMap;
+import oogasalad.fake.object.Land;
+import oogasalad.fake.object.Plant;
 import oogasalad.model.api.ReadOnlyGameWorld;
 
 /**
@@ -13,12 +19,16 @@ public class LandView {
 
   private final Pile[][] piles;
 
-  private final ReadOnlyGameWorld readOnlyGameWorld;
+  private final GameMap gameMap;
+  private final Map<Coord, Land> landPositionMap;
+  private final Map<Coord, Plant> plantPositionMap;
 
 
-  public LandView(ReadOnlyGameWorld readOnlyGameWorld) {
-    this.readOnlyGameWorld = readOnlyGameWorld;
-    piles = new Pile[readOnlyGameWorld.getHeight()][readOnlyGameWorld.getWidth()];
+  public LandView(GameMap gameMap) {
+    this.gameMap = gameMap;
+    this.landPositionMap = gameMap.getLandPositionMap();
+    this.plantPositionMap = gameMap.getPlantPositionMap();
+    piles = new Pile[gameMap.getHeight()][gameMap.getWidth()];
     for (int i = 0; i < piles.length; i++) {
       for (int j = 0; j < piles[0].length; j++) {
         piles[i][j] = new Pile();
@@ -28,9 +38,18 @@ public class LandView {
   }
 
   public void update() {
-    for (int i = 0; i < readOnlyGameWorld.getHeight(); i++) {
-      for (int j = 0; j < readOnlyGameWorld.getWidth(); j++) {
-        piles[i][j].update(readOnlyGameWorld.getImagePath(j, i, 0));
+    for (int i = 0; i < piles.length; i++) {
+      for (int j = 0; j < piles[0].length; j++) {
+        Coord coord = new Coord(i, j);
+        Land land = landPositionMap.get(coord);
+        Plant plant = plantPositionMap.get(coord);
+       if(land == null || plant == null) {
+         System.out.println(i + " " + j);
+         continue;
+       }
+        List<String> listImagePath = List.of(land.getLandConfig().getImagePath(),
+            plant.getPlantConfig().getImagePath());
+        piles[i][j].update(listImagePath);
       }
     }
   }

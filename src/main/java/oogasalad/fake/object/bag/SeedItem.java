@@ -28,7 +28,7 @@ public class SeedItem extends BagItem {
     return false;
   }
 
-  public SeedConfig getSeedConfig() {
+  public SeedConfig getConfig() {
     return seedConfig;
   }
 }

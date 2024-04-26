@@ -9,18 +9,18 @@ public class BagItemPile extends StackPane {
 
   private final int x;
   private final int y;
-  private BagItem bagItem;
+  private BagItemView bagItemView;
 
   /**
    * Constructor for the ToolPile class.
    *
-   * @param bagItem the tool
+   * @param bagItemView the tool
    * @param x       the x-coordinate of the tool
    * @param y       the y-coordinate of the tool
    */
-  public BagItemPile(BagItem bagItem, int x, int y) {
+  public BagItemPile(BagItemView bagItemView, int x, int y) {
     super();
-    this.bagItem = bagItem;
+    this.bagItemView = bagItemView;
     this.x = x;
     this.y = y;
   }
@@ -33,14 +33,14 @@ public class BagItemPile extends StackPane {
     return y;
   }
 
-  public BagItem getItem() {
-    return bagItem;
+  public BagItemView getItem() {
+    return bagItemView;
   }
 
-  public void setItem(BagItem bagItem) {
+  public void setItem(BagItemView bagItemView) {
 
-    this.bagItem = bagItem;
-    this.getChildren().add(0, bagItem.getView());
+    this.bagItemView = bagItemView;
+    this.getChildren().add(0, bagItemView.getView());
   }
 
 
