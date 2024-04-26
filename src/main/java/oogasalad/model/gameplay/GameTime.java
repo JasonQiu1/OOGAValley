@@ -8,6 +8,8 @@ import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Game Time class controlling the game time
+ *
+ * @author Beilong Tang, Jason Qiu
  */
 public class GameTime implements GameTimeInterface {
 
@@ -19,8 +21,8 @@ public class GameTime implements GameTimeInterface {
   // by default, the unit is 10.
   private static final String DEFAULT_RESOURCE_PACKAGE = "model.gameplay.";
   private static String myLanguage = "EnglishTimeText";
-  private static final ResourceBundle timeTextResource = ResourceBundle.getBundle(
-      DEFAULT_RESOURCE_PACKAGE + myLanguage);
+  private static final ResourceBundle timeTextResource =
+      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
   private static final double rate = 43000.0 / 6.0;
   private static final int unit = 10;
 
@@ -55,6 +57,42 @@ public class GameTime implements GameTimeInterface {
       hour = 0;
       day += 1;
     }
+  }
+
+  /**
+   * Advances the time until it reaches given hour and minute.
+   * <p>
+   * If the current hour and minute are equal to the targets, then do not advance.
+   *
+   * @param targetHour   the target hour (0-23).
+   * @param targetMinute the target minute (0-59).
+   * @return the number of minutes advanced.
+   */
+  public int advanceTo(int targetHour, int targetMinute) {
+    int passedHours = 0;
+    int passedMinutes = 0;
+
+    if (targetHour < hour) {
+      passedHours = 24 - hour + targetHour;
+      day++;
+    } else {
+      passedHours = targetHour - hour;
+    }
+    hour = targetHour;
+
+    if (targetMinute < minute) {
+      passedHours--;
+      passedMinutes = 60 - minute + targetMinute;
+      if (passedHours == -1) {
+        passedHours = 23;
+        day++;
+      }
+    } else {
+      passedMinutes = targetMinute - minute;
+    }
+    minute = targetMinute;
+
+    return passedHours * 60 + passedMinutes;
   }
 
   /**
@@ -109,8 +147,23 @@ public class GameTime implements GameTimeInterface {
   @Override
   public String toString() {
     return String.format("%s: %d; %s: %d, %s: %d", timeTextResource.getString("day"), day,
-        timeTextResource.getString("hour"), hour, timeTextResource.getString("minute"),
-        minute);
+        timeTextResource.getString("hour"), hour, timeTextResource.getString("minute"), minute);
+  }
+
+  /**
+   * Equality is based off the clock time.
+   *
+   * @param object the object to compare against.
+   * @return true if the time is the same, false otherwise.
+   */
+  @Override
+  public boolean equals(Object object) {
+    if (object == null || this.getClass() != object.getClass()) {
+      return false;
+    }
+
+    final GameTime other = (GameTime) object;
+    return day == other.day && hour == other.hour && minute == other.minute;
   }
 
   public GameTime copy() {
