@@ -17,10 +17,6 @@ import oogasalad.model.gameobject.Updatable;
  */
 public class Shop implements ReadOnlyShop, Updatable {
 
-  // Amount of in-game minutes to pass before rotating the items in the shop.
-  // TODO: EXTERNALIZE TO RULES PROPERTIES
-  public static final int shopRotationTime = 24 * 60;
-
   /**
    * Initialize a new Shop with the given configuration.
    *
@@ -28,10 +24,11 @@ public class Shop implements ReadOnlyShop, Updatable {
    * @param possibleItems    the possible items for sale.
    * @param itemRotationSize the number of items to put on sale.
    */
-  public Shop(ReadOnlyGameTime creationTime, List<ReadOnlyItem> possibleItems,
-      int itemRotationSize) {
+  public Shop(ReadOnlyGameTime creationTime, List<ReadOnlyItem> possibleItems, int itemRotationSize,
+      int shopRotationTime) {
     this.itemRotation = new HashMap<>();
     this.itemRotationSize = itemRotationSize;
+    this.shopRotationTime = shopRotationTime;
     setPossibleItems(possibleItems);
     forceItemRotation(creationTime);
   }
@@ -117,6 +114,8 @@ public class Shop implements ReadOnlyShop, Updatable {
   private List<ReadOnlyItem> possibleItems;
   // The last time the items for sale were successfully rotated.
   private ReadOnlyGameTime previousRotationTime;
+  // Amount of in-game minutes to pass before rotating the items in the shop.
+  private int shopRotationTime = 24 * 60;
   // The items currently for sale along with their price.
   private final Map<ReadOnlyItem, Double> itemRotation;
   private static final Random random = new Random();

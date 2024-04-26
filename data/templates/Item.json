@@ -1,0 +1,12 @@
+// DEFAULT: An item representing wheat seeds.
+{
+  "properties": {
+    "name": "Wheat Seeds",
+    "type": "Item",
+    "image":"wheat_seeds.png",
+    "worth": 10
+  },
+  "listProperties": {},
+  "mapProperties": {}
+  }
+}

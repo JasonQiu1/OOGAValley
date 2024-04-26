@@ -2,12 +2,15 @@ package oogasalad.model.gameplay;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.KeyNotFoundException;
@@ -30,6 +33,8 @@ public class GameState implements ReadOnlyGameState {
   // TODO: Externalize this to a configuration file.
   // The path to the gamesaves directory from the data directory.
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
+  private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
+  private static final Logger LOG = LogManager.getLogger(GameState.class);
   private GameWorld gameWorld;
   private GameTime gameTime;
   private ReadOnlyItem selectedItem;
@@ -37,9 +42,39 @@ public class GameState implements ReadOnlyGameState {
   private int money;
   private Shop shop;
   private Bag bag;
-  private int width = 15;
-  private int height = 10;
-  private int depth = 2;
+  private final int width = 15;
+  private final int height = 10;
+  private final int depth = 2;
+
+  /**
+   * Initializes a default GameState.
+   */
+  public GameState(ReadOnlyProperties properties) {
+    this.bag = new Bag();
+    this.gameWorld = new GameWorld(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
+    this.gameTime = new GameTime(1, 8, 0);
+    try {
+      List<String> possibleItemStrings = properties.getStringList("shopPossibleItems");
+      List<ReadOnlyItem> possibleItems = new ArrayList<>();
+      for (String id : possibleItemStrings) {
+        possibleItems.add(new Item(id));
+      }
+      this.shop = new Shop(gameTime, possibleItems, properties.getInteger("shopRotationSize"),
+          properties.getInteger("shopRotationTime"));
+    } catch (KeyNotFoundException e) {
+      LOG.error("Couldn't load the shop!");
+      throw new RuntimeException(e);
+    }
+  }
+
+  /**
+   * Initializes a copy of GameState from the original.
+   *
+   * @param original the original GameState to copy.
+   */
+  public GameState(ReadOnlyGameState original) {
+    // TODO: IMPLEMENT
+  }
 
   /**
    * Creates and returns an instance of {@link GameState} from a JSON file.
@@ -52,25 +87,6 @@ public class GameState implements ReadOnlyGameState {
    */
   public static GameState of(String dataFilePath) throws BadGsonLoadException, IOException {
     return FACTORY.load(Paths.get(GAMESTATE_DIRECTORY_PATH, dataFilePath).toString());
-  }
-
-  /**
-   * Initializes a default GameState.
-   */
-  public GameState() {
-    this.bag = new Bag();
-    this.gameWorld = new GameWorld(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
-    this.gameTime = new GameTime(1, 8, 0);
-//    this.bag = new Bag();
-  }
-
-  /**
-   * Initializes a copy of GameState from the original.
-   *
-   * @param original the original GameState to copy.
-   */
-  public GameState(ReadOnlyGameState original) {
-    // TODO: IMPLEMENT
   }
 
   /**
@@ -129,7 +145,6 @@ public class GameState implements ReadOnlyGameState {
   public void addItemsToBag() {
     bag.addItems(gameWorld.itemsToAddToInventory());
   }
-
 
   /**
    * Returns the current bag, which contains items currently held.
@@ -194,8 +209,5 @@ public class GameState implements ReadOnlyGameState {
     // TODO: IMPLEMENT
     return 0.0f;
   }
-
-  private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
-  private static final Logger LOG = LogManager.getLogger(GameState.class);
 
 }

@@ -43,7 +43,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
       LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
       throw new RuntimeException(e);
     }
-    initialState = new GameState();
+    initialState = new GameState(rules);
   }
 
   /**

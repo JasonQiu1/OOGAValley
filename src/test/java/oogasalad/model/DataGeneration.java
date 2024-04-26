@@ -35,7 +35,7 @@ public class DataGeneration {
     property.getProperties().put("updateTime", "10");
     property.getProperties().put("expirable", "false");
     allEditableConfigurables.put(id, property);
-    GameState gameState = new GameState();
+    GameState gameState = new GameState(gameConfiguration.getRules());
     GameWorld gameWorld = gameState.getEditableGameWorld();
     GameObject land = new Land(id, gameState.getEditableGameTime().copy());
     //   horizontal -x, vertical  - y
