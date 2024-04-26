@@ -9,11 +9,11 @@ import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.GameObjectFactoryInstantiationFailure;
 import oogasalad.model.api.exception.InvalidGameObjectType;
+import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.gameobject.GameObject;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
-import oogasalad.model.data.GameConfiguration;
 
 /**
  * Factory class for creating GameObject instances dynamically based on the type specified in
@@ -41,10 +41,10 @@ public class GameObjectFactory {
    */
   private void discoverCreators() {
     String packageName = this.getClass().getPackage().getName();
-    Reflections reflections = new Reflections(new ConfigurationBuilder()
-        .setUrls(ClasspathHelper.forPackage(packageName)));
-    Set<Class<? extends GameObjectCreator>> classes = reflections.getSubTypesOf(
-        GameObjectCreator.class);
+    Reflections reflections = new Reflections(
+        new ConfigurationBuilder().setUrls(ClasspathHelper.forPackage(packageName)));
+    Set<Class<? extends GameObjectCreator>> classes =
+        reflections.getSubTypesOf(GameObjectCreator.class);
     for (Class<? extends GameObjectCreator> clazz : classes) {
       try {
         GameObjectCreator creator = clazz.getDeclaredConstructor().newInstance();
@@ -59,16 +59,17 @@ public class GameObjectFactory {
   /**
    * Creates a new GameObject based on the type specified in the provided ReadOnlyProperties.
    *
-   * @param id The id of the gameObject to be created.
-   * @param creationTime The game time at which the GameObject is being created.
-   * @param additionalParams A map of additional parameters required for creating specific types of GameObjects.
+   * @param id               The id of the gameObject to be created.
+   * @param creationTime     The game time at which the GameObject is being created.
+   * @param additionalParams A map of additional parameters required for creating specific types of
+   *                         GameObjects.
    * @return A new instance of a GameObject.
    * @throws InvalidGameObjectType if the specified type is not recognized or supported.
    */
   public GameObject createNewGameObject(String id, ReadOnlyGameTime creationTime,
       Map<String, Integer> additionalParams) {
-    ReadOnlyProperties properties = GameConfiguration
-        .getConfigurablesStore().getConfigurableProperties(id);
+    ReadOnlyProperties properties =
+        GameConfiguration.getConfigurablesStore().getConfigurableProperties(id);
     String type = properties.getString("type").toLowerCase();
     GameObjectCreator creator = creators.get(type);
     if (creator == null) {
@@ -78,12 +79,10 @@ public class GameObjectFactory {
   }
 
   /**
-   *
    * @return A list of the class names of all creators stored in the Factory.
    */
   public List<String> getListOfCreators() {
-    return creators.values().stream()
-        .map(creator -> creator.getClass().getSimpleName())
+    return creators.values().stream().map(creator -> creator.getClass().getSimpleName())
         .collect(Collectors.toList());
   }
 }

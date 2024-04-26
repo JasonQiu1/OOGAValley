@@ -13,6 +13,7 @@ public interface Collect {
 
   /**
    * Retrieve the items and their quantities stored in the collectable.
+   *
    * @return A Map of all items id to their quantities stored in collectable.
    */
   Map<String, Integer> getItemsOnCollection();

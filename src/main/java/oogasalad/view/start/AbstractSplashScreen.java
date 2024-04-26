@@ -21,8 +21,8 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class AbstractSplashScreen {
 
-  private static final Logger LOG = LogManager.getLogger(
-      AbstractSplashScreen.class); // should this be here
+  private static final Logger LOG = LogManager.getLogger(AbstractSplashScreen.class);
+      // should this be here
 
   public AbstractSplashScreen() {
     // do nothing
@@ -60,8 +60,7 @@ public abstract class AbstractSplashScreen {
     //create scene
     vb.getChildren().add(title);
     vb.getChildren().add(hb);
-    scene = new Scene(vb, initialStartScreenWidth,
-        initialStartScreenHeight);
+    scene = new Scene(vb, initialStartScreenWidth, initialStartScreenHeight);
 
     LOG.info(scene);
 
@@ -84,20 +83,21 @@ public abstract class AbstractSplashScreen {
 
   protected Animation createAnimation(Label l, Number newVal) {
     Path path = new Path();
-    path.getElements().addAll(
-        new MoveTo(l.getLayoutX() + newVal.doubleValue() / 2, l.getLayoutY()),
+    path.getElements().addAll(new MoveTo(l.getLayoutX() + newVal.doubleValue() / 2, l.getLayoutY()),
         new LineTo(l.getLayoutX() + newVal.doubleValue() / 2, l.getLayoutY() + 10));
 
     PathTransition pt = new PathTransition(Duration.seconds(1), path, l);
     return new SequentialTransition(l, pt);
   }
 
-  protected void createButtonsFromFile(String filename, Stage primaryStage, HBox root, String language) {
+  protected void createButtonsFromFile(String filename, Stage primaryStage, HBox root,
+      String language) {
     List<String[]> buttonData = SplashUtils.readCommaSeparatedCSVLines(filename);
     makeButton(buttonData, primaryStage, root, language);
   }
 
-  protected void makeButton(List<String[]> buttonData, Stage primaryStage, HBox root, String language) {
+  protected void makeButton(List<String[]> buttonData, Stage primaryStage, HBox root,
+      String language) {
 
     for (String[] data : buttonData) {
       ChangePageButton button = new ChangePageButton(data[0], data[1]);
@@ -105,7 +105,8 @@ public abstract class AbstractSplashScreen {
       String methodName = data[3];
       String[] parameters = new String[data.length - 4];
       System.arraycopy(data, 4, parameters, 0, parameters.length);
-      button.setOnAction(new ButtonActionHandler(className, methodName, primaryStage, language, parameters));
+      button.setOnAction(
+          new ButtonActionHandler(className, methodName, primaryStage, language, parameters));
 
       root.getChildren().add(button);
     }

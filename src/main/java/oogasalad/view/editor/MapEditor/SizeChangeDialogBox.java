@@ -9,31 +9,33 @@ import javafx.scene.layout.HBox;
 
 class SizeChangeDialogBox {
 
-  private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.SizeChangeDialogBox.";
-  private String displayTextLanguage = "EnglishDisplayText";
+  private static final String DEFAULT_RESOURCE_PACKAGE =
+      "view.editor.MapEditor.SizeChangeDialogBox.";
+  private final String displayTextLanguage = "EnglishDisplayText";
   private ResourceBundle displayTextResource;
 
   // Method to get new size from the user
   public int[] getNewSize() {
-    displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + displayTextLanguage);
+      displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + displayTextLanguage);
 
-    TextField textField1 = new TextField();
-    textField1.setId("newRows");
-    TextField textField2 = new TextField();
-    textField2.setId("newColumns");
-    HBox hbox = new HBox(new Label(displayTextResource.getString("prompt") + "  "), textField1,
-            textField2);
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.getDialogPane().setContent(hbox);
-    alert.setTitle(displayTextResource.getString("change_grid_size"));
-    alert.setHeaderText(null);
-    alert.showAndWait();
+      TextField textField1 = new TextField();
+      textField1.setId("newRows");
+      TextField textField2 = new TextField();
 
-    ButtonType result = alert.getResult();
-    if (result == ButtonType.OK) {
-      return processInput(textField1.getText(), textField2.getText());
-    } else {
-      return null; // User clicked cancel or X button
+      textField2.setId("newColumns");
+      HBox hbox = new HBox(new Label(displayTextResource.getString("prompt") + "  "), textField1,
+              textField2);
+      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+      alert.getDialogPane().setContent(hbox);
+      alert.setTitle(displayTextResource.getString("change_grid_size"));
+      alert.setHeaderText(null);
+      alert.showAndWait();
+
+      ButtonType result = alert.getResult();
+      if (result == ButtonType.OK) {
+          return processInput(textField1.getText(), textField2.getText());
+      }  else {
+          return null; // User clicked cancel or X button
     }
   }
 

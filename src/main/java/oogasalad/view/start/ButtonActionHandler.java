@@ -15,7 +15,7 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
   private final String className;
   private final String methodName;
   private final Stage stage;
-  private String language;
+  private final String language;
   private final String[] parameters;
 
   public ButtonActionHandler(String className, String methodName, Stage stage, String language,

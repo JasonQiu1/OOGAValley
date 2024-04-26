@@ -10,10 +10,19 @@
     "energyAmount": 20,
     "energyRecoveryRate": 720,
     "exhaustedEnergyCollapseTimePenalty": 1440,
+    // currently the shop rotates every day
+    "shopRotationTime": 1440,
+    // how many items on sale at a time
+    "shopRotationSize": 3,
     "timeMultiplier": 1,
     "timeGoal": 525600
   },
-  "listProperties": {},
+  "listProperties": {
+    // the possible items to go on rotation in the shop
+    "shopPossibleItems": [
+      "wheat_seeds"
+    ]
+  },
   "mapProperties": {},
   "propertiesType": {
     "String": [

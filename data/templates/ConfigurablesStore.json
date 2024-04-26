@@ -66,10 +66,9 @@
         // This is filename of the image which the view will use to display this object.
         // The file must exist in the `data/images` directory.
         "image": "wheat.png",
-
         "updatable": false,
         "updateTime": 0,
-        "updateTransformation":  "",
+        "updateTransformation": "",
         // If true, then the object should expire "lifeDuration" time after the object was placed.
         // If "expireTransformation" is non-null, then the object transforms into "GAME_OBJECT" when
         "expirable": true,
@@ -112,6 +111,16 @@
           "wheat_item": 1
         }
       }
+    },
+    "wheat_seeds": {
+      "properties": {
+        "name": "Wheat Seeds",
+        "type": "Item",
+        "image": "wheat_seeds.png",
+        "worth": "10"
+      },
+      "listProperties": {},
+      "mapProperties": {}
     }
   }
 }

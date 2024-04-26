@@ -10,14 +10,12 @@ public class SelectableViewBox extends HBox {
 
   public SelectableViewBox(List<SelectableView> selectables, Selector ts) {
     super();
-    selectables.stream()
-        .map(node -> {
-          VBox vbox = new VBox(node, node.getLabel());
-          vbox.setAlignment(Pos.CENTER);
-          ts.add(vbox);
-          return vbox;
-        })
-        .forEach(super.getChildren()::add);
+    selectables.stream().map(node -> {
+      VBox vbox = new VBox(node, node.getLabel());
+      vbox.setAlignment(Pos.CENTER);
+      ts.add(vbox);
+      return vbox;
+    }).forEach(super.getChildren()::add);
     super.setSpacing(8);
   }
 }

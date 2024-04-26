@@ -46,8 +46,8 @@ public class PlayingPageView {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private final String myLanguage = "EnglishDisplayText";
-  private final ResourceBundle displayTextResource = ResourceBundle.getBundle(
-      DEFAULT_RESOURCE_PACKAGE + myLanguage);
+  private final ResourceBundle displayTextResource =
+      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -66,8 +66,7 @@ public class PlayingPageView {
   public static final double landGridPaneWidth = landCellWidth * landNumCols;
   public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
   public static final double landGridPaneHeight = landCellHeight * landNumRows;
-  public static final double windowHeight =
-      landGridPaneHeight + topHeight + bottomHeight;
+  public static final double windowHeight = landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
 
@@ -76,7 +75,7 @@ public class PlayingPageView {
   private final GameTime gameTime = new GameTime(1, 8, 0);
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
-  private String primaryLanguage;
+  private final String primaryLanguage;
   private final Bag bag = new Bag();
 
   private Button helpButton;
@@ -84,11 +83,11 @@ public class PlayingPageView {
   private TopAnimationView topAnimationView;
   private final Money money = new Money(100);
   private final Shop shop = new Shop(money);
-  private GameFactory gameFactory = new GameFactory();
+  private final GameFactory gameFactory = new GameFactory();
 
   private static final Logger LOG = LogManager.getLogger(StartScreen.class);
 
-  private GameInterface game;
+  private final GameInterface game;
 
   private BagView bagView;
   private String fileName;
@@ -96,23 +95,18 @@ public class PlayingPageView {
   public PlayingPageView(Stage primaryStage, String language) {
     stage = primaryStage;
     primaryLanguage = language;
-    fileName = "testWorld1.json";
+    game = gameFactory.createGame();
   }
 
-  public PlayingPageView(Stage primaryStage, String language, String fileName) {
+  public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
     stage = primaryStage;
     primaryLanguage = language;
-    this.fileName = fileName;
+    game = gameFactory.createGame(fileName, fileName);
   }
 
   public void start() {
 
     LOG.info("initializing game");
-    try {
-      game = gameFactory.createGame(fileName, fileName);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
     LOG.info("finish loading game model");
     initModel();
     StackPane root = new StackPane();
