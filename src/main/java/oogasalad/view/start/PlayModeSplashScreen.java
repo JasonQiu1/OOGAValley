@@ -1,6 +1,7 @@
 package oogasalad.view.start;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
@@ -46,10 +47,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     myStageTitle = titleResource.getString("title");
     buttonsPath = buttonResource.getString("buttons_path");
 
-
     LOG.info(String.valueOf(previousScene));
-    ResourceString resourceString = new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath,
-        myStageTitle, STYLES);
+    ResourceString resourceString =
+        new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath, myStageTitle, STYLES);
 
     setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString, primaryLanguage);
     LOG.info(String.valueOf(previousScene));
@@ -65,7 +65,12 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     LOG.debug(previousScene);
     Optional<File> file = resultContainer.showFileChooserDialog(stage);
     String filePath = file.get().getName();
-    new PlayingPageView(stage, primaryLanguage,filePath).start();
+    try {
+      new PlayingPageView(stage, primaryLanguage, filePath).start();
+    } catch (IOException exception) {
+      LOG.error("Failed to load configuration file!");
+      throw new RuntimeException(exception);
+    }
   }
 
   public void goBackScene() {
