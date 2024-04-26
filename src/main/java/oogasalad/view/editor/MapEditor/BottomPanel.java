@@ -56,11 +56,11 @@ public class BottomPanel extends TabPane {
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }
-    titlesTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockTiles, ts), tabResource.getString("tiles")));
-    plantsTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockPlants, ts), tabResource.getString("plants")));
+    titlesTab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(mockTiles, ts), tabResource.getString("tiles")));
+    plantsTab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(mockPlants, ts), tabResource.getString("plants")));
     buildingsTab.setContent(
-        new SelectableViewsWrapper(new SelectableViews(mockBuildings, ts), tabResource.getString("buildings")));
-    natureTab.setContent(new SelectableViewsWrapper(new SelectableViews(mockNature, ts), tabResource.getString("nature")));
+        new SelectableViewBoxWrapper(new SelectableViewBox(mockBuildings, ts), tabResource.getString("buildings")));
+    natureTab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(mockNature, ts), tabResource.getString("nature")));
 
     super.getTabs().addAll(titlesTab, natureTab, plantsTab, buildingsTab);
   }
