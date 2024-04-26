@@ -14,7 +14,6 @@ import oogasalad.fake.config.PlantConfig;
 public class FarmConfigParser {
 
   private static final String JSON_FILE_PATH = "src/main/java/oogasalad/fake/json/test.json";
-  private static final String JSON_FILE_TARGET_PATH = "src/main/java/oogasalad/fake/json/test.json";
 
 
   public static FarmConfigurations parseFarmConfigurations() throws IOException {
@@ -73,7 +72,7 @@ public class FarmConfigParser {
   public static void main(String[] args) {
     try {
       FarmConfigurations farmConfigurations = parseFarmConfigurations();
-      farmConfigurations.toJsonFile(JSON_FILE_TARGET_PATH);
+      farmConfigurations.toJsonFile(JSON_FILE_PATH);
 
     } catch (IOException e) {
       e.printStackTrace();
