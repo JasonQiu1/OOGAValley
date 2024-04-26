@@ -12,5 +12,5 @@ public interface GameConfigInterface {
   void addConfig(PlantConfig config);
 
 
-  void save(String filePath) throws IOException;
+  void save() throws IOException;
 }

@@ -1,19 +1,22 @@
 package oogasalad.fake.config.item;
 
+import oogasalad.fake.GameTime;
 import oogasalad.fake.config.BaseConfig;
-import oogasalad.model.gameplay.GameTime;
+
 
 public class ToolConfig extends BaseConfig {
 
-  private GameTime timeConsume;
+  private final GameTime timeConsume;
 
-  private int energyConsume;
+  private final double energyConsume;
 
-  public ToolConfig(String imagePath, String id) {
+  public ToolConfig(String imagePath, String id, GameTime timeConsumed, double energyConsumed) {
     super(imagePath, id);
+    this.timeConsume = timeConsumed;
+    this.energyConsume = energyConsumed;
   }
 
-  public int getEnergyConsume() {
+  public double getEnergyConsume() {
     return energyConsume;
   }
 

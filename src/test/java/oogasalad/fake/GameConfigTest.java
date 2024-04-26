@@ -14,7 +14,7 @@ public class GameConfigTest {
   @Test
   void testAddConfig() throws IOException, SaveNotValidException {
     GameConfig gameConfig = new GameConfig(path);
-    gameConfig.save("valley_01/save/config.json");
+    gameConfig.save();
   }
 
 }

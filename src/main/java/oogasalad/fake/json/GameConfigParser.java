@@ -10,11 +10,17 @@ import java.util.Map;
 import oogasalad.fake.GameTime;
 import oogasalad.fake.config.farm.LandConfig;
 import oogasalad.fake.config.farm.PlantConfig;
+import oogasalad.fake.config.item.PlantItemConfig;
+import oogasalad.fake.config.item.SeedConfig;
+import oogasalad.fake.config.item.ToolConfig;
 
 public class GameConfigParser {
 
   private Map<String, LandConfig> landConfigs;
   private Map<String, PlantConfig> plantConfigs;
+  private Map<String, SeedConfig> seedConfigs;
+  private Map<String, PlantItemConfig> plantItemConfigs;
+  private Map<String, ToolConfig> toolConfigs;
 
   public GameConfigParser(String path) throws IOException {
     parseFarmConfigurations(path);
@@ -29,7 +35,9 @@ public class GameConfigParser {
 
     landConfigs = createLandConfig(rawConfig);
     plantConfigs = createPlantConfig(rawConfig);
-
+    seedConfigs = createSeedConfig(rawConfig);
+    plantItemConfigs = createPlantItemConfig(rawConfig);
+    toolConfigs = createToolConfig(rawConfig);
   }
 
   public Map<String, PlantConfig> createPlantConfig(
@@ -72,6 +80,62 @@ public class GameConfigParser {
       landConfigs.put(landKey, landConfig);
     }
     return landConfigs;
+  }
+
+  public Map<String, SeedConfig> createSeedConfig(Map<String, Map<String, Object>> rawConfig) {
+    seedConfigs = new HashMap<>();
+    Map<String, Object> seeds = (Map<String, Object>) rawConfig.get("seedConfigMap");
+    for (Map.Entry<String, Object> seedEntry : seeds.entrySet()) {
+      String seedKey = seedEntry.getKey();
+      Map<String, Object> seedInfo = (Map<String, Object>) seedEntry.getValue();
+      SeedConfig seedConfig = new SeedConfig((String) seedInfo.get("imagePath"), seedKey,
+          (double) seedInfo.get("sellPrice"));
+      seedConfigs.put(seedKey, seedConfig);
+    }
+    return seedConfigs;
+  }
+
+  public Map<String, PlantItemConfig> createPlantItemConfig(
+      Map<String, Map<String, Object>> rawConfig) {
+    plantItemConfigs = new HashMap<>();
+    Map<String, Object> plantItems = (Map<String, Object>) rawConfig.get("plantItemConfigMap");
+    for (Map.Entry<String, Object> plantItemEntry : plantItems.entrySet()) {
+      String plantItemKey = plantItemEntry.getKey();
+      Map<String, Object> plantItemInfo = (Map<String, Object>) plantItemEntry.getValue();
+      PlantItemConfig plantItemConfig = new PlantItemConfig((String) plantItemInfo.get("imagePath"),
+          plantItemKey,
+          (double) plantItemInfo.get("sellPrice"), (double) plantItemInfo.get("eatEnergy"));
+      plantItemConfigs.put(plantItemKey, plantItemConfig);
+    }
+    return plantItemConfigs;
+  }
+
+  public Map<String, ToolConfig> createToolConfig(Map<String, Map<String, Object>> rawConfig) {
+    toolConfigs = new HashMap<>();
+    Map<String, Object> tools = (Map<String, Object>) rawConfig.get("toolConfigMap");
+    for (Map.Entry<String, Object> toolEntry : tools.entrySet()) {
+      String toolKey = toolEntry.getKey();
+      Map<String, Object> toolInfo = (Map<String, Object>) toolEntry.getValue();
+      Map<String, Integer> gameTime = (Map<String, Integer>) toolInfo.get("timeConsume");
+      GameTime game = new GameTime(gameTime.get("day"), gameTime.get("hour"),
+          gameTime.get("minute"));
+      ToolConfig toolConfig = new ToolConfig((String) toolInfo.get("imagePath"), toolKey, game,
+          (double) toolInfo.get("energyConsume"));
+      toolConfigs.put(toolKey, toolConfig);
+    }
+    return toolConfigs;
+  }
+
+  public Map<String, SeedConfig> getSeedConfigs() {
+    return seedConfigs;
+  }
+
+  public Map<String, PlantItemConfig> getPlantItemConfigs() {
+    return plantItemConfigs;
+  }
+
+  public Map<String, ToolConfig> getToolConfigs() {
+    return toolConfigs;
   }
 
   public Map<String, LandConfig> getLandConfigs() {

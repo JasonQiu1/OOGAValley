@@ -35,5 +35,32 @@
         "minute": 5
       }
     }
+  },
+  "plantItemConfigMap": {
+    "wheat_bag": {
+      "imagePath": "img/wheat.png",
+      "id": "wheat_bag",
+      "sellPrice": 200.0,
+      "eatEnergy": 10.0
+    }
+  },
+  "toolConfigMap": {
+    "hoe": {
+      "imagePath": "img/tool.png",
+      "id": "hoe",
+      "timeConsume": {
+        "day": 0,
+        "hour": 0,
+        "minute": 1
+      },
+      "energyConsume": 10.0
+    }
+  },
+  "seedConfigMap": {
+    "wheat_seed_bag": {
+      "imagePath": "img/panda.png",
+      "id": "wheat_seed_bag",
+      "sellPrice": 100.0
+    }
   }
 }
