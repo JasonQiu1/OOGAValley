@@ -91,7 +91,6 @@ public class BagView {
       int finalI = i;
       bagItemPiles[i][0].getItem().getView().setOnMouseClicked(event -> {
         gameInputHandler.selectItem(finalI);
-        System.out.println(finalI);
         reset();
         bagItemPiles[finalI][0].getItem().setSelected();
       });

@@ -38,8 +38,6 @@ public class LandView {
         int finalI = i;
         int finalJ = j;
         piles[i][j].setOnMouseClicked(event -> {
-          System.out.println(finalI);
-          System.out.println(finalJ);
           gameInputHandler.interact(new Coord(finalI, finalJ));
         });
         landGridPane.add(piles[i][j], j, i);
