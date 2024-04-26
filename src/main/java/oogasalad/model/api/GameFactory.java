@@ -38,7 +38,7 @@ public class GameFactory {
    * @return a new instance of Game from a config and save.
    * @throws IOException if there was an issue loading the configuration or save
    */
-  GameInterface createGame(String configName, String saveName) throws IOException {
+  public GameInterface createGame(String configName, String saveName) throws IOException {
     return new Game(configName, saveName);
   }
 }

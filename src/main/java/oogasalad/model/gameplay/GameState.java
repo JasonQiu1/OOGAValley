@@ -1,17 +1,18 @@
-package oogasalad.model.data;
+package oogasalad.model.gameplay;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Optional;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
-import oogasalad.model.gameplay.Bag;
-import oogasalad.model.gameplay.GameTime;
-import oogasalad.model.gameplay.GameWorld;
-import oogasalad.model.gameplay.Shop;
+import oogasalad.model.api.exception.KeyNotFoundException;
+import oogasalad.model.data.DataFactory;
+import oogasalad.model.gameobject.Item;
 import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,6 +32,7 @@ public class GameState implements ReadOnlyGameState {
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
   private GameWorld gameWorld;
   private GameTime gameTime;
+  private ReadOnlyItem selectedItem;
   private double energy;
   private int money;
   private Shop shop;
@@ -59,6 +61,7 @@ public class GameState implements ReadOnlyGameState {
     this.bag = new Bag();
     this.gameWorld = new GameWorld(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
     this.gameTime = new GameTime(1, 8, 0);
+//    this.bag = new Bag();
   }
 
   /**
@@ -87,7 +90,6 @@ public class GameState implements ReadOnlyGameState {
 
   @Override
   public ReadOnlyGameTime getGameTime() {
-    // TODO: IMPLEMENT
     return gameTime;
   }
 
@@ -98,8 +100,7 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public double getEnergy() {
-    // TODO: IMPLEMENT
-    return 0;
+    return energy;
   }
 
   /**
@@ -109,8 +110,7 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public int getMoney() {
-    // TODO: IMPLEMENT
-    return 0;
+    return money;
   }
 
   /**
@@ -120,9 +120,16 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public ReadOnlyShop getShop() {
-    // TODO: IMPLEMENT
-    return null;
+    return shop;
   }
+
+  /**
+   * Add items from GameWorld to the player's bag.
+   */
+  public void addItemsToBag() {
+    bag.addItems(gameWorld.itemsToAddToInventory());
+  }
+
 
   /**
    * Returns the current bag, which contains items currently held.
@@ -131,17 +138,61 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public ReadOnlyBag getBag() {
-
     return bag;
   }
 
+  /**
+   * Returns the selected item, if there is one selected.
+   *
+   * @return the optional describing the selected item.
+   */
+  @Override
+  public Optional<ReadOnlyItem> getSelectedItem() {
+    return Optional.of(selectedItem);
+  }
+
+  /**
+   * Selects an item to be active if it is in the bag.
+   *
+   * @param id
+   */
+  public void selectItem(String id) throws KeyNotFoundException {
+    Item item = new Item(id);
+    if (!bag.getItems().containsKey(item)) {
+      throw new KeyNotFoundException(id);
+    }
+    selectedItem = item;
+  }
+
+  /**
+   * Add/subtract from the current amount of money.
+   *
+   * @param amount amount to add/subtract from the current amount of money.
+   */
+  public void addMoney(int amount) {
+    money += amount;
+  }
+
   public GameWorld getEditableGameWorld() {
-    // TODO: IMPLEMENT
     return gameWorld;
   }
 
   public GameTime getEditableGameTime() {
-    return new GameTime(1,1,1);
+    return gameTime;
+  }
+
+  public Bag getEditableBag() {
+    return bag;
+  }
+
+  /**
+   * Restores energy by the given amount up to the max amount.
+   *
+   * @return the amount of energy restored.
+   */
+  public double restoreEnergy(double amount) {
+    // TODO: IMPLEMENT
+    return 0.0f;
   }
 
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);

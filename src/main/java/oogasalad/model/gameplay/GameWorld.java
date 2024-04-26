@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
@@ -83,7 +84,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * @param height The height coordinate of the interaction.
    * @param depth  The depth coordinate of the interaction.
    */
-  public void interact(Item item, int width, int height, int depth) {
+  public void interact(ReadOnlyItem item, int width, int height, int depth) {
     allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
   }
 

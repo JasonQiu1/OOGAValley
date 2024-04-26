@@ -1,8 +1,11 @@
 package oogasalad.view.start;
 
+import java.io.File;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +17,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private ResourceBundle buttonResource;
   private ResourceBundle titleResource;
 
-  private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/";
+  private static final String DEFAULT_RESOURCE_FOLDER = "data/gameconfigurations";
   private static final String STYLES = "/play_mode_styles.css";
   private String buttonsPath;
   private static final double DEFAULT_WIDTH_PORTION = 0.65;
@@ -60,7 +63,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   public void makeChooser(String title) {
     FileChooserContainer resultContainer = new FileChooserContainer(title, DEFAULT_RESOURCE_FOLDER);
     LOG.debug(previousScene);
-    resultContainer.showFileChooserDialog(stage);
+    Optional<File> file = resultContainer.showFileChooserDialog(stage);
+    String filePath = file.get().getName();
+    new PlayingPageView(stage, primaryLanguage,filePath).start();
   }
 
   public void goBackScene() {
