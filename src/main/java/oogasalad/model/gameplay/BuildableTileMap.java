@@ -130,20 +130,7 @@ public class BuildableTileMap implements BuildableTileMapInterface {
     alterSizeTR(0, 1);
   }
 
-  @Override
-  public int getHeight() {
-    return height;
-  }
 
-  @Override
-  public int getWidth() {
-    return width;
-  }
-
-  @Override
-  public int getDepth() {
-    return depth;
-  }
 
   private void alterSizeTR(int width, int height) {
     Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
