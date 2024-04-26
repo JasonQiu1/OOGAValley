@@ -1,10 +1,13 @@
 package oogasalad.view.start;
 
+import static java.lang.Thread.sleep;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.playing.PlayingPageView;
@@ -28,20 +31,21 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private String myStageTitle;
   private final Stage stage;
   private final String primaryLanguage;
-  private final Scene previousScene;
+  private Scene myScene;
+  private Scene previousScene;
   private Scene playModeScreen;
 
-  public PlayModeSplashScreen(Stage stageToUse, String language, GameConfiguration gameConfiguration) {
+  public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene, GameConfiguration gameConfiguration) {
     super();
     stage = stageToUse;
     primaryLanguage = language;
-    previousScene = stage.getScene();
+    previousScene = backScene;
+//    previousScene = stage.getScene();
     setFilesLanguage();
   }
 
   @Override
   public void open() {
-
     titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + titleLanguage);
     buttonResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + buttonLanguage);
 
@@ -52,8 +56,20 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     ResourceString resourceString =
         new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath, myStageTitle, STYLES);
 
-    setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString, primaryLanguage);
-    LOG.info(String.valueOf(previousScene));
+    myScene = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString, primaryLanguage, previousScene);
+    LOG.info(String.format("the previous scene is still %s", previousScene));
+
+    stage.setTitle(myStageTitle);
+    stage.setScene(myScene);
+    stage.show();
+    LOG.info(String.format("after changing the scene %s", previousScene));
+
+//    try {
+//      sleep(5000);
+//    } catch (InterruptedException e) {
+//      throw new RuntimeException(e);
+//    }
+//    goBackScene(new Scene(new HBox()));
   }
 
   private void setFilesLanguage() {
@@ -61,8 +77,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     buttonLanguage = primaryLanguage + "Buttons";
   }
 
-  public void makeChooser(String title) {
-    FileChooserContainer resultContainer = new FileChooserContainer(title, DEFAULT_RESOURCE_FOLDER);
+  public void makeChooser() {
+    FileChooserContainer resultContainer = new FileChooserContainer(null, DEFAULT_RESOURCE_FOLDER);
     LOG.debug(previousScene);
     Optional<File> file = resultContainer.showFileChooserDialog(stage);
     String filePath = file.get().getName();
@@ -75,15 +91,20 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   }
 
   public void goBackScene() {
-//    LOG.debug(String.format("going back to %s", previousScene));
+    LOG.debug(String.format("going back to %s", previousScene));
 //    Stage news = new Stage();
 //    news.setScene(previousScene);
 //    news.show();
-    new StartScreen(stage, primaryLanguage).open();
+    new StartScreen(stage, primaryLanguage, null, new GameConfiguration()).open();
+//    this.stage.setScene(previousScene);
   }
 
   public String getMyStageTitle() {
     return myStageTitle;
+  }
+
+  public Scene getMyScene() {
+    return myScene;
   }
 
 }

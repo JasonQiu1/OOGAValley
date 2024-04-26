@@ -3,6 +3,7 @@ package oogasalad;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.start.StartScreen;
 
 /**
@@ -30,6 +31,6 @@ public class Main extends Application {
 //  }
 
   public void start(Stage primaryStage) {
-    new StartScreen(primaryStage, "English").open();
+    new StartScreen(primaryStage, "English", null, new GameConfiguration()).open();
   }
 }

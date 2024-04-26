@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
 import org.apache.logging.log4j.LogManager;
@@ -11,19 +12,22 @@ import org.apache.logging.log4j.Logger;
 
 public class ButtonActionHandler implements EventHandler<ActionEvent> {
 
-  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
+  private static final Logger LOG = LogManager.getLogger(ButtonActionHandler.class);
   private final String className;
   private final String methodName;
   private final Stage stage;
   private final String language;
+  private Scene previousScene;
   private final String[] parameters;
 
   public ButtonActionHandler(String className, String methodName, Stage stage, String language,
-      String... parameters) {
+      Scene backScene, String... parameters) {
     this.className = className;
     this.methodName = methodName;
     this.stage = stage;
     this.language = language;
+    this.previousScene = backScene;
+    LOG.info(String.format("when called? %s", previousScene));
     this.parameters = parameters.clone();
   }
 
@@ -33,16 +37,17 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
       Class<?> clazz = Class.forName(className);
       Class<?>[] parameterTypes = new Class[parameters.length];
       LOG.info(parameterTypes.length);
-      for (int i = 0; i < parameters.length; i++) {
+      for (int i = 1; i < parameters.length; i++) {
         parameterTypes[i] = String.class; // Assume all parameters are strings
       }
 //      LOG.info(parameterTypes[0]);
       Method method = clazz.getMethod(methodName, parameterTypes);
       System.out.println(clazz.getSimpleName());
-      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, GameConfiguration.class);
-      Object instance = constructor.newInstance(stage, language, new GameConfiguration());
+      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, Scene.class, GameConfiguration.class);
+      Object instance = constructor.newInstance(stage, language, previousScene, new GameConfiguration());
 
       Object[] args = new Object[parameters.length]; // +1 for the stage
+      LOG.debug(String.format("are the previous scenes recorded properly in ButtonActionHandler %s", previousScene));
       System.arraycopy(parameters, 0, args, 0, parameters.length); // copy remaining parameters
 
       method.invoke(instance, args); // invoke the method with all parameters

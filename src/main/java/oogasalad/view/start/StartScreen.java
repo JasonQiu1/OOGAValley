@@ -38,12 +38,12 @@ public class StartScreen extends AbstractSplashScreen {
   /**
    * Creates StartScreen
    */
-  public StartScreen(Stage stageToUse, String language) {
+  public StartScreen(Stage stageToUse, String language, Scene backScene, GameConfiguration gc) {
     super();
     stage = stageToUse;
     myPrimaryLanguage = language;
-    playingPageView = new PlayingPageView(stageToUse, language, new GameConfiguration());
-    editorScene = new EditorScene(stageToUse, language, new GameConfiguration());
+    playingPageView = new PlayingPageView(stageToUse, language, null, gc);
+    editorScene = new EditorScene(stageToUse, language, null, new GameConfiguration());
     setLanguages();
   }
 
@@ -55,10 +55,18 @@ public class StartScreen extends AbstractSplashScreen {
     myStageTitle = titleResource.getString("title");
     buttonsPath = buttonResource.getString("buttons_path");
 
+    LOG.debug(String.format("this is the previous scene1 %s", startScreen));
+
     ResourceString resourceString =
         new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath, myStageTitle, STYLES);
-    setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
-        myPrimaryLanguage);
+    startScreen = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
+        myPrimaryLanguage, startScreen);
+
+    LOG.debug(String.format("this is the previous scene2 %s", startScreen));
+
+    stage.setTitle(myStageTitle);
+    stage.setScene(startScreen);
+    stage.show();
   }
 
   public Scene getStartScreen() {
@@ -77,7 +85,7 @@ public class StartScreen extends AbstractSplashScreen {
           String newValue) {
         myPrimaryLanguage = newValue;
         LOG.debug(myPrimaryLanguage);
-        new StartScreen(stage, myPrimaryLanguage).open();
+        new StartScreen(stage, myPrimaryLanguage, null, new GameConfiguration()).open();
       }
     });
   }

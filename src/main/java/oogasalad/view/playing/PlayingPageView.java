@@ -92,10 +92,12 @@ public class PlayingPageView {
 
   private BagView bagView;
   private String fileName;
+  private Scene previousScene;
 
-  public PlayingPageView(Stage primaryStage, String language, GameConfiguration gameConfiguration) {
+  public PlayingPageView(Stage primaryStage, String language, Scene backScene, GameConfiguration gameConfiguration) {
     stage = primaryStage;
     primaryLanguage = language;
+    this.previousScene = backScene;
     game = gameFactory.createGame();
   }
 

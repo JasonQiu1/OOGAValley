@@ -8,7 +8,6 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -20,9 +19,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public abstract class AbstractSplashScreen {
-
   private static final Logger LOG = LogManager.getLogger(AbstractSplashScreen.class);
       // should this be here
+  private Scene previousScene;
 
   public AbstractSplashScreen() {
     // do nothing
@@ -33,8 +32,11 @@ public abstract class AbstractSplashScreen {
    */
   public abstract void open();
 
-  protected void setStage(Stage stage, double widthPortion, double heightPortion,
-      ResourceString resourceString, String language) {
+  protected Scene setStage(Stage stage, double widthPortion, double heightPortion,
+      ResourceString resourceString, String language, Scene myScene) {
+
+    previousScene = myScene;
+
     Scene scene;
     VBox vb = new VBox();
     vb.setAlignment(Pos.CENTER);
@@ -48,8 +50,6 @@ public abstract class AbstractSplashScreen {
     int initialStartScreenWidth = (int) (screenBounds.getWidth() * widthPortion);
     int initialStartScreenHeight = (int) (screenBounds.getHeight() * heightPortion);
 
-    // Create Start Buttons
-    createButtonsFromFile(resourceString.buttonsPath(), stage, buttonsBox, language);
 
     //Create title
     //TODO: Resources bundle this
@@ -59,17 +59,18 @@ public abstract class AbstractSplashScreen {
 
     //create scene
     vb.getChildren().add(title);
-    vb.getChildren().add(buttonsBox);
     scene = new Scene(vb, initialStartScreenWidth, initialStartScreenHeight);
+//    myScene = scene;
 
-    LOG.info(scene);
+    createButtonsFromFile(resourceString.buttonsPath(), stage, buttonsBox, language, scene);
+    vb.getChildren().add(buttonsBox);
+
+    LOG.info(myScene);
 
     //link scene and css
     scene.getStylesheets().add(getClass().getResource(resourceString.styleCss()).toExternalForm());
 
-    stage.setTitle(resourceString.stageTitle());
-    stage.setScene(scene);
-    stage.show();
+    return scene;
   }
 
   protected void titleBob(Label l, Number newVal) {
@@ -91,13 +92,13 @@ public abstract class AbstractSplashScreen {
   }
 
   protected void createButtonsFromFile(String filename, Stage primaryStage, VBox root,
-      String language) {
+      String language, Scene myScene) {
     List<String[]> buttonData = SplashUtils.readCommaSeparatedCSVLines(filename);
-    makeButton(buttonData, primaryStage, root, language);
+    makeButton(buttonData, primaryStage, root, language, myScene);
   }
 
   protected void makeButton(List<String[]> buttonData, Stage primaryStage, VBox root,
-      String language) {
+      String language, Scene myScene) {
 
     for (String[] data : buttonData) {
       ChangePageButton button = new ChangePageButton(data[0], data[1]);
@@ -105,12 +106,22 @@ public abstract class AbstractSplashScreen {
       String methodName = data[3];
       String[] parameters = new String[data.length - 4];
       System.arraycopy(data, 4, parameters, 0, parameters.length);
-      button.setOnAction(
-          new ButtonActionHandler(className, methodName, primaryStage, language, parameters));
+      LOG.debug(String.format("this is the previous scene %s to %s", this.getClass(), className));
+      LOG.debug(String.valueOf(this.getClass()).equals("class " + className));
+      if (String.valueOf(this.getClass()).equals("class " + className)) {
+        LOG.debug(String.format("in if"));
+        button.setOnAction(
+            new ButtonActionHandler(className, methodName, primaryStage, language, previousScene,
+                parameters));
+      } else {
+        button.setOnAction(
+            new ButtonActionHandler(className, methodName, primaryStage, language, myScene,
+                parameters));
+      }
+      // TODO: Fix this
 
       root.getChildren().add(button);
     }
   }
-
 
 }
