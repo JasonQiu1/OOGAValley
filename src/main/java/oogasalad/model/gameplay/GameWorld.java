@@ -10,6 +10,7 @@ import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.exception.UnableToSetGameObject;
+import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.ItemsToAdd;
@@ -28,6 +29,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   private int height;
   private int width;
   private int depth;
+  private final GameObjectFactory factory;
 
   /**
    * Constructs a new GameWorld with specified dimensions.
@@ -40,6 +42,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
     this.height = height;
     this.width = width;
     this.depth = depth;
+    factory = new GameObjectFactory();
     allTiles = new HashMap<>();
     initialize();
   }
@@ -169,6 +172,18 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   public void setTileGameObject(GameObject gameObject, int x, int y, int z) {
     CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
     Tile tile = allTiles.get(coord);
+    reflectTileCreation(tile, gameObject);
+  }
+
+  @Override
+  public void setTileGameObject(String id, int x, int y, int z) {
+    CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
+    Tile tile = allTiles.get(coord);
+    GameObject gameObject = factory.createNewGameObject(id, new GameTime(0,0,0), new HashMap<>()); //TODO: Figure out how we want to make collectables/items
+    reflectTileCreation(tile, gameObject);
+  }
+
+  private void reflectTileCreation(Tile tile, GameObject gameObject) {
     if (tile != null) {
       Class<?> gameObjectClass = gameObject.getClass();
       String methodName = "set" + gameObjectClass.getSimpleName();
@@ -242,6 +257,16 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   @Override
   public int getDepth() {
     return depth;
+  }
+
+  @Override
+  public List<String> getTileContents(int column, int row, int depth) {
+    return allTiles.get(new CoordinateOfGameObjectRecord(column, row, depth)).getIds();
+  }
+
+  @Override
+  public void removeTileTop(int column, int row, int depth) {
+    allTiles.get(new CoordinateOfGameObjectRecord(column, row, depth)).removeTopContents();
   }
 }
 

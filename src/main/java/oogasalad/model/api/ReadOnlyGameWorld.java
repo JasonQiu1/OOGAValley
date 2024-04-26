@@ -59,7 +59,9 @@ public interface ReadOnlyGameWorld {
    */
   void setTileGameObject(GameObject gameObject, int x, int y, int z);
 
-  /**
+    void setTileGameObject(String id, int x, int y, int z);
+
+    /**
    * Shifts every tile to the right and adds a column on the left
    */
   void shiftRightAndAddColumn();
@@ -100,7 +102,18 @@ public interface ReadOnlyGameWorld {
    */
   int getDepth();
 
+  /**
+   * Returns a string list of the names of every gameObject at a location column, row, depth
+   * //TODO: Add to api doc
+   * @return string list of the names of every gameObject at a location
+   */
+  List<String> getTileContents(int column, int row, int depth);
 
-
+  /**
+   * Removes the top gameObject in the selected tile at a column, row, depth
+   * Order of removal: Collectable, Structure, Land
+   * //TODO: Add to api doc
+   */
+  void removeTileTop(int column, int row, int depth);
 }
 

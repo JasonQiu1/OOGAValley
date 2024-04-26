@@ -52,7 +52,7 @@ public class EditorSceneTest extends DukeApplicationTest {
     sleep(100);
     clickOn(cell);
     sleep(500);
-    assertTrue(cellInfoPane.getSvsToStringCopy().equals(lava));
+    assertTrue(cellInfoPane.getContentString().equals(lava));
 
   }
 

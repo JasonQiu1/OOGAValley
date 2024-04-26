@@ -1,7 +1,8 @@
 package oogasalad.view.editor.MapEditor;
 
+import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.ObservableList;
+
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -16,7 +17,7 @@ public class CellInfoPane extends HBox {
   private final ResourceBundle displayTextResource;
   private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
   private final Label displayText;
-  private String svsToStringCopy;
+  private String contentString;
   private int xCor;
   private int yCor;
 
@@ -33,24 +34,16 @@ public class CellInfoPane extends HBox {
     super.setMinHeight(displayText.getHeight());
   }
 
-  public void setDisplay(int xpos, int ypos, ObservableList<Node> svs) {
+  public void setDisplay(int xpos, int ypos, List<String> content) {
     xCor = xpos;
     yCor = ypos;
-    svsToStringCopy = svsToString(svs);
-
+    contentString = buildContentString(content);
     displayText.setText(displayTextResource.getString("position") + " " + xCor + "," + yCor + "\n"
-        + displayTextResource.getString("cell") + " " + svsToStringCopy);
+        + displayTextResource.getString("cell") + " " + contentString);
   }
 
-  private String svsToString(ObservableList<Node> svs) {
-    StringBuilder listOfContent = new StringBuilder();
-    for (Node sv : svs) {
-      listOfContent.append(((SelectableView) sv).getLabel().getText()).append(", ");
-    }
-    if (!svs.isEmpty()) {
-      listOfContent.delete(listOfContent.length() - 2, listOfContent.length() - 1);
-    }
-    return listOfContent.toString().trim();
+  private String buildContentString(List<String> content) {
+    return String.join(", ", content);
   }
 
   public void clearDisplay() {
@@ -67,7 +60,7 @@ public class CellInfoPane extends HBox {
     return yCor;
   }
 
-  public String getSvsToStringCopy() {
-    return svsToStringCopy;
+  public String getContentString() {
+    return contentString;
   }
 }

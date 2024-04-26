@@ -11,6 +11,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import oogasalad.model.api.ReadOnlyGameWorld;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,13 +44,13 @@ public class Cell extends StackPane {
     setOnMouseClicked(event -> {
       if (event.getButton() == MouseButton.SECONDARY) {
         if (super.getChildren().size() > 1) {
-          super.getChildren().remove(super.getChildren().get(super.getChildren().size() - 1));
-          setDisplayPanel(cip);
+          gameWorld.removeTileTop(column, row, 0);
         }
       } else if (ts.getLastSelectedSelectable() != null) {
-        super.getChildren().add(ts.getLastSelectedSelectable());
-        setDisplayPanel(cip);
+        gameWorld.setTileGameObject(ts.getLastSelectedSelectable(), column, row, 0);
       }
+      fill();
+      setDisplayPanel(cip);
     });
 
     setOnMouseEntered(event -> {
@@ -73,12 +75,12 @@ public class Cell extends StackPane {
   }
 
   private void setDisplayPanel(CellInfoPane cip) {
-    ObservableList<Node> content = FXCollections.observableArrayList(super.getChildren());
-    content.remove(base);
+    List<String> content = gameWorld.getTileContents(column, row, 0);
     cip.setDisplay(column, row, content);
   }
 
   private void fill(){
+    super.getChildren().removeIf(node -> !node.equals(base));
     if(gameWorld != null && !gameWorld.getImagePath(column, row, 0).isEmpty()){
       super.getChildren().addAll(getImages());
     }
@@ -87,8 +89,17 @@ public class Cell extends StackPane {
   private List<ImageView> getImages() {
     List<ImageView> images = new ArrayList<>();
     for(String path: gameWorld.getImagePath(column, row, 0)){
-      Image image = new Image(path);
-      images.add(new ImageView(image));
+      Image image;
+      try {
+            image = new Image(String.valueOf(new File("data/images/" + path).toURI().toURL()));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+      ImageView imageView = new ImageView(image);
+      imageView.setFitWidth(WIDTH);
+      imageView.setFitHeight(HEIGHT);
+      images.add(imageView);
+
     }
     return images;
   }

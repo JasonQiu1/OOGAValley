@@ -52,7 +52,7 @@
 
     // STRUCTURE ONLY
     "dropsOnDestruction": {
-      "wheat_seeds": 4,
+      "Wheat Seeds": 4,
       "wheat_item": 1
     }
   }

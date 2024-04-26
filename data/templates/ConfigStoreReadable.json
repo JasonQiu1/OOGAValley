@@ -20,7 +20,7 @@
         "interactDropMultipliers": {
         },
         "plantableSeeds": {
-          "wheat_seeds": "wheat"
+          "Wheat Seeds": "wheat"
         }
       }
     },
@@ -44,12 +44,12 @@
         "interactDropMultipliers": {
         },
         "dropsOnDestruction": {
-          "wheat_seeds": 4,
+          "Wheat Seeds": 4,
           "wheat_item": 1
         }
       }
     },
-    "wheat_seeds": {
+    "Wheat Seeds": {
       "properties": {
         "name": "Wheat Seeds",
         "type": "Item",
