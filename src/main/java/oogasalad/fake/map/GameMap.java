@@ -20,6 +20,15 @@ public class GameMap {
   private final Map<Coord, Plant> plantPositionMap;
   private final String savePath;
 
+  public GameMap(int height, int width, Map<Coord, Land> landPositionMap,
+      Map<Coord, Plant> plantPositionMap, String savePath) {
+    this.height = height;
+    this.width = width;
+    this.landPositionMap = landPositionMap;
+    this.plantPositionMap = plantPositionMap;
+    this.savePath = savePath;
+  }
+
   public GameMap(String filePath) throws IOException, SaveNotValidException {
     if (!(filePath.endsWith("save.farm"))) {
       throw new SaveNotValidException(SaveNotValidException.message);

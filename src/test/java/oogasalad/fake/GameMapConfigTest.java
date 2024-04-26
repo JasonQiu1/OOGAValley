@@ -11,9 +11,6 @@ import org.junit.jupiter.api.Test;
 public class GameMapConfigTest {
 
   String path = "valley_01/save.farm";
-  int height = 10;
-  int width = 15;
-
   @Test
   void testLoadAndSaveConfig() throws IOException, SaveNotValidException {
     GameConfig gameConfig = new GameConfig(path);
