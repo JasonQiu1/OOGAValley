@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import oogasalad.model.api.BuildableMapInterface;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyItem;
@@ -23,13 +24,11 @@ import oogasalad.model.gameobject.Updatable;
  * for initializing tiles, handling interactions, and updating game states based on game time or
  * interactions.
  */
-public class GameWorld implements ReadOnlyGameWorld, Updatable {
+public class GameWorld extends BuildableMap implements ReadOnlyGameWorld, Updatable {
 
-  private Map<CoordinateOfGameObjectRecord, Tile> allTiles;
   private int height;
   private int width;
   private int depth;
-  private final GameObjectFactory factory;
 
   /**
    * Constructs a new GameWorld with specified dimensions.
@@ -39,30 +38,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * @param depth  the depth of the game world grid, used for 3D positioning.
    */
   public GameWorld(int height, int width, int depth) {
-    this.height = height;
-    this.width = width;
-    this.depth = depth;
-    factory = new GameObjectFactory();
-    allTiles = new HashMap<>();
-    initialize();
-  }
-
-  /**
-   * Initializes the game world by creating tiles at each coordinate of the grid based on the
-   * specified dimensions.
-   */
-  private void initialize() {
-    Map<CoordinateOfGameObjectRecord, Tile> newTiles = new HashMap<>();
-    for (int z = 0; z < depth; z++) {
-      for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-          CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
-          Tile tile = allTiles.getOrDefault(coord, new Tile());
-          newTiles.putIfAbsent(coord, tile);
-        }
-      }
-    }
-    allTiles = newTiles;
+    super(height, width, depth);
   }
 
 
@@ -73,7 +49,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    */
   @Override
   public void update(ReadOnlyGameTime gameTime) {
-    for (Map.Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {
+    for (Map.Entry<CoordinateOfGameObjectRecord, Tile> entry : getAllTilesMap().entrySet()) {
       entry.getValue().update(gameTime);
     }
   }
@@ -87,7 +63,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * @param depth  The depth coordinate of the interaction.
    */
   public void interact(ReadOnlyItem item, int width, int height, int depth) {
-    allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
+    getAllTilesMap().get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
   }
 
   /**
@@ -100,7 +76,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    */
   @Override
   public List<String> getImagePath(int width, int height, int depth) {
-    return allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).getImages();
+    return getAllTilesMap().get(new CoordinateOfGameObjectRecord(width, height, depth)).getImages();
   }
 
   /**
@@ -113,7 +89,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    */
   public List<ItemsToAdd> itemsToAddToInventory() {
     List<ItemsToAdd> itemsToAddList = new ArrayList<>();
-    for (Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {
+    for (Entry<CoordinateOfGameObjectRecord, Tile> entry : getAllTilesMap().entrySet()) {
       Map<String, Integer> tileItems = entry.getValue().itemReturns();
       if (tileItems != null && !tileItems.isEmpty()) {
         tileItems.forEach((id, quantity) -> {

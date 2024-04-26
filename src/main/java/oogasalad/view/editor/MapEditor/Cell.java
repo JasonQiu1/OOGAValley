@@ -1,14 +1,12 @@
 package oogasalad.view.editor.MapEditor;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import oogasalad.model.api.BuildableMapInterface;
 import oogasalad.model.api.ReadOnlyGameWorld;
 
 import java.io.File;
@@ -20,14 +18,14 @@ public class Cell extends StackPane {
 
   private static final int HEIGHT = 37; //read from file
   private static final int WIDTH = 50;
-  private static ReadOnlyGameWorld gameWorld;
+  private static BuildableMapInterface gameMap;
   private final Rectangle base;
   private int column;
   private int row;
   private int[] id;
 
-  public static void setGameWorld(ReadOnlyGameWorld gw){
-    gameWorld = gw;
+  public static void setGameMap(BuildableMapInterface map){
+    gameMap = map;
   }
 
   public Cell(Selector ts, CellInfoPane cip, int i, int j) {
@@ -44,10 +42,10 @@ public class Cell extends StackPane {
     setOnMouseClicked(event -> {
       if (event.getButton() == MouseButton.SECONDARY) {
         if (super.getChildren().size() > 1) {
-          gameWorld.removeTileTop(column, row, 0);
+          gameMap.removeTileTop(column, row, 0);
         }
       } else if (ts.getLastSelectedSelectable() != null) {
-        gameWorld.setTileGameObject(ts.getLastSelectedSelectable(), column, row, 0);
+        gameMap.setTileGameObject(ts.getLastSelectedSelectable(), column, row, 0);
       }
       fill();
       setDisplayPanel(cip);
@@ -75,20 +73,20 @@ public class Cell extends StackPane {
   }
 
   private void setDisplayPanel(CellInfoPane cip) {
-    List<String> content = gameWorld.getTileContents(column, row, 0);
+    List<String> content = gameMap.getTileContents(column, row, 0);
     cip.setDisplay(column, row, content);
   }
 
   private void fill(){
     super.getChildren().removeIf(node -> !node.equals(base));
-    if(gameWorld != null && !gameWorld.getImagePath(column, row, 0).isEmpty()){
+    if(gameMap != null && !gameMap.getImagePath(column, row, 0).isEmpty()){
       super.getChildren().addAll(getImages());
     }
   }
 
   private List<ImageView> getImages() {
     List<ImageView> images = new ArrayList<>();
-    for(String path: gameWorld.getImagePath(column, row, 0)){
+    for(String path: gameMap.getImagePath(column, row, 0)){
       Image image;
       try {
             image = new Image(String.valueOf(new File("data/images/" + path).toURI().toURL()));

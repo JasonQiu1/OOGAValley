@@ -4,13 +4,14 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import oogasalad.model.api.BuildableMapInterface;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Tile;
 
-public class BuildableMap {
+public class BuildableMap implements BuildableMapInterface  {
   private Map<CoordinateOfGameObjectRecord, Tile> allTiles;
   private int height;
   private int width;
@@ -21,7 +22,6 @@ public class BuildableMap {
     this.height = height;
     this.width = width;
     this.depth = depth;
-    factory = new GameObjectFactory();
     allTiles = new HashMap<>();
     initialize();
   }
@@ -67,6 +67,7 @@ public class BuildableMap {
    *
    * @param depth The new depth of the game world.
    */
+  @Override
   public void setDepth(int depth) {
     this.depth = depth;
     initialize();
@@ -129,18 +130,6 @@ public class BuildableMap {
     alterSizeTR(0, 1);
   }
 
-  private void alterSizeTR(int width, int height) {
-    Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
-    for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: allTiles.entrySet()){
-      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().x() + width, entry.getKey().y() + height,
-          entry.getKey().z()), entry.getValue());
-    }
-    this.width+= width;
-    this.height+= height;
-    allTiles = temp;
-    initialize();
-  }
-
   @Override
   public int getHeight() {
     return height;
@@ -156,6 +145,18 @@ public class BuildableMap {
     return depth;
   }
 
+  private void alterSizeTR(int width, int height) {
+    Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
+    for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: allTiles.entrySet()){
+      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().x() + width, entry.getKey().y() + height,
+          entry.getKey().z()), entry.getValue());
+    }
+    this.width+= width;
+    this.height+= height;
+    allTiles = temp;
+    initialize();
+  }
+
   @Override
   public List<String> getTileContents(int column, int row, int depth) {
     return allTiles.get(new CoordinateOfGameObjectRecord(column, row, depth)).getIds();
@@ -164,5 +165,9 @@ public class BuildableMap {
   @Override
   public void removeTileTop(int column, int row, int depth) {
     allTiles.get(new CoordinateOfGameObjectRecord(column, row, depth)).removeTopContents();
+  }
+
+  protected Map<CoordinateOfGameObjectRecord, Tile> getAllTilesMap() {
+    return allTiles;
   }
 }
