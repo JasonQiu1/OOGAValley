@@ -62,9 +62,6 @@ public class GameTime implements GameTimeInterface {
    */
   @Override
   public void update() {
-    if (previous == null) {
-      previous = Instant.now();
-    }
     Instant now = Instant.now();
     long timeElapsedMillis = Duration.between(previous, now).toMillis();
     previous = Instant.now();
