@@ -13,8 +13,8 @@ public class GameState {
 
   private final GameTime gameTime;
   private final List<BagItem> itemList;
-  private int money;
-  private int energy;
+  private final int money;
+  private final int energy;
   private final String savePath;
 
   public GameState(GameTime gameTime, List<BagItem> itemList, int money, int energy,

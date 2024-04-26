@@ -50,17 +50,15 @@ public class ParserTools {
     Map<String, Integer> gameTime = (Map<String, Integer>) toolInfo.get("timeConsume");
     GameTime game = new GameTime(gameTime.get("day"), gameTime.get("hour"),
         gameTime.get("minute"));
-    ToolConfig toolConfig = new ToolConfig((String) toolInfo.get("imagePath"),
+    return new ToolConfig((String) toolInfo.get("imagePath"),
         (String) toolInfo.get("id"), game,
         (double) toolInfo.get("energyConsume"));
-    return toolConfig;
   }
 
   public static SeedConfig createSeedConfig(Map<String, Object> seedInfo) {
-    SeedConfig seedConfig = new SeedConfig((String) seedInfo.get("imagePath"),
+    return new SeedConfig((String) seedInfo.get("imagePath"),
         (String) seedInfo.get("id"),
         (double) seedInfo.get("sellPrice"));
-    return seedConfig;
 
   }
 

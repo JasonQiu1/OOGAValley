@@ -5,7 +5,7 @@ import oogasalad.fake.map.Coord;
 
 public abstract class BagItem {
 
-  private int number;
+  private final int number;
 
   public BagItem(int number) {
     this.number = number;
