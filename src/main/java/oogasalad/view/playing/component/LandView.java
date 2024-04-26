@@ -58,7 +58,10 @@ public class LandView {
             List.of(land.getLandConfig().getImagePath()));
         if (plant != null) {
           listImagePath.add(plant.getPlantConfig().getImagePath());
+        } else {
+          listImagePath.add(null);
         }
+        listImagePath.add(null);
         piles[i][j].update(listImagePath);
       }
     }

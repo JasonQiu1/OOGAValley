@@ -55,6 +55,12 @@ public class Pile extends StackPane {
   public void updateImageView(int index, String url) {
     double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
     double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
+    if (url == null) {
+      Rectangle rectangle = new Rectangle(width, height);
+      rectangle.setFill(Color.TRANSPARENT);
+      this.getChildren().set(index, rectangle);
+      return;
+    }
     ImageView imageView = new ImageView();
     Image image = new Image(url, width, height, false, true);
     imageView.setImage(image);
