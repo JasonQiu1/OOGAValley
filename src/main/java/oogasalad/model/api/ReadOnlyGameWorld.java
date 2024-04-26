@@ -25,16 +25,6 @@ public interface ReadOnlyGameWorld {
   List<String> getImagePath(int width, int height, int depth);
 
   /**
-   * Retrieves a list of items that should be added to the inventory as a result of interactions or
-   * events in the game world. This method typically follows updates or interactions that result in
-   * item generation or discovery.
-   *
-   * @return A list of ItemsToAdd, each representing items that are to be added to the player's
-   * inventory.
-   */
-  List<ItemsToAdd> itemsToAddToInventory();
-
-  /**
    * Set the number of rows
    *
    * @param height new number of rows
