@@ -39,9 +39,9 @@ public abstract class AbstractSplashScreen {
     VBox vb = new VBox();
     vb.setAlignment(Pos.CENTER);
     vb.setSpacing(75);
-    HBox hb = new HBox();
-    hb.setSpacing(100);
-    hb.setAlignment(Pos.CENTER);
+    VBox buttonsBox = new VBox();
+    buttonsBox.setSpacing(10);
+    buttonsBox.setAlignment(Pos.CENTER);
 
     //Create the scene, initialized to a reasonable size.
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
@@ -49,7 +49,7 @@ public abstract class AbstractSplashScreen {
     int initialStartScreenHeight = (int) (screenBounds.getHeight() * heightPortion);
 
     // Create Start Buttons
-    createButtonsFromFile(resourceString.buttonsPath(), stage, hb, language);
+    createButtonsFromFile(resourceString.buttonsPath(), stage, buttonsBox, language);
 
     //Create title
     //TODO: Resources bundle this
@@ -59,7 +59,7 @@ public abstract class AbstractSplashScreen {
 
     //create scene
     vb.getChildren().add(title);
-    vb.getChildren().add(hb);
+    vb.getChildren().add(buttonsBox);
     scene = new Scene(vb, initialStartScreenWidth, initialStartScreenHeight);
 
     LOG.info(scene);
@@ -90,13 +90,13 @@ public abstract class AbstractSplashScreen {
     return new SequentialTransition(l, pt);
   }
 
-  protected void createButtonsFromFile(String filename, Stage primaryStage, HBox root,
+  protected void createButtonsFromFile(String filename, Stage primaryStage, VBox root,
       String language) {
     List<String[]> buttonData = SplashUtils.readCommaSeparatedCSVLines(filename);
     makeButton(buttonData, primaryStage, root, language);
   }
 
-  protected void makeButton(List<String[]> buttonData, Stage primaryStage, HBox root,
+  protected void makeButton(List<String[]> buttonData, Stage primaryStage, VBox root,
       String language) {
 
     for (String[] data : buttonData) {
