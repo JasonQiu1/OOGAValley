@@ -1,8 +1,8 @@
-package oogasalad.fake.GameObject.Farm;
+package oogasalad.fake.json;
 
 import java.util.Map;
-import oogasalad.fake.GameObject.Farm.config.LandConfig;
-import oogasalad.fake.GameObject.Farm.config.PlantConfig;
+import oogasalad.fake.config.LandConfig;
+import oogasalad.fake.config.PlantConfig;
 
 public class FarmConfigurations {
 

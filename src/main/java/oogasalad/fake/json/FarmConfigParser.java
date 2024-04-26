@@ -1,4 +1,4 @@
-package oogasalad.fake.GameObject.Farm;
+package oogasalad.fake.json;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,11 +6,8 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import oogasalad.fake.GameObject.Bag.name.SeedItemName;
-import oogasalad.fake.GameObject.Bag.name.ToolItemName;
-import oogasalad.fake.GameObject.Farm.config.LandConfig;
-import oogasalad.fake.GameObject.Farm.config.PlantConfig;
-import oogasalad.fake.GameObject.Farm.name.LandName;
+import oogasalad.fake.config.LandConfig;
+import oogasalad.fake.config.PlantConfig;
 
 public class FarmConfigParser {
 
@@ -29,35 +26,23 @@ public class FarmConfigParser {
 
     return new FarmConfigurations(landConfigs, plantConfigs);
   }
-  public static Map<String, LandConfig> createLandConfig(Map<String, Map<String, Object>> rawConfig){
-    Map<String, LandConfig> landConfigs = new HashMap<>();
 
+  public static Map<String, LandConfig> createLandConfig(
+      Map<String, Map<String, Object>> rawConfig) {
+    Map<String, LandConfig> landConfigs = new HashMap<>();
     Map<String, Object> lands = (Map<String, Object>) rawConfig.get("land");
     for (Map.Entry<String, Object> landEntry : lands.entrySet()) {
       String landKey = landEntry.getKey();
       Map<String, Object> landInfo = (Map<String, Object>) landEntry.getValue();
-
-      LandConfig landConfig = new LandConfig();
-      landConfig.setImagePath((String) landInfo.get("path"));
-      landConfig.setLandName(new LandName(landKey));
-
-      Map<ToolItemName, LandName> transformLandMap = new HashMap<>();
+      Map<String, String> transformLandMap = new HashMap<>();
       Map<String, String> transformLand = (Map<String, String>) landInfo.get("transformLand");
       for (Map.Entry<String, String> entry : transformLand.entrySet()) {
-        ToolItemName tool = new ToolItemName(entry.getKey());
-        LandName land = new LandName(entry.getValue());
-        transformLandMap.put(tool, land);
+        transformLandMap.put((String) entry.getKey(), entry.getValue());
       }
-      landConfig.setTransFromLand(transformLandMap);
-
-      Map<SeedItemName, LandName> seedGrownMap = new HashMap<>();
       Map<String, String> seedGrown = (Map<String, String>) landInfo.get("seedGrown");
-      for (Map.Entry<String, String> entry : seedGrown.entrySet()) {
-        SeedItemName seed = new SeedItemName(entry.getKey());
-        LandName grownLand = new LandName(entry.getValue());
-        seedGrownMap.put(seed, grownLand);
-      }
-      landConfig.setSeedGrown(seedGrownMap);
+      Map<String, String> seedGrownMap = new HashMap<>(seedGrown);
+      LandConfig landConfig = new LandConfig((String) landInfo.get("path"), landKey, transformLand,
+          seedGrownMap);
       landConfigs.put(landKey, landConfig);
     }
     return landConfigs;
@@ -67,7 +52,7 @@ public class FarmConfigParser {
     try {
       FarmConfigurations farmConfigurations = parseFarmConfigurations();
       farmConfigurations.getLand().forEach((key, value) -> {
-        System.out.println("Land Name: " + value.getLandName());
+        System.out.println("Land Name: " + value.getId());
         System.out.println(key + " : " + value.getImagePath());
         System.out.println("Transform Land: " + value.getTransFromLand());
         System.out.println("Seed Grown: " + value.getSeedGrown());

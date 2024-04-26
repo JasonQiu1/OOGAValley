@@ -2,11 +2,11 @@ package oogasalad.fake.object;
 
 import oogasalad.fake.config.LandConfig;
 
-public abstract class BaseLand {
+public class Land {
 
   private final LandConfig landConfig;
 
-  public BaseLand(LandConfig landConfig) {
+  public Land(LandConfig landConfig) {
     this.landConfig = landConfig;
   }
 }
