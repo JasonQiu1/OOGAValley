@@ -1,7 +1,6 @@
 package oogasalad.fake.api;
 
 import java.io.IOException;
-
 import oogasalad.fake.config.farm.LandConfig;
 import oogasalad.fake.config.farm.PlantConfig;
 

@@ -45,17 +45,20 @@ public class GameConfig implements GameConfigInterface {
     plantItemConfigMap = parser.getPlantItemConfigs();
     toolConfigMap = parser.getToolConfigs();
     seedConfigMap = parser.getSeedConfigs();
+    validate();
   }
 
 
   @Override
   public void addConfig(LandConfig config) {
     this.landConfigMap.put(config.getId(), config);
+    validate();
   }
 
   @Override
   public void addConfig(PlantConfig config) {
     this.plantConfigMap.put(config.getId(), config);
+    validate();
   }
 
 
@@ -99,5 +102,11 @@ public class GameConfig implements GameConfigInterface {
 
   public Map<String, SeedConfig> getSeedConfigMap() {
     return seedConfigMap;
+  }
+
+  private void validate() {
+    GameConfigValidator validator = new GameConfigValidator(landConfigMap, plantConfigMap,
+        plantItemConfigMap, toolConfigMap, seedConfigMap);
+    validator.validate();
   }
 }

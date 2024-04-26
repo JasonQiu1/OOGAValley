@@ -5,6 +5,8 @@ package oogasalad.fake.api.exception;
  */
 public class SaveNotValidException extends Exception {
 
+  public static final String message = "Save file structure not valid";
+
   /**
    * Constructs a new exception with the specified detail message.  The cause is not initialized,
    * and may subsequently be initialized by a call to {@link #initCause}.
@@ -15,8 +17,6 @@ public class SaveNotValidException extends Exception {
   public SaveNotValidException(String message) {
     super(message);
   }
-
-  public static final String message = "Save file structure not valid";
 
   /**
    * Constructs a new exception with the specified detail message and cause.  <p>Note that the

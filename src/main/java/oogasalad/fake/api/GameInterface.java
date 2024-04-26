@@ -1,7 +1,7 @@
 package oogasalad.fake.api;
 
-import oogasalad.fake.GameConfig;
 import oogasalad.fake.GameState;
+import oogasalad.fake.config.GameConfig;
 
 public interface GameInterface {
 

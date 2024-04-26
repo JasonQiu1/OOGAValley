@@ -19,12 +19,11 @@ public class GameTime implements GameTimeInterface {
   // in other words, (unit) minute game time equals rate (in milliseconds)
   // by default, the unit is 10.
   private static final String DEFAULT_RESOURCE_PACKAGE = "model.gameplay.";
+  private static final double rate = 43000.0 / 6.0;
+  private static final int unit = 10;
   private static String myLanguage = "EnglishTimeText";
   private static final ResourceBundle timeTextResource = ResourceBundle.getBundle(
       DEFAULT_RESOURCE_PACKAGE + myLanguage);
-  private static final double rate = 43000.0 / 6.0;
-  private static final int unit = 10;
-
   private Instant previous = Instant.now();
 
   private long accumulate;

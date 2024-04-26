@@ -45,9 +45,9 @@
     }
   },
   "toolConfigMap": {
-    "hoe": {
+    "hoe_bag": {
       "imagePath": "img/tool.png",
-      "id": "hoe",
+      "id": "hoe_bag",
       "timeConsume": {
         "day": 0,
         "hour": 0,

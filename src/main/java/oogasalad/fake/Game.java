@@ -1,6 +1,7 @@
 package oogasalad.fake;
 
 import oogasalad.fake.api.GameInterface;
+import oogasalad.fake.config.GameConfig;
 
 public class Game implements GameInterface {
 
@@ -14,7 +15,7 @@ public class Game implements GameInterface {
   public GameState getGameState() {
     return null;
   }
-  
+
   @Override
   public void save(String fileName) {
 
