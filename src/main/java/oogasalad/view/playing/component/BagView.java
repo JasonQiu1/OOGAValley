@@ -1,134 +1,104 @@
 package oogasalad.view.playing.component;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import oogasalad.model.shop.Bag;
+import javafx.util.Pair;
+import oogasalad.model.api.ReadOnlyBag;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.view.playing.PlayingPageView;
 
 /**
- * The tool view that controls all the tools (panda and Pickaxe).
+ * The tool view that contains all the items
  */
-public class BagView {
+public class BagView extends StackPane {
 
   private final GridPane toolGridPane;
-  private final StackPane toolStackPane;
-  private final List<BagItem> bagItemList;
-  private final BagItemPile[][] bagItemPiles;
-
-
-  private final Bag bag;
-
   private final int colNum;
   private final int rowNum;
+  private final ReadOnlyBag bag;
+  private final int capacity;
+
+  private int page = 0;
+
+  private final List<Item> itemOnShow = new ArrayList<>();
+
 
   /**
    * Constructor for the ToolView class.
    *
-   * @param bagItems the list of tools
-   * @param colNum   the number of columns
-   * @param rowNum   the number of rows
+   * @param bag    the bag model
+   * @param colNum the number of columns to be shown the view
+   * @param rowNum the number of rows to be shown in the view
    */
 
-  public BagView(List<BagItem> bagItems, int colNum, int rowNum, Bag bag) {
-    this.bagItemList = bagItems;
+  public BagView(ReadOnlyBag bag, int colNum, int rowNum) {
+    super();
     this.toolGridPane = new GridPane();
     this.bag = bag;
-    bagItemPiles = new BagItemPile[colNum][rowNum];
-
     this.colNum = colNum;
     this.rowNum = rowNum;
+    capacity = colNum * rowNum;
     Image backgroundImage = new Image("img/playing/box-background.png");
     ImageView backgroundImageView = new ImageView(backgroundImage);
     backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
-    toolStackPane = new StackPane();
-
     StackPane.setMargin(toolGridPane, new Insets(20, 0, 0, 40));
-    toolStackPane.getChildren().addAll(backgroundImageView, toolGridPane);
-    update();
-  }
-
-  public StackPane getToolStackPane() {
-    return toolStackPane;
+    this.getChildren().addAll(backgroundImageView, toolGridPane);
+    update(page);
   }
 
 
-  public void reset() {
-    for (BagItem bagItem : bagItemList) {
-      bagItem.reset();
-    }
-  }
-
-  public void update() {
-
-    toolGridPane.getChildren().clear();
-    for (int i = 0; i < colNum; i++) {
-      for (int j = 0; j < rowNum; j++) {
-        BagItemPile p = new BagItemPile(null, i, j);
-        p.setPrefHeight(PlayingPageView.bottomCellHeight);
-        p.setPrefWidth(PlayingPageView.bottomCellWidth);
-        bagItemPiles[i][j] = p;
-        toolGridPane.add(p, i, j);
+  private List<Pair<String, Integer>> getItem(int page) {
+    int idx = 0;
+    int begin = page * capacity;
+    int end = (page + 1) * capacity;
+    List<Pair<String, Integer>> valueToCheck = new ArrayList<>();
+    for (Map.Entry<ReadOnlyItem, Integer> entry : bag.getItems().entrySet()) {
+      if (idx >= begin && idx < end) {
+        valueToCheck.add(new Pair<>(entry.getKey().getImagePath(), entry.getValue()));
       }
+      idx++;
     }
-    for (int i = 0; i < bagItemList.size(); i++) {
-      bagItemPiles[i][0].setItem(bagItemList.get(i));
-      int finalI = i;
-      bagItemPiles[i][0].getItem().getView().setOnMouseClicked(event -> {
-        reset();
-        bagItemPiles[finalI][0].getItem().setSelected();
-      });
-    }
-    // for temp testing
-//    bagItemPiles[0][0].getItem().getView().setId("Hoe");
-//    bagItemPiles[1][0].getItem().getView().setId("Panda");
+    return valueToCheck;
   }
 
-  public double[] getAddRealLocation(BagItem bagItem) {
-    double[] location = new double[2];
-
-    int[] index = findIndex(bagItem);
-    location[0] = PlayingPageView.windowHeight / 2 - PlayingPageView.bottomHeight
-        + PlayingPageView.bottomBoxPadding - 30;
-    location[1] = index[0] * PlayingPageView.bottomCellWidth - 80;
-
-    return location;
-  }
-
-  private int[] findIndex(BagItem bagItem) {
-    int[] index = new int[2];
-    for (int i = 0; i < colNum; i++) {
-      for (int j = 0; j < rowNum; j++) {
-        if (bagItemPiles[i][j].getItem() != null && bagItemPiles[i][j].getItem().getUrl()
-            .equals(bagItem.getUrl())) {
-          index[0] = i;
-          index[1] = j;
-          return index;
+  private void checkUpdate(List<Pair<String, Integer>> newItemList) {
+    List<Item> newItemOnShow = new ArrayList<>();
+    for (int i = 0; i < newItemList.size(); i++) {
+      Pair<String, Integer> newItem = newItemList.get(i);
+      int column = i % colNum;
+      int row = i / rowNum;
+      if (i >= itemOnShow.size()) {
+        BagItem bagItem = new BagItem(newItem.getKey(),
+            PlayingPageView.bottomCellWidth,
+            PlayingPageView.bottomCellHeight, null, newItem.getValue());
+        newItemOnShow.add(new Item(newItemList.get(i).getKey(),
+            newItemList.get(i).getValue(), bagItem));
+        this.toolGridPane.add(bagItem.getView(), column, row);
+      } else {
+        Item item = itemOnShow.get(i);
+        if (!(item.imageUrl().equals(newItem.getKey()))) {
+          item.bagItem().setImage(newItem.getKey());
         }
+        if (item.num() != newItem.getValue()) {
+          item.bagItem().setNum(newItem.getValue());
+        }
+        itemOnShow.set(i, new Item(newItem.getKey(), newItem.getValue(), item.bagItem()));
       }
     }
-    index[0] = bagItemList.size() % colNum;
-    index[1] = bagItemList.size() / colNum;
-    return index;
+    itemOnShow.addAll(newItemOnShow);
   }
 
-
-  public void addItem(BagItem bagItem) {
-    for (BagItem item : bagItemList) {
-      if (item.getUrl().equals(bagItem.getUrl())) {
-        item.addOne();
-        update();
-        return;
-      }
-    }
-    // not sure why cannot use bagItem directly
-    BagItem new_bagItem = new BagItem(bagItem.getUrl(), PlayingPageView.bottomCellWidth,
-        PlayingPageView.bottomCellHeight, new SelectedItem(), 1);
-    bagItemList.add(new_bagItem);
-    update();
+  public void update(int page) {
+    List<Pair<String, Integer>> item = getItem(page);
+    this.page = page;
+    System.out.println(page);
+    checkUpdate(item);
   }
 }
