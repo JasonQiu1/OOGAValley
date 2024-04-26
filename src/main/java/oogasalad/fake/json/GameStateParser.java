@@ -18,8 +18,8 @@ public class GameStateParser {
 
   private final GameTime gameTime;
   private final List<BagItem> itemList;
-  private final int money;
-  private final int energy;
+  private final double money;
+  private final double energy;
 
   public GameStateParser(String path) throws IOException {
     ObjectMapper objectMapper = new ObjectMapper();
@@ -27,8 +27,8 @@ public class GameStateParser {
         Paths.get(path).toFile(),
         new TypeReference<>() {
         });
-    money = (int) rawConfig.get("money");
-    energy = (int) rawConfig.get("energy");
+    money = (double) rawConfig.get("money");
+    energy = (double) rawConfig.get("energy");
     Map<String, Integer> gameTimeInfo = (Map<String, Integer>) rawConfig.get("gameTime");
     gameTime = new GameTime(gameTimeInfo.get("day"),
         gameTimeInfo.get("hour"),
@@ -73,11 +73,11 @@ public class GameStateParser {
     return itemList;
   }
 
-  public int getMoney() {
+  public double getMoney() {
     return money;
   }
 
-  public int getEnergy() {
+  public double getEnergy() {
     return energy;
   }
 
