@@ -46,8 +46,8 @@ public class PlayingPageView {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private final String myLanguage = "EnglishDisplayText";
-  private final ResourceBundle displayTextResource = ResourceBundle.getBundle(
-      DEFAULT_RESOURCE_PACKAGE + myLanguage);
+  private final ResourceBundle displayTextResource =
+      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -66,8 +66,7 @@ public class PlayingPageView {
   public static final double landGridPaneWidth = landCellWidth * landNumCols;
   public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
   public static final double landGridPaneHeight = landCellHeight * landNumRows;
-  public static final double windowHeight =
-      landGridPaneHeight + topHeight + bottomHeight;
+  public static final double windowHeight = landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
 
@@ -96,23 +95,18 @@ public class PlayingPageView {
   public PlayingPageView(Stage primaryStage, String language) {
     stage = primaryStage;
     primaryLanguage = language;
-    fileName = "testWorld1.json";
+    game = gameFactory.createGame();
   }
 
-  public PlayingPageView(Stage primaryStage, String language, String fileName) {
+  public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
     stage = primaryStage;
     primaryLanguage = language;
-    this.fileName = fileName;
+    game = gameFactory.createGame(fileName, fileName);
   }
 
   public void start() {
 
     LOG.info("initializing game");
-    try {
-      game = gameFactory.createGame(fileName, fileName);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
     LOG.info("finish loading game model");
     initModel();
     StackPane root = new StackPane();
