@@ -32,7 +32,7 @@
       "eatEnergy" : 10.0
     }
   } ],
-  "money" : 100,
-  "energy" : 100,
+  "money" : 100.0,
+  "energy" : 100.0,
   "savePath" : "valley_01/state.json"
 }

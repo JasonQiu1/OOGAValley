@@ -13,11 +13,12 @@ public class GameState {
 
   private final GameTime gameTime;
   private final List<BagItem> itemList;
-  private final int money;
-  private final int energy;
+
+  private double money;
+  private double energy;
   private final String savePath;
 
-  public GameState(GameTime gameTime, List<BagItem> itemList, int money, int energy,
+  public GameState(GameTime gameTime, List<BagItem> itemList, double money, double energy,
       String filePath) throws SaveNotValidException {
     this.gameTime = gameTime;
     this.itemList = itemList;
@@ -61,12 +62,20 @@ public class GameState {
     return itemList;
   }
 
-  public int getMoney() {
+  public double getMoney() {
     return money;
   }
 
-  public int getEnergy() {
+  public double getEnergy() {
     return energy;
+  }
+
+  public void addMoney(double money) {
+    this.money += money;
+  }
+
+  public void addEnergy(double energy) {
+    this.energy += energy;
   }
 
   public String getSavePath() {
