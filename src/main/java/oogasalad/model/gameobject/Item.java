@@ -63,4 +63,12 @@ public class Item implements ReadOnlyItem {
   public int hashCode() {
     return itemId.hashCode();
   }
+
+  /**
+   * Equals is based on the id.
+   */
+  @Override
+  public boolean equals(Object obj) {
+    return itemId.equals(obj);
+  }
 }
