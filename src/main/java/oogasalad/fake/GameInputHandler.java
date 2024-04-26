@@ -36,6 +36,7 @@ public class GameInputHandler {
     }
     boolean interact = selectedItem.interact(coord, game);
     checkRemove();
+    LOG.info(game.getGameState());
     return interact;
 
   }

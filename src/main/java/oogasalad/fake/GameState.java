@@ -81,4 +81,9 @@ public class GameState {
     File file = new File(filePath);
     return file.getParent() + "/state.json";
   }
+
+  @Override
+  public String toString() {
+    return "Energy: " + energy + ", Money: " + money + "item list: " + itemList.toString();
+  }
 }

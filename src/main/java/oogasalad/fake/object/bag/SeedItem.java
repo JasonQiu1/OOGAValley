@@ -7,8 +7,12 @@ import oogasalad.fake.config.item.SeedConfig;
 import oogasalad.fake.map.Coord;
 import oogasalad.fake.object.Land;
 import oogasalad.fake.object.Plant;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SeedItem extends BagItem {
+
+  private static final Logger LOG = LogManager.getLogger(SeedItem.class);
 
   private final SeedConfig seedConfig;
 
