@@ -2,10 +2,14 @@ package oogasalad.view.editor.MapEditor;
 
 import java.util.ResourceBundle;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import oogasalad.view.start.ChangePageButton;
 
 public class TopPanel extends StackPane {
 
@@ -14,9 +18,15 @@ public class TopPanel extends StackPane {
   private final String titleLanguage = "EnglishTitle";
   private final ResourceBundle buttonResource;
   private final ResourceBundle titleResource;
+  private final Stage primaryStage;
+  private final Scene previousScene;
 
-  public TopPanel(BuildableMap bm) {
+
+  public TopPanel(Stage stage, Scene backScene, BuildableMap bm) {
     super();
+
+    this.primaryStage = stage;
+    this.previousScene = backScene;
 
     titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + titleLanguage);
     buttonResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + buttonLanguage);
@@ -48,6 +58,10 @@ public class TopPanel extends StackPane {
           }
         });
 
+    Button backButton = new Button("Back");
+    backButton.setOnAction(event -> goBack());
+
+
 //      HelpButtonWrapper hbw = new HelpButtonWrapper(
 //              new HelpButton(e -> {
 //                  // Show dialog to get new grid size
@@ -66,11 +80,17 @@ public class TopPanel extends StackPane {
 //      gp.add(scb, 1, 0);
     BorderPane bp = new BorderPane();
     bp.setLeft(hb);
+    bp.setCenter(backButton);
     bp.setRight(scb);
 
     BorderPane.setAlignment(hb, Pos.CENTER_LEFT);
+    BorderPane.setAlignment(backButton, Pos.CENTER_LEFT);
     BorderPane.setAlignment(scb, Pos.CENTER_RIGHT);
     super.getChildren().addAll(hbox, bp);
+  }
+
+  private void goBack() {
+    primaryStage.setScene(previousScene);
   }
 
 }
