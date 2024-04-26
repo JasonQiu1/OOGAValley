@@ -43,7 +43,12 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
       LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
       throw new RuntimeException(e);
     }
-    initialState = new GameState(rules);
+    try {
+      initialState = GAMESTATE_DATA_FACTORY.load(Paths.get("templates", "GameState").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameState 'templates/GameState.json'.");
+      throw new RuntimeException(e);
+    }
   }
 
   /**
@@ -123,6 +128,8 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   private static GameConfigurablesStore configurablesStore;
   private static final DataFactory<GameConfiguration> GAME_CONFIGURATION_DATA_FACTORY =
       new DataFactory<>(GameConfiguration.class);
+  private static final DataFactory<GameState> GAMESTATE_DATA_FACTORY =
+      new DataFactory<>(GameState.class);
   private static final DataFactory<GameConfigurablesStore> CONFIGURABLES_DATA_FACTORY =
       new DataFactory<>(GameConfigurablesStore.class);
   private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
