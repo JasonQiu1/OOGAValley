@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import oogasalad.fake.Game;
 import oogasalad.model.shop.Bag;
 import oogasalad.view.shopping.Utils;
 
@@ -12,17 +13,17 @@ import oogasalad.view.shopping.Utils;
  * display the items in the bag block.
  */
 public class BagStackPane extends StackPane {
+  private final Game game;
 
-  private final Bag bag;
 
   /**
    * Constructor for the BagStackPane
    *
-   * @param bag the bag to be displayed
+   * @param game the bag to be displayed
    */
-  public BagStackPane(Bag bag) {
+  public BagStackPane(Game game) {
     super();
-    this.bag = bag;
+    this.game = game;
     initialize();
   }
 
@@ -31,7 +32,7 @@ public class BagStackPane extends StackPane {
     ImageView backgroundImageView = new ImageView(backgroundImage);
     backgroundImageView.setFitWidth(Utils.shopStackPaneWidth);
     backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
-    BagGridPane gridPane = new BagGridPane(bag);
+    BagGridPane gridPane = new BagGridPane(game);
     setAlignment(gridPane, Pos.TOP_LEFT);
     setAlignment(backgroundImageView, Pos.TOP_LEFT);
     getChildren().addAll(backgroundImageView, gridPane);

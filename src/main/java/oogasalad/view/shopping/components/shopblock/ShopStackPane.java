@@ -7,6 +7,10 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import oogasalad.fake.Game;
+
+import oogasalad.fake.GameState;
+import oogasalad.fake.object.bag.BagItem;
 import oogasalad.model.shop.SellItem;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.shopping.Utils;
@@ -17,7 +21,8 @@ import oogasalad.view.shopping.Utils;
  */
 public class ShopStackPane extends StackPane {
 
-  private final Shop shop;
+  private final GameState gameState;
+  private final Game game;
   private final StackPane parentStackPane;
   private List<SellGridPane> gridPanes;
   private PageChangeBorderPane pageChangeBorderPane;
@@ -28,12 +33,13 @@ public class ShopStackPane extends StackPane {
   /**
    * Constructor for the ShopStackPane
    *
-   * @param shop            the shop to be displayed
+   * @param game            the shop to be displayed
    * @param parentStackPane the parent stack pane
    */
-  public ShopStackPane(Shop shop, StackPane parentStackPane) {
+  public ShopStackPane(Game game, StackPane parentStackPane) {
     super();
-    this.shop = shop;
+    this.game = game;
+    this.gameState = game.getGameState();
     this.parentStackPane = parentStackPane;
     initialize();
   }
@@ -43,7 +49,12 @@ public class ShopStackPane extends StackPane {
     backgroundImageView = new ImageView(backgroundImage);
     backgroundImageView.setFitWidth(Utils.shopStackPaneWidth);
     backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
-    List<SellItem> sellItems = shop.getItems();
+    List<SellItem> sellItems = new ArrayList<>();
+    for (BagItem bagItem : gameState.getItemList()) {
+      if(bagItem.sell(game)) {
+        sellItems.add(new SellItem(0, bagItem.getConfig().getImagePath()));
+      }
+    }
     createSellGridPanes(sellItems);
     pageChangeBorderPane = new PageChangeBorderPane();
     enableButtons();
@@ -64,7 +75,7 @@ public class ShopStackPane extends StackPane {
       int startIndex = i * 4;
       int endIndex = Math.min(startIndex + 4, sellItems.size());
       List<SellItem> sublist = sellItems.subList(startIndex, endIndex);
-      SellGridPane sellGridPane = new SellGridPane(shop, sublist, parentStackPane);
+      SellGridPane sellGridPane = new SellGridPane(game, sublist, parentStackPane);
       gridPanes.add(sellGridPane);
     }
   }

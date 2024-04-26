@@ -3,6 +3,8 @@ package oogasalad.view.shopping.components.top;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
+
+import oogasalad.fake.GameState;
 import oogasalad.model.shop.Shop;
 import oogasalad.view.shopping.Utils;
 
@@ -12,24 +14,24 @@ import oogasalad.view.shopping.Utils;
  */
 public class ProgressBarHbox extends HBox {
 
-  private final Shop shop;
   private ProgressBar progressBar;
+  private GameState gameState;
 
   /**
    * Constructor for the ProgressBarHbox
    *
-   * @param shop the shop to be displayed
+   * @param gameState the shop to be displayed
    */
-  public ProgressBarHbox(Shop shop) {
+  public ProgressBarHbox(GameState gameState) {
     super();
-    this.shop = shop;
+    this.gameState = gameState;
     initialize();
   }
 
   private void initialize() {
     Button button = new Button();
     button.setId("shopAddButton");
-    progressBar = new ProgressBar(shop.getCurrentEnergy());
+    progressBar = new ProgressBar(gameState.getEnergy());
     progressBar.setPrefSize(Utils.progressBarWidth, Utils.progressBarHeight);
     getChildren().addAll(button, progressBar);
   }

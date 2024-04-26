@@ -77,7 +77,6 @@ public class PlayingPageView{
   private Button helpButton;
   private LandView landView;
   private TopAnimationView topAnimationView;
-  private final Money money = new Money(100);
 
   private static final Logger LOG = LogManager.getLogger(StartScreen.class);
 
@@ -134,7 +133,6 @@ public class PlayingPageView{
 
   private void setUpdate() {
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
-      //game.update();
       landView.update();
       updateTimeLabel();
     }));
@@ -157,7 +155,7 @@ public class PlayingPageView{
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
-    money.addObserver(currentMoneyHbox, money.getMoney());
+    currentMoneyHbox.update(game.getGameState().getMoney());
     topBox.getChildren()
         .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
     root.setTop(topBox);
@@ -190,11 +188,11 @@ public class PlayingPageView{
 
   private void openShop() {
     Scene scene = stage.getScene();
-    //ShoppingView shoppingPageView = new ShoppingView(shop, bag, stage, scene, money);
-    //Scene shoppingScene = new Scene(shoppingPageView.getScene());
-    //shoppingScene.getStylesheets().add("styles.css");
-    //stage.setScene(shoppingScene);
-    //stage.show();
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene);
+    Scene shoppingScene = new Scene(shoppingPageView.getScene());
+    shoppingScene.getStylesheets().add("styles.css");
+    stage.setScene(shoppingScene);
+    stage.show();
   }
 
   private void createHelpButton() {

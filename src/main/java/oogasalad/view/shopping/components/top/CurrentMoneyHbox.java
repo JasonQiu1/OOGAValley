@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
  * This class is a HBox that contains a button, a label, and an image view. It is used to display
  * the current money in the shop block.
  */
-public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
+public class CurrentMoneyHbox extends HBox implements Observer<Double> {
 
   private static final Logger LOG = LogManager.getLogger(CurrentMoneyHbox.class);
   private Label moneyLabel;
@@ -44,7 +44,7 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
   }
 
   @Override
-  public void update(Integer value) {
+  public void update(Double value) {
     LOG.info("observer pattern: " + value);
     moneyLabel.setText("" + value);
   }
