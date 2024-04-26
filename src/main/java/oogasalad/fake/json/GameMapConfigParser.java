@@ -13,8 +13,8 @@ import oogasalad.fake.object.Plant;
 
 public class GameMapConfigParser {
 
-  private Map<Coord, Land> landPositionMapCreate;
-  private Map<Coord, Plant> plantPositionMapCreate;
+  private final Map<Coord, Land> landPositionMapCreate;
+  private final Map<Coord, Plant> plantPositionMapCreate;
   private final int height;
   private final int width;
 
@@ -26,12 +26,12 @@ public class GameMapConfigParser {
         });
     height = (int) rawConfig.get("height");
     width = (int) rawConfig.get("width");
-    createLandPositionMap(rawConfig);
-    createPlantPositionMap(rawConfig);
+    landPositionMapCreate = createLandPositionMap(rawConfig);
+    plantPositionMapCreate = createPlantPositionMap(rawConfig);
   }
 
-  public void createPlantPositionMap(Map<String, Object> rawConfig) {
-    plantPositionMapCreate = new HashMap<>();
+  public Map<Coord, Plant> createPlantPositionMap(Map<String, Object> rawConfig) {
+    Map<Coord, Plant> plantPositionMapCreate = new HashMap<>();
     Map<String, Map<String, Object>> plantPositionMap = (Map<String, Map<String, Object>>) rawConfig
         .get("plantPositionMap");
     for (Map.Entry<String, Map<String, Object>> entry : plantPositionMap.entrySet()) {
@@ -42,6 +42,7 @@ public class GameMapConfigParser {
       plantPositionMapCreate.put(coord,
           new Plant(ParserTools.createPlantConfig(plantInfo), plantTime));
     }
+    return plantPositionMapCreate;
   }
 
   public GameTime createGameTime(Map<String, String> plantTimeInfo) {
@@ -54,8 +55,8 @@ public class GameMapConfigParser {
     return plantTime;
   }
 
-  public void createLandPositionMap(Map<String, Object> rawConfig) {
-    landPositionMapCreate = new HashMap<>();
+  public Map<Coord, Land> createLandPositionMap(Map<String, Object> rawConfig) {
+    Map<Coord, Land> landPositionMapCreate = new HashMap<>();
     Map<String, Map<String, Object>> landPositionMap = (Map<String, Map<String, Object>>) rawConfig
         .get("landPositionMap");
     for (Map.Entry<String, Map<String, Object>> entry : landPositionMap.entrySet()) {
@@ -63,6 +64,7 @@ public class GameMapConfigParser {
       Map<String, Object> landInfo = (Map<String, Object>) entry.getValue().get("landConfig");
       landPositionMapCreate.put(coord, new Land(ParserTools.createLandConfig(landInfo)));
     }
+    return landPositionMapCreate;
   }
 
   private static Coord parseCoord(String str) {
