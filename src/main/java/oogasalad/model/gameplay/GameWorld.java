@@ -219,8 +219,8 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   private void alterSizeTR(int width, int height){
     Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
     for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: allTiles.entrySet()){
-      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().getX() + width, entry.getKey().getY() + height,
-              entry.getKey().getZ()), entry.getValue());
+      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().x() + width, entry.getKey().y() + height,
+              entry.getKey().z()), entry.getValue());
     }
     this.width+= width;
     this.height+= height;
