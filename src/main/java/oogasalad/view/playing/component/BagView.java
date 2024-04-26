@@ -56,7 +56,7 @@ public class BagView {
     for (BagItem item : itemList) {
       bagItemViewList.add(new BagItemView(item.getConfig().getImagePath(), PlayingPageView.bottomCellWidth,
           PlayingPageView.bottomCellHeight,
-          new SelectedItem(), 0));
+          new SelectedItem(), item.getNumber()));
     }
   }
 
