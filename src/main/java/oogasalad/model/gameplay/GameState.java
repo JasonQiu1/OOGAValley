@@ -10,7 +10,9 @@ import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.DataFactory;
+import oogasalad.model.gameobject.Item;
 import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -149,12 +151,48 @@ public class GameState implements ReadOnlyGameState {
     return Optional.of(selectedItem);
   }
 
+  /**
+   * Selects an item to be active if it is in the bag.
+   *
+   * @param id
+   */
+  public void selectItem(String id) throws KeyNotFoundException {
+    Item item = new Item(id);
+    if (!bag.getItems().containsKey(item)) {
+      throw new KeyNotFoundException(id);
+    }
+    selectedItem = item;
+  }
+
+  /**
+   * Add/subtract from the current amount of money.
+   *
+   * @param amount amount to add/subtract from the current amount of money.
+   */
+  public void addMoney(int amount) {
+    money += amount;
+  }
+
   public GameWorld getEditableGameWorld() {
     return gameWorld;
   }
 
   public GameTime getEditableGameTime() {
     return gameTime;
+  }
+
+  public Bag getEditableBag() {
+    return bag;
+  }
+
+  /**
+   * Restores energy by the given amount up to the max amount.
+   *
+   * @return the amount of energy restored.
+   */
+  public double restoreEnergy(double amount) {
+    // TODO: IMPLEMENT
+    return 0.0f;
   }
 
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
