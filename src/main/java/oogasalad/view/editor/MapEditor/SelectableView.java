@@ -2,30 +2,40 @@ package oogasalad.view.editor.MapEditor;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public abstract class SelectableView extends ImageView {
+import java.io.File;
+import java.net.MalformedURLException;
 
-  private final ImageView icon;
+public class SelectableView extends ImageView {
+
+  private final String pic;
   private final Label title;
 
-  public SelectableView(ImageView pic, String title, double width,
-      double height) { //resource bundle this
+  public SelectableView(String pic, String title) { //resource bundle this
     super();
-    icon = pic;
-    super.setImage(icon.getImage());
-    super.setFitWidth(width);
-    super.setFitHeight(height);
+    super.setImage(getPic(pic).getImage());
+    super.setFitWidth(40);
+    super.setFitHeight(30);
+    this.pic = pic;
     this.title = new Label(title);
   }
 
-  abstract boolean canBePlacedOn(Node node);
-
+  private ImageView getPic(String pic) {
+      try {
+          return new ImageView(
+                  new Image(String.valueOf(new File("data/images/" + pic).toURI().toURL())));
+      } catch (MalformedURLException e) {
+          throw new RuntimeException(e);
+      }
+  }
 
   public Label getLabel() {
     return title;
   }
 
-
-  public abstract SelectableView getNew();
+  public SelectableView getNew() {
+    return new SelectableView(pic, title.getText());
+  }
 }

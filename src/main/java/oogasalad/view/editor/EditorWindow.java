@@ -12,9 +12,9 @@ public class EditorWindow extends GridPane {
   public EditorWindow(GameConfiguration gc) {
     super();
     //add(GameView, 0,0);
-    add(new MapEditor(), 1, 0);
     re = new RuleEditor(gc);
     add(re, 0, 0);
+    add(new MapEditor(gc), 1, 0);
     //add(ItemEditor, 1, 0);
   }
 

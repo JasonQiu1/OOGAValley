@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import oogasalad.model.data.GameConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,9 +38,9 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
       }
 //      LOG.info(parameterTypes[0]);
       Method method = clazz.getMethod(methodName, parameterTypes);
-
-      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class);
-      Object instance = constructor.newInstance(stage, language);
+      System.out.println(clazz.getSimpleName());
+      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, GameConfiguration.class);
+      Object instance = constructor.newInstance(stage, language, new GameConfiguration());
 
       Object[] args = new Object[parameters.length]; // +1 for the stage
       System.arraycopy(parameters, 0, args, 0, parameters.length); // copy remaining parameters

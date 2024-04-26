@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.stage.Stage;
+import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.EditorScene;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,10 +20,10 @@ public class EditorSceneTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    editorScene = new EditorScene(stage, "English");
+    editorScene = new EditorScene(stage, "English", new GameConfiguration());
     editorScene.start();
 //    this.cell = (Cell) lookup("#0 0").query();
-
+    sleep(1000);
     // When trying to find the Cell with id "0 0"
     cell = lookup("#EditorGridPane #0_0").queryAs(Cell.class);
     cellInfoPane = lookup("#CellInfoPane").queryAs(CellInfoPane.class);
@@ -51,7 +52,7 @@ public class EditorSceneTest extends DukeApplicationTest {
     sleep(100);
     clickOn(cell);
     sleep(500);
-    assertTrue(cellInfoPane.getSvsToStringCopy().equals(lava));
+    assertTrue(cellInfoPane.getContentString().equals(lava));
 
   }
 

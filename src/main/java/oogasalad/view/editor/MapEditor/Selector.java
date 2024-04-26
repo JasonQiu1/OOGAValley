@@ -2,6 +2,7 @@ package oogasalad.view.editor.MapEditor;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class Selector {
@@ -22,11 +23,11 @@ public class Selector {
     });
   }
 
-  public SelectableView getLastSelectedSelectable() {
+  public String getLastSelectedSelectable() {
     if (lastSelected.get() == null) {
       return null;
     }
-    return ((SelectableView) lastSelected.get().getChildren().get(0)).getNew();
+    return ((Label)lastSelected.get().getChildren().get(1)).getText();
   }
 
   public VBox getLastSelected() {

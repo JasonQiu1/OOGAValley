@@ -8,14 +8,13 @@ public class EditorScene extends Scene {
 
   private final Stage stage;
   private final String myPrimaryLanguage;
-  private final EditorWindow ew;
 
-  public EditorScene(Stage primaryStage, String language) {
-    super(new EditorWindow(new GameConfiguration()));
+  public EditorScene(Stage primaryStage, String language, GameConfiguration gc) {
+    super(new EditorWindow(gc));
     stage = primaryStage;
     myPrimaryLanguage = language;
-    ew = new EditorWindow(new GameConfiguration());
-    super.setRoot(ew);
+    //ew = new EditorWindow(new GameConfiguration());
+    //super.setRoot(ew);
     super.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
   }
 
@@ -24,7 +23,4 @@ public class EditorScene extends Scene {
     stage.show();
   }
 
-  public void setConfig(GameConfiguration gc) {
-    ew.setConfig(gc);
-  }
 }

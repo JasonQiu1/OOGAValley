@@ -34,7 +34,7 @@ public class BuildableMapWrapper extends ScrollPane {
 
     //Disable further resizing of the content
     super.widthProperty().addListener((observable, oldValue, newValue) -> {
-      Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.1), event -> {
+      Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.3), event -> {
         if (!rendered) {
           super.setPrefSize(super.getWidth(), super.getHeight());
         }
@@ -44,7 +44,7 @@ public class BuildableMapWrapper extends ScrollPane {
 
     bm.getGridPaneProperty().addListener((observable, oldValue, newValue) -> {
       bp.setCenter(newValue);
-      Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.04), e -> {
+      Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.1), e -> {
         if (super.getWidth() > 3 + bp.getWidth()) {
           double padding = (super.getWidth() - bp.getWidth()) / 2;
           super.setPadding(new Insets(super.getPadding().getTop(), super.getPadding().getRight(),

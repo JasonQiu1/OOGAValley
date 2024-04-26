@@ -1,12 +1,11 @@
 package oogasalad.model.gameobject;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.api.ReadOnlyGameTime;
@@ -249,6 +248,22 @@ public class Tile implements Updatable, Interactable {
    */
   public String getLandId() {
     return land != null ? land.getId() : null;
+  }
+
+  public List<String> getIds() {
+    return Stream.of(getLandId(), getStructureId(), getCollectableId())
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
+  }
+
+  public void removeTopContents() {
+    if (collectable != null) {
+      collectable = null;
+    } else if (structure != null) {
+      structure = null;
+    } else if (land != null) {
+      land = null;
+    }
   }
 }
 

@@ -3,19 +3,32 @@ package oogasalad.view.editor.MapEditor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import oogasalad.model.api.ReadOnlyGameWorld;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cell extends StackPane {
 
   private static final int HEIGHT = 37; //read from file
   private static final int WIDTH = 50;
+  private static ReadOnlyGameWorld gameWorld;
   private final Rectangle base;
   private int column;
   private int row;
   private int[] id;
+
+  public static void setGameWorld(ReadOnlyGameWorld gw){
+    gameWorld = gw;
+  }
 
   public Cell(Selector ts, CellInfoPane cip, int i, int j) {
     super();
@@ -27,17 +40,17 @@ public class Cell extends StackPane {
     base.setStroke(Color.BLACK);
     base.setStrokeWidth(2);
     super.getChildren().add(base);
+    fill();
     setOnMouseClicked(event -> {
       if (event.getButton() == MouseButton.SECONDARY) {
         if (super.getChildren().size() > 1) {
-          super.getChildren().remove(super.getChildren().get(super.getChildren().size() - 1));
-          setDisplayPanel(cip);
+          gameWorld.removeTileTop(column, row, 0);
         }
-      } else if (ts.getLastSelectedSelectable() != null && ts.getLastSelectedSelectable()
-          .canBePlacedOn(super.getChildren().get(super.getChildren().size() - 1))) {
-        super.getChildren().add(ts.getLastSelectedSelectable());
-        setDisplayPanel(cip);
+      } else if (ts.getLastSelectedSelectable() != null) {
+        gameWorld.setTileGameObject(ts.getLastSelectedSelectable(), column, row, 0);
       }
+      fill();
+      setDisplayPanel(cip);
     });
 
     setOnMouseEntered(event -> {
@@ -62,9 +75,33 @@ public class Cell extends StackPane {
   }
 
   private void setDisplayPanel(CellInfoPane cip) {
-    ObservableList<Node> content = FXCollections.observableArrayList(super.getChildren());
-    content.remove(base);
+    List<String> content = gameWorld.getTileContents(column, row, 0);
     cip.setDisplay(column, row, content);
+  }
+
+  private void fill(){
+    super.getChildren().removeIf(node -> !node.equals(base));
+    if(gameWorld != null && !gameWorld.getImagePath(column, row, 0).isEmpty()){
+      super.getChildren().addAll(getImages());
+    }
+  }
+
+  private List<ImageView> getImages() {
+    List<ImageView> images = new ArrayList<>();
+    for(String path: gameWorld.getImagePath(column, row, 0)){
+      Image image;
+      try {
+            image = new Image(String.valueOf(new File("data/images/" + path).toURI().toURL()));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+      ImageView imageView = new ImageView(image);
+      imageView.setFitWidth(WIDTH);
+      imageView.setFitHeight(HEIGHT);
+      images.add(imageView);
+
+    }
+    return images;
   }
 
   public int getColumn() {
