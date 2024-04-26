@@ -8,6 +8,7 @@ import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.InvalidRuleType;
+import oogasalad.model.gameplay.GameState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

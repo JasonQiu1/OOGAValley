@@ -12,15 +12,6 @@ import oogasalad.model.api.exception.KeyNotFoundException;
  * @author Jason Qiu
  */
 public interface GameInterface {
-
-  /**
-   * Returns the selected item, if there is one selected.
-   *
-   * @return the optional describing the selected item.
-   */
-  Optional<ReadOnlyItem> getSelectedItem();
-
-
   /**
    * Returns the currently loaded GameConfiguration, which provides methods to get the currently
    * configured rules, store of configurables, initial GameState, etc.
