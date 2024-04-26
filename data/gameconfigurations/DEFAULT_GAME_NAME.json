@@ -1955,11 +1955,27 @@
       ],
       "height": 10,
       "width": 15,
-      "depth": 1
+      "depth": 1,
+      "factory": {
+        "creators": {
+          "collectable": {
+            "type": "oogasalad.model.gameObjectFactories.CollectableCreator",
+            "data": "{}"
+          },
+          "land": {
+            "type": "oogasalad.model.gameObjectFactories.LandCreator",
+            "data": "{}"
+          },
+          "structure": {
+            "type": "oogasalad.model.gameObjectFactories.StructureCreator",
+            "data": "{}"
+          }
+        }
+      }
     },
     "gameTime": {
       "previous": {
-        "data": "2024-04-26T08:07:35.186296700Z"
+        "data": "2024-04-26T16:06:56.022046800Z"
       },
       "accumulate": 0,
       "day": 1,
@@ -1969,7 +1985,27 @@
     "selectedItem": null,
     "energy": 0.0,
     "money": 0,
-    "shop": null,
+    "shop": {
+      "itemRotationSize": 3,
+      "possibleItems": [
+        {
+          "itemId": "Wheat Seeds"
+        }
+      ],
+      "previousRotationTime": {
+        "type": "oogasalad.model.gameplay.GameTime",
+        "data": "{\"previous\":{\"data\":\"2024-04-26T16:06:56.022046800Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
+      },
+      "shopRotationTime": 1440,
+      "itemRotation": [
+        [
+          {
+            "itemId": "Wheat Seeds"
+          },
+          20.0
+        ]
+      ]
+    },
     "bag": {
       "items": {}
     },
@@ -1989,10 +2025,16 @@
       "energyAmount": "20",
       "energyRecoveryRate": "720",
       "exhaustedEnergyCollapseTimePenalty": "1440",
+      "shopRotationTime": "1440",
+      "shopRotationSize": "3",
       "timeMultiplier": "1",
       "timeGoal": "525600"
     },
-    "listProperties": {},
+    "listProperties": {
+      "shopPossibleItems": [
+        "Wheat Seeds"
+      ]
+    },
     "propertiesType": {
       "String": [
         "configName",

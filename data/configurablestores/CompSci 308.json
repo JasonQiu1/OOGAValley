@@ -18,7 +18,7 @@
         "interactTransformations": {},
         "interactDropMultipliers": {},
         "plantableSeeds": {
-          "wheat_seeds": "wheat"
+          "Wheat Seeds": "wheat"
         }
       }
     },
@@ -41,10 +41,21 @@
         "interactTransformations": {},
         "interactDropMultipliers": {},
         "dropsOnDestruction": {
-          "wheat_seeds": "4",
+          "Wheat Seeds": "4",
           "wheat_item": "1"
         }
       }
+    },
+    "Wheat Seeds": {
+      "properties": {
+        "name": "Wheat Seeds",
+        "type": "Collectable",
+        "image": "wheat_seeds.png",
+        "worth": "10"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
     }
   }
 }
