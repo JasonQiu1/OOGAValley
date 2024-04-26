@@ -22,7 +22,7 @@ public class Game implements GameInterface {
 
   public Game() {
     configuration = new GameConfiguration();
-    state = new GameState();
+    state = new GameState(configuration.getRules());
   }
 
   public Game(String configName) throws IOException {
