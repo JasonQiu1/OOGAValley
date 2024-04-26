@@ -97,8 +97,7 @@ public class GameConfig implements GameConfigInterface {
       throw new SaveNotValidException(SaveNotValidException.message);
     }
     File file = new File(path);
-    String savePath = file.getParent() + "/save/";
-    File configFile = new File(savePath + "config.json");
+    File configFile = new File(file.getParent() + "/config.json");
     if (!configFile.isFile()) {
       throw new SaveNotValidException(SaveNotValidException.message);
     }

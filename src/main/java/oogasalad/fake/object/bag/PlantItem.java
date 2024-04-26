@@ -14,7 +14,7 @@ public class PlantItem extends BagItem {
 
   @Override
   public void interact(Coord coord, Game game) {
-
+//    game.ga
   }
 
   public PlantItemConfig getPlantItemConfig() {

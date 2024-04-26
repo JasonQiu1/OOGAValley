@@ -44,7 +44,7 @@ public class GameMap {
       throw new SaveNotValidException(SaveNotValidException.message);
     }
     File file = new File(filePath);
-    return file.getParent() + "/save/map.json";
+    return file.getParent() + "/map.json";
   }
 
   public void save() throws IOException, SaveNotValidException {

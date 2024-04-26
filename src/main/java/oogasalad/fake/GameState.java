@@ -30,7 +30,7 @@ public class GameState {
       throw new SaveNotValidException(SaveNotValidException.message);
     }
     File file = new File(filePath);
-    return file.getParent() + "/save/state.json";
+    return file.getParent() + "/state.json";
   }
 
   public void save() throws IOException, SaveNotValidException {

@@ -31,5 +31,5 @@
   } ],
   "money" : 100,
   "energy" : 100,
-  "savePath" : "valley_01/save/state.json"
+  "savePath" : "valley_01/state.json"
 }
