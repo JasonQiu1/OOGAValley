@@ -25,7 +25,7 @@ public class SplashUtils {
 
   public static String[] readCommaSeparatedCSV(String filename) {
     String[] values;
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))){
+    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
       values = br.readLine().split(", ");
 
     } catch (IOException e) {

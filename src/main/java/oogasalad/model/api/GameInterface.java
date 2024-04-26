@@ -1,6 +1,5 @@
 package oogasalad.model.api;
 
-import java.util.Optional;
 import oogasalad.model.api.exception.KeyNotFoundException;
 
 /**
@@ -12,6 +11,7 @@ import oogasalad.model.api.exception.KeyNotFoundException;
  * @author Jason Qiu
  */
 public interface GameInterface {
+
   /**
    * Returns the currently loaded GameConfiguration, which provides methods to get the currently
    * configured rules, store of configurables, initial GameState, etc.

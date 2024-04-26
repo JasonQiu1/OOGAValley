@@ -4,14 +4,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class LanguageDialogBox {
+
   private final StringProperty primaryLanguage = new SimpleStringProperty();
-  private ComboBox<String> dropDownMenu;
+  private final ComboBox<String> dropDownMenu;
 
   public LanguageDialogBox(String[] languages) {
     dropDownMenu = new ComboBox<>();

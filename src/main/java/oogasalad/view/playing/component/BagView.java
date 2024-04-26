@@ -127,8 +127,7 @@ public class BagView {
     }
     // not sure why cannot use bagItem directly
     BagItem new_bagItem = new BagItem(bagItem.getUrl(), PlayingPageView.bottomCellWidth,
-        PlayingPageView.bottomCellHeight,
-        new SelectedItem(), 1);
+        PlayingPageView.bottomCellHeight, new SelectedItem(), 1);
     bagItemList.add(new_bagItem);
     update();
   }

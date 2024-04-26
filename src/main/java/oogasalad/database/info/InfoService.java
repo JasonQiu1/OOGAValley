@@ -39,8 +39,7 @@ public class InfoService {
    */
   public static boolean userExists(String username) {
     String sql = "SELECT * FROM user WHERE username=?";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setString(1, username);
       try (ResultSet rs = stmt.executeQuery()) {
         return rs.next();
@@ -60,8 +59,7 @@ public class InfoService {
    */
   public static boolean isValidUser(String username, String password) {
     String sql = "SELECT * FROM user WHERE username=? AND password=?";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setString(1, username);
       stmt.setString(2, password);
       try (ResultSet rs = stmt.executeQuery()) {
@@ -82,8 +80,7 @@ public class InfoService {
 
   public static int getUserId(String username) {
     String sql = "SELECT id FROM user WHERE username=?";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setString(1, username);
       try (ResultSet rs = stmt.executeQuery()) {
         if (rs.next()) {
@@ -109,8 +106,7 @@ public class InfoService {
       return false;
     }
     String sql = "INSERT INTO user (username, email, password) VALUES (?, ?, ?)";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setString(1, username);
       stmt.setString(2, email);
       stmt.setString(3, password);
@@ -131,8 +127,7 @@ public class InfoService {
   public static List<String> getAllThoughtsByUserId(int userId) {
     List<String> thoughts = new ArrayList<>();
     String sql = "SELECT thought_text FROM thoughts WHERE user_id=? ORDER BY created_at DESC";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setInt(1, userId);
       try (ResultSet rs = stmt.executeQuery()) {
         while (rs.next()) {
@@ -154,8 +149,7 @@ public class InfoService {
   public static List<Integer> getAllAcceptedFriendsByUserId(int userId) {
     List<Integer> friends = new ArrayList<>();
     String sql = "SELECT user2_id FROM friendships WHERE user1_id=? AND status='accepted'";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setInt(1, userId);
       try (ResultSet rs = stmt.executeQuery()) {
         while (rs.next()) {
@@ -176,9 +170,9 @@ public class InfoService {
    */
   public static List<Message> getAllReceivedMessagesByUserId(int userId) {
     List<Message> messages = new ArrayList<>();
-    String sql = "SELECT sender_id, message_text FROM messages WHERE receiver_id=? ORDER BY created_at DESC";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+    String sql =
+        "SELECT sender_id, message_text FROM messages WHERE receiver_id=? ORDER BY created_at DESC";
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setInt(1, userId);
       try (ResultSet rs = stmt.executeQuery()) {
         while (rs.next()) {
@@ -200,12 +194,10 @@ public class InfoService {
    */
   public static List<Thought> getAllThoughts() {
     List<Thought> thoughts = new ArrayList<>();
-    String sql = "SELECT thoughts.id, user.username, thoughts.thought_text, thoughts.created_at " +
-        "FROM thoughts " +
-        "INNER JOIN user ON thoughts.user_id = user.id " +
-        "ORDER BY thoughts.created_at DESC";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql);
+    String sql = "SELECT thoughts.id, user.username, thoughts.thought_text, thoughts.created_at "
+        + "FROM thoughts " + "INNER JOIN user ON thoughts.user_id = user.id "
+        + "ORDER BY thoughts.created_at DESC";
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery()) {
       while (rs.next()) {
         int id = rs.getInt("id");
@@ -230,8 +222,7 @@ public class InfoService {
    */
   public static boolean addThought(int userId, String thoughtText, String time) {
     String sql = "INSERT INTO thoughts (user_id, thought_text, created_at) VALUES (?, ?, ?)";
-    try (Connection conn = getConnection();
-        PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setInt(1, userId);
       stmt.setString(2, thoughtText);
       stmt.setString(3, time);

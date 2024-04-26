@@ -10,14 +10,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 public class HelpDialogBox {
+
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.HelpDialogBox.";
-  private String helpTextPath = "EnglishHelpFilePath";
+  private final String helpTextPath = "EnglishHelpFilePath";
   private ResourceBundle helpTextPathResource;
 
   public void show(String title) {
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-    helpTextPathResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE+ helpTextPath);
+    helpTextPathResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + helpTextPath);
 
     alert.getDialogPane().setContent(getHelp(helpTextPathResource.getString("file_path")));
     alert.setTitle(title);
@@ -45,7 +46,7 @@ public class HelpDialogBox {
 //        "location and any selectables placed in the cell \n\n" +
 //        "Have Fun!";
 
-      // Read all lines from the file into a List of Strings
+    // Read all lines from the file into a List of Strings
     List<String> lines = null;
     try {
       lines = Files.readAllLines(Paths.get(textPath));
@@ -54,8 +55,7 @@ public class HelpDialogBox {
     }
 
     // Join the lines using newline character (\n) to form a single string
-      String helpText = String.join("\n", lines);
-
+    String helpText = String.join("\n", lines);
 
     help.setText(helpText);
     return help;
