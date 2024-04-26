@@ -61,14 +61,22 @@ public class GameMap {
 
   }
 
-  public void setLand(Coord coord, LandConfig landConfig) {
+  public void setLandEditor(Coord coord, LandConfig landConfig) {
     Land land = new Land(landConfig);
     landPositionMap.put(coord, land);
   }
 
-  public void setPlant(Coord coord, PlantConfig plantConfig) {
+  public void setPlantEditor(Coord coord, PlantConfig plantConfig) {
     Plant plant = new Plant(plantConfig, null);
     plantPositionMap.put(coord, plant);
+  }
+
+  public void setPlant(Coord coord, Plant plant) {
+    plantPositionMap.put(coord, plant);
+  }
+
+  public void setLand(Coord coord, Land land) {
+    landPositionMap.put(coord, land);
   }
 
   public int getHeight() {

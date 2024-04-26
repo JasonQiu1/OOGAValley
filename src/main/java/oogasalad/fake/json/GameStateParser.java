@@ -56,7 +56,6 @@ public class GameStateParser {
   }
 
   public static String getConfigEntries(Map<String, Object> map) {
-    Map<String, Object> result = new HashMap<>();
     for (Map.Entry<String, Object> entry : map.entrySet()) {
       if (entry.getKey().endsWith("Config")) {
         return entry.getKey();

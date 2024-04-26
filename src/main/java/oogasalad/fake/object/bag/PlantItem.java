@@ -9,10 +9,9 @@ public class PlantItem extends BagItem {
   private final PlantItemConfig plantItemConfig;
 
   public PlantItem(PlantItemConfig plantItemConfig, int number) {
-    super(number);
+    super(number, plantItemConfig.getId());
     this.plantItemConfig = plantItemConfig;
   }
-
 
   /**
    * the plant does not interact with the land, it can only be sold or eaten.
@@ -29,6 +28,7 @@ public class PlantItem extends BagItem {
   public boolean consume(Game game) {
     double eatEnergy = plantItemConfig.getEatEnergy();
     game.getGameState().addEnergy(eatEnergy);
+    addNumber(-1);
     return true;
   }
 
@@ -36,6 +36,12 @@ public class PlantItem extends BagItem {
   public boolean sell(Game game) {
     double money = plantItemConfig.getSellPrice();
     game.getGameState().addMoney(money);
+    addNumber(-1);
+    return true;
+  }
+
+  @Override
+  public boolean ifSell() {
     return true;
   }
 

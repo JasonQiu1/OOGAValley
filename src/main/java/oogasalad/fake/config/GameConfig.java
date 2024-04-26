@@ -14,11 +14,13 @@ import oogasalad.fake.config.item.PlantItemConfig;
 import oogasalad.fake.config.item.SeedConfig;
 import oogasalad.fake.config.item.ToolConfig;
 import oogasalad.fake.json.GameConfigParser;
+import oogasalad.fake.object.bag.BagItem;
+import oogasalad.fake.object.bag.PlantItem;
+import oogasalad.fake.object.bag.SeedItem;
 
 public class GameConfig implements GameConfigInterface {
 
   private final Map<String, LandConfig> landConfigMap;
-
   private final Map<String, PlantConfig> plantConfigMap;
   private final Map<String, PlantItemConfig> plantItemConfigMap;
   private final Map<String, ToolConfig> toolConfigMap;
@@ -89,20 +91,16 @@ public class GameConfig implements GameConfigInterface {
     objectMapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get(fileName).toFile(), this);
   }
 
-  /**
-   * Check if the folder structure is good
-   */
-  private File getConfigFile(@NotNull String path) throws SaveNotValidException {
-    if (!(path.endsWith("save.farm"))) {
-      throw new SaveNotValidException(SaveNotValidException.message);
+  public BagItem getItemFromId(String id, int number) {
+    if (plantItemConfigMap.containsKey(id)) {
+      return new PlantItem(plantItemConfigMap.get(id), number);
     }
-    File file = new File(path);
-    File configFile = new File(file.getParent() + "/config.json");
-    if (!configFile.isFile()) {
-      throw new SaveNotValidException(SaveNotValidException.message);
+    if (seedConfigMap.containsKey(id)) {
+      return new SeedItem(seedConfigMap.get(id), number);
     }
-    return configFile;
+    return null;
   }
+
 
   public Map<String, LandConfig> getLandConfigMap() {
     return landConfigMap;
@@ -129,4 +127,18 @@ public class GameConfig implements GameConfigInterface {
     validator.validate();
   }
 
+  /**
+   * Check if the folder structure is good
+   */
+  private File getConfigFile(@NotNull String path) throws SaveNotValidException {
+    if (!(path.endsWith("save.farm"))) {
+      throw new SaveNotValidException(SaveNotValidException.message);
+    }
+    File file = new File(path);
+    File configFile = new File(file.getParent() + "/config.json");
+    if (!configFile.isFile()) {
+      throw new SaveNotValidException(SaveNotValidException.message);
+    }
+    return configFile;
+  }
 }

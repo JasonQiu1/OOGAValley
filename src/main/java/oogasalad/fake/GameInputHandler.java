@@ -16,10 +16,49 @@ public class GameInputHandler {
 
 
   public void selectItem(int idx) {
+    if (idx >= game.getGameState().getItemList().size()) {
+      this.selectedItem = null;
+      return;
+    }
     this.selectedItem = game.getGameState().getItemList().get(idx);
-  }
-
-  public void interact(Coord coord) {
 
   }
+
+  public boolean interact(Coord coord) {
+    if (selectedItem == null) {
+      return false;
+    }
+    boolean interact = selectedItem.interact(coord, game);
+    checkRemove();
+    return interact;
+
+  }
+
+  public boolean consume() {
+    if (selectedItem == null) {
+      return false;
+    }
+    boolean consume = selectedItem.consume(game);
+    checkRemove();
+    return consume;
+  }
+
+  public boolean sell() {
+    if (selectedItem == null) {
+      return false;
+    }
+    boolean sell = selectedItem.sell(game);
+    checkRemove();
+    return sell;
+
+  }
+
+  private void checkRemove() {
+    if (selectedItem.getNumber() == 0) {
+      game.getGameState().getItemList().remove(selectedItem);
+      selectedItem = null;
+    }
+  }
+
+
 }

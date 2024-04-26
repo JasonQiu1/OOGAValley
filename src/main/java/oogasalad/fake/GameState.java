@@ -36,24 +36,6 @@ public class GameState {
     this.energy = gameStateParser.getEnergy();
   }
 
-  private String findSavePath(String filePath) throws SaveNotValidException {
-    if (!(filePath.endsWith("save.farm"))) {
-      throw new SaveNotValidException(SaveNotValidException.message);
-    }
-    File file = new File(filePath);
-    return file.getParent() + "/state.json";
-  }
-
-  public void save() throws IOException, SaveNotValidException {
-    save(savePath);
-  }
-
-  public void save(String fileName) throws IOException {
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.writerWithDefaultPrettyPrinter()
-        .writeValue(Paths.get(fileName).toFile(), this);
-  }
-
   public GameTime getGameTime() {
     return gameTime;
   }
@@ -78,7 +60,25 @@ public class GameState {
     this.energy += energy;
   }
 
+  public void save() throws IOException, SaveNotValidException {
+    save(savePath);
+  }
+
+  public void save(String fileName) throws IOException {
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.writerWithDefaultPrettyPrinter()
+        .writeValue(Paths.get(fileName).toFile(), this);
+  }
+
   public String getSavePath() {
     return savePath;
+  }
+
+  private String findSavePath(String filePath) throws SaveNotValidException {
+    if (!(filePath.endsWith("save.farm"))) {
+      throw new SaveNotValidException(SaveNotValidException.message);
+    }
+    File file = new File(filePath);
+    return file.getParent() + "/state.json";
   }
 }
