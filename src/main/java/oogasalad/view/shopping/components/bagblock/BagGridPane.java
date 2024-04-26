@@ -1,14 +1,11 @@
 package oogasalad.view.shopping.components.bagblock;
 
-import java.util.Map;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import oogasalad.fake.Game;
 import oogasalad.fake.object.bag.BagItem;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.BagItemModel;
 
 /**
  * This class is a GridPane that contains BagItemVboxes. It is used to display the items in the bag

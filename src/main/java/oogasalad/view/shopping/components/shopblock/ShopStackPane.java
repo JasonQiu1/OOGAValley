@@ -8,12 +8,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import oogasalad.fake.Game;
-
 import oogasalad.fake.GameState;
 import oogasalad.fake.object.bag.BagItem;
-import oogasalad.model.shop.SellItem;
-import oogasalad.model.shop.Shop;
 import oogasalad.view.shopping.Utils;
+import oogasalad.view.shopping.components.SellItem;
 
 /**
  * This class is a StackPane that contains a background image, a sell grid pane, and a page change
@@ -51,8 +49,8 @@ public class ShopStackPane extends StackPane {
     backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
     List<SellItem> sellItems = new ArrayList<>();
     for (BagItem bagItem : gameState.getItemList()) {
-      if(bagItem.sell(game)) {
-        sellItems.add(new SellItem(0, bagItem.getConfig().getImagePath()));
+      if (bagItem.ifSellReturnPrice() != -1) {
+        sellItems.add(new SellItem(bagItem));
       }
     }
     createSellGridPanes(sellItems);

@@ -5,9 +5,8 @@ import java.util.ResourceBundle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import oogasalad.fake.Game;
-import oogasalad.model.shop.SellItem;
-import oogasalad.model.shop.Shop;
 import oogasalad.view.popup.PopUpStackPane;
+import oogasalad.view.shopping.components.SellItem;
 
 public class SellGridPane extends GridPane {
 
@@ -16,9 +15,9 @@ public class SellGridPane extends GridPane {
   private static final int ROW_COUNT = 2;
   private final List<SellItem> sellItems;
   private final StackPane parentStackPane;
+  private final Game game;
   private String myLanguage = "EnglishPopUpText";
   private ResourceBundle popUpTextResource;
-  private final Game game;
 
   /**
    * This class is a GridPane that contains SellItemVboxes. It is used to display the items that can
@@ -45,12 +44,13 @@ public class SellGridPane extends GridPane {
             parentStackPane,
             choice -> {
               if (choice) {
-                // sell item
+                sellItem.getBagItem().sell(game);
+
               }
             }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
         parentStackPane.getChildren().add(popUp);
       });
-      sellItemVbox.setSellButtonId(sellItem.getUrl()+"-sell-button");
+      sellItemVbox.setSellButtonId(sellItem.getUrl() + "-sell-button");
       add(sellItemVbox, column, row);
       column++;
       if (column == COLUMN_COUNT) {

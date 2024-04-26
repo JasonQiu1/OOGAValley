@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import oogasalad.fake.Game;
-import oogasalad.model.shop.Bag;
 import oogasalad.view.shopping.Utils;
 
 /**
@@ -13,6 +12,7 @@ import oogasalad.view.shopping.Utils;
  * display the items in the bag block.
  */
 public class BagStackPane extends StackPane {
+
   private final Game game;
 
 

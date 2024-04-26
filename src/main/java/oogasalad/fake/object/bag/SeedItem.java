@@ -53,8 +53,8 @@ public class SeedItem extends BagItem {
   }
 
   @Override
-  public boolean ifSell() {
-    return true;
+  public double ifSellReturnPrice() {
+    return seedConfig.getSellPrice();
   }
 
   public SeedConfig getSeedConfig() {

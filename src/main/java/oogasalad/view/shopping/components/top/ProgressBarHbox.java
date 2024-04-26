@@ -3,9 +3,7 @@ package oogasalad.view.shopping.components.top;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
-
 import oogasalad.fake.GameState;
-import oogasalad.model.shop.Shop;
 import oogasalad.view.shopping.Utils;
 
 /**

@@ -66,8 +66,8 @@ public class ToolItem extends BagItem {
   }
 
   @Override
-  public boolean ifSell() {
-    return false;
+  public double ifSellReturnPrice() {
+    return -1;
   }
 
   private void addItems(Map<String, Integer> dropMap, Game game) {

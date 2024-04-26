@@ -7,8 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import oogasalad.model.shop.SellItem;
 import oogasalad.view.shopping.Utils;
+import oogasalad.view.shopping.components.SellItem;
 
 /**
  * This class is a VBox that contains an item image, a price stack pane, and a sell button. It is

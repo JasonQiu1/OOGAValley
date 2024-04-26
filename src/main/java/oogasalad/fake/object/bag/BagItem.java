@@ -31,7 +31,7 @@ public abstract class BagItem {
 
   public abstract BaseConfig getConfig();
 
-  public abstract boolean ifSell();
+  public abstract double ifSellReturnPrice();
 
   public String getId() {
     return id;

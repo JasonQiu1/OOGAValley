@@ -41,8 +41,8 @@ public class PlantItem extends BagItem {
   }
 
   @Override
-  public boolean ifSell() {
-    return true;
+  public double ifSellReturnPrice() {
+    return plantItemConfig.getSellPrice();
   }
 
   public PlantItemConfig getPlantItemConfig() {

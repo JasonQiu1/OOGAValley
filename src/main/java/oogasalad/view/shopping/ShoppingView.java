@@ -4,11 +4,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import oogasalad.fake.Game;
-import oogasalad.model.data.GameState;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.Shop;
 import oogasalad.view.branch.BranchBase;
-import oogasalad.view.playing.component.Money;
 
 
 public class ShoppingView extends BranchBase {
