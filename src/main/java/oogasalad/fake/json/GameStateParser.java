@@ -32,8 +32,6 @@ public class GameStateParser {
     System.out.println(rawConfig.get("itemList"));
     List<Map<String, Object>> itemListInfo = (List<Map<String, Object>>) rawConfig.get("itemList");
     System.out.println(itemListInfo);
-
-
   }
 
   public static void main(String[] args) {
