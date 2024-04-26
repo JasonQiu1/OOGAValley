@@ -22,7 +22,7 @@ public class IntegrationTest extends DukeApplicationTest {
     public void start(Stage stage) {
         this.stage = stage;
         config = new GameConfiguration();
-        editorScene = new EditorScene(stage, "English", config);
+        editorScene = new EditorScene(stage, "English", null, config);
         editorScene.start();
     }
 

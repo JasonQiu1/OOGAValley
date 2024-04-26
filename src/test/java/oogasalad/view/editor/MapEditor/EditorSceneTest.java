@@ -20,7 +20,7 @@ public class EditorSceneTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    editorScene = new EditorScene(stage, "English", new GameConfiguration());
+    editorScene = new EditorScene(stage, "English", null, new GameConfiguration());
     editorScene.start();
 //    this.cell = (Cell) lookup("#0 0").query();
     sleep(1000);
