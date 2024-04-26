@@ -7,20 +7,23 @@ import oogasalad.model.data.GameConfiguration;
 
 public class MapEditor extends VBox {
   //TODO: make this work
+  private GameConfiguration config;
 
   public MapEditor(GameConfiguration gc) {
     super();
+    config = gc;
     super.setAlignment(Pos.CENTER);
     Selector ts = new Selector();
     CellInfoPane cip = new CellInfoPane();
-    if(gc.getInitialState().getGameWorld() == null){
-      System.out.println("what");
-    }
-    BuildableMap bm = new BuildableMap(ts, cip, gc.getInitialState().getGameWorld());
+    BuildableMap bm = new BuildableMap(ts, cip, config.getInitialState().getGameWorld());
     TopPanel tp = new TopPanel(bm);
     BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
     BottomPanel bp = new BottomPanel(ts);
     getChildren().addAll(tp, bmw, bp, cip);
     //getChildren().add(new MapExtender(bm));
+  }
+
+  public void setConfig(GameConfiguration gc) {
+    config = gc;
   }
 }

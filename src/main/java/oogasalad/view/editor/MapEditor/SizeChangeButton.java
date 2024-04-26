@@ -9,6 +9,7 @@ public class SizeChangeButton extends Button {
   public SizeChangeButton(String name, BiConsumer<Integer, Integer> action) {
 //    super("Change \nGrid Size");
     super(name);
+    setId("SizeChangeButton");
     super.setTextAlignment(TextAlignment.CENTER);
     super.setPrefWidth(125);
     //super.setWrapText(true);
