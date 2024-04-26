@@ -166,6 +166,11 @@ public class GameTime implements GameTimeInterface {
     return day == other.day && hour == other.hour && minute == other.minute;
   }
 
+  @Override
+  public int hashCode() {
+    return convertInMinutes();
+  }
+
   public GameTime copy() {
     return new GameTime(this.getDay(), this.getHour(), this.getMinute());
   }
