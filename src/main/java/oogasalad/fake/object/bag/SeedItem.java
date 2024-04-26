@@ -57,6 +57,10 @@ public class SeedItem extends BagItem {
     return true;
   }
 
+  public SeedConfig getSeedConfig() {
+    return seedConfig;
+  }
+
   public SeedConfig getConfig() {
     return seedConfig;
   }

@@ -45,6 +45,9 @@ public class PlantItem extends BagItem {
     return true;
   }
 
+  public PlantItemConfig getPlantItemConfig() {
+    return plantItemConfig;
+  }
 
   public PlantItemConfig getConfig() {
     return plantItemConfig;

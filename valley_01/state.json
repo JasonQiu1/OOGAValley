@@ -30,6 +30,11 @@
   }, {
     "number" : 1,
     "id" : "wheat_seed_bag",
+    "seedConfig" : {
+      "imagePath" : "img/panda.png",
+      "id" : "wheat_seed_bag",
+      "sellPrice" : 100.0
+    },
     "config" : {
       "imagePath" : "img/panda.png",
       "id" : "wheat_seed_bag",
@@ -38,6 +43,12 @@
   }, {
     "number" : 1,
     "id" : "wheat_bag",
+    "plantItemConfig" : {
+      "imagePath" : "img/wheat.png",
+      "id" : "wheat_bag",
+      "sellPrice" : 200.0,
+      "eatEnergy" : 10.0
+    },
     "config" : {
       "imagePath" : "img/wheat.png",
       "id" : "wheat_bag",
