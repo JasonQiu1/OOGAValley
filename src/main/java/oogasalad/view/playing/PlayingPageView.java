@@ -86,7 +86,7 @@ public class PlayingPageView {
   private final Shop shop = new Shop(money);
   private final GameFactory gameFactory = new GameFactory();
 
-  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
+  private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
 
   private final GameInterface game;
 
