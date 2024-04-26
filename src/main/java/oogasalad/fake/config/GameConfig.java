@@ -44,7 +44,6 @@ public class GameConfig implements GameConfigInterface {
     plantItemConfigMap = parser.getPlantItemConfigs();
     toolConfigMap = parser.getToolConfigs();
     seedConfigMap = parser.getSeedConfigs();
-    validate();
   }
 
 

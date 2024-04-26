@@ -44,7 +44,6 @@ public class GameMap {
   }
 
   public void save() throws IOException, SaveNotValidException {
-
     save(savePath);
   }
 

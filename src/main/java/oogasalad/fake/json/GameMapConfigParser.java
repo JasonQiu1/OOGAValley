@@ -66,10 +66,9 @@ public class GameMapConfigParser {
   }
 
   private static Coord parseCoord(String str) {
-    str = str.replaceAll("[{}]", "");
+    str = str.replaceAll("Coord", "").replace("[", "").replace("]", "");
     String[] parts = str.split(", ");
     int x = 0, y = 0;
-
     for (String part : parts) {
       String[] keyValue = part.split("=");
       if ("x".equals(keyValue[0])) {
@@ -78,7 +77,6 @@ public class GameMapConfigParser {
         y = Integer.parseInt(keyValue[1]);
       }
     }
-
     return new Coord(x, y);
   }
 
