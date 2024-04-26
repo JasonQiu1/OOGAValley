@@ -1,5 +1,6 @@
 package oogasalad.view.playing;
 
+import java.io.IOException;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -92,6 +93,12 @@ public class PlayingPageView {
     primaryLanguage = language;
     this.previousScene = backScene;
     game = gameFactory.createGame();
+  }
+
+  public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
+    stage = primaryStage;
+    primaryLanguage = language;
+    game = gameFactory.createGame(fileName, fileName);
   }
 
   public void start() {
