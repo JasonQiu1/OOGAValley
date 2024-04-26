@@ -184,22 +184,50 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
 
   @Override
   public void shiftRightAndAddColumn() {
-    
+    Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
+    for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: allTiles.entrySet()){
+      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().getX() + 1, entry.getKey().getY(),
+              entry.getKey().getZ()), entry.getValue());
+    }
+    width++;
+    allTiles = temp;
+    initialize();
   }
 
   @Override
   public void shiftLeftAndRemoveColumn() {
-
+    Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
+    for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: allTiles.entrySet()){
+      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().getX() - 1, entry.getKey().getY(),
+              entry.getKey().getZ()), entry.getValue());
+    }
+    width--;
+    allTiles = temp;
+    initialize();
   }
 
   @Override
   public void shiftUpAndRemoveRow() {
-
+    Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
+    for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: allTiles.entrySet()){
+      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().getX(), entry.getKey().getY() - 1,
+              entry.getKey().getZ()), entry.getValue());
+    }
+    height--;
+    allTiles = temp;
+    initialize();
   }
 
   @Override
   public void shiftDownAndAddRow() {
-
+    Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
+    for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: allTiles.entrySet()){
+      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().getX(), entry.getKey().getY() + 1,
+              entry.getKey().getZ()), entry.getValue());
+    }
+    height++;
+    allTiles = temp;
+    initialize();
   }
 
   @Override
