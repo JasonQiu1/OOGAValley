@@ -1,6 +1,6 @@
 package oogasalad.fake.object;
 
-import oogasalad.fake.config.PlantConfig;
+import oogasalad.fake.config.farm.PlantConfig;
 
 public class Plant {
 

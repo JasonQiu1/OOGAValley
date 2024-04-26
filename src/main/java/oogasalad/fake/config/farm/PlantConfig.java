@@ -1,13 +1,15 @@
-package oogasalad.fake.config;
+package oogasalad.fake.config.farm;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import oogasalad.fake.GameTime;
+import oogasalad.fake.config.BaseConfig;
 
 public class PlantConfig extends BaseConfig {
 
+  // tool - list of items to drop
   private final Map<String, List<Map<String, Integer>>> dropMap;
   private final GameTime gameTime;
 

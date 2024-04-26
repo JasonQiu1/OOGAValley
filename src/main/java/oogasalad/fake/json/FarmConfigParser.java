@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import oogasalad.fake.GameTime;
-import oogasalad.fake.config.LandConfig;
-import oogasalad.fake.config.PlantConfig;
+import oogasalad.fake.config.farm.LandConfig;
+import oogasalad.fake.config.farm.PlantConfig;
 
 public class FarmConfigParser {
 
@@ -41,7 +41,8 @@ public class FarmConfigParser {
       Map<String, Integer> gameTime = (Map<String, Integer>) plantInfo.get("growthTime");
       GameTime game = new GameTime(gameTime.get("day"), gameTime.get("hour"),
           gameTime.get("minute"));
-      PlantConfig plantConfig = new PlantConfig((String) plantInfo.get("imagePath"), plantKey, dropMap,
+      PlantConfig plantConfig = new PlantConfig((String) plantInfo.get("imagePath"), plantKey,
+          dropMap,
           game);
       plantConfigs.put(plantKey, plantConfig);
     }
@@ -62,7 +63,8 @@ public class FarmConfigParser {
       }
       Map<String, String> seedGrown = (Map<String, String>) landInfo.get("seedGrown");
       Map<String, String> seedGrownMap = new HashMap<>(seedGrown);
-      LandConfig landConfig = new LandConfig((String) landInfo.get("imagePath"), landKey, transformLand,
+      LandConfig landConfig = new LandConfig((String) landInfo.get("imagePath"), landKey,
+          transformLand,
           seedGrownMap);
       landConfigs.put(landKey, landConfig);
     }

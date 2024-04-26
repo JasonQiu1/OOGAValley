@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Map;
-import oogasalad.fake.config.LandConfig;
-import oogasalad.fake.config.PlantConfig;
+import oogasalad.fake.config.farm.LandConfig;
+import oogasalad.fake.config.farm.PlantConfig;
 
 public class FarmConfigurations {
 

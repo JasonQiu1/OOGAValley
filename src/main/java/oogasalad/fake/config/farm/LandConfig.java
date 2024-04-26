@@ -1,12 +1,16 @@
-package oogasalad.fake.config;
+package oogasalad.fake.config.farm;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Map;
+import oogasalad.fake.config.BaseConfig;
 
 public class LandConfig extends BaseConfig {
 
+  // tool - land
   private final Map<String, String> transFromLand;
+
+  // seed - land
   private final Map<String, String> seedGrown;
 
   public LandConfig(String imagePath, String id, Map<String, String> transFromLand,

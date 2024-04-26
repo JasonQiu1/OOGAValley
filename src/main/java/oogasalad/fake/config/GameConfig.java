@@ -5,6 +5,9 @@ import java.io.File;
 import java.util.Map;
 import oogasalad.fake.api.GameConfigInterface;
 import oogasalad.fake.api.exception.SaveNotValidException;
+import oogasalad.fake.config.farm.LandConfig;
+import oogasalad.fake.config.farm.PlantConfig;
+import oogasalad.fake.config.item.ToolConfig;
 
 public class GameConfig implements GameConfigInterface {
 
@@ -12,18 +15,22 @@ public class GameConfig implements GameConfigInterface {
 
   private final Map<String, PlantConfig> plantConfigMap;
 
+
+  private final Map<String, ToolConfig> toolConfigMap;
+
   public GameConfig() {
     System.out.println("default gameConfig not supported");
     assert false;
     landConfigMap = null;
     plantConfigMap = null;
+    toolConfigMap = null;
   }
 
   public GameConfig(String filePath) throws SaveNotValidException {
     File configFile = getConfigFile(filePath);
     landConfigMap = initLandConfig(configFile);
     plantConfigMap = initPlantConfig(configFile);
-
+    toolConfigMap = null;
   }
 
   @Override
@@ -37,6 +44,9 @@ public class GameConfig implements GameConfigInterface {
   }
 
 
+  /**
+   * Save the current config validate the data before saving
+   */
   @Override
   public void save() {
 

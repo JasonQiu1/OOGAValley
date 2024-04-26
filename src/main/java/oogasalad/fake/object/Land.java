@@ -1,6 +1,6 @@
 package oogasalad.fake.object;
 
-import oogasalad.fake.config.LandConfig;
+import oogasalad.fake.config.farm.LandConfig;
 
 public class Land {
 

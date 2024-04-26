@@ -1,7 +1,7 @@
 package oogasalad.fake.api;
 
-import oogasalad.fake.config.LandConfig;
-import oogasalad.fake.config.PlantConfig;
+import oogasalad.fake.config.farm.LandConfig;
+import oogasalad.fake.config.farm.PlantConfig;
 
 public interface GameConfigInterface {
 
