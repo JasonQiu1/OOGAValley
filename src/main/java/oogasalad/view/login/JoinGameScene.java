@@ -11,7 +11,7 @@ import oogasalad.database.realtime.GameService;
 public class JoinGameScene {
 
   private Scene scene;
-  private final MultiView multiView;
+  private MultiView multiView;
 
   public JoinGameScene(MultiView multiView) {
     this.multiView = multiView;
@@ -35,9 +35,8 @@ public class JoinGameScene {
     Button switchToStartGame = new Button("Start New Game");
     switchToStartGame.setOnAction(event -> multiView.showStartGameScene());
 
-    VBox layout =
-        new VBox(10, targetPlayerNameField, joiningPlayerNameField, scoreField, joinGameButton,
-            switchToStartGame);
+    VBox layout = new VBox(10, targetPlayerNameField, joiningPlayerNameField, scoreField,
+        joinGameButton, switchToStartGame);
     layout.setPadding(new javafx.geometry.Insets(20));
 
     scene = new Scene(layout, 300, 250);

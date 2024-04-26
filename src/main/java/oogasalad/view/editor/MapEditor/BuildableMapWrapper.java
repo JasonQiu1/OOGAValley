@@ -34,11 +34,12 @@ public class BuildableMapWrapper extends ScrollPane {
 
     //Disable further resizing of the content
     super.widthProperty().addListener((observable, oldValue, newValue) -> {
-      Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.1), event -> {
-        if (!rendered) {
-          super.setPrefSize(super.getWidth(), super.getHeight());
-        }
-      }));
+      Timeline timeline = new Timeline(
+          new KeyFrame(Duration.seconds(.1), event -> {
+            if (!rendered) {
+              super.setPrefSize(super.getWidth(), super.getHeight());
+            }
+          }));
       timeline.play();
     });
 
@@ -47,21 +48,27 @@ public class BuildableMapWrapper extends ScrollPane {
       Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.04), e -> {
         if (super.getWidth() > 3 + bp.getWidth()) {
           double padding = (super.getWidth() - bp.getWidth()) / 2;
-          super.setPadding(new Insets(super.getPadding().getTop(), super.getPadding().getRight(),
-              super.getPadding().getBottom(), padding));
+          super.setPadding(new Insets(super.getPadding().getTop(),
+              super.getPadding().getRight(),
+              super.getPadding().getBottom(),
+              padding));
         } else {
-          super.setPadding(new Insets(super.getPadding().getTop(), super.getPadding().getRight(),
-              super.getPadding().getBottom(), 0));
+          super.setPadding(new Insets(super.getPadding().getTop(),
+              super.getPadding().getRight(),
+              super.getPadding().getBottom(),
+              0));
         }
         if (super.getHeight() > 3 + bp.getHeight()) {
           double padding = (super.getHeight() - bp.getHeight()) / 2;
-          super.setPadding(
-              new Insets(padding, super.getPadding().getRight(), super.getPadding().getBottom(),
-                  super.getPadding().getLeft()));
+          super.setPadding(new Insets(padding,
+              super.getPadding().getRight(),
+              super.getPadding().getBottom(),
+              super.getPadding().getLeft()));
         } else {
-          super.setPadding(
-              new Insets(0, super.getPadding().getRight(), super.getPadding().getBottom(),
-                  super.getPadding().getLeft()));
+          super.setPadding(new Insets(0,
+              super.getPadding().getRight(),
+              super.getPadding().getBottom(),
+              super.getPadding().getLeft()));
         }
       }));
       timeline.play();
@@ -74,16 +81,20 @@ public class BuildableMapWrapper extends ScrollPane {
     bp.setCenter(bm.getGridPane());
     setAlignment(bm.getGridPane());
 
-    bp.setRight(new MapExtenderVertical(bm, e -> bm.addColumnRight(), e -> bm.removeColumnRight()));
+    bp.setRight(new MapExtenderVertical(bm,
+        e -> bm.addColumnRight(), e -> bm.removeColumnRight()));
     setAlignment(bp.getRight());
 
-    bp.setLeft(new MapExtenderVertical(bm, e -> bm.addColumnLeft(), e -> bm.removeColumnLeft()));
+    bp.setLeft(new MapExtenderVertical(bm,
+        e -> bm.addColumnLeft(), e -> bm.removeColumnLeft()));
     setAlignment(bp.getLeft());
 
-    bp.setTop(new MapExtenderHorizontal(bm, e -> bm.addRowTop(), e -> bm.removeRowTop()));
+    bp.setTop(new MapExtenderHorizontal(bm,
+        e -> bm.addRowTop(), e -> bm.removeRowTop()));
     setAlignment(bp.getTop());
 
-    bp.setBottom(new MapExtenderHorizontal(bm, e -> bm.addRowBottom(), e -> bm.removeRowBottom()));
+    bp.setBottom(new MapExtenderHorizontal(bm,
+        e -> bm.addRowBottom(), e -> bm.removeRowBottom()));
     setAlignment(bp.getBottom());
 
     return bp;

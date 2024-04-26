@@ -14,9 +14,10 @@ public class Firebase {
     try {
       InputStream serviceAccount = Firebase.class.getClassLoader()
           .getResourceAsStream("database/firebase_service_account_key.json");
-      FirebaseOptions options =
-          new FirebaseOptions.Builder().setCredentials(GoogleCredentials.fromStream(serviceAccount))
-              .setDatabaseUrl("https://ageless-lamp-416320-default-rtdb.firebaseio.com/").build();
+      FirebaseOptions options = new FirebaseOptions.Builder()
+          .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+          .setDatabaseUrl("https://ageless-lamp-416320-default-rtdb.firebaseio.com/")
+          .build();
       FirebaseApp.initializeApp(options);
     } catch (Exception e) {
       e.printStackTrace();

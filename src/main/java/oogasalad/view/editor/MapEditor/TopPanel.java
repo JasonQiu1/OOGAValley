@@ -6,14 +6,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import oogasalad.view.start.ChangePageButton;
+import oogasalad.view.start.PlayModeSplashScreen;
+import oogasalad.view.start.StartScreen;
 
 public class TopPanel extends StackPane {
-
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.TopPanel.";
-  private final String buttonLanguage = "EnglishButtons";
-  private final String titleLanguage = "EnglishTitle";
-  private final ResourceBundle buttonResource;
-  private final ResourceBundle titleResource;
+  private String buttonLanguage = "EnglishButtons";
+  private String titleLanguage = "EnglishTitle";
+  private ResourceBundle buttonResource;
+  private ResourceBundle titleResource;
 
   public TopPanel(BuildableMap bm) {
     super();
@@ -37,16 +39,15 @@ public class TopPanel extends StackPane {
 //          }
 //        }));
 
-    SizeChangeButton scb =
-        new SizeChangeButton(buttonResource.getString("size_change"), (newI, newJ) -> {
-          // Show dialog to get new grid size
-          SizeChangeDialogBox dialog = new SizeChangeDialogBox();
-          int[] newSize = dialog.getNewSize();
-          if (newSize != null) {
-            // If user inputs new size, call modifyGridSize method
-            bm.modifyGridSizeBL(newSize[1], newSize[0]);
-          }
-        });
+    SizeChangeButton scb = new SizeChangeButton(buttonResource.getString("size_change"), (newI, newJ) -> {
+      // Show dialog to get new grid size
+      SizeChangeDialogBox dialog = new SizeChangeDialogBox();
+      int[] newSize = dialog.getNewSize();
+      if (newSize != null) {
+        // If user inputs new size, call modifyGridSize method
+        bm.modifyGridSizeBL(newSize[1], newSize[0]);
+      }
+    });
 
 //      HelpButtonWrapper hbw = new HelpButtonWrapper(
 //              new HelpButton(e -> {

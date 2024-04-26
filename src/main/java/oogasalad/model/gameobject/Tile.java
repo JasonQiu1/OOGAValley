@@ -4,14 +4,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.api.ReadOnlyGameTime;
 
 /**
  * Represents a tile within the game world that can contain various game objects including
@@ -34,11 +32,6 @@ public class Tile implements Updatable, Interactable {
    * Constructs a new Tile with an associated GameObjectFactory for creating new game objects.
    */
   public Tile() {
-    GameTime gameTime = new GameTime(0, 0, 0);
-    land = (Land) factory.createNewGameObject("Dirt", gameTime, null);
-    if (new Random().nextBoolean()) {
-      land = null;
-    }
   }
 
   /**
@@ -53,15 +46,15 @@ public class Tile implements Updatable, Interactable {
   public void interact(ReadOnlyItem item) {
     boolean interactionHandled =
         handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item), false)
-            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item),
-            false) || handleInteractionIfValid(land, item, () -> handleLandInteraction(item),
+            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item), false)
+            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item),
             land != null && land.getIfItemCanBePlacedHere(item));
   }
 
   @Override
   public boolean interactionValid(ReadOnlyItem item) {
-    return collectable.interactionValid(item) || structure.interactionValid(item)
-        || land.interactionValid(item);
+    return collectable.interactionValid(item) || structure.interactionValid(item) ||
+        land.interactionValid(item);
   }
 
   /**
@@ -71,8 +64,8 @@ public class Tile implements Updatable, Interactable {
    * @param gameObject         The game object to check and interact with.
    * @param item               The item used for the interaction.
    * @param interactionHandler The logic to execute for the interaction.
-   * @param additionalCheck    An additional boolean check for if an interaction is valid that is
-   *                           specific to each GameObject
+   * @param additionalCheck    An additional boolean check for if an interaction is valid
+   *                           that is specific to each GameObject
    * @return True if the interaction was valid and handled, false otherwise.
    */
   private boolean handleInteractionIfValid(GameObject gameObject, ReadOnlyItem item,
@@ -102,8 +95,9 @@ public class Tile implements Updatable, Interactable {
     if (collectable == null && structure.isHarvestable() && structure.interactionValid(item)) {
       collectable =
           (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
-              structure.getItemsOnDestruction());
-    } else {
+             structure.getItemsOnDestruction());
+    }
+    else {
       structure.interact(item);
     }
   }
@@ -115,9 +109,11 @@ public class Tile implements Updatable, Interactable {
    */
   private void handleLandInteraction(ReadOnlyItem item) {
     if (land.getIfItemCanBePlacedHere(item) && structure == null) {
-      structure = (Structure) factory.createNewGameObject(land.getStructureBasedOnItem(item),
-          lastUpdatingGameTime, new HashMap<>());
-    } else {
+      structure = (Structure) factory.createNewGameObject(
+          land.getStructureBasedOnItem(item), lastUpdatingGameTime,
+          new HashMap<>());
+    }
+    else {
       land.interact(item);
     }
   }
@@ -132,7 +128,6 @@ public class Tile implements Updatable, Interactable {
   @Override
   public void update(ReadOnlyGameTime gameTime) {
     lastUpdatingGameTime = gameTime;
-
     updateGameObject(() -> collectable, this::setCollectable, gameTime);
     updateGameObject(() -> structure, this::setStructure, gameTime);
     updateGameObject(() -> land, this::setLand, gameTime);
@@ -143,12 +138,12 @@ public class Tile implements Updatable, Interactable {
    * and potentially sets it to null if it has expired. This method uses generic types to allow
    * flexibility with different types of game objects.
    *
-   * @param <T>      The type of the game object, extending {@link GameObject}.
-   * @param getter   A {@link Supplier} that returns the current game object of type T.
-   * @param setter   A {@link Consumer} that accepts a game object of type T to set the object,
-   *                 typically used to set the object to null if expired.
-   * @param gameTime The current game time, used to determine if the game object should update or
-   *                 expire based on the game logic.
+   * @param <T> The type of the game object, extending {@link GameObject}.
+   * @param getter A {@link Supplier} that returns the current game object of type T.
+   * @param setter A {@link Consumer} that accepts a game object of type T to set the object,
+   *               typically used to set the object to null if expired.
+   * @param gameTime The current game time, used to determine if the game object should update
+   *                 or expire based on the game logic.
    */
   private <T extends GameObject> void updateGameObject(Supplier<T> getter, Consumer<T> setter,
       ReadOnlyGameTime gameTime) {
@@ -165,8 +160,8 @@ public class Tile implements Updatable, Interactable {
    * Determines if any items should be added to the game based on the interactions and updates that
    * occurred within the tile, particularly with collectables.
    *
-   * @return A Map with every item id and their quantity to be added to the game as a result of a
-   * collectable being collected.
+   * @return A Map with every item id and their quantity to be added to the game as a result of a collectable
+   * being collected.
    */
   public Map<String, Integer> itemReturns() {
     if (collectable != null && collectable.shouldICollect()) {
@@ -182,13 +177,15 @@ public class Tile implements Updatable, Interactable {
    * can include collectables, structures, and land. This is useful for graphical representation of
    * the tile in the game's user interface.
    *
-   * @return A list containing the image paths for the collectable, structure, and land on this
-   * tile, if available. The list may be empty if none of the components have an associated image.
+   * @return A list containing the image paths for the collectable, structure, and land on this tile,
+   *         if available. The list may be empty if none of the components have an associated image.
    */
   public List<String> getImages() {
     List<GameObject> gameObjects = Arrays.asList(land, structure, collectable);
-    return gameObjects.stream().filter(obj -> obj != null && obj.getImagePath() != null)
-        .map(GameObject::getImagePath).collect(Collectors.toList());
+    return gameObjects.stream()
+        .filter(obj -> obj != null && obj.getImagePath() != null)
+        .map(GameObject::getImagePath)
+        .collect(Collectors.toList());
   }
 
   /**
@@ -222,9 +219,9 @@ public class Tile implements Updatable, Interactable {
   }
 
   /**
-   * Retrieves the ID of the current collectable object on this tile. This method returns the ID of
-   * the collectable if one is present; otherwise, it returns null. Collectables are game objects
-   * that players can interact with to collect items or trigger events.
+   * Retrieves the ID of the current collectable object on this tile.
+   * This method returns the ID of the collectable if one is present; otherwise, it returns null.
+   * Collectables are game objects that players can interact with to collect items or trigger events.
    *
    * @return The ID of the current Collectable on the tile, or null if no collectable is present.
    */
@@ -233,9 +230,9 @@ public class Tile implements Updatable, Interactable {
   }
 
   /**
-   * Retrieves the ID of the current structure object on this tile. This method returns the ID of
-   * the structure if one is present; otherwise, it returns null. Structures are static game objects
-   * that often interact with items or affect game mechanics on their tile.
+   * Retrieves the ID of the current structure object on this tile.
+   * This method returns the ID of the structure if one is present; otherwise, it returns null.
+   * Structures are static game objects that often interact with items or affect game mechanics on their tile.
    *
    * @return The ID of the current Structure on the tile, or null if no structure is present.
    */
@@ -244,9 +241,9 @@ public class Tile implements Updatable, Interactable {
   }
 
   /**
-   * Retrieves the ID of the current land object on this tile. This method returns the ID of the
-   * land if one is present; otherwise, it returns null. Land objects define the basic properties of
-   * the tile such as what can be placed or grown on it.
+   * Retrieves the ID of the current land object on this tile.
+   * This method returns the ID of the land if one is present; otherwise, it returns null.
+   * Land objects define the basic properties of the tile such as what can be placed or grown on it.
    *
    * @return The ID of the current Land on the tile, or null if no land is present.
    */

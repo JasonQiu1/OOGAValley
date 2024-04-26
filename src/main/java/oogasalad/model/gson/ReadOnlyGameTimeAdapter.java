@@ -13,10 +13,11 @@ import oogasalad.model.api.ReadOnlyGameTime;
 public class ReadOnlyGameTimeAdapter extends TypeAdapter<ReadOnlyGameTime> {
 
 
-  private final Gson gson =
-      new GsonBuilder().registerTypeAdapter(Instant.class, new InstantAdapter()).create();
+  private final Gson gson = new GsonBuilder().registerTypeAdapter(Instant.class,
+          new InstantAdapter())
+      .create();
 
-  private final InterfaceAdapter<ReadOnlyGameTime> interfaceAdapter = new InterfaceAdapter<>();
+  private InterfaceAdapter<ReadOnlyGameTime> interfaceAdapter = new InterfaceAdapter<>();
 
   @Override
   public void write(JsonWriter out, ReadOnlyGameTime value) throws IOException {

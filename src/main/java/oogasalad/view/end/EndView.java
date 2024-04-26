@@ -71,8 +71,8 @@ public class EndView extends StackPane {
   private Map<String, String> readButtonDetails() {
     Map<String, String> buttonDetails = new HashMap<>();
     try {
-      BufferedReader csvReader =
-          new BufferedReader(new FileReader("src/main/resources/view/end/EndViewButtonInfo.csv"));
+      BufferedReader csvReader = new BufferedReader(
+          new FileReader("src/main/resources/view/end/EndViewButtonInfo.csv"));
       String row;
       while ((row = csvReader.readLine()) != null) {
         String[] data = row.split(",");
@@ -115,8 +115,9 @@ public class EndView extends StackPane {
         }
       });
       return button;
-    } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException |
-             IllegalAccessException | InvocationTargetException e) {
+    } catch (ClassNotFoundException | NoSuchMethodException |
+             InstantiationException | IllegalAccessException |
+             InvocationTargetException e) {
       e.printStackTrace();
     }
     return null;

@@ -43,14 +43,16 @@ public class Cell extends StackPane {
     setOnMouseEntered(event -> {
       setDisplayPanel(cip);
       base.setFill(Color.GRAY);
-      super.getChildren().stream().skip(1) // Skip the first element
+      super.getChildren().stream()
+          .skip(1) // Skip the first element
           .forEach(node -> node.setOpacity(0.5));
     });
 
     setOnMouseExited(event -> {
       cip.clearDisplay();
       base.setFill(Color.WHITE);
-      super.getChildren().stream().skip(1) // Skip the first element
+      super.getChildren().stream()
+          .skip(1) // Skip the first element
           .forEach(node -> node.setOpacity(1));
     });
 

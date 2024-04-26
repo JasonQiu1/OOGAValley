@@ -207,7 +207,6 @@
   -fx-max-width: 80px;
   -fx-max-height: 30px;
 }
-
 #yes-button .text {
   -fx-font-size: 10px;
   -fx-font-family: "Press Start 2P";
@@ -235,7 +234,7 @@
   -fx-font-family: "Press Start 2P";
   -fx-text-fill: black;
   -fx-font-size: 10px;
-}
+ }
 
 #end-back-to-menu-button {
   -fx-background-image: url("img/end/back-to-main-page.png");

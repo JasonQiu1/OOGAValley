@@ -1,7 +1,8 @@
 package oogasalad.model.api;
 
-import java.io.IOException;
 import oogasalad.model.api.exception.KeyNotFoundException;
+
+import java.io.IOException;
 
 /**
  * Provides read-only access to data in a game configuration.
@@ -37,7 +38,7 @@ public interface ReadOnlyGameConfiguration {
   /**
    * Updates a rule only if it already exists.
    *
-   * @param rule     queried rule.
+   * @param rule queried rule.
    * @param newValue the value to set.
    * @throws KeyNotFoundException if the rule does not exist.
    */

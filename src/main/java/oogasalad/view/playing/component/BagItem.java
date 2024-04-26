@@ -18,8 +18,8 @@ public class BagItem {
   private final SelectedItem selectedItem;
   private final String url;
   private int num;
-  private final Label numLabel;
-  private final ImageView imageView;
+  private Label numLabel;
+  private ImageView imageView;
 
   /**
    * Constructor for the Tool class.

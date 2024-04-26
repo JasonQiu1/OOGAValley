@@ -18,7 +18,7 @@ public class SellItemVbox extends VBox {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.shopping.components.shopblock.";
   private final SellItem sellItem;
-  private final String myLanguage = "SellItemButtonText";
+  private String myLanguage = "SellItemButtonText";
   private ResourceBundle buttonTextResource;
   private Button sellButton;
 

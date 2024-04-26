@@ -37,8 +37,8 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     }
     DataValidation.validateProperties(rules);
     try {
-      configurablesStore =
-          CONFIGURABLES_DATA_FACTORY.load(Paths.get("templates", "ConfigurablesStore").toString());
+      configurablesStore = CONFIGURABLES_DATA_FACTORY.load(
+          Paths.get("templates", "ConfigurablesStore").toString());
     } catch (IOException e) {
       LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
       throw new RuntimeException(e);

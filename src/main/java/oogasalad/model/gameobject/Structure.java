@@ -1,5 +1,6 @@
 package oogasalad.model.gameobject;
 
+import java.util.HashMap;
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
 
@@ -17,7 +18,7 @@ public class Structure extends GameObject implements StructureObject {
   /**
    * Constructs a new Structure with the given ID, initial state, and specific properties.
    *
-   * @param id           The id of the GameObject.
+   * @param id   The id of the GameObject.
    * @param creationTime The game time at which this object was created
    */
   public Structure(String id, ReadOnlyGameTime creationTime) {
@@ -34,8 +35,7 @@ public class Structure extends GameObject implements StructureObject {
    */
   @Override
   public Map<String, Integer> getItemsOnDestruction() {
-    return getProperties().getStringIntegerMap(
-        "dropsOnDestruction"); // e.g. {"item":"2", "otherItem":"1"}
+    return getProperties().getStringIntegerMap("dropsOnDestruction"); // e.g. {"item":"2", "otherItem":"1"}
   }
 
   /**

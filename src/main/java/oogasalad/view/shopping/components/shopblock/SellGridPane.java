@@ -16,7 +16,7 @@ public class SellGridPane extends GridPane {
   private final Shop shop;
   private final List<SellItem> sellItems;
   private final StackPane parentStackPane;
-  private final String myLanguage = "EnglishPopUpText";
+  private String myLanguage = "EnglishPopUpText";
   private ResourceBundle popUpTextResource;
 
   /**
@@ -40,14 +40,16 @@ public class SellGridPane extends GridPane {
     for (SellItem sellItem : sellItems) {
       SellItemVbox sellItemVbox = new SellItemVbox(sellItem);
       sellItemVbox.getSellButton().setOnAction(event -> {
-        PopUpStackPane popUp = new PopUpStackPane(popUpTextResource, parentStackPane, choice -> {
-          if (choice) {
-            shop.addMoney(sellItem.getPrices());
-          }
-        }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
+        PopUpStackPane popUp = new PopUpStackPane(popUpTextResource,
+            parentStackPane,
+            choice -> {
+              if (choice) {
+                shop.addMoney(sellItem.getPrices());
+              }
+            }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
         parentStackPane.getChildren().add(popUp);
       });
-      sellItemVbox.setSellButtonId(sellItem.getUrl() + "-sell-button");
+      sellItemVbox.setSellButtonId(sellItem.getUrl()+"-sell-button");
       add(sellItemVbox, column, row);
       column++;
       if (column == COLUMN_COUNT) {

@@ -9,7 +9,7 @@ import java.util.List;
  */
 public abstract class Controller<T> {
 
-  private final List<Observer<T>> observerList = new ArrayList<>();
+  private List<Observer<T>> observerList = new ArrayList<>();
 
   /**
    * add observer to the observer list

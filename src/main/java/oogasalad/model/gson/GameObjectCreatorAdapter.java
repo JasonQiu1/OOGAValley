@@ -12,9 +12,9 @@ import oogasalad.model.gameObjectFactories.GameObjectCreator;
  */
 public class GameObjectCreatorAdapter extends TypeAdapter<GameObjectCreator> {
 
-  private final Gson gson = new Gson();
+  private Gson gson = new Gson();
 
-  private final InterfaceAdapter<GameObjectCreator> interfaceAdapter = new InterfaceAdapter<>();
+  private InterfaceAdapter<GameObjectCreator> interfaceAdapter = new InterfaceAdapter<>();
 
 
   @Override

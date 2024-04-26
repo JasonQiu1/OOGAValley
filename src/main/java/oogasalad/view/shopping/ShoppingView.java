@@ -13,7 +13,7 @@ public class ShoppingView extends BranchBase {
 
   private final Bag bag;
   private final Shop shop;
-  private final ShoppingStackPane root;
+  private ShoppingStackPane root;
 
   public ShoppingView(Shop shop, Bag bag, Stage stage, Scene previousScene, Money money) {
     super(stage, previousScene);

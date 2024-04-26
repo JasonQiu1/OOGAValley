@@ -40,8 +40,8 @@ public class TopAnimationView extends StackPane {
    */
   public void collectItemAnimation(BagItem bagItem, double startX, double startY, double endX,
       double endY, double speed) {
-    TranslateTransition translateTransition =
-        new TranslateTransition(Duration.seconds(speed), bagItem.getImageView());
+    TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(speed),
+        bagItem.getImageView());
     translateTransition.setFromX(startX);
     translateTransition.setFromY(startY);
     translateTransition.setToX(endX);

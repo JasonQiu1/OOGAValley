@@ -12,11 +12,10 @@ import org.apache.logging.log4j.Logger;
 
 
 public class StartScreen extends AbstractSplashScreen {
-
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.StartScreen.";
   private String buttonLanguage;
   private String titleLanguage;
-  private final String languagesListPath = "LanguagesList.csv";
+  private String languagesListPath = "LanguagesList.csv";
   private ResourceBundle buttonResource;
   private ResourceBundle titleResource;
   public static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/start/StartScreen/";
@@ -54,10 +53,9 @@ public class StartScreen extends AbstractSplashScreen {
     myStageTitle = titleResource.getString("title");
     buttonsPath = buttonResource.getString("buttons_path");
 
-    ResourceString resourceString =
-        new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath, myStageTitle, STYLES);
-    setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
-        myPrimaryLanguage);
+    ResourceString resourceString = new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath,
+        myStageTitle, STYLES);
+    setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString, myPrimaryLanguage);
   }
 
   public Scene getStartScreen() {
@@ -72,8 +70,7 @@ public class StartScreen extends AbstractSplashScreen {
     languageDialogBox = new LanguageDialogBox(myLanguages);
     languageDialogBox.primaryLanguageProperty().addListener(new ChangeListener<String>() {
       @Override
-      public void changed(ObservableValue<? extends String> observable, String oldValue,
-          String newValue) {
+      public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
         myPrimaryLanguage = newValue;
         LOG.debug(myPrimaryLanguage);
         new StartScreen(stage, myPrimaryLanguage).open();

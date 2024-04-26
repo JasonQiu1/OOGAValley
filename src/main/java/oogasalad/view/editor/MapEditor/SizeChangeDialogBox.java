@@ -10,9 +10,8 @@ import javafx.scene.layout.HBox;
 //TODO: resource bundle this
 class SizeChangeDialogBox {
 
-  private static final String DEFAULT_RESOURCE_PACKAGE =
-      "view.editor.MapEditor.SizeChangeDialogBox.";
-  private final String displayTextLanguage = "EnglishDisplayText";
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.SizeChangeDialogBox.";
+  private String displayTextLanguage = "EnglishDisplayText";
   private ResourceBundle displayTextResource;
 
   public int[] getNewSize() {
@@ -20,8 +19,8 @@ class SizeChangeDialogBox {
 
     TextField textField1 = new TextField();
     TextField textField2 = new TextField();
-    HBox hbox =
-        new HBox(new Label(displayTextResource.getString("prompt") + "  "), textField1, textField2);
+    HBox hbox = new HBox(new Label(displayTextResource.getString("prompt") + "  "), textField1,
+        textField2);
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     alert.getDialogPane().setContent(hbox);
     alert.setTitle(displayTextResource.getString("change_grid_size"));
@@ -34,14 +33,12 @@ class SizeChangeDialogBox {
         int newI = Integer.parseInt(textField1.getText());
         int newJ = Integer.parseInt(textField2.getText());
         if (checkOutOfBounds(newI, newJ)) {
-          showErrorPopup(displayTextResource.getString("invalid_range"),
-              displayTextResource.getString("error_instruction"));
+          showErrorPopup(displayTextResource.getString("invalid_range"), displayTextResource.getString("error_instruction"));
           return null;
         }
         return new int[]{newI, newJ};
       } catch (NumberFormatException e) {
-        showErrorPopup(displayTextResource.getString("invalid_type"),
-            displayTextResource.getString("error_instruction"));
+        showErrorPopup(displayTextResource.getString("invalid_type"), displayTextResource.getString("error_instruction"));
         return null; // Return null if parsing fails
       }
     } else {

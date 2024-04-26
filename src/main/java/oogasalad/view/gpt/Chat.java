@@ -19,8 +19,8 @@ public class Chat {
   private TextField messageField;
   private Button sendButton, backButton;
   private String threadId;
-  private final OpenAI openAIConnector = new OpenAI();
-  private final Stage primaryStage;
+  private OpenAI openAIConnector = new OpenAI();
+  private Stage primaryStage;
 
   public Chat(Stage primaryStage) {
     this.primaryStage = primaryStage;

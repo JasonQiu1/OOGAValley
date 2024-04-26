@@ -12,8 +12,8 @@ import org.apache.logging.log4j.Logger;
 public class CellInfoPane extends HBox {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.CellInfoPane.";
-  private final String displayTextLanguage = "EnglishDisplayText";
-  private final ResourceBundle displayTextResource;
+  private String displayTextLanguage = "EnglishDisplayText";
+  private ResourceBundle displayTextResource;
   private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
   private final Label displayText;
   private String svsToStringCopy;
@@ -38,8 +38,8 @@ public class CellInfoPane extends HBox {
     yCor = ypos;
     svsToStringCopy = svsToString(svs);
 
-    displayText.setText(displayTextResource.getString("position") + " " + xCor + "," + yCor + "\n"
-        + displayTextResource.getString("cell") + " " + svsToStringCopy);
+    displayText.setText(displayTextResource.getString("position") + " " + xCor + "," + yCor + "\n" +
+        displayTextResource.getString("cell") + " " + svsToStringCopy);
   }
 
   private String svsToString(ObservableList<Node> svs) {
@@ -54,9 +54,8 @@ public class CellInfoPane extends HBox {
   }
 
   public void clearDisplay() {
-    displayText.setText(
-        displayTextResource.getString("position") + " \n" + displayTextResource.getString("cell")
-            + " ");
+    displayText.setText(displayTextResource.getString("position") +" \n" +
+        displayTextResource.getString("cell") + " ");
   }
 
   public int getxCor() {

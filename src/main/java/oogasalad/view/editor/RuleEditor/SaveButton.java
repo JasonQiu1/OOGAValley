@@ -1,14 +1,16 @@
 package oogasalad.view.editor.RuleEditor;
 
-import java.util.function.Consumer;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 
-public class SaveButton extends Button {
+import java.util.function.Consumer;
 
-  public SaveButton(String name, Consumer<ActionEvent> action) {
-    super(name);
-    setOnAction(action::accept);
-    super.setId("SaveRules");
-  }
+public class SaveButton extends Button {
+    public SaveButton(String name, Consumer<ActionEvent> action){
+        super(name);
+        setOnAction(action::accept);
+        super.setId("SaveRules");
+    }
 }
