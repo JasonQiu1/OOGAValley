@@ -21,26 +21,30 @@ public class GameMap {
   private final String savePath;
 
   public GameMap(int height, int width, Map<Coord, Land> landPositionMap,
-      Map<Coord, Plant> plantPositionMap, String savePath) {
+      Map<Coord, Plant> plantPositionMap, String filePath) throws SaveNotValidException {
     this.height = height;
     this.width = width;
     this.landPositionMap = landPositionMap;
     this.plantPositionMap = plantPositionMap;
-    this.savePath = savePath;
+    savePath = findSavePath(filePath);
   }
 
   public GameMap(String filePath) throws IOException, SaveNotValidException {
-    if (!(filePath.endsWith("save.farm"))) {
-      throw new SaveNotValidException(SaveNotValidException.message);
-    }
-    File file = new File(filePath);
-    savePath = file.getParent() + "/save/map.json";
+    savePath = findSavePath(filePath);
     GameMapConfigParser gameMapConfigParser = new GameMapConfigParser(savePath);
     this.height = gameMapConfigParser.getHeight();
     this.width = gameMapConfigParser.getWidth();
     this.landPositionMap = gameMapConfigParser.getLandPositionMapCreate();
     this.plantPositionMap = gameMapConfigParser.getPlantPositionMapCreate();
 
+  }
+
+  private String findSavePath(String filePath) throws SaveNotValidException {
+    if (!(filePath.endsWith("save.farm"))) {
+      throw new SaveNotValidException(SaveNotValidException.message);
+    }
+    File file = new File(filePath);
+    return file.getParent() + "/save/map.json";
   }
 
   public void save() throws IOException, SaveNotValidException {
