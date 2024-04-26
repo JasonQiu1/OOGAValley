@@ -4,7 +4,7 @@ import java.util.List;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameobject.GameObject;
 
-public interface BuildableMapInterface {
+public interface BuildableTileMapInterface {
 
   /**
    * Set the number of rows

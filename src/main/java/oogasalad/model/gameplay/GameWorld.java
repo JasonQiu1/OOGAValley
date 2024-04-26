@@ -1,19 +1,13 @@
 package oogasalad.model.gameplay;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import oogasalad.model.api.BuildableMapInterface;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyItem;
-import oogasalad.model.api.exception.UnableToSetGameObject;
-import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
-import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameobject.Tile;
 import oogasalad.model.gameobject.Updatable;
@@ -24,7 +18,7 @@ import oogasalad.model.gameobject.Updatable;
  * for initializing tiles, handling interactions, and updating game states based on game time or
  * interactions.
  */
-public class GameWorld extends BuildableMap implements ReadOnlyGameWorld, Updatable {
+public class GameWorld extends BuildableTileMap implements ReadOnlyGameWorld, Updatable {
 
   /**
    * Constructs a new GameWorld with specified dimensions.

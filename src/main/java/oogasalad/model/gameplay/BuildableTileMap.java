@@ -4,21 +4,21 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import oogasalad.model.api.BuildableMapInterface;
+import oogasalad.model.api.BuildableTileMapInterface;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Tile;
 
-public class BuildableMap implements BuildableMapInterface  {
+public class BuildableTileMap implements BuildableTileMapInterface {
   private Map<CoordinateOfGameObjectRecord, Tile> allTiles;
   private int height;
   private int width;
   private int depth;
   private static final GameObjectFactory factory = new GameObjectFactory();
 
-  public BuildableMap(int height, int width, int depth) {
+  public BuildableTileMap(int height, int width, int depth) {
     this.height = height;
     this.width = width;
     this.depth = depth;
