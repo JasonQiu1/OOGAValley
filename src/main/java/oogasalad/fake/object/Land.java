@@ -9,4 +9,8 @@ public class Land {
   public Land(LandConfig landConfig) {
     this.landConfig = landConfig;
   }
+
+  public LandConfig getLandConfig() {
+    return landConfig;
+  }
 }

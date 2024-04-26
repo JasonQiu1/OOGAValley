@@ -130,4 +130,8 @@ public class GameConfig implements GameConfigInterface {
     GameConfigValidator validator = new GameConfigValidator(this);
     validator.validate();
   }
+
+  public String getConfigFilePath() {
+    return configFilePath;
+  }
 }
