@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import oogasalad.fake.GameTime;
 import oogasalad.fake.config.farm.LandConfig;
@@ -32,7 +31,6 @@ public class GameConfigParser {
         Paths.get(path).toFile(),
         new TypeReference<>() {
         });
-
     landConfigs = createLandConfig(rawConfig);
     plantConfigs = createPlantConfig(rawConfig);
     seedConfigs = createSeedConfig(rawConfig);
@@ -47,7 +45,7 @@ public class GameConfigParser {
     for (Map.Entry<String, Object> plantEntry : plants.entrySet()) {
       String plantKey = plantEntry.getKey();
       Map<String, Object> plantInfo = (Map<String, Object>) plantEntry.getValue();
-      Map<String, List<Map<String, Integer>>> dropMap = (Map<String, List<Map<String, Integer>>>)
+      Map<String, Map<String, Integer>> dropMap = (Map<String, Map<String, Integer>>)
           plantInfo.get("dropMap");
       Map<String, Integer> gameTime = (Map<String, Integer>) plantInfo.get("growthTime");
       GameTime game = new GameTime(gameTime.get("day"), gameTime.get("hour"),

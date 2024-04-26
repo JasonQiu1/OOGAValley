@@ -18,4 +18,5 @@ public abstract class BaseConfig {
   public String getImagePath() {
     return imagePath;
   }
+
 }

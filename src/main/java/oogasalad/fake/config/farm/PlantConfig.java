@@ -1,7 +1,5 @@
 package oogasalad.fake.config.farm;
 
-import com.google.firebase.internal.NonNull;
-import java.util.List;
 import java.util.Map;
 import oogasalad.fake.GameTime;
 import oogasalad.fake.config.BaseConfig;
@@ -9,24 +7,23 @@ import oogasalad.fake.config.BaseConfig;
 public class PlantConfig extends BaseConfig {
 
   // tool - list of items to drop
-  private final Map<String, List<Map<String, Integer>>> dropMap;
-  private final GameTime gameTime;
+  private final Map<String, Map<String, Integer>> dropMap;
+  private final GameTime growthTime;
 
-  @NonNull
-  public PlantConfig(String imagePath, String id, Map<String, List<Map<String, Integer>>> dropMap,
+  public PlantConfig(String imagePath, String id, Map<String, Map<String, Integer>> dropMap,
       GameTime gameTime) {
     super(imagePath, id);
 
     this.dropMap = dropMap;
-    this.gameTime = gameTime;
+    this.growthTime = gameTime;
   }
 
-  public Map<String, List<Map<String, Integer>>> getDropMap() {
+  public Map<String, Map<String, Integer>> getDropMap() {
     return dropMap;
   }
 
   public GameTime getGrowthTime() {
-    return gameTime.copy();
+    return growthTime.copy();
   }
 
 

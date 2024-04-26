@@ -12,7 +12,9 @@
       "imagePath" : "img/dirt.jpg",
       "id" : "dirt_land",
       "transFromLand" : { },
-      "seedGrown" : { }
+      "seedGrown" : {
+        "wheat_seed_bag" : "wheat"
+      }
     }
   },
   "plantConfigMap" : {
@@ -20,10 +22,10 @@
       "imagePath" : "img/wheat.png",
       "id" : "wheat",
       "dropMap" : {
-        "hoe_bag" : [ {
+        "hoe_bag" : {
           "wheat_seed_bag" : 1,
           "wheat_bag" : 1
-        } ]
+        }
       },
       "growthTime" : {
         "day" : 0,

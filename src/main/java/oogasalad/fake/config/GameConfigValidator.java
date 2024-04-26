@@ -1,6 +1,5 @@
 package oogasalad.fake.config;
 
-import java.util.List;
 import java.util.Map;
 import oogasalad.fake.api.exception.SaveNotValidException;
 import oogasalad.fake.config.farm.LandConfig;
@@ -53,19 +52,19 @@ public class GameConfigValidator {
     }
   }
 
-  private void checkDropMap(Map<String, List<Map<String, Integer>>> dropMap)
+  private void checkDropMap(Map<String, Map<String, Integer>> dropMap)
       throws SaveNotValidException {
-    for (Map.Entry<String, List<Map<String, Integer>>> entry : dropMap.entrySet()) {
+    for (Map.Entry<String, Map<String, Integer>> entry : dropMap.entrySet()) {
       if (!toolConfigMap.containsKey(entry.getKey())) {
         throw new SaveNotValidException(
             "Tool key '" + entry.getKey() + "' not found in ToolConfigMap");
       }
-      for (Map<String, Integer> itemMap : entry.getValue()) {
-        for (String itemKey : itemMap.keySet()) {
-          if (!plantItemConfigMap.containsKey(itemKey) && !seedConfigMap.containsKey(itemKey)) {
-            throw new IllegalArgumentException(
-                "Item key '" + itemKey + "' not found in PlantItemConfigMap or SeedConfigMap");
-          }
+      for (Map.Entry<String, Integer> itemMap : entry.getValue().entrySet()) {
+        String itemKey = itemMap.getKey();
+        if (!plantItemConfigMap.containsKey(itemKey) && !seedConfigMap.containsKey(
+            itemKey)) {
+          throw new SaveNotValidException(
+              "Item key '" + itemKey + "' not found in PlantItemConfigMap or SeedConfigMap");
         }
       }
     }

@@ -33,7 +33,7 @@ public class GameConfigTest {
   }
 
   @Test
-  void addConfigWhichDoesNotExist() throws IOException, SaveNotValidException {
+  void addConfigWhichDoesNotExistError() throws IOException, SaveNotValidException {
     GameConfig gameConfig = new GameConfig(path);
     Map<String, String> transFromLand = Map.of("hoe_bagg", "dirt_land");
     Map<String, String> seedGrownMap = new HashMap<>();
@@ -41,6 +41,21 @@ public class GameConfigTest {
     gameConfig.addConfig(
         new LandConfig("img/grass.jpg", "grass_land", transFromLand, seedGrownMap));
     assertTrue(true);
+    assertThrows(SaveNotValidException.class, () -> {
+      gameConfig.save("valley_test/config.json");
+    });
+  }
+
+
+  @Test
+  void addConfigWhichDoesNotExistPass() throws IOException, SaveNotValidException {
+    GameConfig gameConfig = new GameConfig(path);
+    Map<String, String> transFromLand = Map.of("hoe_bag", "dirt_land");
+    Map<String, String> seedGrownMap = new HashMap<>();
+    gameConfig.addConfig(
+        new LandConfig("img/grass.jpg", "grass_land", transFromLand, seedGrownMap));
+    assertTrue(true);
+    // throws error because there is no hoe_bag in the game.
     assertThrows(SaveNotValidException.class, () -> {
       gameConfig.save("valley_test/config.json");
     });
