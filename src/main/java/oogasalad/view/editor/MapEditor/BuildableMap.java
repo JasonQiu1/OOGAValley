@@ -7,7 +7,6 @@ import oogasalad.model.api.ReadOnlyGameWorld;
 
 public class BuildableMap {
 
-  private final Selector ts;
   private final GridPaneProperty gridPaneProperty;
   private final CellInfoPane cip;
   private int currentColumns;
@@ -16,11 +15,10 @@ public class BuildableMap {
 
   private final ReadOnlyGameWorld gameWorld;
 
-  public BuildableMap(Selector ts, CellInfoPane cip, ReadOnlyGameWorld gameWorld) {
+  public BuildableMap(CellInfoPane cip, ReadOnlyGameWorld gameWorld) {
     gp = new GridPane();
     gp.setId("EditorGridPane");
     this.gridPaneProperty = new GridPaneProperty(gp);
-    this.ts = ts;
     this.cip = cip;
     gp.setMaxWidth(Cell.getSize()[0] * gameWorld.getWidth());
     gp.setMaxHeight(Cell.getSize()[1] * gameWorld.getHeight());
@@ -33,7 +31,7 @@ public class BuildableMap {
     GridPane temp = new GridPane();
     for (int i = 0; i < gameWorld.getWidth(); i++) {
       for (int j = 0; j < gameWorld.getHeight(); j++) {
-        temp.add(new Cell(ts, cip, i, j), i, j);
+        temp.add(new Cell(cip, i, j), i, j);
       }
     }
     setGridPane(temp);

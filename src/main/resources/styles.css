@@ -31,6 +31,12 @@
   -fx-font-weight: bold;
   -fx-text-fill: black;
 }
+.gameObject-editor-title{
+  -fx-font-size: 20px;
+  -fx-font-family: "Press Start 2P";
+  -fx-font-weight: bold;
+  -fx-text-fill: black;
+}
 
 .selector-title {
   -fx-font-size: 15px;

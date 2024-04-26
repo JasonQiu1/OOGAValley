@@ -30,7 +30,7 @@ public class Cell extends StackPane {
     gameWorld = gw;
   }
 
-  public Cell(Selector ts, CellInfoPane cip, int i, int j) {
+  public Cell(CellInfoPane cip, int i, int j) {
     super();
     setLocalId(i, j);
     column = i;
@@ -46,8 +46,8 @@ public class Cell extends StackPane {
         if (super.getChildren().size() > 1) {
           gameWorld.removeTileTop(column, row, 0);
         }
-      } else if (ts.getLastSelectedSelectable() != null) {
-        gameWorld.setTileGameObject(ts.getLastSelectedSelectable(), column, row, 0);
+      } else if (Selector.getLastSelectedSelectable() != null) {
+        gameWorld.setTileGameObject(Selector.getLastSelectedSelectable(), column, row, 0);
       }
       fill();
       setDisplayPanel(cip);
