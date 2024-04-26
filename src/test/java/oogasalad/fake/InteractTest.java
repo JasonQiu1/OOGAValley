@@ -53,8 +53,21 @@ public class InteractTest {
     assertTrue(interact);
     assertTrue(game.getGameState().getItemList().size() == 2);
     assertTrue(game.getGameState().getEnergy() < 100);
+  }
 
-
+  @Test
+  void testItemSell() throws IOException, SaveNotValidException {
+    Game game = new Game("valley_01/save.farm");
+    System.out.println(game.getGameState().getItemList());
+    game.getGameMap().getPlantPositionMap().remove(new Coord(1, 1));
+    assertNull(game.getGameMap().getPlantPositionMap().get(new Coord(1, 1)));
+    System.out.println(game.getGameMap().getPlantPositionMap().get(new Coord(1, 1)));
+    GameInputHandler gameInputHandler = new GameInputHandler(game);
+    gameInputHandler.selectItem(1);
+    gameInputHandler.sell();
+    System.out.println(game.getGameState().getItemList());
+    System.out.println(game.getGameState().getMoney());
+    assertTrue(game.getGameState().getMoney() > 100);
   }
 
 
