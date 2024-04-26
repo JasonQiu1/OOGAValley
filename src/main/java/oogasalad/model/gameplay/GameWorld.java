@@ -26,10 +26,6 @@ import oogasalad.model.gameobject.Updatable;
  */
 public class GameWorld extends BuildableMap implements ReadOnlyGameWorld, Updatable {
 
-  private int height;
-  private int width;
-  private int depth;
-
   /**
    * Constructs a new GameWorld with specified dimensions.
    *
