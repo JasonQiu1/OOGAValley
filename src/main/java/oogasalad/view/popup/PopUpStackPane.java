@@ -36,8 +36,7 @@ public class PopUpStackPane extends StackPane {
   private ImageView centerBackgroundImageView;
 
   public PopUpStackPane(ResourceBundle resourceBundle, StackPane parentStackPane,
-      Consumer<Boolean> choiceCallback,
-      String csvFilePath) {
+      Consumer<Boolean> choiceCallback, String csvFilePath) {
     super();
     this.resourceBundle = resourceBundle;
     this.actionHandler = new PopUpButtonActionHandler(choiceCallback, parentStackPane, this);
@@ -57,15 +56,15 @@ public class PopUpStackPane extends StackPane {
 
   private Background createBackground() {
     Image backgroundImage = new Image(backgroundImagePath);
-    BackgroundImage background = new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT,
-        BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+    BackgroundImage background =
+        new BackgroundImage(backgroundImage, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
+            BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
     return new Background(background);
   }
 
 
   private void createCenterBackgroundImageView() {
-    centerBackgroundImageView =
-        new ImageView(new Image(centerBackgroundImage));
+    centerBackgroundImageView = new ImageView(new Image(centerBackgroundImage));
     centerBackgroundImageView.setFitWidth(centerBackgroundWidth);
     centerBackgroundImageView.setFitHeight(centerBackgroundHeight);
   }

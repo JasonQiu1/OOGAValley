@@ -7,7 +7,8 @@ import oogasalad.view.editor.RuleEditor.RuleEditor;
 
 public class EditorWindow extends GridPane {
 
-  private RuleEditor re;
+  private final RuleEditor re;
+
   public EditorWindow(GameConfiguration gc) {
     super();
     //add(GameView, 0,0);

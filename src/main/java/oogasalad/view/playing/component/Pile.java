@@ -17,7 +17,7 @@ import oogasalad.view.playing.PlayingPageView;
 public class Pile extends StackPane {
 
   private static final Pane placeholder = new Pane();
-  private List<String> landImagePath = new ArrayList<>();
+  private final List<String> landImagePath = new ArrayList<>();
 
   public Pile() {
     super();

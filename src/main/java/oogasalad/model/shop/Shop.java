@@ -2,7 +2,6 @@ package oogasalad.model.shop;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import oogasalad.view.playing.component.Money;
 
 /**
@@ -11,7 +10,7 @@ import oogasalad.view.playing.component.Money;
 public class Shop {
 
   private final List<SellItem> sellItems;
-  private Money moneyModel;
+  private final Money moneyModel;
   private final double currentEnergy = 1;
 
   //TODO: change the default initialization of the Shop object

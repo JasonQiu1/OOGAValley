@@ -69,8 +69,9 @@ public class Register extends BranchBase {
 
     });
 
-    vbox.getChildren().addAll(titleLabel, usernameLabel, usernameField,
-        emailLabel, emailField, passwordLabel, passwordField, registerButton, back);
+    vbox.getChildren()
+        .addAll(titleLabel, usernameLabel, usernameField, emailLabel, emailField, passwordLabel,
+            passwordField, registerButton, back);
     return vbox;
   }
 }

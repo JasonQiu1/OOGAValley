@@ -84,5 +84,5 @@ public interface ReadOnlyProperties {
 
   Map<String, Map<String, String>> getCopyOfMapProperties();
 
-    Map<String, List<String>> getCopyOfPropertyTypes();
+  Map<String, List<String>> getCopyOfPropertyTypes();
 }

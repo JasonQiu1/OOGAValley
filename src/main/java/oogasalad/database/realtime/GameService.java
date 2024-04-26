@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 
 public class GameService {
 
-  private DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("game");
+  private final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("game");
 
   private void playerExists(String playerName, Consumer<Boolean> callback) {
     dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -65,7 +65,8 @@ public class GameService {
     dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
       @Override
       public void onDataChange(DataSnapshot dataSnapshot) {
-        if (!updateGameIfPlayerFound(dataSnapshot, targetPlayerName, joiningPlayerName, initialScore, callback)) {
+        if (!updateGameIfPlayerFound(dataSnapshot, targetPlayerName, joiningPlayerName,
+            initialScore, callback)) {
           callback.accept(false);
         }
       }
@@ -90,10 +91,12 @@ public class GameService {
   }
 
   private boolean shouldUpdateGame(GameData gameData, String targetPlayerName) {
-    return gameData != null && gameData.getPlayers() != null && gameData.getPlayers().containsKey(targetPlayerName);
+    return gameData != null && gameData.getPlayers() != null && gameData.getPlayers()
+        .containsKey(targetPlayerName);
   }
 
-  private void updateGame(String gameKey, GameData gameData, String joiningPlayerName, int initialScore, Consumer<Boolean> callback) {
+  private void updateGame(String gameKey, GameData gameData, String joiningPlayerName,
+      int initialScore, Consumer<Boolean> callback) {
     gameData.getPlayers().put(joiningPlayerName, new Player(joiningPlayerName, initialScore));
     dbRef.child(gameKey).setValue(gameData, (databaseError, databaseReference) -> {
       if (databaseError != null) {
