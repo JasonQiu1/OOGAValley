@@ -129,6 +129,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    *
    * @param height The new height of the game world.
    */
+  @Override
   public void setHeight(int height) {
     this.height = height;
     initialize();
@@ -139,6 +140,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    *
    * @param width The new width of the game world.
    */
+  @Override
   public void setWidth(int width) {
     this.width = width;
     initialize();
@@ -163,6 +165,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * @param z          The z-coordinate of the tile.
    * @throws UnableToSetGameObject If there is an error setting the game object.
    */
+  @Override
   public void setTileGameObject(GameObject gameObject, int x, int y, int z) {
     CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
     Tile tile = allTiles.get(coord);
@@ -176,6 +179,26 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
         throw new UnableToSetGameObject("Error Setting GameObject");
       }
     }
+  }
+
+  @Override
+  public void shiftRightAndAddColumn() {
+    
+  }
+
+  @Override
+  public void shiftLeftAndRemoveColumn() {
+
+  }
+
+  @Override
+  public void shiftUpAndRemoveRow() {
+
+  }
+
+  @Override
+  public void shiftDownAndAddRow() {
+
   }
 
   @Override
