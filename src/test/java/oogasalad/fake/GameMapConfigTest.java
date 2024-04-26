@@ -17,13 +17,7 @@ public class GameMapConfigTest {
   @Test
   void testLoadAndSaveConfig() throws IOException, SaveNotValidException {
     GameConfig gameConfig = new GameConfig(path);
-    GameMap gameMap = new GameMap(height, width, new HashMap<>(), new HashMap<>(), path);
-    for (int i = 0; i < width; i++) {
-      for (int j = 0; j < height; j++) {
-        gameMap.setLand(new Coord(i, j), gameConfig.getLandConfigMap().get("grass_land"));
-        gameMap.setPlant(new Coord(i, j), gameConfig.getPlantConfigMap().get("plant"));
-      }
-    }
+    GameMap gameMap = new GameMap(path);
     gameMap.save();
   }
 

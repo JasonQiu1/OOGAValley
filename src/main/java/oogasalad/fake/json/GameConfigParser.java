@@ -45,15 +45,7 @@ public class GameConfigParser {
     for (Map.Entry<String, Object> plantEntry : plants.entrySet()) {
       String plantKey = plantEntry.getKey();
       Map<String, Object> plantInfo = (Map<String, Object>) plantEntry.getValue();
-      Map<String, Map<String, Integer>> dropMap = (Map<String, Map<String, Integer>>)
-          plantInfo.get("dropMap");
-      Map<String, Integer> gameTime = (Map<String, Integer>) plantInfo.get("growthTime");
-      GameTime game = new GameTime(gameTime.get("day"), gameTime.get("hour"),
-          gameTime.get("minute"));
-      PlantConfig plantConfig = new PlantConfig((String) plantInfo.get("imagePath"), plantKey,
-          dropMap,
-          game);
-      plantConfigs.put(plantKey, plantConfig);
+      plantConfigs.put(plantKey, ParserTools.createPlantConfig(plantInfo));
     }
     return plantConfigs;
   }
@@ -65,17 +57,7 @@ public class GameConfigParser {
     for (Map.Entry<String, Object> landEntry : lands.entrySet()) {
       String landKey = landEntry.getKey();
       Map<String, Object> landInfo = (Map<String, Object>) landEntry.getValue();
-      Map<String, String> transformLandMap = new HashMap<>();
-      Map<String, String> transformLand = (Map<String, String>) landInfo.get("transFromLand");
-      for (Map.Entry<String, String> entry : transformLand.entrySet()) {
-        transformLandMap.put((String) entry.getKey(), entry.getValue());
-      }
-      Map<String, String> seedGrown = (Map<String, String>) landInfo.get("seedGrown");
-      Map<String, String> seedGrownMap = new HashMap<>(seedGrown);
-      LandConfig landConfig = new LandConfig((String) landInfo.get("imagePath"), landKey,
-          transformLand,
-          seedGrownMap);
-      landConfigs.put(landKey, landConfig);
+      landConfigs.put(landKey, ParserTools.createLandConfig(landInfo));
     }
     return landConfigs;
   }

@@ -8,6 +8,7 @@ import java.util.Map;
 import oogasalad.fake.api.exception.SaveNotValidException;
 import oogasalad.fake.config.farm.LandConfig;
 import oogasalad.fake.config.farm.PlantConfig;
+import oogasalad.fake.json.GameMapConfigParser;
 import oogasalad.fake.object.Land;
 import oogasalad.fake.object.Plant;
 
@@ -17,23 +18,24 @@ public class GameMap {
   private final int width;
   private final Map<Coord, Land> landPositionMap;
   private final Map<Coord, Plant> plantPositionMap;
-  private final String filePath;
+  private final String savePath;
 
-  public GameMap(int height, int width, Map<Coord, Land> landPositionMap,
-      Map<Coord, Plant> plantPositionMap, String filePath) {
-    this.height = height;
-    this.width = width;
-    this.landPositionMap = landPositionMap;
-    this.plantPositionMap = plantPositionMap;
-    this.filePath = filePath;
-  }
-
-  public void save() throws IOException, SaveNotValidException {
+  public GameMap(String filePath) throws IOException, SaveNotValidException {
     if (!(filePath.endsWith("save.farm"))) {
       throw new SaveNotValidException(SaveNotValidException.message);
     }
     File file = new File(filePath);
-    String savePath = file.getParent() + "/save/map.json";
+    savePath = file.getParent() + "/save/map.json";
+    GameMapConfigParser gameMapConfigParser = new GameMapConfigParser(savePath);
+    this.height = gameMapConfigParser.getHeight();
+    this.width = gameMapConfigParser.getWidth();
+    this.landPositionMap = gameMapConfigParser.getLandPositionMapCreate();
+    this.plantPositionMap = gameMapConfigParser.getPlantPositionMapCreate();
+
+  }
+
+  public void save() throws IOException, SaveNotValidException {
+
     save(savePath);
   }
 
