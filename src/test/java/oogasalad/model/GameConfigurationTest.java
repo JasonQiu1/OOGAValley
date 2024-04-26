@@ -49,13 +49,13 @@ class GameConfigurationTest {
     System.out.println(allEditableConfigurables);
     properties.getProperties().put("wheat", "100");
     allEditableConfigurables.put("store", properties);
-    editableConfigurablesStore.save("test.json");
-    gameConfiguration.save("test.json");
+    editableConfigurablesStore.save("config.json");
+    gameConfiguration.save("config.json");
   }
 
   @Test
   void testGameConfiguration() throws IOException {
-    String fileName = "test.json";
+    String fileName = "config.json";
     GameConfiguration gameConfiguration = GameConfiguration.of(fileName);
     GameConfigurablesStore gameConfigurablesStore =
         GameConfiguration.getEditableConfigurablesStore();
@@ -66,7 +66,7 @@ class GameConfigurationTest {
   @Test
   void addProperties() throws IOException {
 //    Create Game config and game config store from a file name
-    String fileName = "test.json";
+    String fileName = "config.json";
     GameConfiguration gameConfiguration = GameConfiguration.of(fileName);
     GameConfigurablesStore gameConfigurablesStore =
         GameConfiguration.getEditableConfigurablesStore();

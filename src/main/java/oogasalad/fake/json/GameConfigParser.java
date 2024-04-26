@@ -11,28 +11,31 @@ import oogasalad.fake.GameTime;
 import oogasalad.fake.config.farm.LandConfig;
 import oogasalad.fake.config.farm.PlantConfig;
 
-public class FarmConfigParser {
+public class GameConfigParser {
 
-  private static final String JSON_FILE_PATH = "src/main/java/oogasalad/fake/json/test.json";
+  private Map<String, LandConfig> landConfigs;
+  private Map<String, PlantConfig> plantConfigs;
 
+  public GameConfigParser(String path) throws IOException {
+    parseFarmConfigurations(path);
+  }
 
-  public static FarmConfigurations parseFarmConfigurations() throws IOException {
+  public void parseFarmConfigurations(String path) throws IOException {
     ObjectMapper objectMapper = new ObjectMapper();
     Map<String, Map<String, Object>> rawConfig = objectMapper.readValue(
-        Paths.get(JSON_FILE_PATH).toFile(),
+        Paths.get(path).toFile(),
         new TypeReference<Map<String, Map<String, Object>>>() {
         });
 
-    Map<String, LandConfig> landConfigs = createLandConfig(rawConfig);
-    Map<String, PlantConfig> plantConfigs = createPlantConfig(rawConfig);
+    landConfigs = createLandConfig(rawConfig);
+    plantConfigs = createPlantConfig(rawConfig);
 
-    return new FarmConfigurations(landConfigs, plantConfigs);
   }
 
-  public static Map<String, PlantConfig> createPlantConfig(
+  public Map<String, PlantConfig> createPlantConfig(
       Map<String, Map<String, Object>> rawConfig) {
     Map<String, PlantConfig> plantConfigs = new HashMap<>();
-    Map<String, Object> plants = (Map<String, Object>) rawConfig.get("plant");
+    Map<String, Object> plants = (Map<String, Object>) rawConfig.get("plantConfigMap");
     for (Map.Entry<String, Object> plantEntry : plants.entrySet()) {
       String plantKey = plantEntry.getKey();
       Map<String, Object> plantInfo = (Map<String, Object>) plantEntry.getValue();
@@ -49,10 +52,10 @@ public class FarmConfigParser {
     return plantConfigs;
   }
 
-  public static Map<String, LandConfig> createLandConfig(
+  public Map<String, LandConfig> createLandConfig(
       Map<String, Map<String, Object>> rawConfig) {
     Map<String, LandConfig> landConfigs = new HashMap<>();
-    Map<String, Object> lands = (Map<String, Object>) rawConfig.get("land");
+    Map<String, Object> lands = (Map<String, Object>) rawConfig.get("landConfigMap");
     for (Map.Entry<String, Object> landEntry : lands.entrySet()) {
       String landKey = landEntry.getKey();
       Map<String, Object> landInfo = (Map<String, Object>) landEntry.getValue();
@@ -71,14 +74,12 @@ public class FarmConfigParser {
     return landConfigs;
   }
 
-  public static void main(String[] args) {
-    try {
-      FarmConfigurations farmConfigurations = parseFarmConfigurations();
-      farmConfigurations.toJsonFile(JSON_FILE_PATH);
+  public Map<String, LandConfig> getLandConfigs() {
+    return landConfigs;
+  }
 
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+  public Map<String, PlantConfig> getPlantConfigs() {
+    return plantConfigs;
   }
 }
 

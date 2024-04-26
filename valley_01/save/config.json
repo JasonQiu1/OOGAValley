@@ -1,5 +1,5 @@
 {
-  "land": {
+  "landConfigMap": {
     "grass_land": {
       "imagePath": "img/grass.jpg",
       "id": "grass_land",
@@ -17,7 +17,7 @@
       "seedGrown": {}
     }
   },
-  "plant": {
+  "plantConfigMap": {
     "wheat": {
       "imagePath": "img/wheat.png",
       "id": "wheat",
