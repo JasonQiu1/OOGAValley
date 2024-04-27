@@ -149,25 +149,54 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
     initialize();
   }
 
+  /**
+   * Returns the height of the game world.
+   *
+   * @return the height of the game world grid as an integer.
+   */
   @Override
   public int getHeight() {
     return height;
   }
 
+  /**
+   * Returns the width of the game world.
+   *
+   * @return the width of the game world grid as an integer.
+   */
   @Override
   public int getWidth() {
     return width;
   }
 
+  /**
+   * Returns the depth of the game world, which is relevant for 3D positioning.
+   *
+   * @return the depth of the game world grid as an integer.
+   */
   @Override
   public int getDepth() {
     return depth;
   }
 
+  /**
+   * Retrieves a map of all tiles in the game world, indexed by their coordinates.
+   * This is a protected method intended for internal use.
+   *
+   * @return a map linking {@link CoordinateOfGameObjectRecord} objects to {@link Tile} objects.
+   */
   protected Map<CoordinateOfGameObjectRecord, Tile> getAllTiles() {
     return allTiles;
   }
 
+  /**
+   * Sets the map of all tiles in the game world. This method replaces the current map of tiles
+   * with the provided map. This is a protected method intended for internal use, particularly
+   * useful during reinitializations or updates where a completely new set of tiles needs to be
+   * established.
+   *
+   * @param temp The new map of {@link CoordinateOfGameObjectRecord} to {@link Tile} to be set as all tiles.
+   */
   protected void setAllTiles(Map<CoordinateOfGameObjectRecord, Tile> temp) {
     allTiles = temp;
   }
