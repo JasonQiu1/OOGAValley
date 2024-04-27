@@ -25,12 +25,14 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   // The path to the game configurations directory from the data directory.
   public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
 
+  public static final String TEMPLATES_DIRECTORY_PATH = "templates";
+
   /**
    * Initializes the game configuration to a set of default rules and initial state.
    */
   public GameConfiguration() {
     try {
-      rules = Properties.of(Paths.get("templates", "GameRulesGrouped").toString());
+      rules = Properties.of(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameRulesGrouped").toString());
     } catch (IOException e) {
       LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
       throw new RuntimeException(e);
@@ -38,13 +40,13 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     DataValidation.validateProperties(rules);
     try {
       configurablesStore =
-          CONFIGURABLES_DATA_FACTORY.load(Paths.get("templates", "ConfigurablesStore").toString());
+          CONFIGURABLES_DATA_FACTORY.load(Paths.get(TEMPLATES_DIRECTORY_PATH, "ConfigurablesStore").toString());
     } catch (IOException e) {
       LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
       throw new RuntimeException(e);
     }
     try {
-      initialState = GAMESTATE_DATA_FACTORY.load(Paths.get("templates", "GameState").toString());
+      initialState = GAMESTATE_DATA_FACTORY.load(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameState").toString());
     } catch (IOException e) {
       LOG.error("Couldn't load default GameState 'templates/GameState.json'.");
       throw new RuntimeException(e);
