@@ -23,20 +23,10 @@ public class Pile extends StackPane {
 
   private final Logger LOG = LogManager.getLogger(Pile.class);
 
-  private final int x;
-
-  private final int y;
-
-  private final LandView landView;
-
-
   public Pile(int x, int y, LandView landView) {
     super();
     double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
     double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
-    this.x = x;
-    this.y = y;
-    this.landView = landView;
     for (int i = 0; i < 3; i++) {
       landImagePath.add(null);
       Rectangle rectangle = new Rectangle(width, height);
@@ -44,7 +34,7 @@ public class Pile extends StackPane {
       this.getChildren().add(rectangle);
     }
     this.setOnMouseClicked(event -> {
-      LOG.info("%d %d is clicked".formatted(x, y));
+      landView.interact(y, x);
     });
   }
 

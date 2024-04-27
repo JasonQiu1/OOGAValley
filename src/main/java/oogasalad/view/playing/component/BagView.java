@@ -87,7 +87,6 @@ public class BagView extends StackPane {
 
   public void update() {
     List<Pair<Pair<String, String>, Integer>> item = getItem(page);
-    LOG.info(item);
     checkUpdate(item);
   }
 

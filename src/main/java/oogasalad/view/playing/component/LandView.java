@@ -1,7 +1,10 @@
 package oogasalad.view.playing.component;
 
 import javafx.scene.layout.GridPane;
+import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyGameWorld;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A 2d grid representing the land and the plants (buildings).
@@ -14,9 +17,14 @@ public class LandView {
 
   private final ReadOnlyGameWorld readOnlyGameWorld;
 
+  private final GameInterface game;
 
-  public LandView(ReadOnlyGameWorld readOnlyGameWorld) {
-    this.readOnlyGameWorld = readOnlyGameWorld;
+  private static final Logger LOG = LogManager.getLogger(LandView.class);
+
+
+  public LandView(GameInterface game) {
+    this.readOnlyGameWorld = game.getGameState().getGameWorld();
+    this.game = game;
     piles = new Pile[readOnlyGameWorld.getHeight()][readOnlyGameWorld.getWidth()];
     for (int i = 0; i < piles.length; i++) {
       for (int j = 0; j < piles[0].length; j++) {
@@ -46,7 +54,8 @@ public class LandView {
     return landGridPane;
   }
 
-  public void interact() {
-
+  public void interact(int x, int y) {
+    LOG.info("interact with the gird at %d, %d".formatted(x, y));
+    game.interact(x, y, 0);
   }
 }

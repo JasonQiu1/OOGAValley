@@ -38,7 +38,6 @@ import org.apache.logging.log4j.Logger;
 
 public class PlayingPageView {
 
-
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
   public static final double bottomCellWidth = 30;
@@ -78,7 +77,6 @@ public class PlayingPageView {
   private LandView landView;
   private TopAnimationView topAnimationView;
   private BagView bagView;
-  private String fileName;
   private Scene previousScene;
 
   public PlayingPageView(Stage primaryStage, String language, Scene backScene,
@@ -128,7 +126,7 @@ public class PlayingPageView {
   private void initModel() {
     bagView = new BagView(game, 10);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
-    landView = new LandView(game.getGameState().getGameWorld());
+    landView = new LandView(game);
   }
 
   private void setUpdate() {
