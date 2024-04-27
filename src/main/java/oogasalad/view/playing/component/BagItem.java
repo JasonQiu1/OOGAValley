@@ -19,9 +19,7 @@ import org.apache.logging.log4j.Logger;
 public class BagItem extends StackPane {
 
   private final Rectangle selectedRectangle;
-  private final BagView bagView;
   private final String url;
-  private final int num;
   private final Label numLabel;
   private final ImageView imageView;
 
@@ -47,8 +45,6 @@ public class BagItem extends StackPane {
       throw new RuntimeException(e);
     }
     this.name = name;
-    this.bagView = bagView;
-    this.num = num;
     imageView = new ImageView(new Image(this.url, width, height, false, true));
     StackPane imageContainer = new StackPane();
     VBox vBox = new VBox();
