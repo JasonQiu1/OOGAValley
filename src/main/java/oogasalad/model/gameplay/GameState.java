@@ -33,6 +33,7 @@ public class GameState implements ReadOnlyGameState {
   // TODO: Externalize this to a configuration file.
   // The path to the gamesaves directory from the data directory.
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
+  private static final String TEMPORARY_DIRECTORY_PATH = System.getProperty("java.io.tmpdir");
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
   private static final Logger LOG = LogManager.getLogger(GameState.class);
   private BuildableTileMap gameWorld;
@@ -51,7 +52,8 @@ public class GameState implements ReadOnlyGameState {
    */
   public GameState(ReadOnlyProperties properties) {
     this.bag = new Bag();
-    this.gameWorld = new BuildableTileMap(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
+    this.gameWorld =
+        new BuildableTileMap(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
     this.gameTime = new GameTime(1, 8, 0);
     try {
       List<String> possibleItemStrings = properties.getStringList("shopPossibleItems");
@@ -68,12 +70,36 @@ public class GameState implements ReadOnlyGameState {
   }
 
   /**
-   * Initializes a copy of GameState from the original.
+   * Initializes a deep copy of GameState from the original.
    *
    * @param original the original GameState to copy.
    */
   public GameState(ReadOnlyGameState original) {
-    // TODO: IMPLEMENT
+    // It's going to be a really big task to implement deep-copying for everything in GameState,
+    // so we can just abuse Gson to save and load a copy instead.
+    String copyPath = Paths.get(TEMPORARY_DIRECTORY_PATH, "GAMESTATE_COPY").toString();
+    try {
+      FACTORY.save(copyPath, (GameState) original);
+    } catch (IOException e) {
+      LOG.error("Error saving a copy of a gamestate to '" + copyPath + ".json'");
+      throw new RuntimeException(e);
+    }
+
+    GameState copy;
+    try {
+      copy = FACTORY.load(copyPath);
+    } catch (IOException | BadGsonLoadException e) {
+      LOG.error("Error loading a copy of a gamestate to '" + copyPath + ".json'");
+      throw new RuntimeException(e);
+    }
+
+    gameWorld = copy.gameWorld;
+    gameTime = copy.gameTime;
+    bag = copy.bag;
+    shop = copy.shop;
+    money = copy.money;
+    energy = copy.energy;
+    selectedItem = copy.selectedItem;
   }
 
   /**
@@ -104,7 +130,9 @@ public class GameState implements ReadOnlyGameState {
     return gameWorld;
   }
 
-  public BuildableTileMap getEditableMap() {return gameWorld;}
+  public BuildableTileMap getEditableMap() {
+    return gameWorld;
+  }
 
   @Override
   public ReadOnlyGameTime getGameTime() {
