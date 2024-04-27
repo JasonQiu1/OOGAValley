@@ -27,6 +27,7 @@
         *  e.g. "hoe":"tilledLand" | using a hoe transforms this land object into a tilledLand object.
         */
     "interactTransformations": {
+      "Hoe": "Farmland"
     },
     /*
     *  Maps an item usage to destroy/harvest/collect the object to a multiplier on the drops.

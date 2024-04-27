@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 public class LanguageDialogBox {
 
+  private Stage myStage;
   private final StringProperty primaryLanguage = new SimpleStringProperty();
   private final ComboBox<String> dropDownMenu;
 
@@ -24,15 +25,15 @@ public class LanguageDialogBox {
   }
 
   public void open() {
-    Stage newStage = new Stage();
+    myStage = new Stage();
     VBox root = new VBox();
     root.setPrefSize(200, 200);
     root.setAlignment(Pos.CENTER);
     root.getChildren().add(dropDownMenu);
     Scene newScene = new Scene(root);
 
-    newStage.setScene(newScene);
-    newStage.show();
+    myStage.setScene(newScene);
+    myStage.show();
   }
 
   public StringProperty primaryLanguageProperty() {
@@ -41,5 +42,6 @@ public class LanguageDialogBox {
 
   private void setPrimaryLanguage(String language) {
     primaryLanguage.set(language);
+    myStage.close();
   }
 }

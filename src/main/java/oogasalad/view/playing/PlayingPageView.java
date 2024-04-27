@@ -1,8 +1,6 @@
 package oogasalad.view.playing;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -20,11 +19,10 @@ import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.data.GameConfiguration;
-import oogasalad.model.gameplay.GameTime;
 import oogasalad.model.shop.Bag;
 import oogasalad.model.shop.Shop;
+import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
-import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.Money;
@@ -32,7 +30,6 @@ import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
-import oogasalad.view.start.StartScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,9 +43,13 @@ public class PlayingPageView {
 
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
+  private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/playing/";
   private final String myLanguage = "EnglishDisplayText";
+  private final String menuLanguage = "EnglishMenuButtons.csv";
   private final ResourceBundle displayTextResource =
       ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
+
+  private final String menuButtons = DEFAULT_RESOURCE_FOLDER + menuLanguage;
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -70,10 +71,8 @@ public class PlayingPageView {
   public static final double windowHeight = landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
-
   private final Label timeLabel = new Label();
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
-  private final GameTime gameTime = new GameTime(1, 8, 0);
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
   private final String primaryLanguage;
@@ -94,7 +93,8 @@ public class PlayingPageView {
   private String fileName;
   private Scene previousScene;
 
-  public PlayingPageView(Stage primaryStage, String language, Scene backScene, GameConfiguration gameConfiguration) {
+  public PlayingPageView(Stage primaryStage, String language, Scene backScene,
+      GameConfiguration gameConfiguration) {
     stage = primaryStage;
     primaryLanguage = language;
     this.previousScene = backScene;
@@ -124,20 +124,24 @@ public class PlayingPageView {
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
+
+    scene.setOnKeyPressed(event -> actKey(event.getCode()));
+
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
     stage.setScene(scene);
     stage.show();
   }
 
+  private void actKey(KeyCode code) {
+    if (code == KeyCode.ESCAPE) {
+      ButtonMenu btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
+      btm.open();
+    }
+  }
+
   private void initModel() {
-    List<BagItem> bagItems = new ArrayList<>();
-//    Map<ReadOnlyItem, Integer> items = game.getGameState().getBag().getItems();
-//    for (Map.Entry<ReadOnlyItem, Integer> item : items.entrySet()) {
-//      bagItems.add(new BagItem(item.getKey().getImagePath(), bottomCellWidth, bottomCellWidth,
-//          selectedItem, item.getValue()));
-//    }
-    bagView = new BagView(bagItems, 5, 1, bag);
+    bagView = new BagView(game.getGameState().getBag(), 5, 1);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
     landView = new LandView(game.getGameState().getGameWorld());
   }
@@ -182,8 +186,8 @@ public class PlayingPageView {
     bottomBox.setPadding(new Insets(padding));
     bottomBox.setPrefSize(bottomWidth, bottomHeight);
     bottomBox.getStyleClass().add("bottom-box");
-    StackPane toolStackPane = bagView.getToolStackPane();
-    bottomBox.getChildren().addAll(toolStackPane);
+    StackPane toolStackPane = bagView;
+    bottomBox.getChildren().addAll(toolStackPane);/**/
     root.setBottom(bottomBox);
   }
 
@@ -200,7 +204,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(shop, bag, stage, scene, money);
+    ShoppingView shoppingPageView = new ShoppingView(shop, null, stage, scene, money);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);

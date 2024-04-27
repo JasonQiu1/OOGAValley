@@ -1,5 +1,7 @@
 package oogasalad.view.playing.component;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -7,13 +9,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import oogasalad.view.playing.PlayingPageView;
 
 /**
  * Represents a tool in the game.
  */
-public class BagItem {
+public class BagItem extends StackPane {
 
-  private final StackPane root;
   private final Rectangle selectedRectangle;
   private final SelectedItem selectedItem;
   private final String url;
@@ -30,11 +32,15 @@ public class BagItem {
    * @param selectedItem the selected item
    */
   public BagItem(String url, double width, double height, SelectedItem selectedItem, int num) {
-    this.url = url;
+    super();
+    try {
+      this.url = (String.valueOf(new File("data/images/" + url).toURI().toURL()));
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
     this.selectedItem = selectedItem;
     this.num = num;
-    imageView = new ImageView(new Image(url, width, height, false, true));
-    root = new StackPane();
+    imageView = new ImageView(new Image(this.url, width, height, false, true));
     StackPane imageContainer = new StackPane();
     VBox vBox = new VBox();
     vBox.setAlignment(javafx.geometry.Pos.CENTER);
@@ -45,25 +51,25 @@ public class BagItem {
     selectedRectangle.setOpacity(0);
     imageContainer.getChildren().add(selectedRectangle);
     vBox.getChildren().addAll(imageContainer, numLabel);
-    root.getChildren().add(vBox);
+    this.getChildren().add(vBox);
   }
 
   public StackPane getView() {
-    return root;
+    return this;
   }
 
-  public void setSelected() {
-    selectedItem.setSelected(url);
-    selectedRectangle.setOpacity(0.3);
-  }
 
   public void reset() {
     selectedRectangle.setOpacity(0);
   }
 
-  public void addOne() {
-    num++;
+  public void setNum(int num) {
     numLabel.setText(num + "");
+  }
+
+  public void setImage(String url) {
+    imageView.setImage(
+        new Image(url, PlayingPageView.bottomCellWidth, PlayingPageView.bottomHeight, false, true));
   }
 
   public ImageView getImageView() {

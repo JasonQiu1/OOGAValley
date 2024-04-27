@@ -27,6 +27,9 @@ public class LandView {
     }
   }
 
+  /**
+   * Update the landView
+   */
   public void update() {
     for (int i = 0; i < readOnlyGameWorld.getHeight(); i++) {
       for (int j = 0; j < readOnlyGameWorld.getWidth(); j++) {
