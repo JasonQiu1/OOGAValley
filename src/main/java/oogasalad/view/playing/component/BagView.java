@@ -87,6 +87,7 @@ public class BagView extends StackPane {
 
   public void update() {
     List<Pair<Pair<String, String>, Integer>> item = getItem(page);
+    LOG.info(item);
     checkUpdate(item);
   }
 
@@ -147,9 +148,20 @@ public class BagView extends StackPane {
         if (item.num() != newItem.getValue()) {
           item.bagItem().setNum(newItem.getValue());
         }
+        item.bagItem().setName(newItem.getKey().getValue());
         itemOnShow.set(i, new Item(newItem.getKey().getKey(), newItem.getValue(), item.bagItem()));
       }
     }
-    itemOnShow.addAll(newItemOnShow);
+    // remove the item from the list if the item is smaller than the
+    List<Item> removed = new ArrayList<>();
+    if (itemOnShow.size() > newItemList.size()) {
+      for (int i = newItemList.size(); i < itemOnShow.size(); i++) {
+        toolGridPane.getChildren().remove(itemOnShow.get(i).bagItem());
+        removed.add(itemOnShow.get(i));
+      }
+      itemOnShow.removeAll(removed);
+    } else {
+      itemOnShow.addAll(newItemOnShow);
+    }
   }
 }

@@ -8,7 +8,6 @@ import oogasalad.model.api.ReadOnlyGameWorld;
  */
 public class LandView {
 
-
   private final GridPane landGridPane = new GridPane();
 
   private final Pile[][] piles;
@@ -21,7 +20,7 @@ public class LandView {
     piles = new Pile[readOnlyGameWorld.getHeight()][readOnlyGameWorld.getWidth()];
     for (int i = 0; i < piles.length; i++) {
       for (int j = 0; j < piles[0].length; j++) {
-        piles[i][j] = new Pile();
+        piles[i][j] = new Pile(i, j, this);
         landGridPane.add(piles[i][j], j, i);
       }
     }
@@ -45,5 +44,9 @@ public class LandView {
    */
   public GridPane getGridView() {
     return landGridPane;
+  }
+
+  public void interact() {
+
   }
 }

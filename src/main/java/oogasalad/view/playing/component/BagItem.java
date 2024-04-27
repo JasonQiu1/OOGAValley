@@ -23,7 +23,7 @@ public class BagItem extends StackPane {
   private final Label numLabel;
   private final ImageView imageView;
 
-  private final String name;
+  private String name;
 
   private final Logger LOG = LogManager.getLogger(BagItem.class);
 
@@ -80,7 +80,7 @@ public class BagItem extends StackPane {
     try {
       imageView.setImage(
           new Image((String.valueOf(new File("data/images/" + url).toURI().toURL())),
-              PlayingPageView.bottomCellWidth, PlayingPageView.bottomHeight, false, true));
+              PlayingPageView.bottomCellWidth, PlayingPageView.bottomCellHeight, false, true));
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }
@@ -92,6 +92,10 @@ public class BagItem extends StackPane {
 
   public String getName() {
     return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public void select() {
