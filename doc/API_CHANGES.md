@@ -30,6 +30,8 @@ Jason: Added `save` method to `GameInterface`, because we just forgot to give vi
     * Major or Minor (how much they affected your team mate's code)
 This had no affect on teammate's code as they can still send in Items to the methods
     * Better or Worse (and why)
+Better as it increases flexibility.
+
 
 * Method changed:
 ItemsToAddToInventory
@@ -42,16 +44,6 @@ This was a Minor change. This method was already only being used in the model, s
 Better since it promotes further model view separation.
 
 
-* Method changed:
-setTileGameObject in GameWorld.
-  * Why was the change made?
-This method was changed to take in an id of a gameObject rather than the GameObject. 
-This way outside classes are not responsible for creating the GameObject.
-  * Major or Minor (how much they affected your team mate's code)
-Minor. This method has not yet been used, so it did not affect teammates code at all.
-This method is also only accessed through the controller.
-  * Better or Worse (and why)
-Better as it makes it so the controller or whoever accesses the method is not responsibile 
-for creating GameObjects.
+
 
  
