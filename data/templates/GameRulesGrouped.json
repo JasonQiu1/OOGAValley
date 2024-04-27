@@ -20,11 +20,16 @@
   "listProperties": {
     // the possible items to go on rotation in the shop
     "shopPossibleItems": [
-      "Wheat Seeds"
+      "Wheat Seeds",
+      "Hoe",
+      "Pickaxe",
+      "Scythe"
     ]
   },
   "mapProperties": {
     "startingItems": {
+      "Hoe": 1,
+      "Scythe": 1,
       "Wheat Seeds": 5
     }
   },

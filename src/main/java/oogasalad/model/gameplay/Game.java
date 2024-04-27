@@ -8,8 +8,11 @@ import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.KeyNotFoundException;
+import oogasalad.model.data.DataFactory;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.gameobject.Item;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Implementation of GameInterface.
@@ -22,7 +25,12 @@ public class Game implements GameInterface {
 
   public Game() {
     configuration = new GameConfiguration();
-    state = new GameState(configuration.getRules());
+    try {
+      state = GAMESTATE_FACTORY.load("templates/GameState");
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameState from 'data/templates/GameState.json'");
+      throw new RuntimeException(e);
+    }
   }
 
   public Game(String configName) throws IOException {
@@ -152,4 +160,8 @@ public class Game implements GameInterface {
 
   private final GameConfiguration configuration;
   private final GameState state;
+
+  private static final DataFactory<GameState> GAMESTATE_FACTORY = new DataFactory<>(GameState.class);
+
+  private static final Logger LOG = LogManager.getLogger(Game.class);
 }
