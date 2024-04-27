@@ -76,7 +76,7 @@ public class DataGeneration {
     value.put("hoe", "dirt");
     property.getMapProperties().put("interactTransformations", value);
     allEditableConfigurables.put(id, property);
-    GameState gameState = new GameState();
+    GameState gameState = new GameState(gameConfiguration.getRules());
     GameWorld gameWorld = gameState.getEditableGameWorld();
     GameObject land = new Land(id, gameState.getEditableGameTime().copy());
     //   horizontal -x, vertical  - y

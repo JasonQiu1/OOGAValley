@@ -53,7 +53,6 @@ public class BagView extends StackPane {
     update(page);
   }
 
-
   private List<Pair<String, Integer>> getItem(int page) {
     int idx = 0;
     int begin = page * capacity;
