@@ -37,7 +37,7 @@ import org.apache.logging.log4j.Logger;
  * second.
  */
 
-public class PlayingPageView {
+public class PlayingPageView{
 
 
   public static final double landCellWidth = 50;
@@ -192,7 +192,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, money);
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, money, this);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);
@@ -208,4 +208,5 @@ public class PlayingPageView {
       chatApp.start();
     });
   }
+
 }
