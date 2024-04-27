@@ -87,5 +87,21 @@ public class Bag implements ReadOnlyBag {
     items.remove(new Item(id));
   }
 
+  /**
+   * Checks if the bag contains all of the given items.
+   *
+   * @param itemsToCheck the items and quantities to check if the bag contains.
+   * @return true of the bag contains at least all of the given items, otherwise false.
+   */
+  public boolean contains(Map<String, Integer> itemsToCheck) {
+    for (Map.Entry<String, Integer> entry : itemsToCheck.entrySet()) {
+      Item item = new Item(entry.getKey());
+      if (!items.containsKey(item) || items.get(item) < entry.getValue()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   private final Map<ReadOnlyItem, Integer> items;
 }
