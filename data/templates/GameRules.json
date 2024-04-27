@@ -3,7 +3,6 @@
     "configName": "DEFAULT_GAME_NAME",
     "author": "OOGAValley Devs",
     "type": "rules",
-
     "doEnergy": true,
     "doEnergyRecovery": true,
     "energyAmount": 20,
@@ -15,7 +14,6 @@
     "doExhaustedEnergyCollapse": true,
     // Amount of time to skip after collapse
     "exhaustedEnergyCollapseTimePenalty": 1440,
-
     // Multiplier to GameTime. Typically 1min gametime is 1s real-time
     "timeMultiplier": 1,
     // The goal condition
@@ -26,7 +24,7 @@
   "listProperties": {},
   "mapProperties": {
     "startingItems": {
-      "wheat_seeds": 1
+      "Wheat Seeds": 1
     }
   }
 }
