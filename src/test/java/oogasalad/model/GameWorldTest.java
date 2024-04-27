@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
+import oogasalad.model.gameobject.Item;
+import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameplay.GameTime;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -70,6 +72,36 @@ public class GameWorldTest extends TileTest {
     expectedList.add(getTestingStructureProperties().getString("image"));
     expectedList.add(getTestingCollectableProperties().getString("image"));
     assertEquals(expectedList, images);
+  }
+
+  @Test
+  public void testInteractOnTileWhereInteractWillHaveAnEffect() {
+    gameWorld.interact(new Item("validItem"), 1,1,0);
+    gameWorld.update(new GameTime(1,1,1));
+    List<String> expectedList = new ArrayList<>();
+    List<String> ids = gameWorld.getTileContents(1,1,0);
+    expectedList.add(getTestingLandProperties().getString("name"));
+    expectedList.add(getTestingStructureProperties().getStringMap
+        ("interactTransformations").get("validItem"));
+    assertEquals(expectedList, ids);
+  }
+
+  @Test
+  public void itemsToAddToInventoryShouldBeEmptyWhenNoCollectableAreCollected() {
+    assertTrue(gameWorld.itemsToAddToInventory().isEmpty());
+  }
+
+  @Test
+  public void itemsToAddToInventoryShouldContainsAllCollectableItemsThatWereCollected() {
+    getTestingStructureProperties().update("destructable", "true");
+    gameWorld.interact(new Item("validItem"), 1, 1,0);
+    gameWorld.update(new GameTime(1,1,1));
+    assertTrue(gameWorld.itemsToAddToInventory().isEmpty());
+    gameWorld.interact(new Item("validItem"), 1, 1, 0);
+    List<ItemsToAdd> itemsToAddToInventory = new ArrayList<>();
+    itemsToAddToInventory.add(new ItemsToAdd(2, "seed"));
+    assertEquals(itemsToAddToInventory, gameWorld.itemsToAddToInventory());
+    assertTrue(gameWorld.itemsToAddToInventory().isEmpty());
   }
 }
 
