@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.start.SplashUtils;
 import oogasalad.view.start.StartScreen;
@@ -39,8 +40,9 @@ public class ButtonMenu {
 
   public void open() {
     menuStage = new Stage();
+//    menuScene(StageStyle.UNDECORATED);
     VBox root = new VBox();
-    root.getStyleClass().add("root_VBox");
+    root.setSpacing(10);
 
     SplashUtils.createButtonsFromFile(buttonsFilePath, primaryStage, root, primaryLanguage, previousScene);
 

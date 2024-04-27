@@ -95,7 +95,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //      return;
 //    }
 
-    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(null, DEFAULT_SAVES_FOLDER);
+    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(null, DEFAULT_RESOURCE_FOLDER);
 
     Optional<File> file = loaderListDisplay.open(new Stage());
 
