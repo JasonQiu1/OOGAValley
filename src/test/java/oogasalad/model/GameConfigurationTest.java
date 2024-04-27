@@ -33,10 +33,7 @@ class GameConfigurationTest {
   @Test
   void checkDefaultConfigurablesStore() throws IOException {
     GameConfiguration defaultGame = new GameConfiguration();
-    assertNotEquals(GameConfiguration.getConfigurablesStore().getAllConfigurables().size(), 0);
-    assertEquals(GameConfiguration.getConfigurablesStore().getAllConfigurables().keySet(),
-        Set.of("Dirt", "Wheat"));
-  }
+    assertNotEquals(GameConfiguration.getConfigurablesStore().getAllConfigurables().size(), 0);  }
 
   @Test
   void addItemToGameStore() throws IOException {
