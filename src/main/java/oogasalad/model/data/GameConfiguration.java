@@ -32,47 +32,31 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
    * Initializes the game configuration to a set of default rules and initial state.
    */
   public GameConfiguration() {
-    try {
-      rules = Properties.of(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameRulesGrouped").toString());
-    } catch (IOException e) {
-      LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
-      throw new RuntimeException(e);
-    }
-    DataValidation.validateProperties(rules);
-    try {
-      configurablesStore =
-          CONFIGURABLES_DATA_FACTORY.load(Paths.get(TEMPLATES_DIRECTORY_PATH, "ConfigurablesStore").toString());
-    } catch (IOException e) {
-      LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
-      throw new RuntimeException(e);
-    }
-    try {
-      initialState = GAMESTATE_DATA_FACTORY.load(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameState").toString());
-    } catch (IOException e) {
-      LOG.error("Couldn't load default GameState 'templates/GameState.json'.");
-      throw new RuntimeException(e);
-    }
+    this(getDefaultRules(), getDefaultConfigurablesStore(), getDefaultInitialState());
   }
 
   /**
    * Initializes the game configuration with the given rules.
+   *
+   * @param rules the loaded rules to use.
    */
   public GameConfiguration(Properties rules) {
-    DataValidation.validateProperties(rules);
+    this(rules, getDefaultConfigurablesStore(), getDefaultInitialState());
+  }
+
+  /**
+   * Initializes the game configuration with the given rules, configurablesstore, and initial
+   * state.
+   *
+   * @param rules        the loaded rules to use.
+   * @param store        the loaded configurables store to use.
+   * @param initialState the initial state to use.
+   */
+  public GameConfiguration(Properties rules, GameConfigurablesStore store, GameState initialState) {
     this.rules = rules;
-    try {
-      configurablesStore =
-          CONFIGURABLES_DATA_FACTORY.load(Paths.get(TEMPLATES_DIRECTORY_PATH, "ConfigurablesStore").toString());
-    } catch (IOException e) {
-      LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
-      throw new RuntimeException(e);
-    }
-    try {
-      initialState = GAMESTATE_DATA_FACTORY.load(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameState").toString());
-    } catch (IOException e) {
-      LOG.error("Couldn't load default GameState 'templates/GameState.json'.");
-      throw new RuntimeException(e);
-    }
+    DataValidation.validateProperties(rules);
+    configurablesStore = store;
+    this.initialState = initialState;
   }
 
   /**
@@ -163,4 +147,34 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   private static final DataFactory<GameConfigurablesStore> CONFIGURABLES_DATA_FACTORY =
       new DataFactory<>(GameConfigurablesStore.class);
   private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
+
+
+  private static Properties getDefaultRules() {
+    try {
+      return Properties.of(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameRulesGrouped").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
+      throw new RuntimeException(e);
+    }
+  }
+
+  private static GameConfigurablesStore getDefaultConfigurablesStore() {
+    try {
+      return CONFIGURABLES_DATA_FACTORY.load(
+          Paths.get(TEMPLATES_DIRECTORY_PATH, "ConfigurablesStore").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
+      throw new RuntimeException(e);
+    }
+  }
+
+  private static GameState getDefaultInitialState() {
+    try {
+      return GAMESTATE_DATA_FACTORY.load(
+          Paths.get(TEMPLATES_DIRECTORY_PATH, "GameState").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameState 'templates/GameState.json'.");
+      throw new RuntimeException(e);
+    }
+  }
 }
