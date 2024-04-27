@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "name": "Scythe",
+    "type": "Item",
+    "image": "scythe.png",
+    "worth": 100
+  },
+  "listProperties": {},
+  "mapProperties": {}
+}

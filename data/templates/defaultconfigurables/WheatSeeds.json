@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "name": "Wheat Seeds",
+    "type": "Item",
+    "image": "wheat_seeds.png",
+    "worth": 5
+  },
+  "listProperties": {},
+  "mapProperties": {}
+}

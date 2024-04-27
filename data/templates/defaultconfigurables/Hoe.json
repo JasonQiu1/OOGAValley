@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "name": "Hoe",
+    "type": "Item",
+    "image": "hoe.png",
+    "worth": 100
+  },
+  "listProperties": {},
+  "mapProperties": {}
+}
