@@ -6,7 +6,7 @@ import oogasalad.model.data.DataValidation;
 import oogasalad.model.data.GameConfiguration;
 
 public class RuleController {
-    GameConfiguration config;
+    private final GameConfiguration config;
     public RuleController(GameConfiguration gc){
         config = gc;
     }
