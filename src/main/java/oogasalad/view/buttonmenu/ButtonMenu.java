@@ -85,14 +85,13 @@ public class ButtonMenu {
 
     menuScene = new Scene(scrollPane);
     menuScene.getStylesheets().add(getClass().getResource(STYLES).toExternalForm());
-    menuScene.setOnKeyPressed(event -> actKey(event.getCode()));
 
     if (primaryStage != null) {
       menuStage.initOwner(primaryStage);
       Window owner = primaryStage.getScene().getWindow();
       if (owner != null) {
         Bounds bounds = primaryStage.getScene().getRoot().getLayoutBounds();
-        Point2D topLeft = new Point2D(bounds.getMinX(), bounds.getMinY());
+        Point2D topLeft = new Point2D(bounds.getMaxX()/2 - 50, bounds.getMaxY()/2 - 200);
         Point2D screenTopLeft = primaryStage.getScene().getRoot().localToScreen(topLeft);
         menuStage.setX(screenTopLeft.getX());
         menuStage.setY(screenTopLeft.getY());
@@ -105,10 +104,8 @@ public class ButtonMenu {
 
   }
 
-  private void actKey(KeyCode code) {
-    if (code == KeyCode.ESCAPE) {
+  public void closeMenu() {
       menuStage.close();
-    }
   }
 
 }
