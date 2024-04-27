@@ -10,6 +10,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import oogasalad.view.playing.PlayingPageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A pile class containing the land and the plants (buildings), it is a stack pane basically.
@@ -19,7 +21,9 @@ public class Pile extends StackPane {
   private static final Pane placeholder = new Pane();
   private final List<String> landImagePath = new ArrayList<>();
 
-  public Pile() {
+  private final Logger LOG = LogManager.getLogger(Pile.class);
+
+  public Pile(int x, int y, LandView landView) {
     super();
     double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
     double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
@@ -29,6 +33,9 @@ public class Pile extends StackPane {
       rectangle.setFill(Color.TRANSPARENT);
       this.getChildren().add(rectangle);
     }
+    this.setOnMouseClicked(event -> {
+      landView.interact(y, x);
+    });
   }
 
   /**
