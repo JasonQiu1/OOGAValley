@@ -44,7 +44,7 @@ public class PlayingPageView {
   public static final double landCellHeight = 50;
   public static final double bottomCellWidth = 30;
   public static final double bottomCellHeight = 30;
-  public static final double bottomBoxWidth = 300;
+  public static final double bottomBoxWidth = 600;
   public static final double bottomBoxHeight = 80;
   public static final int landNumRows = 10;
   public static final int landNumCols = 15;
@@ -129,7 +129,7 @@ public class PlayingPageView {
   }
 
   private void initModel() {
-    bagView = new BagView(game.getGameState().getBag(), 5, 1);
+    bagView = new BagView(game.getGameState().getBag(), 10);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
     landView = new LandView(game.getGameState().getGameWorld());
   }

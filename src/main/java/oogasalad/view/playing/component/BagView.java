@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Pair;
@@ -21,12 +23,14 @@ import org.apache.logging.log4j.Logger;
 public class BagView extends StackPane {
 
   private final GridPane toolGridPane;
-  private final int colNum;
-  private final int rowNum;
-  private final ReadOnlyBag bag;
-  private final int capacity;
 
+  private final int colNum;
+  private final ReadOnlyBag bag;
   private int page = 0;
+  private final BorderPane borderPane = new BorderPane();
+  private final Button leftButton = new Button("<");
+
+  private final Button rightButton = new Button(">");
 
   private final List<Item> itemOnShow = new ArrayList<>();
 
@@ -38,29 +42,29 @@ public class BagView extends StackPane {
    *
    * @param bag    the bag model
    * @param colNum the number of columns to be shown the view
-   * @param rowNum the number of rows to be shown in the view
    */
 
-  public BagView(ReadOnlyBag bag, int colNum, int rowNum) {
+  public BagView(ReadOnlyBag bag, int colNum) {
     super();
     this.toolGridPane = new GridPane();
     this.bag = bag;
     this.colNum = colNum;
-    this.rowNum = rowNum;
-    capacity = colNum * rowNum;
     Image backgroundImage = new Image("img/playing/box-background.png");
     ImageView backgroundImageView = new ImageView(backgroundImage);
     backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
-    StackPane.setMargin(toolGridPane, new Insets(20, 0, 0, 40));
-    this.getChildren().addAll(backgroundImageView, toolGridPane);
+    StackPane.setMargin(borderPane, new Insets(20, 50, 0, 50));
+    borderPane.setLeft(leftButton);
+    borderPane.setRight(rightButton);
+    borderPane.setCenter(toolGridPane);
+    this.getChildren().addAll(backgroundImageView, borderPane);
     update();
   }
 
   private List<Pair<String, Integer>> getItem(int page) {
     int idx = 0;
-    int begin = page * capacity;
-    int end = (page + 1) * capacity;
+    int begin = page * colNum;
+    int end = (page + 1) * colNum;
     List<Pair<String, Integer>> valueToCheck = new ArrayList<>();
     for (Map.Entry<ReadOnlyItem, Integer> entry : bag.getItems().entrySet()) {
       if (idx >= begin && idx < end) {
