@@ -1,7 +1,9 @@
 package oogasalad.model;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameplay.GameTime;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,11 +21,18 @@ public class GameWorldTest extends TileTest {
   private BuildableTileMap gameWorld;
   private static final GameObjectFactory factory = new GameObjectFactory();
 
-  @BeforeEach
-  public void setup() {
-    gameWorld = new BuildableTileMap(5, 5, 1);
-    gameWorld.setTileGameObject();
-  }
+ @Override
+ protected void initializeGameObjects() throws IOException {
+   super.initializeGameObjects();
+   gameWorld = new BuildableTileMap(5,5,1);
+   gameWorld.setTileGameObject(getTestingLandProperties().getString("name"),
+       1,1,0);
+   gameWorld.setTileGameObject(getTestingStructureProperties().getString("name"),
+       1,1,0);
+   getTestingStructureProperties().update("updatable", "true");
+   getTestingStructureProperties().update("updateTime", "1");
+   addPropertiesToStore("wheat", "test/testingWheat.json");
+ }
 
 
 
@@ -31,7 +40,13 @@ public class GameWorldTest extends TileTest {
   public void testUpdateGameWorld() {
     ReadOnlyGameTime gameTime = new GameTime(1, 30, 0);
     gameWorld.update(gameTime);
-
+    gameWorld.update(gameTime);
+    List<String> ids = gameWorld.getTileContents(1,1,0);
+    List<String> expectedList = new ArrayList<>();
+    expectedList.add(getTestingLandProperties().getString("name"));
+    expectedList.add(getTestingStructureProperties().getString("updateTransformation"));
+    assertTrue(gameWorld.getTileContents(2,2,0).isEmpty());
+    assertEquals(expectedList, ids);
   }
 
   @Test
