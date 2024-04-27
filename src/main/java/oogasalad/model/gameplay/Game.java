@@ -23,7 +23,6 @@ public class Game implements GameInterface {
   public Game() {
     configuration = new GameConfiguration();
     state = new GameState(configuration.getRules());
-    state.getEditableBag().addItems(configuration.getRules().getStringIntegerMap("startingItems"));
   }
 
   public Game(String configName) throws IOException {
