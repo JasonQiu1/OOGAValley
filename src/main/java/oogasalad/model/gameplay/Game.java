@@ -23,6 +23,9 @@ import org.apache.logging.log4j.Logger;
  */
 public class Game implements GameInterface {
 
+  /**
+   * Loads a default GameConfiguration that shows off a decent amount of features.
+   */
   public Game() {
     configuration = new GameConfiguration();
     try {
@@ -33,11 +36,24 @@ public class Game implements GameInterface {
     }
   }
 
+  /**
+   * Loads a specific GameConfiguration with the given initial state as the first save.
+   *
+   * @param configName the name of the config.
+   * @throws IOException if the configuration file is not found.
+   */
   public Game(String configName) throws IOException {
     configuration = GameConfiguration.of(configName);
     state = new GameState(configuration.getInitialState());
   }
 
+  /**
+   * Loads the given config with the given save.
+   *
+   * @param configName the name of the configuration file in 'data/gameconfigurations'.
+   * @param saveName the name of the save file in 'data/gamesaves'.
+   * @throws IOException if the configuration or save file are not found.
+   */
   public Game(String configName, String saveName) throws IOException {
     configuration = GameConfiguration.of(configName);
     state = GameState.of(saveName);
@@ -161,7 +177,8 @@ public class Game implements GameInterface {
   private final GameConfiguration configuration;
   private final GameState state;
 
-  private static final DataFactory<GameState> GAMESTATE_FACTORY = new DataFactory<>(GameState.class);
+  private static final DataFactory<GameState> GAMESTATE_FACTORY =
+      new DataFactory<>(GameState.class);
 
   private static final Logger LOG = LogManager.getLogger(Game.class);
 }
