@@ -7,6 +7,7 @@ import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
+import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.DataFactory;
 import oogasalad.model.data.GameConfiguration;
@@ -121,9 +122,12 @@ public class Game implements GameInterface {
    */
   @Override
   public void sleep() {
-    // TODO: EXTERNALIZE AMOUNT OF TIME SLEPT OR TIME TO SLEEP TO
-    // Currently advances to 6 AM by default.
-    state.getEditableGameTime().advanceTo(6, 0);
+    try {
+      state.getEditableGameTime().advanceTo(configuration.getRules().getInteger("wakeHour"), 0);
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.error("Configuration file doesn't contain `wakeHour` key to decide when to wake up after sleeping.");
+      throw new RuntimeException(e);
+    }
     state.restoreEnergy(Integer.MAX_VALUE);
   }
 

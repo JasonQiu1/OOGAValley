@@ -25,7 +25,7 @@ public interface ReadOnlyGameWorld {
    */
   List<String> getImagePath(int width, int height, int depth);
 
-  /** @deprecated Should not be used by outside package.
+  /** @deprecated Should not be used by view.
    * Retrieves a list of items that should be added to the inventory as a result of interactions or
    * events in the game world. This method typically follows updates or interactions that result in
    * item generation or discovery.
