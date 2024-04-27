@@ -5,7 +5,7 @@ package oogasalad.model.api.exception;
  *
  * @author Jason Qiu
  */
-public class BadValueParseException extends RuntimeException {
+public class BadValueParseException extends Exception {
 
   public BadValueParseException(String badValue, String parseType) {
     super(BadValueParseException.class.getSimpleName());

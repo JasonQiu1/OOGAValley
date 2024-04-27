@@ -1,6 +1,6 @@
 package oogasalad.model.api.exception;
 
-public class InvalidRuleType extends RuntimeException {
+public class InvalidRuleType extends Exception {
 
   private final String ruleName;
   private final String ruleValue;

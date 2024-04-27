@@ -1,6 +1,6 @@
 package oogasalad.model.api.exception;
 
-public class IncorrectPropertyFileType extends RuntimeException {
+public class IncorrectPropertyFileType extends Exception {
 
   public IncorrectPropertyFileType(String message) {
     super(message);

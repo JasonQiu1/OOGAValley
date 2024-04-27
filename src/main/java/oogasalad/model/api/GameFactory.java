@@ -1,6 +1,7 @@
 package oogasalad.model.api;
 
 import java.io.IOException;
+import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.gameplay.Game;
 
 /**
@@ -26,7 +27,7 @@ public class GameFactory {
    * current state.
    * @throws IOException if there was an issue loading the game configuration.
    */
-  public GameInterface createGame(String configName) throws IOException {
+  public GameInterface createGame(String configName) throws IOException, BadGsonLoadException {
     return new Game(configName);
   }
 
@@ -38,7 +39,8 @@ public class GameFactory {
    * @return a new instance of Game from a config and save.
    * @throws IOException if there was an issue loading the configuration or save
    */
-  public GameInterface createGame(String configName, String saveName) throws IOException {
+  public GameInterface createGame(String configName, String saveName)
+      throws IOException, BadGsonLoadException {
     return new Game(configName, saveName);
   }
 }

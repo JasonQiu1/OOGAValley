@@ -5,7 +5,7 @@ package oogasalad.model.api.exception;
  *
  * @author Jason Qiu
  */
-public class KeyNotFoundException extends RuntimeException {
+public class KeyNotFoundException extends Exception {
 
   public KeyNotFoundException(String invalidKey) {
     super(KeyNotFoundException.class.getSimpleName());
