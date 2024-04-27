@@ -19,7 +19,7 @@
  
 
 ### Meetings 
- * how to communicate action sellItems made during the meeting
+ * how to communicate action sellItemViews made during the meeting
    * specify the task, set the deadline
  * policy for a team member to give advance notice of missing a team meeting and work required to make up for it
    * attend the next meeting

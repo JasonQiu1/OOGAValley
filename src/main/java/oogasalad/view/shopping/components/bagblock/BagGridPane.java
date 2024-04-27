@@ -1,29 +1,36 @@
 package oogasalad.view.shopping.components.bagblock;
 
-import java.util.Map;
+import java.util.List;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import oogasalad.model.api.ReadOnlyBag;
-import oogasalad.model.api.ReadOnlyItem;
+import javafx.scene.layout.StackPane;
+import oogasalad.model.api.GameInterface;
+import oogasalad.view.shopping.components.ItemView;
 
 /**
- * This class is a GridPane that contains BagItemVboxes. It is used to display the items in the bag
- * block.
+ * This class is responsible for creating the bag grid pane that is used to display the items in the
+ * bag.
  */
 public class BagGridPane extends GridPane {
 
-  private final ReadOnlyBag bag;
+  private final GameInterface game;
+  private final List<ItemView> bagItemViews;
+  private final StackPane parentStackPane;
 
   /**
-   * Constructor for the BagGridPane
+   * Constructor for BagGridPane.
    *
-   * @param bag the bag to be displayed
+   * @param game            The game interface
+   * @param bagItemViews    The list of item views
+   * @param parentStackPane The parent stack pane
    */
-  public BagGridPane(ReadOnlyBag bag) {
+  public BagGridPane(GameInterface game, List<ItemView> bagItemViews, StackPane parentStackPane) {
     super();
-    this.bag = bag;
+    this.game = game;
+    this.bagItemViews = bagItemViews;
+    this.parentStackPane = parentStackPane;
     initialize();
   }
 
@@ -33,11 +40,9 @@ public class BagGridPane extends GridPane {
     int rowIndex = 0;
     setPadding(new Insets(10));
     setAlignment(Pos.CENTER);
-    for (Map.Entry<ReadOnlyItem, Integer> entry : bag.getItems().entrySet()) {
-      ReadOnlyItem bagItem = entry.getKey();
-      int quantity = entry.getValue();
-      ImageView itemImage = new ImageView("file:data/images/" + bagItem.getImagePath());
-      RemainNumStackPane remainNumStackPane = new RemainNumStackPane(quantity);
+    for (ItemView bagItemView : bagItemViews) {
+      ImageView itemImage = new ImageView("file:data/images/" + bagItemView.getUrl());
+      RemainNumStackPane remainNumStackPane = new RemainNumStackPane((int) bagItemView.getNumber());
       BagItemVbox bagItemVbox = new BagItemVbox(itemImage, remainNumStackPane);
       add(bagItemVbox, columnIndex, rowIndex);
       columnIndex++;

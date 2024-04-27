@@ -114,9 +114,7 @@ public class PlayingPageView {
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
-
     scene.setOnKeyPressed(event -> actKey(event.getCode()));
-
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
     stage.setScene(scene);
@@ -160,7 +158,7 @@ public class PlayingPageView {
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
-    CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
+    CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox(game);
     money.addObserver(currentMoneyHbox, game.getGameState().getMoney());
     topBox.getChildren()
         .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);

@@ -1,6 +1,8 @@
 package oogasalad.model.gameplay;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.api.ReadOnlyGameState;
@@ -51,7 +53,7 @@ public class Game implements GameInterface {
    * Loads the given config with the given save.
    *
    * @param configName the name of the configuration file in 'data/gameconfigurations'.
-   * @param saveName the name of the save file in 'data/gamesaves'.
+   * @param saveName   the name of the save file in 'data/gamesaves'.
    * @throws IOException if the configuration or save file are not found.
    */
   public Game(String configName, String saveName) throws IOException {
@@ -70,6 +72,16 @@ public class Game implements GameInterface {
     state.addItemsToBag();
   }
 
+  /**
+   * Saves the current GameState to 'data/gamesaves' with the given filename.
+   *
+   * @param fileName the name of the file to save to.
+   * @throws IOException if writing to the file fails.
+   */
+  @Override
+  public void save(String fileName) throws IOException {
+    state.save(fileName);
+  }
 
   /**
    * Selects an item in the bag.
@@ -133,11 +145,15 @@ public class Game implements GameInterface {
   @Override
   public void sellItem(String id) throws KeyNotFoundException {
     Bag bag = state.getEditableBag();
-    Item item = new Item(id);
-    if (!bag.getItems().containsKey(item)) {
-      throw new KeyNotFoundException(id);
+    Map<ReadOnlyItem, Integer> items = bag.getItems();
+    for(Map.Entry<ReadOnlyItem, Integer> entry : items.entrySet()){
+      if(entry.getKey().getName().equals(id)){
+        state.addMoney((int) getPriceFromShop(id));
+        bag.removeItem(id, 1);
+        return;
+      }
     }
-    state.addMoney((int) item.getWorth());
+    throw new KeyNotFoundException(id);
   }
 
   /**
@@ -167,11 +183,13 @@ public class Game implements GameInterface {
   // Gets the price of an item from the shop.
   private double getPriceFromShop(String id) throws KeyNotFoundException {
     ReadOnlyShop shop = state.getShop();
-    Double price = shop.getItems().get(new Item(id));
-    if (price == null) {
-      throw new KeyNotFoundException(id);
+    Map<ReadOnlyItem, Double> items = shop.getItems();
+    for(Map.Entry<ReadOnlyItem, Double> entry : items.entrySet()){
+      if(entry.getKey().getName().equals(id)){
+        return entry.getValue();
+      }
     }
-    return price;
+    throw new KeyNotFoundException(id);
   }
 
   private final GameConfiguration configuration;

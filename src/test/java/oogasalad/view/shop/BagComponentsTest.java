@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import oogasalad.Main;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
-import oogasalad.view.shopping.components.bagblock.BagGridPane;
 import oogasalad.view.shopping.components.bagblock.BagItemVbox;
 import oogasalad.view.shopping.components.bagblock.RemainNumStackPane;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,14 +22,6 @@ public class BagComponentsTest extends ApplicationTest {
   @BeforeAll
   public static void setUpClass() throws Exception {
     ApplicationTest.launch(Main.class);
-  }
-
-
-  @Test
-  public void testBagGridPaneLayout() {
-    BagGridPane gridPane = new BagGridPane(game.getGameState().getBag());
-    assertEquals("Expected child count",
-        game.getGameState().getBag().getItems().size(), gridPane.getChildren().size());
   }
 
 

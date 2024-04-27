@@ -3,34 +3,39 @@ package oogasalad.view.shopping.components.shopblock;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import oogasalad.model.api.GameInterface;
-import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.view.popup.PopUpStackPane;
+import oogasalad.view.shopping.ShoppingViewStackPane;
+import oogasalad.view.shopping.components.ItemView;
 
+/**
+ * This class is responsible for creating the sell grid pane that is used to display the items in
+ * the shop.
+ */
 public class SellGridPane extends GridPane {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.shopping.components.shopblock.";
   private static final int COLUMN_COUNT = 2;
   private static final int ROW_COUNT = 2;
-  private final ReadOnlyShop shop;
-  private final List<SellItem> sellItems;
-  private final StackPane parentStackPane;
+  private final List<ItemView> sellItemViews;
+  private final ShoppingViewStackPane parentStackPane;
   private final String myLanguage = "EnglishPopUpText";
-  private ResourceBundle popUpTextResource;
   private final GameInterface game;
+  private ResourceBundle popUpTextResource;
 
   /**
-   * This class is a GridPane that contains SellItemVboxes. It is used to display the items that can
-   * be sold in the shop block.
+   * Constructor for SellGridPane.
+   *
+   * @param game            The game interface
+   * @param sellItemViews   The list of item views
+   * @param parentStackPane The parent stack pane
    */
-  public SellGridPane(GameInterface game, List<SellItem> sellItems, StackPane parentStackPane) {
+  public SellGridPane(GameInterface game, List<ItemView> sellItemViews,
+      ShoppingViewStackPane parentStackPane) {
     super();
     this.game = game;
-    this.shop = game.getGameState().getShop();
-    this.sellItems = sellItems;
+    this.sellItemViews = sellItemViews;
     this.parentStackPane = parentStackPane;
-
     initialize();
   }
 
@@ -39,17 +44,20 @@ public class SellGridPane extends GridPane {
 
     int column = 0;
     int row = 0;
-    for (SellItem sellItem : sellItems) {
-      SellItemVbox sellItemVbox = new SellItemVbox(sellItem);
+    for (ItemView sellItemView : sellItemViews) {
+      SellItemVbox sellItemVbox = new SellItemVbox(sellItemView);
       sellItemVbox.getSellButton().setOnAction(event -> {
         PopUpStackPane popUp = new PopUpStackPane(popUpTextResource, parentStackPane, choice -> {
           if (choice) {
-            game.sellItem(sellItem.getUrl());
+            game.sellItem(sellItemView.getName());
+            game.update();
+            parentStackPane.getMoneyHbox().update(game.getGameState().getMoney());
+            parentStackPane.getBagStackPane().update();
           }
         }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
         parentStackPane.getChildren().add(popUp);
       });
-      sellItemVbox.setSellButtonId(sellItem.getUrl() + "-sell-button");
+      sellItemVbox.setSellButtonId(sellItemView.getUrl() + "-sell-button");
       add(sellItemVbox, column, row);
       column++;
       if (column == COLUMN_COUNT) {

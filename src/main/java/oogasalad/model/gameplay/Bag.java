@@ -27,7 +27,7 @@ public class Bag implements ReadOnlyBag {
    */
   @Override
   public Map<ReadOnlyItem, Integer> getItems() {
-    return Collections.unmodifiableMap(items);
+    return items;
   }
 
   /**
@@ -70,12 +70,19 @@ public class Bag implements ReadOnlyBag {
    * @param amountToRemove the amount of the item to remove.
    */
   public void removeItem(String id, int amountToRemove) {
-    items.computeIfPresent(new Item(id), (ReadOnlyItem item, Integer item_amount) -> {
-      if (amountToRemove > item_amount) {
-        return null;
+    Map<ReadOnlyItem, Integer> items = getItems();
+    for(Map.Entry<ReadOnlyItem, Integer> entry : items.entrySet()){
+      if(entry.getKey().getName().equals(id)){
+        if(entry.getValue() < amountToRemove){
+          throw new IllegalArgumentException("Not enough items to remove");
+        } else if (entry.getValue() == amountToRemove) {
+          items.remove(entry.getKey());
+          return;
+        }
+        items.replace(entry.getKey(), entry.getValue() - amountToRemove);
+        return;
       }
-      return item_amount - amountToRemove;
-    });
+    }
   }
 
   /**
