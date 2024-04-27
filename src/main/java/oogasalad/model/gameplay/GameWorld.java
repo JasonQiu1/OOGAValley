@@ -1,6 +1,5 @@
 package oogasalad.model.gameplay;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,10 +8,7 @@ import java.util.Map.Entry;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyItem;
-import oogasalad.model.api.exception.UnableToSetGameObject;
-import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
-import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameobject.Tile;
 import oogasalad.model.gameobject.Updatable;
@@ -29,7 +25,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   private int height;
   private int width;
   private int depth;
-  private final GameObjectFactory factory;
 
   /**
    * Constructs a new GameWorld with specified dimensions.
@@ -42,7 +37,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
     this.height = height;
     this.width = width;
     this.depth = depth;
-    factory = new GameObjectFactory();
     allTiles = new HashMap<>();
     initialize();
   }
@@ -51,7 +45,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * Initializes the game world by creating tiles at each coordinate of the grid based on the
    * specified dimensions.
    */
-  private void initialize() {
+  protected void initialize() {
     Map<CoordinateOfGameObjectRecord, Tile> newTiles = new HashMap<>();
     for (int z = 0; z < depth; z++) {
       for (int y = 0; y < height; y++) {
@@ -64,7 +58,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
     }
     allTiles = newTiles;
   }
-
 
   /**
    * Updates the state of each tile in the game world based on the current game time.
@@ -111,7 +104,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * @return A List of ItemsToAdd, each object representing a set of items to be added to the
    * inventory, characterized by their ID and quantity.
    */
-  @Override
   public List<ItemsToAdd> itemsToAddToInventory() {
     List<ItemsToAdd> itemsToAddList = new ArrayList<>();
     for (Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {
@@ -132,7 +124,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    *
    * @param height The new height of the game world.
    */
-  @Override
   public void setHeight(int height) {
     this.height = height;
     initialize();
@@ -143,7 +134,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    *
    * @param width The new width of the game world.
    */
-  @Override
   public void setWidth(int width) {
     this.width = width;
     initialize();
@@ -160,98 +150,57 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   }
 
   /**
-   * Sets a GameObject at the specified coordinates within the game world.
+   * Returns the height of the game world.
    *
-   * @param gameObject The game object to set.
-   * @param x          The x-coordinate of the tile.
-   * @param y          The y-coordinate of the tile.
-   * @param z          The z-coordinate of the tile.
-   * @throws UnableToSetGameObject If there is an error setting the game object.
+   * @return the height of the game world grid as an integer.
    */
-  @Override
-  public void setTileGameObject(GameObject gameObject, int x, int y, int z) {
-    CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
-    Tile tile = allTiles.get(coord);
-    reflectTileCreation(tile, gameObject);
-  }
-
-  @Override
-  public void setTileGameObject(String id, int x, int y, int z) {
-    CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
-    Tile tile = allTiles.get(coord);
-    GameObject gameObject = factory.createNewGameObject(id, new GameTime(0,0,0), new HashMap<>()); //TODO: Figure out how we want to make collectables/items
-    reflectTileCreation(tile, gameObject);
-  }
-
-  private void reflectTileCreation(Tile tile, GameObject gameObject) {
-    if (tile != null) {
-      Class<?> gameObjectClass = gameObject.getClass();
-      String methodName = "set" + gameObjectClass.getSimpleName();
-      try {
-        Method setMethod = Tile.class.getMethod(methodName, gameObjectClass);
-        setMethod.invoke(tile, gameObject);
-      } catch (Exception e) {
-        throw new UnableToSetGameObject("Error Setting GameObject");
-      }
-    }
-  }
-
-  @Override
-  public void shiftRightAndAddColumn() {
-    alterSizeTR(1, 0);
-  }
-
-  @Override
-  public void shiftLeftAndRemoveColumn() {
-    alterSizeTR(-1, 0);
-  }
-
-  @Override
-  public void shiftUpAndRemoveRow() {
-    alterSizeTR(0, -1);
-  }
-
-  @Override
-  public void shiftDownAndAddRow() {
-    alterSizeTR(0, 1);
-  }
-
-  private void alterSizeTR(int width, int height){
-    Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
-    for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: allTiles.entrySet()){
-      temp.put(new CoordinateOfGameObjectRecord(entry.getKey().x() + width, entry.getKey().y() + height,
-              entry.getKey().z()), entry.getValue());
-    }
-    this.width+= width;
-    this.height+= height;
-    allTiles = temp;
-    initialize();
-  }
-
   @Override
   public int getHeight() {
     return height;
   }
 
+  /**
+   * Returns the width of the game world.
+   *
+   * @return the width of the game world grid as an integer.
+   */
   @Override
   public int getWidth() {
     return width;
   }
 
+  /**
+   * Returns the depth of the game world, which is relevant for 3D positioning.
+   *
+   * @return the depth of the game world grid as an integer.
+   */
   @Override
   public int getDepth() {
     return depth;
   }
 
-  @Override
-  public List<String> getTileContents(int column, int row, int depth) {
-    return allTiles.get(new CoordinateOfGameObjectRecord(column, row, depth)).getIds();
+  /**
+   * Retrieves a map of all tiles in the game world, indexed by their coordinates.
+   * This is a protected method intended for internal use.
+   *
+   * @return a map linking {@link CoordinateOfGameObjectRecord} objects to {@link Tile} objects.
+   */
+  protected Map<CoordinateOfGameObjectRecord, Tile> getAllTiles() {
+    return allTiles;
   }
 
-  @Override
-  public void removeTileTop(int column, int row, int depth) {
-    allTiles.get(new CoordinateOfGameObjectRecord(column, row, depth)).removeTopContents();
+  /**
+   * Sets the map of all tiles in the game world. This method replaces the current map of tiles
+   * with the provided map. This is a protected method intended for internal use, particularly
+   * useful during reinitializations or updates where a completely new set of tiles needs to be
+   * established.
+   *
+   * @param temp The new map of {@link CoordinateOfGameObjectRecord} to {@link Tile} to be set as all tiles.
+   */
+  protected void setAllTiles(Map<CoordinateOfGameObjectRecord, Tile> temp) {
+    allTiles = temp;
   }
 }
+
 
 

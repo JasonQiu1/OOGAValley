@@ -35,7 +35,7 @@ public class GameState implements ReadOnlyGameState {
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
   private static final Logger LOG = LogManager.getLogger(GameState.class);
-  private GameWorld gameWorld;
+  private BuildableTileMap gameWorld;
   private GameTime gameTime;
   private ReadOnlyItem selectedItem;
   private double energy;
@@ -51,7 +51,7 @@ public class GameState implements ReadOnlyGameState {
    */
   public GameState(ReadOnlyProperties properties) {
     this.bag = new Bag();
-    this.gameWorld = new GameWorld(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
+    this.gameWorld = new BuildableTileMap(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
     this.gameTime = new GameTime(1, 8, 0);
     try {
       List<String> possibleItemStrings = properties.getStringList("shopPossibleItems");
@@ -103,6 +103,8 @@ public class GameState implements ReadOnlyGameState {
   public ReadOnlyGameWorld getGameWorld() {
     return gameWorld;
   }
+
+  public BuildableTileMap getEditableMap() {return gameWorld;}
 
   @Override
   public ReadOnlyGameTime getGameTime() {

@@ -45,7 +45,7 @@ public class DataGeneration {
     //   horizontal -x, vertical  - y
     for (int i = 0; i < 15; i++) {
       for (int j = 0; j < 10; j++) {
-        gameWorld.setTileGameObject(land, i, j, 0);
+        //gameWorld.setTileGameObject(id, i, j, 0);
       }
     }
 //    gameWorld.update(new GameTime(1, 1, 1));

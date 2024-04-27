@@ -250,12 +250,22 @@ public class Tile implements Updatable, Interactable {
     return land != null ? land.getId() : null;
   }
 
+  /**
+   * Retrieves a list of non-null IDs for the land, structure, and collectable.
+   *
+   * @return List of strings containing the non-null IDs.
+   */
   public List<String> getIds() {
     return Stream.of(getLandId(), getStructureId(), getCollectableId())
-            .filter(Objects::nonNull)
-            .collect(Collectors.toList());
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
   }
 
+  /**
+   * Removes the topmost content from this object. The removal priority is
+   * first the collectable, if present, then the structure, and finally the land,
+   * if all others are absent.
+   */
   public void removeTopContents() {
     if (collectable != null) {
       collectable = null;
@@ -265,5 +275,6 @@ public class Tile implements Updatable, Interactable {
       land = null;
     }
   }
+
 }
 
