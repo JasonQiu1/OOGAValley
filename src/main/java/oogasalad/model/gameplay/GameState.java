@@ -42,6 +42,7 @@ public class GameState implements ReadOnlyGameState {
     this.gameWorld =
         new BuildableTileMap(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
     this.gameTime = new GameTime(1, 8, 0);
+    this.maxEnergy = properties.getInteger("energyAmount");
     try {
       List<String> possibleItemStrings = properties.getStringList("shopPossibleItems");
       List<ReadOnlyItem> possibleItems = new ArrayList<>();
@@ -87,6 +88,7 @@ public class GameState implements ReadOnlyGameState {
     money = copy.money;
     energy = copy.energy;
     selectedItem = copy.selectedItem;
+    maxEnergy = copy.maxEnergy;
   }
 
   /**
@@ -223,8 +225,12 @@ public class GameState implements ReadOnlyGameState {
    * @return the amount of energy restored.
    */
   public double restoreEnergy(double amount) {
-    // TODO: IMPLEMENT
-    return 0.0f;
+    if (amount + energy > maxEnergy) {
+      energy = maxEnergy;
+      return maxEnergy - energy;
+    }
+    energy += amount;
+    return amount;
   }
 
   private static final String TEMPORARY_DIRECTORY_PATH = System.getProperty("java.io.tmpdir");
@@ -237,4 +243,5 @@ public class GameState implements ReadOnlyGameState {
   private int money;
   private final Shop shop;
   private final Bag bag;
+  private final double maxEnergy;
 }
