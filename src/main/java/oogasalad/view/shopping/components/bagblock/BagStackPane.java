@@ -1,39 +1,46 @@
 package oogasalad.view.shopping.components.bagblock;
 
-import javafx.geometry.Pos;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import oogasalad.model.api.ReadOnlyBag;
-import oogasalad.view.shopping.Utils;
+import oogasalad.model.api.GameInterface;
+import oogasalad.view.shopping.components.ItemStackPane;
+import oogasalad.view.shopping.components.ItemView;
+import oogasalad.view.shopping.components.PageChangeBorderPane;
 
-/**
- * This class is a StackPane that contains a background image and a BagGridPane. It is used to
- * display the items in the bag block.
- */
-public class BagStackPane extends StackPane {
+public class BagStackPane extends ItemStackPane<BagGridPane> {
 
-  private final ReadOnlyBag bag;
-
-  /**
-   * Constructor for the BagStackPane
-   *
-   * @param bag the bag to be displayed
-   */
-  public BagStackPane(ReadOnlyBag bag) {
-    super();
-    this.bag = bag;
-    initialize();
+  public BagStackPane(GameInterface game, StackPane parentStackPane) {
+    super(game, parentStackPane);
   }
 
-  private void initialize() {
-    Image backgroundImage = new Image("img/shop/bag-background.png");
-    ImageView backgroundImageView = new ImageView(backgroundImage);
-    backgroundImageView.setFitWidth(Utils.shopStackPaneWidth);
-    backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
-    BagGridPane gridPane = new BagGridPane(bag);
-    setAlignment(gridPane, Pos.TOP_LEFT);
-    setAlignment(backgroundImageView, Pos.TOP_LEFT);
-    getChildren().addAll(backgroundImageView, gridPane);
+  @Override
+  protected String getBackgroundImagePath() {
+    return "img/shop/bag-background.png";
+  }
+
+
+  @Override
+  protected BagGridPane createGridPane(GameInterface game, List<ItemView> sublist,
+      StackPane parentStackPane) {
+    return new BagGridPane(game, sublist, parentStackPane);
+  }
+
+  @Override
+  protected PageChangeBorderPane createPageChangeBorderPane(
+      List<? extends GridPane> gridPanes) {
+    return new BagPageChangeBorderPane((List<BagGridPane>) gridPanes);
+  }
+
+  @Override
+  protected double getLeftMargin() {
+    return 0;
+  }
+
+  @Override
+  protected double getTopMargin() {
+    return 0;
   }
 }
+

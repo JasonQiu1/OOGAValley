@@ -40,7 +40,7 @@ public class ShoppingStackPane extends StackPane {
     borderPane.setTop(topHBox);
     HBox centerHBox = new HBox();
     StackPane sellItemStackPane = new ShopStackPane(game, this);
-    StackPane bagStackPane = new BagStackPane(bag);
+    StackPane bagStackPane = new BagStackPane(game,this);
     centerHBox.getChildren().addAll(sellItemStackPane, bagStackPane);
     borderPane.setCenter(centerHBox);
     topHBox.getBackButton().setOnMouseClicked(event -> {
