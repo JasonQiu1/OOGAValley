@@ -4,6 +4,7 @@ import java.util.List;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
@@ -17,6 +18,9 @@ public class ButtonMenu {
   private Scene previousScene;
   private String primaryLanguage;
   private String buttonsFilePath;
+
+  private String STYLES = "/view/buttonMenu/menu_style.css";
+
   public ButtonMenu(Stage mainStage, String language, Scene backScene, String filePath) {
     primaryStage = mainStage;
     primaryLanguage = language;
@@ -36,10 +40,15 @@ public class ButtonMenu {
   public void open() {
     menuStage = new Stage();
     VBox root = new VBox();
+    root.getStyleClass().add("root_VBox");
 
     SplashUtils.createButtonsFromFile(buttonsFilePath, primaryStage, root, primaryLanguage, previousScene);
 
+    ScrollPane scrollPane = new ScrollPane(root);
     menuScene = new Scene(root);
+
+    menuScene.getStylesheets().add(getClass().getResource(STYLES).toExternalForm());
+
     menuStage.setScene(menuScene);
     menuStage.show();
 
