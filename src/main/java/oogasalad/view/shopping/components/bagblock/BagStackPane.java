@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.view.shopping.ShoppingViewStackPane;
 import oogasalad.view.shopping.components.ItemStackPane;
 import oogasalad.view.shopping.components.ItemView;
 import oogasalad.view.shopping.components.PageChangeBorderPane;
@@ -18,7 +18,7 @@ import oogasalad.view.shopping.components.PageChangeBorderPane;
  */
 public class BagStackPane extends ItemStackPane<BagGridPane> {
 
-  public BagStackPane(GameInterface game, StackPane parentStackPane) {
+  public BagStackPane(GameInterface game, ShoppingViewStackPane parentStackPane) {
     super(game, parentStackPane);
   }
 
@@ -30,11 +30,11 @@ public class BagStackPane extends ItemStackPane<BagGridPane> {
   @Override
   protected ArrayList<ItemView> createItems() {
     ArrayList<ItemView> itemViews = new ArrayList<>();
-    Map<? extends ReadOnlyItem, Integer> itemPriceMap = bag.getItems();
+    Map<? extends ReadOnlyItem, Integer> itemPriceMap = getBag().getItems();
     for (Entry<? extends ReadOnlyItem, Integer> entry : itemPriceMap.entrySet()) {
       ReadOnlyItem item = entry.getKey();
-      double price = entry.getValue();
-      ItemView itemView = new ItemView(price, item.getImagePath(), item.getName());
+      double num = entry.getValue();
+      ItemView itemView = new ItemView(num, item.getImagePath(), item.getName());
       itemViews.add(itemView);
     }
     return itemViews;
@@ -43,7 +43,7 @@ public class BagStackPane extends ItemStackPane<BagGridPane> {
 
   @Override
   protected BagGridPane createGridPane(GameInterface game, List<ItemView> sublist,
-      StackPane parentStackPane) {
+      ShoppingViewStackPane parentStackPane) {
     return new BagGridPane(game, sublist, parentStackPane);
   }
 
@@ -61,6 +61,10 @@ public class BagStackPane extends ItemStackPane<BagGridPane> {
   @Override
   protected double getTopMargin() {
     return 0;
+  }
+
+  public void update() {
+    initialize();
   }
 }
 

@@ -11,18 +11,19 @@ import javafx.scene.layout.StackPane;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyShop;
+import oogasalad.view.shopping.ShoppingViewStackPane;
 import oogasalad.view.shopping.Utils;
 
 public abstract class ItemStackPane<T extends GridPane> extends StackPane {
 
-  protected final ReadOnlyBag bag;
-  protected final ReadOnlyShop shop;
+  private final ReadOnlyBag bag;
+  private final ReadOnlyShop shop;
   private final GameInterface game;
-  private final StackPane parentStackPane;
+  private final ShoppingViewStackPane parentStackPane;
   private List<T> gridPanes;
   private List<ItemView> itemViews;
 
-  public ItemStackPane(GameInterface game, StackPane parentStackPane) {
+  public ItemStackPane(GameInterface game, ShoppingViewStackPane parentStackPane) {
     super();
     this.game = game;
     this.bag = game.getGameState().getBag();
@@ -50,7 +51,7 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
 
   protected abstract String getBackgroundImagePath();
 
-  protected abstract ArrayList<ItemView> createItems();
+  protected abstract List<ItemView> createItems();
 
 
   protected void createGridPanes(List<ItemView> itemViews) {
@@ -66,7 +67,7 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
   }
 
   protected abstract T createGridPane(GameInterface game, List<ItemView> sublist,
-      StackPane parentStackPane);
+      ShoppingViewStackPane parentStackPane);
 
   protected abstract PageChangeBorderPane createPageChangeBorderPane(
       List<? extends GridPane> gridPanes);
@@ -74,4 +75,12 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
   protected abstract double getLeftMargin();
 
   protected abstract double getTopMargin();
+
+  public ReadOnlyBag getBag() {
+    return bag;
+  }
+
+  public ReadOnlyShop getShop() {
+    return shop;
+  }
 }

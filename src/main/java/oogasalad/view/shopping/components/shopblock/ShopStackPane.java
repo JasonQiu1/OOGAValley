@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.view.shopping.ShoppingViewStackPane;
 import oogasalad.view.shopping.components.ItemStackPane;
 import oogasalad.view.shopping.components.ItemView;
 import oogasalad.view.shopping.components.PageChangeBorderPane;
@@ -18,7 +18,7 @@ import oogasalad.view.shopping.components.PageChangeBorderPane;
 public class ShopStackPane extends ItemStackPane<SellGridPane> {
 
 
-  public ShopStackPane(GameInterface game, StackPane parentStackPane) {
+  public ShopStackPane(GameInterface game, ShoppingViewStackPane parentStackPane) {
     super(game, parentStackPane);
   }
 
@@ -30,7 +30,7 @@ public class ShopStackPane extends ItemStackPane<SellGridPane> {
   @Override
   protected ArrayList<ItemView> createItems() {
     ArrayList<ItemView> itemViews = new ArrayList<>();
-    Map<? extends ReadOnlyItem, Double> itemPriceMap = shop.getItems();
+    Map<? extends ReadOnlyItem, Double> itemPriceMap = getShop().getItems();
     for (Map.Entry<? extends ReadOnlyItem, Double> entry : itemPriceMap.entrySet()) {
       ReadOnlyItem item = entry.getKey();
       double price = entry.getValue();
@@ -40,12 +40,12 @@ public class ShopStackPane extends ItemStackPane<SellGridPane> {
     return itemViews;
   }
 
-
   @Override
   protected SellGridPane createGridPane(GameInterface game, List<ItemView> sublist,
-      StackPane parentStackPane) {
+      ShoppingViewStackPane parentStackPane) {
     return new SellGridPane(game, sublist, parentStackPane);
   }
+
 
   @Override
   protected PageChangeBorderPane createPageChangeBorderPane(

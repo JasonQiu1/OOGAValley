@@ -3,9 +3,9 @@ package oogasalad.view.shopping.components.shopblock;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.popup.PopUpStackPane;
+import oogasalad.view.shopping.ShoppingViewStackPane;
 import oogasalad.view.shopping.components.ItemView;
 
 /**
@@ -18,7 +18,7 @@ public class SellGridPane extends GridPane {
   private static final int COLUMN_COUNT = 2;
   private static final int ROW_COUNT = 2;
   private final List<ItemView> sellItemViews;
-  private final StackPane parentStackPane;
+  private final ShoppingViewStackPane parentStackPane;
   private final String myLanguage = "EnglishPopUpText";
   private final GameInterface game;
   private ResourceBundle popUpTextResource;
@@ -30,12 +30,12 @@ public class SellGridPane extends GridPane {
    * @param sellItemViews   The list of item views
    * @param parentStackPane The parent stack pane
    */
-  public SellGridPane(GameInterface game, List<ItemView> sellItemViews, StackPane parentStackPane) {
+  public SellGridPane(GameInterface game, List<ItemView> sellItemViews,
+      ShoppingViewStackPane parentStackPane) {
     super();
     this.game = game;
     this.sellItemViews = sellItemViews;
     this.parentStackPane = parentStackPane;
-
     initialize();
   }
 
@@ -50,6 +50,9 @@ public class SellGridPane extends GridPane {
         PopUpStackPane popUp = new PopUpStackPane(popUpTextResource, parentStackPane, choice -> {
           if (choice) {
             game.sellItem(sellItemView.getName());
+            game.update();
+            parentStackPane.getMoneyHbox().update(game.getGameState().getMoney());
+            parentStackPane.getBagStackPane().update();
           }
         }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
         parentStackPane.getChildren().add(popUp);

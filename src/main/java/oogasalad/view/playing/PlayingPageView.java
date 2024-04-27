@@ -160,7 +160,7 @@ public class PlayingPageView {
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
-    CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
+    CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox(game);
     money.addObserver(currentMoneyHbox, game.getGameState().getMoney());
     topBox.getChildren()
         .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
