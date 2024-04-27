@@ -124,9 +124,7 @@ public class PlayingPageView {
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
-
     scene.setOnKeyPressed(event -> actKey(event.getCode()));
-
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
     stage.setScene(scene);

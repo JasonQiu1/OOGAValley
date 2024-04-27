@@ -10,6 +10,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import oogasalad.view.playing.PlayingPageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Represents a tool in the game.
@@ -22,6 +24,8 @@ public class BagItem extends StackPane {
   private int num;
   private final Label numLabel;
   private final ImageView imageView;
+
+  private final Logger LOG = LogManager.getLogger(BagItem.class);
 
   /**
    * Constructor for the Tool class.
@@ -52,6 +56,7 @@ public class BagItem extends StackPane {
     imageContainer.getChildren().add(selectedRectangle);
     vBox.getChildren().addAll(imageContainer, numLabel);
     this.getChildren().add(vBox);
+    LOG.info("bag item added: %s %d".formatted(this.url, num));
   }
 
   public StackPane getView() {

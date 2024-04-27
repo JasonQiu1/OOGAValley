@@ -12,6 +12,8 @@ import javafx.util.Pair;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.view.playing.PlayingPageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * The tool view that contains all the items
@@ -27,6 +29,8 @@ public class BagView extends StackPane {
   private int page = 0;
 
   private final List<Item> itemOnShow = new ArrayList<>();
+
+  private final Logger LOG = LogManager.getLogger(BagView.class);
 
 
   /**
@@ -50,7 +54,7 @@ public class BagView extends StackPane {
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
     StackPane.setMargin(toolGridPane, new Insets(20, 0, 0, 40));
     this.getChildren().addAll(backgroundImageView, toolGridPane);
-    update(page);
+    update();
   }
 
   private List<Pair<String, Integer>> getItem(int page) {
@@ -72,14 +76,15 @@ public class BagView extends StackPane {
     for (int i = 0; i < newItemList.size(); i++) {
       Pair<String, Integer> newItem = newItemList.get(i);
       int column = i % colNum;
-      int row = i / rowNum;
+      int row = i / colNum;
       if (i >= itemOnShow.size()) {
         BagItem bagItem = new BagItem(newItem.getKey(),
             PlayingPageView.bottomCellWidth,
             PlayingPageView.bottomCellHeight, null, newItem.getValue());
         newItemOnShow.add(new Item(newItemList.get(i).getKey(),
             newItemList.get(i).getValue(), bagItem));
-        this.toolGridPane.add(bagItem.getView(), column, row);
+        toolGridPane.add(bagItem.getView(), column, row);
+        LOG.info(bagItem);
       } else {
         Item item = itemOnShow.get(i);
         if (!(item.imageUrl().equals(newItem.getKey()))) {
@@ -92,12 +97,13 @@ public class BagView extends StackPane {
       }
     }
     itemOnShow.addAll(newItemOnShow);
+    LOG.info("item on show is: " + itemOnShow);
   }
 
-  public void update(int page) {
+  public void update() {
     List<Pair<String, Integer>> item = getItem(page);
-    this.page = page;
-    System.out.println(page);
+    LOG.info(String.format("the current page is %d", page));
+    LOG.info("the list of item in the page is: " + item);
     checkUpdate(item);
   }
 }
