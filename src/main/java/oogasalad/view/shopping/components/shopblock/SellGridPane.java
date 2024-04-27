@@ -49,7 +49,7 @@ public class SellGridPane extends GridPane {
       sellItemVbox.getSellButton().setOnAction(event -> {
         PopUpStackPane popUp = new PopUpStackPane(popUpTextResource, parentStackPane, choice -> {
           if (choice) {
-            game.sellItem(sellItemView.getUrl());
+            game.sellItem(sellItemView.getName());
           }
         }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
         parentStackPane.getChildren().add(popUp);

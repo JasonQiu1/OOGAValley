@@ -1,9 +1,12 @@
 package oogasalad.view.shopping.components.shopblock;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import oogasalad.model.api.GameInterface;
+import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.view.shopping.components.ItemStackPane;
 import oogasalad.view.shopping.components.ItemView;
 import oogasalad.view.shopping.components.PageChangeBorderPane;
@@ -22,6 +25,19 @@ public class ShopStackPane extends ItemStackPane<SellGridPane> {
   @Override
   protected String getBackgroundImagePath() {
     return "img/shop/sell-background.png";
+  }
+
+  @Override
+  protected ArrayList<ItemView> createItems() {
+    ArrayList<ItemView> itemViews = new ArrayList<>();
+    Map<? extends ReadOnlyItem, Double> itemPriceMap = shop.getItems();
+    for (Map.Entry<? extends ReadOnlyItem, Double> entry : itemPriceMap.entrySet()) {
+      ReadOnlyItem item = entry.getKey();
+      double price = entry.getValue();
+      ItemView itemView = new ItemView(price, item.getImagePath(), item.getName());
+      itemViews.add(itemView);
+    }
+    return itemViews;
   }
 
 

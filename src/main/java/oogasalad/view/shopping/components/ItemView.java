@@ -6,12 +6,18 @@ package oogasalad.view.shopping.components;
  */
 public class ItemView {
 
-  private double number;
-  private String url;
+  private final String name;
+  private final double number;
+  private final String url;
 
-  public ItemView(double number, String url) {
+  public ItemView(double number, String url, String name) {
     this.number = number;
     this.url = url;
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
   }
 
   public double getNumber() {
