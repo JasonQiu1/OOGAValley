@@ -33,19 +33,6 @@ public class GameState implements ReadOnlyGameState {
   // TODO: Externalize this to a configuration file.
   // The path to the gamesaves directory from the data directory.
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
-  private static final String TEMPORARY_DIRECTORY_PATH = System.getProperty("java.io.tmpdir");
-  private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
-  private static final Logger LOG = LogManager.getLogger(GameState.class);
-  private BuildableTileMap gameWorld;
-  private GameTime gameTime;
-  private ReadOnlyItem selectedItem;
-  private double energy;
-  private int money;
-  private Shop shop;
-  private Bag bag;
-  private final int width = 15;
-  private final int height = 10;
-  private final int depth = 2;
 
   /**
    * Initializes a default GameState.
@@ -130,10 +117,6 @@ public class GameState implements ReadOnlyGameState {
     return gameWorld;
   }
 
-  public BuildableTileMap getEditableMap() {
-    return gameWorld;
-  }
-
   @Override
   public ReadOnlyGameTime getGameTime() {
     return gameTime;
@@ -170,13 +153,6 @@ public class GameState implements ReadOnlyGameState {
   }
 
   /**
-   * Add items from GameWorld to the player's bag.
-   */
-  public void addItemsToBag() {
-    bag.addItems(gameWorld.itemsToAddToInventory());
-  }
-
-  /**
    * Returns the current bag, which contains items currently held.
    *
    * @return the current bag.
@@ -194,6 +170,29 @@ public class GameState implements ReadOnlyGameState {
   @Override
   public Optional<ReadOnlyItem> getSelectedItem() {
     return Optional.of(selectedItem);
+  }
+
+  public GameWorld getEditableGameWorld() {
+    return gameWorld;
+  }
+
+  public GameTime getEditableGameTime() {
+    return gameTime;
+  }
+
+  public Bag getEditableBag() {
+    return bag;
+  }
+
+  public BuildableTileMap getEditableMap() {
+    return gameWorld;
+  }
+
+  /**
+   * Add items from GameWorld to the player's bag.
+   */
+  public void addItemsToBag() {
+    bag.addItems(gameWorld.itemsToAddToInventory());
   }
 
   /**
@@ -218,18 +217,6 @@ public class GameState implements ReadOnlyGameState {
     money += amount;
   }
 
-  public GameWorld getEditableGameWorld() {
-    return gameWorld;
-  }
-
-  public GameTime getEditableGameTime() {
-    return gameTime;
-  }
-
-  public Bag getEditableBag() {
-    return bag;
-  }
-
   /**
    * Restores energy by the given amount up to the max amount.
    *
@@ -240,4 +227,14 @@ public class GameState implements ReadOnlyGameState {
     return 0.0f;
   }
 
+  private static final String TEMPORARY_DIRECTORY_PATH = System.getProperty("java.io.tmpdir");
+  private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
+  private static final Logger LOG = LogManager.getLogger(GameState.class);
+  private final BuildableTileMap gameWorld;
+  private final GameTime gameTime;
+  private ReadOnlyItem selectedItem;
+  private double energy;
+  private int money;
+  private final Shop shop;
+  private final Bag bag;
 }
