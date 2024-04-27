@@ -148,6 +148,7 @@ public class Game implements GameInterface {
       throw new KeyNotFoundException(id);
     }
     state.addMoney((int) item.getWorth());
+    bag.removeItem(id, 1);
   }
 
   /**
