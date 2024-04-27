@@ -17,6 +17,7 @@ class GameStateTest {
   void saveDefaultGameState() {
     GameConfiguration defaultConfig = new GameConfiguration();
     GameState defaultState = new GameState(defaultConfig.getRules());
+    defaultState.getEditableBag().addItems(defaultConfig.getRules().getStringIntegerMap("startingItems"));
     assertDoesNotThrow(() -> save("defaultState", defaultState));
   }
 

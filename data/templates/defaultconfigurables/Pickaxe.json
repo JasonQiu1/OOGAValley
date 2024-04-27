@@ -1,0 +1,11 @@
+// DEFAULT: An item representing wheat seeds.
+{
+  "properties": {
+    "name": "Pickaxe",
+    "type": "Item",
+    "image": "pickaxe.png",
+    "worth": 500
+  },
+  "listProperties": {},
+  "mapProperties": {}
+}
