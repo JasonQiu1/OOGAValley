@@ -1,6 +1,8 @@
 package oogasalad.view.playing;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.InvalidPathException;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
@@ -98,6 +101,23 @@ public class PlayingPageView {
     primaryLanguage = language;
     game = gameFactory.createGame(fileName, fileName);
     energyProgress = new EnergyProgress(game);
+  }
+
+  public void save() {
+    FileChooser result = new FileChooser();
+    result.setTitle("save location ");
+    result.setInitialDirectory(new File("data/gamesaves"));
+    result.getExtensionFilters()
+        .setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
+    File file = result.showSaveDialog(stage);
+    try {
+      game.save(file.getName());
+    } catch (IOException e) {
+      new Alert(AlertType.ERROR, "saving failed").showAndWait();
+    } catch (InvalidPathException e) {
+      new Alert(AlertType.ERROR, "path invalid").showAndWait();
+    }
+    LOG.info("saving done");
   }
 
   public void start() {
