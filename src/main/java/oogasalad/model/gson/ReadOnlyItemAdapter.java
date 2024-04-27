@@ -8,7 +8,6 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.Instant;
-import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 
 /**
