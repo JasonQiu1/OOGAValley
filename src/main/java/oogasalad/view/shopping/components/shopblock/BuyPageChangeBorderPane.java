@@ -11,5 +11,7 @@ public class BuyPageChangeBorderPane extends PageChangeBorderPane<BuyGridPane> {
 
   public BuyPageChangeBorderPane(List<BuyGridPane> gridPanes) {
     super(gridPanes);
+    getLeftButton().setId("left-page-change-button-buy");
+    getRightButton().setId("right-page-change-button-buy");
   }
 }
