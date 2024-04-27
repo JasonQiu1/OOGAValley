@@ -36,7 +36,8 @@ public class Tile implements Updatable, Interactable {
   /**
    * Interacts with the provided item, potentially changing the state of the tile or its contents.
    * This method checks each game object (collectable, structure, land) in the tile for interaction
-   * validity and processes the first valid interaction found. Collectable interactions can result
+   * validity and processes an interaction on the first non-null gameObject if and only if
+   * that interaction is valid. Collectable interactions can result
    * in items being added to the game as a result of the interaction.
    *
    * @param item The item to interact with the tile's contents.
@@ -65,12 +66,14 @@ public class Tile implements Updatable, Interactable {
    * @param interactionHandler The logic to execute for the interaction.
    * @param additionalCheck    An additional boolean check for if an interaction is valid
    *                           that is specific to each GameObject
-   * @return True if the interaction was valid and handled, false otherwise.
+   * @return True if the gameObject is not null, false otherwise.
    */
   private boolean handleInteractionIfValid(GameObject gameObject, ReadOnlyItem item,
       Runnable interactionHandler, boolean additionalCheck) {
-    if (gameObject != null && (gameObject.interactionValid(item) || additionalCheck)) {
-      interactionHandler.run();
+    if (gameObject != null) {
+      if ((gameObject.interactionValid(item) || additionalCheck)) {
+        interactionHandler.run();
+      }
       return true;
     }
     return false;
