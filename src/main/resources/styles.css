@@ -187,7 +187,7 @@
 .shop-stack-pane {
   -fx-min-width: 300px;
   -fx-min-height: 300px;
-  -fx-background-image: url('img/shop/sell-background.png');
+  -fx-background-image: url('img/shop/buy-background.png');
   -fx-background-size: cover;
 }
 
