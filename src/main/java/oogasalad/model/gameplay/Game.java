@@ -51,7 +51,7 @@ public class Game implements GameInterface {
    * Loads the given config with the given save.
    *
    * @param configName the name of the configuration file in 'data/gameconfigurations'.
-   * @param saveName the name of the save file in 'data/gamesaves'.
+   * @param saveName   the name of the save file in 'data/gamesaves'.
    * @throws IOException if the configuration or save file are not found.
    */
   public Game(String configName, String saveName) throws IOException {
@@ -70,6 +70,16 @@ public class Game implements GameInterface {
     state.addItemsToBag();
   }
 
+  /**
+   * Saves the current GameState to 'data/gamesaves' with the given filename.
+   *
+   * @param fileName the name of the file to save to.
+   * @throws IOException if writing to the file fails.
+   */
+  @Override
+  public void save(String fileName) throws IOException {
+    state.save(fileName);
+  }
 
   /**
    * Selects an item in the bag.
