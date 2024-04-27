@@ -54,7 +54,7 @@ public abstract class AbstractSplashScreen {
     //TODO: Resources bundle this
     Label title = new Label(resourceString.stageTitle());
     title.getStyleClass().add("title-label");
-    title.widthProperty().addListener((obs, oldVal, newVal) -> titleBob(title, newVal));
+    title.widthProperty().addListener((obs, oldVal, newVal) -> SplashUtils.titleBob(title, newVal));
 
     //create scene
     vb.getChildren().add(title);
@@ -73,23 +73,7 @@ public abstract class AbstractSplashScreen {
     return scene;
   }
 
-  protected void titleBob(Label l, Number newVal) {
-    Animation animation = createAnimation(l, newVal);
-    animation.play();
-    animation.setOnFinished(event -> {
-      animation.setRate(-animation.getRate());
-      animation.play();
-    });
-  }
 
-  protected Animation createAnimation(Label l, Number newVal) {
-    Path path = new Path();
-    path.getElements().addAll(new MoveTo(l.getLayoutX() + newVal.doubleValue() / 2, l.getLayoutY()),
-        new LineTo(l.getLayoutX() + newVal.doubleValue() / 2, l.getLayoutY() + 10));
-
-    PathTransition pt = new PathTransition(Duration.seconds(1), path, l);
-    return new SequentialTransition(l, pt);
-  }
 
 
 }
