@@ -98,7 +98,6 @@ public class PlayingPageView {
   }
 
   public void start() {
-
     LOG.info("initializing game");
     LOG.info("finish loading game model");
     initModel();
@@ -129,15 +128,16 @@ public class PlayingPageView {
   }
 
   private void initModel() {
-    bagView = new BagView(game.getGameState().getBag(), 10);
+    bagView = new BagView(game, 10);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
     landView = new LandView(game.getGameState().getGameWorld());
   }
 
   private void setUpdate() {
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
+    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 30), event -> {
       game.update();
       landView.update();
+      bagView.update();
       updateTimeLabel();
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);

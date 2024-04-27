@@ -19,30 +19,35 @@ import org.apache.logging.log4j.Logger;
 public class BagItem extends StackPane {
 
   private final Rectangle selectedRectangle;
-  private final SelectedItem selectedItem;
+  private final BagView bagView;
   private final String url;
-  private int num;
+  private final int num;
   private final Label numLabel;
   private final ImageView imageView;
 
+  private final String name;
+
   private final Logger LOG = LogManager.getLogger(BagItem.class);
+
 
   /**
    * Constructor for the Tool class.
    *
-   * @param url          the url of the tool
-   * @param width        the width of the tool
-   * @param height       the height of the tool
-   * @param selectedItem the selected item
+   * @param url     the url of the tool
+   * @param width   the width of the tool
+   * @param height  the height of the tool
+   * @param bagView the bagView that holds this bagItem
    */
-  public BagItem(String url, double width, double height, SelectedItem selectedItem, int num) {
+  public BagItem(String url, String name, double width, double height, BagView bagView,
+      int num) {
     super();
     try {
       this.url = (String.valueOf(new File("data/images/" + url).toURI().toURL()));
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }
-    this.selectedItem = selectedItem;
+    this.name = name;
+    this.bagView = bagView;
     this.num = num;
     imageView = new ImageView(new Image(this.url, width, height, false, true));
     StackPane imageContainer = new StackPane();
@@ -57,6 +62,9 @@ public class BagItem extends StackPane {
     vBox.getChildren().addAll(imageContainer, numLabel);
     this.getChildren().add(vBox);
     LOG.info("bag item added: %s %d".formatted(this.url, num));
+    setOnMouseClicked(event -> {
+      bagView.select(this.name);
+    });
   }
 
   public StackPane getView() {
@@ -73,8 +81,13 @@ public class BagItem extends StackPane {
   }
 
   public void setImage(String url) {
-    imageView.setImage(
-        new Image(url, PlayingPageView.bottomCellWidth, PlayingPageView.bottomHeight, false, true));
+    try {
+      imageView.setImage(
+          new Image((String.valueOf(new File("data/images/" + url).toURI().toURL())),
+              PlayingPageView.bottomCellWidth, PlayingPageView.bottomHeight, false, true));
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public ImageView getImageView() {

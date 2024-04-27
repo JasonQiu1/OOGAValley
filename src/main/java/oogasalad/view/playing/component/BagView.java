@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Pair;
+import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.view.playing.PlayingPageView;
@@ -27,7 +28,9 @@ public class BagView extends StackPane {
   private final GridPane toolGridPane;
 
   private final int colNum;
-  private final ReadOnlyBag bag;
+
+  private final GameInterface game;
+
   private int page = 0;
   private final Button leftButton = new Button("<");
 
@@ -41,15 +44,15 @@ public class BagView extends StackPane {
   /**
    * Constructor for the ToolView class.
    *
-   * @param bag    the bag model
+   * @param game   the game
    * @param colNum the number of columns to be shown the view
    */
 
-  public BagView(ReadOnlyBag bag, int colNum) {
+  public BagView(GameInterface game, int colNum) {
     super();
     this.toolGridPane = new GridPane();
-    this.bag = bag;
     this.colNum = colNum;
+    this.game = game;
     ImageView backgroundImageView = new ImageView(new Image(backGroundImageUrl));
     backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
@@ -64,9 +67,20 @@ public class BagView extends StackPane {
     update();
   }
 
+  /**
+   * Select the item with the name
+   *
+   * @param name
+   */
+  public void select(String name) {
+    LOG.info("selected item : %s".formatted(name));
+    game.selectItem(name);
+
+  }
+
 
   public void update() {
-    List<Pair<String, Integer>> item = getItem(page);
+    List<Pair<Pair<String, String>, Integer>> item = getItem(page);
     checkUpdate(item);
   }
 
@@ -75,54 +89,61 @@ public class BagView extends StackPane {
     if (this.page + interval < 0) {
       return;
     }
-    List<Pair<String, Integer>> item = getItem(this.page + interval);
+    List<Pair<Pair<String, String>, Integer>> item = getItem(this.page + interval);
     if (item.isEmpty()) {
       return;
     }
+    this.page = this.page + interval;
     checkUpdate(item);
   }
 
-
-  private List<Pair<String, Integer>> getItem(int page) {
+  /**
+   * The list of pair where each pair is (pair(image, name) ; number)
+   *
+   * @param page
+   * @return
+   */
+  private List<Pair<Pair<String, String>, Integer>> getItem(int page) {
+    ReadOnlyBag bag = game.getGameState().getBag();
     int idx = 0;
     int begin = page * colNum;
     int end = (page + 1) * colNum;
-    List<Pair<String, Integer>> valueToCheck = new ArrayList<>();
+    List<Pair<Pair<String, String>, Integer>> valueToCheck = new ArrayList<>();
     for (Map.Entry<ReadOnlyItem, Integer> entry : bag.getItems().entrySet()) {
       if (idx >= begin && idx < end) {
-        valueToCheck.add(new Pair<>(entry.getKey().getImagePath(), entry.getValue()));
+        valueToCheck.add(
+            new Pair<>(new Pair<>(entry.getKey().getImagePath(), entry.getKey().getName()),
+                entry.getValue()));
       }
       idx++;
     }
     return valueToCheck;
   }
 
-  private void checkUpdate(List<Pair<String, Integer>> newItemList) {
+  private void checkUpdate(List<Pair<Pair<String, String>, Integer>> newItemList) {
     List<Item> newItemOnShow = new ArrayList<>();
     for (int i = 0; i < newItemList.size(); i++) {
-      Pair<String, Integer> newItem = newItemList.get(i);
+      Pair<Pair<String, String>, Integer> newItem = newItemList.get(i);
       int column = i % colNum;
       int row = i / colNum;
       if (i >= itemOnShow.size()) {
-        BagItem bagItem = new BagItem(newItem.getKey(),
+        BagItem bagItem = new BagItem(newItem.getKey().getKey(), newItem.getKey().getValue(),
             PlayingPageView.bottomCellWidth,
-            PlayingPageView.bottomCellHeight, null, newItem.getValue());
-        newItemOnShow.add(new Item(newItemList.get(i).getKey(),
+            PlayingPageView.bottomCellHeight, this, newItem.getValue());
+        newItemOnShow.add(new Item(newItemList.get(i).getKey().getKey(),
             newItemList.get(i).getValue(), bagItem));
         toolGridPane.add(bagItem.getView(), column, row);
-        LOG.info(bagItem);
       } else {
         Item item = itemOnShow.get(i);
-        if (!(item.imageUrl().equals(newItem.getKey()))) {
-          item.bagItem().setImage(newItem.getKey());
+        if (!(item.imageUrl().equals(newItem.getKey().getKey()))) {
+          item.bagItem().setImage(newItem.getKey().getKey());
         }
         if (item.num() != newItem.getValue()) {
           item.bagItem().setNum(newItem.getValue());
         }
-        itemOnShow.set(i, new Item(newItem.getKey(), newItem.getValue(), item.bagItem()));
+        itemOnShow.set(i, new Item(newItem.getKey().getKey(), newItem.getValue(), item.bagItem()));
       }
     }
     itemOnShow.addAll(newItemOnShow);
-    LOG.info("item on show is: " + itemOnShow);
   }
 }
