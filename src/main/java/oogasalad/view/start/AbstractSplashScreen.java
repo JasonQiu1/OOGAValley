@@ -1,6 +1,5 @@
 package oogasalad.view.start;
 
-import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.animation.SequentialTransition;
@@ -19,8 +18,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public abstract class AbstractSplashScreen {
+
   private static final Logger LOG = LogManager.getLogger(AbstractSplashScreen.class);
-      // should this be here
+  // should this be here
   private Scene previousScene;
 
   public AbstractSplashScreen() {
@@ -50,7 +50,6 @@ public abstract class AbstractSplashScreen {
     int initialStartScreenWidth = (int) (screenBounds.getWidth() * widthPortion);
     int initialStartScreenHeight = (int) (screenBounds.getHeight() * heightPortion);
 
-
     //Create title
     //TODO: Resources bundle this
     Label title = new Label(resourceString.stageTitle());
@@ -62,7 +61,8 @@ public abstract class AbstractSplashScreen {
     scene = new Scene(vb, initialStartScreenWidth, initialStartScreenHeight);
 //    myScene = scene;
 
-    SplashUtils.createButtonsFromFile(resourceString.buttonsPath(), stage, buttonsBox, language, scene);
+    SplashUtils.createButtonsFromFile(resourceString.buttonsPath(), stage, buttonsBox, language,
+        scene);
     vb.getChildren().add(buttonsBox);
 
     LOG.info(myScene);
@@ -90,7 +90,6 @@ public abstract class AbstractSplashScreen {
     PathTransition pt = new PathTransition(Duration.seconds(1), path, l);
     return new SequentialTransition(l, pt);
   }
-
 
 
 }
