@@ -81,9 +81,7 @@ public class BagView extends StackPane {
         bagItem.select();
       }
     }
-    // TODO: fix select issue once the model is done
-//    game.selectItem(name);
-
+    game.selectItem(name);
   }
 
 
