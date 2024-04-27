@@ -7,9 +7,11 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
+import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -59,6 +61,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     myScene = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString, primaryLanguage, previousScene);
     LOG.info(String.format("the previous scene is still %s", previousScene));
 
+    myScene.setOnKeyPressed(event -> actKey(event.getCode()));
+
     stage.setTitle(myStageTitle);
     stage.setScene(myScene);
     stage.show();
@@ -70,6 +74,13 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //      throw new RuntimeException(e);
 //    }
 //    goBackScene(new Scene(new HBox()));
+  }
+
+  private void actKey(KeyCode code) {
+    if (code == KeyCode.ESCAPE) {
+      ButtonMenu btm = new ButtonMenu(stage, primaryLanguage, previousScene, buttonsPath);
+      btm.open();
+    }
   }
 
   private void setFilesLanguage() {

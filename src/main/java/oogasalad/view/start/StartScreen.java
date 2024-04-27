@@ -55,14 +55,12 @@ public class StartScreen extends AbstractSplashScreen {
     myStageTitle = titleResource.getString("title");
     buttonsPath = buttonResource.getString("buttons_path");
 
-    LOG.debug(String.format("this is the previous scene1 %s", startScreen));
 
     ResourceString resourceString =
         new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath, myStageTitle, STYLES);
     startScreen = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
         myPrimaryLanguage, startScreen);
 
-    LOG.debug(String.format("this is the previous scene2 %s", startScreen));
 
     stage.setTitle(myStageTitle);
     stage.setScene(startScreen);
