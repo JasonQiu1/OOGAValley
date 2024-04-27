@@ -51,7 +51,7 @@ public class DataFactory<T> {
    * @throws IOException          if the filePath could not be opened.
    */
   public T load(String dataFilePath) throws BadGsonLoadException, IOException {
-    File dataFile = new File(DATA_DIRECTORY, addDataFileExtension(dataFilePath));
+    File dataFile = getFile(dataFilePath);
     try (Reader dataReader = new FileReader(dataFile)) {
       return GSON.fromJson(dataReader, clazz);
     } catch (JsonSyntaxException e) {
@@ -73,7 +73,7 @@ public class DataFactory<T> {
    * @throws IOException if the given file path cannot be created, opened, or written to.
    */
   public void save(String dataFilePath, T object) throws IOException {
-    File dataFile = new File(DATA_DIRECTORY, addDataFileExtension(dataFilePath));
+    File dataFile = getFile(dataFilePath);
     try (Writer writer = new FileWriter(dataFile, false)) {
       writer.write(GSON.toJson(object));
     } catch (IOException e) {
@@ -81,6 +81,17 @@ public class DataFactory<T> {
           dataFile.getAbsolutePath(), object.toString());
       throw e;
     }
+  }
+
+  // Determines if the given path is an absolute or relative path.
+  // If absolute, then just returns that as is, otherwise appends the relative path onto the data directory.
+  private File getFile(String filePath) {
+    String extendedFilePath = addDataFileExtension(filePath);
+    File file = new File(extendedFilePath);
+    if (file.isAbsolute()) {
+      return file;
+    }
+    return new File(DATA_DIRECTORY, addDataFileExtension(extendedFilePath));
   }
 
   private final Class<T> clazz;
