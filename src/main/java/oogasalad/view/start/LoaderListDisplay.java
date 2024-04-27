@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 public class LoaderListDisplay {
 
   private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
-  File selectedFile;
+  private File selectedFile;
   private final String myTitle;
   private final String defaultDirectoryPath;
   private final VBox vBox;

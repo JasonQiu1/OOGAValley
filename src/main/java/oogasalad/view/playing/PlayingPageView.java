@@ -24,7 +24,6 @@ import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.Money;
-import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
@@ -70,7 +69,6 @@ public class PlayingPageView {
   private final String menuButtons = DEFAULT_RESOURCE_FOLDER + menuLanguage;
   private final Label timeLabel = new Label();
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
-  private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
   private final String primaryLanguage;
   private final Money money = new Money(100);
