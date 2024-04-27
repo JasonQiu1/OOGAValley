@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.scene.layout.GridPane;
 import oogasalad.model.api.GameInterface;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.view.popup.PopUpStackPane;
+import oogasalad.view.shopping.ErrorPopUp;
 import oogasalad.view.shopping.ShoppingViewStackPane;
 import oogasalad.view.shopping.components.ItemView;
 
@@ -51,8 +53,8 @@ public class SellGridPane extends GridPane {
           if (choice) {
             try {
               game.sellItem(sellItemView.getName());
-            } catch (Exception e) {
-
+            } catch (KeyNotFoundException e) {
+              ErrorPopUp.display("You don't have this item in bag.");
             }
             game.update();
             parentStackPane.getMoneyHbox().update(game.getGameState().getMoney());
