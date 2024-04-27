@@ -17,8 +17,8 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
   private final String methodName;
   private final Stage stage;
   private final String language;
-  private Scene previousScene;
   private final String[] parameters;
+  private final Scene previousScene;
 
   public ButtonActionHandler(String className, String methodName, Stage stage, String language,
       Scene backScene, String... parameters) {
@@ -27,7 +27,7 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
     this.stage = stage;
     this.language = language;
     this.previousScene = backScene;
-    LOG.info(String.format("when called? %s", previousScene));
+//    LOG.info(String.format("when called? %s", previousScene));
     this.parameters = parameters.clone();
   }
 
@@ -36,18 +36,18 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
     try {
       Class<?> clazz = Class.forName(className);
       Class<?>[] parameterTypes = new Class[parameters.length];
-      LOG.info(parameterTypes.length);
       for (int i = 1; i < parameters.length; i++) {
         parameterTypes[i] = String.class; // Assume all parameters are strings
       }
 //      LOG.info(parameterTypes[0]);
       Method method = clazz.getMethod(methodName, parameterTypes);
       System.out.println(clazz.getSimpleName());
-      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, Scene.class, GameConfiguration.class);
-      Object instance = constructor.newInstance(stage, language, previousScene, new GameConfiguration());
+      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, Scene.class,
+          GameConfiguration.class);
+      Object instance = constructor.newInstance(stage, language, previousScene,
+          new GameConfiguration());
 
       Object[] args = new Object[parameters.length]; // +1 for the stage
-      LOG.debug(String.format("are the previous scenes recorded properly in ButtonActionHandler %s", previousScene));
       System.arraycopy(parameters, 0, args, 0, parameters.length); // copy remaining parameters
 
       method.invoke(instance, args); // invoke the method with all parameters

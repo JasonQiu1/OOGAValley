@@ -10,9 +10,9 @@ import javafx.stage.Stage;
 
 public class LanguageDialogBox {
 
-  private Stage myStage;
   private final StringProperty primaryLanguage = new SimpleStringProperty();
   private final ComboBox<String> dropDownMenu;
+  private Stage myStage;
 
   public LanguageDialogBox(String[] languages) {
     dropDownMenu = new ComboBox<>();

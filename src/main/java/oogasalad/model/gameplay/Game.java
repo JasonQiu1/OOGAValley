@@ -37,6 +37,17 @@ public class Game implements GameInterface {
   }
 
   /**
+   * Loads a new game with an already-loaded configuration.
+   *
+   * @param configuration the loaded configuration.
+   * @throws IOException if the configuration file is not found.
+   */
+  public Game(GameConfiguration configuration) throws IOException {
+    this.configuration = configuration;
+    state = new GameState(configuration.getInitialState());
+  }
+
+  /**
    * Loads a specific GameConfiguration with the given initial state as the first save.
    *
    * @param configName the name of the config.
@@ -51,7 +62,7 @@ public class Game implements GameInterface {
    * Loads the given config with the given save.
    *
    * @param configName the name of the configuration file in 'data/gameconfigurations'.
-   * @param saveName the name of the save file in 'data/gamesaves'.
+   * @param saveName   the name of the save file in 'data/gamesaves'.
    * @throws IOException if the configuration or save file are not found.
    */
   public Game(String configName, String saveName) throws IOException {
@@ -70,6 +81,16 @@ public class Game implements GameInterface {
     state.addItemsToBag();
   }
 
+  /**
+   * Saves the current GameState to 'data/gamesaves' with the given filename.
+   *
+   * @param fileName the name of the file to save to.
+   * @throws IOException if writing to the file fails.
+   */
+  @Override
+  public void save(String fileName) throws IOException {
+    state.save(fileName);
+  }
 
   /**
    * Selects an item in the bag.
@@ -138,6 +159,7 @@ public class Game implements GameInterface {
       throw new KeyNotFoundException(id);
     }
     state.addMoney((int) item.getWorth());
+    bag.removeItem(id, 1);
   }
 
   /**
@@ -150,8 +172,18 @@ public class Game implements GameInterface {
    */
   @Override
   public boolean isGameOver() {
-    return state.getGameTime().convertInMinutes() >= configuration.getRules()
-        .getInteger("timeGoal");
+    return switch (configuration.getRules().getString("goalCondition")) {
+      case "time" ->
+          state.getGameTime().convertInMinutes() >= configuration.getRules().getInteger("timeGoal");
+      case "collect" -> state.getEditableBag()
+          .contains(configuration.getRules().getStringIntegerMap("collectGoal"));
+      default -> {
+        String errorMessage =
+            "Unexpected goal condition: " + configuration.getRules().getString("goalCondition");
+        LOG.error(errorMessage);
+        throw new IllegalStateException(errorMessage);
+      }
+    };
   }
 
   @Override

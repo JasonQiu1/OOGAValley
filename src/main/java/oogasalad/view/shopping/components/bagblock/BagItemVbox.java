@@ -16,10 +16,10 @@ public class BagItemVbox extends VBox {
   private final RemainNumStackPane remainNumStackPane;
 
   /**
-   * Constructor for the BagItemVbox
+   * Constructor for BagItemVbox.
    *
-   * @param itemImage          the image of the item
-   * @param remainNumStackPane the RemainNumStackPane to display the number of items remaining
+   * @param itemImage          The item image
+   * @param remainNumStackPane The remain number stack pane
    */
   public BagItemVbox(ImageView itemImage, RemainNumStackPane remainNumStackPane) {
     super();

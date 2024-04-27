@@ -1,5 +1,6 @@
 package oogasalad.model.api;
 
+import java.io.IOException;
 import oogasalad.model.api.exception.KeyNotFoundException;
 
 /**
@@ -35,6 +36,14 @@ public interface GameInterface {
    * needed.
    */
   void update();
+
+  /**
+   * Saves the current GameState to 'data/gamesaves' with the given filename.
+   *
+   * @param fileName the name of the file to save to.
+   * @throws IOException if writing to the file fails.
+   */
+  void save(String fileName) throws IOException;
 
   /**
    * Selects an item in the bag.
