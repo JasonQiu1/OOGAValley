@@ -5,8 +5,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.BagItemModel;
+import oogasalad.model.api.ReadOnlyBag;
+import oogasalad.model.api.ReadOnlyItem;
 
 /**
  * This class is a GridPane that contains BagItemVboxes. It is used to display the items in the bag
@@ -14,14 +14,14 @@ import oogasalad.model.shop.BagItemModel;
  */
 public class BagGridPane extends GridPane {
 
-  private final Bag bag;
+  private final ReadOnlyBag bag;
 
   /**
    * Constructor for the BagGridPane
    *
    * @param bag the bag to be displayed
    */
-  public BagGridPane(Bag bag) {
+  public BagGridPane(ReadOnlyBag bag) {
     super();
     this.bag = bag;
     initialize();
@@ -33,10 +33,10 @@ public class BagGridPane extends GridPane {
     int rowIndex = 0;
     setPadding(new Insets(10));
     setAlignment(Pos.CENTER);
-    for (Map.Entry<BagItemModel, Integer> entry : bag.getItemMap().entrySet()) {
-      BagItemModel bagItemModel = entry.getKey();
+    for (Map.Entry<ReadOnlyItem, Integer> entry : bag.getItems().entrySet()) {
+      ReadOnlyItem bagItem = entry.getKey();
       int quantity = entry.getValue();
-      ImageView itemImage = new ImageView(bagItemModel.getUrl());
+      ImageView itemImage = new ImageView("file:data/images/" + bagItem.getImagePath());
       RemainNumStackPane remainNumStackPane = new RemainNumStackPane(quantity);
       BagItemVbox bagItemVbox = new BagItemVbox(itemImage, remainNumStackPane);
       add(bagItemVbox, columnIndex, rowIndex);

@@ -5,8 +5,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.Shop;
+import oogasalad.model.api.GameInterface;
+import oogasalad.model.api.ReadOnlyBag;
+import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.view.shopping.components.bagblock.BagStackPane;
 import oogasalad.view.shopping.components.shopblock.ShopStackPane;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
@@ -14,17 +15,19 @@ import oogasalad.view.shopping.components.top.TopHbox;
 
 public class ShoppingStackPane extends StackPane {
 
-  private final Shop shop;
-  private final Bag bag;
+  private final ReadOnlyShop shop;
+  private final ReadOnlyBag bag;
+  private final GameInterface game;
   private final Stage stage;
   private final Scene previousScene;
   private TopHbox topHBox;
 
-  public ShoppingStackPane(Shop shop, Bag bag, Stage stage, Scene previousScene) {
+  public ShoppingStackPane(GameInterface game, Stage stage, Scene previousScene) {
     super();
     this.getStyleClass().add("shop-boarder-pane");
-    this.shop = shop;
-    this.bag = bag;
+    this.game = game;
+    this.shop = game.getGameState().getShop();
+    this.bag = game.getGameState().getBag();
     this.stage = stage;
     this.previousScene = previousScene;
     initialize();
@@ -36,7 +39,7 @@ public class ShoppingStackPane extends StackPane {
     topHBox = new TopHbox(shop);
     borderPane.setTop(topHBox);
     HBox centerHBox = new HBox();
-    StackPane sellItemStackPane = new ShopStackPane(shop, this);
+    StackPane sellItemStackPane = new ShopStackPane(game, this);
     StackPane bagStackPane = new BagStackPane(bag);
     centerHBox.getChildren().addAll(sellItemStackPane, bagStackPane);
     borderPane.setCenter(centerHBox);

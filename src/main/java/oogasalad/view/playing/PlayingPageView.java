@@ -19,8 +19,6 @@ import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.data.GameConfiguration;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.Shop;
 import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
@@ -42,15 +40,6 @@ import org.apache.logging.log4j.Logger;
 public class PlayingPageView {
 
 
-  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
-  private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/playing/";
-  private final String myLanguage = "EnglishDisplayText";
-  private final String menuLanguage = "EnglishMenuButtons.csv";
-  private final ResourceBundle displayTextResource =
-      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-
-  private final String menuButtons = DEFAULT_RESOURCE_FOLDER + menuLanguage;
-
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
   public static final double bottomCellWidth = 30;
@@ -71,24 +60,25 @@ public class PlayingPageView {
   public static final double windowHeight = landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
+  private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/playing/";
+  private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
+  private final String myLanguage = "EnglishDisplayText";
+  private final String menuLanguage = "EnglishMenuButtons.csv";
+  private final ResourceBundle displayTextResource =
+      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
+  private final String menuButtons = DEFAULT_RESOURCE_FOLDER + menuLanguage;
   private final Label timeLabel = new Label();
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
   private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
   private final String primaryLanguage;
-  private final Bag bag = new Bag();
-
+  private final Money money = new Money(100);
+  private final GameFactory gameFactory = new GameFactory();
+  private final GameInterface game;
   private Button helpButton;
   private LandView landView;
   private TopAnimationView topAnimationView;
-  private final Money money = new Money(100);
-  private final Shop shop = new Shop(money);
-  private final GameFactory gameFactory = new GameFactory();
-
-  private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
-
-  private final GameInterface game;
-
   private BagView bagView;
   private String fileName;
   private Scene previousScene;
@@ -169,7 +159,7 @@ public class PlayingPageView {
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
-    money.addObserver(currentMoneyHbox, money.getMoney());
+    money.addObserver(currentMoneyHbox, game.getGameState().getMoney());
     topBox.getChildren()
         .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
     root.setTop(topBox);
@@ -202,7 +192,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(shop, null, stage, scene, money);
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, money);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);

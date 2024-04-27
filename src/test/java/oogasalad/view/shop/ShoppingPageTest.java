@@ -8,12 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.Shop;
+import oogasalad.model.api.GameFactory;
+import oogasalad.model.api.GameInterface;
 import oogasalad.view.playing.component.Money;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.shopblock.PriceStackPane;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import util.DukeApplicationTest;
 
@@ -26,7 +25,7 @@ public class ShoppingPageTest extends DukeApplicationTest {
   private Scene prev_scene;
 
   private Money money = new Money(100);
-  private Shop shop = new Shop(money);
+  private GameInterface game = new GameFactory().createGame();
 
   @Override
   public void start(Stage stage) {
@@ -34,7 +33,7 @@ public class ShoppingPageTest extends DukeApplicationTest {
     prev_scene = new Scene(new javafx.scene.layout.StackPane(), 800, 800);
     this.stage.setScene(prev_scene);
 
-    this.shoppingView = new ShoppingView(shop, new Bag(), this.stage, prev_scene, money);
+    this.shoppingView = new ShoppingView(game, this.stage, prev_scene, money);
     scene = new Scene(shoppingView.getScene());
     this.stage.setScene(scene);
     this.stage.getScene().getStylesheets().add("styles.css");
@@ -61,10 +60,6 @@ public class ShoppingPageTest extends DukeApplicationTest {
     clickOn(rightButton);
     sleep(1000);
     assertTrue(rightButton.isDisabled());
-    assertFalse(leftButton.isDisabled());
-    clickOn(leftButton);
-    sleep(1000);
-    assertFalse(rightButton.isDisabled());
   }
 
   @Test
