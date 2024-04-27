@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import oogasalad.controller.RuleController;
 import oogasalad.model.data.GameConfiguration;
 
 public class RuleEditor extends HBox {
@@ -31,8 +32,9 @@ public class RuleEditor extends HBox {
     vbox.getChildren().addAll(l, rd);
     vbox.setSpacing(10);
     bp.setTop(vbox);
+    RuleController rc = new RuleController(config);
     HBox bottom = new HBox(new SaveButton(RuleResource.getString("save"),
-        e -> rd.save(getSaveAll(), config::updateRule)));
+        e -> rd.save(getSaveAll(), rc::updateRule)));
     bottom.setAlignment(Pos.CENTER);
     bp.setBottom(bottom);
     super.setPadding(new Insets(0, 50, 10, 50));
