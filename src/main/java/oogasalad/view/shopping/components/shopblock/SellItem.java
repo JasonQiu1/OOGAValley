@@ -1,20 +1,20 @@
-package oogasalad.model.shop;
+package oogasalad.view.shopping.components.shopblock;
 
 /**
  * Items the shop provides
  */
 public class SellItem {
 
-  private final int prices;
+  private final double prices;
 
   private final String url;
 
-  public SellItem(int prices, String url) {
+  public SellItem(double prices, String url) {
     this.prices = prices;
     this.url = url;
   }
 
-  public int getPrices() {
+  public double getPrices() {
     return prices;
   }
 

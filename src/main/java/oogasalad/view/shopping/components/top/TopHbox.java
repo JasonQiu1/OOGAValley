@@ -4,7 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import oogasalad.model.shop.Shop;
+import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.view.shopping.Utils;
 
 /**
@@ -17,7 +17,7 @@ public class TopHbox extends HBox {
   private ProgressBarHbox progressBarHbox;
   private Button backButton;
 
-  public TopHbox(Shop shop) {
+  public TopHbox(ReadOnlyShop shop) {
     super();
     initialize(shop);
   }
@@ -27,7 +27,7 @@ public class TopHbox extends HBox {
    *
    * @param shop the shop to be displayed
    */
-  private void initialize(Shop shop) {
+  private void initialize(ReadOnlyShop shop) {
     setAlignment(Pos.CENTER);
     setSpacing(Utils.topHBoxSpacing);
     setAlignment(Pos.CENTER_LEFT);

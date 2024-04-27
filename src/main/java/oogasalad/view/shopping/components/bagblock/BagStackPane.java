@@ -4,7 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import oogasalad.model.shop.Bag;
+import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.view.shopping.Utils;
 
 /**
@@ -13,14 +13,14 @@ import oogasalad.view.shopping.Utils;
  */
 public class BagStackPane extends StackPane {
 
-  private final Bag bag;
+  private final ReadOnlyBag bag;
 
   /**
    * Constructor for the BagStackPane
    *
    * @param bag the bag to be displayed
    */
-  public BagStackPane(Bag bag) {
+  public BagStackPane(ReadOnlyBag bag) {
     super();
     this.bag = bag;
     initialize();

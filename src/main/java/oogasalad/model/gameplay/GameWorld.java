@@ -104,6 +104,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * @return A List of ItemsToAdd, each object representing a set of items to be added to the
    * inventory, characterized by their ID and quantity.
    */
+  @Override
   public List<ItemsToAdd> itemsToAddToInventory() {
     List<ItemsToAdd> itemsToAddList = new ArrayList<>();
     for (Entry<CoordinateOfGameObjectRecord, Tile> entry : allTiles.entrySet()) {

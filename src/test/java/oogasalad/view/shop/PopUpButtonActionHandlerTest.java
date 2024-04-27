@@ -1,11 +1,13 @@
 package oogasalad.view.shop;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
 
-import oogasalad.view.popup.PopUpButtonActionHandler;
-import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
 import java.util.function.Consumer;
 import javafx.scene.layout.StackPane;
+import oogasalad.view.popup.PopUpButtonActionHandler;
+import org.junit.Test;
 
 public class PopUpButtonActionHandlerTest {
 

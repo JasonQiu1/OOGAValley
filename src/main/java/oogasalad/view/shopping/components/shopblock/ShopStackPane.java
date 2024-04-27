@@ -2,13 +2,14 @@ package oogasalad.view.shopping.components.shopblock;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import oogasalad.model.shop.SellItem;
-import oogasalad.model.shop.Shop;
+import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.view.shopping.Utils;
 
 /**
@@ -17,7 +18,7 @@ import oogasalad.view.shopping.Utils;
  */
 public class ShopStackPane extends StackPane {
 
-  private final Shop shop;
+  private final ReadOnlyShop shop;
   private final StackPane parentStackPane;
   private List<SellGridPane> gridPanes;
   private PageChangeBorderPane pageChangeBorderPane;
@@ -31,7 +32,7 @@ public class ShopStackPane extends StackPane {
    * @param shop            the shop to be displayed
    * @param parentStackPane the parent stack pane
    */
-  public ShopStackPane(Shop shop, StackPane parentStackPane) {
+  public ShopStackPane(ReadOnlyShop shop, StackPane parentStackPane) {
     super();
     this.shop = shop;
     this.parentStackPane = parentStackPane;
@@ -43,7 +44,7 @@ public class ShopStackPane extends StackPane {
     backgroundImageView = new ImageView(backgroundImage);
     backgroundImageView.setFitWidth(Utils.shopStackPaneWidth);
     backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
-    List<SellItem> sellItems = shop.getItems();
+    List<SellItem> sellItems = createSellItems();
     createSellGridPanes(sellItems);
     pageChangeBorderPane = new PageChangeBorderPane();
     enableButtons();
@@ -91,6 +92,18 @@ public class ShopStackPane extends StackPane {
       changePage();
       enableButtons();
     });
+  }
+
+  private List<SellItem> createSellItems() {
+    List<SellItem> sellItems = new ArrayList<>();
+    Map<ReadOnlyItem, Double> itemPriceMap = shop.getItems();
+    for (Map.Entry<ReadOnlyItem, Double> entry : itemPriceMap.entrySet()) {
+      ReadOnlyItem item = entry.getKey();
+      double price = entry.getValue();
+      SellItem sellItem = new SellItem(price, "file:data/images/" + item.getImagePath());
+      sellItems.add(sellItem);
+    }
+    return sellItems;
   }
 
   private void changePage() {
