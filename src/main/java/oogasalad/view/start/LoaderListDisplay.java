@@ -17,7 +17,7 @@ public class LoaderListDisplay {
   private final String myTitle;
   private final String defaultDirectoryPath;
   private final VBox vBox;
-  File selectedFile;
+  private File selectedFile;
 
   public LoaderListDisplay(String title, String defaultFolderPath) {
     vBox = new VBox();
