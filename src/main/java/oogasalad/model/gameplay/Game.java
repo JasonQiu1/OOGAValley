@@ -1,8 +1,6 @@
 package oogasalad.model.gameplay;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.api.ReadOnlyGameState;
@@ -36,6 +34,17 @@ public class Game implements GameInterface {
       LOG.error("Couldn't load default GameState from 'data/templates/GameState.json'");
       throw new RuntimeException(e);
     }
+  }
+
+  /**
+   * Loads a new game with an already-loaded configuration.
+   *
+   * @param configuration the loaded configuration.
+   * @throws IOException if the configuration file is not found.
+   */
+  public Game(GameConfiguration configuration) throws IOException {
+    this.configuration = configuration;
+    state = new GameState(configuration.getInitialState());
   }
 
   /**
@@ -145,15 +154,12 @@ public class Game implements GameInterface {
   @Override
   public void sellItem(String id) throws KeyNotFoundException {
     Bag bag = state.getEditableBag();
-    Map<ReadOnlyItem, Integer> items = bag.getItems();
-    for(Map.Entry<ReadOnlyItem, Integer> entry : items.entrySet()){
-      if(entry.getKey().getName().equals(id)){
-        state.addMoney((int) getPriceFromShop(id));
-        bag.removeItem(id, 1);
-        return;
-      }
+    Item item = new Item(id);
+    if (!bag.getItems().containsKey(item)) {
+      throw new KeyNotFoundException(id);
     }
-    throw new KeyNotFoundException(id);
+    state.addMoney((int) item.getWorth());
+    bag.removeItem(id, 1);
   }
 
   /**
@@ -166,8 +172,18 @@ public class Game implements GameInterface {
    */
   @Override
   public boolean isGameOver() {
-    return state.getGameTime().convertInMinutes() >= configuration.getRules()
-        .getInteger("timeGoal");
+    return switch (configuration.getRules().getString("goalCondition")) {
+      case "time" ->
+          state.getGameTime().convertInMinutes() >= configuration.getRules().getInteger("timeGoal");
+      case "collect" -> state.getEditableBag()
+          .contains(configuration.getRules().getStringIntegerMap("collectGoal"));
+      default -> {
+        String errorMessage =
+            "Unexpected goal condition: " + configuration.getRules().getString("goalCondition");
+        LOG.error(errorMessage);
+        throw new IllegalStateException(errorMessage);
+      }
+    };
   }
 
   @Override
@@ -183,13 +199,11 @@ public class Game implements GameInterface {
   // Gets the price of an item from the shop.
   private double getPriceFromShop(String id) throws KeyNotFoundException {
     ReadOnlyShop shop = state.getShop();
-    Map<ReadOnlyItem, Double> items = shop.getItems();
-    for(Map.Entry<ReadOnlyItem, Double> entry : items.entrySet()){
-      if(entry.getKey().getName().equals(id)){
-        return entry.getValue();
-      }
+    Double price = shop.getItems().get(new Item(id));
+    if (price == null) {
+      throw new KeyNotFoundException(id);
     }
-    throw new KeyNotFoundException(id);
+    return price;
   }
 
   private final GameConfiguration configuration;

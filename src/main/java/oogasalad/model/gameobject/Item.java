@@ -69,6 +69,9 @@ public class Item implements ReadOnlyItem {
    */
   @Override
   public boolean equals(Object obj) {
-    return itemId.equals(obj);
+    if (obj == null || obj.getClass() != this.getClass()) {
+      return false;
+    }
+    return itemId.equals(((Item) obj).itemId);
   }
 }
