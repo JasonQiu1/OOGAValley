@@ -8,6 +8,7 @@ import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.InvalidRuleType;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.gameplay.GameState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -104,7 +105,13 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     return initialState;
   }
 
-  @Override
+  /**
+   * Updates a rule only if it already exists.
+   *
+   * @param rule     queried rule.
+   * @param newValue the value to set.
+   * @throws KeyNotFoundException if the rule does not exist.
+   */
   public void updateRule(String rule, String newValue) throws InvalidRuleType {
     DataValidation.validate(rule, newValue);
     rules.update(rule, newValue);
