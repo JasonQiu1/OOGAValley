@@ -1,15 +1,86 @@
 {
   "configurables": {
-    "grass_structure": {
+    "plant": {
       "properties": {
-        "name": "grass_structure",
+        "name": "plant",
         "type": "Structure",
-        "image": "/img/grass.jpg",
+        "image": "/img/plant.jpg",
         "updatable": "true",
-        "updateTime": "10",
-        "updateTransformation": "tilled_grass",
+        "updateTime": "1",
+        "updateTransformation": "wheat",
         "expirable": "false",
+        "expireTime": "0",
+        "expireTransformation": "",
+        "destructable": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "validItem": "wheat",
+          "hoe": "wheat"
+        },
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "seed": "2"
+        }
+      }
+    },
+    "grass": {
+      "properties": {
+        "name": "grass",
+        "type": "Land",
+        "image": "/img/grass.jpg",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "0",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "validItem": "tilled_grass"
+        },
+        "interactDropMultipliers": {},
+        "plantableSeeds": {
+          "wheat_seed": "wheat"
+        }
+      }
+    },
+    "COLLECTABLE": {
+      "properties": {
+        "name": "COLLECTABLE",
+        "type": "Collectable",
+        "image": "",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "true",
         "expireTime": "120",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "validItem": ""
+        },
+        "interactDropMultipliers": {}
+      }
+    },
+    "wheat": {
+      "properties": {
+        "name": "wheat",
+        "type": "Structure",
+        "image": "/img/wheat.jpg",
+        "updatable": "false",
+        "updateTime": "10",
+        "updateTransformation": "wheatLevel2",
+        "expirable": "false",
+        "expireTime": "0",
         "expireTransformation": "",
         "destructable": "true"
       },
@@ -17,7 +88,7 @@
       "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
-          "validItem": "tilled_grass"
+          "validItem": ""
         },
         "interactDropMultipliers": {},
         "dropsOnDestruction": {
