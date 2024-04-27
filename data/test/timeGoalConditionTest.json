@@ -1,6 +1,6 @@
 {
   "properties": {
-    "configName": "DEFAULT_GAME_NAME",
+    "configName": "TIMEGOALTEST",
     "author": "OOGAValley Devs",
     "goalCondition": "time",
     "doEnergy": true,

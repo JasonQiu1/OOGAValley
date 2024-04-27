@@ -37,6 +37,17 @@ public class Game implements GameInterface {
   }
 
   /**
+   * Loads a new game with an already-loaded configuration.
+   *
+   * @param configuration the loaded configuration.
+   * @throws IOException if the configuration file is not found.
+   */
+  public Game(GameConfiguration configuration) throws IOException {
+    this.configuration = configuration;
+    state = new GameState(configuration.getInitialState());
+  }
+
+  /**
    * Loads a specific GameConfiguration with the given initial state as the first save.
    *
    * @param configName the name of the config.
@@ -161,8 +172,18 @@ public class Game implements GameInterface {
    */
   @Override
   public boolean isGameOver() {
-    return state.getGameTime().convertInMinutes() >= configuration.getRules()
-        .getInteger("timeGoal");
+    return switch (configuration.getRules().getString("goalCondition")) {
+      case "time" ->
+          state.getGameTime().convertInMinutes() >= configuration.getRules().getInteger("timeGoal");
+      case "collect" -> state.getEditableBag()
+          .contains(configuration.getRules().getStringIntegerMap("collectGoal"));
+      default -> {
+        String errorMessage =
+            "Unexpected goal condition: " + configuration.getRules().getString("goalCondition");
+        LOG.error(errorMessage);
+        throw new IllegalStateException(errorMessage);
+      }
+    };
   }
 
   @Override
