@@ -55,6 +55,27 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
   /**
+   * Initializes the game configuration with the given rules.
+   */
+  public GameConfiguration(Properties rules) {
+    DataValidation.validateProperties(rules);
+    this.rules = rules;
+    try {
+      configurablesStore =
+          CONFIGURABLES_DATA_FACTORY.load(Paths.get(TEMPLATES_DIRECTORY_PATH, "ConfigurablesStore").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
+      throw new RuntimeException(e);
+    }
+    try {
+      initialState = GAMESTATE_DATA_FACTORY.load(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameState").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameState 'templates/GameState.json'.");
+      throw new RuntimeException(e);
+    }
+  }
+
+  /**
    * Creates and returns an instance of {@link GameConfiguration} from a JSON file. Also loads the
    * configurables store with the same name.
    *
