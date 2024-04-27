@@ -17,12 +17,12 @@ import oogasalad.view.shopping.Utils;
 
 public abstract class ItemStackPane<T extends GridPane> extends StackPane {
 
-  protected final GameInterface game;
-  protected final StackPane parentStackPane;
-  protected final ReadOnlyBag bag;
-  protected final ReadOnlyShop shop;
-  protected List<T> gridPanes;
-  protected List<ItemView> itemViews;
+  private final GameInterface game;
+  private final StackPane parentStackPane;
+  private final ReadOnlyBag bag;
+  private final ReadOnlyShop shop;
+  private List<T> gridPanes;
+  private List<ItemView> itemViews;
 
   public ItemStackPane(GameInterface game, StackPane parentStackPane) {
     super();
@@ -52,7 +52,7 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
 
   protected abstract String getBackgroundImagePath();
 
-  protected void createItems() {
+  private void createItems() {
     itemViews = new ArrayList<>();
     Map<? extends ReadOnlyItem, Double> itemPriceMap = shop.getItems();
     for (Map.Entry<? extends ReadOnlyItem, Double> entry : itemPriceMap.entrySet()) {
@@ -75,6 +75,7 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
       gridPanes.add(gridPane);
     }
   }
+
   protected abstract T createGridPane(GameInterface game, List<ItemView> sublist,
       StackPane parentStackPane);
 

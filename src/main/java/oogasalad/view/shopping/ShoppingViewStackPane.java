@@ -13,7 +13,7 @@ import oogasalad.view.shopping.components.shopblock.ShopStackPane;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
 import oogasalad.view.shopping.components.top.TopHbox;
 
-public class ShoppingStackPane extends StackPane {
+public class ShoppingViewStackPane extends StackPane {
 
   private final ReadOnlyShop shop;
   private final ReadOnlyBag bag;
@@ -22,7 +22,7 @@ public class ShoppingStackPane extends StackPane {
   private final Scene previousScene;
   private TopHbox topHBox;
 
-  public ShoppingStackPane(GameInterface game, Stage stage, Scene previousScene) {
+  public ShoppingViewStackPane(GameInterface game, Stage stage, Scene previousScene) {
     super();
     this.getStyleClass().add("shop-boarder-pane");
     this.game = game;
@@ -40,7 +40,7 @@ public class ShoppingStackPane extends StackPane {
     borderPane.setTop(topHBox);
     HBox centerHBox = new HBox();
     StackPane sellItemStackPane = new ShopStackPane(game, this);
-    StackPane bagStackPane = new BagStackPane(game,this);
+    StackPane bagStackPane = new BagStackPane(game, this);
     centerHBox.getChildren().addAll(sellItemStackPane, bagStackPane);
     borderPane.setCenter(centerHBox);
     topHBox.getBackButton().setOnMouseClicked(event -> {

@@ -8,6 +8,10 @@ import oogasalad.model.api.GameInterface;
 import oogasalad.view.popup.PopUpStackPane;
 import oogasalad.view.shopping.components.ItemView;
 
+/**
+ * This class is responsible for creating the sell grid pane that is used to display the items in
+ * the shop.
+ */
 public class SellGridPane extends GridPane {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.shopping.components.shopblock.";
@@ -16,12 +20,15 @@ public class SellGridPane extends GridPane {
   private final List<ItemView> sellItemViews;
   private final StackPane parentStackPane;
   private final String myLanguage = "EnglishPopUpText";
-  private ResourceBundle popUpTextResource;
   private final GameInterface game;
+  private ResourceBundle popUpTextResource;
 
   /**
-   * This class is a GridPane that contains SellItemVboxes. It is used to display the items that can
-   * be sold in the shop block.
+   * Constructor for SellGridPane.
+   *
+   * @param game            The game interface
+   * @param sellItemViews   The list of item views
+   * @param parentStackPane The parent stack pane
    */
   public SellGridPane(GameInterface game, List<ItemView> sellItemViews, StackPane parentStackPane) {
     super();

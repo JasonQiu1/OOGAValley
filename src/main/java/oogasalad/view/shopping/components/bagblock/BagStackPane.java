@@ -1,6 +1,5 @@
 package oogasalad.view.shopping.components.bagblock;
 
-import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -9,6 +8,10 @@ import oogasalad.view.shopping.components.ItemStackPane;
 import oogasalad.view.shopping.components.ItemView;
 import oogasalad.view.shopping.components.PageChangeBorderPane;
 
+/**
+ * This class is responsible for creating the bag stack pane that is used to display the items in
+ * the bag.
+ */
 public class BagStackPane extends ItemStackPane<BagGridPane> {
 
   public BagStackPane(GameInterface game, StackPane parentStackPane) {

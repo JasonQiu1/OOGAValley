@@ -10,6 +10,7 @@ import oogasalad.view.shopping.Utils;
 
 /**
  * This class is responsible for creating the page change border pane that is used to change pages.
+ *
  * @param <T> The type of GridPane
  */
 public class PageChangeBorderPane<T extends GridPane> extends BorderPane {

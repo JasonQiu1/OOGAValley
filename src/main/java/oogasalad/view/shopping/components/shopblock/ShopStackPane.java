@@ -8,6 +8,10 @@ import oogasalad.view.shopping.components.ItemStackPane;
 import oogasalad.view.shopping.components.ItemView;
 import oogasalad.view.shopping.components.PageChangeBorderPane;
 
+/**
+ * This class is responsible for creating the shop stack pane that is used to display the items in
+ * the shop.
+ */
 public class ShopStackPane extends ItemStackPane<SellGridPane> {
 
 
