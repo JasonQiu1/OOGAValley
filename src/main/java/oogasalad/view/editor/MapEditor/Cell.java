@@ -6,7 +6,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import oogasalad.model.api.BuildableTileMapInterface;
+import oogasalad.controller.MapController;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -17,13 +17,13 @@ public class Cell extends StackPane {
 
   private static final int HEIGHT = 37; //read from file
   private static final int WIDTH = 50;
-  private static BuildableTileMapInterface gameMap;
+  private static MapController gameMap;
   private final Rectangle base;
   private int column;
   private int row;
   private int[] id;
 
-  public static void setGameMap(BuildableTileMapInterface map){
+  public static void setGameMap(MapController map){
     gameMap = map;
   }
 

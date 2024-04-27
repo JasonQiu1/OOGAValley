@@ -67,41 +67,13 @@ public class BuildableTileMap extends GameWorld {
   }
 
   /**
-   * Shifts all tiles to the right and adds a new column to the left.
-   */
-  public void shiftRightAndAddColumn() {
-    alterSizeTL(1, 0);
-  }
-
-  /**
-   * Shifts all tiles to the left and removes the rightmost column.
-   */
-  public void shiftLeftAndRemoveColumn() {
-    alterSizeTL(-1, 0);
-  }
-
-  /**
-   * Shifts all tiles up and removes the bottom row.
-   */
-  public void shiftUpAndRemoveRow() {
-    alterSizeTL(0, -1);
-  }
-
-  /**
-   * Shifts all tiles down and adds a new row at the bottom.
-   */
-  public void shiftDownAndAddRow() {
-    alterSizeTL(0, 1);
-  }
-
-  /**
    * Alters the size of the game world by shifting tile coordinates and resizing the game world dimensions.
    * This method directly manipulates the tile map to achieve the desired effect.
    *
    * @param widthChange Change in width (number of columns added or removed).
    * @param heightChange Change in height (number of rows added or removed).
    */
-  private void alterSizeTL(int widthChange, int heightChange) {
+  public void alterSizeTL(int widthChange, int heightChange) {
     Map<CoordinateOfGameObjectRecord, Tile> temp = new HashMap<>();
     for(Map.Entry<CoordinateOfGameObjectRecord, Tile> entry: getAllTiles().entrySet()){
       temp.put(new CoordinateOfGameObjectRecord(entry.getKey().x() + widthChange, entry.getKey().y() + heightChange,

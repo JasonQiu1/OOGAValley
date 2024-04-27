@@ -104,8 +104,8 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
 
-  public void getEditableInitialState(GameState initialState) {
-    this.initialState = initialState;
+  public GameState getEditableInitialState() {
+    return initialState;
   }
 
 
