@@ -1,6 +1,5 @@
 package oogasalad.model.gameplay;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,10 +8,7 @@ import java.util.Map.Entry;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyGameWorld;
 import oogasalad.model.api.ReadOnlyItem;
-import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
-import oogasalad.model.gameobject.GameObject;
-import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameobject.Tile;
 import oogasalad.model.gameobject.Updatable;
@@ -49,7 +45,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * Initializes the game world by creating tiles at each coordinate of the grid based on the
    * specified dimensions.
    */
-  private void initialize() {
+  protected void initialize() {
     Map<CoordinateOfGameObjectRecord, Tile> newTiles = new HashMap<>();
     for (int z = 0; z < depth; z++) {
       for (int y = 0; y < height; y++) {
@@ -62,7 +58,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
     }
     allTiles = newTiles;
   }
-
 
   /**
    * Updates the state of each tile in the game world based on the current game time.
@@ -154,30 +149,6 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
     initialize();
   }
 
-  /**
-   * Sets a GameObject at the specified coordinates within the game world.
-   *
-   * @param gameObject The game object to set.
-   * @param x          The x-coordinate of the tile.
-   * @param y          The y-coordinate of the tile.
-   * @param z          The z-coordinate of the tile.
-   * @throws UnableToSetGameObject If there is an error setting the game object.
-   */
-  public void setTileGameObject(GameObject gameObject, int x, int y, int z) {
-    CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
-    Tile tile = allTiles.get(coord);
-    if (tile != null) {
-      Class<?> gameObjectClass = gameObject.getClass();
-      String methodName = "set" + gameObjectClass.getSimpleName();
-      try {
-        Method setMethod = Tile.class.getMethod(methodName, gameObjectClass);
-        setMethod.invoke(tile, gameObject);
-      } catch (Exception e) {
-        throw new UnableToSetGameObject("Error Setting GameObject");
-      }
-    }
-  }
-
   @Override
   public int getHeight() {
     return height;
@@ -191,6 +162,14 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   @Override
   public int getDepth() {
     return depth;
+  }
+
+  protected Map<CoordinateOfGameObjectRecord, Tile> getAllTiles() {
+    return allTiles;
+  }
+
+  protected void setAllTiles(Map<CoordinateOfGameObjectRecord, Tile> temp) {
+    allTiles = temp;
   }
 }
 
