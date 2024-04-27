@@ -5,8 +5,11 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.playing.PlayingPageView;
@@ -47,7 +50,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   @Override
   public void open() {
     titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Title");
-    buttonResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
+    buttonResource = ResourceBundle.getBundle(
+        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
 
     myStageTitle = titleResource.getString("title");
     buttonsPath = buttonResource.getString("buttons_path");
@@ -106,12 +110,16 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     } else {
       return;
     }
-
     try {
       new PlayingPageView(stage, primaryLanguage, filePath).start();
     } catch (IOException exception) {
       LOG.error("Failed to load configuration file!");
-      throw new RuntimeException(exception);
+      Alert alert = new Alert(AlertType.ERROR, "Failed to load configuration file!");
+      alert.showAndWait();
+    } catch (BadGsonLoadException exception) {
+      LOG.error("Bad file template");
+      Alert alert = new Alert(AlertType.ERROR, "Bad file template");
+      alert.showAndWait();
     }
   }
 

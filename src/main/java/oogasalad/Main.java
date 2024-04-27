@@ -3,6 +3,7 @@ package oogasalad;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import oogasalad.model.api.exception.InvalidRuleType;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.start.StartScreen;
 
@@ -30,7 +31,7 @@ public class Main extends Application {
 //    new StartScreen(primaryStage).open();
 //  }
 
-  public void start(Stage primaryStage) {
+  public void start(Stage primaryStage) throws InvalidRuleType {
     new StartScreen(primaryStage, "English", null, new GameConfiguration()).open();
   }
 }

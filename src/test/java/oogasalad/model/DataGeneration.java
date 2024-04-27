@@ -7,6 +7,7 @@ import java.util.Map;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.Properties;
@@ -92,7 +93,7 @@ public class DataGeneration {
   }
 
   @Test
-  void testGeneratedWorld() throws IOException {
+  void testGeneratedWorld() throws IOException, BadGsonLoadException {
 //    the code for the previous test
     String fileName = "testWorld1.json";
     GameConfiguration gameConfiguration = GameConfiguration.of("testWorld1.json");

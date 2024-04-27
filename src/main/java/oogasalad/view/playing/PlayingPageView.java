@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
+import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
@@ -91,7 +92,8 @@ public class PlayingPageView {
     game = gameFactory.createGame();
   }
 
-  public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
+  public PlayingPageView(Stage primaryStage, String language, String fileName)
+      throws IOException, BadGsonLoadException {
     stage = primaryStage;
     primaryLanguage = language;
     game = gameFactory.createGame(fileName, fileName);
