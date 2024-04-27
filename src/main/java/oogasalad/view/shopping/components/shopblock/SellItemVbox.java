@@ -34,7 +34,7 @@ public class SellItemVbox extends VBox {
 
   private void initialize() {
     buttonTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-    ImageView itemImage = new ImageView(new Image(sellItem.getUrl()));
+    ImageView itemImage = new ImageView(new Image("file:data/images/" + sellItem.getUrl()));
     itemImage.setFitWidth(Utils.sellItemImageWidth);
     itemImage.setFitHeight(Utils.sellItemImageHeight);
     PriceStackPane priceStackPane = new PriceStackPane(sellItem.getPrices());

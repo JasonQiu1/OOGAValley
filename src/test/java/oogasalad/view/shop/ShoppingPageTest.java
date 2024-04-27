@@ -33,8 +33,7 @@ public class ShoppingPageTest extends DukeApplicationTest {
     prev_scene = new Scene(new javafx.scene.layout.StackPane(), 800, 800);
     this.stage.setScene(prev_scene);
 
-    this.shoppingView = new ShoppingView(game.getGameState().getShop(),
-        game.getGameState().getBag(), this.stage, prev_scene, money);
+    this.shoppingView = new ShoppingView(game, this.stage, prev_scene, money);
     scene = new Scene(shoppingView.getScene());
     this.stage.setScene(scene);
     this.stage.getScene().getStylesheets().add("styles.css");

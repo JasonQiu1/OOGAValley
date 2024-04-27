@@ -161,7 +161,7 @@ public class PlayingPageView {
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
-    money.addObserver(currentMoneyHbox, money.getMoney());
+    money.addObserver(currentMoneyHbox, game.getGameState().getMoney());
     topBox.getChildren()
         .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
     root.setTop(topBox);
@@ -194,8 +194,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(game.getGameState().getShop(),
-        game.getGameState().getBag(), stage, scene, money);
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, money);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);

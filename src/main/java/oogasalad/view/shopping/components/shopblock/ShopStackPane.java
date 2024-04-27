@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.view.shopping.Utils;
@@ -19,6 +20,7 @@ import oogasalad.view.shopping.Utils;
 public class ShopStackPane extends StackPane {
 
   private final ReadOnlyShop shop;
+  private final GameInterface game;
   private final StackPane parentStackPane;
   private List<SellGridPane> gridPanes;
   private PageChangeBorderPane pageChangeBorderPane;
@@ -29,12 +31,13 @@ public class ShopStackPane extends StackPane {
   /**
    * Constructor for the ShopStackPane
    *
-   * @param shop            the shop to be displayed
+   * @param game            the shop to be displayed
    * @param parentStackPane the parent stack pane
    */
-  public ShopStackPane(ReadOnlyShop shop, StackPane parentStackPane) {
+  public ShopStackPane(GameInterface game, StackPane parentStackPane) {
     super();
-    this.shop = shop;
+    this.game = game;
+    this.shop = game.getGameState().getShop();
     this.parentStackPane = parentStackPane;
     initialize();
   }
@@ -65,7 +68,7 @@ public class ShopStackPane extends StackPane {
       int startIndex = i * 4;
       int endIndex = Math.min(startIndex + 4, sellItems.size());
       List<SellItem> sublist = sellItems.subList(startIndex, endIndex);
-      SellGridPane sellGridPane = new SellGridPane(shop, sublist, parentStackPane);
+      SellGridPane sellGridPane = new SellGridPane(game, sublist, parentStackPane);
       gridPanes.add(sellGridPane);
     }
   }
@@ -100,7 +103,7 @@ public class ShopStackPane extends StackPane {
     for (Map.Entry<ReadOnlyItem, Double> entry : itemPriceMap.entrySet()) {
       ReadOnlyItem item = entry.getKey();
       double price = entry.getValue();
-      SellItem sellItem = new SellItem(price, "file:data/images/" + item.getImagePath());
+      SellItem sellItem = new SellItem(price,  item.getImagePath());
       sellItems.add(sellItem);
     }
     return sellItems;
