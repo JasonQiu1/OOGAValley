@@ -2,19 +2,13 @@ package oogasalad.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameplay.GameTime;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
-import oogasalad.model.gameobject.*;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.gameplay.BuildableTileMap;
-import oogasalad.model.gameplay.GameWorld;
-import oogasalad.model.api.ReadOnlyItem;
 
 public class GameWorldTest extends TileTest {
 
@@ -52,16 +46,31 @@ public class GameWorldTest extends TileTest {
   @Test
   public void testDimensionModification() {
     gameWorld.setWidth(10);
-    assertEquals(10, gameWorld.getWidth(), "Width should be updated to 10");
+    assertEquals(10, gameWorld.getWidth());
 
     gameWorld.setHeight(10);
-    assertEquals(10, gameWorld.getHeight(), "Height should be updated to 10");
+    assertEquals(10, gameWorld.getHeight());
 
     gameWorld.setDepth(2);
-    assertEquals(2, gameWorld.getDepth(), "Depth should be updated to 2");
+    assertEquals(2, gameWorld.getDepth());
   }
 
-  // Additional tests might be necessary to cover all use cases and features
+  @Test
+  public void testGetImagePathOnEmptyTile() {
+   assertTrue(gameWorld.getImagePath(2,2,0).isEmpty());
+  }
+
+  @Test
+  public void testGetImagePathOnFullTile() {
+    gameWorld.setTileGameObject(getTestingCollectableProperties()
+        .getString("name"), 1,1,0);
+    List<String> images = gameWorld.getImagePath(1,1,0);
+    List<String> expectedList = new ArrayList<>();
+    expectedList.add(getTestingLandProperties().getString("image"));
+    expectedList.add(getTestingStructureProperties().getString("image"));
+    expectedList.add(getTestingCollectableProperties().getString("image"));
+    assertEquals(expectedList, images);
+  }
 }
 
 
