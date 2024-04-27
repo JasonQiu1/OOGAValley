@@ -11,5 +11,7 @@ public class BagPageChangeBorderPane extends PageChangeBorderPane<BagGridPane> {
 
   public BagPageChangeBorderPane(List<BagGridPane> gridPanes) {
     super(gridPanes);
+    getLeftButton().setId("left-page-change-button-sell");
+    getRightButton().setId("right-page-change-button-sell");
   }
 }
