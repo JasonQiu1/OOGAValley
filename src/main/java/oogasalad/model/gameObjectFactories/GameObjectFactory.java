@@ -9,8 +9,12 @@ import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.GameObjectFactoryInstantiationFailure;
 import oogasalad.model.api.exception.InvalidGameObjectType;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.gameobject.GameObject;
+import oogasalad.model.gameplay.Game;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
@@ -29,7 +33,7 @@ public class GameObjectFactory {
    * Constructs a GameObjectFactory and discovers all available GameObjectCreator types in its
    * package.
    */
-  public GameObjectFactory() {
+  public GameObjectFactory() throws GameObjectFactoryInstantiationFailure {
     discoverCreators();
   }
 
@@ -39,7 +43,7 @@ public class GameObjectFactory {
    *
    * @throws GameObjectFactoryInstantiationFailure if any creator could not be instantiated.
    */
-  private void discoverCreators() {
+  private void discoverCreators() throws GameObjectFactoryInstantiationFailure {
     String packageName = this.getClass().getPackage().getName();
     Reflections reflections = new Reflections(
         new ConfigurationBuilder().setUrls(ClasspathHelper.forPackage(packageName)));
@@ -67,13 +71,21 @@ public class GameObjectFactory {
    * @throws InvalidGameObjectType if the specified type is not recognized or supported.
    */
   public GameObject createNewGameObject(String id, ReadOnlyGameTime creationTime,
-      Map<String, Integer> additionalParams) {
-    ReadOnlyProperties properties =
-        GameConfiguration.getConfigurablesStore().getConfigurableProperties(id);
-    String type = properties.getString("type").toLowerCase();
+      Map<String, Integer> additionalParams) throws InvalidGameObjectType {
+    String type;
+    try {
+      ReadOnlyProperties properties =
+          GameConfiguration.getConfigurablesStore().getConfigurableProperties(id);
+      type = properties.getString("type").toLowerCase();
+    } catch (KeyNotFoundException e) {
+      LOG.error("Couldn't find '" + id + "' in configurables store or invalid type!");
+      throw new RuntimeException(e);
+    }
     GameObjectCreator creator = creators.get(type);
     if (creator == null) {
-      throw new InvalidGameObjectType("Could not create a gameObject of type: " + type);
+      String errorMessage = "Could not create a gameObject of type: " + type;
+      LOG.error(errorMessage);
+      throw new InvalidGameObjectType(errorMessage);
     }
     return creator.create(id, creationTime, additionalParams);
   }
@@ -85,6 +97,8 @@ public class GameObjectFactory {
     return creators.values().stream().map(creator -> creator.getClass().getSimpleName())
         .collect(Collectors.toList());
   }
+
+  private static final Logger LOG = LogManager.getLogger(GameObjectFactory.class);
 }
 
 

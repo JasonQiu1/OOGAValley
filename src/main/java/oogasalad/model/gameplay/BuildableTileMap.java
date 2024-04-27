@@ -4,11 +4,14 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import oogasalad.model.api.exception.GameObjectFactoryInstantiationFailure;
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Tile;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Extends the GameWorld to include buildable and manipulable tile features, allowing dynamic
@@ -16,7 +19,18 @@ import oogasalad.model.gameobject.Tile;
  */
 public class BuildableTileMap extends GameWorld {
 
-  private static final GameObjectFactory factory = new GameObjectFactory();
+  private static final GameObjectFactory factory;
+
+  private static final Logger LOG = LogManager.getLogger(BuildableTileMap.class);
+
+  static {
+    try {
+      factory = new GameObjectFactory();
+    } catch (GameObjectFactoryInstantiationFailure e) {
+      LOG.fatal("Couldn't create game object factory!");
+      throw new RuntimeException(e);
+    }
+  }
 
   /**
    * Constructs a BuildableTileMap with specified dimensions.
@@ -38,7 +52,7 @@ public class BuildableTileMap extends GameWorld {
    * @param z  The z-coordinate of the tile.
    * @throws UnableToSetGameObject If there is an error setting the game object.
    */
-  public void setTileGameObject(String id, int x, int y, int z) {
+  public void setTileGameObject(String id, int x, int y, int z) throws UnableToSetGameObject {
     CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
     Tile tile = getAllTiles().get(coord);
     GameObject gameObject = factory.createNewGameObject(id, new GameTime(0,0,0), new HashMap<>());
@@ -53,7 +67,7 @@ public class BuildableTileMap extends GameWorld {
    * @param gameObject The game object to set on the tile.
    * @throws UnableToSetGameObject If reflection fails to find or invoke the setter method.
    */
-  private void reflectTileCreation(Tile tile, GameObject gameObject) {
+  private void reflectTileCreation(Tile tile, GameObject gameObject) throws UnableToSetGameObject {
     if (tile != null) {
       Class<?> gameObjectClass = gameObject.getClass();
       String methodName = "set" + gameObjectClass.getSimpleName();

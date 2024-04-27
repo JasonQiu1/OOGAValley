@@ -7,7 +7,9 @@ import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
+import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.BadValueParseException;
+import oogasalad.model.api.exception.InvalidRuleType;
 import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.DataFactory;
 import oogasalad.model.data.GameConfiguration;
@@ -28,10 +30,15 @@ public class Game implements GameInterface {
    * Loads a default GameConfiguration that shows off a decent amount of features.
    */
   public Game() {
-    configuration = new GameConfiguration();
+    try {
+      configuration = new GameConfiguration();
+    } catch (InvalidRuleType e) {
+      LOG.error("Invalid rules in default configuration!");
+      throw new RuntimeException(e);
+    }
     try {
       state = GAMESTATE_FACTORY.load("templates/GameState");
-    } catch (IOException e) {
+    } catch (IOException | BadGsonLoadException e) {
       LOG.error("Couldn't load default GameState from 'data/templates/GameState.json'");
       throw new RuntimeException(e);
     }
@@ -43,7 +50,7 @@ public class Game implements GameInterface {
    * @param configuration the loaded configuration.
    * @throws IOException if the configuration file is not found.
    */
-  public Game(GameConfiguration configuration) throws IOException {
+  public Game(GameConfiguration configuration) throws IOException, BadGsonLoadException {
     this.configuration = configuration;
     state = new GameState(configuration.getInitialState());
   }
@@ -54,7 +61,7 @@ public class Game implements GameInterface {
    * @param configName the name of the config.
    * @throws IOException if the configuration file is not found.
    */
-  public Game(String configName) throws IOException {
+  public Game(String configName) throws IOException, BadGsonLoadException {
     configuration = GameConfiguration.of(configName);
     state = new GameState(configuration.getInitialState());
   }
@@ -66,7 +73,7 @@ public class Game implements GameInterface {
    * @param saveName   the name of the save file in 'data/gamesaves'.
    * @throws IOException if the configuration or save file are not found.
    */
-  public Game(String configName, String saveName) throws IOException {
+  public Game(String configName, String saveName) throws IOException, BadGsonLoadException {
     configuration = GameConfiguration.of(configName);
     state = GameState.of(saveName);
   }
@@ -125,7 +132,9 @@ public class Game implements GameInterface {
     try {
       state.getEditableGameTime().advanceTo(configuration.getRules().getInteger("wakeHour"), 0);
     } catch (KeyNotFoundException | BadValueParseException e) {
-      LOG.error("Configuration file doesn't contain `wakeHour` key to decide when to wake up after sleeping.");
+      LOG.error(
+          "Configuration file doesn't contain `wakeHour` key to decide when to wake up after "
+              + "sleeping.");
       throw new RuntimeException(e);
     }
     state.restoreEnergy(Integer.MAX_VALUE);
@@ -176,18 +185,23 @@ public class Game implements GameInterface {
    */
   @Override
   public boolean isGameOver() {
-    return switch (configuration.getRules().getString("goalCondition")) {
-      case "time" ->
-          state.getGameTime().convertInMinutes() >= configuration.getRules().getInteger("timeGoal");
-      case "collect" -> state.getEditableBag()
-          .contains(configuration.getRules().getStringIntegerMap("collectGoal"));
-      default -> {
-        String errorMessage =
-            "Unexpected goal condition: " + configuration.getRules().getString("goalCondition");
-        LOG.error(errorMessage);
-        throw new IllegalStateException(errorMessage);
-      }
-    };
+    try {
+      return switch (configuration.getRules().getString("goalCondition")) {
+        case "time" -> state.getGameTime().convertInMinutes() >= configuration.getRules()
+            .getInteger("timeGoal");
+        case "collect" -> state.getEditableBag()
+            .contains(configuration.getRules().getStringIntegerMap("collectGoal"));
+        default -> {
+          String errorMessage =
+              "Unexpected goal condition: " + configuration.getRules().getString("goalCondition");
+          LOG.error(errorMessage);
+          throw new IllegalStateException(errorMessage);
+        }
+      };
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.error("A valid goal condition property was not found in the rules.");
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

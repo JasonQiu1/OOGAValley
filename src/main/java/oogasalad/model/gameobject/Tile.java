@@ -7,8 +7,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.exception.GameObjectFactoryInstantiationFailure;
 import oogasalad.model.gameObjectFactories.GameObjectFactory;
 import oogasalad.model.api.ReadOnlyGameTime;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Represents a tile within the game world that can contain various game objects including
@@ -23,7 +26,19 @@ public class Tile implements Updatable, Interactable {
   private Collectable collectable;
   private Structure structure;
   private Land land;
-  private static final GameObjectFactory factory = new GameObjectFactory();
+  private static final GameObjectFactory factory;
+
+  private static final Logger LOG = LogManager.getLogger(Tile.class);
+
+  static {
+    try {
+      factory = new GameObjectFactory();
+    } catch (GameObjectFactoryInstantiationFailure e) {
+      LOG.fatal("Failed to instantiate GameObjectFactory for Tile!");
+      throw new RuntimeException(e);
+    }
+  }
+
   private ReadOnlyGameTime lastUpdatingGameTime;
 
 

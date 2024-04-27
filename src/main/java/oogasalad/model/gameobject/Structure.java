@@ -2,6 +2,10 @@ package oogasalad.model.gameobject;
 
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.exception.BadValueParseException;
+import oogasalad.model.api.exception.KeyNotFoundException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Represents a structure within the game world, extending the general functionality of a
@@ -34,8 +38,13 @@ public class Structure extends GameObject implements StructureObject {
    */
   @Override
   public Map<String, Integer> getItemsOnDestruction() {
-    return getProperties().getStringIntegerMap(
-        "dropsOnDestruction"); // e.g. {"item":"2", "otherItem":"1"}
+    try {
+      return getProperties().getStringIntegerMap(
+          "dropsOnDestruction"); // e.g. {"item":"2", "otherItem":"1"}
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.error("Couldn't find valid 'dropsOnDestruction' for '" + getId() + "'");
+      throw new RuntimeException(e);
+    }
   }
 
   /**
@@ -48,6 +57,13 @@ public class Structure extends GameObject implements StructureObject {
    */
   @Override
   public boolean isHarvestable() {
-    return getProperties().getBoolean("destructable");
+    try {
+      return getProperties().getBoolean("destructable");
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.error("Couldn't find valid 'destructable' for '" + getId() + "'");
+      throw new RuntimeException(e);
+    }
   }
+
+  private static final Logger LOG = LogManager.getLogger(Structure.class);
 }

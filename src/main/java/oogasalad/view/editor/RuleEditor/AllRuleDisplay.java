@@ -33,12 +33,7 @@ public class AllRuleDisplay extends VBox {
 
   public void save(CheckedConsumer<String> saveAll, BiConsumer<String, String> updateRule) {
     for (RuleDisplayStrategy rd : rules) {
-      try {
-        updateRule.accept(rd.getName(), rd.getValue());
-      } catch (InvalidRuleType e) {
-        LOG.error("Invalid Type for " + e.getRuleName());
-        new ValidationErrorAlert(e.getRuleName(), e.getRuleValue(), e.getType());
-      }
+      updateRule.accept(rd.getName(), rd.getValue());
     }
     try {
       saveAll.accept(getName());

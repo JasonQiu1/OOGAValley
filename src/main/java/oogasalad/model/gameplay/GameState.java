@@ -13,6 +13,7 @@ import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.DataFactory;
 import oogasalad.model.gameobject.Item;
@@ -42,8 +43,8 @@ public class GameState implements ReadOnlyGameState {
     this.gameWorld =
         new BuildableTileMap(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
     this.gameTime = new GameTime(1, 8, 0);
-    this.maxEnergy = properties.getInteger("energyAmount");
     try {
+      this.maxEnergy = properties.getInteger("energyAmount");
       List<String> possibleItemStrings = properties.getStringList("shopPossibleItems");
       List<ReadOnlyItem> possibleItems = new ArrayList<>();
       for (String id : possibleItemStrings) {
@@ -51,8 +52,10 @@ public class GameState implements ReadOnlyGameState {
       }
       this.shop = new Shop(gameTime, possibleItems, properties.getInteger("shopRotationSize"),
           properties.getInteger("shopRotationTime"));
-    } catch (KeyNotFoundException e) {
-      LOG.error("Couldn't load the shop!");
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.error(
+          "Couldn't load the shop or find valid keys for 'energyAmount' ,'shopPossibleItems, "
+              + "'shopRotationSize', or 'shopRotationTime'!");
       throw new RuntimeException(e);
     }
   }

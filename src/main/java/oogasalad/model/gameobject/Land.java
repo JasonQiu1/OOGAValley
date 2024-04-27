@@ -2,6 +2,9 @@ package oogasalad.model.gameobject;
 
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.exception.KeyNotFoundException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Represents a piece of land within the game world, extending the {@link GameObject} class. This
@@ -39,7 +42,12 @@ public class Land extends GameObject implements Plantable {
    */
   @Override
   public boolean getIfItemCanBePlacedHere(ReadOnlyItem item) {
-    return getProperties().getStringMap("plantableSeeds").containsKey(item.getName());
+    try {
+      return getProperties().getStringMap("plantableSeeds").containsKey(item.getName());
+    } catch (KeyNotFoundException e) {
+      LOG.error("Couldn't find valid 'plantableSeeds' for '" + getId() + "'");
+      throw new RuntimeException(e);
+    }
   }
 
   /**
@@ -52,7 +60,14 @@ public class Land extends GameObject implements Plantable {
    */
   @Override
   public String getStructureBasedOnItem(ReadOnlyItem item) {
-    return getProperties().getStringMap("plantableSeeds").get(item.getName());
+    try {
+      return getProperties().getStringMap("plantableSeeds").get(item.getName());
+    } catch (KeyNotFoundException e) {
+      LOG.error("Couldn't find valid 'plantableSeeds' for '" + getId() + "'");
+      throw new RuntimeException(e);
+    }
   }
+
+  private static final Logger LOG = LogManager.getLogger(Land.class);
 }
 

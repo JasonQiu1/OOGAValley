@@ -31,7 +31,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   /**
    * Initializes the game configuration to a set of default rules and initial state.
    */
-  public GameConfiguration() {
+  public GameConfiguration() throws InvalidRuleType {
     this(getDefaultRules(), getDefaultConfigurablesStore(), getDefaultInitialState());
   }
 
@@ -40,7 +40,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
    *
    * @param rules the loaded rules to use.
    */
-  public GameConfiguration(Properties rules) {
+  public GameConfiguration(Properties rules) throws InvalidRuleType {
     this(rules, getDefaultConfigurablesStore(), getDefaultInitialState());
   }
 
@@ -52,7 +52,8 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
    * @param store        the loaded configurables store to use.
    * @param initialState the initial state to use.
    */
-  public GameConfiguration(Properties rules, GameConfigurablesStore store, GameState initialState) {
+  public GameConfiguration(Properties rules, GameConfigurablesStore store, GameState initialState)
+      throws InvalidRuleType {
     this.rules = rules;
     DataValidation.validateProperties(rules);
     configurablesStore = store;
@@ -117,7 +118,8 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
    * @param newValue the value to set.
    * @throws KeyNotFoundException if the rule does not exist.
    */
-  public void updateRule(String rule, String newValue) throws InvalidRuleType {
+  public void updateRule(String rule, String newValue)
+      throws InvalidRuleType, KeyNotFoundException {
     DataValidation.validate(rule, newValue);
     rules.update(rule, newValue);
   }
@@ -152,7 +154,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   private static Properties getDefaultRules() {
     try {
       return Properties.of(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameRulesGrouped").toString());
-    } catch (IOException e) {
+    } catch (IOException | BadGsonLoadException e) {
       LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
       throw new RuntimeException(e);
     }
@@ -162,7 +164,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     try {
       return CONFIGURABLES_DATA_FACTORY.load(
           Paths.get(TEMPLATES_DIRECTORY_PATH, "ConfigurablesStore").toString());
-    } catch (IOException e) {
+    } catch (IOException | BadGsonLoadException e) {
       LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
       throw new RuntimeException(e);
     }
@@ -172,7 +174,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     try {
       return GAMESTATE_DATA_FACTORY.load(
           Paths.get(TEMPLATES_DIRECTORY_PATH, "GameState").toString());
-    } catch (IOException e) {
+    } catch (IOException | BadGsonLoadException e) {
       LOG.error("Couldn't load default GameState 'templates/GameState.json'.");
       throw new RuntimeException(e);
     }

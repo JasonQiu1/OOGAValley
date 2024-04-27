@@ -4,8 +4,13 @@ import java.util.function.Supplier;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.IncorrectPropertyFileType;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.GameConfiguration;
+import oogasalad.model.gameObjectFactories.GameObjectFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Abstract base class for all game objects within the game. This class defines the common behavior
@@ -55,9 +60,14 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public boolean checkAndUpdateExpired(ReadOnlyGameTime gameTime) {
-    return expired
-        && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
-        "expireTime");
+    try {
+      return expired
+          && timeSinceExpiringState.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
+          "expireTime");
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.error("Couldn't find valid 'expireTime' in properties of '" + id + "'");
+      throw new RuntimeException(e);
+    }
   }
 
   /**
@@ -69,10 +79,15 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public void update(ReadOnlyGameTime gameTime) {
     lastUpdateGameTime = gameTime;
     updateAndInteract(() -> {
-      if (getProperties().getBoolean("updatable")
-          && creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
-          "updateTime")) {
-        return getProperties().getString("updateTransformation");
+      try {
+        if (getProperties().getBoolean("updatable")
+            && creationTime.getDifferenceInMinutes(gameTime) > getProperties().getInteger(
+            "updateTime")) {
+          return getProperties().getString("updateTransformation");
+        }
+      } catch (KeyNotFoundException | BadValueParseException e) {
+        LOG.error("Couldn't find valid update properties for '" + id + "'");
+        throw new RuntimeException(e);
       }
       return getId();
     });
@@ -88,7 +103,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
   public void interact(ReadOnlyItem item) {
     updateAndInteract(() -> {
       if (interactionValid(item)) {
-        return getProperties().getStringMap("interactTransformations").get(item.getName());
+        try {
+          return getProperties().getStringMap("interactTransformations").get(item.getName());
+        } catch (KeyNotFoundException e) {
+          LOG.error("Couldn't find valid 'interactTransformations' for '" + id + "'");
+          throw new RuntimeException(e);
+        }
       }
       return getId();
     });
@@ -116,7 +136,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public boolean interactionValid(ReadOnlyItem item) {
-    return getProperties().getStringMap("interactTransformations").containsKey(item.getName());
+    try {
+      return getProperties().getStringMap("interactTransformations").containsKey(item.getName());
+    } catch (KeyNotFoundException e) {
+      LOG.error("Couldn't find valid 'interactTransformations' for '" + id + "'");
+      throw new RuntimeException(e);
+    }
   }
 
   /**
@@ -125,9 +150,14 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param gameTime The current time of the game.
    */
   private void updateExpired(ReadOnlyGameTime gameTime) {
-    if (!expired && getProperties().getBoolean("expirable")) {
-      expired = true;
-      timeSinceExpiringState = gameTime;
+    try {
+      if (!expired && getProperties().getBoolean("expirable")) {
+        expired = true;
+        timeSinceExpiringState = gameTime;
+      }
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.error("Couldn't find valid 'expirable' for '" + id + "'");
+      throw new RuntimeException(e);
     }
   }
 
@@ -138,7 +168,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   @Override
   public String getImagePath() {
-    return getProperties().getString("image");
+    try {
+      return getProperties().getString("image");
+    } catch (KeyNotFoundException e) {
+      LOG.error("Couldn't find valid 'image' for '" + id + "'");
+      throw new RuntimeException(e);
+    }
   }
 
   /**
@@ -161,7 +196,15 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    */
   protected boolean changePropertiesIfApplicable() {
     if (changePropertiesOnNextIteration) {
-      setProperties(GameConfiguration.getConfigurablesStore().getConfigurableProperties(nextId));
+      try {
+        setProperties(GameConfiguration.getConfigurablesStore().getConfigurableProperties(nextId));
+      } catch (IncorrectPropertyFileType e) {
+        LOG.error("Invalid type of '" + nextId + "', tried casting to " + this.getClass().getSimpleName());
+        throw new RuntimeException(e);
+      } catch (KeyNotFoundException e) {
+        LOG.error("Couldn't find '" + id + "' in configurablesstore to transform into");
+        throw new RuntimeException(e);
+      }
       return true;
     }
     return false;
@@ -173,7 +216,12 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @return properties The read only properties of relevant to specific GameObject stored here.
    */
   public ReadOnlyProperties getProperties() {
-    return GameConfiguration.getConfigurablesStore().getConfigurableProperties(id);
+    try {
+      return GameConfiguration.getConfigurablesStore().getConfigurableProperties(id);
+    } catch (KeyNotFoundException e) {
+      LOG.error("Couldn't find properties in configurablesstore for '" + id + "'");
+      throw new RuntimeException(e);
+    }
   }
 
   /**
@@ -182,10 +230,15 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    *
    * @param properties The new properties to set.
    */
-  public void setProperties(ReadOnlyProperties properties) {
-    if (!properties.getString("type").equals(getClass().getSimpleName())) {
-      throw new IncorrectPropertyFileType(
-          "Provided properties cannot be cast to correct properties type");
+  public void setProperties(ReadOnlyProperties properties) throws IncorrectPropertyFileType {
+    try {
+      if (!properties.getString("type").equals(getClass().getSimpleName())) {
+        throw new IncorrectPropertyFileType(
+            "Provided properties cannot be cast to correct properties type");
+      }
+    } catch (KeyNotFoundException e) {
+      LOG.error("Couldn't find valid 'type' for '" + id + "'");
+      throw new RuntimeException(e);
     }
     changePropertiesOnNextIteration = false;
     expired = false;
@@ -193,5 +246,6 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     id = nextId;
   }
 
+  private static final Logger LOG = LogManager.getLogger(GameObject.class);
 }
 
