@@ -5,6 +5,7 @@ import java.util.Optional;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -13,10 +14,11 @@ import org.apache.logging.log4j.Logger;
 public class LoaderListDisplay {
 
   private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
-  private File selectedFile;
+
   private final String myTitle;
   private final String defaultDirectoryPath;
   private final VBox vBox;
+  private File selectedFile;
 
   public LoaderListDisplay(String title, String defaultFolderPath) {
     vBox = new VBox();
@@ -42,7 +44,9 @@ public class LoaderListDisplay {
     selectButton.setOnAction(event -> selectFile(listView));
 
     VBox vBox = new VBox(listView, selectButton);
-    Scene scene = new Scene(vBox, 400, 300);
+    vBox.setPrefSize(400, 400);
+    ScrollPane scrollPane = new ScrollPane(vBox);
+    Scene scene = new Scene(scrollPane);
 
     stage.setScene(scene);
     stage.showAndWait();

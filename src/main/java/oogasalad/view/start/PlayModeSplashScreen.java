@@ -31,7 +31,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private String buttonsPath;
   private String myStageTitle;
   private Scene myScene;
-  private Scene previousScene;
+  private final Scene previousScene;
   private Scene playModeScreen;
 
   public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene,
@@ -41,13 +41,13 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     primaryLanguage = language;
     previousScene = backScene;
 //    previousScene = stage.getScene();
-    setFilesLanguage();
+//    setFilesLanguage();
   }
 
   @Override
   public void open() {
-    titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + titleLanguage);
-    buttonResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + buttonLanguage);
+    titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Title");
+    buttonResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
 
     myStageTitle = titleResource.getString("title");
     buttonsPath = buttonResource.getString("buttons_path");
@@ -82,10 +82,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     }
   }
 
-  private void setFilesLanguage() {
-    titleLanguage = primaryLanguage + "Title";
-    buttonLanguage = primaryLanguage + "Buttons";
-  }
 
   public void makeChooser() {
 //    FileChooserContainer resultContainer = new FileChooserContainer(null, DEFAULT_RESOURCE_FOLDER);
@@ -110,7 +106,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     } else {
       return;
     }
-
 
     try {
       new PlayingPageView(stage, primaryLanguage, filePath).start();
