@@ -1,8 +1,8 @@
 {
   "properties": {
-    "configName": "DEFAULT_GAME_NAME",
+    "configName": "COLLECTGOALTEST",
     "author": "OOGAValley Devs",
-    "goalCondition": "time",
+    "goalCondition": "collect",
     "doEnergy": true,
     "doEnergyRecovery": true,
     "doDeath": false,

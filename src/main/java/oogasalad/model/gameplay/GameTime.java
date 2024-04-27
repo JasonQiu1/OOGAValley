@@ -92,6 +92,7 @@ public class GameTime implements GameTimeInterface {
     }
     minute = targetMinute;
 
+    previous = Instant.now();
     return passedHours * 60 + passedMinutes;
   }
 
