@@ -198,7 +198,7 @@ public class GameState implements ReadOnlyGameState {
   /**
    * Selects an item to be active if it is in the bag.
    *
-   * @param id
+   * @param id the id of the item to select.
    */
   public void selectItem(String id) throws KeyNotFoundException {
     Item item = new Item(id);
