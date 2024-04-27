@@ -22,12 +22,13 @@ import org.apache.logging.log4j.Logger;
  */
 public class BagView extends StackPane {
 
+  private static final String backGroundImageUrl = "img/playing/box-background.png";
+
   private final GridPane toolGridPane;
 
   private final int colNum;
   private final ReadOnlyBag bag;
   private int page = 0;
-  private final BorderPane borderPane = new BorderPane();
   private final Button leftButton = new Button("<");
 
   private final Button rightButton = new Button(">");
@@ -49,17 +50,38 @@ public class BagView extends StackPane {
     this.toolGridPane = new GridPane();
     this.bag = bag;
     this.colNum = colNum;
-    Image backgroundImage = new Image("img/playing/box-background.png");
-    ImageView backgroundImageView = new ImageView(backgroundImage);
+    ImageView backgroundImageView = new ImageView(new Image(backGroundImageUrl));
     backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
+    BorderPane borderPane = new BorderPane();
     StackPane.setMargin(borderPane, new Insets(20, 50, 0, 50));
     borderPane.setLeft(leftButton);
     borderPane.setRight(rightButton);
     borderPane.setCenter(toolGridPane);
     this.getChildren().addAll(backgroundImageView, borderPane);
+    this.leftButton.setOnMouseClicked(e -> switchPage(-1));
+    this.rightButton.setOnMouseClicked(e -> switchPage(1));
     update();
   }
+
+
+  public void update() {
+    List<Pair<String, Integer>> item = getItem(page);
+    checkUpdate(item);
+  }
+
+  private void switchPage(int interval) {
+    LOG.info("switch page %d".formatted(interval));
+    if (this.page + interval < 0) {
+      return;
+    }
+    List<Pair<String, Integer>> item = getItem(this.page + interval);
+    if (item.isEmpty()) {
+      return;
+    }
+    checkUpdate(item);
+  }
+
 
   private List<Pair<String, Integer>> getItem(int page) {
     int idx = 0;
@@ -102,12 +124,5 @@ public class BagView extends StackPane {
     }
     itemOnShow.addAll(newItemOnShow);
     LOG.info("item on show is: " + itemOnShow);
-  }
-
-  public void update() {
-    List<Pair<String, Integer>> item = getItem(page);
-    LOG.info(String.format("the current page is %d", page));
-    LOG.info("the list of item in the page is: " + item);
-    checkUpdate(item);
   }
 }
