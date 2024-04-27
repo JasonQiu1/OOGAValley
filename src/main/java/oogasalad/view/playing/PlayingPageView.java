@@ -8,7 +8,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -22,6 +21,7 @@ import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
+import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.Money;
 import oogasalad.view.playing.component.TopAnimationView;
@@ -67,7 +67,8 @@ public class PlayingPageView {
       ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
   private final String menuButtons = DEFAULT_RESOURCE_FOLDER + menuLanguage;
   private final Label timeLabel = new Label();
-  private final ProgressBar energyProgressBar = new ProgressBar(0.62);
+
+  private final EnergyProgress energyProgress;
   private final Stage stage;
   private final String primaryLanguage;
 
@@ -87,12 +88,14 @@ public class PlayingPageView {
     primaryLanguage = language;
     this.previousScene = backScene;
     game = gameFactory.createGame();
+    energyProgress = new EnergyProgress(game);
   }
 
   public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
     stage = primaryStage;
     primaryLanguage = language;
     game = gameFactory.createGame(fileName, fileName);
+    energyProgress = new EnergyProgress(game);
   }
 
   public void start() {
@@ -137,6 +140,7 @@ public class PlayingPageView {
       landView.update();
       bagView.update();
       updateTimeLabel();
+      energyProgress.update();
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
@@ -164,7 +168,7 @@ public class PlayingPageView {
       game.sleep();
     });
     topBox.getChildren()
-        .addAll(helpButton, sleepButton, timeLabel, energyProgressBar, btnOpenShop,
+        .addAll(helpButton, sleepButton, timeLabel, energyProgress, btnOpenShop,
             currentMoneyHbox);
     root.setTop(topBox);
   }
