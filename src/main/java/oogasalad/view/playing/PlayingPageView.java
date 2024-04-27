@@ -24,7 +24,6 @@ import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.Money;
-import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
@@ -39,12 +38,11 @@ import org.apache.logging.log4j.Logger;
 
 public class PlayingPageView{
 
-
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
   public static final double bottomCellWidth = 30;
   public static final double bottomCellHeight = 30;
-  public static final double bottomBoxWidth = 300;
+  public static final double bottomBoxWidth = 600;
   public static final double bottomBoxHeight = 80;
   public static final int landNumRows = 10;
   public static final int landNumCols = 15;
@@ -70,7 +68,6 @@ public class PlayingPageView{
   private final String menuButtons = DEFAULT_RESOURCE_FOLDER + menuLanguage;
   private final Label timeLabel = new Label();
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
-  private final SelectedItem selectedItem = new SelectedItem();
   private final Stage stage;
   private final String primaryLanguage;
   private final Money money = new Money(100);
@@ -80,7 +77,6 @@ public class PlayingPageView{
   private LandView landView;
   private TopAnimationView topAnimationView;
   private BagView bagView;
-  private String fileName;
   private Scene previousScene;
 
   public PlayingPageView(Stage primaryStage, String language, Scene backScene,
@@ -98,7 +94,6 @@ public class PlayingPageView{
   }
 
   public void start() {
-
     LOG.info("initializing game");
     LOG.info("finish loading game model");
     initModel();
@@ -129,15 +124,16 @@ public class PlayingPageView{
   }
 
   private void initModel() {
-    bagView = new BagView(game.getGameState().getBag(), 5, 1);
+    bagView = new BagView(game, 10);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
-    landView = new LandView(game.getGameState().getGameWorld());
+    landView = new LandView(game);
   }
 
   private void setUpdate() {
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
+    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 30), event -> {
       game.update();
       landView.update();
+      bagView.update();
       updateTimeLabel();
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);

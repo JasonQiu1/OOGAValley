@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 public class LoaderListDisplay {
 
   private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
+
   private final String myTitle;
   private final String defaultDirectoryPath;
   private final VBox vBox;
