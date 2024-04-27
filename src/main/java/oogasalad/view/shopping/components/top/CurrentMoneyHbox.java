@@ -33,7 +33,6 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
   }
 
   private void initialize() {
-
     Button addButton = new Button();
     addButton.setId("shopAddButton");
     moneyLabel = new Label();
@@ -48,6 +47,7 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
 
   @Override
   public void update(Integer value) {
+    LOG.info("update money: %d".formatted(value));
     moneyLabel.setText("" + value);
   }
 }

@@ -36,7 +36,7 @@ import org.apache.logging.log4j.Logger;
  * second.
  */
 
-public class PlayingPageView{
+public class PlayingPageView {
 
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
@@ -70,6 +70,8 @@ public class PlayingPageView{
   private final ProgressBar energyProgressBar = new ProgressBar(0.62);
   private final Stage stage;
   private final String primaryLanguage;
+
+  // TODO: remove this money from view
   private final Money money = new Money(100);
   private final GameFactory gameFactory = new GameFactory();
   private final GameInterface game;
@@ -95,8 +97,8 @@ public class PlayingPageView{
 
   public void start() {
     LOG.info("initializing game");
-    LOG.info("finish loading game model");
     initModel();
+    LOG.info("finish loading game model");
     StackPane root = new StackPane();
     root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
@@ -156,8 +158,14 @@ public class PlayingPageView{
     timeLabel.getStyleClass().add("play-top-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox(game);
     money.addObserver(currentMoneyHbox, game.getGameState().getMoney());
+    Button sleepButton = new Button("sleep");
+    sleepButton.setOnMouseClicked(event -> {
+      LOG.info("slept");
+      game.sleep();
+    });
     topBox.getChildren()
-        .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
+        .addAll(helpButton, sleepButton, timeLabel, energyProgressBar, btnOpenShop,
+            currentMoneyHbox);
     root.setTop(topBox);
   }
 
@@ -171,7 +179,7 @@ public class PlayingPageView{
     bottomBox.setPrefSize(bottomWidth, bottomHeight);
     bottomBox.getStyleClass().add("bottom-box");
     StackPane toolStackPane = bagView;
-    bottomBox.getChildren().addAll(toolStackPane);/**/
+    bottomBox.getChildren().addAll(toolStackPane);
     root.setBottom(bottomBox);
   }
 
