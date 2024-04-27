@@ -6,6 +6,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -141,6 +143,10 @@ public class PlayingPageView {
       bagView.update();
       updateTimeLabel();
       energyProgress.update();
+      if (game.isGameOver()) {
+        Alert alert = new Alert(AlertType.CONFIRMATION, "game is over");
+        alert.showAndWait();
+      }
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
