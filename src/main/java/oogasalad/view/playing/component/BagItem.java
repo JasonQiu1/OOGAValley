@@ -90,7 +90,12 @@ public class BagItem extends StackPane {
     return imageView;
   }
 
-  public String getUrl() {
-    return url;
+  public String getName() {
+    return name;
   }
+
+  public void select() {
+    this.selectedRectangle.setOpacity(0.5);
+  }
+
 }

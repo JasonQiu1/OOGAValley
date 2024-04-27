@@ -74,7 +74,15 @@ public class BagView extends StackPane {
    */
   public void select(String name) {
     LOG.info("selected item : %s".formatted(name));
-    game.selectItem(name);
+    for (Item i : itemOnShow) {
+      BagItem bagItem = i.bagItem();
+      bagItem.reset();
+      if (bagItem.getName().equals(name)) {
+        bagItem.select();
+      }
+    }
+    // TODO: fix select issue once the model is done
+//    game.selectItem(name);
 
   }
 
