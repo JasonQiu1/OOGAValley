@@ -10,13 +10,13 @@ import oogasalad.view.playing.component.Money;
 
 public class ShoppingView extends BranchBase {
 
-  private final ShoppingStackPane root;
+  private final ShoppingViewStackPane root;
 
   public ShoppingView(GameInterface game, Stage stage, Scene previousScene,
       Money money) {
     super(stage, previousScene);
 
-    root = new ShoppingStackPane(game, getStage(), getPreviousScene());
+    root = new ShoppingViewStackPane(game, getStage(), getPreviousScene());
     money.addObserver(root.getMoneyHbox(), game.getGameState().getMoney());
   }
 

@@ -6,17 +6,17 @@ public class InventoryAPI{
 
   /**
    * Removes one instance of parameter from the inventory
-   * @param Item
+   * @param thing
    * @return
    * true if bagItemModel is removed
-   * false if no sellItems are removed
+   * false if no sellItemViews are removed
    */
   public boolean consume (Item thing);
   
 
 /**
  * Decrements durability of object
- * @param Item
+ * @param thing
  * @return
  * true if bagItemModel durability is decremented
  * false if durability is not decremented
