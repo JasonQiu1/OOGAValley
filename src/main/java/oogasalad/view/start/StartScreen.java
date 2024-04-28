@@ -88,7 +88,7 @@ public class StartScreen extends AbstractSplashScreen {
 
   private void setFilesLanguage() {
     LOG.debug(String.format("going back to %s", myPrimaryLanguage));
-    titleLanguage = myPrimaryLanguage + "Title";
+    titleLanguage = myPrimaryLanguage + "Text";
     buttonLanguage = myPrimaryLanguage + "Buttons";
   }
 
