@@ -147,8 +147,7 @@ public class GameTime implements GameTimeInterface {
 
   @Override
   public String toString() {
-    return String.format("%s: %d; %s: %d, %s: %d", timeTextResource.getString("day"), day,
-        timeTextResource.getString("hour"), hour, timeTextResource.getString("minute"), minute);
+    return String.format("%d: %d: %d", day, hour, minute);
   }
 
   /**
