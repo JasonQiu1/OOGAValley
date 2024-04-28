@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import oogasalad.model.api.exception.UnableToSetGameObject;
-import oogasalad.model.gameObjectFactories.GameObjectFactory;
+import oogasalad.model.gameobject.gameobjectfactory.GameObjectFactory;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Tile;

@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import oogasalad.model.api.ReadOnlyItem;
-import oogasalad.model.gameObjectFactories.GameObjectFactory;
+import oogasalad.model.gameobject.gameobjectfactory.GameObjectFactory;
 import oogasalad.model.api.ReadOnlyGameTime;
 
 /**

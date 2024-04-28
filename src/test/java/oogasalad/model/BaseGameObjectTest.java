@@ -7,8 +7,7 @@ import java.util.Map;
 import oogasalad.model.data.GameConfigurablesStore;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.Properties;
-import oogasalad.model.gameObjectFactories.GameObjectFactory;
-import oogasalad.model.gameplay.GameTime;
+import oogasalad.model.gameobject.gameobjectfactory.GameObjectFactory;
 import org.junit.jupiter.api.BeforeEach;
 
 public abstract class BaseGameObjectTest {

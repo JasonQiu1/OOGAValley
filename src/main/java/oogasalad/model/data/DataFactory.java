@@ -14,7 +14,7 @@ import java.time.Instant;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.exception.BadGsonLoadException;
-import oogasalad.model.gameObjectFactories.GameObjectCreator;
+import oogasalad.model.gameobject.gameobjectfactory.GameObjectCreator;
 import oogasalad.model.gson.GameObjectCreatorAdapter;
 import oogasalad.model.gson.InstantAdapter;
 import oogasalad.model.gson.ReadOnlyGameTimeAdapter;
