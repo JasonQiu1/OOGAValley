@@ -19,9 +19,9 @@ public class ShoppingViewStackPane extends StackPane {
   private final GameInterface game;
   private final Stage stage;
   private final Scene previousScene;
+  private final PlayingPageView playingPageView;
   private TopHbox topHBox;
   private BagStackPane bagStackPane;
-  private final PlayingPageView playingPageView;
 
   public ShoppingViewStackPane(GameInterface game, Stage stage, Scene previousScene,
       PlayingPageView playingPageView) {

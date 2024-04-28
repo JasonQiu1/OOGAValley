@@ -7,9 +7,7 @@
     "money": 0,
     "shop": null,
     "bag": null,
-    "width": 0,
-    "height": 0,
-    "depth": 0
+    "maxEnergy": 0.0
   },
   "rules": {
     "properties": {

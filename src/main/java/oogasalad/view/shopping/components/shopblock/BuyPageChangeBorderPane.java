@@ -7,9 +7,11 @@ import oogasalad.view.shopping.components.PageChangeBorderPane;
  * This class is responsible for creating the page change border pane that is used in the shop block
  * to change pages.
  */
-public class SellPageChangeBorderPane extends PageChangeBorderPane<SellGridPane> {
+public class BuyPageChangeBorderPane extends PageChangeBorderPane<BuyGridPane> {
 
-  public SellPageChangeBorderPane(List<SellGridPane> gridPanes) {
+  public BuyPageChangeBorderPane(List<BuyGridPane> gridPanes) {
     super(gridPanes);
+    getLeftButton().setId("left-page-change-button-buy");
+    getRightButton().setId("right-page-change-button-buy");
   }
 }

@@ -32,10 +32,8 @@ public class PageChangeBorderPane<T extends GridPane> extends BorderPane {
   private void initialize() {
     leftButton = new Button();
     leftButton.getStyleClass().add("left-page-change-button");
-    leftButton.setId("left-page-change-button");
     rightButton = new Button();
     rightButton.getStyleClass().add("right-page-change-button");
-    rightButton.setId("right-page-change-button");
     setAlignment(leftButton, Pos.CENTER_LEFT);
     setAlignment(rightButton, Pos.CENTER_RIGHT);
     setMargin(leftButton, new Insets(0, 0, 0, 10));
@@ -48,6 +46,7 @@ public class PageChangeBorderPane<T extends GridPane> extends BorderPane {
   }
 
   private void setPageChangeButton() {
+    enableButtons();
     leftButton.setOnAction(event -> {
       if (currentPageIndex == 0) {
         return;
@@ -75,7 +74,8 @@ public class PageChangeBorderPane<T extends GridPane> extends BorderPane {
 
   private void enableButtons() {
     leftButton.setDisable(currentPageIndex == 0);
-    rightButton.setDisable(currentPageIndex == gridPanes.size() - 1);
+    rightButton.setDisable(currentPageIndex == gridPanes.size() - 1
+        || gridPanes.size() == 0);
   }
 
   public GridPane getCurrentGridPane() {

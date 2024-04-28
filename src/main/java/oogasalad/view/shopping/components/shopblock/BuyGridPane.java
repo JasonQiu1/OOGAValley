@@ -1,4 +1,4 @@
-package oogasalad.view.shopping.components.bagblock;
+package oogasalad.view.shopping.components.shopblock;
 
 import java.util.List;
 import oogasalad.model.api.GameInterface;
@@ -8,27 +8,27 @@ import oogasalad.view.shopping.components.ItemGridPane;
 import oogasalad.view.shopping.components.ItemView;
 
 /**
- * This class is responsible for creating the bag grid pane that is used to display the items in the
- * bag.
+ * This class is responsible for creating the sell grid pane that is used to display the items in
+ * the shop.
  */
-public class BagGridPane extends ItemGridPane {
+public class BuyGridPane extends ItemGridPane {
 
   /**
-   * Constructor for BagGridPane.
+   * Constructor for SellGridPane.
    *
    * @param game            The game interface
-   * @param bagItemViews    The list of item views
+   * @param sellItemViews   The list of item views
    * @param parentStackPane The parent stack pane
    */
-  public BagGridPane(GameInterface game, List<ItemView> bagItemViews,
+  public BuyGridPane(GameInterface game, List<ItemView> sellItemViews,
       ShoppingViewStackPane parentStackPane) {
-    super(game, bagItemViews, parentStackPane);
+    super(game, sellItemViews, parentStackPane);
   }
 
   @Override
-  protected BagItemVbox createItemVbox(ItemView itemView) {
-    BagItemVbox bagItemVbox = new BagItemVbox(itemView, "SellItemButtonText", "sell");
-    bagItemVbox.getButton().setOnAction(event -> {
+  protected BuyItemVbox createItemVbox(ItemView itemView) {
+    BuyItemVbox buyItemVbox = new BuyItemVbox(itemView, "BuyItemButtonText", "buy");
+    buyItemVbox.getButton().setOnAction(event -> {
       PopUpStackPane popUp = new PopUpStackPane(getPopUpTextResource(), getParentStackPane(),
           choice -> {
             if (choice) {
@@ -37,8 +37,7 @@ public class BagGridPane extends ItemGridPane {
           }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
       getParentStackPane().getChildren().add(popUp);
     });
-    return bagItemVbox;
+    return buyItemVbox;
   }
 
 }
-
