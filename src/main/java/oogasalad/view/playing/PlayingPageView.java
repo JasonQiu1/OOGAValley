@@ -26,6 +26,7 @@ import oogasalad.model.api.GameInterface;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
+import oogasalad.view.login.LoginView;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
@@ -211,9 +212,11 @@ public class PlayingPageView {
       LOG.info("slept");
       game.sleep();
     });
+    Button loginButton = new Button("Web");
+    loginButton.setOnAction(e -> openLogin());
     topBox.getChildren()
         .addAll(helpButton, sleepButton, timeLabel, energyProgress, btnOpenShop,
-            currentMoneyHbox);
+            currentMoneyHbox, loginButton);
     root.setTop(topBox);
   }
 
@@ -260,5 +263,10 @@ public class PlayingPageView {
       chatApp.start();
     });
   }
+  private void openLogin() {
+    LoginView loginView = new LoginView(game);
+    loginView.start(new Stage());
+  }
+
 
 }

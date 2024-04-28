@@ -234,4 +234,56 @@ public class InfoService {
     }
   }
 
+
+  /**
+   * Save game data to the database.
+   *
+   * @param userId         the user ID
+   * @param gameSaveJson   the game save JSON
+   * @param gameConfigJson the game configuration JSON
+   * @param storeJson      the store JSON
+   * @return true if the game data is saved, false otherwise
+   */
+  public static boolean saveGameData(int userId, String gameSaveJson, String gameConfigJson, String storeJson) {
+    String sql = "INSERT INTO game_saves (user_id, gamesave, gameconfiguration, configurablestores) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE gamesave = VALUES(gamesave), gameconfiguration = VALUES(gameconfiguration), configurablestores = VALUES(configurablestores), save_time = CURRENT_TIMESTAMP";
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setInt(1, userId);
+      stmt.setString(2, gameSaveJson);
+      stmt.setString(3, gameConfigJson);
+      stmt.setString(4, storeJson);
+      int rowsAffected = stmt.executeUpdate();
+      return rowsAffected > 0;
+    } catch (SQLException | ClassNotFoundException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+
+  /**
+   * Get the game data from the database.
+   *
+   * @param userId the user ID
+   * @return the game data
+   */
+  public static GameSaveData loadLatestGameData(int userId) {
+    String sql = "SELECT gamesave, gameconfiguration, configurablestores FROM game_saves WHERE user_id=? ORDER BY save_time DESC LIMIT 1";
+    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+      stmt.setInt(1, userId);
+      try (ResultSet rs = stmt.executeQuery()) {
+        if (rs.next()) {
+          String gameSaveJson = rs.getString("gamesave");
+          String gameConfigJson = rs.getString("gameconfiguration");
+          String storeJson = rs.getString("configurablestores");
+          return new GameSaveData(userId, gameSaveJson, gameConfigJson, storeJson);
+        }
+      }
+    } catch (SQLException | ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+
+
 }

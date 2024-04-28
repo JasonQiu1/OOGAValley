@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import oogasalad.database.realtime.Firebase;
+import oogasalad.model.api.GameInterface;
 
 /**
  * This class is responsible for displaying the new load screen for the game. This screen will allow
@@ -19,6 +20,12 @@ public class LoginView extends Application {
 
   private Label helloLabel;
   private UserInfo userInfo;
+  private GameInterface game;
+  private VBox vbox;
+
+  public LoginView(GameInterface game) {
+    this.game = game;
+  }
 
   public static void main(String[] args) {
     launch(args);
@@ -28,12 +35,10 @@ public class LoginView extends Application {
   public void start(Stage primaryStage) {
     Firebase.initializeFirebase();
     Button loginButton = new Button("Login");
-
-    Button backButton = new Button("Back");
     userInfo = new UserInfo(-1, "Guest");
 
     loginButton.setOnAction(event -> {
-      Login login = new Login(primaryStage, primaryStage.getScene());
+      Login login = new Login(primaryStage, primaryStage.getScene(), game);
       primaryStage.setScene(new Scene(login.getScene()));
       primaryStage.show();
       login.setOnLoginSuccess((username, id) -> {
@@ -42,12 +47,9 @@ public class LoginView extends Application {
       });
     });
 
-    backButton.setOnAction(event -> {
-      // Go back to the splash screen
-    });
 
-    VBox vbox = new VBox(10);
-    vbox.getChildren().addAll(loginButton, backButton);
+    vbox = new VBox(10);
+    vbox.getChildren().addAll(loginButton);
     vbox.setAlignment(Pos.CENTER);
     BorderPane root = new BorderPane();
     root.setCenter(vbox);
