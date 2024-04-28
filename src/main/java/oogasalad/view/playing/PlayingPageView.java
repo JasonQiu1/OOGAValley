@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import oogasalad.controller.GameKeyHandler;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.data.GameConfiguration;
@@ -158,6 +159,8 @@ public class PlayingPageView {
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
+    // Set key handler for the game window
+    scene.setOnKeyPressed(new GameKeyHandler(game));
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
     stage.setScene(scene);
