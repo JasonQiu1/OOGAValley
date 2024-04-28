@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -84,20 +83,18 @@ public class ButtonMenu {
       Window owner = primaryStage.getScene().getWindow();
       if (owner != null) {
         Bounds bounds = primaryStage.getScene().getRoot().getLayoutBounds();
-        Point2D topLeft = new Point2D(bounds.getMaxX()/2 - 50, bounds.getMaxY()/2 - 200);
+        Point2D topLeft = new Point2D(bounds.getMaxX() / 2 - 50, bounds.getMaxY() / 2 - 200);
         Point2D screenTopLeft = primaryStage.getScene().getRoot().localToScreen(topLeft);
         menuStage.setX(screenTopLeft.getX());
         menuStage.setY(screenTopLeft.getY());
       }
     }
-
     menuStage.setScene(menuScene);
     menuStage.show();
-
   }
 
   public void closeMenu() {
-      menuStage.close();
+    menuStage.close();
   }
 
 }

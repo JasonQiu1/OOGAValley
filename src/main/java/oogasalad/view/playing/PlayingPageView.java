@@ -164,14 +164,14 @@ public class PlayingPageView {
   }
 
   private void openAndCloseMenu() {
-      if (btm == null) {
-        LOG.info("Opened Button Menu");
-        btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
-        btm.open();
-      } else {
-        btm.closeMenu();
-        btm = null;
-      }
+    if (btm == null) {
+      LOG.info("Opened Button Menu");
+      btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
+      btm.open();
+    } else {
+      btm.closeMenu();
+      btm = null;
+    }
   }
 
   private void initModel() {
@@ -227,8 +227,11 @@ public class PlayingPageView {
       LOG.info("slept");
       game.sleep();
     });
+    Button saveButton = new Button("save");
+    saveButton.setId("save-button");
+    saveButton.setOnMouseClicked(event -> save());
     topBox.getChildren()
-        .addAll(helpButton, sleepButton, timeLabel, energyProgress, btnOpenShop,
+        .addAll(helpButton, sleepButton, saveButton, timeLabel, energyProgress, btnOpenShop,
             currentMoneyHbox);
     root.setTop(topBox);
   }

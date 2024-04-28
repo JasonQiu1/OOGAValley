@@ -5,10 +5,8 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
-import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -62,7 +60,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
         primaryLanguage, previousScene);
 //    LOG.info(String.format("the previous scene is still %s", previousScene));
 
-
     stage.setTitle(myStageTitle);
     stage.setScene(myScene);
     stage.show();
@@ -77,8 +74,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   }
 
 
-
-
   public void makeChooser() {
 //    FileChooserContainer resultContainer = new FileChooserContainer(null, DEFAULT_RESOURCE_FOLDER);
 //    LOG.debug(previousScene);
@@ -91,7 +86,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //      return;
 //    }
 
-    loaderListDisplay = new LoaderListDisplay(stage,"Loader", DEFAULT_RESOURCE_FOLDER);
+    loaderListDisplay = new LoaderListDisplay(stage, "Loader", DEFAULT_RESOURCE_FOLDER);
 
     Optional<File> file = loaderListDisplay.open();
 
@@ -102,7 +97,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     } else {
       return;
     }
-
+    LOG.info(filePath);
     try {
       new PlayingPageView(stage, primaryLanguage, filePath).start();
     } catch (IOException exception) {
@@ -127,6 +122,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   public Scene getMyScene() {
     return myScene;
   }
+
   public LoaderListDisplay getLoaderListDisplay() {
     return loaderListDisplay;
   }
