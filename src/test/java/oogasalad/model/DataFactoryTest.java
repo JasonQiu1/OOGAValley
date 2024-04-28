@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
+import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.DataFactory;
 import oogasalad.model.data.Properties;
@@ -16,11 +17,19 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+class BadProperties extends MockProperties {
+
+  private int randomField = 15;
+  private MockProperties properties;
+}
+
 class DataFactoryTest {
 
   private static final String TEST_DATA_DIRECTORY = "test";
   public DataFactory<Properties> propertiesDataFactory;
   public DataFactory<MockProperties> mockPropertiesDataFactory;
+  public DataFactory<BadProperties> badPropertiesDataFactory;
+
   public MockProperties emptyProperties;
   public MockProperties filledProperties;
 
@@ -39,6 +48,8 @@ class DataFactoryTest {
 
     propertiesDataFactory = new DataFactory<>(Properties.class);
     mockPropertiesDataFactory = new DataFactory<>(MockProperties.class);
+    badPropertiesDataFactory = new DataFactory<>(BadProperties.class);
+
     emptyProperties = new MockProperties();
 
     Map<String, String> mockValues =
@@ -90,13 +101,36 @@ class DataFactoryTest {
     assertEquals(filledProperties.mapProperties, loaded.getCopyOfMapProperties());
   }
 
+  @Test
+  void badLoad() throws IOException {
+    String dataFilePath = "filledPropertiesTest";
+    deleteFile(dataFilePath);
+    save(dataFilePath, filledProperties);
+
+    BadGsonLoadException exception =
+        assertThrows(BadGsonLoadException.class, () -> loadBad(dataFilePath));
+    assertEquals(
+        addDataFileExtension(Paths.get("data", TEST_DATA_DIRECTORY, dataFilePath).toString()),
+        exception.getFilePath());
+    assertEquals(BadProperties.class.toString(), exception.getClassName());
+  }
+
   void save(String dataFilePath, MockProperties properties) throws IOException {
     mockPropertiesDataFactory.save(Paths.get(TEST_DATA_DIRECTORY, dataFilePath).toString(),
         properties);
   }
 
+  void save(String dataFilePath, BadProperties properties) throws IOException {
+    badPropertiesDataFactory.save(Paths.get(TEST_DATA_DIRECTORY, dataFilePath).toString(),
+        properties);
+  }
+
   Properties load(String dataFilePath) throws IOException {
     return propertiesDataFactory.load(Paths.get(TEST_DATA_DIRECTORY, dataFilePath).toString());
+  }
+
+  BadProperties loadBad(String dataFilePath) throws IOException {
+    return badPropertiesDataFactory.load(Paths.get(TEST_DATA_DIRECTORY, dataFilePath).toString());
   }
 
   private void deleteFile(String dataFilePath) {

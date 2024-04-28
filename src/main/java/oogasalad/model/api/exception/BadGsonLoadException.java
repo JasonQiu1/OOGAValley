@@ -7,12 +7,6 @@ package oogasalad.model.api.exception;
  */
 public class BadGsonLoadException extends RuntimeException {
 
-  public BadGsonLoadException(String filePath, String className) {
-    super(BadGsonLoadException.class.getSimpleName());
-    this.filePath = filePath;
-    this.className = className;
-  }
-
   public BadGsonLoadException(String filePath, String className, Exception exception) {
     super(BadGsonLoadException.class.getSimpleName(), exception);
     this.filePath = filePath;
