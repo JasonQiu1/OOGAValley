@@ -6,6 +6,7 @@ import java.nio.file.InvalidPathException;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,7 +14,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -29,6 +29,7 @@ import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
+import oogasalad.view.playing.component.ResultPage;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
@@ -86,6 +87,8 @@ public class PlayingPageView {
   private BagView bagView;
   private Scene previousScene;
 
+  private Timeline timeline;
+
   public PlayingPageView(Stage primaryStage, String language, Scene backScene,
       GameConfiguration gameConfiguration) {
     stage = primaryStage;
@@ -96,9 +99,17 @@ public class PlayingPageView {
   }
 
   public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
+    GameInterface gameTemp;
     stage = primaryStage;
     primaryLanguage = language;
-    game = gameFactory.createGame(fileName, fileName);
+    try {
+      gameTemp = gameFactory.createGame(fileName, fileName);
+    } catch (IOException e) {
+      LOG.info("cannot find game saves, load from the config");
+      gameTemp = gameFactory.createGame(fileName);
+    }
+
+    game = gameTemp;
     energyProgress = new EnergyProgress(game);
   }
 
@@ -124,7 +135,7 @@ public class PlayingPageView {
     LOG.info("saving done");
   }
 
-  
+
   public void start() {
     LOG.info("initializing game");
     initModel();
@@ -141,9 +152,6 @@ public class PlayingPageView {
     menu.setOnAction(event -> openAndCloseMenu());
     menu.getStyleClass().add("menu_button");
     StackPane.setAlignment(menu, Pos.TOP_LEFT);
-
-
-
     root.getChildren().addAll(borderPane, topAnimationView, menu);
     StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
@@ -156,14 +164,14 @@ public class PlayingPageView {
   }
 
   private void openAndCloseMenu() {
-      if (btm == null) {
-        LOG.info("Opened Button Menu");
-        btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
-        btm.open();
-      } else {
-        btm.closeMenu();
-        btm = null;
-      }
+    if (btm == null) {
+      LOG.info("Opened Button Menu");
+      btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
+      btm.open();
+    } else {
+      btm.closeMenu();
+      btm = null;
+    }
   }
 
   private void initModel() {
@@ -173,19 +181,27 @@ public class PlayingPageView {
   }
 
   private void setUpdate() {
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 30), event -> {
-      game.update();
-      landView.update();
-      bagView.update();
-      updateTimeLabel();
-      energyProgress.update();
-      if (game.isGameOver()) {
-        Alert alert = new Alert(AlertType.CONFIRMATION, "game is over");
-        alert.showAndWait();
+    timeline = new Timeline();
+    KeyFrame keyFrame = new KeyFrame(Duration.seconds(1.0 / 30), event -> {
+      if (!game.isGameOver()) {
+        game.update();
+        landView.update();
+        bagView.update();
+        updateTimeLabel();
+        energyProgress.update();
+      } else {
+        timeline.stop();
+        Platform.runLater(this::endGame);
       }
-    }));
+    });
+    timeline.getKeyFrames().add(keyFrame);
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
+  }
+
+  private void endGame() {
+    ResultPage resultPage = new ResultPage(game, stage);
+    resultPage.show();
   }
 
   private void updateTimeLabel() {
@@ -211,8 +227,11 @@ public class PlayingPageView {
       LOG.info("slept");
       game.sleep();
     });
+    Button saveButton = new Button("save");
+    saveButton.setId("save-button");
+    saveButton.setOnMouseClicked(event -> save());
     topBox.getChildren()
-        .addAll(helpButton, sleepButton, timeLabel, energyProgress, btnOpenShop,
+        .addAll(helpButton, sleepButton, saveButton, timeLabel, energyProgress, btnOpenShop,
             currentMoneyHbox);
     root.setTop(topBox);
   }
