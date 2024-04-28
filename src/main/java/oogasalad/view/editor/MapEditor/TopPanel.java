@@ -9,13 +9,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.start.ChangePageButton;
 
 public class TopPanel extends StackPane {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.TopPanel.";
+  private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/editor/MapEditor/TopPanel/";
   private final String buttonLanguage = "EnglishButtons";
   private final String titleLanguage = "EnglishTitle";
+  private final String menuPath;
   private final ResourceBundle buttonResource;
   private final ResourceBundle titleResource;
   private final Stage primaryStage;
@@ -30,6 +33,9 @@ public class TopPanel extends StackPane {
 
     titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + titleLanguage);
     buttonResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + buttonLanguage);
+
+    menuPath = DEFAULT_RESOURCE_FOLDER + "EnglishMenu.csv";
+
 
     Label l = new Label(titleResource.getString("map_editor")); //Resource Bundle This
     HBox hbox = new HBox(l);
@@ -58,8 +64,8 @@ public class TopPanel extends StackPane {
           }
         });
 
-    Button backButton = new Button("Back");
-    backButton.setOnAction(event -> goBack());
+    Button backButton = new Button("Menu");
+    backButton.setOnAction(event -> new ButtonMenu(primaryStage, "English", previousScene, menuPath).open());
 
 
 //      HelpButtonWrapper hbw = new HelpButtonWrapper(

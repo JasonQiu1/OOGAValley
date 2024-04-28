@@ -1,0 +1,3 @@
+New, pink, oogasalad.view.editor.EditorScene, start
+Load, lightblue, oogasalad.view.editor.EditorScene, makeLoader
+Back, lightblue, oogasalad.view.start.PlayModeSplashScreen, goBackScene
