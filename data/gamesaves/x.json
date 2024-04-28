@@ -4935,7 +4935,7 @@
   },
   "selectedItem": null,
   "energy": 20.0,
-  "money": 1000,
+  "money": 0,
   "shop": {
     "itemRotationSize": 3,
     "possibleItems": [
@@ -4954,6 +4954,10 @@
       {
         "type": "oogasalad.model.gameobject.Item",
         "data": "{\"itemId\":\"Scythe\"}"
+      },
+      {
+        "type": "oogasalad.model.gameobject.Item",
+        "data": "{\"itemId\":\"Cake\"}"
       }
     ],
     "previousRotationTime": {

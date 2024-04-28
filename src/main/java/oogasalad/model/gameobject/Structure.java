@@ -73,6 +73,6 @@ public class Structure extends GameObject implements StructureObject {
    */
   @Override
   public boolean interactionValid(ReadOnlyItem item) {
-    return super.interactionValid(item) || isHarvestable();
+    return super.interactionValid(item) || (isHarvestable() && destructableBy(item.getName()));
   }
 }
