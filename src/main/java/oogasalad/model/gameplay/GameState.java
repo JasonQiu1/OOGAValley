@@ -16,7 +16,6 @@ import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.DataFactory;
 import oogasalad.model.gameobject.Item;
-import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,8 +38,7 @@ public class GameState implements ReadOnlyGameState {
    */
   public GameState(ReadOnlyProperties properties) {
     this.bag = new Bag();
-    this.gameWorld =
-        new BuildableTileMap(10, 15, 1);
+    this.gameWorld = new BuildableTileMap(10, 15, 1);
     this.gameTime = new GameTime(1, 8, 0);
     this.maxEnergy = properties.getInteger("energyAmount");
     try {
@@ -184,6 +182,10 @@ public class GameState implements ReadOnlyGameState {
 
   public Bag getEditableBag() {
     return bag;
+  }
+
+  public Shop getEditableShop() {
+    return shop;
   }
 
   public BuildableTileMap getEditableMap() {

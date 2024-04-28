@@ -25,7 +25,8 @@
       "Wheat Seeds",
       "Hoe",
       "Pickaxe",
-      "Scythe"
+      "Scythe",
+      "Cake"
     ]
   },
   "mapProperties": {
@@ -55,7 +56,10 @@
       "energyRecoveryRate",
       "exhaustedEnergyCollapseTimePenalty",
       "timeMultiplier",
-      "timeGoal"
+      "timeGoal",
+      "wakeHour",
+      "shopRotationTime",
+      "shopRotationSize"
     ]
   }
 }
