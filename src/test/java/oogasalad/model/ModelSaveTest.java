@@ -17,6 +17,7 @@ public class ModelSaveTest {
     System.out.println(imagePath);
     game.selectItem("Hoe");
     game.interact(2, 0, 0);
+    game.update();
     String imageAfter = game.getGameState().getGameWorld().getImagePath(2, 0, 0).toString();
     System.out.println(game.getGameState().getGameWorld().getImagePath(2, 0, 0));
     assertNotEquals(imageAfter, imagePath);
@@ -33,7 +34,6 @@ public class ModelSaveTest {
     String imageAfter = game.getGameState().getGameWorld().getImagePath(2, 0, 0).toString();
     System.out.println(game.getGameState().getGameWorld().getImagePath(2, 0, 0));
     assertNotEquals(imageAfter, imagePath);
-
   }
 
   @Test
@@ -45,6 +45,7 @@ public class ModelSaveTest {
     game.selectItem("Hoe");
     game.interact(2, 0, 0);
     game.interact(2, 0, 0);
+    game.update();
     System.out.println(game.getGameState().getGameWorld().getImagePath(2, 0, 0));
     game.save("x2.json");
     game.getGameConfiguration().save("x2.json");
