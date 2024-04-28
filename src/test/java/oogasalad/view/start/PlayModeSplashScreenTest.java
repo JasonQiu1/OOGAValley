@@ -1,8 +1,10 @@
 package oogasalad.view.start;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
@@ -33,9 +35,7 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
   @Test
   @DisplayName("Test New Button")
   public void testOpenPlayingView() {
-    sleep(500);
     clickOn(newGame);
-    sleep(500);
     LOG.debug(String.format("the stage title is %s", stage.getTitle()));
     assertTrue(stage.getTitle().equals("Playing Mode"));
   }
@@ -44,10 +44,27 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
   @Test
   @DisplayName("Test Back Button")
   public void testGoBack() {
-    sleep(500);
     clickOn(back);
-    sleep(500);
     assertTrue(stage.getTitle().equals("OOGAValley"));
+  }
+
+  @Test
+  @DisplayName("Test Load Button")
+  public void testLoad() {
+    clickOn(loadGame);
+
+    Stage loaderStage = findLoaderStage();
+    assertNotNull(loaderStage.getTitle());
+  }
+
+  private Stage findLoaderStage() {
+    for (Window stage : listTargetWindows()) {
+      Stage news = (Stage) stage;
+      if ("Loader".equals(news.getTitle())) {
+        return news;
+      }
+    }
+    return null;
   }
 }
 

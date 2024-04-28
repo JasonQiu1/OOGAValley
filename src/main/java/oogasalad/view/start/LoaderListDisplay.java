@@ -18,7 +18,7 @@ public class LoaderListDisplay {
 
   private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
 
-//  private final String myTitle;
+  private final String myTitle;
   private final String defaultDirectoryPath;
   private final VBox vBox;
   private File selectedFile;
@@ -28,10 +28,11 @@ public class LoaderListDisplay {
     primaryStage = mainStage;
     vBox = new VBox();
     defaultDirectoryPath = defaultFolderPath;
-    vBox.setId(title);
+    myTitle = title;
   }
 
   public Optional<File> open(Stage stage) {
+    stage.setTitle(myTitle);
 
     ListView<String> listView = new ListView<>();
     File directory = new File(defaultDirectoryPath);
