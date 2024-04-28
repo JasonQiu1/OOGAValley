@@ -32,7 +32,6 @@ import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.ResultPage;
-import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
 import org.apache.logging.log4j.LogManager;
@@ -89,12 +88,13 @@ public class PlayingPageView {
   private Button helpButton;
   private ButtonMenu btm;
   private LandView landView;
-  private TopAnimationView topAnimationView;
   private BagView bagView;
   private Scene previousScene;
 
   private Timeline timeline;
   private StackPane root;
+
+  private CurrentMoneyHbox moneyBox;
 
   public PlayingPageView(Stage primaryStage, String language, Scene backScene,
       GameConfiguration gameConfiguration) {
@@ -183,12 +183,10 @@ public class PlayingPageView {
     setupLeftRight(borderPane);
     setupCenter(borderPane);
     setupBottom(borderPane);
-    root.getChildren().addAll(borderPane, topAnimationView);
+    root.getChildren().addAll(borderPane);
     StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
-    StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
-    // Set key handler for the game window
     scene.setOnKeyPressed(new GameKeyHandler(game));
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
@@ -209,8 +207,7 @@ public class PlayingPageView {
 
   private void initModel() {
     bagView = new BagView(game, 10, bottomCellWidth,
-        bottomCellHeight,bottomBoxWidth, bottomBoxHeight);
-    topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
+        bottomCellHeight, bottomBoxWidth, bottomBoxHeight);
     landView = new LandView(game, landGridPaneWidth, landGridPaneHeight);
   }
 
@@ -223,6 +220,7 @@ public class PlayingPageView {
         bagView.update();
         updateTimeLabel();
         energyProgress.update();
+        moneyBox.update();
       } else {
         timeline.stop();
         Platform.runLater(this::endGame);
@@ -257,9 +255,9 @@ public class PlayingPageView {
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
     timeLabel.setId("time-label");
-    CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox(game);
-    currentMoneyHbox.update();
-    currentMoneyHbox.setAlignment(Pos.CENTER);
+    moneyBox = new CurrentMoneyHbox(game);
+    moneyBox.update();
+    moneyBox.setAlignment(Pos.CENTER);
     Button sleepButton = new Button("sleep");
     setButtonSize(sleepButton, topButtonWidth, topButtonHeight, topFontSize);
     sleepButton.setId("sleep-button");
@@ -276,7 +274,7 @@ public class PlayingPageView {
     loginButton.setOnAction(e -> openLogin());
     topBox.getChildren()
         .addAll(menu, helpButton, sleepButton, saveButton, timeLabel, energyProgress, btnOpenShop,
-            currentMoneyHbox, loginButton);
+            moneyBox, loginButton);
     root.setTop(topBox);
   }
 
@@ -337,6 +335,7 @@ public class PlayingPageView {
   public StackPane getRoot() {
     return root;
   }
+
   public void setWindowWidth(int windowWidth) {
     this.windowWidth = windowWidth;
   }
