@@ -2,6 +2,7 @@ package oogasalad.model.gameobject;
 
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
+import oogasalad.model.api.ReadOnlyItem;
 
 /**
  * Represents a structure within the game world, extending the general functionality of a
@@ -49,5 +50,16 @@ public class Structure extends GameObject implements StructureObject {
   @Override
   public boolean isHarvestable() {
     return getProperties().getBoolean("destructable");
+  }
+
+  /**
+   * Determines if the interaction with a specified item is valid.
+   *
+   * @param item The item in question.
+   * @return true if the interaction is valid, false otherwise.
+   */
+  @Override
+  public boolean interactionValid(ReadOnlyItem item) {
+    return super.interactionValid(item) || isHarvestable();
   }
 }

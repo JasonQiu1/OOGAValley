@@ -54,5 +54,16 @@ public class Land extends GameObject implements Plantable {
   public String getStructureBasedOnItem(ReadOnlyItem item) {
     return getProperties().getStringMap("plantableSeeds").get(item.getName());
   }
+
+  /**
+   * Determines if the interaction with a specified item is valid.
+   *
+   * @param item The item in question.
+   * @return true if the interaction is valid, false otherwise.
+   */
+  @Override
+  public boolean interactionValid(ReadOnlyItem item) {
+    return super.interactionValid(item) || getIfItemCanBePlacedHere(item);
+  }
 }
 
