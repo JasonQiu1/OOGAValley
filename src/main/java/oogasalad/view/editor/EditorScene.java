@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import oogasalad.controller.GameConfigurationGenerator;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.data.GameConfiguration;
@@ -27,7 +28,7 @@ public class EditorScene extends Scene {
   }
 
   public EditorScene(Stage primaryStage, String language, Scene backScene) {
-    super(new EditorWindow(primaryStage, backScene, new GameConfiguration()));
+    super(new EditorWindow(primaryStage, backScene, new GameConfigurationGenerator().createDefault()));
     stage = primaryStage;
     myPrimaryLanguage = language;
     //ew = new EditorWindow(new GameConfiguration());
