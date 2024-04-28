@@ -244,8 +244,9 @@ public class InfoService {
    * @param storeJson      the store JSON
    * @return true if the game data is saved, false otherwise
    */
-  public static boolean saveGameData(int userId, String gameSaveJson, String gameConfigJson, String storeJson) {
-    String sql = "INSERT INTO game_saves (user_id, gamesave, gameconfiguration, configurablestores) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE gamesave = VALUES(gamesave), gameconfiguration = VALUES(gameconfiguration), configurablestores = VALUES(configurablestores), save_time = CURRENT_TIMESTAMP";
+  public static boolean saveGameData(int userId, String gameSaveJson, String gameConfigJson,
+      String storeJson) {
+    String sql = "INSERT INTO game_saves(user_id, gamesave, gameconfiguration, configurablestores) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE gamesave = VALUES(gamesave), gameconfiguration = VALUES(gameconfiguration), configurablestores = VALUES(configurablestores), save_time = CURRENT_TIMESTAMP";
     try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setInt(1, userId);
       stmt.setString(2, gameSaveJson);
@@ -283,7 +284,6 @@ public class InfoService {
     }
     return null;
   }
-
 
 
 }
