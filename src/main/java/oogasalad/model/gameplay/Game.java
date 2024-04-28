@@ -74,11 +74,21 @@ public class Game implements GameInterface {
 
   @Override
   public void update() {
-    state.getEditableGameTime().update();
-    ReadOnlyGameTime currentGameTime = state.getGameTime();
-    ReadOnlyGameTime copyOfGameTime =
-        new GameTime(currentGameTime.getDay(), currentGameTime.getHour(),
-            currentGameTime.getMinute());
+    for (int i = 0; i < configuration.getRules().getInteger("timeMultiplier"); i++) {
+      state.getEditableGameTime().update();
+    }
+    ReadOnlyGameTime copyOfGameTime = new GameTime(state.getGameTime());
+
+    // energy regeneration
+    int energyRegenerationTime = configuration.getRules().getInteger("energyRecoveryRate");
+    if (lastEnergyRegenerationTime == null) {
+      lastEnergyRegenerationTime = new GameTime(state.getGameTime());
+    }
+    if (lastEnergyRegenerationTime.getDifferenceInMinutes(copyOfGameTime) > energyRegenerationTime) {
+      lastEnergyRegenerationTime.advance(energyRegenerationTime);
+      state.restoreEnergy(1);
+    }
+
     state.addItemsToBag();
     state.getEditableGameWorld().update(copyOfGameTime);
   }
@@ -134,7 +144,8 @@ public class Game implements GameInterface {
 
     // try using item if there is enough energy to do so
     // or eat item and don't interact with the world
-    if (itemProperties.getBoolean("edible") || state.getEditableGameWorld().interact(selectedItem, x, y, depth)) {
+    if (itemProperties.getBoolean("edible") || state.getEditableGameWorld()
+        .interact(selectedItem, x, y, depth)) {
       state.restoreEnergy(energyChange);
       if (GameConfiguration.getConfigurablesStore()
           .getConfigurableProperties(selectedItem.getName()).getBoolean("consumable")) {
@@ -251,6 +262,8 @@ public class Game implements GameInterface {
 
   private final GameConfiguration configuration;
   private final GameState state;
+
+  private GameTime lastEnergyRegenerationTime = new GameTime(0, 0, 0);
 
   private static final DataFactory<GameState> GAMESTATE_FACTORY =
       new DataFactory<>(GameState.class);
