@@ -1,5 +1,6 @@
 package oogasalad.model.gameplay;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -102,8 +103,10 @@ public class Shop implements ReadOnlyShop, Updatable {
   public void forceItemRotation(ReadOnlyGameTime gameTime) {
     previousRotationTime = ReadOnlyGameTime.copyOf(gameTime);
     itemRotation.clear();
-    for (int i = 0; i < itemRotationSize; i++) {
-      ReadOnlyItem itemForSale = possibleItems.get(random.nextInt(possibleItems.size()));
+    ArrayList<ReadOnlyItem> itemsLeft = new ArrayList<>(possibleItems);
+    for (int i = 0; i < itemRotationSize && !itemsLeft.isEmpty(); i++) {
+      int itemIndex = random.nextInt(itemsLeft.size());
+      ReadOnlyItem itemForSale = itemsLeft.remove(itemIndex);
       itemRotation.put(itemForSale, itemForSale.getWorth() * 2);
     }
   }
