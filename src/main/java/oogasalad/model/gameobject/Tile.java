@@ -51,11 +51,29 @@ public class Tile implements Updatable, Interactable {
             land != null && land.getIfItemCanBePlacedHere(item));
   }
 
+  /**
+   * Checks if an interaction with the given item is valid for any game object on the tile.
+   * The method sequentially checks each game object starting with the collectable, followed by the structure,
+   * and finally the land. The first non-null game object found dictates the outcome:
+   * if its interaction with the item is valid, the method returns true; otherwise, it returns false.
+   * If a game object is present, it alone is responsible for the interaction validation, and no further checks are performed.
+   *
+   * @param item The item to be used in the interaction check.
+   * @return true if the first non-null game object's interaction with the item is valid, otherwise false.
+   */
   @Override
   public boolean interactionValid(ReadOnlyItem item) {
-    return collectable.interactionValid(item) || structure.interactionValid(item) ||
-        land.interactionValid(item);
+      return Optional.ofNullable(collectable)
+          .map(c -> c.interactionValid(item))
+          .orElseGet(() ->
+              Optional.ofNullable(structure)
+                  .map(s -> s.interactionValid(item))
+                  .orElseGet(() ->
+                      Optional.ofNullable(land)
+                          .map(l -> l.interactionValid(item))
+                          .orElse(false)));
   }
+
 
   /**
    * Executes interaction logic if the specified game object is valid for interaction with the given
