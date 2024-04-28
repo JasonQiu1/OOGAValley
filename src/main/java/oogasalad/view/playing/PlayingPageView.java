@@ -6,6 +6,7 @@ import java.nio.file.InvalidPathException;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -28,6 +29,7 @@ import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
+import oogasalad.view.playing.component.ResultPage;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
@@ -84,6 +86,8 @@ public class PlayingPageView {
   private TopAnimationView topAnimationView;
   private BagView bagView;
   private Scene previousScene;
+
+  private Timeline timeline;
 
   public PlayingPageView(Stage primaryStage, String language, Scene backScene,
       GameConfiguration gameConfiguration) {
@@ -176,19 +180,27 @@ public class PlayingPageView {
   }
 
   private void setUpdate() {
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 30), event -> {
-      game.update();
-      landView.update();
-      bagView.update();
-      updateTimeLabel();
-      energyProgress.update();
-      if (game.isGameOver()) {
-        Alert alert = new Alert(AlertType.CONFIRMATION, "game is over");
-        alert.showAndWait();
+    timeline = new Timeline();
+    KeyFrame keyFrame = new KeyFrame(Duration.seconds(1.0 / 30), event -> {
+      if (!game.isGameOver()) {
+        game.update();
+        landView.update();
+        bagView.update();
+        updateTimeLabel();
+        energyProgress.update();
+      } else {
+        timeline.stop();
+        Platform.runLater(this::endGame);
       }
-    }));
+    });
+    timeline.getKeyFrames().add(keyFrame);
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
+  }
+
+  private void endGame() {
+    ResultPage resultPage = new ResultPage(game, stage);
+    resultPage.show();
   }
 
   private void updateTimeLabel() {
