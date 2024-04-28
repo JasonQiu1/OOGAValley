@@ -32,6 +32,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private String buttonsPath;
   private String myStageTitle;
   private Scene myScene;
+  private LoaderListDisplay loaderListDisplay;
   private Scene playModeScreen;
 
   public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene,
@@ -90,9 +91,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //      return;
 //    }
 
-    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage,"Loader", DEFAULT_RESOURCE_FOLDER);
+    loaderListDisplay = new LoaderListDisplay(stage,"Loader", DEFAULT_RESOURCE_FOLDER);
 
-    Optional<File> file = loaderListDisplay.open(new Stage());
+    Optional<File> file = loaderListDisplay.open();
 
     String filePath;
     if (file.isPresent()) {
@@ -125,6 +126,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 
   public Scene getMyScene() {
     return myScene;
+  }
+  public LoaderListDisplay getLoaderListDisplay() {
+    return loaderListDisplay;
   }
 
 }

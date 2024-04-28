@@ -164,13 +164,14 @@ public class PlayingPageView {
   }
 
   private void openAndCloseMenu() {
-    if (btm == null) {
-      LOG.info("Opened Button Menu");
-      btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
-      btm.open();
-    } else {
-      btm.closeMenu();
-    }
+      if (btm == null) {
+        LOG.info("Opened Button Menu");
+        btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
+        btm.open();
+      } else {
+        btm.closeMenu();
+        btm = null;
+      }
   }
 
   private void initModel() {
