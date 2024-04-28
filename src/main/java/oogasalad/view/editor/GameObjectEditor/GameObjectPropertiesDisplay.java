@@ -2,6 +2,7 @@ package oogasalad.view.editor.GameObjectEditor;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -69,7 +70,7 @@ public class GameObjectPropertiesDisplay extends VBox {
 
     private void displayMapProperties(Map<String, Map<String, String>> mapProperties) {
         mapProperties.forEach((mapPropertyName, mapPropertyValues) -> {
-            super.getChildren().add(new MapPropertiesContainer(mapPropertyName, this::addMapProperty));
+            super.getChildren().add(new MapPropertiesContainer(mapPropertyName, this::addMapProperty, this::removeMapProperty));
             List<ObjectPropertyDisplay> listOfOPDS = new ArrayList<>();
             mapPropertyValues.forEach((propertyName, propertyValue) -> {
                 listOfOPDS.add(new ObjectPropertyDisplay(propertyName, propertyValue, super.getChildren()));
@@ -101,8 +102,24 @@ public class GameObjectPropertiesDisplay extends VBox {
         String[] newFieldAndValue = popup.getNewField();
         if(newFieldAndValue != null){
             ObjectPropertyMapDisplays.get(key).add(new ObjectPropertyDisplay(newFieldAndValue[0], newFieldAndValue[1],
-                    getChildren(), key, ObjectPropertyMapDisplays.get(key).size()));
+                    getChildren(), findIndex(key) + 1));
         }
+    }
+
+    private void removeMapProperty(String key){
+        getChildren().remove(findIndex(key));
+        ObjectPropertyMapDisplays.get(key).remove(ObjectPropertyMapDisplays.get(key).size() - 1);
+    }
+
+    private int findIndex(String loc) {
+        int counter = 0;
+        for(Node n : getChildren()){
+            if(n.getId() != null && n.getId().equals(loc)){
+                return counter + ObjectPropertyMapDisplays.get(loc).size();
+            }
+            counter++;
+        }
+        return -1;
     }
 
 }

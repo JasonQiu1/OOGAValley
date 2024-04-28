@@ -6,11 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.EditorScene;
+import oogasalad.view.editor.MapEditor.BottomPanel;
 import oogasalad.view.editor.MapEditor.SelectableViewBox;
 import oogasalad.view.editor.MapEditor.SelectableViewBoxWrapper;
 import org.junit.jupiter.api.DisplayName;
@@ -31,8 +34,14 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
     }
 
     @Test
-    @DisplayName("Test one rule change")
+    @DisplayName("Test one property change")
     public void testOneRuleChange() {
+        BottomPanel bp = lookup("#BottomPanel").queryAs(BottomPanel.class);
+        Tab tab = bp.getTabs().stream()
+                .filter(t -> "Item".equals(t.getId()))
+                .findFirst()
+                .orElse(null);
+        bp.getSelectionModel().select(tab);
         VBox wheat = lookup("#Hoe").queryAs(VBox.class);
         sleep(2000);
         clickOn(wheat);
@@ -42,5 +51,26 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
         clickOn(save);
         sleep(1000);
         assertEquals("6000", GameConfiguration.getConfigurablesStore().getConfigurableProperties("Hoe").getCopyOfProperties().get("worth"));
+    }
+
+    @Test
+    @DisplayName("Test add property")
+    public void testAddProperty(){
+        VBox collect = lookup("#COLLECTABLE").queryAs(VBox.class);
+        sleep(2000);
+        clickOn(collect);
+        Button add = lookup("#AddinteractDropMultipliers").queryButton();
+        clickOn(add);
+        TextField field = lookup("#newField").queryAs(TextField.class);
+        TextField value = lookup("#newValue").queryAs(TextField.class);
+        field.setText("Robert");
+        value.setText("Duvall");
+        press(KeyCode.ENTER);
+        release(KeyCode.ENTER);
+        Button save = lookup("#SaveProperties").queryButton();
+        clickOn(save);
+        sleep(1000);
+        assertTrue(GameConfiguration.getConfigurablesStore().getConfigurableProperties("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").containsKey("Robert"));
+        assertEquals("Duvall", GameConfiguration.getConfigurablesStore().getConfigurableProperties("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").get("Robert"));
     }
 }

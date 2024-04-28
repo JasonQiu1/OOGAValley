@@ -55,6 +55,7 @@ public class BottomPanel extends TabPane {
   private void createTabs(Map<String, List<SelectableView>> mapOfSelectables) {
     for(Map.Entry<String, List<SelectableView>> entry : mapOfSelectables.entrySet()){
       Tab tab = new Tab(entry.getKey());
+      tab.setId(entry.getKey());
       tab.setClosable(false);
       tab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(entry.getValue()),
               (entry.getKey())));
