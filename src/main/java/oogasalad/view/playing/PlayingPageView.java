@@ -120,8 +120,7 @@ public class PlayingPageView {
     FileChooser result = new FileChooser();
     result.setTitle("save location ");
     result.setInitialDirectory(new File("data/gamesaves"));
-    result.getExtensionFilters()
-        .setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
+    result.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
     File file = result.showSaveDialog(stage);
     if (file == null) {
       return;
