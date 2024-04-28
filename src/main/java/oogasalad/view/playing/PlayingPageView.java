@@ -85,8 +85,7 @@ public class PlayingPageView {
   private Scene previousScene;
   private Timeline timeline;
 
-  public PlayingPageView(Stage primaryStage, String language, Scene backScene,
-      GameConfiguration gameConfiguration) {
+  public PlayingPageView(Stage primaryStage, String language, Scene backScene) {
     stage = primaryStage;
     primaryLanguage = language;
     setFileLanguages();
@@ -95,7 +94,7 @@ public class PlayingPageView {
     energyProgress = new EnergyProgress(game);
   }
 
-  public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
+  public PlayingPageView(Stage primaryStage, String language, String saveFilePath, String configFilePath) throws IOException {
     GameInterface gameTemp;
     stage = primaryStage;
     primaryLanguage = language;
@@ -103,10 +102,10 @@ public class PlayingPageView {
     setFileLanguages();
 
     try {
-      gameTemp = gameFactory.createGame(fileName, fileName);
+      gameTemp = gameFactory.createGame(saveFilePath, configFilePath);
     } catch (IOException e) {
       LOG.info("cannot find game saves, load from the config");
-      gameTemp = gameFactory.createGame(fileName);
+      gameTemp = gameFactory.createGame(configFilePath, saveFilePath);
     }
 
     game = gameTemp;

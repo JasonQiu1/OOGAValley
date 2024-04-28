@@ -21,8 +21,6 @@ public class StartScreen extends AbstractSplashScreen {
   private static final String STYLES = "/styles.css";
   private static final Logger LOG = LogManager.getLogger(StartScreen.class);
   private final String languagesListPath = "LanguagesList.csv";
-  private final PlayingPageView playingPageView;
-  private final EditorScene editorScene;
   private final Stage stage;
   private String buttonLanguage;
   private String titleLanguage;
@@ -38,12 +36,10 @@ public class StartScreen extends AbstractSplashScreen {
   /**
    * Creates StartScreen
    */
-  public StartScreen(Stage stageToUse, String language, Scene backScene, GameConfiguration gc) {
+  public StartScreen(Stage stageToUse, String language, Scene backScene) {
     super();
     stage = stageToUse;
     myPrimaryLanguage = language;
-    playingPageView = new PlayingPageView(stageToUse, language, null, gc);
-    editorScene = new EditorScene(stageToUse, language, null, new GameConfiguration());
     setLanguages();
   }
 
@@ -81,7 +77,7 @@ public class StartScreen extends AbstractSplashScreen {
           String newValue) {
         myPrimaryLanguage = newValue;
         LOG.debug(myPrimaryLanguage);
-        new StartScreen(stage, myPrimaryLanguage, null, new GameConfiguration()).open();
+        new StartScreen(stage, myPrimaryLanguage, null).open();
       }
     });
   }
