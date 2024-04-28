@@ -1,6 +1,7 @@
 
 package oogasalad.controller;
 
+import java.io.IOException;
 import oogasalad.model.data.GameConfiguration;
 
 /**
@@ -22,6 +23,15 @@ public class GameConfigurationGenerator {
    */
   public GameConfiguration createDefault() {
     return new GameConfiguration();
+  }
+
+  public GameConfiguration returnConfig(String filePath) {
+    try {
+      GameConfiguration gameConfiguration =  GameConfiguration.of(filePath);
+      return gameConfiguration;
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 
 }
