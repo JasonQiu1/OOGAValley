@@ -1,9 +1,5 @@
 package oogasalad.view.editor.ObjectEditor;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Tab;
@@ -19,6 +15,8 @@ import oogasalad.view.editor.MapEditor.SelectableViewBoxWrapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.DukeApplicationTest;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ObjectPropertiesChangeTest extends DukeApplicationTest {
     private Stage stage;
@@ -72,5 +70,26 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
         sleep(1000);
         assertTrue(GameConfiguration.getConfigurablesStore().getConfigurableProperties("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").containsKey("Robert"));
         assertEquals("Duvall", GameConfiguration.getConfigurablesStore().getConfigurableProperties("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").get("Robert"));
+    }
+
+    @Test
+    @DisplayName("Test remove property")
+    public void testRemoveProperty(){
+        assertTrue(GameConfiguration.getConfigurablesStore().getConfigurableProperties("Wheat").getCopyOfMapProperties().get("dropsOnDestruction").containsKey("Wheat Bundle"));
+        BottomPanel bp = lookup("#BottomPanel").queryAs(BottomPanel.class);
+        Tab tab = bp.getTabs().stream()
+                .filter(t -> "Structure".equals(t.getId()))
+                .findFirst()
+                .orElse(null);
+        bp.getSelectionModel().select(tab);
+        VBox collect = lookup("#Wheat").queryAs(VBox.class);
+        sleep(2000);
+        clickOn(collect);
+        Button add = lookup("#RemovedropsOnDestruction").queryButton();
+        clickOn(add);
+        Button save = lookup("#SaveProperties").queryButton();
+        clickOn(save);
+        sleep(3000);
+        assertFalse(GameConfiguration.getConfigurablesStore().getConfigurableProperties("Wheat").getCopyOfMapProperties().get("dropsOnDestruction").containsKey("Wheat Bundle"));
     }
 }
