@@ -6,13 +6,24 @@
 
 .button {
   -fx-font-family: "Press Start 2P";
-  -fx-min-height: 10;
+  -fx-min-height: 30;
   -fx-fit-to-width: 50;
   -fx-padding: 10;
 }
 
-#root_Vbox {
+.root_VBox {
+  -fx-background-color: transparent;
+  -fx-padding: 30;
   -fx-spacing: 10;
+}
+
+.root_ScrollPane {
+  -fx-pref-width: 100;
+  -fx-pref-height: 50;
+}
+
+.label {
+  -fx-font-family: "Press Start 2P";
 }
 
 

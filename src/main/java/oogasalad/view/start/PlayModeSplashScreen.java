@@ -24,6 +24,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
   private final Stage stage;
   private final String primaryLanguage;
+  private final Scene previousScene;
   private String buttonLanguage;
   private String titleLanguage;
   private ResourceBundle buttonResource;
@@ -31,7 +32,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private String buttonsPath;
   private String myStageTitle;
   private Scene myScene;
-  private final Scene previousScene;
   private Scene playModeScreen;
 
   public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene,
@@ -47,7 +47,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   @Override
   public void open() {
     titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Title");
-    buttonResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
+    buttonResource = ResourceBundle.getBundle(
+        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
 
     myStageTitle = titleResource.getString("title");
     buttonsPath = buttonResource.getString("buttons_path");
@@ -60,7 +61,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
         primaryLanguage, previousScene);
 //    LOG.info(String.format("the previous scene is still %s", previousScene));
 
-    myScene.setOnKeyPressed(event -> actKey(event.getCode()));
 
     stage.setTitle(myStageTitle);
     stage.setScene(myScene);
@@ -75,12 +75,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //    goBackScene(new Scene(new HBox()));
   }
 
-  private void actKey(KeyCode code) {
-    if (code == KeyCode.ESCAPE) {
-      ButtonMenu btm = new ButtonMenu(stage, primaryLanguage, previousScene, buttonsPath);
-      btm.open();
-    }
-  }
+
 
 
   public void makeChooser() {
@@ -95,7 +90,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //      return;
 //    }
 
-    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(null, DEFAULT_SAVES_FOLDER);
+    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage,"Loader", DEFAULT_RESOURCE_FOLDER);
 
     Optional<File> file = loaderListDisplay.open(new Stage());
 

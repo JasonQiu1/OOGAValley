@@ -4,7 +4,8 @@
     "name": "Pickaxe",
     "type": "Item",
     "image": "pickaxe.png",
-    "worth": 500
+    "worth": 500,
+    "consumable": false
   },
   "listProperties": {},
   "mapProperties": {}

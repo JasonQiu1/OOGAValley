@@ -43,6 +43,17 @@ This was a Minor change. This method was already only being used in the model, s
   * Better or Worse (and why)
 Better since it promotes further model view separation.
 
+* Method changed:
+  interact(ReadOnlyItem item, int width, int height, int depth) within GameWorld.
+  * Why was this change made?
+This was made from a void method to a boolean. The boolean represents whether a valid interaction
+occurred. This is important for possibly decrementing the amount of the item that was used on it.
+  * Major or Minor
+This is a very minor change. No other code must be changed. This just provides more information
+that can be used by other classes.
+  * Better or Worse.
+Better as this allows the classes that use it to know whether an interaction occurred or not.
+
 
 
 

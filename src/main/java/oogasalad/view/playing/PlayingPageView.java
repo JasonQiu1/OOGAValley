@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -78,6 +79,7 @@ public class PlayingPageView {
   private final GameFactory gameFactory = new GameFactory();
   private final GameInterface game;
   private Button helpButton;
+  private ButtonMenu btm;
   private LandView landView;
   private TopAnimationView topAnimationView;
   private BagView bagView;
@@ -141,34 +143,22 @@ public class PlayingPageView {
     setupLeftRight(borderPane);
     setupCenter(borderPane);
     setupBottom(borderPane);
-<<<<<<< Updated upstream
-    root.getChildren().addAll(borderPane, topAnimationView);
-=======
 
     Button menu = new Button("Menu");
     menu.setOnAction(event -> openAndCloseMenu());
     menu.getStyleClass().add("menu_button");
     StackPane.setAlignment(menu, Pos.TOP_LEFT);
-
     root.getChildren().addAll(borderPane, topAnimationView, menu);
->>>>>>> Stashed changes
     StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
-    scene.setOnKeyPressed(event -> actKey(event.getCode()));
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
     stage.setScene(scene);
     stage.show();
   }
 
-<<<<<<< Updated upstream
-  private void actKey(KeyCode code) {
-    if (code == KeyCode.ESCAPE) {
-      ButtonMenu btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
-      btm.open();
-=======
   private void openAndCloseMenu() {
     if (btm == null) {
       LOG.info("Opened Button Menu");
@@ -176,7 +166,6 @@ public class PlayingPageView {
       btm.open();
     } else {
       btm.closeMenu();
->>>>>>> Stashed changes
     }
   }
 

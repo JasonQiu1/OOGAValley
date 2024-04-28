@@ -2,6 +2,9 @@ package oogasalad.model.data;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
 import oogasalad.model.api.ReadOnlyGameConfigurablesStore;
 import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.api.ReadOnlyGameState;
@@ -120,6 +123,14 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   public void updateRule(String rule, String newValue) throws InvalidRuleType {
     DataValidation.validate(rule, newValue);
     rules.update(rule, newValue);
+  }
+
+  public void updateRule(String rule, List<String> newValue) {
+    rules.update(rule, newValue);
+  }
+
+  public void updateRule(String rule, Map<String, String> newValue) {
+        rules.update(rule, newValue);
   }
 
 

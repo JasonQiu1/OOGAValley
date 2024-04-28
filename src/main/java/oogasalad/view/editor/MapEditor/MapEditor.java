@@ -10,22 +10,27 @@ import oogasalad.model.data.GameConfiguration;
 
 public class MapEditor extends VBox {
   //TODO: make this work
-  private GameConfiguration config;
+  private BottomPanel bp;
+  private Stage stage;
+  private Scene backScene;
+  private GameConfiguration gc;
 
   public MapEditor(Stage stage, Scene backScene, GameConfiguration gc) {
     super();
-    config = gc;
     super.setAlignment(Pos.CENTER);
-    Selector ts = new Selector();
-    CellInfoPane cip = new CellInfoPane();
-    BuildableMap bm = new BuildableMap(ts, cip, new MapController(gc));
-    TopPanel tp = new TopPanel(stage, backScene, bm);
-    BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
-    BottomPanel bp = new BottomPanel(ts, GameConfiguration.getConfigurablesStore().getAllConfigurables());
-    getChildren().addAll(tp, bmw, bp, cip);
+    this.stage = stage;
+    this.backScene = backScene;
+    this.gc = gc;
+    update();
   }
 
-  public void setConfig(GameConfiguration gc) {
-    config = gc;
+  public void update(){
+    getChildren().clear();
+    CellInfoPane cip = new CellInfoPane();
+    BuildableMap bm = new BuildableMap(cip, new MapController(gc));
+    TopPanel tp = new TopPanel(stage, backScene, bm);
+    BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
+    bp = new BottomPanel(GameConfiguration.getConfigurablesStore().getAllConfigurables());
+    getChildren().addAll(tp, bmw, bp, cip);
   }
 }

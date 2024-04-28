@@ -5,6 +5,7 @@ import java.util.*;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import oogasalad.model.api.ReadOnlyProperties;
+import oogasalad.model.data.GameConfiguration;
 
 public class BottomPanel extends TabPane {
 
@@ -16,47 +17,19 @@ public class BottomPanel extends TabPane {
   private final String plantsLanguage = "EnglishPlants";
   //private final ResourceBundle tabResource;
 
-  public BottomPanel(Selector ts, Map<String, ReadOnlyProperties> allConfigurables) {
+  public BottomPanel(Map<String, ReadOnlyProperties> allConfigurables) {
     super();
     this.setId("BottomPanel");
-
-    //tabResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + tabLanguage);
-
-//    Tab titlesTab = new Tab(tabResource.getString("tiles"));
-//    Tab natureTab = new Tab(tabResource.getString("nature"));
-//    Tab plantsTab = new Tab(tabResource.getString("plants"));
-//    Tab buildingsTab = new Tab(tabResource.getString("buildings"));
-//
-//    titlesTab.setClosable(false);
-//    natureTab.setClosable(false);
-//    plantsTab.setClosable(false);
-//    buildingsTab.setClosable(false);
-
-//    List<SelectableView> mockTiles;
-//    List<SelectableView> mockPlants;
-//    List<SelectableView> mockBuildings;
-//    List<SelectableView> mockNature;
     Map<String, List<SelectableView>> mapOfSelectables = getMapOfSelectables(allConfigurables);
-    createTabs(ts, mapOfSelectables);
-
-
-//    titlesTab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(mockTiles, ts),
-//        tabResource.getString("tiles")));
-//    plantsTab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(mockPlants, ts),
-//        tabResource.getString("plants")));
-//    buildingsTab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(mockBuildings, ts),
-//        tabResource.getString("buildings")));
-//    natureTab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(mockNature, ts),
-//        tabResource.getString("nature")));
-
-    //super.getTabs().addAll(titlesTab, natureTab, plantsTab, buildingsTab);
+    createTabs(mapOfSelectables);
   }
 
-  private void createTabs(Selector ts, Map<String, List<SelectableView>> mapOfSelectables) {
+  private void createTabs(Map<String, List<SelectableView>> mapOfSelectables) {
     for(Map.Entry<String, List<SelectableView>> entry : mapOfSelectables.entrySet()){
       Tab tab = new Tab(entry.getKey());
+      tab.setId(entry.getKey());
       tab.setClosable(false);
-      tab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(entry.getValue(), ts),
+      tab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(entry.getValue()),
               (entry.getKey())));
       super.getTabs().add(tab);
     }
