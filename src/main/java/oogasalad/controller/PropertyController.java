@@ -6,15 +6,15 @@ import java.util.Map;
 public abstract class PropertyController {
     public PropertyController(){};
 
-    public abstract Map<String, String> getProperties(String key);
+    public abstract Map<String, String> getProperties();
 
-    public abstract Map<String, List<String>> getListProperties(String key);
+    public abstract Map<String, List<String>> getListProperties();
 
-    public abstract Map<String, Map<String, String>> getMapProperties(String key);
+    public abstract Map<String, Map<String, String>> getMapProperties();
 
-    public abstract void updateProperty(String key, String name, String value);
+    public abstract void updateProperty(String name, String value);
 
-    public abstract void updateMapProperty(String key, String name, Map<String, String> newMap);
+    public abstract void updateMapProperty(String name, Map<String, String> newMap);
 
-    public abstract void updateListProperty(String lastSelectedSelectable, String name, String value);
+    public abstract void updateListProperty(String name, String value);
 }
