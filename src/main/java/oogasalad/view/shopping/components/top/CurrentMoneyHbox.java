@@ -8,8 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.shopping.Utils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * This class is a HBox that contains a button, a label, and an image view. It is used to display
@@ -17,10 +15,8 @@ import org.apache.logging.log4j.Logger;
  */
 public class CurrentMoneyHbox extends HBox {
 
-  private static final Logger LOG = LogManager.getLogger(CurrentMoneyHbox.class);
-  private Label moneyLabel;
-  private GameInterface game;
-
+  private final Label moneyLabel = new Label();
+  private final GameInterface game;
 
   /**
    * Constructor for the CurrentMoneyHbox
@@ -34,7 +30,6 @@ public class CurrentMoneyHbox extends HBox {
   private void initialize() {
     Button addButton = new Button();
     addButton.setId("shopAddButton");
-    moneyLabel = new Label();
     moneyLabel.setPadding(new Insets(10, 0, 10, 20));
     moneyLabel.getStyleClass().add("shop-money-label");
     Image coinImage = new Image("img/shop/coin.png");
