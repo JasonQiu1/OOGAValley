@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import oogasalad.model.api.GameInterface;
-import oogasalad.view.playing.observer.Observer;
 import oogasalad.view.shopping.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,7 +15,7 @@ import org.apache.logging.log4j.Logger;
  * This class is a HBox that contains a button, a label, and an image view. It is used to display
  * the current money in the shop block.
  */
-public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
+public class CurrentMoneyHbox extends HBox {
 
   private static final Logger LOG = LogManager.getLogger(CurrentMoneyHbox.class);
   private Label moneyLabel;
@@ -45,9 +44,7 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
     getChildren().addAll(addButton, moneyLabel, coinImageView);
   }
 
-  @Override
-  public void update(Integer value) {
-    LOG.info("update money: %d".formatted(value));
-    moneyLabel.setText("" + value);
+  public void update() {
+    moneyLabel.setText("" + game.getGameState().getMoney());
   }
 }
