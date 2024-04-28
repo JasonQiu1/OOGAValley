@@ -20,11 +20,10 @@ public class GameObjectEditor extends VBox {
 
     public GameObjectEditor(Runnable update) {
         super();
-
+        super.setMinWidth(400);
         EditorResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-        Label l = new Label(EditorResource.getString("gameObject-editor-title"));
-        l.getStyleClass().add("gameObject-editor-title");
-        super.getChildren().addAll(l, new GameObjectPropertiesDisplay(update));
+        super.setPadding(new Insets(0, 10, 10, 10));
+        super.getChildren().addAll(new GameObjectPropertiesDisplay(update));
 
     }
 

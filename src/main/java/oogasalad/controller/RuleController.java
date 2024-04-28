@@ -28,33 +28,33 @@ public class RuleController extends PropertyController {
     }
 
     @Override
-    public Map<String, String> getProperties(String key) {
+    public Map<String, String> getProperties() {
         return config.getRules().getCopyOfProperties();
     }
 
 
     @Override
-    public Map<String, List<String>> getListProperties(String key) {
+    public Map<String, List<String>> getListProperties() {
         return config.getRules().getCopyOfListProperties();
     }
 
     @Override
-    public Map<String, Map<String, String>> getMapProperties(String key) {
+    public Map<String, Map<String, String>> getMapProperties() {
         return config.getRules().getCopyOfMapProperties();
     }
 
     @Override
-    public void updateProperty(String key, String name, String value) throws InvalidRuleType {
+    public void updateProperty(String name, String value) throws InvalidRuleType {
         updateRule(name,  value);
     }
 
     @Override
-    public void updateMapProperty(String key, String name, Map<String, String> newMap) {
+    public void updateMapProperty(String name, Map<String, String> newMap) {
         config.updateRule(name, newMap);
     }
 
     @Override
-    public void updateListProperty(String lastSelectedSelectable, String name, String value) {
+    public void updateListProperty(String name, String value) {
 
     }
 

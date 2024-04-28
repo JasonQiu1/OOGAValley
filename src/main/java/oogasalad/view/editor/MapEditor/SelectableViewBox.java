@@ -13,7 +13,7 @@ public class SelectableViewBox extends HBox {
     selectables.stream().map(node -> {
       VBox vbox = new VBox(node, node.getLabel());
       vbox.setAlignment(Pos.CENTER);
-      vbox.setId(node.getLabel().getText());
+      vbox.setId(node.getLabel().getText() + "Selectable");
       Selector.add(vbox);
       return vbox;
     }).forEach(super.getChildren()::add);
