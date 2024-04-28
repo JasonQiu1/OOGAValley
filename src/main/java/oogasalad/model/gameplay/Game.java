@@ -208,6 +208,14 @@ public class Game implements GameInterface {
     return state;
   }
 
+  public GameConfiguration getEditableConfiguration() {
+    return configuration;
+  }
+
+  public GameState getEditableGameState() {
+    return state;
+  }
+
   // Gets the price of an item from the shop.
   private double getPriceFromShop(String id) throws KeyNotFoundException {
     ReadOnlyShop shop = state.getShop();
