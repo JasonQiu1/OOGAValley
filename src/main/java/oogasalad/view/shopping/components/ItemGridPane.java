@@ -44,7 +44,6 @@ public abstract class ItemGridPane extends GridPane {
   }
 
   public void update(ItemView itemView){
-    game.sellItem(itemView.getName());
     game.update();
     parentStackPane.getMoneyHbox().update();
     parentStackPane.getBagStackPane().update();

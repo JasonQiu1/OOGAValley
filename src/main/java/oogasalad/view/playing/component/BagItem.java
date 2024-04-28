@@ -61,6 +61,7 @@ public class BagItem extends StackPane {
     setOnMouseClicked(event -> {
       bagView.select(this.name);
     });
+    setId(name);
   }
 
   public StackPane getView() {

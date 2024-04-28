@@ -32,6 +32,7 @@ public class BagGridPane extends ItemGridPane {
       PopUpStackPane popUp = new PopUpStackPane(getPopUpTextResource(), getParentStackPane(),
           choice -> {
             if (choice) {
+              getGame().sellItem(itemView.getName());
               update(itemView);
             }
           }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
