@@ -9,36 +9,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -51,21 +23,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -78,21 +36,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -104,36 +48,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -172,21 +88,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -211,36 +113,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -253,21 +127,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -292,36 +152,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -333,36 +165,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -388,21 +192,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -427,36 +217,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -468,36 +230,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -509,36 +243,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -551,21 +257,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -577,36 +269,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -619,21 +283,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -645,36 +295,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -686,36 +308,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -728,21 +322,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -755,21 +335,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -782,21 +348,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -809,21 +361,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -836,21 +374,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -862,36 +386,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -903,36 +399,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -944,36 +412,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -985,36 +425,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1027,21 +439,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1054,21 +452,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1080,36 +464,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1121,36 +477,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1163,21 +491,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1189,36 +503,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1230,36 +516,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1271,36 +529,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1312,36 +542,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1354,21 +556,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1380,36 +568,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1421,36 +581,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1463,21 +595,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1489,36 +607,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1530,36 +620,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1571,36 +633,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1612,36 +646,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1653,36 +659,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1695,21 +673,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1722,21 +686,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1748,36 +698,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1789,36 +711,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1844,21 +738,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1884,21 +764,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1911,21 +777,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1938,21 +790,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -1964,36 +802,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2005,36 +815,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2046,36 +828,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2088,21 +842,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2115,21 +855,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2142,21 +868,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2168,36 +880,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2209,36 +893,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2251,21 +907,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2277,36 +919,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2319,21 +933,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2345,36 +945,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2387,21 +959,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2414,21 +972,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2440,36 +984,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2482,21 +998,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2508,36 +1010,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2562,36 +1036,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2604,21 +1050,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2631,21 +1063,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2658,21 +1076,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2684,36 +1088,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2739,21 +1115,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2765,36 +1127,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2807,21 +1141,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2834,21 +1154,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2860,36 +1166,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2902,21 +1180,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2928,36 +1192,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2970,21 +1206,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -2997,21 +1219,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3023,36 +1231,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3064,36 +1244,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3106,21 +1258,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3132,36 +1270,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3174,21 +1284,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3200,36 +1296,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3242,21 +1310,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3268,36 +1322,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3322,36 +1348,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3363,36 +1361,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3405,21 +1375,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3431,36 +1387,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3472,36 +1400,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3514,21 +1414,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3540,36 +1426,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3581,36 +1439,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3623,21 +1453,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3649,36 +1465,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3690,36 +1478,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3732,21 +1492,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3759,21 +1505,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3785,36 +1517,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3826,36 +1530,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3881,21 +1557,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3907,36 +1569,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -3974,36 +1608,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4015,36 +1621,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4056,36 +1634,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4098,21 +1648,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4125,21 +1661,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4152,21 +1674,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4178,36 +1686,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4220,21 +1700,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4246,36 +1712,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4287,36 +1725,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4328,36 +1738,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4370,21 +1752,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4396,36 +1764,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4437,36 +1777,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4478,36 +1790,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4520,21 +1804,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4547,21 +1817,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4573,36 +1829,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4614,36 +1842,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4655,36 +1855,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4696,36 +1868,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4750,36 +1894,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4791,36 +1907,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Boulder",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4832,36 +1920,8 @@
         },
         {
           "collectable": null,
-          "structure": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Wheat",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.292003700Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "structure": null,
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4874,21 +1934,7 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ],
@@ -4901,48 +1947,18 @@
         {
           "collectable": null,
           "structure": null,
-          "land": {
-            "expired": false,
-            "timeSinceExpiringState": null,
-            "creationTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            },
-            "changePropertiesOnNextIteration": false,
-            "id": "Dirt",
-            "nextId": null,
-            "lastUpdateGameTime": {
-              "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.291006500Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
-            }
-          },
+          "land": null,
           "lastUpdatingGameTime": null
         }
       ]
     ],
     "height": 10,
     "width": 15,
-    "depth": 1,
-    "factory": {
-      "creators": {
-        "collectable": {
-          "type": "oogasalad.model.gameObjectFactories.CollectableCreator",
-          "data": "{}"
-        },
-        "land": {
-          "type": "oogasalad.model.gameObjectFactories.LandCreator",
-          "data": "{}"
-        },
-        "structure": {
-          "type": "oogasalad.model.gameObjectFactories.StructureCreator",
-          "data": "{}"
-        }
-      }
-    }
+    "depth": 1
   },
   "gameTime": {
     "previous": {
-      "data": "2024-04-27T04:51:45.292003700Z"
+      "data": "2024-04-27T21:47:26.209478Z"
     },
     "accumulate": 0,
     "day": 1,
@@ -4974,16 +1990,16 @@
     ],
     "previousRotationTime": {
       "type": "oogasalad.model.gameplay.GameTime",
-      "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.293001400Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
+      "data": "{\"previous\":{\"data\":\"2024-04-27T21:47:26.209538Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
     },
     "shopRotationTime": 1440,
     "itemRotation": [
       [
         {
           "type": "oogasalad.model.gameobject.Item",
-          "data": "{\"itemId\":\"Scythe\"}"
+          "data": "{\"itemId\":\"Wheat Seeds\"}"
         },
-        200.0
+        10.0
       ],
       [
         {
@@ -4991,13 +2007,6 @@
           "data": "{\"itemId\":\"Pickaxe\"}"
         },
         1000.0
-      ],
-      [
-        {
-          "type": "oogasalad.model.gameobject.Item",
-          "data": "{\"itemId\":\"Hoe\"}"
-        },
-        200.0
       ]
     ]
   },
@@ -5026,7 +2035,5 @@
       ]
     ]
   },
-  "width": 15,
-  "height": 10,
-  "depth": 2
+  "maxEnergy": 20.0
 }
