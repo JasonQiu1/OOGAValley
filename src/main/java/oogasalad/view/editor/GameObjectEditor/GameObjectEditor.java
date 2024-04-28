@@ -22,7 +22,6 @@ public class GameObjectEditor extends VBox {
         super();
 
         EditorResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-        BorderPane bp = new BorderPane();
         Label l = new Label(EditorResource.getString("gameObject-editor-title"));
         l.getStyleClass().add("gameObject-editor-title");
         super.getChildren().addAll(l, new GameObjectPropertiesDisplay());

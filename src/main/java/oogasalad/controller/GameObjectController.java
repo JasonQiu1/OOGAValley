@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class GameObjectController {
-    Map<String, Properties> allGameObjects;
+    private final Map<String, Properties> allGameObjects;
     public GameObjectController(){
         allGameObjects = GameConfiguration.getEditableConfigurablesStore().getAllEditableConfigurables();
     }
@@ -32,5 +32,13 @@ public class GameObjectController {
 
     public Map<String, Map<String, String>> getGameObjectMapProperties(String key){
         return allGameObjects.get(key).getCopyOfMapProperties();
+    }
+
+    public void updateProperty(String key, String name, String value) {
+        allGameObjects.get(key).update(name, value);
+    }
+
+    public void updateMapProperty(String key, String name, Map<String, String> newMap) {
+        allGameObjects.get(key).update(name, newMap);
     }
 };
