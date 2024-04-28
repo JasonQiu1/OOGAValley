@@ -57,7 +57,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 
   public void makeChooser() {
 
-    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage, DEFAULT_SAVES_FOLDER);
+    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
+        DEFAULT_SAVES_FOLDER);
 
     Optional<File> file = loaderListDisplay.open();
 
@@ -84,7 +85,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     new StartScreen(stage, primaryLanguage, null, new GameConfiguration()).open();
 //    this.stage.setScene(previousScene);
   }
-
 
 
 }

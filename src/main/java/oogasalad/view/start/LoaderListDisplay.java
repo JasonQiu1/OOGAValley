@@ -12,18 +12,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class LoaderListDisplay {
 
-  private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.LoaderListDisplay.";
   private final String defaultDirectoryPath;
   private File selectedFile;
-  private Stage primaryStage;
-  private ResourceBundle propertiesBundle;
+  private final Stage primaryStage;
+  private final ResourceBundle propertiesBundle;
   private Stage myStage;
   private ListView<String> listView;
 
@@ -53,7 +50,7 @@ public class LoaderListDisplay {
     selectButton.getStyleClass().add("load");
     selectButton.setOnAction(event -> selectFile(listView));
 
-    Button exitButton = new Button (propertiesBundle.getString("close"));
+    Button exitButton = new Button(propertiesBundle.getString("close"));
     exitButton.setOnAction(event -> myStage.close());
 
     HBox hBox = new HBox(selectButton, exitButton);
@@ -74,28 +71,19 @@ public class LoaderListDisplay {
     myStage.setScene(scene);
     myStage.showAndWait();
 
-
     return Optional.ofNullable(selectedFile);
   }
 
   private void selectFile(ListView<String> listView) {
     String selectedFileName = listView.getSelectionModel().getSelectedItem();
     if (selectedFileName != null) {
-      File pickedFile = new File(defaultDirectoryPath + "/" + selectedFileName);
-      selectedFile = pickedFile;
+      selectedFile = new File(defaultDirectoryPath + "/" + selectedFileName);
 
       Stage stage = (Stage) listView.getScene().getWindow();
       stage.close();
     }
   }
 
-  public File getSelectedFile() {
-    return selectedFile;
-  }
-
-  public ListView<String> getListView() {
-    return listView;
-  }
 
 
 }
