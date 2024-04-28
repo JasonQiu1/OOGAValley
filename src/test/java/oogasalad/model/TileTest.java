@@ -132,7 +132,13 @@ public class TileTest extends BaseGameObjectTest {
   @Test
   public void validInteractionValidReturnsTrue() {
     assertTrue(tileToTest.interactionValid(new Item("validItem")));
+    tileToTest.setCollectable(null);
     assertTrue(tileToTest.interactionValid(new Item("hoe")));
+  }
+
+  @Test
+  public void invalidInteractionIfItemDoesNotInteractWithTopWithGameObject() {
+    assertFalse(tileToTest.interactionValid(new Item("hoe")));
   }
 
   @Test

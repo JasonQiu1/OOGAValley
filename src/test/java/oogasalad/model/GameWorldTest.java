@@ -75,6 +75,11 @@ public class GameWorldTest extends TileTest {
   }
 
   @Test
+  public void validInteractionReturnsTrueInInteract() {
+   assertTrue(gameWorld.interact(new Item("validItem"), 1,1,0));
+  }
+
+  @Test
   public void testInteractOnTileWhereInteractWillHaveAnEffect() {
     gameWorld.interact(new Item("validItem"), 1,1,0);
     gameWorld.update(new GameTime(1,1,1));
