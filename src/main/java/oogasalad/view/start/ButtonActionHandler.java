@@ -40,6 +40,7 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
         parameterTypes[i] = String.class; // Assume all parameters are strings
       }
 //      LOG.info(parameterTypes[0]);
+      LOG.info(methodName);
       Method method = clazz.getMethod(methodName, parameterTypes);
       System.out.println(clazz.getSimpleName());
       Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, Scene.class,

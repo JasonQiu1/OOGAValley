@@ -61,7 +61,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
         primaryLanguage, previousScene);
 //    LOG.info(String.format("the previous scene is still %s", previousScene));
 
-    myScene.setOnKeyPressed(event -> actKey(event.getCode()));
 
     stage.setTitle(myStageTitle);
     stage.setScene(myScene);
@@ -76,12 +75,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //    goBackScene(new Scene(new HBox()));
   }
 
-  private void actKey(KeyCode code) {
-    if (code == KeyCode.ESCAPE) {
-      ButtonMenu btm = new ButtonMenu(stage, primaryLanguage, previousScene, buttonsPath);
-      btm.open();
-    }
-  }
+
 
 
   public void makeChooser() {
