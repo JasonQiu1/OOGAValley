@@ -21,6 +21,7 @@ public class LanguageDialogBox {
 
     dropDownMenu = new ComboBox<>();
     dropDownMenu.getStyleClass().add("drop_down_menu");
+    dropDownMenu.setId("drop_down_menu");
 
     for (String aLanguage : languages) {
       dropDownMenu.getItems().add(aLanguage);
@@ -33,6 +34,7 @@ public class LanguageDialogBox {
     myStage = new Stage();
     VBox root = new VBox();
     root.getStyleClass().add("language_box");
+    root.setId("language_box");
 
     root.setAlignment(Pos.TOP_CENTER);
     root.getChildren().add(dropDownMenu);
