@@ -23,6 +23,8 @@ public class LoaderListDisplay {
   private final VBox vBox;
   private File selectedFile;
   private Stage primaryStage;
+  private Stage myStage;
+  ListView<String> listView;
 
   public LoaderListDisplay(Stage mainStage, String title, String defaultFolderPath) {
     primaryStage = mainStage;
@@ -31,10 +33,14 @@ public class LoaderListDisplay {
     myTitle = title;
   }
 
-  public Optional<File> open(Stage stage) {
-    stage.setTitle(myTitle);
+  public Optional<File> open() {
+    myStage = new Stage();
+    myStage.setTitle(myTitle);
 
-    ListView<String> listView = new ListView<>();
+    listView = new ListView<>();
+    listView.getStyleClass().add("list_view");
+    listView.setId("list_view");
+
     File directory = new File(defaultDirectoryPath);
     File[] files = directory.listFiles();
 
@@ -45,24 +51,30 @@ public class LoaderListDisplay {
     }
 
     Button selectButton = new Button("Load");
+    selectButton.getStyleClass().add("load");
     selectButton.setOnAction(event -> selectFile(listView));
 
     Button exitButton = new Button ("Close");
-    exitButton.setOnAction(event -> stage.close());
+    exitButton.setOnAction(event -> myStage.close());
 
     HBox hBox = new HBox(selectButton, exitButton);
     hBox.setAlignment(Pos.CENTER);
 
     VBox vBox = new VBox(listView, hBox);
+    vBox.setId("loader_vBox");
+
     vBox.setPrefSize(400, 400);
     ScrollPane scrollPane = new ScrollPane(vBox);
+    scrollPane.setId("loader_scrollpane");
+
     Scene scene = new Scene(scrollPane);
 
-    stage.initStyle(StageStyle.UNDECORATED);
-    stage.initOwner(primaryStage);
+    myStage.initStyle(StageStyle.UNDECORATED);
+    myStage.initOwner(primaryStage);
 
-    stage.setScene(scene);
-    stage.showAndWait();
+    myStage.setScene(scene);
+    myStage.showAndWait();
+
 
     return Optional.ofNullable(selectedFile);
   }
@@ -77,5 +89,14 @@ public class LoaderListDisplay {
       stage.close();
     }
   }
+
+  public File getSelectedFile() {
+    return selectedFile;
+  }
+
+  public ListView<String> getListView() {
+    return listView;
+  }
+
 
 }
