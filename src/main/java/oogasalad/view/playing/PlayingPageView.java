@@ -89,6 +89,7 @@ public class PlayingPageView {
   private Scene previousScene;
 
   private Timeline timeline;
+  private StackPane root;
 
   public PlayingPageView(Stage primaryStage, String language, Scene backScene,
       GameConfiguration gameConfiguration) {
@@ -141,14 +142,13 @@ public class PlayingPageView {
     LOG.info("initializing game");
     initModel();
     LOG.info("finish loading game model");
-    StackPane root = new StackPane();
+    root = new StackPane();
     root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
     setupTop(borderPane);
     setupLeftRight(borderPane);
     setupCenter(borderPane);
     setupBottom(borderPane);
-
     Button menu = new Button("Menu");
     menu.setOnAction(event -> openAndCloseMenu());
     menu.getStyleClass().add("menu_button");
@@ -282,10 +282,13 @@ public class PlayingPageView {
       chatApp.start();
     });
   }
+
   private void openLogin() {
     LoginView loginView = new LoginView(game);
     loginView.start(new Stage());
   }
 
-
+  public StackPane getRoot() {
+    return root;
+  }
 }
