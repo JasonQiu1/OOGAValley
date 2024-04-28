@@ -6,6 +6,7 @@ import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.KeyNotFoundException;
@@ -117,11 +118,33 @@ public class Game implements GameInterface {
       return;
     }
     ReadOnlyItem selectedItem = state.getSelectedItem().get();
-    if (state.getEditableGameWorld().interact(selectedItem, x, y, depth)
-        && GameConfiguration.getConfigurablesStore()
-        .getConfigurableProperties(selectedItem.getName()).getBoolean("consumable")) {
-      state.getEditableBag().removeItem(selectedItem.getName(), 1);
+    ReadOnlyProperties itemProperties =
+        GameConfiguration.getConfigurablesStore().getConfigurableProperties(selectedItem.getName());
+    double energyChange = 0;
+    try {
+      energyChange = itemProperties.getDouble("energyChange");
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.warn("Invalid energy change for item '" + selectedItem.getName() + "'. Using default 0.");
     }
+
+    // don't use items if their energy cost is greater than current energy
+    if (energyChange < 0 && state.getEnergy() < -energyChange) {
+      return;
+    }
+
+    // try using item if there is enough energy to do so
+    // or eat item and don't interact with the world
+    if (itemProperties.getBoolean("edible") || state.getEditableGameWorld().interact(selectedItem, x, y, depth)) {
+      state.restoreEnergy(energyChange);
+      if (GameConfiguration.getConfigurablesStore()
+          .getConfigurableProperties(selectedItem.getName()).getBoolean("consumable")) {
+        removeItem(selectedItem);
+      }
+    }
+  }
+
+  private void removeItem(ReadOnlyItem item) {
+    state.getEditableBag().removeItem(item.getName(), 1);
   }
 
   /**
