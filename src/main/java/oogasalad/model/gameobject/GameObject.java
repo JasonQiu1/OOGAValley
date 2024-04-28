@@ -147,7 +147,7 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
    * @param newId The new ID to potentially switch to.
    */
   protected void shouldIChangeProperties(String newId) {
-    if (newId == null || !newId.equals(getId())) {
+    if (newId != null && !newId.equals(getId())) {
       changePropertiesOnNextIteration = true;
       this.nextId = newId;
     }

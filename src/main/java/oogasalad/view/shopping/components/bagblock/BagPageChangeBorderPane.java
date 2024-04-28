@@ -9,8 +9,8 @@ import oogasalad.view.shopping.components.PageChangeBorderPane;
  */
 public class BagPageChangeBorderPane extends PageChangeBorderPane<BagGridPane> {
 
-  public BagPageChangeBorderPane(List<BagGridPane> gridPanes) {
-    super(gridPanes);
+  public BagPageChangeBorderPane(List<BagGridPane> gridPanes, BagStackPane bagStackPane) {
+    super(gridPanes, bagStackPane);
     getLeftButton().setId("left-page-change-button-sell");
     getRightButton().setId("right-page-change-button-sell");
   }

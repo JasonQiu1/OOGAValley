@@ -13,7 +13,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -24,7 +24,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -39,12 +39,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -69,12 +69,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -99,12 +99,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -120,7 +120,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -131,7 +131,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -146,12 +146,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -167,7 +167,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -183,7 +183,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -208,12 +208,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -229,7 +229,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -245,7 +245,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -256,7 +256,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -271,12 +271,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -301,12 +301,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -322,7 +322,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -346,7 +346,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -361,12 +361,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -382,7 +382,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -393,7 +393,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -408,12 +408,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -429,7 +429,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -454,12 +454,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -475,7 +475,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -499,7 +499,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -514,12 +514,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -535,7 +535,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -546,7 +546,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -561,12 +561,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -582,7 +582,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -593,7 +593,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -608,12 +608,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -638,12 +638,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -659,7 +659,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -670,7 +670,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -685,12 +685,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -715,12 +715,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -744,7 +744,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -759,12 +759,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -780,7 +780,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -791,7 +791,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -806,12 +806,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -836,12 +836,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -866,12 +866,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -896,12 +896,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -926,12 +926,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -956,12 +956,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -985,7 +985,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1000,12 +1000,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1029,7 +1029,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1044,12 +1044,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1073,7 +1073,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1088,12 +1088,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1109,7 +1109,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1120,7 +1120,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1135,12 +1135,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1165,12 +1165,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1195,12 +1195,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1224,7 +1224,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1239,12 +1239,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1268,7 +1268,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1283,12 +1283,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1313,12 +1313,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1334,7 +1334,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1345,7 +1345,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1360,12 +1360,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1381,7 +1381,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1392,7 +1392,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1407,12 +1407,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1436,7 +1436,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1451,12 +1451,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1472,7 +1472,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1483,7 +1483,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1498,12 +1498,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1528,12 +1528,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1549,7 +1549,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1560,7 +1560,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1575,12 +1575,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1596,7 +1596,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1607,7 +1607,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1622,12 +1622,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1652,12 +1652,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1673,7 +1673,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1684,7 +1684,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1699,12 +1699,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1720,7 +1720,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1731,7 +1731,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1746,12 +1746,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1767,7 +1767,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1778,7 +1778,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1793,12 +1793,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1814,7 +1814,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1825,7 +1825,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1840,12 +1840,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1861,7 +1861,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1872,7 +1872,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1887,12 +1887,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1917,12 +1917,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1947,12 +1947,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -1968,7 +1968,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -1979,7 +1979,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -1994,12 +1994,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2023,7 +2023,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2038,12 +2038,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2059,7 +2059,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2084,12 +2084,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2105,7 +2105,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2130,12 +2130,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2160,12 +2160,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2190,12 +2190,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2211,7 +2211,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -2222,7 +2222,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2237,12 +2237,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2266,7 +2266,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2281,12 +2281,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2302,7 +2302,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -2313,7 +2313,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2328,12 +2328,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2358,12 +2358,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2388,12 +2388,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2418,12 +2418,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2439,7 +2439,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -2450,7 +2450,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2465,12 +2465,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2494,7 +2494,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2509,12 +2509,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2539,12 +2539,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2560,7 +2560,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -2571,7 +2571,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2586,12 +2586,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2616,12 +2616,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2645,7 +2645,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2660,12 +2660,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2690,12 +2690,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2720,12 +2720,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2741,7 +2741,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -2752,7 +2752,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2767,12 +2767,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2792,17 +2792,17 @@
               "type": "oogasalad.model.gameplay.GameTime",
               "data": "{\"previous\":{\"data\":\"2024-04-27T04:51:45.290009400Z\"},\"accumulate\":0,\"day\":0,\"hour\":0,\"minute\":0}"
             },
-            "changePropertiesOnNextIteration": false,
+            "changePropertiesOnNextIteration": true,
             "id": "Farmland",
-            "nextId": "Farmland",
+            "nextId": "Dirt",
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2818,7 +2818,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -2829,7 +2829,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2844,12 +2844,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2865,7 +2865,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2881,7 +2881,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -2892,7 +2892,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -2907,12 +2907,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2937,12 +2937,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2967,12 +2967,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -2997,12 +2997,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3018,7 +3018,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3029,7 +3029,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3044,12 +3044,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3065,7 +3065,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3090,12 +3090,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3119,7 +3119,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3134,12 +3134,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3164,12 +3164,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3194,12 +3194,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3223,7 +3223,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3238,12 +3238,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3268,12 +3268,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3289,7 +3289,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3300,7 +3300,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3315,12 +3315,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3345,12 +3345,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3375,12 +3375,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3396,7 +3396,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3407,7 +3407,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3422,12 +3422,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3451,7 +3451,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3466,12 +3466,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3496,12 +3496,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3525,7 +3525,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3540,12 +3540,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3570,12 +3570,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3591,7 +3591,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3602,7 +3602,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3617,12 +3617,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3647,12 +3647,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3676,7 +3676,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3691,12 +3691,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3712,7 +3712,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3728,7 +3728,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3739,7 +3739,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3754,12 +3754,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3775,7 +3775,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3786,7 +3786,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3801,12 +3801,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3831,12 +3831,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3852,7 +3852,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3863,7 +3863,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3878,12 +3878,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3899,7 +3899,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3910,7 +3910,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -3925,12 +3925,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3955,12 +3955,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -3976,7 +3976,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -3987,7 +3987,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4002,12 +4002,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4023,7 +4023,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4034,7 +4034,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4049,12 +4049,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4079,12 +4079,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4100,7 +4100,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4111,7 +4111,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4126,12 +4126,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4155,7 +4155,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4170,12 +4170,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4200,12 +4200,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4230,12 +4230,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4251,7 +4251,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4262,7 +4262,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4277,12 +4277,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4298,7 +4298,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4309,7 +4309,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4324,12 +4324,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4345,7 +4345,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4370,12 +4370,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4391,7 +4391,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4402,7 +4402,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4417,12 +4417,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4438,7 +4438,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4454,7 +4454,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4470,7 +4470,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4481,7 +4481,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4496,12 +4496,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4525,7 +4525,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4540,12 +4540,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4561,7 +4561,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4572,7 +4572,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4587,12 +4587,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4617,12 +4617,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4647,12 +4647,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4677,12 +4677,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4706,7 +4706,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4721,12 +4721,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4751,12 +4751,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4780,7 +4780,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4795,12 +4795,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4816,7 +4816,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4827,7 +4827,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4842,12 +4842,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4863,7 +4863,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4874,7 +4874,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4889,12 +4889,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4919,12 +4919,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4940,7 +4940,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4951,7 +4951,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -4966,12 +4966,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -4987,7 +4987,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -4998,7 +4998,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5013,12 +5013,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5034,7 +5034,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -5045,7 +5045,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5060,12 +5060,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5090,12 +5090,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5120,12 +5120,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5141,7 +5141,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -5152,7 +5152,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5167,12 +5167,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5196,7 +5196,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5211,12 +5211,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5232,7 +5232,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -5243,7 +5243,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5258,12 +5258,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5279,7 +5279,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -5290,7 +5290,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5305,12 +5305,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5326,7 +5326,7 @@
           "land": null,
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5342,7 +5342,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -5353,7 +5353,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5368,12 +5368,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5397,7 +5397,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5412,12 +5412,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5433,7 +5433,7 @@
             "expired": true,
             "timeSinceExpiringState": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             },
             "creationTime": {
               "type": "oogasalad.model.gameplay.GameTime",
@@ -5444,7 +5444,7 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "land": {
@@ -5459,12 +5459,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5489,12 +5489,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ],
@@ -5519,12 +5519,12 @@
             "nextId": null,
             "lastUpdateGameTime": {
               "type": "oogasalad.model.gameplay.GameTime",
-              "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+              "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
             }
           },
           "lastUpdatingGameTime": {
             "type": "oogasalad.model.gameplay.GameTime",
-            "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.746968Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
+            "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.189356Z\"},\"accumulate\":0,\"day\":1,\"hour\":8,\"minute\":10}"
           }
         }
       ]
@@ -5535,7 +5535,7 @@
   },
   "gameTime": {
     "previous": {
-      "data": "2024-04-28T18:47:46.746965Z"
+      "data": "2024-04-28T23:11:29.189353Z"
     },
     "accumulate": 0,
     "day": 1,
@@ -5546,7 +5546,7 @@
     "type": "oogasalad.model.gameobject.Item",
     "data": "{\"itemId\":\"Hoe\"}"
   },
-  "energy": 20.0,
+  "energy": 18.0,
   "money": 0,
   "shop": {
     "itemRotationSize": 3,
@@ -5566,6 +5566,10 @@
       {
         "type": "oogasalad.model.gameobject.Item",
         "data": "{\"itemId\":\"Scythe\"}"
+      },
+      {
+        "type": "oogasalad.model.gameobject.Item",
+        "data": "{\"itemId\":\"Cake\"}"
       }
     ],
     "previousRotationTime": {
