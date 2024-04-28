@@ -171,7 +171,7 @@ public class GameState implements ReadOnlyGameState {
    */
   @Override
   public Optional<ReadOnlyItem> getSelectedItem() {
-    return Optional.of(selectedItem);
+    return Optional.ofNullable(selectedItem);
   }
 
   public GameWorld getEditableGameWorld() {

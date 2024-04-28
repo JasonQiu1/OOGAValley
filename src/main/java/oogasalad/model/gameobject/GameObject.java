@@ -192,6 +192,5 @@ public abstract class GameObject implements Interactable, Expirable, Updatable, 
     creationTime = lastUpdateGameTime;
     id = nextId;
   }
-
 }
 

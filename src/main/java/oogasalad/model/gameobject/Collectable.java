@@ -32,6 +32,16 @@ public class Collectable extends GameObject implements Collect {
   }
 
   /**
+   * Retrieves the image path representing the current state of the game object.
+   *
+   * @return The path to the game object's image.
+   */
+  @Override
+  public String getImagePath() {
+    return (new Item(items.keySet().iterator().next())).getImagePath();
+  }
+
+  /**
    * Handles the interaction with a given item. This method checks if the interaction meets the
    * conditions for making the collectable expired, which may affect its collectability.
    *
@@ -39,9 +49,18 @@ public class Collectable extends GameObject implements Collect {
    */
   @Override
   public void interact(ReadOnlyItem item) {
-    if (interactionValid(item)) {
-      interactingExpired = true;
-    }
+    interactingExpired = true;
+  }
+
+  /**
+   * Checks and updates the expiration status of the game object based on the elapsed time.
+   *
+   * @param gameTime The current time of the game
+   * @return Whether this gameObject is expired and thus should be removed from the game.
+   */
+  @Override
+  public boolean checkAndUpdateExpired(ReadOnlyGameTime gameTime) {
+    return super.checkAndUpdateExpired(gameTime) || interactingExpired;
   }
 
   /**
@@ -65,5 +84,16 @@ public class Collectable extends GameObject implements Collect {
   @Override
   public boolean shouldICollect() {
     return interactingExpired;
+  }
+
+  /**
+   * Any interaction with a collectable will pick it up.
+   *
+   * @param item The item in question.
+   * @return true if the interaction is valid, false otherwise.
+   */
+  @Override
+  public boolean interactionValid(ReadOnlyItem item) {
+    return true;
   }
 }
