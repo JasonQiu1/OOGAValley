@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.playing.PlayingPageView;
@@ -32,14 +34,14 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     stage = stageToUse;
     primaryLanguage = language;
     previousScene = backScene;
+
+    textResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Text");
+    buttonResource = ResourceBundle.getBundle(
+        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
   }
 
   @Override
   public void open() {
-    textResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Text");
-    buttonResource = ResourceBundle.getBundle(
-        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
-
     String myStageTitle = textResource.getString("title");
     String buttonsPath = buttonResource.getString("buttons_path");
 
@@ -72,8 +74,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     try {
       new PlayingPageView(stage, primaryLanguage, filePath).start();
     } catch (IOException exception) {
-      LOG.error("Failed to load configuration file!");
-      throw new RuntimeException(exception);
+      new Alert(AlertType.ERROR, textResource.getString("load_file_error")).showAndWait();
     }
   }
 
