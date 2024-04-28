@@ -67,4 +67,28 @@ class GameTest {
     assertDoesNotThrow(() -> game.sellItem("Pickaxe"));
     assertEquals(pickaxe.getWorth(), game.getGameState().getMoney());
   }
+
+  @Test
+  void energyInteractions() {
+    Game game = new Game();
+    game.getEditableGameState().getEditableBag().addItem("Cake", 1);
+    BuildableTileMap map = ((BuildableTileMap) game.getEditableGameState().getEditableGameWorld());
+    for (int i = 0; i < 3; i++) {
+      map.removeTileTop(0, 0, 0);
+    }
+    map.setTileGameObject("Dirt", 0, 0, 0);
+
+    double originalEnergy = game.getGameState().getEnergy();
+    game.selectItem("Hoe");
+    game.interact(0, 0, 0);
+    assertEquals(originalEnergy + (new Item("Hoe")).getEnergyChange(),
+        game.getGameState().getEnergy());
+    assertTrue(game.getGameState().getBag().getItems().containsKey(new Item("Hoe")));
+
+    game.selectItem("Cake");
+    game.interact(0, 0, 0);
+    assertEquals(game.getGameConfiguration().getRules().getDouble("energyAmount"),
+        game.getGameState().getEnergy());
+    assertFalse(game.getGameState().getBag().getItems().containsKey(new Item("Cake")));
+  }
 }
