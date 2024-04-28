@@ -21,10 +21,10 @@ public class AllRuleDisplay extends VBox {
   private final String myLanguage = "EnglishRule";
   private final ResourceBundle RuleResource;
 
-  public AllRuleDisplay(GameConfiguration gc) {
+  public AllRuleDisplay(RuleController rc) {
     super();
     RuleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-    PropertiesDisplay pd = new PropertiesDisplay(null, new RuleController(gc));
+    PropertiesDisplay pd = new PropertiesDisplay(null, rc);
     pd.setContents(RuleResource.getString("rules"));
     getChildren().add(pd);
   }

@@ -4935,7 +4935,7 @@
       "minute": 0
     },
     "selectedItem": null,
-    "energy": 0.0,
+    "energy": 20.0,
     "money": 0,
     "shop": {
       "itemRotationSize": 3,
@@ -4955,6 +4955,10 @@
         {
           "type": "oogasalad.model.gameobject.Item",
           "data": "{\"itemId\":\"Scythe\"}"
+        },
+        {
+          "type": "oogasalad.model.gameobject.Item",
+          "data": "{\"itemId\":\"Cake\"}"
         }
       ],
       "previousRotationTime": {
@@ -5011,16 +5015,14 @@
         ]
       ]
     },
-    "width": 15,
-    "height": 10,
-    "depth": 2
+    "maxEnergy": 20.0
   },
   "rules": {
     "properties": {
       "configName": "DEFAULT_GAME_NAME",
       "author": "OOGAValley Devs",
       "goalCondition": "time",
-      "doEnergy": "false",
+      "doEnergy": "true",
       "doEnergyRecovery": "true",
       "doDeath": "false",
       "doExhaustedEnergyCollapse": "true",
@@ -5029,15 +5031,17 @@
       "exhaustedEnergyCollapseTimePenalty": "1440",
       "shopRotationTime": "1440",
       "shopRotationSize": "3",
+      "wakeHour": "6",
       "timeMultiplier": "1",
-      "timeGoal": "525600"
+      "timeGoal": "10080"
     },
     "listProperties": {
       "shopPossibleItems": [
         "Wheat Seeds",
         "Hoe",
         "Pickaxe",
-        "Scythe"
+        "Scythe",
+        "Cake"
       ]
     },
     "propertiesType": {
@@ -5057,7 +5061,10 @@
         "energyRecoveryRate",
         "exhaustedEnergyCollapseTimePenalty",
         "timeMultiplier",
-        "timeGoal"
+        "timeGoal",
+        "wakeHour",
+        "shopRotationTime",
+        "shopRotationSize"
       ]
     },
     "mapProperties": {
@@ -5065,6 +5072,9 @@
         "Hoe": "1",
         "Scythe": "1",
         "Wheat Seeds": "5"
+      },
+      "collectGoal": {
+        "Wheat": "10"
       }
     }
   }

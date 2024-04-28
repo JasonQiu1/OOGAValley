@@ -1,6 +1,65 @@
 // DEFAULT CONFIGURABLESSTORE
 {
   "configurables": {
+    "Foliage": {
+      "properties": {
+        "name": "Foliage",
+        "type": "Structure",
+        "image": "foliage.png",
+        "updatable": false,
+        "updateTime": 0,
+        "updateTransformation": "",
+        "expirable": false,
+        "expireTime": 0,
+        // or null
+        "expireTransformation": "",
+        // STRUCTURE ONLY
+        "destructable": true
+      },
+      "listProperties": {
+        // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+        "destructableTools": []
+      },
+      "mapProperties": {
+        "interactTransformations": {
+        },
+        "interactDropMultipliers": {
+        },
+        // STRUCTURE ONLY
+        "dropsOnDestruction": {
+        }
+      }
+    },
+    "Germinating Wheat": {
+      "properties": {
+        "name": "Germinating Wheat",
+        "type": "Structure",
+        "image": "germinating_wheat.png",
+        "updatable": true,
+        "updateTime": 120,
+        "updateTransformation": "Wheat",
+        "expirable": false,
+        "expireTime": 0,
+        // or null
+        "expireTransformation": "",
+        // STRUCTURE ONLY
+        "destructable": true
+      },
+      "listProperties": {
+        // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+        "destructableTools": [
+        ]
+      },
+      "mapProperties": {
+        "interactTransformations": {
+        },
+        "interactDropMultipliers": {
+        },
+        // STRUCTURE ONLY
+        "dropsOnDestruction": {
+        }
+      }
+    },
     "Cake": {
       "properties": {
         "name": "Cake",
@@ -32,7 +91,12 @@
         "destructable": true
         // change to a list of tools later?
       },
-      "listProperties": {},
+      "listProperties": {
+        // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+        "destructableTools": [
+          "Pickaxe"
+        ]
+      },
       "mapProperties": {
         "interactTransformations": {
         },
@@ -80,6 +144,7 @@
         // LAND ONLY
         // Seeds to the structure it plants on top of the land
         "plantableSeeds": {
+          "Wheat Seeds": "Foliage"
         }
         /*
         *  If interacted with by an item in "interactDrops", then drop the corresponding entry's items.
@@ -100,7 +165,7 @@
         "name": "Farmland",
         "type": "Land",
         "image": "farmland.png",
-        "updatable": false,
+        "updatable": true,
         "updateTime": 500,
         "updateTransformation": "Dirt",
         // turns back to dirt after a while
@@ -118,7 +183,7 @@
         // LAND ONLY
         // Seeds to the structure it plants on top of the land
         "plantableSeeds": {
-          "Wheat Seeds": "Wheat"
+          "Wheat Seeds": "Germinating Wheat"
         }
       }
     },
@@ -178,14 +243,18 @@
         "updateTime": 0,
         "updateTransformation": "",
         "expirable": true,
-        "expireTime": 120,
+        "expireTime": 1440,
         // or null
         "expireTransformation": "",
         // STRUCTURE ONLY
         "destructable": true
-        // change to a list of tools later?
       },
-      "listProperties": {},
+      "listProperties": {
+        // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+        "destructableTools": [
+          "Scythe"
+        ]
+      },
       "mapProperties": {
         "interactTransformations": {
         },
@@ -246,7 +315,7 @@
         // If true, then the object should expire "lifeDuration" time after the object was placed.
         // If "expireTransformation" is non-null, then the object transforms into "GAME_OBJECT" when
         "expirable": true,
-        "expireTime": 120,
+        "expireTime": 1440,
         // or null
         "expireTransformation": ""
       },

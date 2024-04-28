@@ -22,6 +22,8 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
   private final ShoppingViewStackPane parentStackPane;
   private List<T> gridPanes;
   private List<ItemView> itemViews;
+  private ImageView backgroundImageView;
+  private PageChangeBorderPane pageChangeBorderPane;
 
   public ItemStackPane(GameInterface game, ShoppingViewStackPane parentStackPane) {
     super();
@@ -34,19 +36,13 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
 
   protected void initialize() {
     Image backgroundImage = new Image(getBackgroundImagePath());
-    ImageView backgroundImageView = new ImageView(backgroundImage);
+    backgroundImageView = new ImageView(backgroundImage);
     backgroundImageView.setFitWidth(Utils.shopStackPaneWidth);
     backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
     itemViews = createItems();
     createGridPanes(itemViews);
-    PageChangeBorderPane pageChangeBorderPane = createPageChangeBorderPane(gridPanes);
-    GridPane currentGridPane = gridPanes.get(0);
-    setMargin(currentGridPane, new Insets(getTopMargin(), 0, 0, getLeftMargin()));
-    setAlignment(currentGridPane, Pos.TOP_LEFT);
-    setAlignment(backgroundImageView, Pos.TOP_LEFT);
-    setAlignment(pageChangeBorderPane, Pos.TOP_LEFT);
-    getChildren().addAll(backgroundImageView, pageChangeBorderPane.getCurrentGridPane(),
-        pageChangeBorderPane);
+    pageChangeBorderPane = createPageChangeBorderPane(gridPanes, this);
+    updateGridPane();
   }
 
   protected abstract String getBackgroundImagePath();
@@ -69,8 +65,9 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
   protected abstract T createGridPane(GameInterface game, List<ItemView> sublist,
       ShoppingViewStackPane parentStackPane);
 
+
   protected abstract PageChangeBorderPane createPageChangeBorderPane(
-      List<? extends GridPane> gridPanes);
+      List<? extends GridPane> gridPanes, ItemStackPane itemStackPane);
 
   protected abstract double getLeftMargin();
 
@@ -82,5 +79,16 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
 
   public ReadOnlyShop getShop() {
     return shop;
+  }
+
+  public void updateGridPane() {
+    getChildren().clear();
+    GridPane currentGridPane = pageChangeBorderPane.getCurrentGridPane();
+    setMargin(currentGridPane, new Insets(getTopMargin(), 0, 0, getLeftMargin()));
+    setAlignment(currentGridPane, Pos.TOP_LEFT);
+    setAlignment(backgroundImageView, Pos.TOP_LEFT);
+    setAlignment(pageChangeBorderPane, Pos.TOP_LEFT);
+    getChildren().addAll(backgroundImageView, currentGridPane,
+        pageChangeBorderPane);
   }
 }

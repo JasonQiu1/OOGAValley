@@ -4955,6 +4955,10 @@
         {
           "type": "oogasalad.model.gameobject.Item",
           "data": "{\"itemId\":\"Scythe\"}"
+        },
+        {
+          "type": "oogasalad.model.gameobject.Item",
+          "data": "{\"itemId\":\"Cake\"}"
         }
       ],
       "previousRotationTime": {
@@ -5036,7 +5040,8 @@
         "Wheat Seeds",
         "Hoe",
         "Pickaxe",
-        "Scythe"
+        "Scythe",
+        "Cake"
       ]
     },
     "propertiesType": {
@@ -5056,7 +5061,10 @@
         "energyRecoveryRate",
         "exhaustedEnergyCollapseTimePenalty",
         "timeMultiplier",
-        "timeGoal"
+        "timeGoal",
+        "wakeHour",
+        "shopRotationTime",
+        "shopRotationSize"
       ]
     },
     "mapProperties": {

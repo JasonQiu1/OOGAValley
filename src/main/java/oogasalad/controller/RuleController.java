@@ -58,4 +58,7 @@ public class RuleController extends PropertyController {
 
     }
 
+    public String getName() {
+        return config.getRules().getString("configName");
+    }
 }

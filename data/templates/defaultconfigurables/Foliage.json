@@ -1,28 +1,31 @@
+// Just a piece of grass that does nothing and rops nothing
 {
   "properties": {
-    "name": "Boulder",
+    "name": "Foliage",
     "type": "Structure",
-    "image": "boulder.png",
+    "image": "foliage.png",
     "updatable": false,
     "updateTime": 0,
     "updateTransformation": "",
     "expirable": false,
     "expireTime": 0,
+    // or null
     "expireTransformation": "",
+    // STRUCTURE ONLY
     "destructable": true
-    // change to a list of tools later?
   },
   "listProperties": {
-      // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
-      "destructableTools": [
-        "Pickaxe"
-      ]
-    },
+    // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+    "destructableTools": [
+    ]
+  },
   "mapProperties": {
     "interactTransformations": {
     },
     "interactDropMultipliers": {
     },
-    "dropsOnDestruction": {} // currently doesn't drop anything
+    // STRUCTURE ONLY
+    "dropsOnDestruction": {
+    }
   }
 }

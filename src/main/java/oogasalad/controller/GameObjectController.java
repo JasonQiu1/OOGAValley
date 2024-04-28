@@ -18,7 +18,11 @@ public class GameObjectController extends PropertyController{
     }
 
     public void setKey(String key){
-        properties = allGameObjects.get(key);
+        for(Map.Entry<String, Properties>  entry : allGameObjects.entrySet()){
+            if(entry.getValue().getCopyOfProperties().get("name").equals(key)){
+                properties = allGameObjects.get(entry.getKey());
+            }
+        }
     }
 
     @Override
