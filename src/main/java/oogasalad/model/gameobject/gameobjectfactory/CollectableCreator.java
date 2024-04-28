@@ -1,4 +1,4 @@
-package oogasalad.model.gameobjectfactory;
+package oogasalad.model.gameobject.gameobjectfactory;
 
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;

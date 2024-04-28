@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import oogasalad.model.api.exception.InvalidGameObjectType;
 import oogasalad.model.data.Properties;
-import oogasalad.model.gameobjectfactory.GameObjectFactory;
+import oogasalad.model.gameobject.gameobjectfactory.GameObjectFactory;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Structure;
 import oogasalad.model.gameplay.GameTime;
