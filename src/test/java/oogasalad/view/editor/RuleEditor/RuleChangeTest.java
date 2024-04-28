@@ -32,11 +32,11 @@ public class RuleChangeTest extends DukeApplicationTest {
     @Test
     @DisplayName("Test one rule change")
     public void testOneRuleChange() {
-        CheckBox rule = lookup("#doEnergy").queryAs(CheckBox.class);
+        TextField rule = lookup("#doEnergy").queryAs(TextField.class);
         assertEquals("true", config.getRules().getCopyOfProperties().get("doEnergy"));
         sleep(5000);
-        clickOn(rule);
-        Button save = lookup("#SaveRules").queryButton();
+        rule.setText("false");
+        Button save = lookup("#SavePropertiesRules").queryButton();
         clickOn(save);
         sleep(1000);
         assertEquals("false", config.getRules().getCopyOfProperties().get("doEnergy"));
@@ -47,8 +47,8 @@ public class RuleChangeTest extends DukeApplicationTest {
     public void testAllRuleChange() {
         for(String key: config.getRules().getCopyOfProperties().keySet()){
             if(config.getRules().getCopyOfPropertyTypes().get("boolean").contains(key)){
-                CheckBox ruleBox = lookup("#" + key).queryAs(CheckBox.class);
-                ruleBox.setSelected(false);
+                TextField ruleBox = lookup("#" + key).queryAs(TextField.class);
+                ruleBox.setText("false");
             }else if(config.getRules().getCopyOfPropertyTypes().get("int").contains(key)){
                 TextField ruleBox = lookup("#" + key).queryAs(TextField.class);
                 ruleBox.setText("7");
@@ -59,7 +59,7 @@ public class RuleChangeTest extends DukeApplicationTest {
             sleep(1000);
         }
         sleep(2000);
-        Button save = lookup("#SaveRules").queryButton();
+        Button save = lookup("#SavePropertiesRules").queryButton();
         clickOn(save);
         sleep(2000);
         for(String key: config.getRules().getCopyOfProperties().keySet()){

@@ -21,10 +21,12 @@ public class PageChangeBorderPane<T extends GridPane> extends BorderPane {
 
   private int currentPageIndex = 0;
   private GridPane currentGridPane;
+  private ItemStackPane<T> itemStackPane;
 
-  public PageChangeBorderPane(List<T> gridPanes) {
+  public PageChangeBorderPane(List<T> gridPanes, ItemStackPane<T> itemStackPane) {
     super();
     this.gridPanes = gridPanes;
+    this.itemStackPane = itemStackPane;
     this.setPickOnBounds(false);
     initialize();
   }
@@ -70,6 +72,7 @@ public class PageChangeBorderPane<T extends GridPane> extends BorderPane {
       return;
     }
     currentGridPane = gridPanes.get(currentPageIndex);
+    itemStackPane.updateGridPane();
   }
 
   private void enableButtons() {
