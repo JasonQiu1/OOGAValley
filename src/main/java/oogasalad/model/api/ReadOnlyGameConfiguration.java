@@ -34,12 +34,4 @@ public interface ReadOnlyGameConfiguration {
    */
   ReadOnlyGameState getInitialState();
 
-  /**
-   * Updates a rule only if it already exists.
-   *
-   * @param rule     queried rule.
-   * @param newValue the value to set.
-   * @throws KeyNotFoundException if the rule does not exist.
-   */
-  void updateRule(String rule, String newValue);
 }

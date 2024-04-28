@@ -1,16 +1,16 @@
 package oogasalad.view.playing;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -19,19 +19,16 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
-import oogasalad.model.gameplay.GameTime;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.Shop;
+import oogasalad.model.data.GameConfiguration;
+import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
-import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
+import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.Money;
-import oogasalad.view.playing.component.SelectedItem;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
-import oogasalad.view.start.StartScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,17 +40,11 @@ import org.apache.logging.log4j.Logger;
 
 public class PlayingPageView {
 
-
-  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
-  private final String myLanguage = "EnglishDisplayText";
-  private final ResourceBundle displayTextResource =
-      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-
   public static final double landCellWidth = 50;
   public static final double landCellHeight = 50;
   public static final double bottomCellWidth = 30;
   public static final double bottomCellHeight = 30;
-  public static final double bottomBoxWidth = 300;
+  public static final double bottomBoxWidth = 600;
   public static final double bottomBoxHeight = 80;
   public static final int landNumRows = 10;
   public static final int landNumCols = 15;
@@ -69,46 +60,50 @@ public class PlayingPageView {
   public static final double windowHeight = landGridPaneHeight + topHeight + bottomHeight;
   public static final double leftRightHeight = 300;
   public static final double bottomBoxPadding = 50;
-
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
+  private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/playing/";
+  private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
+  private final String myLanguage = "EnglishDisplayText";
+  private final String menuLanguage = "EnglishMenuButtons.csv";
+  private final ResourceBundle displayTextResource =
+      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
+  private final String menuButtons = DEFAULT_RESOURCE_FOLDER + menuLanguage;
   private final Label timeLabel = new Label();
-  private final ProgressBar energyProgressBar = new ProgressBar(0.62);
-  private final GameTime gameTime = new GameTime(1, 8, 0);
-  private final SelectedItem selectedItem = new SelectedItem();
+
+  private final EnergyProgress energyProgress;
   private final Stage stage;
   private final String primaryLanguage;
-  private final Bag bag = new Bag();
 
+  // TODO: remove this money from view
+  private final Money money = new Money(100);
+  private final GameFactory gameFactory = new GameFactory();
+  private final GameInterface game;
   private Button helpButton;
   private LandView landView;
   private TopAnimationView topAnimationView;
-  private final Money money = new Money(100);
-  private final Shop shop = new Shop(money);
-  private final GameFactory gameFactory = new GameFactory();
-
-  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
-
-  private final GameInterface game;
-
   private BagView bagView;
-  private String fileName;
+  private Scene previousScene;
 
-  public PlayingPageView(Stage primaryStage, String language) {
+  public PlayingPageView(Stage primaryStage, String language, Scene backScene,
+      GameConfiguration gameConfiguration) {
     stage = primaryStage;
     primaryLanguage = language;
+    this.previousScene = backScene;
     game = gameFactory.createGame();
+    energyProgress = new EnergyProgress(game);
   }
 
   public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
     stage = primaryStage;
     primaryLanguage = language;
     game = gameFactory.createGame(fileName, fileName);
+    energyProgress = new EnergyProgress(game);
   }
 
   public void start() {
-
     LOG.info("initializing game");
-    LOG.info("finish loading game model");
     initModel();
+    LOG.info("finish loading game model");
     StackPane root = new StackPane();
     root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
@@ -121,29 +116,37 @@ public class PlayingPageView {
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
+    scene.setOnKeyPressed(event -> actKey(event.getCode()));
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
     stage.setScene(scene);
     stage.show();
   }
 
+  private void actKey(KeyCode code) {
+    if (code == KeyCode.ESCAPE) {
+      ButtonMenu btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
+      btm.open();
+    }
+  }
+
   private void initModel() {
-    List<BagItem> bagItems = new ArrayList<>();
-//    Map<ReadOnlyItem, Integer> items = game.getGameState().getBag().getItems();
-//    for (Map.Entry<ReadOnlyItem, Integer> item : items.entrySet()) {
-//      bagItems.add(new BagItem(item.getKey().getImagePath(), bottomCellWidth, bottomCellWidth,
-//          selectedItem, item.getValue()));
-//    }
-    bagView = new BagView(bagItems, 5, 1, bag);
+    bagView = new BagView(game, 10);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
-    landView = new LandView(game.getGameState().getGameWorld());
+    landView = new LandView(game);
   }
 
   private void setUpdate() {
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 60), event -> {
+    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.0 / 30), event -> {
       game.update();
       landView.update();
+      bagView.update();
       updateTimeLabel();
+      energyProgress.update();
+      if (game.isGameOver()) {
+        Alert alert = new Alert(AlertType.CONFIRMATION, "game is over");
+        alert.showAndWait();
+      }
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
@@ -163,10 +166,16 @@ public class PlayingPageView {
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
-    CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox();
-    money.addObserver(currentMoneyHbox, money.getMoney());
+    CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox(game);
+    money.addObserver(currentMoneyHbox, game.getGameState().getMoney());
+    Button sleepButton = new Button("sleep");
+    sleepButton.setOnMouseClicked(event -> {
+      LOG.info("slept");
+      game.sleep();
+    });
     topBox.getChildren()
-        .addAll(helpButton, timeLabel, energyProgressBar, btnOpenShop, currentMoneyHbox);
+        .addAll(helpButton, sleepButton, timeLabel, energyProgress, btnOpenShop,
+            currentMoneyHbox);
     root.setTop(topBox);
   }
 
@@ -179,7 +188,7 @@ public class PlayingPageView {
     bottomBox.setPadding(new Insets(padding));
     bottomBox.setPrefSize(bottomWidth, bottomHeight);
     bottomBox.getStyleClass().add("bottom-box");
-    StackPane toolStackPane = bagView.getToolStackPane();
+    StackPane toolStackPane = bagView;
     bottomBox.getChildren().addAll(toolStackPane);
     root.setBottom(bottomBox);
   }
@@ -197,7 +206,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(shop, bag, stage, scene, money);
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, money, this);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);
@@ -213,4 +222,5 @@ public class PlayingPageView {
       chatApp.start();
     });
   }
+
 }

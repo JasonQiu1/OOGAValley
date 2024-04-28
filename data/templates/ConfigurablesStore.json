@@ -1,9 +1,31 @@
 // DEFAULT CONFIGURABLESSTORE
 {
   "configurables": {
-    "Dirt": // DEFAULT: A piece of dirt that you can plant wheat_seeds on top of.
-    // Does not update or expire into anything.
-    {
+    "Boulder": {
+      "properties": {
+        "name": "Boulder",
+        "type": "Structure",
+        "image": "boulder.png",
+        "updatable": false,
+        "updateTime": 0,
+        "updateTransformation": "",
+        "expirable": false,
+        "expireTime": 0,
+        "expireTransformation": "",
+        "destructable": true
+        // change to a list of tools later?
+      },
+      "listProperties": {},
+      "mapProperties": {
+        "interactTransformations": {
+        },
+        "interactDropMultipliers": {
+        },
+        "dropsOnDestruction": {}
+        // currently doesn't drop anything
+      }
+    },
+    "Dirt": {
       "properties": {
         // PROPERTIES FOR ALL GAME OBJECTS
         // This is the id of the object and must be unique within the game configuration,
@@ -30,6 +52,7 @@
             *  e.g. "hoe":"tilledLand" | using a hoe transforms this land object into a tilledLand object.
             */
         "interactTransformations": {
+          "Hoe": "Farmland"
         },
         /*
         *  Maps an item usage to destroy/harvest/collect the object to a multiplier on the drops.
@@ -40,7 +63,6 @@
         // LAND ONLY
         // Seeds to the structure it plants on top of the land
         "plantableSeeds": {
-          "Wheat Seeds": "wheat"
         }
         /*
         *  If interacted with by an item in "interactDrops", then drop the corresponding entry's items.
@@ -56,68 +78,108 @@
         */
       }
     },
+    "Farmland": {
+      "properties": {
+        "name": "Farmland",
+        "type": "Land",
+        "image": "farmland.jpg",
+        "updatable": false,
+        "updateTime": 500,
+        "updateTransformation": "Dirt",
+        // turns back to dirt after a while
+        "expirable": false,
+        "expireTime": 0,
+        // or null
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "mapProperties": {
+        "interactTransformations": {
+        },
+        "interactDropMultipliers": {
+        },
+        // LAND ONLY
+        // Seeds to the structure it plants on top of the land
+        "plantableSeeds": {
+          "Wheat Seeds": "Wheat"
+        }
+      }
+    },
+    "Hoe": {
+      "properties": {
+        "name": "Hoe",
+        "type": "Item",
+        "image": "hoe.png",
+        "worth": 100
+      },
+      "listProperties": {},
+      "mapProperties": {}
+    },
+    "Pickaxe": {
+      "properties": {
+        "name": "Pickaxe",
+        "type": "Item",
+        "image": "pickaxe.png",
+        "worth": 500
+      },
+      "listProperties": {},
+      "mapProperties": {}
+    },
+    "Scythe": {
+      "properties": {
+        "name": "Scythe",
+        "type": "Item",
+        "image": "scythe.png",
+        "worth": 100
+      },
+      "listProperties": {},
+      "mapProperties": {}
+    },
     "Wheat": {
       "properties": {
-        // PROPERTIES FOR ALL GAME OBJECTS
-        // This is the id of the object and must be unique within the game configuration,
-        // otherwise one will overwrite the other in an undefined way.
         "name": "Wheat",
         "type": "Structure",
-        // This is filename of the image which the view will use to display this object.
-        // The file must exist in the `data/images` directory.
         "image": "wheat.png",
         "updatable": false,
         "updateTime": 0,
         "updateTransformation": "",
-        // If true, then the object should expire "lifeDuration" time after the object was placed.
-        // If "expireTransformation" is non-null, then the object transforms into "GAME_OBJECT" when
         "expirable": true,
         "expireTime": 120,
         // or null
         "expireTransformation": "",
         // STRUCTURE ONLY
         "destructable": true
+        // change to a list of tools later?
       },
       "listProperties": {},
       "mapProperties": {
-        /*
-            *  Maps an item usage to transform the object into a different object.
-            *  e.g. "hoe":"tilledLand" | using a hoe transforms this land object into a tilledLand object.
-            */
         "interactTransformations": {
         },
-        /*
-        *  Maps an item usage to destroy/harvest/collect the object to a multiplier on the drops.
-        *  e.g. "enchanted_scythe":5 | using an enchanted scythe will multiply drops by 5x.
-        */
         "interactDropMultipliers": {
         },
-        /*
-        *  If interacted with by an item in "interactDrops", then drop the corresponding entry's items.
-        *  Otherwise drop "defaultDrops".
-        */
-        /* CURRENTLY NOT SUPPORTED
-        * "interactDrops": {
-        *   "pocket_watch": [
-        *   "time_dust",
-        *   "OBJECT_NAME"
-        *  ]
-        * },
-        */
-
         // STRUCTURE ONLY
         "dropsOnDestruction": {
           "Wheat Seeds": 4,
-          "wheat_item": 1
+          "Wheat Bundle": 1
         }
       }
+    },
+    "Wheat Bundle": {
+      "properties": {
+        "name": "Wheat Bundle",
+        "type": "Item",
+        "image": "wheat_item.png",
+        "worth": 25
+      },
+      "listProperties": {},
+      "mapProperties": {}
     },
     "Wheat Seeds": {
       "properties": {
         "name": "Wheat Seeds",
-        "type": "Collectable",
+        "type": "Item",
         "image": "wheat_seeds.png",
-        "worth": "10"
+        "worth": 5
       },
       "listProperties": {},
       "mapProperties": {}

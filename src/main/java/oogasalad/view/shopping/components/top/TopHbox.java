@@ -4,7 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import oogasalad.model.shop.Shop;
+import oogasalad.model.api.GameInterface;
 import oogasalad.view.shopping.Utils;
 
 /**
@@ -16,23 +16,20 @@ public class TopHbox extends HBox {
   private CurrentMoneyHbox currentMoneyHbox;
   private ProgressBarHbox progressBarHbox;
   private Button backButton;
+  private GameInterface game;
 
-  public TopHbox(Shop shop) {
+  public TopHbox(GameInterface game) {
     super();
-    initialize(shop);
+    this.game = game;
+    initialize();
   }
 
-  /**
-   * Initializes the top HBox
-   *
-   * @param shop the shop to be displayed
-   */
-  private void initialize(Shop shop) {
+  private void initialize() {
     setAlignment(Pos.CENTER);
     setSpacing(Utils.topHBoxSpacing);
     setAlignment(Pos.CENTER_LEFT);
-    currentMoneyHbox = new CurrentMoneyHbox();
-    progressBarHbox = new ProgressBarHbox(shop);
+    currentMoneyHbox = new CurrentMoneyHbox(game);
+    progressBarHbox = new ProgressBarHbox(game.getGameState().getShop());
     backButton = new Button();
     backButton.getStyleClass().add("backButton");
     backButton.setId("backButton");

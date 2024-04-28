@@ -179,5 +179,33 @@ public class TileTest extends BaseGameObjectTest {
     tileToTest.interact(new Item("wheat_seed"));
     assertEquals(testingStructureProperties.getString("name"), tileToTest.getStructureId());
   }
+
+  protected Tile getTile() {
+    return tileToTest;
+  }
+
+  protected Land getLand() {
+    return tileLand;
+  }
+
+  protected Structure getTileStructure() {
+    return tileStructure;
+  }
+
+  protected Collectable getTileCollectable() {
+    return tileCollectable;
+  }
+
+  protected Properties getTestingStructureProperties() {
+    return testingStructureProperties;
+  }
+
+  protected Properties getTestingLandProperties() {
+    return testingLandProperties;
+  }
+
+  protected Properties getTestingCollectableProperties() {
+    return testingCollectableProperties;
+  }
 }
 

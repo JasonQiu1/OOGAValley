@@ -1,39 +1,25 @@
 package oogasalad.view.shopping.components.bagblock;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import oogasalad.view.shopping.Utils;
+import oogasalad.view.shopping.components.ItemVbox;
+import oogasalad.view.shopping.components.ItemView;
 
 /**
  * This class is a VBox that contains an item image and a RemainNumStackPane. It is used to display
  * an item in the bag block.
  */
-public class BagItemVbox extends VBox {
+public class BagItemVbox extends ItemVbox {
 
-  private final ImageView itemImage;
-  private final RemainNumStackPane remainNumStackPane;
 
   /**
-   * Constructor for the BagItemVbox
+   * Constructor of BagItemVbox.
    *
-   * @param itemImage          the image of the item
-   * @param remainNumStackPane the RemainNumStackPane to display the number of items remaining
+   * @param buyItemView the ItemView of the item
    */
-  public BagItemVbox(ImageView itemImage, RemainNumStackPane remainNumStackPane) {
-    super();
-    this.itemImage = itemImage;
-    this.remainNumStackPane = remainNumStackPane;
-
-    initialize();
+  public BagItemVbox(ItemView buyItemView, String myLanguage, String buttonText) {
+    super(buyItemView, myLanguage, buttonText);
+    RemainNumStackPane remainNumStackPane = new RemainNumStackPane(buyItemView.getNum());
+    getChildren().add(remainNumStackPane);
   }
 
-  private void initialize() {
-    itemImage.setFitWidth(Utils.sellItemImageWidth);
-    itemImage.setFitHeight(Utils.sellItemImageHeight);
-    getChildren().addAll(itemImage, remainNumStackPane);
-    setAlignment(Pos.CENTER);
-    setPadding(new Insets(10));
-  }
+
 }

@@ -1,9 +1,7 @@
 package oogasalad.view.editor.MapEditor;
 
-import java.util.Optional;
-import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
-import oogasalad.model.api.ReadOnlyGameWorld;
+import oogasalad.controller.MapController;
 
 public class BuildableMap {
 
@@ -13,9 +11,10 @@ public class BuildableMap {
   private int currentRows;
   private GridPane gp;
 
-  private final ReadOnlyGameWorld gameWorld;
+  private final MapController gameWorld;
 
-  public BuildableMap(CellInfoPane cip, ReadOnlyGameWorld gameWorld) {
+
+  public BuildableMap(CellInfoPane cip, MapController gameWorld) {
     gp = new GridPane();
     gp.setId("EditorGridPane");
     this.gridPaneProperty = new GridPaneProperty(gp);
@@ -23,7 +22,7 @@ public class BuildableMap {
     gp.setMaxWidth(Cell.getSize()[0] * gameWorld.getWidth());
     gp.setMaxHeight(Cell.getSize()[1] * gameWorld.getHeight());
     this.gameWorld = gameWorld;
-    Cell.setGameWorld(gameWorld);
+    Cell.setGameMap(gameWorld);
     createGrid();
   }
 

@@ -8,6 +8,7 @@ import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.InvalidRuleType;
+import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.gameplay.GameState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,25 +26,37 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   // The path to the game configurations directory from the data directory.
   public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
 
+  public static final String TEMPLATES_DIRECTORY_PATH = "templates";
+
   /**
    * Initializes the game configuration to a set of default rules and initial state.
    */
   public GameConfiguration() {
-    try {
-      rules = Properties.of(Paths.get("templates", "GameRulesGrouped").toString());
-    } catch (IOException e) {
-      LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
-      throw new RuntimeException(e);
-    }
+    this(getDefaultRules(), getDefaultConfigurablesStore(), getDefaultInitialState());
+  }
+
+  /**
+   * Initializes the game configuration with the given rules.
+   *
+   * @param rules the loaded rules to use.
+   */
+  public GameConfiguration(Properties rules) {
+    this(rules, getDefaultConfigurablesStore(), getDefaultInitialState());
+  }
+
+  /**
+   * Initializes the game configuration with the given rules, configurablesstore, and initial
+   * state.
+   *
+   * @param rules        the loaded rules to use.
+   * @param store        the loaded configurables store to use.
+   * @param initialState the initial state to use.
+   */
+  public GameConfiguration(Properties rules, GameConfigurablesStore store, GameState initialState) {
+    this.rules = rules;
     DataValidation.validateProperties(rules);
-    try {
-      configurablesStore =
-          CONFIGURABLES_DATA_FACTORY.load(Paths.get("templates", "ConfigurablesStore").toString());
-    } catch (IOException e) {
-      LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
-      throw new RuntimeException(e);
-    }
-    initialState = new GameState(rules);
+    configurablesStore = store;
+    this.initialState = initialState;
   }
 
   /**
@@ -97,15 +110,21 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     return initialState;
   }
 
-  @Override
+  /**
+   * Updates a rule only if it already exists.
+   *
+   * @param rule     queried rule.
+   * @param newValue the value to set.
+   * @throws KeyNotFoundException if the rule does not exist.
+   */
   public void updateRule(String rule, String newValue) throws InvalidRuleType {
     DataValidation.validate(rule, newValue);
     rules.update(rule, newValue);
   }
 
 
-  public void getEditableInitialState(GameState initialState) {
-    this.initialState = initialState;
+  public GameState getEditableInitialState() {
+    return initialState;
   }
 
 
@@ -123,7 +142,39 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   private static GameConfigurablesStore configurablesStore;
   private static final DataFactory<GameConfiguration> GAME_CONFIGURATION_DATA_FACTORY =
       new DataFactory<>(GameConfiguration.class);
+  private static final DataFactory<GameState> GAMESTATE_DATA_FACTORY =
+      new DataFactory<>(GameState.class);
   private static final DataFactory<GameConfigurablesStore> CONFIGURABLES_DATA_FACTORY =
       new DataFactory<>(GameConfigurablesStore.class);
   private static final Logger LOG = LogManager.getLogger(GameConfiguration.class);
+
+
+  private static Properties getDefaultRules() {
+    try {
+      return Properties.of(Paths.get(TEMPLATES_DIRECTORY_PATH, "GameRulesGrouped").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameRules 'templates/GameRulesGrouped.json'.");
+      throw new RuntimeException(e);
+    }
+  }
+
+  private static GameConfigurablesStore getDefaultConfigurablesStore() {
+    try {
+      return CONFIGURABLES_DATA_FACTORY.load(
+          Paths.get(TEMPLATES_DIRECTORY_PATH, "ConfigurablesStore").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
+      throw new RuntimeException(e);
+    }
+  }
+
+  private static GameState getDefaultInitialState() {
+    try {
+      return GAMESTATE_DATA_FACTORY.load(
+          Paths.get(TEMPLATES_DIRECTORY_PATH, "GameState").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameState 'templates/GameState.json'.");
+      throw new RuntimeException(e);
+    }
+  }
 }

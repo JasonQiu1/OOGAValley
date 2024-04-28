@@ -1,51 +1,47 @@
 package oogasalad.view.shopping.components.bagblock;
 
-import java.util.Map;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.BagItemModel;
+import java.util.List;
+import oogasalad.model.api.GameInterface;
+import oogasalad.view.popup.PopUpStackPane;
+import oogasalad.view.shopping.ShoppingViewStackPane;
+import oogasalad.view.shopping.components.ItemGridPane;
+import oogasalad.view.shopping.components.ItemView;
 
 /**
- * This class is a GridPane that contains BagItemVboxes. It is used to display the items in the bag
- * block.
+ * This class is responsible for creating the bag grid pane that is used to display the items in the
+ * bag.
  */
-public class BagGridPane extends GridPane {
-
-  private final Bag bag;
+public class BagGridPane extends ItemGridPane {
 
   /**
-   * Constructor for the BagGridPane
+   * Constructor for BagGridPane.
    *
-   * @param bag the bag to be displayed
+   * @param game            The game interface
+   * @param bagItemViews    The list of item views
+   * @param parentStackPane The parent stack pane
    */
-  public BagGridPane(Bag bag) {
-    super();
-    this.bag = bag;
-    initialize();
+  public BagGridPane(GameInterface game, List<ItemView> bagItemViews,
+      ShoppingViewStackPane parentStackPane) {
+    super(game, bagItemViews, parentStackPane);
   }
 
-  private void initialize() {
-    int maxColumnIndex = 2;
-    int columnIndex = 0;
-    int rowIndex = 0;
-    setPadding(new Insets(10));
-    setAlignment(Pos.CENTER);
-    for (Map.Entry<BagItemModel, Integer> entry : bag.getItemMap().entrySet()) {
-      BagItemModel bagItemModel = entry.getKey();
-      int quantity = entry.getValue();
-      ImageView itemImage = new ImageView(bagItemModel.getUrl());
-      RemainNumStackPane remainNumStackPane = new RemainNumStackPane(quantity);
-      BagItemVbox bagItemVbox = new BagItemVbox(itemImage, remainNumStackPane);
-      add(bagItemVbox, columnIndex, rowIndex);
-      columnIndex++;
-      if (columnIndex == maxColumnIndex) {
-        columnIndex = 0;
-        rowIndex++;
-      }
-    }
+  @Override
+  protected BagItemVbox createItemVbox(ItemView itemView) {
+    BagItemVbox bagItemVbox = new BagItemVbox(itemView, "SellItemButtonText", "sell");
+    bagItemVbox.getButton().setOnAction(event -> {
+      PopUpStackPane popUp = new PopUpStackPane(getPopUpTextResource(), getParentStackPane(),
+          choice -> {
+            if (choice) {
+              getGame().sellItem(itemView.getName());
+              getGame().update();
+              getParentStackPane().getMoneyHbox().update(getGame().getGameState().getMoney());
+              getParentStackPane().getBagStackPane().update();
+            }
+          }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
+      getParentStackPane().getChildren().add(popUp);
+    });
+    return bagItemVbox;
   }
+
 }
 

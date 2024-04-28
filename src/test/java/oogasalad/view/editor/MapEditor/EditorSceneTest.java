@@ -20,15 +20,13 @@ public class EditorSceneTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    editorScene = new EditorScene(stage, "English", new GameConfiguration());
+    editorScene = new EditorScene(stage, "English", null, new GameConfiguration());
     editorScene.start();
 //    this.cell = (Cell) lookup("#0 0").query();
     sleep(1000);
     // When trying to find the Cell with id "0 0"
     cell = lookup("#EditorGridPane #0_0").queryAs(Cell.class);
     cellInfoPane = lookup("#CellInfoPane").queryAs(CellInfoPane.class);
-    lava = lookup("#BottomPanel #Lava").queryAs(SelectableView.class);
-
   }
 
   @Test
@@ -46,13 +44,13 @@ public class EditorSceneTest extends DukeApplicationTest {
   @Test
   @DisplayName("Test CellInfoPane Info")
   public void testCellInfoPaneInfo() {
-    String lava = "Lava";
+    String wheatSeeds = "Wheat Seeds";
     sleep(500);
-    clickOn(lava);
+    clickOn(wheatSeeds);
     sleep(100);
     clickOn(cell);
     sleep(500);
-    assertTrue(cellInfoPane.getContentString().equals(lava));
+    assertTrue(cellInfoPane.getContentString().equals(wheatSeeds));
 
   }
 

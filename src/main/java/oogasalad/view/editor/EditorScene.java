@@ -9,8 +9,8 @@ public class EditorScene extends Scene {
   private final Stage stage;
   private final String myPrimaryLanguage;
 
-  public EditorScene(Stage primaryStage, String language, GameConfiguration gc) {
-    super(new EditorWindow(gc));
+  public EditorScene(Stage primaryStage, String language, Scene backScene, GameConfiguration gc) {
+    super(new EditorWindow(primaryStage, backScene, gc));
     stage = primaryStage;
     myPrimaryLanguage = language;
     //ew = new EditorWindow(new GameConfiguration());

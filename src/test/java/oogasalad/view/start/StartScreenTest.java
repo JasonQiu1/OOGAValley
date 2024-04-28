@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.stage.Stage;
+import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.start.ChangePageButton;
 import oogasalad.view.start.StartScreen;
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +21,7 @@ public class StartScreenTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    ss = new StartScreen(stage, "English");
+    ss = new StartScreen(stage, "English", null, new GameConfiguration());
     ss.open();
     this.create = (ChangePageButton) lookup("#Create").queryButton();
     this.play = (ChangePageButton) lookup("#Play").queryButton();

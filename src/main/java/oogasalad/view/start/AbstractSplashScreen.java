@@ -1,6 +1,5 @@
 package oogasalad.view.start;
 
-import java.util.List;
 import javafx.animation.Animation;
 import javafx.animation.PathTransition;
 import javafx.animation.SequentialTransition;
@@ -8,7 +7,6 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
@@ -22,7 +20,8 @@ import org.apache.logging.log4j.Logger;
 public abstract class AbstractSplashScreen {
 
   private static final Logger LOG = LogManager.getLogger(AbstractSplashScreen.class);
-      // should this be here
+  // should this be here
+  private Scene previousScene;
 
   public AbstractSplashScreen() {
     // do nothing
@@ -33,23 +32,23 @@ public abstract class AbstractSplashScreen {
    */
   public abstract void open();
 
-  protected void setStage(Stage stage, double widthPortion, double heightPortion,
-      ResourceString resourceString, String language) {
+  protected Scene setStage(Stage stage, double widthPortion, double heightPortion,
+      ResourceString resourceString, String language, Scene myScene) {
+
+    previousScene = myScene;
+
     Scene scene;
     VBox vb = new VBox();
     vb.setAlignment(Pos.CENTER);
     vb.setSpacing(75);
-    HBox hb = new HBox();
-    hb.setSpacing(100);
-    hb.setAlignment(Pos.CENTER);
+    VBox buttonsBox = new VBox();
+    buttonsBox.setSpacing(10);
+    buttonsBox.setAlignment(Pos.CENTER);
 
     //Create the scene, initialized to a reasonable size.
     Rectangle2D screenBounds = Screen.getPrimary().getBounds();
     int initialStartScreenWidth = (int) (screenBounds.getWidth() * widthPortion);
     int initialStartScreenHeight = (int) (screenBounds.getHeight() * heightPortion);
-
-    // Create Start Buttons
-    createButtonsFromFile(resourceString.buttonsPath(), stage, hb, language);
 
     //Create title
     //TODO: Resources bundle this
@@ -59,17 +58,19 @@ public abstract class AbstractSplashScreen {
 
     //create scene
     vb.getChildren().add(title);
-    vb.getChildren().add(hb);
     scene = new Scene(vb, initialStartScreenWidth, initialStartScreenHeight);
+//    myScene = scene;
 
-    LOG.info(scene);
+    SplashUtils.createButtonsFromFile(resourceString.buttonsPath(), stage, buttonsBox, language,
+        scene);
+    vb.getChildren().add(buttonsBox);
+
+    LOG.info(myScene);
 
     //link scene and css
     scene.getStylesheets().add(getClass().getResource(resourceString.styleCss()).toExternalForm());
 
-    stage.setTitle(resourceString.stageTitle());
-    stage.setScene(scene);
-    stage.show();
+    return scene;
   }
 
   protected void titleBob(Label l, Number newVal) {
@@ -88,28 +89,6 @@ public abstract class AbstractSplashScreen {
 
     PathTransition pt = new PathTransition(Duration.seconds(1), path, l);
     return new SequentialTransition(l, pt);
-  }
-
-  protected void createButtonsFromFile(String filename, Stage primaryStage, HBox root,
-      String language) {
-    List<String[]> buttonData = SplashUtils.readCommaSeparatedCSVLines(filename);
-    makeButton(buttonData, primaryStage, root, language);
-  }
-
-  protected void makeButton(List<String[]> buttonData, Stage primaryStage, HBox root,
-      String language) {
-
-    for (String[] data : buttonData) {
-      ChangePageButton button = new ChangePageButton(data[0], data[1]);
-      String className = data[2];
-      String methodName = data[3];
-      String[] parameters = new String[data.length - 4];
-      System.arraycopy(data, 4, parameters, 0, parameters.length);
-      button.setOnAction(
-          new ButtonActionHandler(className, methodName, primaryStage, language, parameters));
-
-      root.getChildren().add(button);
-    }
   }
 
 

@@ -8,7 +8,7 @@ public class ChangePageButton extends Button {
   public ChangePageButton(String name, String color) {
     super(name);
     this.setStyle("-fx-background-color: " + color + ";");
-    this.setMinSize(100, 100);
+    this.setMinSize(100, 50);
     this.setOnMouseEntered(event -> this.setStyle("-fx-background-color: gray;"));
     this.setOnMouseExited(event -> this.setStyle("-fx-background-color: " + color + ";"));
 

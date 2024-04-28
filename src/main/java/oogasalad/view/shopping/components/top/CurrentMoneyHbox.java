@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import oogasalad.model.api.GameInterface;
 import oogasalad.view.playing.observer.Observer;
 import oogasalad.view.shopping.Utils;
 import org.apache.logging.log4j.LogManager;
@@ -19,18 +20,19 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
 
   private static final Logger LOG = LogManager.getLogger(CurrentMoneyHbox.class);
   private Label moneyLabel;
+  private GameInterface game;
 
 
   /**
    * Constructor for the CurrentMoneyHbox
    */
-  public CurrentMoneyHbox() {
+  public CurrentMoneyHbox(GameInterface game) {
     super();
+    this.game = game;
     initialize();
   }
 
   private void initialize() {
-
     Button addButton = new Button();
     addButton.setId("shopAddButton");
     moneyLabel = new Label();
@@ -45,7 +47,7 @@ public class CurrentMoneyHbox extends HBox implements Observer<Integer> {
 
   @Override
   public void update(Integer value) {
-    LOG.info("observer pattern: " + value);
+    LOG.info("update money: %d".formatted(value));
     moneyLabel.setText("" + value);
   }
 }

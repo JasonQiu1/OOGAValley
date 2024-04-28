@@ -1,0 +1,31 @@
+// DEFAULT: A piece of wheat that is immediately harvestable and drops seeds and a wheat item.
+// Expires after 120 in-game minutes.
+{
+  "properties": {
+    "name": "Wheat",
+    "type": "Structure",
+    "image": "wheat.png",
+
+    "updatable": false,
+    "updateTime": 0,
+    "updateTransformation":  "",
+    "expirable": true,
+    "expireTime": 120,
+    // or null
+    "expireTransformation": "",
+    // STRUCTURE ONLY
+    "destructable": true // change to a list of tools later?
+  },
+  "listProperties": {},
+  "mapProperties": {
+    "interactTransformations": {
+    },
+    "interactDropMultipliers": {
+    },
+    // STRUCTURE ONLY
+    "dropsOnDestruction": {
+      "Wheat Seeds": 4,
+      "Wheat Bundle": 1
+    }
+  }
+}

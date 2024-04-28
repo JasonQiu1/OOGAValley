@@ -2,105 +2,64 @@ package oogasalad.view.shopping.components.shopblock;
 
 import java.util.ArrayList;
 import java.util.List;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import oogasalad.model.shop.SellItem;
-import oogasalad.model.shop.Shop;
-import oogasalad.view.shopping.Utils;
+import java.util.Map;
+import javafx.scene.layout.GridPane;
+import oogasalad.model.api.GameInterface;
+import oogasalad.model.api.ReadOnlyItem;
+import oogasalad.view.shopping.ShoppingViewStackPane;
+import oogasalad.view.shopping.components.ItemStackPane;
+import oogasalad.view.shopping.components.ItemView;
+import oogasalad.view.shopping.components.PageChangeBorderPane;
 
 /**
- * This class is a StackPane that contains a background image, a sell grid pane, and a page change
- * border pane. It is used to display a page of sellable items in the shop block.
+ * This class is responsible for creating the shop stack pane that is used to display the items in
+ * the shop.
  */
-public class ShopStackPane extends StackPane {
+public class ShopStackPane extends ItemStackPane<BuyGridPane> {
 
-  private final Shop shop;
-  private final StackPane parentStackPane;
-  private List<SellGridPane> gridPanes;
-  private PageChangeBorderPane pageChangeBorderPane;
-  private SellGridPane currentGridPane;
-  private int currentPageIndex = 0;
-  private ImageView backgroundImageView;
 
-  /**
-   * Constructor for the ShopStackPane
-   *
-   * @param shop            the shop to be displayed
-   * @param parentStackPane the parent stack pane
-   */
-  public ShopStackPane(Shop shop, StackPane parentStackPane) {
-    super();
-    this.shop = shop;
-    this.parentStackPane = parentStackPane;
-    initialize();
+  public ShopStackPane(GameInterface game, ShoppingViewStackPane parentStackPane) {
+    super(game, parentStackPane);
   }
 
-  private void initialize() {
-    Image backgroundImage = new Image("img/shop/sell-background.png");
-    backgroundImageView = new ImageView(backgroundImage);
-    backgroundImageView.setFitWidth(Utils.shopStackPaneWidth);
-    backgroundImageView.setFitHeight(Utils.shopStackPaneHeight);
-    List<SellItem> sellItems = shop.getItems();
-    createSellGridPanes(sellItems);
-    pageChangeBorderPane = new PageChangeBorderPane();
-    enableButtons();
-    setPageChangeButton();
-    currentGridPane = gridPanes.get(0);
-    setMargin(currentGridPane, new Insets(100, 0, 0, 50));
-    setMargin(pageChangeBorderPane, new Insets(0, 0, 0, 0));
-    setAlignment(currentGridPane, Pos.TOP_LEFT);
-    setAlignment(backgroundImageView, Pos.TOP_LEFT);
-    setAlignment(pageChangeBorderPane, Pos.TOP_LEFT);
-    getChildren().addAll(backgroundImageView, currentGridPane, pageChangeBorderPane);
+  @Override
+  protected String getBackgroundImagePath() {
+    return "img/shop/buy-background.png";
   }
 
-  private void createSellGridPanes(List<SellItem> sellItems) {
-    gridPanes = new ArrayList<>();
-    int groupCount = (sellItems.size() + 3) / 4;
-    for (int i = 0; i < groupCount; i++) {
-      int startIndex = i * 4;
-      int endIndex = Math.min(startIndex + 4, sellItems.size());
-      List<SellItem> sublist = sellItems.subList(startIndex, endIndex);
-      SellGridPane sellGridPane = new SellGridPane(shop, sublist, parentStackPane);
-      gridPanes.add(sellGridPane);
+  @Override
+  protected ArrayList<ItemView> createItems() {
+    ArrayList<ItemView> itemViews = new ArrayList<>();
+    Map<? extends ReadOnlyItem, Double> itemPriceMap = getShop().getItems();
+    for (Map.Entry<? extends ReadOnlyItem, Double> entry : itemPriceMap.entrySet()) {
+      ReadOnlyItem item = entry.getKey();
+      double price = entry.getValue();
+      ItemView itemView = new ItemView(price, item.getImagePath(), item.getName(), 9999);
+      itemViews.add(itemView);
     }
+    return itemViews;
   }
 
-  private void enableButtons() {
-    pageChangeBorderPane.getLeftButton().setDisable(currentPageIndex == 0);
-    pageChangeBorderPane.getRightButton().setDisable(currentPageIndex == gridPanes.size() - 1);
+  @Override
+  protected BuyGridPane createGridPane(GameInterface game, List<ItemView> sublist,
+      ShoppingViewStackPane parentStackPane) {
+    return new BuyGridPane(game, sublist, parentStackPane);
   }
 
-  private void setPageChangeButton() {
-    pageChangeBorderPane.getLeftButton().setOnAction(event -> {
-      if (currentPageIndex == 0) {
-        return;
-      }
-      currentPageIndex--;
-      changePage();
-      enableButtons();
-    });
-    pageChangeBorderPane.getRightButton().setOnAction(event -> {
-      if (currentPageIndex == gridPanes.size() - 1) {
-        return;
-      }
-      currentPageIndex++;
-      changePage();
-      enableButtons();
-    });
+
+  @Override
+  protected PageChangeBorderPane createPageChangeBorderPane(
+      List<? extends GridPane> gridPanes) {
+    return new BuyPageChangeBorderPane((List<BuyGridPane>) gridPanes);
   }
 
-  private void changePage() {
-    if (currentPageIndex < 0 || currentPageIndex >= gridPanes.size()) {
-      return;
-    }
-    currentGridPane = gridPanes.get(currentPageIndex);
-    setMargin(currentGridPane, new Insets(100, 0, 0, 50));
-    setAlignment(currentGridPane, Pos.TOP_LEFT);
-    getChildren().clear();
-    getChildren().addAll(backgroundImageView, currentGridPane, pageChangeBorderPane);
+  @Override
+  protected double getLeftMargin() {
+    return 0;
+  }
+
+  @Override
+  protected double getTopMargin() {
+    return 0;
   }
 }

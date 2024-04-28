@@ -37,7 +37,6 @@
     // LAND ONLY
     // Seeds to the structure it plants on top of the land
     "plantableSeeds": {
-      "Wheat Seeds": "wheat"
     }
     /*
     *  If interacted with by an item in "interactDrops", then drop the corresponding entry's items.

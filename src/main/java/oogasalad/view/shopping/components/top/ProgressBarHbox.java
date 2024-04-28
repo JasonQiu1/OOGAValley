@@ -3,7 +3,7 @@ package oogasalad.view.shopping.components.top;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
-import oogasalad.model.shop.Shop;
+import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.view.shopping.Utils;
 
 /**
@@ -12,7 +12,7 @@ import oogasalad.view.shopping.Utils;
  */
 public class ProgressBarHbox extends HBox {
 
-  private final Shop shop;
+  private final ReadOnlyShop shop;
   private ProgressBar progressBar;
 
   /**
@@ -20,7 +20,7 @@ public class ProgressBarHbox extends HBox {
    *
    * @param shop the shop to be displayed
    */
-  public ProgressBarHbox(Shop shop) {
+  public ProgressBarHbox(ReadOnlyShop shop) {
     super();
     this.shop = shop;
     initialize();
@@ -29,7 +29,8 @@ public class ProgressBarHbox extends HBox {
   private void initialize() {
     Button button = new Button();
     button.setId("shopAddButton");
-    progressBar = new ProgressBar(shop.getCurrentEnergy());
+    //TODO: energy
+    progressBar = new ProgressBar();
     progressBar.setPrefSize(Utils.progressBarWidth, Utils.progressBarHeight);
     getChildren().addAll(button, progressBar);
   }

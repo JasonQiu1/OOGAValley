@@ -33,26 +33,16 @@ public class GameState implements ReadOnlyGameState {
   // TODO: Externalize this to a configuration file.
   // The path to the gamesaves directory from the data directory.
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
-  private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
-  private static final Logger LOG = LogManager.getLogger(GameState.class);
-  private GameWorld gameWorld;
-  private GameTime gameTime;
-  private ReadOnlyItem selectedItem;
-  private double energy;
-  private int money;
-  private Shop shop;
-  private Bag bag;
-  private final int width = 15;
-  private final int height = 10;
-  private final int depth = 2;
 
   /**
    * Initializes a default GameState.
    */
   public GameState(ReadOnlyProperties properties) {
     this.bag = new Bag();
-    this.gameWorld = new GameWorld(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
+    this.gameWorld =
+        new BuildableTileMap(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
     this.gameTime = new GameTime(1, 8, 0);
+    this.maxEnergy = properties.getInteger("energyAmount");
     try {
       List<String> possibleItemStrings = properties.getStringList("shopPossibleItems");
       List<ReadOnlyItem> possibleItems = new ArrayList<>();
@@ -68,12 +58,37 @@ public class GameState implements ReadOnlyGameState {
   }
 
   /**
-   * Initializes a copy of GameState from the original.
+   * Initializes a deep copy of GameState from the original.
    *
    * @param original the original GameState to copy.
    */
   public GameState(ReadOnlyGameState original) {
-    // TODO: IMPLEMENT
+    // It's going to be a really big task to implement deep-copying for everything in GameState,
+    // so we can just abuse Gson to save and load a copy instead.
+    String copyPath = Paths.get(TEMPORARY_DIRECTORY_PATH, "GAMESTATE_COPY").toString();
+    try {
+      FACTORY.save(copyPath, (GameState) original);
+    } catch (IOException e) {
+      LOG.error("Error saving a copy of a gamestate to '" + copyPath + ".json'");
+      throw new RuntimeException(e);
+    }
+
+    GameState copy;
+    try {
+      copy = FACTORY.load(copyPath);
+    } catch (IOException | BadGsonLoadException e) {
+      LOG.error("Error loading a copy of a gamestate to '" + copyPath + ".json'");
+      throw new RuntimeException(e);
+    }
+
+    gameWorld = copy.gameWorld;
+    gameTime = copy.gameTime;
+    bag = copy.bag;
+    shop = copy.shop;
+    money = copy.money;
+    energy = copy.energy;
+    selectedItem = copy.selectedItem;
+    maxEnergy = copy.maxEnergy;
   }
 
   /**
@@ -140,13 +155,6 @@ public class GameState implements ReadOnlyGameState {
   }
 
   /**
-   * Add items from GameWorld to the player's bag.
-   */
-  public void addItemsToBag() {
-    bag.addItems(gameWorld.itemsToAddToInventory());
-  }
-
-  /**
    * Returns the current bag, which contains items currently held.
    *
    * @return the current bag.
@@ -166,10 +174,33 @@ public class GameState implements ReadOnlyGameState {
     return Optional.of(selectedItem);
   }
 
+  public GameWorld getEditableGameWorld() {
+    return gameWorld;
+  }
+
+  public GameTime getEditableGameTime() {
+    return gameTime;
+  }
+
+  public Bag getEditableBag() {
+    return bag;
+  }
+
+  public BuildableTileMap getEditableMap() {
+    return gameWorld;
+  }
+
+  /**
+   * Add items from GameWorld to the player's bag.
+   */
+  public void addItemsToBag() {
+    bag.addItems(gameWorld.itemsToAddToInventory());
+  }
+
   /**
    * Selects an item to be active if it is in the bag.
    *
-   * @param id
+   * @param id the id of the item to select.
    */
   public void selectItem(String id) throws KeyNotFoundException {
     Item item = new Item(id);
@@ -188,26 +219,29 @@ public class GameState implements ReadOnlyGameState {
     money += amount;
   }
 
-  public GameWorld getEditableGameWorld() {
-    return gameWorld;
-  }
-
-  public GameTime getEditableGameTime() {
-    return gameTime;
-  }
-
-  public Bag getEditableBag() {
-    return bag;
-  }
-
   /**
    * Restores energy by the given amount up to the max amount.
    *
    * @return the amount of energy restored.
    */
   public double restoreEnergy(double amount) {
-    // TODO: IMPLEMENT
-    return 0.0f;
+    if (amount + energy > maxEnergy) {
+      energy = maxEnergy;
+      return maxEnergy - energy;
+    }
+    energy += amount;
+    return amount;
   }
 
+  private static final String TEMPORARY_DIRECTORY_PATH = System.getProperty("java.io.tmpdir");
+  private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
+  private static final Logger LOG = LogManager.getLogger(GameState.class);
+  private final BuildableTileMap gameWorld;
+  private final GameTime gameTime;
+  private ReadOnlyItem selectedItem;
+  private double energy;
+  private int money;
+  private final Shop shop;
+  private final Bag bag;
+  private final double maxEnergy;
 }

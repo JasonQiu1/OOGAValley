@@ -7,9 +7,13 @@ import oogasalad.model.api.ReadOnlyGameState;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyShop;
+import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.KeyNotFoundException;
+import oogasalad.model.data.DataFactory;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.gameobject.Item;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Implementation of GameInterface.
@@ -20,16 +24,48 @@ import oogasalad.model.gameobject.Item;
  */
 public class Game implements GameInterface {
 
+  /**
+   * Loads a default GameConfiguration that shows off a decent amount of features.
+   */
   public Game() {
     configuration = new GameConfiguration();
-    state = new GameState(configuration.getRules());
+    try {
+      state = GAMESTATE_FACTORY.load("templates/GameState");
+    } catch (IOException e) {
+      LOG.error("Couldn't load default GameState from 'data/templates/GameState.json'");
+      throw new RuntimeException(e);
+    }
   }
 
+  /**
+   * Loads a new game with an already-loaded configuration.
+   *
+   * @param configuration the loaded configuration.
+   * @throws IOException if the configuration file is not found.
+   */
+  public Game(GameConfiguration configuration) throws IOException {
+    this.configuration = configuration;
+    state = new GameState(configuration.getInitialState());
+  }
+
+  /**
+   * Loads a specific GameConfiguration with the given initial state as the first save.
+   *
+   * @param configName the name of the config.
+   * @throws IOException if the configuration file is not found.
+   */
   public Game(String configName) throws IOException {
     configuration = GameConfiguration.of(configName);
     state = new GameState(configuration.getInitialState());
   }
 
+  /**
+   * Loads the given config with the given save.
+   *
+   * @param configName the name of the configuration file in 'data/gameconfigurations'.
+   * @param saveName   the name of the save file in 'data/gamesaves'.
+   * @throws IOException if the configuration or save file are not found.
+   */
   public Game(String configName, String saveName) throws IOException {
     configuration = GameConfiguration.of(configName);
     state = GameState.of(saveName);
@@ -46,6 +82,16 @@ public class Game implements GameInterface {
     state.addItemsToBag();
   }
 
+  /**
+   * Saves the current GameState to 'data/gamesaves' with the given filename.
+   *
+   * @param fileName the name of the file to save to.
+   * @throws IOException if writing to the file fails.
+   */
+  @Override
+  public void save(String fileName) throws IOException {
+    state.save(fileName);
+  }
 
   /**
    * Selects an item in the bag.
@@ -76,9 +122,12 @@ public class Game implements GameInterface {
    */
   @Override
   public void sleep() {
-    // TODO: EXTERNALIZE AMOUNT OF TIME SLEPT OR TIME TO SLEEP TO
-    // Currently advances to 6 AM by default.
-    state.getEditableGameTime().advanceTo(6, 0);
+    try {
+      state.getEditableGameTime().advanceTo(configuration.getRules().getInteger("wakeHour"), 0);
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.error("Configuration file doesn't contain `wakeHour` key to decide when to wake up after sleeping.");
+      throw new RuntimeException(e);
+    }
     state.restoreEnergy(Integer.MAX_VALUE);
   }
 
@@ -114,6 +163,7 @@ public class Game implements GameInterface {
       throw new KeyNotFoundException(id);
     }
     state.addMoney((int) item.getWorth());
+    bag.removeItem(id, 1);
   }
 
   /**
@@ -126,8 +176,18 @@ public class Game implements GameInterface {
    */
   @Override
   public boolean isGameOver() {
-    return state.getGameTime().convertInMinutes() >= configuration.getRules()
-        .getInteger("timeGoal");
+    return switch (configuration.getRules().getString("goalCondition")) {
+      case "time" ->
+          state.getGameTime().convertInMinutes() >= configuration.getRules().getInteger("timeGoal");
+      case "collect" -> state.getEditableBag()
+          .contains(configuration.getRules().getStringIntegerMap("collectGoal"));
+      default -> {
+        String errorMessage =
+            "Unexpected goal condition: " + configuration.getRules().getString("goalCondition");
+        LOG.error(errorMessage);
+        throw new IllegalStateException(errorMessage);
+      }
+    };
   }
 
   @Override
@@ -152,4 +212,9 @@ public class Game implements GameInterface {
 
   private final GameConfiguration configuration;
   private final GameState state;
+
+  private static final DataFactory<GameState> GAMESTATE_FACTORY =
+      new DataFactory<>(GameState.class);
+
+  private static final Logger LOG = LogManager.getLogger(Game.class);
 }

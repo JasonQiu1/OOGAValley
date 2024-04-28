@@ -3,24 +3,22 @@ package oogasalad.view.shopping;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import oogasalad.model.shop.Bag;
-import oogasalad.model.shop.Shop;
+import oogasalad.model.api.GameInterface;
 import oogasalad.view.branch.BranchBase;
+import oogasalad.view.playing.PlayingPageView;
 import oogasalad.view.playing.component.Money;
 
 
 public class ShoppingView extends BranchBase {
 
-  private final Bag bag;
-  private final Shop shop;
-  private final ShoppingStackPane root;
+  private final ShoppingViewStackPane root;
 
-  public ShoppingView(Shop shop, Bag bag, Stage stage, Scene previousScene, Money money) {
+  public ShoppingView(GameInterface game, Stage stage, Scene previousScene,
+      Money money, PlayingPageView playingPageView) {
     super(stage, previousScene);
-    this.bag = bag;
-    this.shop = shop;
-    root = new ShoppingStackPane(shop, bag, getStage(), getPreviousScene());
-    money.addObserver(root.getMoneyHbox(), money.getMoney());
+
+    root = new ShoppingViewStackPane(game, getStage(), getPreviousScene(), playingPageView);
+    money.addObserver(root.getMoneyHbox(), game.getGameState().getMoney());
   }
 
   public Parent getScene() {

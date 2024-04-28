@@ -1,5 +1,7 @@
 package oogasalad.view.playing.component;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -7,34 +9,43 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import oogasalad.view.playing.PlayingPageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Represents a tool in the game.
  */
-public class BagItem {
+public class BagItem extends StackPane {
 
-  private final StackPane root;
   private final Rectangle selectedRectangle;
-  private final SelectedItem selectedItem;
   private final String url;
-  private int num;
   private final Label numLabel;
   private final ImageView imageView;
+
+  private String name;
+
+  private final Logger LOG = LogManager.getLogger(BagItem.class);
+
 
   /**
    * Constructor for the Tool class.
    *
-   * @param url          the url of the tool
-   * @param width        the width of the tool
-   * @param height       the height of the tool
-   * @param selectedItem the selected item
+   * @param url     the url of the tool
+   * @param width   the width of the tool
+   * @param height  the height of the tool
+   * @param bagView the bagView that holds this bagItem
    */
-  public BagItem(String url, double width, double height, SelectedItem selectedItem, int num) {
-    this.url = url;
-    this.selectedItem = selectedItem;
-    this.num = num;
-    imageView = new ImageView(new Image(url, width, height, false, true));
-    root = new StackPane();
+  public BagItem(String url, String name, double width, double height, BagView bagView,
+      int num) {
+    super();
+    try {
+      this.url = (String.valueOf(new File("data/images/" + url).toURI().toURL()));
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
+    this.name = name;
+    imageView = new ImageView(new Image(this.url, width, height, false, true));
     StackPane imageContainer = new StackPane();
     VBox vBox = new VBox();
     vBox.setAlignment(javafx.geometry.Pos.CENTER);
@@ -45,32 +56,50 @@ public class BagItem {
     selectedRectangle.setOpacity(0);
     imageContainer.getChildren().add(selectedRectangle);
     vBox.getChildren().addAll(imageContainer, numLabel);
-    root.getChildren().add(vBox);
+    this.getChildren().add(vBox);
+    LOG.info("bag item added: %s %d".formatted(this.url, num));
+    setOnMouseClicked(event -> {
+      bagView.select(this.name);
+    });
   }
 
   public StackPane getView() {
-    return root;
+    return this;
   }
 
-  public void setSelected() {
-    selectedItem.setSelected(url);
-    selectedRectangle.setOpacity(0.3);
-  }
 
   public void reset() {
     selectedRectangle.setOpacity(0);
   }
 
-  public void addOne() {
-    num++;
+  public void setNum(int num) {
     numLabel.setText(num + "");
+  }
+
+  public void setImage(String url) {
+    try {
+      imageView.setImage(
+          new Image((String.valueOf(new File("data/images/" + url).toURI().toURL())),
+              PlayingPageView.bottomCellWidth, PlayingPageView.bottomCellHeight, false, true));
+    } catch (MalformedURLException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public ImageView getImageView() {
     return imageView;
   }
 
-  public String getUrl() {
-    return url;
+  public String getName() {
+    return name;
   }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void select() {
+    this.selectedRectangle.setOpacity(0.5);
+  }
+
 }
