@@ -1,11 +1,15 @@
-// DEFAULT: An item representing wheat seeds.
 {
   "properties": {
     "name": "Pickaxe",
     "type": "Item",
     "image": "pickaxe.png",
     "worth": 500,
-    "consumable": false
+    "consumable": false,
+    // amount to change energy after a successful interaction or use
+    // if not enough energy, then don't interact
+    "energyChange": -2,
+    // do not interact with the world, just consume and apply effects
+    "edible": false
   },
   "listProperties": {},
   "mapProperties": {}
