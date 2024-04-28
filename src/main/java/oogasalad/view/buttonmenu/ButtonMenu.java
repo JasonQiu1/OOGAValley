@@ -1,17 +1,15 @@
 package oogasalad.view.buttonmenu;
 
-import java.util.List;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.start.SplashUtils;
-import oogasalad.view.start.StartScreen;
 
 public class ButtonMenu {
+
   private Scene menuScene;
   private Stage menuStage;
   private Stage primaryStage;
@@ -27,7 +25,6 @@ public class ButtonMenu {
     previousScene = backScene;
     buttonsFilePath = filePath;
 
-
     primaryStage.sceneProperty().addListener(new ChangeListener<Scene>() {
       @Override
       public void changed(ObservableValue<? extends Scene> observable, Scene oldValue,
@@ -42,7 +39,8 @@ public class ButtonMenu {
     VBox root = new VBox();
     root.getStyleClass().add("root_VBox");
 
-    SplashUtils.createButtonsFromFile(buttonsFilePath, primaryStage, root, primaryLanguage, previousScene);
+    SplashUtils.createButtonsFromFile(buttonsFilePath, primaryStage, root, primaryLanguage,
+        previousScene);
 
     ScrollPane scrollPane = new ScrollPane(root);
     menuScene = new Scene(root);
