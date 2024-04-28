@@ -1,4 +1,4 @@
-package oogasalad.model.gameObjectFactories;
+package oogasalad.model.gameobjectfactory;
 
 import java.util.HashMap;
 import java.util.List;

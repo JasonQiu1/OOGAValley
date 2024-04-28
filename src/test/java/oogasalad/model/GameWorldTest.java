@@ -3,7 +3,7 @@ package oogasalad.model;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import oogasalad.model.gameObjectFactories.GameObjectFactory;
+import oogasalad.model.gameobjectfactory.GameObjectFactory;
 import oogasalad.model.gameobject.Item;
 import oogasalad.model.gameobject.ItemsToAdd;
 import oogasalad.model.gameplay.GameTime;

@@ -5,7 +5,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import oogasalad.model.gameObjectFactories.GameObjectCreator;
+import oogasalad.model.gameobjectfactory.GameObjectCreator;
 
 /**
  * [IGNORE THIS FILE]. Adapter class for gson to save files.
