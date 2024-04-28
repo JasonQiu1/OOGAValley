@@ -112,11 +112,13 @@ public class PlayingPageView {
     File file = result.showSaveDialog(stage);
     try {
       game.save(file.getName());
+      game.getGameConfiguration().save(file.getName());
     } catch (IOException e) {
       new Alert(AlertType.ERROR, "saving failed").showAndWait();
     } catch (InvalidPathException e) {
       new Alert(AlertType.ERROR, "path invalid").showAndWait();
     }
+    new Alert(AlertType.CONFIRMATION, "save done").showAndWait();
     LOG.info("saving done");
   }
 
