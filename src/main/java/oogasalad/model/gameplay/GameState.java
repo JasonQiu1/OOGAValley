@@ -226,8 +226,9 @@ public class GameState implements ReadOnlyGameState {
    */
   public double restoreEnergy(double amount) {
     if (amount + energy > maxEnergy) {
+      double amountRecovered = maxEnergy - energy;
       energy = maxEnergy;
-      return maxEnergy - energy;
+      return amountRecovered;
     }
     energy += amount;
     return amount;
