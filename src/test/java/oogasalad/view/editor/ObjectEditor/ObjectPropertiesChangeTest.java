@@ -48,7 +48,7 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
         Button save = lookup("#SaveProperties").queryButton();
         clickOn(save);
         sleep(1000);
-        assertEquals("6000", GameConfiguration.getConfigurablesStore().getConfigurableProperties("Hoe").getCopyOfProperties().get("worth"));
+        assertEquals("6000", GameConfiguration.getConfigurablesStore().getAllConfigurables().get("Hoe").getCopyOfProperties().get("worth"));
     }
 
     @Test
@@ -68,8 +68,8 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
         Button save = lookup("#SaveProperties").queryButton();
         clickOn(save);
         sleep(1000);
-        assertTrue(GameConfiguration.getConfigurablesStore().getConfigurableProperties("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").containsKey("Robert"));
-        assertEquals("Duvall", GameConfiguration.getConfigurablesStore().getConfigurableProperties("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").get("Robert"));
+        assertTrue(GameConfiguration.getConfigurablesStore().getAllConfigurables().get("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").containsKey("Robert"));
+        assertEquals("Duvall", GameConfiguration.getConfigurablesStore().getAllConfigurables().get("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").get("Robert"));
     }
 
     @Test
@@ -90,6 +90,21 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
         Button save = lookup("#SaveProperties").queryButton();
         clickOn(save);
         sleep(3000);
-        assertFalse(GameConfiguration.getConfigurablesStore().getConfigurableProperties("Wheat").getCopyOfMapProperties().get("dropsOnDestruction").containsKey("Wheat Bundle"));
+        assertFalse(GameConfiguration.getConfigurablesStore().getAllConfigurables().get("Wheat").getCopyOfMapProperties().get("dropsOnDestruction").containsKey("Wheat Bundle"));
+    }
+
+    @Test
+    @DisplayName("add image to collectable")
+    public void addImageToCollectable() {
+        assertEquals(null, GameConfiguration.getConfigurablesStore().getAllConfigurables().get("COLLECTABLE").getCopyOfProperties().get(""));
+        VBox collect = lookup("#COLLECTABLE").queryAs(VBox.class);
+        sleep(2000);
+        clickOn(collect);
+        TextField tf = lookup("#image").queryAs(TextField.class);
+        tf.setText("hoe.png");
+        Button save = lookup("#SaveProperties").queryButton();
+        clickOn(save);
+        sleep(1000);
+        assertEquals("hoe.png", GameConfiguration.getConfigurablesStore().getAllConfigurables().get("COLLECTABLE").getCopyOfProperties().get("image"));
     }
 }

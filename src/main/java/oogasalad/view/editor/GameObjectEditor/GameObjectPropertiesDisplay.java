@@ -1,18 +1,11 @@
 package oogasalad.view.editor.GameObjectEditor;
 
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import oogasalad.controller.GameObjectController;
-import oogasalad.model.api.exception.InvalidRuleType;
 import oogasalad.view.editor.MapEditor.Selector;
-import oogasalad.view.editor.RuleEditor.CheckedConsumer;
-import oogasalad.view.editor.RuleEditor.RuleDisplayStrategy;
-import oogasalad.view.editor.RuleEditor.ValidationErrorAlert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.function.BiConsumer;
 
 public class GameObjectPropertiesDisplay extends VBox {
     private static final Logger LOG = LogManager.getLogger(GameObjectPropertiesDisplay.class);
@@ -28,10 +20,13 @@ public class GameObjectPropertiesDisplay extends VBox {
 
     private final List<ObjectPropertyDisplay> ObjectPropertyDisplays;
 
+    private final Runnable update;
+
     private final Map<String, List<ObjectPropertyDisplay>> ObjectPropertyMapDisplays;
 
-    public GameObjectPropertiesDisplay() {
+    public GameObjectPropertiesDisplay(Runnable update) {
         super();
+        this.update = update;
         ObjectPropertyDisplays = new ArrayList<>();
         ObjectPropertyMapDisplays = new TreeMap<>();
         super.setAlignment(Pos.CENTER);
@@ -52,7 +47,7 @@ public class GameObjectPropertiesDisplay extends VBox {
         displayProperties(goc.getGameObjectProperties(key));
         displayListProperties(goc.getGameObjectListProperties(key));
         displayMapProperties(goc.getGameObjectMapProperties(key));
-        super.getChildren().add(new SaveButton("save", e -> save()));
+        super.getChildren().add(new SaveButton("save", e -> save(), update));
     }
 
 
