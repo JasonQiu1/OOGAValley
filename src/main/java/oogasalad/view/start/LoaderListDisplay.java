@@ -24,7 +24,7 @@ public class LoaderListDisplay {
   private File selectedFile;
   private Stage primaryStage;
   private Stage myStage;
-  ListView<String> listView;
+  private ListView<String> listView;
 
   public LoaderListDisplay(Stage mainStage, String title, String defaultFolderPath) {
     primaryStage = mainStage;
