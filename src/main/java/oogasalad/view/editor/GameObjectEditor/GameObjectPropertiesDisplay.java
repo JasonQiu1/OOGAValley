@@ -69,7 +69,7 @@ public class GameObjectPropertiesDisplay extends VBox {
 
     private void displayMapProperties(Map<String, Map<String, String>> mapProperties) {
         mapProperties.forEach((mapPropertyName, mapPropertyValues) -> {
-            super.getChildren().add(new MapPropertiesContainer(super.getChildren(), mapPropertyName));
+            super.getChildren().add(new MapPropertiesContainer(mapPropertyName, this::addMapProperty));
             List<ObjectPropertyDisplay> listOfOPDS = new ArrayList<>();
             mapPropertyValues.forEach((propertyName, propertyValue) -> {
                 listOfOPDS.add(new ObjectPropertyDisplay(propertyName, propertyValue, super.getChildren()));
@@ -94,6 +94,15 @@ public class GameObjectPropertiesDisplay extends VBox {
             mapOPD.put(opd.getName(), opd.getValue());
         }
         return mapOPD;
+    }
+
+    private void addMapProperty(String key){
+        AddNewMapPropertyDialogBox popup = new AddNewMapPropertyDialogBox();
+        String[] newFieldAndValue = popup.getNewField();
+        if(newFieldAndValue != null){
+            ObjectPropertyMapDisplays.get(key).add(new ObjectPropertyDisplay(newFieldAndValue[0], newFieldAndValue[1],
+                    getChildren(), key, ObjectPropertyMapDisplays.get(key).size()));
+        }
     }
 
 }
