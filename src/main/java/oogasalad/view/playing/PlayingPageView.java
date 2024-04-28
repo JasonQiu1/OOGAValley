@@ -110,6 +110,9 @@ public class PlayingPageView {
     result.getExtensionFilters()
         .setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
     File file = result.showSaveDialog(stage);
+    if (file == null) {
+      return;
+    }
     try {
       game.save(file.getName());
       game.getGameConfiguration().save(file.getName());
@@ -122,6 +125,7 @@ public class PlayingPageView {
     LOG.info("saving done");
   }
 
+  
   public void start() {
     LOG.info("initializing game");
     initModel();
