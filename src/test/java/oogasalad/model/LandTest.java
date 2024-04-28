@@ -27,6 +27,11 @@ public class LandTest extends BaseGameObjectTest {
   }
 
   @Test
+  public void testValidInteractionIfItemCanBePlacedHere() {
+    assertTrue(testingLand.interactionValid(new Item("wheat_seed")));
+  }
+
+  @Test
   public void testInvalidSeed() {
     assertFalse(testingLand.getIfItemCanBePlacedHere(new Item("invalid")));
   }

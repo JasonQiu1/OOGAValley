@@ -44,7 +44,7 @@ public class TileTest extends BaseGameObjectTest {
         (testingLandProperties.getString("name"), testingLandProperties);
     addPropertiesToStoreWithAlreadyCreatedProperties
         (testingCollectableProperties.getString("name"), testingCollectableProperties);
-
+    addPropertiesToStore("axe", "test/testingItem.json");
     tileStructure = (Structure) getFactory()
         .createNewGameObject(testingStructureProperties.getString("name"),
             new GameTime(1,1,1), new HashMap<>());
@@ -120,13 +120,13 @@ public class TileTest extends BaseGameObjectTest {
   }
 
   @Test
-  public void invalidItemShouldNotInteractWithGameObjects() {
+  public void invalidItemShouldNotInteractWithGameObjectsDespiteCollectableNull() {
     Item invalid = new Item("invalidItem");
+    tileToTest.setCollectable(null);
     tileToTest.interact(invalid);
     tileToTest.update(new GameTime(1,1,1));
     assertEquals(testingLandProperties.getString("name"), tileToTest.getLandId());
     assertEquals(testingStructureProperties.getString("name"), tileToTest.getStructureId());
-    assertEquals(testingCollectableProperties.getString("name"), tileToTest.getCollectableId());
   }
 
   @Test
@@ -137,14 +137,11 @@ public class TileTest extends BaseGameObjectTest {
   }
 
   @Test
-  public void invalidInteractionIfItemDoesNotInteractWithTopWithGameObject() {
-    assertFalse(tileToTest.interactionValid(new Item("hoe")));
+  public void allInteractionsAreValidWithCollectableNonNull() {
+    assertTrue(tileToTest.interactionValid(new Item("hoe")));
   }
 
-  @Test
-  public void invalidItemInteractionValidReturnsFalse() {
-    assertFalse(tileToTest.interactionValid(new Item("invalidItem")));
-  }
+
 
   @Test
   public void expirationWillLeadToGameObjectsBecomingNullIfExpirable() {
