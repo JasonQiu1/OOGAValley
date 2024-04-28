@@ -69,7 +69,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     }
     LOG.info(filePath);
     try {
-      new PlayingPageView(stage, primaryLanguage, filePath).start();
+      new PlayingPageView(stage, primaryLanguage, filePath, 800, 600).start();
     } catch (IOException exception) {
       LOG.error("Failed to load configuration file!");
       throw new RuntimeException(exception);

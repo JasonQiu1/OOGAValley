@@ -36,6 +36,10 @@ public class BagView extends StackPane {
   private final List<Item> itemOnShow = new ArrayList<>();
 
   private final Logger LOG = LogManager.getLogger(BagView.class);
+  private final double bottomBoxWidth;
+  private final double bottomBoxHeight;
+  private final double bottomCellWidth;
+  private final double bottomCellHeight;
 
 
   /**
@@ -45,14 +49,19 @@ public class BagView extends StackPane {
    * @param colNum the number of columnsxf to be shown the view
    */
 
-  public BagView(GameInterface game, int colNum) {
+  public BagView(GameInterface game, int colNum, double bottomCellWidth, double bottomCellHeight,
+      double bottomBoxWidth, double bottomBoxHeight) {
     super();
     this.toolGridPane = new GridPane();
     this.colNum = colNum;
     this.game = game;
     ImageView backgroundImageView = new ImageView(new Image(backGroundImageUrl));
-    backgroundImageView.setFitWidth(PlayingPageView.bottomBoxWidth);
-    backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
+    backgroundImageView.setFitWidth(bottomBoxWidth);
+    backgroundImageView.setFitHeight(bottomBoxHeight);
+    this.bottomBoxHeight = bottomBoxHeight;
+    this.bottomBoxWidth = bottomBoxWidth;
+    this.bottomCellHeight = bottomCellHeight;
+    this.bottomCellWidth = bottomCellWidth;
     BorderPane borderPane = new BorderPane();
     StackPane.setMargin(borderPane, new Insets(20, 50, 0, 50));
     Button leftButton = new Button("<");
@@ -133,8 +142,8 @@ public class BagView extends StackPane {
       int row = i / colNum;
       if (i >= itemOnShow.size()) {
         BagItem bagItem = new BagItem(newItem.getKey().getKey(), newItem.getKey().getValue(),
-            PlayingPageView.bottomCellWidth,
-            PlayingPageView.bottomCellHeight, this, newItem.getValue());
+            bottomCellWidth,
+            bottomCellHeight, this, newItem.getValue());
         newItemOnShow.add(new Item(newItemList.get(i).getKey().getKey(),
             newItemList.get(i).getValue(), bagItem));
         toolGridPane.add(bagItem.getView(), column, row);

@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import oogasalad.database.info.InfoService;
+import oogasalad.model.api.GameInterface;
 import oogasalad.view.branch.BranchBase;
 
 /**
@@ -24,6 +25,7 @@ public class Login extends BranchBase {
   private String validUsername;
   private int id;
   private BiConsumer<String, Integer> onLoginSuccessCallback;
+  private GameInterface game;
 
   /**
    * This is the constructor for the Login class.
@@ -31,8 +33,9 @@ public class Login extends BranchBase {
    * @param stage
    * @param previousScene
    */
-  public Login(Stage stage, Scene previousScene) {
+  public Login(Stage stage, Scene previousScene, GameInterface game) {
     super(stage, previousScene);
+    this.game = game;
   }
 
   public void setOnLoginSuccess(BiConsumer<String, Integer> callback) {
@@ -76,7 +79,9 @@ public class Login extends BranchBase {
         validUsername = username;
         id = InfoService.getUserId(username);
         invokeOnLoginSuccessCallback();
-        getStage().setScene(getPreviousScene());
+        invokeOnLoginSuccessCallback();
+        GameFileOperations gameOps = new GameFileOperations(getStage(), getStage().getScene(), id, game);
+        getStage().setScene(gameOps.createScene());
       } else {
         showAlert("Login Failed", "Invalid username or password");
       }

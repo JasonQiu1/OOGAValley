@@ -45,10 +45,9 @@ public class Tile implements Updatable, Interactable {
   @Override
   public void interact(ReadOnlyItem item) {
     boolean interactionHandled =
-        handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item), false)
-            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item), false)
-            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item),
-            land != null && land.getIfItemCanBePlacedHere(item));
+        handleInteractionIfValid(collectable, item, () -> handleCollectableInteraction(item))
+            || handleInteractionIfValid(structure, item, () -> handleStructureInteraction(item))
+            || handleInteractionIfValid(land, item, () -> handleLandInteraction(item));
   }
 
   /**
@@ -82,14 +81,13 @@ public class Tile implements Updatable, Interactable {
    * @param gameObject         The game object to check and interact with.
    * @param item               The item used for the interaction.
    * @param interactionHandler The logic to execute for the interaction.
-   * @param additionalCheck    An additional boolean check for if an interaction is valid
-   *                           that is specific to each GameObject
+   *
    * @return True if the gameObject is not null, false otherwise.
    */
   private boolean handleInteractionIfValid(GameObject gameObject, ReadOnlyItem item,
-      Runnable interactionHandler, boolean additionalCheck) {
+      Runnable interactionHandler) {
     if (gameObject != null) {
-      if ((gameObject.interactionValid(item) || additionalCheck)) {
+      if ((gameObject.interactionValid(item))) {
         interactionHandler.run();
       }
       return true;
@@ -112,7 +110,7 @@ public class Tile implements Updatable, Interactable {
    * @param item The item interacting with the structure.
    */
   private void handleStructureInteraction(ReadOnlyItem item) {
-    if (structure.isHarvestable() && structure.interactionValid(item)) {
+    if (structure.isHarvestable()) {
       collectable =
           (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
              structure.getItemsOnDestruction());
