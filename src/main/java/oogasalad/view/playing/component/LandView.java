@@ -22,13 +22,13 @@ public class LandView {
   private static final Logger LOG = LogManager.getLogger(LandView.class);
 
 
-  public LandView(GameInterface game) {
+  public LandView(GameInterface game, double landGridPaneWidth, double landGridPaneHeight) {
     this.readOnlyGameWorld = game.getGameState().getGameWorld();
     this.game = game;
     piles = new Pile[readOnlyGameWorld.getHeight()][readOnlyGameWorld.getWidth()];
     for (int i = 0; i < piles.length; i++) {
       for (int j = 0; j < piles[0].length; j++) {
-        piles[i][j] = new Pile(i, j, this);
+        piles[i][j] = new Pile(i, j, this,landGridPaneWidth, landGridPaneHeight);
         landGridPane.add(piles[i][j], j, i);
       }
     }
@@ -57,5 +57,11 @@ public class LandView {
   public void interact(int x, int y) {
     LOG.info("interact with the gird at %d, %d".formatted(x, y));
     game.interact(x, y, 0);
+  }
+  public int getHeight(){
+    return piles.length;
+  }
+  public int getWidth(){
+    return piles[0].length;
   }
 }

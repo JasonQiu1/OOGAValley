@@ -78,7 +78,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //    }
 
     try {
-      new PlayingPageView(stage, primaryLanguage, saveFilePath, configFilePath).start();
+
+      new PlayingPageView(stage, primaryLanguage, saveFilePath, configFilePath, 800, 600).start();
+
     } catch (IOException exception) {
       new Alert(AlertType.ERROR, textResource.getString("load_file_error")).showAndWait();
     }

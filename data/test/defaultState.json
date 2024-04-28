@@ -1958,7 +1958,7 @@
   },
   "gameTime": {
     "previous": {
-      "data": "2024-04-28T15:16:55.381923900Z"
+      "data": "2024-04-28T18:47:46.992418Z"
     },
     "accumulate": 0,
     "day": 1,
@@ -1990,7 +1990,7 @@
     ],
     "previousRotationTime": {
       "type": "oogasalad.model.gameplay.GameTime",
-      "data": "{\"previous\":{\"data\":\"2024-04-28T15:16:55.381923900Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
+      "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.992458Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
     },
     "shopRotationTime": 1440,
     "itemRotation": [
@@ -2011,9 +2011,9 @@
       [
         {
           "type": "oogasalad.model.gameobject.Item",
-          "data": "{\"itemId\":\"Hoe\"}"
+          "data": "{\"itemId\":\"Pickaxe\"}"
         },
-        200.0
+        1000.0
       ]
     ]
   },

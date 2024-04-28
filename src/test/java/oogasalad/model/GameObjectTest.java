@@ -41,6 +41,7 @@ public class GameObjectTest extends BaseGameObjectTest {
 
   @Test
   public void testStructureInteractionInvalid() {
+    testingStructureProperties.update("destructable", "false");
     assertFalse(testingStructure.interactionValid(new Item("thing")));
   }
 

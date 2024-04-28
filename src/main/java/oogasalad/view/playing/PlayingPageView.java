@@ -21,11 +21,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import oogasalad.controller.GameKeyHandler;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
+import oogasalad.view.login.LoginView;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
@@ -44,26 +46,30 @@ import org.apache.logging.log4j.Logger;
 
 public class PlayingPageView {
 
-  public static final double landCellWidth = 50;
-  public static final double landCellHeight = 50;
-  public static final double bottomCellWidth = 30;
-  public static final double bottomCellHeight = 30;
-  public static final double bottomBoxWidth = 600;
-  public static final double bottomBoxHeight = 80;
-  public static final int landNumRows = 10;
-  public static final int landNumCols = 15;
-  public static final double topHeight = 50;
-  public static final double topWidth = 800;
-  public static final double bottomHeight = 100;
-  public static final double bottomWidth = 800;
-  public static final double padding = 10;
-  public static final double leftRightWidth = 50;
-  public static final double landGridPaneWidth = landCellWidth * landNumCols;
-  public static final double windowWidth = landGridPaneWidth + leftRightWidth * 2 - padding * 2;
-  public static final double landGridPaneHeight = landCellHeight * landNumRows;
-  public static final double windowHeight = landGridPaneHeight + topHeight + bottomHeight;
-  public static final double leftRightHeight = 300;
-  public static final double bottomBoxPadding = 50;
+  private int windowWidth;
+
+  private int windowHeight;
+
+  private double landCellWidth;
+  private double landCellHeight;
+  private double bottomCellWidth;
+  private double bottomCellHeight;
+  private double bottomBoxWidth;
+  private double bottomBoxHeight;
+  private int landNumRows;
+  private int landNumCols;
+  private double topHeight;
+  private double topWidth;
+  private double bottomHeight;
+  private double bottomWidth;
+  private double padding;
+  private double leftRightWidth;
+  private double topButtonWidth;
+  private double topButtonHeight;
+  private double topFontSize;
+  private double landGridPaneWidth;
+  private double landGridPaneHeight;
+  private double leftRightHeight;
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/playing/";
   private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
@@ -84,6 +90,7 @@ public class PlayingPageView {
   private BagView bagView;
   private Scene previousScene;
   private Timeline timeline;
+  private StackPane root;
 
   public PlayingPageView(Stage primaryStage, String language, Scene backScene) {
     stage = primaryStage;
@@ -92,9 +99,14 @@ public class PlayingPageView {
     this.previousScene = backScene;
     game = gameFactory.createGame();
     energyProgress = new EnergyProgress(game);
+    this.windowWidth = 800;
+    this.windowHeight = 600;
+    initSize();
   }
 
-  public PlayingPageView(Stage primaryStage, String language, String saveFilePath, String configFilePath) throws IOException {
+
+  public PlayingPageView(Stage primaryStage, String language, String saveFilePath, String configFilePath, int windowWidth,
+      int windowHeight) throws IOException {
     GameInterface gameTemp;
     stage = primaryStage;
     primaryLanguage = language;
@@ -110,14 +122,39 @@ public class PlayingPageView {
 
     game = gameTemp;
     energyProgress = new EnergyProgress(game);
+    this.windowWidth = windowWidth;
+    this.windowHeight = windowHeight;
+    initSize();
+  }
+
+  private void initSize() {
+    padding = windowWidth / 100;
+    landNumRows = game.getGameState().getGameWorld().getHeight();
+    landNumCols = game.getGameState().getGameWorld().getWidth();
+    landCellWidth = windowWidth / 20;
+    landCellHeight = windowWidth / 20;
+    bottomCellWidth = landCellWidth / 1.5;
+    bottomCellHeight = landCellHeight / 1.5;
+    bottomBoxWidth = windowWidth / 2;
+    bottomHeight = (windowHeight - landNumRows * landCellHeight) / 2;
+    bottomBoxHeight = bottomHeight - padding;
+    topWidth = windowWidth;
+    topHeight = windowHeight - bottomHeight - landNumRows * landCellHeight;
+    leftRightWidth = (windowWidth - landNumCols * landCellWidth) / 2;
+    bottomWidth = windowWidth;
+    landGridPaneWidth = landCellWidth * landNumCols;
+    landGridPaneHeight = landCellHeight * landNumRows;
+    leftRightHeight = windowHeight - bottomHeight - topHeight;
+    topButtonWidth = topWidth / 15;
+    topButtonHeight = topHeight / 3;
+    topFontSize = topButtonHeight / 6;
   }
 
   public void save() {
     FileChooser result = new FileChooser();
     result.setTitle(displayTextResource.getString("save_location"));
     result.setInitialDirectory(new File("data/gamesaves"));
-    result.getExtensionFilters()
-        .setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
+    result.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
     File file = result.showSaveDialog(stage);
     if (file == null) {
       return;
@@ -139,23 +176,20 @@ public class PlayingPageView {
     LOG.info("initializing game");
     initModel();
     LOG.info("finish loading game model");
-    StackPane root = new StackPane();
+    root = new StackPane();
     root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
     setupTop(borderPane);
     setupLeftRight(borderPane);
     setupCenter(borderPane);
     setupBottom(borderPane);
-
-    Button menu = new Button(displayTextResource.getString("menu"));
-    menu.setOnAction(event -> openAndCloseMenu());
-    menu.getStyleClass().add("menu_button");
-    StackPane.setAlignment(menu, Pos.TOP_LEFT);
-    root.getChildren().addAll(borderPane, topAnimationView, menu);
+    root.getChildren().addAll(borderPane, topAnimationView);
     StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
+    // Set key handler for the game window
+    scene.setOnKeyPressed(new GameKeyHandler(game));
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
     stage.setScene(scene);
@@ -174,9 +208,10 @@ public class PlayingPageView {
   }
 
   private void initModel() {
-    bagView = new BagView(game, 10);
+    bagView = new BagView(game, 10, bottomCellWidth,
+        bottomCellHeight,bottomBoxWidth, bottomBoxHeight);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
-    landView = new LandView(game);
+    landView = new LandView(game, landGridPaneWidth, landGridPaneHeight);
   }
 
   private void setUpdate() {
@@ -204,8 +239,7 @@ public class PlayingPageView {
   }
 
   private void updateTimeLabel() {
-    timeLabel.setText(
-        displayTextResource.getString("time") + " " + game.getGameState().getGameTime());
+    timeLabel.setText("" + game.getGameState().getGameTime());
   }
 
   private void setupTop(BorderPane root) {
@@ -213,6 +247,11 @@ public class PlayingPageView {
     topBox.setPrefSize(topWidth, topHeight);
     topBox.getStyleClass().add("top-box");
     createHelpButton();
+    Button menu = new Button(displayTextResource.getString("menu"));
+    setButtonSize(menu, topButtonWidth, topButtonHeight, topFontSize);
+    menu.setOnAction(event -> openAndCloseMenu());
+    menu.getStyleClass().add("menu_button");
+    menu.setAlignment(Pos.CENTER);
     Button btnOpenShop = new Button();
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
@@ -220,7 +259,11 @@ public class PlayingPageView {
     timeLabel.setId("time-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox(game);
     currentMoneyHbox.update();
+
+    currentMoneyHbox.setAlignment(Pos.CENTER);
     Button sleepButton = new Button(displayTextResource.getString("sleep"));
+    setButtonSize(sleepButton, topButtonWidth, topButtonHeight, topFontSize);
+
     sleepButton.setId("sleep-button");
     sleepButton.setOnMouseClicked(event -> {
       LOG.info("slept");
@@ -229,9 +272,13 @@ public class PlayingPageView {
     Button saveButton = new Button(displayTextResource.getString("save"));
     saveButton.setId("save-button");
     saveButton.setOnMouseClicked(event -> save());
+    setButtonSize(saveButton, topButtonWidth, topButtonHeight, topFontSize);
+    Button loginButton = new Button("Web");
+    setButtonSize(loginButton, topButtonWidth, topButtonHeight, topFontSize);
+    loginButton.setOnAction(e -> openLogin());
     topBox.getChildren()
-        .addAll(helpButton, sleepButton, saveButton, timeLabel, energyProgress, btnOpenShop,
-            currentMoneyHbox);
+        .addAll(menu, helpButton, sleepButton, saveButton, timeLabel, energyProgress, btnOpenShop,
+            currentMoneyHbox, loginButton);
     root.setTop(topBox);
   }
 
@@ -252,10 +299,8 @@ public class PlayingPageView {
   private void setupLeftRight(BorderPane root) {
     VBox leftBox = new VBox();
     leftBox.setPrefSize(leftRightWidth, leftRightHeight);
-    leftBox.getStyleClass().add("side-box");
     VBox rightBox = new VBox();
     rightBox.setPrefSize(leftRightWidth, leftRightHeight);
-    rightBox.getStyleClass().add("side-box");
     root.setLeft(leftBox);
     root.setRight(rightBox);
   }
@@ -284,4 +329,26 @@ public class PlayingPageView {
     menuButtons = DEFAULT_RESOURCE_FOLDER + primaryLanguage + "MenuButtons.csv";
   }
 
+  private void openLogin() {
+    LoginView loginView = new LoginView(game);
+    loginView.start(new Stage());
+  }
+
+  private void setButtonSize(Button button, double width, double height, double fontSize) {
+    button.setPrefWidth(width);
+    button.setPrefHeight(height);
+    button.setStyle(String.format("-fx-font-size: %.1fpx;", fontSize));
+  }
+
+
+  public StackPane getRoot() {
+    return root;
+  }
+  public void setWindowWidth(int windowWidth) {
+    this.windowWidth = windowWidth;
+  }
+
+  public void setWindowHeight(int windowHeight) {
+    this.windowHeight = windowHeight;
+  }
 }
