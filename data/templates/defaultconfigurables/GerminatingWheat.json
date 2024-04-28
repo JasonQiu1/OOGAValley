@@ -1,15 +1,15 @@
-// DEFAULT: A piece of wheat that is immediately harvestable and drops seeds and a wheat item.
-// Expires after a day in-game.
+// Planted wheat that grows into mature wheat in 2 in-game hours.
+// Doesn't drop anything if destroyed
 {
   "properties": {
-    "name": "Wheat",
+    "name": "Germinating Wheat",
     "type": "Structure",
-    "image": "wheat.png",
-    "updatable": false,
-    "updateTime": 0,
-    "updateTransformation": "",
-    "expirable": true,
-    "expireTime": 1440,
+    "image": "germinating_wheat.png",
+    "updatable": true,
+    "updateTime": 120,
+    "updateTransformation": "Wheat",
+    "expirable": false,
+    "expireTime": 0,
     // or null
     "expireTransformation": "",
     // STRUCTURE ONLY
@@ -18,7 +18,6 @@
   "listProperties": {
       // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
       "destructableTools": [
-        "Scythe"
       ]
   },
   "mapProperties": {
@@ -28,8 +27,6 @@
     },
     // STRUCTURE ONLY
     "dropsOnDestruction": {
-      "Wheat Seeds": 4,
-      "Wheat Bundle": 1
     }
   }
 }

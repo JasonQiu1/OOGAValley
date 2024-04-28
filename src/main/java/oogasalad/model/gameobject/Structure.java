@@ -1,5 +1,6 @@
 package oogasalad.model.gameobject;
 
+import java.util.List;
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
@@ -37,6 +38,18 @@ public class Structure extends GameObject implements StructureObject {
   public Map<String, Integer> getItemsOnDestruction() {
     return getProperties().getStringIntegerMap(
         "dropsOnDestruction"); // e.g. {"item":"2", "otherItem":"1"}
+  }
+
+  /**
+   * Returns whether or not the structure is destructable with the given tool.
+   *
+   * @param id the id of the item.
+   * @return true if the structure can be destroyed by the given tool, otherwise false.
+   */
+  @Override
+  public boolean destructableBy(String id) {
+    List<String> destructableItems = getProperties().getStringList("destructableTools");
+    return destructableItems.isEmpty() || destructableItems.contains(id);
   }
 
   /**

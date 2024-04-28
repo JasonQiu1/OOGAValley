@@ -6,6 +6,8 @@ import java.util.Map;
  * Provides an interface for game objects that represent structures within the game world.
  * Structures defined by this interface may have specific interactions such as being harvestable or
  * providing items upon destruction.
+ *
+ * @author Spencer Katz, Jason Qiu
  */
 public interface StructureObject {
 
@@ -18,6 +20,14 @@ public interface StructureObject {
    */
 
   Map<String, Integer> getItemsOnDestruction();
+
+  /**
+   * Returns whether or not the structure is destructable with the given tool.
+   *
+   * @param id the id of the item.
+   * @return true if the structure can be destroyed by the given tool, otherwise false.
+   */
+  boolean destructableBy(String id);
 
   /**
    * Determines whether the structure can be harvested. This can involve conditions based on the
