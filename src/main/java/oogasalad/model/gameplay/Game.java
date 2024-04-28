@@ -127,23 +127,19 @@ public class Game implements GameInterface {
       LOG.warn("Invalid energy change for item '" + selectedItem.getName() + "'. Using default 0.");
     }
 
-    // eat item and don't interact with it
-    if (itemProperties.getBoolean("edible")) {
-      state.restoreEnergy(energyChange);
-      removeItem(selectedItem);
-      return;
-    }
     // don't use items if their energy cost is greater than current energy
     if (energyChange < 0 && state.getEnergy() < -energyChange) {
       return;
     }
 
     // try using item if there is enough energy to do so
-    if (state.getEditableGameWorld().interact(selectedItem, x, y, depth)
-        && GameConfiguration.getConfigurablesStore()
-        .getConfigurableProperties(selectedItem.getName()).getBoolean("consumable")) {
+    // or eat item and don't interact with the world
+    if (itemProperties.getBoolean("edible") || state.getEditableGameWorld().interact(selectedItem, x, y, depth)) {
       state.restoreEnergy(energyChange);
-      removeItem(selectedItem);
+      if (GameConfiguration.getConfigurablesStore()
+          .getConfigurableProperties(selectedItem.getName()).getBoolean("consumable")) {
+        removeItem(selectedItem);
+      }
     }
   }
 
