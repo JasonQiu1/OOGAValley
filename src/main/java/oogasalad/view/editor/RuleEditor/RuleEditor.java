@@ -24,20 +24,15 @@ public class RuleEditor extends HBox {
     RuleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
 
     BorderPane bp = new BorderPane();
-    Label l = new Label(RuleResource.getString("editor_title"));
-    l.getStyleClass().add("editor-label");
     AllRuleDisplay rd = new AllRuleDisplay(config);
     VBox vbox = new VBox();
-    vbox.getChildren().addAll(l, rd);
+    vbox.getChildren().addAll(rd);
     vbox.setSpacing(10);
     bp.setTop(vbox);
     RuleController rc = new RuleController(config);
-    super.setPadding(new Insets(0, 50, 10, 50));
+    super.setPadding(new Insets(0, 10, 10, 10));
     super.getChildren().add(bp);
 
   }
 
-  public void setConfig(GameConfiguration gc) {
-    config = gc;
-  }
 }

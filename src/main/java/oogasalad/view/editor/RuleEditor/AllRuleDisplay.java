@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 
 public class AllRuleDisplay extends VBox {
 
-  //private final List<RuleDisplayStrategy> rules;
   private static final Logger LOG = LogManager.getLogger(AllRuleDisplay.class);
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.RuleEditor.AllRuleDisplay.";
   private final String myLanguage = "EnglishRule";

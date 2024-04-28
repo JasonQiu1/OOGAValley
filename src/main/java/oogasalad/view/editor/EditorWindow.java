@@ -28,7 +28,4 @@ public class EditorWindow extends GridPane {
     me.update();
   }
 
-  public void setConfig(GameConfiguration gc) {
-    re.setConfig(gc);
-  }
 }
