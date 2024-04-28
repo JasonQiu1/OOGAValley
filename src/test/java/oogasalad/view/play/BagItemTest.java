@@ -28,7 +28,8 @@ public class BagItemTest extends ApplicationTest {
 
   @BeforeEach
   public void setUp() throws MalformedURLException {
-    bagView = new BagView(new GameFactory().createGame(), 5);
+    bagView = new BagView(new GameFactory().createGame(), 5, 50, 50,
+        50, 50);
     bagItem = new BagItem("test.png", "TestItem", 50, 50, bagView, 5);
   }
 

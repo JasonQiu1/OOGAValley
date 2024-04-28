@@ -9,7 +9,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,6 +25,8 @@ public class BagItem extends StackPane {
   private String name;
 
   private final Logger LOG = LogManager.getLogger(BagItem.class);
+  private final double width;
+  private final double height;
 
 
   /**
@@ -45,6 +46,8 @@ public class BagItem extends StackPane {
       throw new RuntimeException(e);
     }
     this.name = name;
+    this.width = width;
+    this.height = height;
     imageView = new ImageView(new Image(this.url, width, height, false, true));
     StackPane imageContainer = new StackPane();
     VBox vBox = new VBox();
@@ -80,8 +83,8 @@ public class BagItem extends StackPane {
   public void setImage(String url) {
     try {
       imageView.setImage(
-          new Image((String.valueOf(new File("data/images/" + url).toURI().toURL())),
-              PlayingPageView.bottomCellWidth, PlayingPageView.bottomCellHeight, false, true));
+          new Image((String.valueOf(new File("data/images/" + url).toURI().toURL())), width, height,
+              false, true));
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }

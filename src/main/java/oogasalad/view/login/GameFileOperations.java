@@ -69,7 +69,8 @@ public class GameFileOperations {
     } else {
       System.out.println("Failed to load game!");
     }
-    PlayingPageView playingPageView = new PlayingPageView(stage, "English",userId+"");
+    PlayingPageView playingPageView = new PlayingPageView(stage, "English",userId+"",
+        800, 600);
     playingPageView.start();
   }
 
