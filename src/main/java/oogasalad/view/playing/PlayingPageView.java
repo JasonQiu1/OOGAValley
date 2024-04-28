@@ -162,6 +162,7 @@ public class PlayingPageView {
         btm.open();
       } else {
         btm.closeMenu();
+        btm = null;
       }
   }
 
