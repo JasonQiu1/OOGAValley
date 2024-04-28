@@ -56,7 +56,7 @@ public class GameTime implements GameTimeInterface {
     this(other.getDay(), other.getHour(), other.getMinute());
   }
 
-  private void advanceOneMinute() {
+  public void advanceOneUnit() {
     minute += unit;
     if (minute >= 60) {
       minute = 0;
@@ -74,8 +74,8 @@ public class GameTime implements GameTimeInterface {
    * @param minutes the number of minutes to advance.
    */
   public void advance(int minutes) {
-    for (int i = 0; i < minutes; i++) {
-      advanceOneMinute();
+    for (int i = 0; i < minutes / unit; i++) {
+      advanceOneUnit();
     }
   }
 
@@ -130,7 +130,7 @@ public class GameTime implements GameTimeInterface {
     accumulate += timeElapsedMillis;
     if (accumulate >= rate) {
       accumulate = 0;
-      advanceOneMinute();
+      advanceOneUnit();
     }
   }
 
