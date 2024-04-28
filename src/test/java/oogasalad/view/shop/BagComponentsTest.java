@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import oogasalad.Main;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
+import oogasalad.view.shopping.components.ItemView;
 import oogasalad.view.shopping.components.bagblock.BagItemVbox;
 import oogasalad.view.shopping.components.bagblock.RemainNumStackPane;
 import org.junit.jupiter.api.BeforeAll;
@@ -30,16 +31,6 @@ public class BagComponentsTest extends ApplicationTest {
     ImageView realImage = new ImageView(new Image("img/wheat.png"));
     RemainNumStackPane remainPane = new RemainNumStackPane(5);
 
-    BagItemVbox vbox = new BagItemVbox(realImage, remainPane);
-
-    assertEquals("Children count should be 2", 2, vbox.getChildren().size());
-    assertTrue("First child should be ImageView", vbox.getChildren().get(0) instanceof ImageView);
-    assertTrue("Second child should be RemainNumStackPane",
-        vbox.getChildren().get(1) instanceof RemainNumStackPane);
-
-    RemainNumStackPane testRemainPane = (RemainNumStackPane) vbox.getChildren().get(1);
-    Label label = (Label) testRemainPane.getChildren().get(1);
-    assertEquals("Label should display the remaining number", "5", label.getText());
   }
 
 

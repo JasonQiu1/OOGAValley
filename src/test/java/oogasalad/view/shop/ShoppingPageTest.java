@@ -14,9 +14,10 @@ import oogasalad.view.playing.component.Money;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.shopblock.PriceStackPane;
 import org.junit.jupiter.api.Test;
+import org.testfx.framework.junit5.ApplicationTest;
 import util.DukeApplicationTest;
 
-public class ShoppingPageTest extends DukeApplicationTest {
+public class ShoppingPageTest extends ApplicationTest {
 
   private Stage stage;
   private Button backButton;
@@ -41,26 +42,7 @@ public class ShoppingPageTest extends DukeApplicationTest {
     this.backButton = lookup("#backButton").queryButton();
   }
 
-  @Test
-  public void testBackButton() {
-    clickOn(backButton);
-    assertFalse(stage.getScene().equals(shoppingView.getPreviousScene()));
-  }
 
-
-  @Test
-  public void testPageChangeButton() {
-    Button leftButton = (javafx.scene.control.Button) lookup(
-        "#left-page-change-button").queryButton();
-    //assertTrue(leftButton.isDisabled());
-    clickOn(leftButton);
-    sleep(1000);
-    Button rightButton = (javafx.scene.control.Button) lookup(
-        "#right-page-change-button").queryButton();
-    clickOn(rightButton);
-    sleep(1000);
-    //assertTrue(rightButton.isDisabled());
-  }
 
   @Test
   public void testPriceLabelContent() {

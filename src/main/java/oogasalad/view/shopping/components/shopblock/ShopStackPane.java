@@ -15,7 +15,7 @@ import oogasalad.view.shopping.components.PageChangeBorderPane;
  * This class is responsible for creating the shop stack pane that is used to display the items in
  * the shop.
  */
-public class ShopStackPane extends ItemStackPane<SellGridPane> {
+public class ShopStackPane extends ItemStackPane<BuyGridPane> {
 
 
   public ShopStackPane(GameInterface game, ShoppingViewStackPane parentStackPane) {
@@ -24,7 +24,7 @@ public class ShopStackPane extends ItemStackPane<SellGridPane> {
 
   @Override
   protected String getBackgroundImagePath() {
-    return "img/shop/sell-background.png";
+    return "img/shop/buy-background.png";
   }
 
   @Override
@@ -34,32 +34,32 @@ public class ShopStackPane extends ItemStackPane<SellGridPane> {
     for (Map.Entry<? extends ReadOnlyItem, Double> entry : itemPriceMap.entrySet()) {
       ReadOnlyItem item = entry.getKey();
       double price = entry.getValue();
-      ItemView itemView = new ItemView(price, item.getImagePath(), item.getName());
+      ItemView itemView = new ItemView(price, item.getImagePath(), item.getName(), 9999);
       itemViews.add(itemView);
     }
     return itemViews;
   }
 
   @Override
-  protected SellGridPane createGridPane(GameInterface game, List<ItemView> sublist,
+  protected BuyGridPane createGridPane(GameInterface game, List<ItemView> sublist,
       ShoppingViewStackPane parentStackPane) {
-    return new SellGridPane(game, sublist, parentStackPane);
+    return new BuyGridPane(game, sublist, parentStackPane);
   }
 
 
   @Override
   protected PageChangeBorderPane createPageChangeBorderPane(
       List<? extends GridPane> gridPanes) {
-    return new SellPageChangeBorderPane((List<SellGridPane>) gridPanes);
+    return new BuyPageChangeBorderPane((List<BuyGridPane>) gridPanes);
   }
 
   @Override
   protected double getLeftMargin() {
-    return 50;
+    return 0;
   }
 
   @Override
   protected double getTopMargin() {
-    return 100;
+    return 0;
   }
 }
