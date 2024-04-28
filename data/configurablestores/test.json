@@ -1,0 +1,12 @@
+{
+  "configurables": {
+    "store": {
+      "properties": {
+        "wheat": "100"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    }
+  }
+}
