@@ -26,17 +26,16 @@ public class RuleEditor extends HBox {
     BorderPane bp = new BorderPane();
     Label l = new Label(RuleResource.getString("editor_title"));
     l.getStyleClass().add("editor-label");
-    AllRuleDisplay rd = new AllRuleDisplay(config.getRules().getCopyOfProperties(),
-        config.getRules().getCopyOfPropertyTypes());
+    AllRuleDisplay rd = new AllRuleDisplay(config);
     VBox vbox = new VBox();
     vbox.getChildren().addAll(l, rd);
     vbox.setSpacing(10);
     bp.setTop(vbox);
     RuleController rc = new RuleController(config);
-    HBox bottom = new HBox(new SaveButton(RuleResource.getString("save"),
-        e -> rd.save(getSaveAll(), rc::updateRule)));
-    bottom.setAlignment(Pos.CENTER);
-    bp.setBottom(bottom);
+//    HBox bottom = new HBox(new SaveButton(RuleResource.getString("save"),
+//        e -> rd.save(getSaveAll(), rc::updateRule)));
+//    bottom.setAlignment(Pos.CENTER);
+//    bp.setBottom(bottom);
     super.setPadding(new Insets(0, 50, 10, 50));
     super.getChildren().add(bp);
 
