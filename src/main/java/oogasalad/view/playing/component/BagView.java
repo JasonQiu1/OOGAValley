@@ -42,7 +42,7 @@ public class BagView extends StackPane {
    * Constructor for the ToolView class.
    *
    * @param game   the game
-   * @param colNum the number of columns to be shown the view
+   * @param colNum the number of columnsxf to be shown the view
    */
 
   public BagView(GameInterface game, int colNum) {
@@ -103,10 +103,10 @@ public class BagView extends StackPane {
   }
 
   /**
-   * The list of pair where each pair is (pair(image, name) ; number)
+   * Get the item in the bag
    *
-   * @param page
-   * @return
+   * @param page the page number
+   * @return the list of items
    */
   private List<Pair<Pair<String, String>, Integer>> getItem(int page) {
     ReadOnlyBag bag = game.getGameState().getBag();

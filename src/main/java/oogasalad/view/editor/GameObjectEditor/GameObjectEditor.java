@@ -18,15 +18,14 @@ public class GameObjectEditor extends VBox {
     private final ResourceBundle EditorResource;
     private GameConfiguration config;
 
-    public GameObjectEditor() {
+    public GameObjectEditor(Runnable update) {
         super();
 
         EditorResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
         Label l = new Label(EditorResource.getString("gameObject-editor-title"));
         l.getStyleClass().add("gameObject-editor-title");
-        super.getChildren().addAll(l, new GameObjectPropertiesDisplay());
+        super.getChildren().addAll(l, new GameObjectPropertiesDisplay(update));
 
     }
-
 
 }
