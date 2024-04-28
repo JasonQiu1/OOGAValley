@@ -32,9 +32,6 @@ public class BagView extends StackPane {
   private final GameInterface game;
 
   private int page = 0;
-  private final Button leftButton = new Button("<");
-
-  private final Button rightButton = new Button(">");
 
   private final List<Item> itemOnShow = new ArrayList<>();
 
@@ -58,12 +55,14 @@ public class BagView extends StackPane {
     backgroundImageView.setFitHeight(PlayingPageView.bottomBoxHeight);
     BorderPane borderPane = new BorderPane();
     StackPane.setMargin(borderPane, new Insets(20, 50, 0, 50));
+    Button leftButton = new Button("<");
     borderPane.setLeft(leftButton);
+    Button rightButton = new Button(">");
     borderPane.setRight(rightButton);
     borderPane.setCenter(toolGridPane);
     this.getChildren().addAll(backgroundImageView, borderPane);
-    this.leftButton.setOnMouseClicked(e -> switchPage(-1));
-    this.rightButton.setOnMouseClicked(e -> switchPage(1));
+    leftButton.setOnMouseClicked(e -> switchPage(-1));
+    rightButton.setOnMouseClicked(e -> switchPage(1));
     update();
   }
 

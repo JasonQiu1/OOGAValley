@@ -1,19 +1,12 @@
 package oogasalad.view.start;
 
-import javafx.animation.Animation;
-import javafx.animation.PathTransition;
-import javafx.animation.SequentialTransition;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -72,8 +65,6 @@ public abstract class AbstractSplashScreen {
 
     return scene;
   }
-
-
 
 
 }

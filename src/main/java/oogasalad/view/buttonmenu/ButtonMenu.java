@@ -1,44 +1,38 @@
 package oogasalad.view.buttonmenu;
 
-import java.awt.Color;
-import java.util.List;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
-import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.start.SplashUtils;
-import oogasalad.view.start.StartScreen;
 
 public class ButtonMenu {
+
   private Scene menuScene;
   private Stage menuStage;
-  private Stage primaryStage;
-  private Scene previousScene;
-  private String primaryLanguage;
-  private String buttonsFilePath;
+  private final Stage primaryStage;
+  private final Scene previousScene;
+  private final String primaryLanguage;
+  private final String buttonsFilePath;
 
-  private String STYLES = "/view/buttonMenu/menu_style.css";
+  private final String STYLES = "/view/buttonMenu/menu_style.css";
 
   public ButtonMenu(Stage mainStage, String language, Scene backScene, String filePath) {
     primaryStage = mainStage;
     primaryLanguage = language;
     previousScene = backScene;
     buttonsFilePath = filePath;
-
 
     primaryStage.sceneProperty().addListener(new ChangeListener<Scene>() {
       @Override
@@ -65,9 +59,8 @@ public class ButtonMenu {
 
     root.getChildren().add(topBox);
 
-    SplashUtils.createButtonsFromFile(buttonsFilePath, primaryStage, root, primaryLanguage, previousScene);
-
-;
+    SplashUtils.createButtonsFromFile(buttonsFilePath, primaryStage, root, primaryLanguage,
+        previousScene);
 
     Group group = new Group(root);
 
@@ -97,7 +90,6 @@ public class ButtonMenu {
         menuStage.setY(screenTopLeft.getY());
       }
     }
-
 
     menuStage.setScene(menuScene);
     menuStage.show();
