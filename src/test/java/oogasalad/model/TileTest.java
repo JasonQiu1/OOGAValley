@@ -81,8 +81,9 @@ public class TileTest extends BaseGameObjectTest {
   }
 
   @Test
-  public void testInteractionAffectsStructureWhenCollectableDoesNotInteractWithItem()
+  public void testInteractionAffectsStructureWhenCollectableIsNull()
       throws IOException {
+    tileToTest.setCollectable(null);
     addPropertiesToStore("wheat", "test/testingWheat.json");
     tileToTest.interact(new Item("hoe"));
     tileToTest.update(new GameTime(1,1,1));
@@ -169,6 +170,7 @@ public class TileTest extends BaseGameObjectTest {
   public void structurePlantedWhenValidSeedIsPutOnLandAndStructureIsNull() throws IOException {
     addPropertiesToStore("wheat", "test/testingWheat.json");
     tileToTest.setStructure(null);
+    tileToTest.setCollectable(null);
     tileToTest.interact(new Item("wheat_seed"));
     assertEquals("wheat", tileToTest.getStructureId());
   }
