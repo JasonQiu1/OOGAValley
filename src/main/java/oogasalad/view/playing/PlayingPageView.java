@@ -12,7 +12,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -94,9 +93,17 @@ public class PlayingPageView {
   }
 
   public PlayingPageView(Stage primaryStage, String language, String fileName) throws IOException {
+    GameInterface gameTemp;
     stage = primaryStage;
     primaryLanguage = language;
-    game = gameFactory.createGame(fileName, fileName);
+    try {
+      gameTemp = gameFactory.createGame(fileName, fileName);
+    } catch (IOException e) {
+      LOG.info("cannot find game saves, load from the config");
+      gameTemp = gameFactory.createGame(fileName);
+    }
+
+    game = gameTemp;
     energyProgress = new EnergyProgress(game);
   }
 
@@ -122,7 +129,7 @@ public class PlayingPageView {
     LOG.info("saving done");
   }
 
-  
+
   public void start() {
     LOG.info("initializing game");
     initModel();
@@ -134,7 +141,17 @@ public class PlayingPageView {
     setupLeftRight(borderPane);
     setupCenter(borderPane);
     setupBottom(borderPane);
+<<<<<<< Updated upstream
     root.getChildren().addAll(borderPane, topAnimationView);
+=======
+
+    Button menu = new Button("Menu");
+    menu.setOnAction(event -> openAndCloseMenu());
+    menu.getStyleClass().add("menu_button");
+    StackPane.setAlignment(menu, Pos.TOP_LEFT);
+
+    root.getChildren().addAll(borderPane, topAnimationView, menu);
+>>>>>>> Stashed changes
     StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
@@ -146,10 +163,20 @@ public class PlayingPageView {
     stage.show();
   }
 
+<<<<<<< Updated upstream
   private void actKey(KeyCode code) {
     if (code == KeyCode.ESCAPE) {
       ButtonMenu btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
       btm.open();
+=======
+  private void openAndCloseMenu() {
+    if (btm == null) {
+      LOG.info("Opened Button Menu");
+      btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
+      btm.open();
+    } else {
+      btm.closeMenu();
+>>>>>>> Stashed changes
     }
   }
 
