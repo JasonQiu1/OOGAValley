@@ -3,6 +3,7 @@ package oogasalad.model.data;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import java.io.File;
 import java.io.FileReader;
@@ -54,9 +55,9 @@ public class DataFactory<T> {
     File dataFile = getFile(dataFilePath);
     try (Reader dataReader = new FileReader(dataFile)) {
       return GSON.fromJson(dataReader, clazz);
-    } catch (JsonSyntaxException e) {
+    } catch (JsonSyntaxException | JsonIOException | IllegalArgumentException e) {
       LOG.error("Couldn't load `{}` as an instance of {} using Gson.", dataFile.toString(),
-          clazz.getTypeName());
+          clazz.getSimpleName());
       throw new BadGsonLoadException(dataFile.toString(), clazz.toString(), e);
     } catch (IOException e) {
       LOG.error("Error writing to '{}' when trying to deserialize as class '{}'.",
