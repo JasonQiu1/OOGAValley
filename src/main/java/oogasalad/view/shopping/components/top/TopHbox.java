@@ -29,6 +29,7 @@ public class TopHbox extends HBox {
     setSpacing(Utils.topHBoxSpacing);
     setAlignment(Pos.CENTER_LEFT);
     currentMoneyHbox = new CurrentMoneyHbox(game);
+    currentMoneyHbox.update();
     progressBarHbox = new ProgressBarHbox(game.getGameState().getShop());
     backButton = new Button();
     backButton.getStyleClass().add("backButton");
