@@ -3,7 +3,8 @@
     "name": "Wheat Seeds",
     "type": "Item",
     "image": "wheat_seeds.png",
-    "worth": 5
+    "worth": 5,
+    "consumable": true
   },
   "listProperties": {},
   "mapProperties": {}

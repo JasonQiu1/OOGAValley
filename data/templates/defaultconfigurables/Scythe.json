@@ -3,7 +3,8 @@
     "name": "Scythe",
     "type": "Item",
     "image": "scythe.png",
-    "worth": 100
+    "worth": 100,
+    "consumable": false
   },
   "listProperties": {},
   "mapProperties": {}

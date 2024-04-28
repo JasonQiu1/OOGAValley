@@ -44,6 +44,16 @@ public class Pile extends StackPane {
    * @param listImagePath the list of image that comes from the model
    */
   public void update(List<String> listImagePath) {
+    // remove any images that don't exist anymore
+    if (landImagePath.size() > listImagePath.size()) {
+      this.getChildren().remove(listImagePath.size(), landImagePath.size());
+      landImagePath.subList(listImagePath.size(), landImagePath.size()).clear();
+    }
+    // add placeholders for new images
+    for (int i = landImagePath.size(); i < listImagePath.size(); i++) {
+      landImagePath.add(null);
+      this.getChildren().add(placeholder);
+    }
     for (int i = 0; i < listImagePath.size(); i++) {
       if (landImagePath.get(i) == null || !landImagePath.get(i).equals(listImagePath.get(i))) {
         landImagePath.set(i, listImagePath.get(i));
