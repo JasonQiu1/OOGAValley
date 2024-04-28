@@ -44,6 +44,24 @@
   -fx-text-fill: black;
 }
 
+.object-name{
+  -fx-font-size: 25px;
+  -fx-font-family: "Press Start 2P";
+  -fx-text-fill: black;
+}
+
+.map-properties-name{
+  -fx-font-size: 20px;
+  -fx-font-family: "fantasy";
+  -fx-text-fill: black;
+}
+
+.object-property{
+  -fx-font-size: 15px;
+  -fx-font-family: "fantasy";
+  -fx-text-fill: black;
+}
+
 .rule {
   -fx-font-size: 15px;
   -fx-font-family: "fantasy";

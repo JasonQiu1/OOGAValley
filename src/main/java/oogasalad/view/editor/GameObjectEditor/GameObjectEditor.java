@@ -7,7 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import oogasalad.controller.GameObjectController;
 import oogasalad.model.data.GameConfiguration;
+import oogasalad.view.editor.MapEditor.Selector;
 
 public class GameObjectEditor extends VBox {
 
@@ -16,33 +18,16 @@ public class GameObjectEditor extends VBox {
     private final ResourceBundle EditorResource;
     private GameConfiguration config;
 
-    public GameObjectEditor(GameConfiguration gc) {
+    public GameObjectEditor() {
         super();
-        config = gc;
 
         EditorResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-
         BorderPane bp = new BorderPane();
         Label l = new Label(EditorResource.getString("gameObject-editor-title"));
         l.getStyleClass().add("gameObject-editor-title");
-        super.getChildren().add(l);
-//        AllRuleDisplay rd = new AllRuleDisplay(config.getRules().getCopyOfProperties(),
-//                config.getRules().getCopyOfPropertyTypes());
-//        VBox vbox = new VBox();
-//        vbox.getChildren().addAll(l, rd);
-//        vbox.setSpacing(10);
-//        bp.setTop(vbox);
-//        HBox bottom = new HBox(new SaveButton(RuleResource.getString("save"),
-//                e -> rd.save(getSaveAll(), config::updateRule)));
-//        bottom.setAlignment(Pos.CENTER);
-//        bp.setBottom(bottom);
-//        super.setPadding(new Insets(0, 50, 10, 50));
-//        super.getChildren().add(bp);
+        super.getChildren().addAll(l, new GameObjectPropertiesDisplay());
 
     }
 
 
-    public void setConfig(GameConfiguration gc) {
-        config = gc;
-    }
 }
