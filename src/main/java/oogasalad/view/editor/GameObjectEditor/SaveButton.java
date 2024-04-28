@@ -11,7 +11,9 @@ public class SaveButton extends Button {
         super(name);
         setOnAction(event -> {
             action.accept(event);
-            update.run();
+            if(update != null){
+                update.run();
+            }
         });
         super.setId("SaveProperties");
     }
