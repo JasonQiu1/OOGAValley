@@ -4,11 +4,11 @@
     // PROPERTIES FOR ALL GAME OBJECTS
     // This is the id of the object and must be unique within the game configuration,
     // otherwise one will overwrite the other in an undefined way.
-    "name": "COLLECTABLE",
+    "name": "Gem",
     "type": "Collectable",
     // This is filename of the image which the view will use to display this object.
     // The file must exist in the `data/images` directory.
-    "image": "",
+    "image": "gem.png",
 
     "updatable": false,
     "updateTime": 0,

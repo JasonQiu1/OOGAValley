@@ -173,11 +173,11 @@
       "propertiesType": {},
       "mapProperties": {}
     },
-    "COLLECTABLE": {
+    "Gem": {
       "properties": {
-        "name": "COLLECTABLE",
+        "name": "Gem",
         "type": "Collectable",
-        "image": "",
+        "image": "Gem.png",
         "updatable": "false",
         "updateTime": "0",
         "updateTransformation": "",
