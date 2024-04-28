@@ -8,7 +8,7 @@ import oogasalad.model.gameplay.BuildableTileMap;
 import java.util.List;
 
 public class MapController {
-    private BuildableTileMap btm;
+    private final BuildableTileMap btm;
     public MapController(GameConfiguration gc){
         btm = gc.getEditableInitialState().getEditableMap();
     }

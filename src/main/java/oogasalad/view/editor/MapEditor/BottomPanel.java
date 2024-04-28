@@ -16,7 +16,7 @@ public class BottomPanel extends TabPane {
   private final String plantsLanguage = "EnglishPlants";
   //private final ResourceBundle tabResource;
 
-  public BottomPanel(Selector ts, Map<String, ReadOnlyProperties> allConfigurables) {
+  public BottomPanel(Map<String, ReadOnlyProperties> allConfigurables) {
     super();
     this.setId("BottomPanel");
 
@@ -37,7 +37,7 @@ public class BottomPanel extends TabPane {
 //    List<SelectableView> mockBuildings;
 //    List<SelectableView> mockNature;
     Map<String, List<SelectableView>> mapOfSelectables = getMapOfSelectables(allConfigurables);
-    createTabs(ts, mapOfSelectables);
+    createTabs(mapOfSelectables);
 
 
 //    titlesTab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(mockTiles, ts),
@@ -52,11 +52,11 @@ public class BottomPanel extends TabPane {
     //super.getTabs().addAll(titlesTab, natureTab, plantsTab, buildingsTab);
   }
 
-  private void createTabs(Selector ts, Map<String, List<SelectableView>> mapOfSelectables) {
+  private void createTabs(Map<String, List<SelectableView>> mapOfSelectables) {
     for(Map.Entry<String, List<SelectableView>> entry : mapOfSelectables.entrySet()){
       Tab tab = new Tab(entry.getKey());
       tab.setClosable(false);
-      tab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(entry.getValue(), ts),
+      tab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(entry.getValue()),
               (entry.getKey())));
       super.getTabs().add(tab);
     }

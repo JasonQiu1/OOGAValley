@@ -8,12 +8,12 @@ import javafx.scene.layout.VBox;
 
 public class SelectableViewBox extends HBox {
 
-  public SelectableViewBox(List<SelectableView> selectables, Selector ts) {
+  public SelectableViewBox(List<SelectableView> selectables) {
     super();
     selectables.stream().map(node -> {
       VBox vbox = new VBox(node, node.getLabel());
       vbox.setAlignment(Pos.CENTER);
-      ts.add(vbox);
+      Selector.add(vbox);
       return vbox;
     }).forEach(super.getChildren()::add);
     super.setSpacing(8);

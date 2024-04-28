@@ -1,10 +1,36 @@
 package oogasalad.controller;
 
 import oogasalad.model.data.GameConfiguration;
+import oogasalad.model.data.Properties;
 import oogasalad.model.gameplay.BuildableTileMap;
 
-public class GameObjectController {
-    public GameObjectController(GameConfiguration gc){
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
+public class GameObjectController {
+    Map<String, Properties> allGameObjects;
+    public GameObjectController(){
+        allGameObjects = GameConfiguration.getEditableConfigurablesStore().getAllEditableConfigurables();
     }
-}
+
+
+    public Map<String, String> getGameObjectProperties(String key){
+        return removeType(allGameObjects.get(key).getCopyOfProperties());
+    }
+
+    private Map<String, String> removeType(Map<String, String> copyOfProperties) {
+        Map<String, String> noType = new TreeMap<>(copyOfProperties);
+        noType.remove("type");
+        return noType;
+    }
+
+    public Map<String, List<String>> getGameObjectListProperties(String key){
+        return allGameObjects.get(key).getListProperties();
+    }
+
+    public Map<String, Map<String, String>> getGameObjectMapProperties(String key){
+        return allGameObjects.get(key).getCopyOfMapProperties();
+    }
+};

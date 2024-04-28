@@ -18,10 +18,10 @@ public class MapEditor extends VBox {
     super.setAlignment(Pos.CENTER);
     Selector ts = new Selector();
     CellInfoPane cip = new CellInfoPane();
-    BuildableMap bm = new BuildableMap(ts, cip, new MapController(gc));
+    BuildableMap bm = new BuildableMap(cip, new MapController(gc));
     TopPanel tp = new TopPanel(stage, backScene, bm);
     BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
-    BottomPanel bp = new BottomPanel(ts, GameConfiguration.getConfigurablesStore().getAllConfigurables());
+    BottomPanel bp = new BottomPanel(GameConfiguration.getConfigurablesStore().getAllConfigurables());
     getChildren().addAll(tp, bmw, bp, cip);
   }
 

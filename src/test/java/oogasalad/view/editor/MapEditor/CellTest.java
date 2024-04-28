@@ -16,7 +16,7 @@ public class CellTest {
 
   @Test
   public void testIncrementRow() {
-    Cell cell = new Cell(null, null, 0, 0);
+    Cell cell = new Cell(null, 0, 0);
     int initialRow = cell.getRow();
     cell.incrementRow();
     assertEquals(initialRow + 1, cell.getRow());
@@ -24,7 +24,7 @@ public class CellTest {
 
   @Test
   public void testIncrementColumn() {
-    Cell cell = new Cell(null, null, 0, 0);
+    Cell cell = new Cell(null, 0, 0);
     int initialColumn = cell.getColumn();
     cell.incrementColumn();
     assertEquals(initialColumn + 1, cell.getColumn());
@@ -32,7 +32,7 @@ public class CellTest {
 
   @Test
   public void testDecrementRow() {
-    Cell cell = new Cell(null, null, 0, 0);
+    Cell cell = new Cell(null, 0, 0);
     int initialRow = cell.getRow();
     cell.decrementRow();
     assertEquals(initialRow - 1, cell.getRow());
@@ -40,7 +40,7 @@ public class CellTest {
 
   @Test
   public void testDecrementColumn() {
-    Cell cell = new Cell(null, null, 0, 0);
+    Cell cell = new Cell(null, 0, 0);
     int initialColumn = cell.getColumn();
     cell.decrementColumn();
     assertEquals(initialColumn - 1, cell.getColumn());
@@ -48,7 +48,7 @@ public class CellTest {
 
   @Test
   public void testGetColumnRow() {
-    Cell cell = new Cell(null, null, 0, 0);
+    Cell cell = new Cell(null, 0, 0);
     assertEquals(0, cell.getColumn());
     assertEquals(0, cell.getRow());
   }
@@ -63,7 +63,7 @@ public class CellTest {
 
   @Test
   public void testBaseFillAndStroke() {
-    Cell cell = new Cell(null, null, 0, 0);
+    Cell cell = new Cell(null, 0, 0);
     assertEquals(Color.WHITE, cell.getBase().getFill());
     assertEquals(Color.BLACK, cell.getBase().getStroke());
     assertEquals(2, cell.getBase().getStrokeWidth());
@@ -71,7 +71,7 @@ public class CellTest {
 
   @Test
   public void testLookUpId() {
-    Cell cell = new Cell(null, null, 0, 0);
+    Cell cell = new Cell(null, 0, 0);
     assertTrue(cell.getId().equals("0_0"));
   }
 

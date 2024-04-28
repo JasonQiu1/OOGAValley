@@ -32,7 +32,7 @@ public class Cell extends StackPane {
     gameMap = map;
   }
 
-  public Cell(Selector ts, CellInfoPane cip, int i, int j) {
+  public Cell(CellInfoPane cip, int i, int j) {
     super();
     setLocalId(i, j);
     column = i;
@@ -48,9 +48,9 @@ public class Cell extends StackPane {
         if (super.getChildren().size() > 1) {
           gameMap.removeTileTop(column, row, 0);
         }
-      } else if (ts.getLastSelectedSelectable() != null) {
-        try {
-          gameMap.setTileGameObject(ts.getLastSelectedSelectable(), column, row, 0);
+      } else if (Selector.getLastSelectedSelectable() != null) {
+        try{
+          gameMap.setTileGameObject(Selector.getLastSelectedSelectable(), column, row, 0);
         } catch (InvalidGameObjectType e){
            LOG.error("Cannot Place on map type: " + e.getType());
            new CannotPlaceOnMap(e.getType());
@@ -163,6 +163,5 @@ public class Cell extends StackPane {
   public Rectangle getBase() {
     return base;
   }
-
 
 }
