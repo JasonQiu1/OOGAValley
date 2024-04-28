@@ -2,7 +2,7 @@
   "properties": {
     "name": "Farmland",
     "type": "Land",
-    "image": "farmland.jpg",
+    "image": "farmland.png",
     "updatable": false,
     "updateTime": 500,
     "updateTransformation": "Dirt", // turns back to dirt after a while
