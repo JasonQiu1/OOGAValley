@@ -1,10 +1,13 @@
 package oogasalad.view.playing;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.InvalidPathException;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -15,6 +18,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import oogasalad.model.api.GameFactory;
@@ -25,7 +29,6 @@ import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
-import oogasalad.view.playing.component.Money;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
@@ -74,11 +77,10 @@ public class PlayingPageView {
   private final Stage stage;
   private final String primaryLanguage;
 
-  // TODO: remove this money from view
-  private final Money money = new Money(100);
   private final GameFactory gameFactory = new GameFactory();
   private final GameInterface game;
   private Button helpButton;
+  private ButtonMenu btm;
   private LandView landView;
   private TopAnimationView topAnimationView;
   private BagView bagView;
@@ -100,6 +102,29 @@ public class PlayingPageView {
     energyProgress = new EnergyProgress(game);
   }
 
+  public void save() {
+    FileChooser result = new FileChooser();
+    result.setTitle("save location ");
+    result.setInitialDirectory(new File("data/gamesaves"));
+    result.getExtensionFilters()
+        .setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
+    File file = result.showSaveDialog(stage);
+    if (file == null) {
+      return;
+    }
+    try {
+      game.save(file.getName());
+      game.getGameConfiguration().save(file.getName());
+    } catch (IOException e) {
+      new Alert(AlertType.ERROR, "saving failed").showAndWait();
+    } catch (InvalidPathException e) {
+      new Alert(AlertType.ERROR, "path invalid").showAndWait();
+    }
+    new Alert(AlertType.CONFIRMATION, "save done").showAndWait();
+    LOG.info("saving done");
+  }
+
+  
   public void start() {
     LOG.info("initializing game");
     initModel();
@@ -111,23 +136,33 @@ public class PlayingPageView {
     setupLeftRight(borderPane);
     setupCenter(borderPane);
     setupBottom(borderPane);
-    root.getChildren().addAll(borderPane, topAnimationView);
+
+    Button menu = new Button("Menu");
+    menu.setOnAction(event -> openAndCloseMenu());
+    menu.getStyleClass().add("menu_button");
+    StackPane.setAlignment(menu, Pos.TOP_LEFT);
+
+
+
+    root.getChildren().addAll(borderPane, topAnimationView, menu);
     StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
     StackPane.setAlignment(topAnimationView, javafx.geometry.Pos.TOP_LEFT);
     Scene scene = new Scene(root, windowWidth, windowHeight);
     scene.getStylesheets().add("styles.css");
-    scene.setOnKeyPressed(event -> actKey(event.getCode()));
     stage.setTitle(displayTextResource.getString("play_title"));
     setUpdate();
     stage.setScene(scene);
     stage.show();
   }
 
-  private void actKey(KeyCode code) {
-    if (code == KeyCode.ESCAPE) {
-      ButtonMenu btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
-      btm.open();
-    }
+  private void openAndCloseMenu() {
+      if (btm == null) {
+        LOG.info("Opened Button Menu");
+        btm = new ButtonMenu(stage, primaryLanguage, previousScene, menuButtons);
+        btm.open();
+      } else {
+        btm.closeMenu();
+      }
   }
 
   private void initModel() {
@@ -166,9 +201,11 @@ public class PlayingPageView {
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
+    timeLabel.setId("time-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox(game);
-    money.addObserver(currentMoneyHbox, game.getGameState().getMoney());
+    currentMoneyHbox.update();
     Button sleepButton = new Button("sleep");
+    sleepButton.setId("sleep-button");
     sleepButton.setOnMouseClicked(event -> {
       LOG.info("slept");
       game.sleep();
@@ -206,7 +243,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, money, this);
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, this);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);

@@ -2,3 +2,4 @@ New, pink, oogasalad.view.playing.PlayingPageView, start
 Load, lightgray, oogasalad.view.start.PlayModeSplashScreen, makeChooser
 Create, lightblue, oogasalad.view.editor.EditorScene, start
 Back, lightblue, oogasalad.view.start.PlayModeSplashScreen, goBackScene
+Save, lightblue, oogasalad.view.playing.PlayingPageView, save

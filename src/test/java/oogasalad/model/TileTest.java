@@ -81,8 +81,9 @@ public class TileTest extends BaseGameObjectTest {
   }
 
   @Test
-  public void testInteractionAffectsStructureWhenCollectableDoesNotInteractWithItem()
+  public void testInteractionAffectsStructureWhenCollectableIsNull()
       throws IOException {
+    tileToTest.setCollectable(null);
     addPropertiesToStore("wheat", "test/testingWheat.json");
     tileToTest.interact(new Item("hoe"));
     tileToTest.update(new GameTime(1,1,1));
@@ -131,7 +132,13 @@ public class TileTest extends BaseGameObjectTest {
   @Test
   public void validInteractionValidReturnsTrue() {
     assertTrue(tileToTest.interactionValid(new Item("validItem")));
+    tileToTest.setCollectable(null);
     assertTrue(tileToTest.interactionValid(new Item("hoe")));
+  }
+
+  @Test
+  public void invalidInteractionIfItemDoesNotInteractWithTopWithGameObject() {
+    assertFalse(tileToTest.interactionValid(new Item("hoe")));
   }
 
   @Test
@@ -159,6 +166,7 @@ public class TileTest extends BaseGameObjectTest {
     tileToTest.interact(new Item("validItem"));
     Map<String, Integer> collectableItems = new HashMap<>();
     collectableItems.put("seed", 2);
+    assertNull(tileToTest.getStructureId());
     tileToTest.interact(new Item("validItem"));
     Map<String, Integer> itemReturns = tileToTest.itemReturns();
     assertEquals(collectableItems, itemReturns);
@@ -169,6 +177,7 @@ public class TileTest extends BaseGameObjectTest {
   public void structurePlantedWhenValidSeedIsPutOnLandAndStructureIsNull() throws IOException {
     addPropertiesToStore("wheat", "test/testingWheat.json");
     tileToTest.setStructure(null);
+    tileToTest.setCollectable(null);
     tileToTest.interact(new Item("wheat_seed"));
     assertEquals("wheat", tileToTest.getStructureId());
   }

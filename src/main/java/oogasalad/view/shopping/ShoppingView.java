@@ -6,19 +6,17 @@ import javafx.stage.Stage;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.branch.BranchBase;
 import oogasalad.view.playing.PlayingPageView;
-import oogasalad.view.playing.component.Money;
 
 
 public class ShoppingView extends BranchBase {
 
   private final ShoppingViewStackPane root;
 
-  public ShoppingView(GameInterface game, Stage stage, Scene previousScene,
-      Money money, PlayingPageView playingPageView) {
+  public ShoppingView(GameInterface game, Stage stage, Scene previousScene, PlayingPageView playingPageView) {
     super(stage, previousScene);
 
     root = new ShoppingViewStackPane(game, getStage(), getPreviousScene(), playingPageView);
-    money.addObserver(root.getMoneyHbox(), game.getGameState().getMoney());
+
   }
 
   public Parent getScene() {

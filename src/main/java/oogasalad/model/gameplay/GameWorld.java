@@ -78,9 +78,16 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * @param width  The width coordinate of the interaction.
    * @param height The height coordinate of the interaction.
    * @param depth  The depth coordinate of the interaction.
+   * @return A boolean representing whether a valid interaction took place.
    */
-  public void interact(ReadOnlyItem item, int width, int height, int depth) {
-    allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
+  public boolean interact(ReadOnlyItem item, int width, int height, int depth) {
+    Tile interactingTile = allTiles
+        .get(new CoordinateOfGameObjectRecord(width, height, depth));
+    if (interactingTile.interactionValid(item)) {
+      allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
+      return true;
+    }
+    return false;
   }
 
   /**

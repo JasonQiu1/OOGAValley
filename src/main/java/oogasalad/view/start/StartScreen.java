@@ -74,7 +74,7 @@ public class StartScreen extends AbstractSplashScreen {
     setFilesLanguage();
     myLanguages = SplashUtils.readCommaSeparatedCSV(DEFAULT_RESOURCE_FOLDER + languagesListPath);
 
-    languageDialogBox = new LanguageDialogBox(myLanguages);
+    languageDialogBox = new LanguageDialogBox(stage, myLanguages);
     languageDialogBox.primaryLanguageProperty().addListener(new ChangeListener<String>() {
       @Override
       public void changed(ObservableValue<? extends String> observable, String oldValue,

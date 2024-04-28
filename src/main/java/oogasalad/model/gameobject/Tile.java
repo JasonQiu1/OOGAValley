@@ -36,7 +36,8 @@ public class Tile implements Updatable, Interactable {
   /**
    * Interacts with the provided item, potentially changing the state of the tile or its contents.
    * This method checks each game object (collectable, structure, land) in the tile for interaction
-   * validity and processes the first valid interaction found. Collectable interactions can result
+   * validity and processes an interaction on the first non-null gameObject if and only if
+   * that interaction is valid. Collectable interactions can result
    * in items being added to the game as a result of the interaction.
    *
    * @param item The item to interact with the tile's contents.
@@ -50,11 +51,29 @@ public class Tile implements Updatable, Interactable {
             land != null && land.getIfItemCanBePlacedHere(item));
   }
 
+  /**
+   * Checks if an interaction with the given item is valid for any game object on the tile.
+   * The method sequentially checks each game object starting with the collectable, followed by the structure,
+   * and finally the land. The first non-null game object found dictates the outcome:
+   * if its interaction with the item is valid, the method returns true; otherwise, it returns false.
+   * If a game object is present, it alone is responsible for the interaction validation, and no further checks are performed.
+   *
+   * @param item The item to be used in the interaction check.
+   * @return true if the first non-null game object's interaction with the item is valid, otherwise false.
+   */
   @Override
   public boolean interactionValid(ReadOnlyItem item) {
-    return collectable.interactionValid(item) || structure.interactionValid(item) ||
-        land.interactionValid(item);
+      return Optional.ofNullable(collectable)
+          .map(c -> c.interactionValid(item))
+          .orElseGet(() ->
+              Optional.ofNullable(structure)
+                  .map(s -> s.interactionValid(item))
+                  .orElseGet(() ->
+                      Optional.ofNullable(land)
+                          .map(l -> l.interactionValid(item))
+                          .orElse(false)));
   }
+
 
   /**
    * Executes interaction logic if the specified game object is valid for interaction with the given
@@ -65,12 +84,14 @@ public class Tile implements Updatable, Interactable {
    * @param interactionHandler The logic to execute for the interaction.
    * @param additionalCheck    An additional boolean check for if an interaction is valid
    *                           that is specific to each GameObject
-   * @return True if the interaction was valid and handled, false otherwise.
+   * @return True if the gameObject is not null, false otherwise.
    */
   private boolean handleInteractionIfValid(GameObject gameObject, ReadOnlyItem item,
       Runnable interactionHandler, boolean additionalCheck) {
-    if (gameObject != null && (gameObject.interactionValid(item) || additionalCheck)) {
-      interactionHandler.run();
+    if (gameObject != null) {
+      if ((gameObject.interactionValid(item) || additionalCheck)) {
+        interactionHandler.run();
+      }
       return true;
     }
     return false;
@@ -91,10 +112,11 @@ public class Tile implements Updatable, Interactable {
    * @param item The item interacting with the structure.
    */
   private void handleStructureInteraction(ReadOnlyItem item) {
-    if (collectable == null && structure.isHarvestable() && structure.interactionValid(item)) {
+    if (structure.isHarvestable() && structure.interactionValid(item)) {
       collectable =
           (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
              structure.getItemsOnDestruction());
+      structure = null;
     }
     else {
       structure.interact(item);
@@ -107,7 +129,7 @@ public class Tile implements Updatable, Interactable {
    * @param item The item interacting with the land.
    */
   private void handleLandInteraction(ReadOnlyItem item) {
-    if (land.getIfItemCanBePlacedHere(item) && structure == null) {
+    if (land.getIfItemCanBePlacedHere(item)) {
       structure = (Structure) factory.createNewGameObject(
           land.getStructureBasedOnItem(item), lastUpdatingGameTime,
           new HashMap<>());
