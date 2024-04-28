@@ -44,10 +44,10 @@ public class PropertiesDisplay extends VBox {
         super.getChildren().add(name);
 
         // Display properties
-        displayProperties(goc.getProperties(key));
-        displayListProperties(goc.getListProperties(key));
-        displayMapProperties(goc.getMapProperties(key));
-        super.getChildren().add(new SaveButton("save", e -> save(), update));
+        displayProperties(goc.getProperties());
+        displayListProperties(goc.getListProperties());
+        displayMapProperties(goc.getMapProperties());
+        super.getChildren().add(new SaveButton("save", e -> save(), update, key));
     }
 
 
@@ -76,13 +76,13 @@ public class PropertiesDisplay extends VBox {
 
     public void save() {
         for (ObjectPropertyDisplay opd : ObjectPropertyDisplays) {
-            goc.updateProperty(Selector.getLastSelectedSelectable(), opd.getName(), opd.getValue());
+            goc.updateProperty(opd.getName(), opd.getValue());
         }
         for(Map.Entry<String, List<ObjectPropertyDisplay>> entry : ObjectPropertyMapDisplays.entrySet()){
-            goc.updateMapProperty(Selector.getLastSelectedSelectable(), entry.getKey(), createMap(entry.getValue()));
+            goc.updateMapProperty(entry.getKey(), createMap(entry.getValue()));
         }
         for (ObjectPropertyDisplay opd : ObjectPropertyListDisplays) {
-            goc.updateListProperty(Selector.getLastSelectedSelectable(), opd.getName(), opd.getValue());
+            goc.updateListProperty(opd.getName(), opd.getValue());
         }
     }
 

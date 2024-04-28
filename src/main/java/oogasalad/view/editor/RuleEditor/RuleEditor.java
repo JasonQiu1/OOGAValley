@@ -32,17 +32,9 @@ public class RuleEditor extends HBox {
     vbox.setSpacing(10);
     bp.setTop(vbox);
     RuleController rc = new RuleController(config);
-//    HBox bottom = new HBox(new SaveButton(RuleResource.getString("save"),
-//        e -> rd.save(getSaveAll(), rc::updateRule)));
-//    bottom.setAlignment(Pos.CENTER);
-//    bp.setBottom(bottom);
     super.setPadding(new Insets(0, 50, 10, 50));
     super.getChildren().add(bp);
 
-  }
-
-  private CheckedConsumer<String> getSaveAll() {
-    return config::save;
   }
 
   public void setConfig(GameConfiguration gc) {

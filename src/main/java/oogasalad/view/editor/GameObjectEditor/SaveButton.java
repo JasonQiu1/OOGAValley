@@ -3,11 +3,10 @@ package oogasalad.view.editor.GameObjectEditor;
 import java.util.function.Consumer;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
-import oogasalad.view.editor.MapEditor.MapEditor;
 
 public class SaveButton extends Button {
 
-    public SaveButton(String name, Consumer<ActionEvent> action, Runnable update) {
+    public SaveButton(String name, Consumer<ActionEvent> action, Runnable update, String key) {
         super(name);
         setOnAction(event -> {
             action.accept(event);
@@ -15,6 +14,6 @@ public class SaveButton extends Button {
                 update.run();
             }
         });
-        super.setId("SaveProperties");
+        super.setId("SaveProperties" + key);
     }
 }
