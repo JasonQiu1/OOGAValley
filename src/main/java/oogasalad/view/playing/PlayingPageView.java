@@ -28,7 +28,6 @@ import oogasalad.view.gpt.Chat;
 import oogasalad.view.playing.component.BagView;
 import oogasalad.view.playing.component.EnergyProgress;
 import oogasalad.view.playing.component.LandView;
-import oogasalad.view.playing.component.Money;
 import oogasalad.view.playing.component.TopAnimationView;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
@@ -77,8 +76,6 @@ public class PlayingPageView {
   private final Stage stage;
   private final String primaryLanguage;
 
-  // TODO: remove this money from view
-  private final Money money = new Money(100);
   private final GameFactory gameFactory = new GameFactory();
   private final GameInterface game;
   private Button helpButton;
@@ -192,9 +189,11 @@ public class PlayingPageView {
     btnOpenShop.setId("shopButton");
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
+    timeLabel.setId("time-label");
     CurrentMoneyHbox currentMoneyHbox = new CurrentMoneyHbox(game);
-    money.addObserver(currentMoneyHbox, game.getGameState().getMoney());
+    currentMoneyHbox.update();
     Button sleepButton = new Button("sleep");
+    sleepButton.setId("sleep-button");
     sleepButton.setOnMouseClicked(event -> {
       LOG.info("slept");
       game.sleep();
@@ -232,7 +231,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, money, this);
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, this);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);
