@@ -21,7 +21,7 @@ public class EditorWindow extends GridPane {
     add(re, 0, 0);
     add(new GameObjectEditor(this::update), 2, 0);
     add(me, 1, 0);
-    add(new SaveAllButton(gc), 1, 1);
+    add(new SaveAllButton(gc, re::getName), 1, 1);
   }
 
   public void update(){
