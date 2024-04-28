@@ -16,7 +16,7 @@ import oogasalad.model.api.ReadOnlyItem;
 public class Collectable extends GameObject implements Collect {
 
   private final Map<String, Integer> items;
-  private boolean interactingExpired;
+  private boolean readyToCollect;
 
   /**
    * Constructs a new Collectable object with the specified identifier, initial state, and
@@ -28,7 +28,7 @@ public class Collectable extends GameObject implements Collect {
   public Collectable(String id, ReadOnlyGameTime creationTime, Map<String, Integer> items) {
     super(id, creationTime);
     this.items = items;
-    interactingExpired = false;
+    readyToCollect = false;
   }
 
   /**
@@ -38,29 +38,24 @@ public class Collectable extends GameObject implements Collect {
    */
   @Override
   public String getImagePath() {
-    return (new Item(items.keySet().iterator().next())).getImagePath();
+    if (!items.isEmpty()) {
+      return (new Item(items.keySet().iterator().next())).getImagePath();
+    }
+    else {
+      return super.getImagePath();
+    }
   }
 
   /**
-   * Handles the interaction with a given item. This method checks if the interaction meets the
-   * conditions for making the collectable expired, which may affect its collectability.
+   * Handles the interaction with a given item. All interactions with Collectable
+   * are valid. ReadyToCollect will save whether this collectable
+   * can now be collected.
    *
    * @param item The item interacting with the collectable.
    */
   @Override
   public void interact(ReadOnlyItem item) {
-    interactingExpired = true;
-  }
-
-  /**
-   * Checks and updates the expiration status of the game object based on the elapsed time.
-   *
-   * @param gameTime The current time of the game
-   * @return Whether this gameObject is expired and thus should be removed from the game.
-   */
-  @Override
-  public boolean checkAndUpdateExpired(ReadOnlyGameTime gameTime) {
-    return super.checkAndUpdateExpired(gameTime) || interactingExpired;
+    readyToCollect = true;
   }
 
   /**
@@ -83,7 +78,7 @@ public class Collectable extends GameObject implements Collect {
 
   @Override
   public boolean shouldICollect() {
-    return interactingExpired;
+    return readyToCollect;
   }
 
   /**

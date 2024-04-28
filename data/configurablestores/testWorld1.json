@@ -71,6 +71,18 @@
         "interactDropMultipliers": {}
       }
     },
+    "axe": {
+      "properties": {
+        "name": "axe",
+        "type": "Item",
+        "image": "scythe.png",
+        "worth": "100",
+        "consumable": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
     "wheat": {
       "properties": {
         "name": "wheat",

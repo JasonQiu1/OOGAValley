@@ -20,13 +20,19 @@ public class CollectableTest extends BaseGameObjectTest {
   protected void initializeGameObjects() throws IOException {
     addPropertiesToStore("grass_collectable", "test/testingGrassCollectable.json");
     Map<String, Integer> itemsOnCollection = new HashMap<>();
-    itemsOnCollection.put("hoe", 2);
+    itemsOnCollection.put("axe", 2);
     testingCollectable = (Collectable) getFactory().createNewGameObject("grass_collectable", new GameTime(1,1,1), itemsOnCollection);
+    addPropertiesToStore("axe", "test/testingItem.json");
   }
 
   @Test
   public void testingGettingItemsOnCollection() {
-    assertEquals(2, (int) testingCollectable.getItemsOnCollection().get("hoe"));
+    assertEquals(2, (int) testingCollectable.getItemsOnCollection().get("axe"));
+  }
+
+  @Test
+  public void testImagePath() {
+    assertEquals("scythe.png", testingCollectable.getImagePath());
   }
 
   @Test
@@ -37,7 +43,6 @@ public class CollectableTest extends BaseGameObjectTest {
 
   @Test
   public void testShouldICollectWhenIShouldNot() {
-    testingCollectable.interact(new Item("InvalidItem"));
     assertFalse(testingCollectable.shouldICollect());
   }
 }
