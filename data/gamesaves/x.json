@@ -4935,7 +4935,7 @@
   },
   "selectedItem": null,
   "energy": 20.0,
-  "money": 0,
+  "money": 1000,
   "shop": {
     "itemRotationSize": 3,
     "possibleItems": [
