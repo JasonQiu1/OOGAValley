@@ -23,15 +23,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private final Stage stage;
   private final String primaryLanguage;
   private final Scene previousScene;
-  private String buttonLanguage;
-  private String titleLanguage;
   private ResourceBundle buttonResource;
-  private ResourceBundle titleResource;
-  private String buttonsPath;
-  private String myStageTitle;
-  private Scene myScene;
-  private LoaderListDisplay loaderListDisplay;
-  private Scene playModeScreen;
+  private ResourceBundle textResource;
 
   public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene,
       GameConfiguration gameConfiguration) {
@@ -39,61 +32,38 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     stage = stageToUse;
     primaryLanguage = language;
     previousScene = backScene;
-//    previousScene = stage.getScene();
-//    setFilesLanguage();
   }
 
   @Override
   public void open() {
-    titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Title");
+    textResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Text");
     buttonResource = ResourceBundle.getBundle(
         DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
 
-    myStageTitle = titleResource.getString("title");
-    buttonsPath = buttonResource.getString("buttons_path");
+    String myStageTitle = textResource.getString("title");
+    String buttonsPath = buttonResource.getString("buttons_path");
 
-//    LOG.info(String.valueOf(previousScene));
     ResourceString resourceString =
         new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath, myStageTitle, STYLES);
 
-    myScene = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
+    Scene myScene = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
         primaryLanguage, previousScene);
-//    LOG.info(String.format("the previous scene is still %s", previousScene));
 
     stage.setTitle(myStageTitle);
     stage.setScene(myScene);
     stage.show();
-//    LOG.info(String.format("after changing the scene %s", previousScene));
-
-//    try {
-//      sleep(5000);
-//    } catch (InterruptedException e) {
-//      throw new RuntimeException(e);
-//    }
-//    goBackScene(new Scene(new HBox()));
   }
 
 
   public void makeChooser() {
-//    FileChooserContainer resultContainer = new FileChooserContainer(null, DEFAULT_RESOURCE_FOLDER);
-//    LOG.debug(previousScene);
-//    Optional<File> file = resultContainer.showFileChooserDialog(stage);
-//    String filePath;
-//    if (file.isPresent()) {
-//      filePath = file.get().getName();
-//      LOG.debug(String.format("what is the filePath %s", filePath));
-//    } else {
-//      return;
-//    }
 
-    loaderListDisplay = new LoaderListDisplay(stage, "Loader", DEFAULT_RESOURCE_FOLDER);
+    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage, DEFAULT_SAVES_FOLDER);
 
     Optional<File> file = loaderListDisplay.open();
 
     String filePath;
     if (file.isPresent()) {
       filePath = file.get().getName();
-      LOG.debug(String.format("what is the filePath %s", filePath));
     } else {
       return;
     }
@@ -115,16 +85,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //    this.stage.setScene(previousScene);
   }
 
-  public String getMyStageTitle() {
-    return myStageTitle;
-  }
 
-  public Scene getMyScene() {
-    return myScene;
-  }
-
-  public LoaderListDisplay getLoaderListDisplay() {
-    return loaderListDisplay;
-  }
 
 }
