@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.DataFactory;
 import oogasalad.model.data.Properties;
@@ -113,6 +114,20 @@ class DataFactoryTest {
         addDataFileExtension(Paths.get("data", TEST_DATA_DIRECTORY, dataFilePath).toString()),
         exception.getFilePath());
     assertEquals(BadProperties.class.toString(), exception.getClassName());
+  }
+
+  @Test
+  void invalidParse() throws IOException {
+    String dataFilePath = "filledPropertiesTest";
+    deleteFile(dataFilePath);
+    save(dataFilePath, filledProperties);
+    Properties loaded = load(dataFilePath);
+
+    BadValueParseException exception =
+        assertThrows(BadValueParseException.class, () -> loaded.getInteger("key1"));
+    assertEquals("Integer", exception.getParseType());
+    assertEquals("val1", exception.getBadValue());
+    assertThrows(BadValueParseException.class, () -> loaded.getBoolean("key1"));
   }
 
   void save(String dataFilePath, MockProperties properties) throws IOException {
