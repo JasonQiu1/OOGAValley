@@ -116,6 +116,7 @@ public class Tile implements Updatable, Interactable {
       collectable =
           (Collectable) factory.createNewGameObject(defaultCollectableID, lastUpdatingGameTime,
              structure.getItemsOnDestruction());
+      structure = null;
     }
     else {
       structure.interact(item);

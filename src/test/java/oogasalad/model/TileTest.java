@@ -166,6 +166,7 @@ public class TileTest extends BaseGameObjectTest {
     tileToTest.interact(new Item("validItem"));
     Map<String, Integer> collectableItems = new HashMap<>();
     collectableItems.put("seed", 2);
+    assertNull(tileToTest.getStructureId());
     tileToTest.interact(new Item("validItem"));
     Map<String, Integer> itemReturns = tileToTest.itemReturns();
     assertEquals(collectableItems, itemReturns);
