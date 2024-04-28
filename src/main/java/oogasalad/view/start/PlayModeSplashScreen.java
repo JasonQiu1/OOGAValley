@@ -60,7 +60,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   public void makeChooser() {
 
     LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
-        DEFAULT_SAVES_FOLDER);
+        textResource.getString("loader"), DEFAULT_SAVES_FOLDER);
 
     Optional<File> file = loaderListDisplay.open();
 

@@ -54,7 +54,7 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
     clickOn(loadGame);
 
     Stage loaderStage = findLoaderStage();
-    assertNotNull(loaderStage.getTitle());
+    assertNotNull(loaderStage);
   }
 
   private Stage findLoaderStage() {

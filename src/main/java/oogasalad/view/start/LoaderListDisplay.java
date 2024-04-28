@@ -23,15 +23,18 @@ public class LoaderListDisplay {
   private final ResourceBundle propertiesBundle;
   private Stage myStage;
   private ListView<String> listView;
+  private final String myTitle;
 
-  public LoaderListDisplay(Stage mainStage, String language, String defaultFolderPath) {
+  public LoaderListDisplay(Stage mainStage, String language, String title, String defaultFolderPath) {
     primaryStage = mainStage;
     propertiesBundle = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
     defaultDirectoryPath = defaultFolderPath;
+    myTitle = title;
   }
 
   public Optional<File> open() {
     myStage = new Stage();
+    myStage.setTitle(myTitle);
 
     listView = new ListView<>();
     listView.getStyleClass().add("list_view");
