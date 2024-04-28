@@ -24,6 +24,10 @@ public class GameObjectCreatorAdapter extends TypeAdapter<GameObjectCreator> {
 
   @Override
   public GameObjectCreator read(JsonReader in) throws IOException {
-    return interfaceAdapter.read(in, gson);
+    try {
+      return interfaceAdapter.read(in, gson);
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    }
   }
 }

@@ -37,6 +37,10 @@ public class ReadOnlyItemAdapter extends TypeAdapter<ReadOnlyItem> {
       in.nextNull(); // Consume the null token
       return null; // Return null to represent absence of an object
     }
-    return interfaceAdapter.read(in, gson);
+    try {
+      return interfaceAdapter.read(in, gson);
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    }
   }
 }

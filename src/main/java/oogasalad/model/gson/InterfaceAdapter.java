@@ -19,12 +19,17 @@ public class InterfaceAdapter<T> {
     out.endObject();
   }
 
-  public T read(JsonReader in, Gson gson) throws IOException {
+  public T read(JsonReader in, Gson gson) throws IOException, ClassNotFoundException {
     in.beginObject();
     T value = null;
     while (in.hasNext()) {
       String name = in.nextName();
-      if ("type".equals(name)) {
+      if("data".equals(name)){
+        String data = in.nextString();
+        String type = in.nextName();
+        String className = in.nextString();
+        value = (T) gson.fromJson(data, Class.forName(className));
+      } else if ("type".equals(name)) {
         String className = in.nextString();
         try {
           Class<?> clazz = Class.forName(className);
