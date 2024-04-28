@@ -2,6 +2,7 @@ package oogasalad.view.start;
 
 import java.io.File;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,24 +19,22 @@ public class LoaderListDisplay {
 
   private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
 
-  private final String myTitle;
+  private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.LoaderListDisplay.";
   private final String defaultDirectoryPath;
-  private final VBox vBox;
   private File selectedFile;
   private Stage primaryStage;
+  private ResourceBundle propertiesBundle;
   private Stage myStage;
   private ListView<String> listView;
 
-  public LoaderListDisplay(Stage mainStage, String title, String defaultFolderPath) {
+  public LoaderListDisplay(Stage mainStage, String language, String defaultFolderPath) {
     primaryStage = mainStage;
-    vBox = new VBox();
+    propertiesBundle = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
     defaultDirectoryPath = defaultFolderPath;
-    myTitle = title;
   }
 
   public Optional<File> open() {
     myStage = new Stage();
-    myStage.setTitle(myTitle);
 
     listView = new ListView<>();
     listView.getStyleClass().add("list_view");
@@ -50,11 +49,11 @@ public class LoaderListDisplay {
       }
     }
 
-    Button selectButton = new Button("Load");
+    Button selectButton = new Button(propertiesBundle.getString("load"));
     selectButton.getStyleClass().add("load");
     selectButton.setOnAction(event -> selectFile(listView));
 
-    Button exitButton = new Button ("Close");
+    Button exitButton = new Button (propertiesBundle.getString("close"));
     exitButton.setOnAction(event -> myStage.close());
 
     HBox hBox = new HBox(selectButton, exitButton);
