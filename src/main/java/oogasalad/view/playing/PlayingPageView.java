@@ -47,36 +47,28 @@ public class PlayingPageView {
 
   private int windowWidth;
 
-  public void setWindowWidth(int windowWidth) {
-    this.windowWidth = windowWidth;
-  }
-
-  public void setWindowHeight(int windowHeight) {
-    this.windowHeight = windowHeight;
-  }
-
   private int windowHeight;
 
-  public static double landCellWidth;
-  public static double landCellHeight;
-  public static double bottomCellWidth;
-  public static double bottomCellHeight;
-  public static double bottomBoxWidth;
-  public static double bottomBoxHeight;
-  public static int landNumRows;
-  public static int landNumCols;
-  public static double topHeight;
-  public static double topWidth;
-  public static double bottomHeight;
-  public static double bottomWidth;
-  public static double padding;
-  public static double leftRightWidth;
-  public static double topButtonWidth;
-  public static double topButtonHeight;
-  public static double topFontSize;
-  public static double landGridPaneWidth = landCellWidth * landNumCols;
-  public static double landGridPaneHeight = landCellHeight * landNumRows;
-  public static double leftRightHeight;
+  private double landCellWidth;
+  private double landCellHeight;
+  private double bottomCellWidth;
+  private double bottomCellHeight;
+  private double bottomBoxWidth;
+  private double bottomBoxHeight;
+  private int landNumRows;
+  private int landNumCols;
+  private double topHeight;
+  private double topWidth;
+  private double bottomHeight;
+  private double bottomWidth;
+  private double padding;
+  private double leftRightWidth;
+  private double topButtonWidth;
+  private double topButtonHeight;
+  private double topFontSize;
+  private double landGridPaneWidth;
+  private double landGridPaneHeight;
+  private double leftRightHeight;
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/playing/";
   private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
@@ -133,7 +125,8 @@ public class PlayingPageView {
     this.windowHeight = windowHeight;
     initSize();
   }
-  private void initSize(){
+
+  private void initSize() {
     padding = windowWidth / 100;
     landNumRows = game.getGameState().getGameWorld().getHeight();
     landNumCols = game.getGameState().getGameWorld().getWidth();
@@ -147,9 +140,6 @@ public class PlayingPageView {
     topWidth = windowWidth;
     topHeight = windowHeight - bottomHeight - landNumRows * landCellHeight;
     leftRightWidth = (windowWidth - landNumCols * landCellWidth) / 2;
-    System.out.println("leftRightWidth: " + leftRightWidth);
-    System.out.println(landNumCols * landCellWidth);
-    System.out.println(windowWidth);
     bottomWidth = windowWidth;
     landGridPaneWidth = landCellWidth * landNumCols;
     landGridPaneHeight = landCellHeight * landNumRows;
@@ -216,9 +206,10 @@ public class PlayingPageView {
   }
 
   private void initModel() {
-    bagView = new BagView(game, 10);
+    bagView = new BagView(game, 10, bottomCellWidth,
+        bottomCellHeight,bottomBoxWidth, bottomBoxHeight);
     topAnimationView = new TopAnimationView(bagView, windowWidth, windowHeight);
-    landView = new LandView(game);
+    landView = new LandView(game, landGridPaneWidth, landGridPaneHeight);
   }
 
   private void setUpdate() {
@@ -246,7 +237,7 @@ public class PlayingPageView {
   }
 
   private void updateTimeLabel() {
-    timeLabel.setText(""+game.getGameState().getGameTime());
+    timeLabel.setText("" + game.getGameState().getGameTime());
   }
 
   private void setupTop(BorderPane root) {
@@ -333,6 +324,7 @@ public class PlayingPageView {
     LoginView loginView = new LoginView(game);
     loginView.start(new Stage());
   }
+
   private void setButtonSize(Button button, double width, double height, double fontSize) {
     button.setPrefWidth(width);
     button.setPrefHeight(height);
@@ -340,8 +332,14 @@ public class PlayingPageView {
   }
 
 
-
   public StackPane getRoot() {
     return root;
+  }
+  public void setWindowWidth(int windowWidth) {
+    this.windowWidth = windowWidth;
+  }
+
+  public void setWindowHeight(int windowHeight) {
+    this.windowHeight = windowHeight;
   }
 }

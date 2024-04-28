@@ -22,13 +22,14 @@ public class LandView {
   private static final Logger LOG = LogManager.getLogger(LandView.class);
 
 
-  public LandView(GameInterface game) {
+  public LandView(GameInterface game, double landGridPaneWidth, double landGridPaneHeight) {
     this.readOnlyGameWorld = game.getGameState().getGameWorld();
     this.game = game;
     piles = new Pile[readOnlyGameWorld.getHeight()][readOnlyGameWorld.getWidth()];
     for (int i = 0; i < piles.length; i++) {
       for (int j = 0; j < piles[0].length; j++) {
-        piles[i][j] = new Pile(i, j, this);
+        piles[i][j] = new Pile(i, j, this,landGridPaneWidth, landGridPaneHeight,
+            piles.length, piles[0].length);
         landGridPane.add(piles[i][j], j, i);
       }
     }

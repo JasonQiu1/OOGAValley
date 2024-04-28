@@ -22,11 +22,20 @@ public class Pile extends StackPane {
   private final List<String> landImagePath = new ArrayList<>();
 
   private final Logger LOG = LogManager.getLogger(Pile.class);
+  private final double landGridPaneWidth;
+  private final double landGridPaneHeight;
+  private final int landNumRows;
+  private final int landNumCols;
 
-  public Pile(int x, int y, LandView landView) {
+  public Pile(int x, int y, LandView landView, double landGridPaneWidth, double landGridPaneHeight,
+      int landNumRows, int landNumCols){
     super();
-    double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
-    double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
+    double height = landGridPaneHeight / landNumRows;
+    double width = landGridPaneWidth / landNumCols;
+    this.landGridPaneWidth = landGridPaneWidth;
+    this.landGridPaneHeight = landGridPaneHeight;
+    this.landNumRows = landNumRows;
+    this.landNumCols = landNumCols;
     for (int i = 0; i < 3; i++) {
       landImagePath.add(null);
       Rectangle rectangle = new Rectangle(width, height);
@@ -73,8 +82,8 @@ public class Pile extends StackPane {
       this.getChildren().set(index, placeholder);
       return;
     }
-    double height = PlayingPageView.landGridPaneHeight / PlayingPageView.landNumRows;
-    double width = PlayingPageView.landGridPaneWidth / PlayingPageView.landNumCols;
+    double height = landGridPaneHeight / landNumRows;
+    double width = landGridPaneWidth / landNumCols;
     ImageView imageView = new ImageView();
     Image image = new Image("file:data/images/" + url, width, height, false, true);
     imageView.setImage(image);

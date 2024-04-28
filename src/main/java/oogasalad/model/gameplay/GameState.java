@@ -40,7 +40,7 @@ public class GameState implements ReadOnlyGameState {
   public GameState(ReadOnlyProperties properties) {
     this.bag = new Bag();
     this.gameWorld =
-        new BuildableTileMap(PlayingPageView.landNumRows, PlayingPageView.landNumCols, 1);
+        new BuildableTileMap(10, 15, 1);
     this.gameTime = new GameTime(1, 8, 0);
     this.maxEnergy = properties.getInteger("energyAmount");
     try {
