@@ -61,15 +61,15 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
         textResource.getString("loader"));
 
-    File[] saveFile = loaderListDisplay.open();
+    File[] fileArray = loaderListDisplay.open();
 
     String saveFilePath;
     String configFilePath;
-    if (saveFile[0] == null || saveFile[1] == null) {
+    if (fileArray[0] == null || fileArray[1] == null) {
       return;
     } else {
-      saveFilePath = saveFile[0].getName();
-      configFilePath = saveFile[1].getName();
+      saveFilePath = fileArray[0].getName();
+      configFilePath = fileArray[1].getName();
     }
 //    if (file.isPresent()) {
 //      filePath = file.get().getName();
