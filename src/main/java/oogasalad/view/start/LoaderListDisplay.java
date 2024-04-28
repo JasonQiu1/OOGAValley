@@ -32,26 +32,41 @@ public class LoaderListDisplay {
   private Stage myStage;
   private ListView<String> saveView;
   private ListView<String> configView;
-  private final String myTitle;
 
   public LoaderListDisplay(Stage mainStage, String language, String title) {
     primaryStage = mainStage;
     propertiesBundle = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
-    myTitle = title;
+    myStage = new Stage();
+    myStage.setTitle(title);
   }
 
   public File[] open() {
-    myStage = new Stage();
-    myStage.setTitle(myTitle);
 
-    saveView = returnItemListView(DEFAULT_SAVES_FOLDER);
-    configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
-
-    VBox saveBox = new VBox(new Label("Save Files"), saveView);
-    VBox configBox = new VBox(new Label("Config Files"), configView);
+    VBox saveBox = viewBoxMaker(DEFAULT_SAVES_FOLDER, saveView, "Save Files");
+    VBox configBox = viewBoxMaker(DEFAULT_CONFIG_FOLDER, configView, "Config Files");
 
     HBox fileLists = new HBox(saveBox, configBox);
 
+
+    setupBottom(fileLists);
+
+    File[] files = {selectedSaveFile, selectedConfigFile};
+    return Arrays.copyOf(files, files.length);
+
+  }
+
+  public File openConfig() {
+    HBox fileList = new HBox(viewBoxMaker(DEFAULT_CONFIG_FOLDER, configView, "Config Files"));
+    setupBottom(fileList);
+    return selectedSaveFile;
+  }
+
+  private VBox viewBoxMaker (String path, ListView<String> view, String title) {
+    view = returnItemListView(path);
+    return new VBox(new Label(title), view);
+  }
+
+  private void setupBottom(HBox fileLists) {
     Button selectButton = new Button(propertiesBundle.getString("load"));
     selectButton.getStyleClass().add("load");
     selectButton.setOnAction(event -> selectSaveAndConfigFiles(saveView, configView));
@@ -76,11 +91,6 @@ public class LoaderListDisplay {
 
     myStage.setScene(scene);
     myStage.showAndWait();
-
-
-    File[] files = {selectedSaveFile, selectedConfigFile};
-    return Arrays.copyOf(files, files.length);
-
   }
 
   private void selectSaveAndConfigFiles(ListView<String> saveList, ListView<String> configList) {
