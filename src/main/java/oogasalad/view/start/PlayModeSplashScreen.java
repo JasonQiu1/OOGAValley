@@ -28,8 +28,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private ResourceBundle buttonResource;
   private ResourceBundle textResource;
 
-  public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene,
-      GameConfiguration gameConfiguration) {
+  public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene) {
     super();
     stage = stageToUse;
     primaryLanguage = language;
@@ -60,19 +59,26 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   public void makeChooser() {
 
     LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
-        textResource.getString("loader"), DEFAULT_SAVES_FOLDER);
+        textResource.getString("loader"));
 
-    Optional<File> file = loaderListDisplay.open();
+    File[] saveFile = loaderListDisplay.open();
 
-    String filePath;
-    if (file.isPresent()) {
-      filePath = file.get().getName();
-    } else {
+    String saveFilePath;
+    String configFilePath;
+    if (saveFile[0] == null || saveFile[1] == null) {
       return;
+    } else {
+      saveFilePath = saveFile[0].getName();
+      configFilePath = saveFile[1].getName();
     }
-    LOG.info(filePath);
+//    if (file.isPresent()) {
+//      filePath = file.get().getName();
+//    } else {
+//      return;
+//    }
+
     try {
-      new PlayingPageView(stage, primaryLanguage, filePath).start();
+      new PlayingPageView(stage, primaryLanguage, saveFilePath, configFilePath).start();
     } catch (IOException exception) {
       new Alert(AlertType.ERROR, textResource.getString("load_file_error")).showAndWait();
     }
@@ -83,7 +89,7 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //    Stage news = new Stage();
 //    news.setScene(previousScene);
 //    news.show();
-    new StartScreen(stage, primaryLanguage, null, new GameConfiguration()).open();
+    new StartScreen(stage, primaryLanguage, null).open();
 //    this.stage.setScene(previousScene);
   }
 

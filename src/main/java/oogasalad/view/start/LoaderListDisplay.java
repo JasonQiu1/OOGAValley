@@ -1,57 +1,60 @@
 package oogasalad.view.start;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import oogasalad.view.playing.PlayingPageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class LoaderListDisplay {
 
-
+  private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.LoaderListDisplay.";
-  private final String defaultDirectoryPath;
-  private File selectedFile;
+  private static final String DEFAULT_CONFIG_FOLDER = "data/gameconfigurations";
+  private static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
+  private File selectedSaveFile;
+  private File selectedConfigFile;
   private final Stage primaryStage;
   private final ResourceBundle propertiesBundle;
   private Stage myStage;
-  private ListView<String> listView;
+  private ListView<String> saveView;
+  private ListView<String> configView;
   private final String myTitle;
 
-  public LoaderListDisplay(Stage mainStage, String language, String title, String defaultFolderPath) {
+  public LoaderListDisplay(Stage mainStage, String language, String title) {
     primaryStage = mainStage;
     propertiesBundle = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
-    defaultDirectoryPath = defaultFolderPath;
     myTitle = title;
   }
 
-  public Optional<File> open() {
+  public File[] open() {
     myStage = new Stage();
     myStage.setTitle(myTitle);
 
-    listView = new ListView<>();
-    listView.getStyleClass().add("list_view");
-    listView.setId("list_view");
+    saveView = returnItemListView(DEFAULT_SAVES_FOLDER);
+    configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
 
-    File directory = new File(defaultDirectoryPath);
-    File[] files = directory.listFiles();
+    VBox saveBox = new VBox(new Label("Save Files"), saveView);
+    VBox configBox = new VBox(new Label("Config Files"), configView);
 
-    if (files != null) {
-      for (File file : files) {
-        listView.getItems().add(file.getName());
-      }
-    }
+    HBox fileLists = new HBox(saveBox, configBox);
 
     Button selectButton = new Button(propertiesBundle.getString("load"));
     selectButton.getStyleClass().add("load");
-    selectButton.setOnAction(event -> selectFile(listView));
+    selectButton.setOnAction(event -> selectSaveAndConfigFiles(saveView, configView));
 
     Button exitButton = new Button(propertiesBundle.getString("close"));
     exitButton.setOnAction(event -> myStage.close());
@@ -59,7 +62,7 @@ public class LoaderListDisplay {
     HBox hBox = new HBox(selectButton, exitButton);
     hBox.setAlignment(Pos.CENTER);
 
-    VBox vBox = new VBox(listView, hBox);
+    VBox vBox = new VBox(fileLists, hBox);
     vBox.setId("loader_vBox");
 
     vBox.setPrefSize(400, 400);
@@ -74,17 +77,51 @@ public class LoaderListDisplay {
     myStage.setScene(scene);
     myStage.showAndWait();
 
-    return Optional.ofNullable(selectedFile);
+
+    File[] files = {selectedSaveFile, selectedConfigFile};
+    return Arrays.copyOf(files, files.length);
+
   }
 
-  private void selectFile(ListView<String> listView) {
-    String selectedFileName = listView.getSelectionModel().getSelectedItem();
-    if (selectedFileName != null) {
-      selectedFile = new File(defaultDirectoryPath + "/" + selectedFileName);
+  private void selectSaveAndConfigFiles(ListView<String> saveList, ListView<String> configList) {
+    selectedSaveFile = selectFile(DEFAULT_SAVES_FOLDER, saveList);
+    selectedConfigFile = selectFile(DEFAULT_CONFIG_FOLDER, configList);
 
-      Stage stage = (Stage) listView.getScene().getWindow();
-      stage.close();
+    LOG.debug(selectedConfigFile);
+    LOG.debug(selectedSaveFile);
+
+    Stage stage = (Stage) saveList.getScene().getWindow();
+    stage.close();
+
+  }
+  private File selectFile(String defaultDirectoryPath, ListView<String> listView) {
+    String selectedFileName = listView.getSelectionModel().getSelectedItem();
+
+    if (selectedFileName != null) {
+       return new File(defaultDirectoryPath + "/" + selectedFileName);
+//      Stage stage = (Stage) listView.getScene().getWindow();
+//      stage.close();
     }
+
+    return null;
+  }
+
+  // TODO: update the tests for this
+  private ListView<String> returnItemListView(String directoyPath) {
+    ListView<String> listView = new ListView<String>();
+    listView.getStyleClass().add("list_view");
+    listView.setId("list_view");
+
+    File directory = new File(directoyPath);
+    File[] files = directory.listFiles();
+
+    if (files != null) {
+      for (File file : files) {
+        listView.getItems().add(file.getName());
+      }
+    }
+
+    return listView;
   }
 
 
