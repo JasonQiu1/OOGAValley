@@ -16,7 +16,8 @@
     // If true, then the object should expire "lifeDuration" time after the object was placed.
     // If "expireTransformation" is non-null, then the object transforms into "GAME_OBJECT" when
     "expirable": true,
-    "expireTime": 120,
+    // expires after a day
+    "expireTime": 1440,
     // or null
     "expireTransformation": ""
   },

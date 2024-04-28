@@ -10,20 +10,24 @@
     // This is filename of the image which the view will use to display this object.
     // The file must exist in the `data/images` directory.
     "image": "wheat.png",
-
     "updatable": false,
     "updateTime": 0,
-    "updateTransformation":  "",
+    "updateTransformation": "",
     // If true, then the object should expire "lifeDuration" time after the object was placed.
     // If "expireTransformation" is non-null, then the object transforms into "GAME_OBJECT" when
     "expirable": true,
     "expireTime": 120,
     // or null
     "expireTransformation": "",
-    // STRUCTURE ONLY
+    // if true, then can be destroyed by an interaction
     "destructable": true
   },
-  "listProperties": {},
+  "listProperties": {
+    // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+    "destructableTools": [
+      "Scythe"
+    ]
+  },
   "mapProperties": {
     /*
         *  Maps an item usage to transform the object into a different object.
@@ -37,19 +41,6 @@
     */
     "interactDropMultipliers": {
     },
-    /*
-    *  If interacted with by an item in "interactDrops", then drop the corresponding entry's items.
-    *  Otherwise drop "defaultDrops".
-    */
-    /* CURRENTLY NOT SUPPORTED
-    * "interactDrops": {
-    *   "pocket_watch": [
-    *   "time_dust",
-    *   "OBJECT_NAME"
-    *  ]
-    * },
-    */
-
     // STRUCTURE ONLY
     "dropsOnDestruction": {
       "Wheat Seeds": 4,

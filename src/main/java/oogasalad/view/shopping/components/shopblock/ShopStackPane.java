@@ -49,8 +49,9 @@ public class ShopStackPane extends ItemStackPane<BuyGridPane> {
 
   @Override
   protected PageChangeBorderPane createPageChangeBorderPane(
-      List<? extends GridPane> gridPanes) {
-    return new BuyPageChangeBorderPane((List<BuyGridPane>) gridPanes);
+      List<? extends GridPane> gridPanes, ItemStackPane itemStackPane) {
+    return new BuyPageChangeBorderPane((List<BuyGridPane>) gridPanes,
+        (ShopStackPane) itemStackPane);
   }
 
   @Override

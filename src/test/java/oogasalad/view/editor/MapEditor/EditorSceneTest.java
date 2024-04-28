@@ -44,13 +44,11 @@ public class EditorSceneTest extends DukeApplicationTest {
   @Test
   @DisplayName("Test CellInfoPane Info")
   public void testCellInfoPaneInfo() {
-    String wheatSeeds = "Wheat Seeds";
-    sleep(500);
-    clickOn(wheatSeeds);
+    String contents = "Dirt, Wheat";
     sleep(100);
     clickOn(cell);
     sleep(500);
-    assertTrue(cellInfoPane.getContentString().equals(wheatSeeds));
+    assertTrue(cellInfoPane.getContentString().equals(contents));
 
   }
 

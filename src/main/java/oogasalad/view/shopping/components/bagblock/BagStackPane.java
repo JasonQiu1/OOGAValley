@@ -50,8 +50,8 @@ public class BagStackPane extends ItemStackPane<BagGridPane> {
 
   @Override
   protected PageChangeBorderPane createPageChangeBorderPane(
-      List<? extends GridPane> gridPanes) {
-    return new BagPageChangeBorderPane((List<BagGridPane>) gridPanes);
+      List<? extends GridPane> gridPanes, ItemStackPane itemStackPane) {
+    return new BagPageChangeBorderPane((List<BagGridPane>) gridPanes, (BagStackPane) itemStackPane);
   }
 
   @Override

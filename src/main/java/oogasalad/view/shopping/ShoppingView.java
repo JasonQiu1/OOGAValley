@@ -12,7 +12,8 @@ public class ShoppingView extends BranchBase {
 
   private final ShoppingViewStackPane root;
 
-  public ShoppingView(GameInterface game, Stage stage, Scene previousScene, PlayingPageView playingPageView) {
+  public ShoppingView(GameInterface game, Stage stage, Scene previousScene,
+      PlayingPageView playingPageView) {
     super(stage, previousScene);
 
     root = new ShoppingViewStackPane(game, getStage(), getPreviousScene(), playingPageView);

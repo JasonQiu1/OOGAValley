@@ -1,5 +1,6 @@
 package oogasalad.model.gameobject;
 
+import java.util.List;
 import java.util.Map;
 import oogasalad.model.api.ReadOnlyGameTime;
 import oogasalad.model.api.ReadOnlyItem;
@@ -40,6 +41,18 @@ public class Structure extends GameObject implements StructureObject {
   }
 
   /**
+   * Returns whether or not the structure is destructable with the given tool.
+   *
+   * @param id the id of the item.
+   * @return true if the structure can be destroyed by the given tool, otherwise false.
+   */
+  @Override
+  public boolean destructableBy(String id) {
+    List<String> destructableItems = getProperties().getStringList("destructableTools");
+    return destructableItems.isEmpty() || destructableItems.contains(id);
+  }
+
+  /**
    * Checks if the structure is harvestable. Structures can be considered harvestable based on their
    * current state and specific properties, which might enable players to collect resources or items
    * from them.
@@ -60,6 +73,6 @@ public class Structure extends GameObject implements StructureObject {
    */
   @Override
   public boolean interactionValid(ReadOnlyItem item) {
-    return super.interactionValid(item) || isHarvestable();
+    return super.interactionValid(item) || (isHarvestable() && destructableBy(item.getName()));
   }
 }
