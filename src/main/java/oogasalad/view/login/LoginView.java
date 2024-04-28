@@ -24,6 +24,7 @@ public class LoginView extends Application {
   private VBox vbox;
 
   public LoginView(GameInterface game) {
+    super();
     this.game = game;
   }
 

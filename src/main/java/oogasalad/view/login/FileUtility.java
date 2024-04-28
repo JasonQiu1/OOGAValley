@@ -13,13 +13,14 @@ public class FileUtility {
   private static final String GAME_SAVES_DIRECTORY = "data/gamesaves/";
   private static final String GAME_CONFIGURATIONS_DIRECTORY = "data/gameconfigurations/";
   private static final String CONFIGURABLE_STORES_DIRECTORY = "data/configurablestores/";
+  private static final String JSON_EXTENSION = ".json";
 
   public static void saveJsonToFile(int id, String gameSaveJson, String gameConfigJson,
       String storeJson) throws IOException {
     System.out.println("Saving game with id: " + id);
-    writeToFile(GAME_SAVES_DIRECTORY, "" + id + ".json", gameSaveJson);
-    writeToFile(GAME_CONFIGURATIONS_DIRECTORY, "" + id + ".json", gameConfigJson);
-    writeToFile(CONFIGURABLE_STORES_DIRECTORY, "" + id + ".json", storeJson);
+    writeToFile(GAME_SAVES_DIRECTORY, "" + id + JSON_EXTENSION, gameSaveJson);
+    writeToFile(GAME_CONFIGURATIONS_DIRECTORY, "" + id + JSON_EXTENSION, gameConfigJson);
+    writeToFile(CONFIGURABLE_STORES_DIRECTORY, "" + id + JSON_EXTENSION, storeJson);
   }
 
   private static void writeToFile(String directoryPath, String fileName, String jsonContent)
@@ -33,11 +34,11 @@ public class FileUtility {
 
   public static String[] readFileAsString(int id) throws IOException {
     String[] result = new String[3];
-    result[0] = new String(Files.readAllBytes(Paths.get(GAME_SAVES_DIRECTORY + id + ".json")));
+    result[0] = new String(Files.readAllBytes(Paths.get(GAME_SAVES_DIRECTORY + id + JSON_EXTENSION)));
     result[1] = new String(
-        Files.readAllBytes(Paths.get(GAME_CONFIGURATIONS_DIRECTORY + id + ".json")));
+        Files.readAllBytes(Paths.get(GAME_CONFIGURATIONS_DIRECTORY + id + JSON_EXTENSION)));
     result[2] = new String(
-        Files.readAllBytes(Paths.get(CONFIGURABLE_STORES_DIRECTORY + id + ".json")));
+        Files.readAllBytes(Paths.get(CONFIGURABLE_STORES_DIRECTORY + id + JSON_EXTENSION)));
     return result;
   }
 }
