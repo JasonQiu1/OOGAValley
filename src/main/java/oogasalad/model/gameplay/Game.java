@@ -78,8 +78,8 @@ public class Game implements GameInterface {
     ReadOnlyGameTime copyOfGameTime =
         new GameTime(currentGameTime.getDay(), currentGameTime.getHour(),
             currentGameTime.getMinute());
-    state.getEditableGameWorld().update(copyOfGameTime);
     state.addItemsToBag();
+    state.getEditableGameWorld().update(copyOfGameTime);
   }
 
   /**
@@ -113,8 +113,15 @@ public class Game implements GameInterface {
    */
   @Override
   public void interact(int x, int y, int depth) {
-    state.getSelectedItem()
-        .ifPresent((ReadOnlyItem item) -> state.getEditableGameWorld().interact(item, x, y, depth));
+    if (state.getSelectedItem().isEmpty()) {
+      return;
+    }
+    ReadOnlyItem selectedItem = state.getSelectedItem().get();
+    if (state.getEditableGameWorld().interact(selectedItem, x, y, depth)
+        && GameConfiguration.getConfigurablesStore()
+        .getConfigurableProperties(selectedItem.getName()).getBoolean("consumable")) {
+      state.getEditableBag().removeItem(selectedItem.getName(), 1);
+    }
   }
 
   /**
@@ -125,7 +132,8 @@ public class Game implements GameInterface {
     try {
       state.getEditableGameTime().advanceTo(configuration.getRules().getInteger("wakeHour"), 0);
     } catch (KeyNotFoundException | BadValueParseException e) {
-      LOG.error("Configuration file doesn't contain `wakeHour` key to decide when to wake up after sleeping.");
+      LOG.error("Configuration file doesn't contain `wakeHour` key to decide when to wake up after "
+          + "sleeping.");
       throw new RuntimeException(e);
     }
     state.restoreEnergy(Integer.MAX_VALUE);
