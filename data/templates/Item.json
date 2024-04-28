@@ -4,8 +4,15 @@
     "name": "Wheat Seeds",
     "type": "Item",
     "image":"wheat_seeds.png",
+    // sell price
     "worth": 10,
-    "consumable": true
+    // deducts an item from the inventory after being used
+    "consumable": true,
+    // amount to change energy after a successful interaction or use
+    // if not enough energy when energyChange is negative, then don't interact
+    "energyChange": 0,
+    // do not interact with the world, just consume and apply effects
+    "edible": false
   },
   "listProperties": {},
   "mapProperties": {}

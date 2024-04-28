@@ -1,15 +1,16 @@
 {
   "properties": {
-    "name": "Wheat Bundle",
+    "name": "Cake",
     "type": "Item",
-    "image": "wheat_item.png",
-    "worth": 25,
-    "consumable": false,
+    "image": "cake.png",
+    // sell price
+    "worth": 100,
+    // deducts an item from the inventory after being used
+    "consumable": true,
     // amount to change energy after a successful interaction or use
-    // if not enough energy, then don't interact
-    "energyChange": 0,
+    "energyChange": 100,
     // do not interact with the world, just consume and apply effects
-    "edible": false
+    "edible": true
   },
   "listProperties": {},
   "mapProperties": {}

@@ -45,12 +45,24 @@ public class Item implements ReadOnlyItem {
     return getItemProperties().getString("image");
   }
 
+  public double getEnergyChange() {
+    return getItemProperties().getDouble("energyChange");
+  }
+
+  public boolean isEdible() {
+    return getItemProperties().getBoolean("edible");
+  }
+
+  public boolean isConsumable() {
+    return getItemProperties().getBoolean("consumable");
+  }
+
   /**
    * Method to get the read only properties of the Item.
    *
    * @return properties The read only properties of relevant to specific Item stored here.
    */
-  private ReadOnlyProperties getItemProperties() {
+  public ReadOnlyProperties getItemProperties() {
     return GameConfiguration.getConfigurablesStore().getConfigurableProperties(itemId);
   }
 
