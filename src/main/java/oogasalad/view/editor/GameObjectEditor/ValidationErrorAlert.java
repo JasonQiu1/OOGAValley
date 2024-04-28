@@ -1,4 +1,4 @@
-package oogasalad.view.editor.RuleEditor;
+package oogasalad.view.editor.GameObjectEditor;
 
 import javafx.scene.control.Alert;
 
