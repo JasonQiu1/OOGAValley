@@ -7,6 +7,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import oogasalad.controller.MapController;
+import oogasalad.model.api.exception.InvalidGameObjectType;
+import oogasalad.view.editor.RuleEditor.AllRuleDisplay;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -22,6 +26,7 @@ public class Cell extends StackPane {
   private int column;
   private int row;
   private int[] id;
+  private static final Logger LOG = LogManager.getLogger(AllRuleDisplay.class);
 
   public static void setGameMap(MapController map){
     gameMap = map;
@@ -44,7 +49,12 @@ public class Cell extends StackPane {
           gameMap.removeTileTop(column, row, 0);
         }
       } else if (ts.getLastSelectedSelectable() != null) {
-        gameMap.setTileGameObject(ts.getLastSelectedSelectable(), column, row, 0);
+        try {
+          gameMap.setTileGameObject(ts.getLastSelectedSelectable(), column, row, 0);
+        } catch (InvalidGameObjectType e){
+           LOG.error("Cannot Place on map type: " + e.getType());
+           new CannotPlaceOnMap(e.getType());
+        }
       }
       fill();
       setDisplayPanel(cip);

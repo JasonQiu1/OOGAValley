@@ -73,7 +73,7 @@ public class GameObjectFactory {
     String type = properties.getString("type").toLowerCase();
     GameObjectCreator creator = creators.get(type);
     if (creator == null) {
-      throw new InvalidGameObjectType("Could not create a gameObject of type: " + type);
+      throw new InvalidGameObjectType("Could not create a gameObject of type: " + type, type);
     }
     return creator.create(id, creationTime, additionalParams);
   }
