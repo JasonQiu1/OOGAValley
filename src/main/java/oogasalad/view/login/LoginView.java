@@ -17,7 +17,7 @@ import oogasalad.model.api.GameInterface;
 
 public class LoginView extends Application {
 
-  private GameInterface game;
+  private final GameInterface game;
   private Label helloLabel;
   private Scene loginScene;
   private VBox vbox;
@@ -40,7 +40,11 @@ public class LoginView extends Application {
       goBackButton.setOnAction(event -> {
         GameFileOperations gameFileOperations = new GameFileOperations(primaryStage,
             loginScene, userId, game);
-        primaryStage.setScene(gameFileOperations.createScene());
+        try {
+          primaryStage.setScene(gameFileOperations.createScene());
+        } catch (Exception e) {
+          throw new RuntimeException(e);
+        }
         primaryStage.show();
       });
       vbox.getChildren().add(goBackButton);
@@ -54,7 +58,11 @@ public class LoginView extends Application {
     loginButton.setId("loginButton");
     loginButton.setOnAction(event -> {
       Login login = new Login(primaryStage, primaryStage.getScene(), game);
-      primaryStage.setScene(new Scene(login.getScene()));
+      try {
+        primaryStage.setScene(login.createSceneFromConfig());
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
       primaryStage.show();
       login.setOnLoginSuccess((username, id) -> {
         helloLabel.setText("Welcome " + username + "!");

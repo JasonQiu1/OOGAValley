@@ -17,8 +17,10 @@ import javafx.stage.Stage;
 import oogasalad.database.InfoService;
 import oogasalad.database.Thought;
 import oogasalad.view.branch.BranchBase;
+
 /**
  * This class is responsible for displaying the thoughts view for the game.
+ * Do not have to refactor this class.
  */
 
 public class ThoughtsView extends BranchBase {
@@ -28,7 +30,7 @@ public class ThoughtsView extends BranchBase {
     super(stage, previousScene);
   }
 
-  public Scene getScene() {
+  public Scene createScene() {
     VBox thoughtBox = new VBox();
     thoughtBox.setSpacing(10);
     thoughtBox.setPadding(new Insets(10));

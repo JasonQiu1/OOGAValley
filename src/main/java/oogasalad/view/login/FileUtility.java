@@ -4,9 +4,18 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import kong.unirest.json.JSONArray;
+import kong.unirest.json.JSONObject;
+/**
+ * Utility class for reading and writing JSON files
+ */
 public class FileUtility {
 
   private static final String GAME_SAVES_DIRECTORY = "data/gamesaves/";
@@ -40,5 +49,59 @@ public class FileUtility {
     result[2] = new String(
         Files.readAllBytes(Paths.get(CONFIGURABLE_STORES_DIRECTORY + id + JSON_EXTENSION)));
     return result;
+  }
+
+  public static Node createComponent(JSONObject comp, EventHandlerSetup eventHandlerSetup)
+      throws Exception {
+
+    String type = comp.getString("type");
+    Class<?> clazz = Class.forName("javafx.scene.control." + type);
+    Object instance = clazz.getDeclaredConstructor().newInstance();
+
+    JSONObject props = comp.getJSONObject("properties");
+    for (String key : props.keySet()) {
+      Object value = props.get(key);
+      String property = "set" + Character.toUpperCase(key.charAt(0)) + key.substring(1);
+
+      // Determine the type of the value and call the appropriate setter method
+      Method method;
+      if (value instanceof Boolean) {
+        method = clazz.getMethod(property, boolean.class);
+        method.invoke(instance, value);
+      } else if (value instanceof Integer) {
+        method = clazz.getMethod(property, int.class);
+        method.invoke(instance, value);
+      } else if (value instanceof String) {
+        method = clazz.getMethod(property, String.class);
+        method.invoke(instance, value);
+      } else {
+        throw new IllegalArgumentException("Unsupported property type: " + value.getClass());
+      }
+    }
+
+    if (comp.has("event")) {
+      String event = comp.getString("event");
+      eventHandlerSetup.setup(instance, event);
+    }
+
+    return (Node) instance;
+  }
+
+  public static Scene createScene(String path, EventHandlerSetup eventHandlerSetup)
+      throws Exception {
+    String content = new String(Files.readAllBytes(
+        Path.of(path)));
+    JSONObject json = new JSONObject(content);
+    JSONArray components = json.getJSONArray("components");
+
+    VBox vbox = Utils.createVbox();
+
+    for (int i = 0; i < components.length(); i++) {
+      JSONObject comp = components.getJSONObject(i);
+      Node node = FileUtility.createComponent(comp, eventHandlerSetup);
+      vbox.getChildren().add(node);
+    }
+
+    return new Scene(vbox);
   }
 }
