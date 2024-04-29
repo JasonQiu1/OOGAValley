@@ -299,16 +299,16 @@
       "listProperties": {},
       "mapProperties": {}
     },
-    "Gem": {
+    "COLLECTABLE": {
       "properties": {
         // PROPERTIES FOR ALL GAME OBJECTS
         // This is the id of the object and must be unique within the game configuration,
         // otherwise one will overwrite the other in an undefined way.
-        "name": "Gem",
+        "name": "COLLECTABLE",
         "type": "Collectable",
         // This is filename of the image which the view will use to display this object.
         // The file must exist in the `data/images` directory.
-        "image": "gem.png",
+        "image": "",
         "updatable": false,
         "updateTime": 0,
         "updateTransformation": "",
