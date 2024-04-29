@@ -12,7 +12,9 @@ public class AddNewObjectButton extends Button {
         AddNewObjectDialogBox anob = new AddNewObjectDialogBox();
         super.setOnAction(e -> {
             String[] newTypeAndName = anob.getNewField();
-            newObject.accept(newTypeAndName[0], newTypeAndName[1]);
+            if(newTypeAndName != null){
+                newObject.accept(newTypeAndName[0], newTypeAndName[1]);
+            }
         });
     }
 

@@ -28,13 +28,19 @@ public class GameObjectEditor extends VBox {
         gc = new GameObjectController();
         gopd = new GameObjectPropertiesDisplay(update, gc);
         super.setPadding(new Insets(0, 10, 10, 10));
-        super.getChildren().addAll(new AddNewObjectButtonContainer(new AddNewObjectButton(this::newObject)),
+        super.getChildren().addAll(new AddNewObjectButtonContainer(
+                new AddNewObjectButton(this::newObject), new RemoveObjectButton(this::removeObject)),
                 gopd);
 
     }
 
     public void newObject(String type, String name){
         gc.newObject(type, name);
+        update.run();
+    }
+
+    public void removeObject(String name){
+        gc.removeObject(name);
         update.run();
     }
 

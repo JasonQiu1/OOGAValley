@@ -72,4 +72,8 @@ public class GameObjectController extends PropertyController{
         properties.update("name", name);
         allGameObjects.put(name, properties);
     }
+
+    public void removeObject(String name) {
+        allGameObjects.remove(name);
+    }
 };
