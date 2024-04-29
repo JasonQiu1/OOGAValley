@@ -6,9 +6,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * A wrapper for the SelectableViewBox to provide additional functionality and styling.
+ */
 public class SelectableViewBoxWrapper extends VBox {
 
+  /**
+   * Constructs a SelectableViewBoxWrapper with the specified SelectableViewBox and title.
+   *
+   * @param t     The SelectableViewBox to be wrapped.
+   * @param title The title for the wrapper.
+   */
   public SelectableViewBoxWrapper(SelectableViewBox t, String title) {
     super();
     super.setAlignment(Pos.CENTER);

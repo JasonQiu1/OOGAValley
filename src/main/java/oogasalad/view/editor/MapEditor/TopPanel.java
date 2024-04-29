@@ -1,6 +1,5 @@
 package oogasalad.view.editor.MapEditor;
 
-import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +10,11 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import oogasalad.view.start.ChangePageButton;
 
+import java.util.ResourceBundle;
+
+/**
+ * Panel at the top of the map editor containing buttons and title.
+ */
 public class TopPanel extends StackPane {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.TopPanel.";
@@ -21,40 +25,40 @@ public class TopPanel extends StackPane {
   private final Stage primaryStage;
   private final Scene previousScene;
 
-
+  /**
+   * Constructs the top panel of the map editor.
+   *
+   * @param stage      The primary stage.
+   * @param backScene  The scene to go back to.
+   * @param bm         The buildable map associated with the editor.
+   */
   public TopPanel(Stage stage, Scene backScene, BuildableMap bm) {
     super();
-
     this.primaryStage = stage;
     this.previousScene = backScene;
 
     titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + titleLanguage);
     buttonResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + buttonLanguage);
 
-    Label l = new Label(titleResource.getString("map_editor")); //Resource Bundle This
+    Label l = new Label(titleResource.getString("map_editor"));
     HBox hbox = new HBox(l);
     hbox.setMinWidth(400);
     hbox.setMaxWidth(400);
     hbox.setAlignment(Pos.CENTER);
     l.getStyleClass().add("map-label");
 
-    SizeChangeButton scb =
-        new SizeChangeButton(buttonResource.getString("size_change"), (newI, newJ) -> {
-          // Show dialog to get new grid size
-          SizeChangeDialogBox dialog = new SizeChangeDialogBox();
-          int[] newSize = dialog.getNewSize();
-          if (newSize != null) {
-            // If user inputs new size, call modifyGridSize method
-            bm.modifyGridSizeBL(newSize[1], newSize[0]);
-          }
-        });
+    SizeChangeButton scb = new SizeChangeButton(buttonResource.getString("size_change"), (newI, newJ) -> {
+      SizeChangeDialogBox dialog = new SizeChangeDialogBox();
+      int[] newSize = dialog.getNewSize();
+      if (newSize != null) {
+        bm.modifyGridSizeBL(newSize[1], newSize[0]);
+      }
+    });
 
     Button backButton = new Button("Back");
     backButton.setOnAction(event -> goBack());
 
-
     HelpButton hb = new HelpButton(buttonResource.getString("help"), e -> {
-      // Show dialog to get new grid size
       HelpDialogBox dialog = new HelpDialogBox();
       dialog.show(buttonResource.getString("help"));
     });
@@ -70,6 +74,9 @@ public class TopPanel extends StackPane {
     super.getChildren().addAll(hbox, bp);
   }
 
+  /**
+   * Returns to the previous scene.
+   */
   private void goBack() {
     primaryStage.setScene(previousScene);
   }

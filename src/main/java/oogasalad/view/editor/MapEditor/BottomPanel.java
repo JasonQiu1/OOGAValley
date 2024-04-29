@@ -1,22 +1,22 @@
 package oogasalad.view.editor.MapEditor;
 
-import java.util.*;
-
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.data.GameConfiguration;
 
+import java.util.*;
+
+/**
+ * Represents the bottom panel of the map editor.
+ */
 public class BottomPanel extends TabPane {
 
-  private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.BottomPanel.";
-  private final String tabLanguage = "EnglishTabs";
-  private final String tilesLanguage = "EnglishTiles";
-  private final String natureLanguage = "EnglishNature";
-  private final String buildingsLanguage = "EnglishBuildings";
-  private final String plantsLanguage = "EnglishPlants";
-  //private final ResourceBundle tabResource;
-
+  /**
+   * Constructs a BottomPanel object.
+   *
+   * @param allConfigurables A map containing all the configurable properties.
+   */
   public BottomPanel(Map<String, ReadOnlyProperties> allConfigurables) {
     super();
     this.setId("BottomPanel");
@@ -24,8 +24,13 @@ public class BottomPanel extends TabPane {
     createTabs(mapOfSelectables);
   }
 
+  /**
+   * Creates tabs based on the map of selectables.
+   *
+   * @param mapOfSelectables The map containing the selectables.
+   */
   private void createTabs(Map<String, List<SelectableView>> mapOfSelectables) {
-    for(Map.Entry<String, List<SelectableView>> entry : mapOfSelectables.entrySet()){
+    for (Map.Entry<String, List<SelectableView>> entry : mapOfSelectables.entrySet()) {
       Tab tab = new Tab(entry.getKey());
       tab.setId(entry.getKey());
       tab.setClosable(false);
@@ -35,17 +40,21 @@ public class BottomPanel extends TabPane {
     }
   }
 
-
+  /**
+   * Constructs a map of selectables from the given map of configurable properties.
+   *
+   * @param allConfigurables A map containing all the configurable properties.
+   * @return A map containing the selectables.
+   */
   private Map<String, List<SelectableView>> getMapOfSelectables(Map<String, ReadOnlyProperties> allConfigurables) {
     Map<String, List<SelectableView>> mapOfSelectables = new TreeMap<>();
-    for(ReadOnlyProperties properties : allConfigurables.values()){
+    for (ReadOnlyProperties properties : allConfigurables.values()) {
       String type = properties.getString("type");
-      if(!mapOfSelectables.containsKey(type)){
+      if (!mapOfSelectables.containsKey(type)) {
         mapOfSelectables.put(type, new ArrayList<>());
       }
       mapOfSelectables.get(type).add(new SelectableView(properties.getString("image"), properties.getString("name")));
     }
     return mapOfSelectables;
   }
-
 }

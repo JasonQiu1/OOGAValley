@@ -7,10 +7,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import oogasalad.view.editor.MapEditor.BuildableMap;
 
+/**
+ * Represents a horizontal map extender.
+ */
 public class MapExtenderHorizontal extends MapExtenderAbstract {
 
+  /**
+   * Constructs a MapExtenderHorizontal object.
+   *
+   * @param bm             The buildable map.
+   * @param onActionAdd    The event handler for the add action.
+   * @param onActionRemove The event handler for the remove action.
+   */
   public MapExtenderHorizontal(BuildableMap bm, EventHandler<MouseEvent> onActionAdd,
-      EventHandler<MouseEvent> onActionRemove) {
+                               EventHandler<MouseEvent> onActionRemove) {
     super(onActionAdd, onActionRemove);
     getAdder().setHeight(10);
     getRemover().setHeight(10);

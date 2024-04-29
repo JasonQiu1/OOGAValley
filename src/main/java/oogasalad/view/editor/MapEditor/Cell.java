@@ -8,30 +8,43 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import oogasalad.controller.MapController;
 import oogasalad.model.api.exception.InvalidGameObjectType;
-import oogasalad.view.editor.RuleEditor.AllRuleDisplay;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a single cell in the map grid.
+ */
 public class Cell extends StackPane {
-
-  private static final int HEIGHT = 37; //read from file
+  private static final int HEIGHT = 37; // read from file
   private static final int WIDTH = 50;
   private static MapController gameMap;
   private final Rectangle base;
   private int column;
   private int row;
   private int[] id;
-  private static final Logger LOG = LogManager.getLogger(AllRuleDisplay.class);
 
-  public static void setGameMap(MapController map){
+  private static final Logger LOG = LogManager.getLogger(Cell.class);
+
+  /**
+   * Sets the game map controller.
+   *
+   * @param map The game map controller.
+   */
+  public static void setGameMap(MapController map) {
     gameMap = map;
   }
 
+  /**
+   * Constructs a cell.
+   *
+   * @param cip The cell info pane.
+   * @param i   The column index.
+   * @param j   The row index.
+   */
   public Cell(CellInfoPane cip, int i, int j) {
     super();
     setLocalId(i, j);
@@ -49,11 +62,11 @@ public class Cell extends StackPane {
           gameMap.removeTileTop(column, row, 0);
         }
       } else if (Selector.getLastSelectedSelectable() != null) {
-        try{
+        try {
           gameMap.setTileGameObject(Selector.getLastSelectedSelectable(), column, row, 0);
-        } catch (InvalidGameObjectType e){
-           LOG.error("Cannot Place on map type: " + e.getType());
-           new CannotPlaceOnMap(e.getType());
+        } catch (InvalidGameObjectType e) {
+          LOG.error("Cannot Place on map type: " + e.getType());
+          new CannotPlaceOnMap(e.getType());
         }
       }
       fill();
@@ -64,19 +77,22 @@ public class Cell extends StackPane {
       setDisplayPanel(cip);
       base.setFill(Color.GRAY);
       super.getChildren().stream().skip(1) // Skip the first element
-          .forEach(node -> node.setOpacity(0.5));
+              .forEach(node -> node.setOpacity(0.5));
     });
 
     setOnMouseExited(event -> {
       cip.clearDisplay();
       base.setFill(Color.WHITE);
       super.getChildren().stream().skip(1) // Skip the first element
-          .forEach(node -> node.setOpacity(1));
+              .forEach(node -> node.setOpacity(1));
     });
-
-
   }
 
+  /**
+   * Returns the size of the cell.
+   *
+   * @return The size of the cell as an array of doubles.
+   */
   public static double[] getSize() {
     return new double[]{WIDTH, HEIGHT};
   }
@@ -86,27 +102,26 @@ public class Cell extends StackPane {
     cip.setDisplay(column, row, content);
   }
 
-  private void fill(){
+  private void fill() {
     super.getChildren().removeIf(node -> !node.equals(base));
-    if(gameMap != null && !gameMap.getImagePath(column, row, 0).isEmpty()){
+    if (gameMap != null && !gameMap.getImagePath(column, row, 0).isEmpty()) {
       super.getChildren().addAll(getImages());
     }
   }
 
   private List<ImageView> getImages() {
     List<ImageView> images = new ArrayList<>();
-    for(String path: gameMap.getImagePath(column, row, 0)){
+    for (String path : gameMap.getImagePath(column, row, 0)) {
       Image image;
       try {
-            image = new Image(String.valueOf(new File("data/images/" + path).toURI().toURL()));
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+        image = new Image(String.valueOf(new File("data/images/" + path).toURI().toURL()));
+      } catch (MalformedURLException e) {
+        throw new RuntimeException(e);
+      }
       ImageView imageView = new ImageView(image);
       imageView.setFitWidth(WIDTH);
       imageView.setFitHeight(HEIGHT);
       images.add(imageView);
-
     }
     return images;
   }
@@ -122,7 +137,6 @@ public class Cell extends StackPane {
   public void incrementRow() {
     row++;
     setLocalId(row, column);
-
   }
 
   public void incrementColumn() {
@@ -140,6 +154,7 @@ public class Cell extends StackPane {
     setLocalId(row, column);
   }
 
+
   private void setLocalId(int i, int j) {
     id = new int[2];
     id[0] = i;
@@ -152,13 +167,6 @@ public class Cell extends StackPane {
     this.setId(lookUpId);
   }
 
-  public int[] getLocalId() {
-    return id.clone();
-  }
-
-  public String getLookUpId() {
-    return this.getId();
-  }
 
   public Rectangle getBase() {
     return base;

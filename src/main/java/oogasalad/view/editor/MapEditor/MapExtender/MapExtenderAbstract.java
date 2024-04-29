@@ -6,13 +6,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * Abstract class for map extenders.
+ */
 public abstract class MapExtenderAbstract extends Group {
 
   private final Rectangle adder;
   private final Rectangle remover;
 
+  /**
+   * Constructs a MapExtenderAbstract with specified event handlers for add and remove actions.
+   *
+   * @param onActionAdd    The event handler for the add action.
+   * @param onActionRemove The event handler for the remove action.
+   */
   public MapExtenderAbstract(EventHandler<MouseEvent> onActionAdd,
-      EventHandler<MouseEvent> onActionRemove) {
+                             EventHandler<MouseEvent> onActionRemove) {
     super();
     adder = new Rectangle();
     remover = new Rectangle();
@@ -37,10 +46,20 @@ public abstract class MapExtenderAbstract extends Group {
     remover.setOnMouseExited(e -> remover.setOpacity(1));
   }
 
+  /**
+   * Gets the adder rectangle.
+   *
+   * @return The adder rectangle.
+   */
   protected Rectangle getAdder() {
     return adder;
   }
 
+  /**
+   * Gets the remover rectangle.
+   *
+   * @return The remover rectangle.
+   */
   protected Rectangle getRemover() {
     return remover;
   }
