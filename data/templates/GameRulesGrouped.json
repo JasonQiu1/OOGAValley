@@ -5,11 +5,14 @@
     "goalCondition": "time",
     "doEnergy": true,
     "doEnergyRecovery": true,
-    "doDeath": false,
-    "doExhaustedEnergyCollapse": true,
+    // can also be set to "death" or "none"
+    "onZeroEnergyStrategy": "collapse",
     "energyAmount": 20,
-    "energyRecoveryRate": 720,
-    "exhaustedEnergyCollapseTimePenalty": 1440,
+    // regenerate 1 energy every 60 in-game minutes
+    "energyRecoveryRate": 60,
+    "energyRecoveryAmount": 1,
+    // collapsing takes you out for 2 days
+    "collapseTimePenalty": 2880,
     // currently the shop rotates every day
     "shopRotationTime": 1440,
     // how many items on sale at a time
@@ -43,13 +46,12 @@
     "String": [
       "configName",
       "author",
-      "goalCondition"
+      "goalCondition",
+      "onZeroEnergyStrategy"
     ],
     "boolean": [
       "doEnergy",
-      "doEnergyRecovery",
-      "doDeath",
-      "doExhaustedEnergyCollapse"
+      "doEnergyRecovery"
     ],
     "int": [
       "energyAmount",
@@ -59,7 +61,8 @@
       "timeGoal",
       "wakeHour",
       "shopRotationTime",
-      "shopRotationSize"
+      "shopRotationSize",
+      "energyRecoverAmount"
     ]
   }
 }

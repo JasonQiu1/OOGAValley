@@ -29,6 +29,9 @@ public class GameKeyHandler implements EventHandler<KeyEvent> {
         LOG.info("Activated cheat code: Forced shop rotation!");
         game.getEditableGameState().getEditableShop()
             .forceItemRotation(game.getGameState().getGameTime());
+      case N:
+        LOG.info("Activated cheat code: Skip 1 hour ahead!");
+        game.getEditableGameState().getEditableGameTime().advance(60);
     }
   }
 }

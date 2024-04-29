@@ -80,7 +80,8 @@ public class Login extends BranchBase {
         id = InfoService.getUserId(username);
         invokeOnLoginSuccessCallback();
         invokeOnLoginSuccessCallback();
-        GameFileOperations gameOps = new GameFileOperations(getStage(), getStage().getScene(), id, game);
+        GameFileOperations gameOps = new GameFileOperations(getStage(), getStage().getScene(), id,
+            game);
         getStage().setScene(gameOps.createScene());
       } else {
         showAlert("Login Failed", "Invalid username or password");
@@ -93,7 +94,6 @@ public class Login extends BranchBase {
     vbox.getChildren()
         .addAll(titleLabel, usernameLabel, usernameField, passwordLabel, passwordField,
             submitButton, registerButton, back);
-
     return vbox;
   }
 

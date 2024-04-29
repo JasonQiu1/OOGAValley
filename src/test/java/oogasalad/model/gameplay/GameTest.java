@@ -91,4 +91,28 @@ class GameTest {
         game.getGameState().getEnergy());
     assertFalse(game.getGameState().getBag().getItems().containsKey(new Item("Cake")));
   }
+
+  @Test
+  void collapseSystems() {
+    Game game = new Game();
+    game.getEditableGameState().restoreEnergy(-10000);
+
+    game.getEditableConfiguration().updateRule("onZeroEnergyStrategy", "none");
+    GameTime previousGametime = new GameTime(game.getGameState().getGameTime());
+    game.update();
+    previousGametime.advanceOneUnit();
+    assertEquals(previousGametime, game.getGameState().getGameTime());
+
+    game.getEditableConfiguration().updateRule("onZeroEnergyStrategy", "collapse");
+    previousGametime = new GameTime(game.getGameState().getGameTime());
+    game.update();
+    previousGametime.advance(
+        game.getGameConfiguration().getRules().getInteger("collapseTimePenalty"));
+    assertEquals(previousGametime, game.getGameState().getGameTime());
+
+    game.getEditableConfiguration().updateRule("onZeroEnergyStrategy", "death");
+    game.getEditableGameState().restoreEnergy(-10000);
+    game.update();
+    assertTrue(game.isGameOver());
+  }
 }
