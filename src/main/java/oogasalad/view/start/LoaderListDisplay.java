@@ -15,15 +15,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * A dialog box for displaying and selecting save and config files.
- */
 public class LoaderListDisplay {
 
-  public static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
+  private static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.LoaderListDisplay.";
   private static final String DEFAULT_CONFIG_FOLDER = "data/gameconfigurations";
   private static final String STYLES = "/styles.css";
+
   private final Stage primaryStage;
   private final ResourceBundle propertiesBundle;
   private final Stage myStage;
@@ -32,13 +30,6 @@ public class LoaderListDisplay {
   private ListView<String> saveView;
   private ListView<String> configView;
 
-  /**
-   * Constructs a LoaderListDisplay.
-   *
-   * @param mainStage the main stage
-   * @param language  the language
-   * @param title     the title of the dialog box
-   */
   public LoaderListDisplay(Stage mainStage, String language, String title) {
     primaryStage = mainStage;
     propertiesBundle = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
@@ -46,11 +37,6 @@ public class LoaderListDisplay {
     myStage.setTitle(title);
   }
 
-  /**
-   * Opens the dialog box for selecting save and config files.
-   *
-   * @return an array containing the selected save and config files
-   */
   public File[] open() {
     saveView = returnItemListView(DEFAULT_SAVES_FOLDER);
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
@@ -60,22 +46,17 @@ public class LoaderListDisplay {
 
     HBox fileLists = new HBox(saveBox, configBox);
 
-    Button selectButton = new Button(propertiesBundle.getString("load"));
-    selectButton.getStyleClass().add("load");
-    selectButton.setOnAction(event -> selectSaveAndConfigFiles(saveView, configView));
+    Button selectButton = createButton(propertiesBundle.getString("load"), event -> {
+      selectSaveAndConfigFiles(saveView, configView);
+      myStage.close();
+    });
 
     setupBottom(fileLists, selectButton);
 
     File[] files = {selectedSaveFile, selectedConfigFile};
     return Arrays.copyOf(files, files.length);
-
   }
 
-  /**
-   * Opens the dialog box for selecting a config file.
-   *
-   * @return the selected config file
-   */
   public File openConfig() {
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
     VBox configBox = viewBoxMaker(configView, propertiesBundle.getString("config_files"));
@@ -83,9 +64,10 @@ public class LoaderListDisplay {
     HBox fileList = new HBox(configBox);
     HBox.setHgrow(configBox, Priority.ALWAYS);
 
-    Button selectButton = new Button(propertiesBundle.getString("load"));
-    selectButton.getStyleClass().add("load");
-    selectButton.setOnAction(event -> selectOnlyConfigFile(configView));
+    Button selectButton = createButton(propertiesBundle.getString("load"), event -> {
+      selectOnlyConfigFile(configView);
+      myStage.close();
+    });
 
     setupBottom(fileList, selectButton);
     return selectedConfigFile;
@@ -96,9 +78,7 @@ public class LoaderListDisplay {
   }
 
   private void setupBottom(HBox fileLists, Button selectButton) {
-
-    Button exitButton = new Button(propertiesBundle.getString("close"));
-    exitButton.setOnAction(event -> myStage.close());
+    Button exitButton = createButton(propertiesBundle.getString("close"), event -> myStage.close());
 
     HBox hBox = new HBox(selectButton, exitButton);
     hBox.setAlignment(Pos.CENTER);
@@ -123,27 +103,10 @@ public class LoaderListDisplay {
   private void selectSaveAndConfigFiles(ListView<String> saveList, ListView<String> configList) {
     selectedSaveFile = selectFile(DEFAULT_SAVES_FOLDER, saveList);
     selectedConfigFile = selectFile(DEFAULT_CONFIG_FOLDER, configList);
-
-    Stage stage = (Stage) saveList.getScene().getWindow();
-    stage.close();
-
-  }
-
-  private File selectFile(String defaultDirectoryPath, ListView<String> listView) {
-    String selectedFileName = listView.getSelectionModel().getSelectedItem();
-
-    if (selectedFileName != null) {
-      return new File(defaultDirectoryPath + "/" + selectedFileName);
-    }
-
-    return null;
   }
 
   private void selectOnlyConfigFile(ListView<String> configList) {
     selectedConfigFile = selectFile(DEFAULT_CONFIG_FOLDER, configList);
-
-    Stage stage = (Stage) configList.getScene().getWindow();
-    stage.close();
   }
 
   private ListView<String> returnItemListView(String directoryPath) {
@@ -163,5 +126,26 @@ public class LoaderListDisplay {
     return listView;
   }
 
+  private File selectFile(String defaultDirectoryPath, ListView<String> listView) {
+    String selectedFileName = listView.getSelectionModel().getSelectedItem();
 
+    if (selectedFileName != null) {
+      return new File(defaultDirectoryPath + "/" + selectedFileName);
+    }
+
+    return null;
+  }
+
+  private Button createButton(String text,
+      javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
+    Button button = new Button(text);
+    button.getStyleClass().add("load");
+    button.setOnAction(handler);
+    return button;
+  }
+
+  public interface FileSelectionListener {
+
+    void onFileSelected(File file);
+  }
 }

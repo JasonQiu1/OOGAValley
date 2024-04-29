@@ -33,7 +33,6 @@ import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.ResultPage;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
-import oogasalad.view.start.LoaderListDisplay;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,19 +46,17 @@ public class PlayingPageView {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/playing/";
+  private static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
   private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
-  private ResourceBundle displayTextResource;
-  private String menuButtons;
   private final Label timeLabel = new Label();
-
   private final WindowSizeWrapper windowSize;
-
   private final EnergyProgress energyProgress;
   private final Stage stage;
   private final String primaryLanguage;
-
   private final GameFactory gameFactory = new GameFactory();
   private final GameInterface game;
+  private ResourceBundle displayTextResource;
+  private String menuButtons;
   private Button helpButton;
   private ButtonMenu btm;
   private LandView landView;
@@ -175,7 +172,7 @@ public class PlayingPageView {
   public void save() {
     FileChooser result = new FileChooser();
     result.setTitle(displayTextResource.getString("save_location"));
-    result.setInitialDirectory(new File(LoaderListDisplay.DEFAULT_SAVES_FOLDER));
+    result.setInitialDirectory(new File(DEFAULT_SAVES_FOLDER));
     result.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
     result.setInitialFileName("test.json");
     File file = result.showSaveDialog(stage);

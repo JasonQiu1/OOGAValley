@@ -16,8 +16,8 @@ public class LanguageDialogBox {
   private final StringProperty primaryLanguage = new SimpleStringProperty();
   private final String STYLES = "/language_dialog_box_styles.css";
   private final ComboBox<String> dropDownMenu;
-  private Stage myStage;
   private final Stage primaryStage;
+  private Stage myStage;
 
   /**
    * Constructs a LanguageDialogBox.
