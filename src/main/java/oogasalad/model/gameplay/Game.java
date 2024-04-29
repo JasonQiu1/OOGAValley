@@ -78,19 +78,31 @@ public class Game implements GameInterface {
       state.getEditableGameTime().update();
     }
     ReadOnlyGameTime copyOfGameTime = new GameTime(state.getGameTime());
+    state.addItemsToBag();
+    state.getEditableGameWorld().update(copyOfGameTime);
 
     // energy regeneration
     int energyRegenerationTime = configuration.getRules().getInteger("energyRecoveryRate");
     if (lastEnergyRegenerationTime == null) {
       lastEnergyRegenerationTime = new GameTime(state.getGameTime());
     }
-    if (lastEnergyRegenerationTime.getDifferenceInMinutes(copyOfGameTime) > energyRegenerationTime) {
+    if (lastEnergyRegenerationTime.getDifferenceInMinutes(copyOfGameTime)
+        > energyRegenerationTime) {
       lastEnergyRegenerationTime.advance(energyRegenerationTime);
       state.restoreEnergy(1);
     }
 
-    state.addItemsToBag();
-    state.getEditableGameWorld().update(copyOfGameTime);
+    // what to do when at 0 energy
+    if (state.getEnergy() <= 0) {
+      switch (configuration.getRules().getString("onZeroEnergyStrategy")) {
+        case "collapse" -> {
+          state.getEditableGameTime()
+              .advance(configuration.getRules().getInteger("collapseTimePenalty"));
+          state.restoreEnergy(Integer.MAX_VALUE);
+        }
+        case "death" -> gameOverOverride = true;
+      }
+    }
   }
 
   /**
@@ -218,7 +230,7 @@ public class Game implements GameInterface {
    */
   @Override
   public boolean isGameOver() {
-    return switch (configuration.getRules().getString("goalCondition")) {
+    return gameOverOverride || switch (configuration.getRules().getString("goalCondition")) {
       case "time" ->
           state.getGameTime().convertInMinutes() >= configuration.getRules().getInteger("timeGoal");
       case "collect" -> state.getEditableBag()
@@ -262,6 +274,7 @@ public class Game implements GameInterface {
 
   private final GameConfiguration configuration;
   private final GameState state;
+  private boolean gameOverOverride = false;
 
   private GameTime lastEnergyRegenerationTime = new GameTime(0, 0, 0);
 
