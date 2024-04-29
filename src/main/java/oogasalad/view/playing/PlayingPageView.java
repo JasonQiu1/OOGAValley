@@ -336,7 +336,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(game, stage, primaryLanguage, scene, this);
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, this);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);
