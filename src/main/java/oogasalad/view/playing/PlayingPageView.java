@@ -97,15 +97,16 @@ public class PlayingPageView {
    * @param language     the language of the game view
    * @param backScene    the previous scene that creates the game
    */
-  public PlayingPageView(Stage primaryStage, String language, Scene backScene) {
+  public PlayingPageView(Stage primaryStage, String language, Scene backScene, int windowWidth,
+      int windowHeight) {
     stage = primaryStage;
     primaryLanguage = language;
     setFileLanguages();
     this.previousScene = backScene;
     game = gameFactory.createGame();
     energyProgress = new EnergyProgress(game);
-    this.windowWidth = 800;
-    this.windowHeight = 600;
+    this.windowWidth = windowWidth;
+    this.windowHeight = windowHeight;
     initSize();
   }
 

@@ -62,11 +62,6 @@ public class BagItem extends StackPane {
     setId(name);
   }
 
-  public StackPane getView() {
-    return this;
-  }
-
-
   public void reset() {
     selectedRectangle.setOpacity(0);
   }

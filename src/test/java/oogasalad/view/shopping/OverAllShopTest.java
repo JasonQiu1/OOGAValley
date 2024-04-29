@@ -27,7 +27,7 @@ public class OverAllShopTest extends DukeApplicationTest {
   public void start(Stage stage) {
     this.stage = stage;
     game = new GameFactory().createGame();
-    playingPageView = new PlayingPageView(stage, "English", null);
+    playingPageView = new PlayingPageView(stage, "English", null, 800, 600);
     playingPageView.start();
     playingPageView.start();
     Button shoppingButton = (Button) lookup("#shopButton").queryButton();

@@ -142,7 +142,7 @@ public class BagView extends StackPane {
             bottomCellHeight, this, newItem.getValue());
         newItemOnShow.add(new Item(newItemList.get(i).getKey().getKey(),
             newItemList.get(i).getValue(), bagItem));
-        toolGridPane.add(bagItem.getView(), column, row);
+        toolGridPane.add(bagItem, column, row);
       } else {
         Item item = itemOnShow.get(i);
         if (!(item.imageUrl().equals(newItem.getKey().getKey()))) {

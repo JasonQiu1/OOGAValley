@@ -48,14 +48,14 @@ public class BagItemTest extends ApplicationTest {
 
   @Test
   public void bagItemIsCreatedWithCorrectView() {
-    StackPane expectedView = bagItem.getView();
+    StackPane expectedView = bagItem;
     assertNotNull(expectedView);
   }
 
   @Test
   public void bagSelectCorrectly() {
     bagItem.select();
-    assertEquals(1, bagItem.getView().getOpacity());
+    assertEquals(1, bagItem.getOpacity());
   }
 
   @Test
