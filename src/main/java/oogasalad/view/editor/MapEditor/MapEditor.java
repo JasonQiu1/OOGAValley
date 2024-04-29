@@ -11,6 +11,7 @@ import oogasalad.model.data.GameConfiguration;
  * A container for the map editor components.
  */
 public class MapEditor extends VBox {
+
   private final Stage stage;
   private final Scene backScene;
   private final GameConfiguration gc;
@@ -40,7 +41,8 @@ public class MapEditor extends VBox {
     BuildableMap bm = new BuildableMap(cip, new MapController(gc));
     TopPanel tp = new TopPanel(stage, backScene, bm);
     BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
-    BottomPanel bp = new BottomPanel(GameConfiguration.getConfigurablesStore().getAllConfigurables());
+    BottomPanel bp =
+        new BottomPanel(GameConfiguration.getConfigurablesStore().getAllConfigurables());
     getChildren().addAll(tp, bmw, bp, cip);
   }
 }

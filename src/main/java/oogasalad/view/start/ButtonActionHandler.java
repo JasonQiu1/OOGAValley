@@ -23,11 +23,11 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
   /**
    * Constructs a ButtonActionHandler with the specified parameters.
    *
-   * @param className the name of the class containing the method to be invoked
+   * @param className  the name of the class containing the method to be invoked
    * @param methodName the name of the method to be invoked
-   * @param stage the primary stage
-   * @param language the language
-   * @param backScene the previous scene
+   * @param stage      the primary stage
+   * @param language   the language
+   * @param backScene  the previous scene
    * @param parameters the parameters to be passed to the method
    */
   public ButtonActionHandler(String className, String methodName, Stage stage, String language,

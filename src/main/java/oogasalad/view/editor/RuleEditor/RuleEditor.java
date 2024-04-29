@@ -1,23 +1,22 @@
 package oogasalad.view.editor.RuleEditor;
 
+import java.util.ResourceBundle;
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import oogasalad.controller.RuleController;
 import oogasalad.model.data.GameConfiguration;
 
-import java.util.ResourceBundle;
-
 /**
- * The RuleEditor class represents the editor for rules.
- * It contains the display of all rules and provides methods to interact with them.
+ * The RuleEditor class represents the editor for rules. It contains the display of all rules and
+ * provides methods to interact with them.
  */
 public class RuleEditor extends HBox {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.RuleEditor.";
   private final String myLanguage = "EnglishRule";
   private final ResourceBundle RuleResource;
-  private RuleController rc;
+  private final RuleController rc;
 
   /**
    * Constructs a RuleEditor object.
@@ -41,7 +40,7 @@ public class RuleEditor extends HBox {
    *
    * @return The name associated with the RuleEditor.
    */
-  public String getName(){
+  public String getName() {
     return rc.getName();
   }
 

@@ -1,14 +1,13 @@
 package oogasalad.view.editor.MapEditor;
 
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 
 /**
  * A dialog box to display help information.

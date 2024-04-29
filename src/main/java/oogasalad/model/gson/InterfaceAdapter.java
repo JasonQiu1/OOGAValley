@@ -24,7 +24,7 @@ public class InterfaceAdapter<T> {
     T value = null;
     while (in.hasNext()) {
       String name = in.nextName();
-      if("data".equals(name)){
+      if ("data".equals(name)) {
         String data = in.nextString();
         String type = in.nextName();
         String className = in.nextString();

@@ -13,8 +13,8 @@ public class EnergyProgress extends ProgressBar {
 
   public EnergyProgress(GameInterface game) {
     super(1.0);
-    maximumEnergy = Double.parseDouble(
-        game.getGameConfiguration().getRules().getString("energyAmount"));
+    maximumEnergy =
+        Double.parseDouble(game.getGameConfiguration().getRules().getString("energyAmount"));
     this.game = game;
   }
 

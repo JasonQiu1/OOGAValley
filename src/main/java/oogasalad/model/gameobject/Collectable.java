@@ -40,16 +40,14 @@ public class Collectable extends GameObject implements Collect {
   public String getImagePath() {
     if (!items.isEmpty()) {
       return (new Item(items.keySet().iterator().next())).getImagePath();
-    }
-    else {
+    } else {
       return super.getImagePath();
     }
   }
 
   /**
-   * Handles the interaction with a given item. All interactions with Collectable
-   * are valid. ReadyToCollect will save whether this collectable
-   * can now be collected.
+   * Handles the interaction with a given item. All interactions with Collectable are valid.
+   * ReadyToCollect will save whether this collectable can now be collected.
    *
    * @param item The item interacting with the collectable.
    */

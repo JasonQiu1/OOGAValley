@@ -16,7 +16,7 @@ public class TopHbox extends HBox {
   private CurrentMoneyHbox currentMoneyHbox;
   private ProgressBarHbox progressBarHbox;
   private Button backButton;
-  private GameInterface game;
+  private final GameInterface game;
 
   public TopHbox(GameInterface game) {
     super();

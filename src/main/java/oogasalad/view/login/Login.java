@@ -51,8 +51,9 @@ public class Login extends BranchBase {
 
 
   private void setupEventHandlers(Object instance, String eventName) {
-    if (!(instance instanceof Button)) return;
-    Button button = (Button) instance;
+    if (!(instance instanceof Button button)) {
+      return;
+    }
     button.setOnAction(e -> handleButtonAction(eventName));
   }
 
@@ -88,8 +89,8 @@ public class Login extends BranchBase {
       validUsername = username;
       id = InfoService.getUserId(username);
       invokeOnLoginSuccessCallback();
-      GameFileOperations gameOps = new GameFileOperations(getStage(), getStage().getScene(), id,
-          game);
+      GameFileOperations gameOps =
+          new GameFileOperations(getStage(), getStage().getScene(), id, game);
       getStage().setScene(gameOps.createScene());
     } else {
       showAlert("Login Failed", "Invalid username or password");

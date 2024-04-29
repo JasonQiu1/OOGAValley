@@ -20,7 +20,7 @@ public class MapExtenderVertical extends MapExtenderAbstract {
    * @param onActionRemove The event handler for the remove action.
    */
   public MapExtenderVertical(BuildableMap bm, EventHandler<MouseEvent> onActionAdd,
-                             EventHandler<MouseEvent> onActionRemove) {
+      EventHandler<MouseEvent> onActionRemove) {
     super(onActionAdd, onActionRemove);
     getAdder().setHeight(bm.getGridPane().getHeight());
     getRemover().setHeight(bm.getGridPane().getHeight());

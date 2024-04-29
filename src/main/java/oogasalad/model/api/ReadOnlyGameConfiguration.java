@@ -1,7 +1,6 @@
 package oogasalad.model.api;
 
 import java.io.IOException;
-import oogasalad.model.api.exception.KeyNotFoundException;
 
 /**
  * Provides read-only access to data in a game configuration.

@@ -1,5 +1,6 @@
 package oogasalad.view.editor.MapEditor;
 
+import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,8 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.util.ResourceBundle;
 
 /**
  * Panel at the top of the map editor containing buttons and title.
@@ -27,9 +26,9 @@ public class TopPanel extends StackPane {
   /**
    * Constructs the top panel of the map editor.
    *
-   * @param stage      The primary stage.
-   * @param backScene  The scene to go back to.
-   * @param bm         The buildable map associated with the editor.
+   * @param stage     The primary stage.
+   * @param backScene The scene to go back to.
+   * @param bm        The buildable map associated with the editor.
    */
   public TopPanel(Stage stage, Scene backScene, BuildableMap bm) {
     super();
@@ -46,13 +45,14 @@ public class TopPanel extends StackPane {
     hbox.setAlignment(Pos.CENTER);
     l.getStyleClass().add("map-label");
 
-    SizeChangeButton scb = new SizeChangeButton(buttonResource.getString("size_change"), (newI, newJ) -> {
-      SizeChangeDialogBox dialog = new SizeChangeDialogBox();
-      String[] newSize = dialog.getFields();
-      if (newSize != null) {
-        bm.modifyGridSizeBL(Integer.parseInt(newSize[1]), Integer.parseInt(newSize[0]));
-      }
-    });
+    SizeChangeButton scb =
+        new SizeChangeButton(buttonResource.getString("size_change"), (newI, newJ) -> {
+          SizeChangeDialogBox dialog = new SizeChangeDialogBox();
+          String[] newSize = dialog.getFields();
+          if (newSize != null) {
+            bm.modifyGridSizeBL(Integer.parseInt(newSize[1]), Integer.parseInt(newSize[0]));
+          }
+        });
 
     Button backButton = new Button("Back");
     backButton.setOnAction(event -> goBack());

@@ -246,7 +246,11 @@ public class InfoService {
    */
   public static boolean saveGameData(int userId, String gameSaveJson, String gameConfigJson,
       String storeJson) {
-    String sql = "INSERT INTO game_saves(user_id, gamesave, gameconfiguration, configurablestores) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE gamesave = VALUES(gamesave), gameconfiguration = VALUES(gameconfiguration), configurablestores = VALUES(configurablestores), save_time = CURRENT_TIMESTAMP";
+    String sql =
+        "INSERT INTO game_saves(user_id, gamesave, gameconfiguration, configurablestores) VALUES "
+            + "(?, ?, ?, ?) ON DUPLICATE KEY UPDATE gamesave = VALUES(gamesave), "
+            + "gameconfiguration = VALUES(gameconfiguration), configurablestores = VALUES"
+            + "(configurablestores), save_time = CURRENT_TIMESTAMP";
     try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setInt(1, userId);
       stmt.setString(2, gameSaveJson);
@@ -268,7 +272,9 @@ public class InfoService {
    * @return the game data
    */
   public static GameSaveData loadLatestGameData(int userId) {
-    String sql = "SELECT gamesave, gameconfiguration, configurablestores FROM game_saves WHERE user_id=? ORDER BY save_time DESC LIMIT 1";
+    String sql =
+        "SELECT gamesave, gameconfiguration, configurablestores FROM game_saves WHERE user_id=? "
+            + "ORDER BY save_time DESC LIMIT 1";
     try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
       stmt.setInt(1, userId);
       try (ResultSet rs = stmt.executeQuery()) {

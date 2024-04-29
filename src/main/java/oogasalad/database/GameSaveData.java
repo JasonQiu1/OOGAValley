@@ -2,10 +2,10 @@ package oogasalad.database;
 
 public class GameSaveData {
 
-  private String gameSave;
-  private String gameConfiguration;
-  private String configurableStores;
-  private int id;
+  private final String gameSave;
+  private final String gameConfiguration;
+  private final String configurableStores;
+  private final int id;
 
   public GameSaveData(int id, String gameSave, String gameConfiguration,
       String configurableStores) {

@@ -35,10 +35,10 @@ public class ButtonMenu {
   /**
    * Constructs a ButtonMenu.
    *
-   * @param mainStage     the main stage
-   * @param language      the language
-   * @param backScene     the previous scene
-   * @param filePath      the file path of the buttons
+   * @param mainStage the main stage
+   * @param language  the language
+   * @param backScene the previous scene
+   * @param filePath  the file path of the buttons
    */
   public ButtonMenu(Stage mainStage, String language, Scene backScene, String filePath) {
     primaryStage = mainStage;

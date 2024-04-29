@@ -36,8 +36,7 @@ public class BagItem extends StackPane {
    * @param height  the height of the tool
    * @param bagView the bagView that holds this bagItem
    */
-  public BagItem(String url, String name, double width, double height, BagView bagView,
-      int num) {
+  public BagItem(String url, String name, double width, double height, BagView bagView, int num) {
     super();
     this.url = Tool.getImagePath(url);
     this.name = name;

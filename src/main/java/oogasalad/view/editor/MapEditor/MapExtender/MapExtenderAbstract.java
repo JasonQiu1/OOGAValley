@@ -21,7 +21,7 @@ public abstract class MapExtenderAbstract extends Group {
    * @param onActionRemove The event handler for the remove action.
    */
   public MapExtenderAbstract(EventHandler<MouseEvent> onActionAdd,
-                             EventHandler<MouseEvent> onActionRemove) {
+      EventHandler<MouseEvent> onActionRemove) {
     super();
     adder = new Rectangle();
     remover = new Rectangle();

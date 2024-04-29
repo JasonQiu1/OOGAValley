@@ -88,7 +88,6 @@ public abstract class ItemStackPane<T extends GridPane> extends StackPane {
     setAlignment(currentGridPane, Pos.TOP_LEFT);
     setAlignment(backgroundImageView, Pos.TOP_LEFT);
     setAlignment(pageChangeBorderPane, Pos.TOP_LEFT);
-    getChildren().addAll(backgroundImageView, currentGridPane,
-        pageChangeBorderPane);
+    getChildren().addAll(backgroundImageView, currentGridPane, pageChangeBorderPane);
   }
 }

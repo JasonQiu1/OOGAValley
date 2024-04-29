@@ -1,11 +1,12 @@
 package oogasalad.view.editor.MapEditor;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import oogasalad.model.api.ReadOnlyProperties;
-import oogasalad.model.data.GameConfiguration;
-
-import java.util.*;
 
 /**
  * Represents the bottom panel of the map editor.
@@ -34,8 +35,8 @@ public class BottomPanel extends TabPane {
       Tab tab = new Tab(entry.getKey());
       tab.setId(entry.getKey());
       tab.setClosable(false);
-      tab.setContent(new SelectableViewBoxWrapper(new SelectableViewBox(entry.getValue()),
-              (entry.getKey())));
+      tab.setContent(
+          new SelectableViewBoxWrapper(new SelectableViewBox(entry.getValue()), (entry.getKey())));
       super.getTabs().add(tab);
     }
   }
@@ -46,14 +47,16 @@ public class BottomPanel extends TabPane {
    * @param allConfigurables A map containing all the configurable properties.
    * @return A map containing the selectables.
    */
-  private Map<String, List<SelectableView>> getMapOfSelectables(Map<String, ReadOnlyProperties> allConfigurables) {
+  private Map<String, List<SelectableView>> getMapOfSelectables(
+      Map<String, ReadOnlyProperties> allConfigurables) {
     Map<String, List<SelectableView>> mapOfSelectables = new TreeMap<>();
     for (ReadOnlyProperties properties : allConfigurables.values()) {
       String type = properties.getString("type");
       if (!mapOfSelectables.containsKey(type)) {
         mapOfSelectables.put(type, new ArrayList<>());
       }
-      mapOfSelectables.get(type).add(new SelectableView(properties.getString("image"), properties.getString("name")));
+      mapOfSelectables.get(type)
+          .add(new SelectableView(properties.getString("image"), properties.getString("name")));
     }
     return mapOfSelectables;
   }

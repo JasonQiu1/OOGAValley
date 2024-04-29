@@ -24,7 +24,8 @@ import javafx.scene.layout.StackPane;
 
 public class EndView extends StackPane {
 
-  private Map<String, String> buttonDetails;
+  private final Map<String, String> buttonDetails;
+
   /**
    * Constructor for the EndView class.
    *

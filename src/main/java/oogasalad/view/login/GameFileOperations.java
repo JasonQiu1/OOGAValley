@@ -13,6 +13,7 @@ import oogasalad.database.InfoService;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.branch.BranchBase;
 import oogasalad.view.playing.PlayingPageView;
+
 /**
  * Class to handle game file operations
  */
@@ -104,9 +105,8 @@ public class GameFileOperations extends BranchBase {
     GameSaveData saveData = InfoService.loadLatestGameData(userId);
     FileUtility.saveJsonToFile(userId, saveData.getGameSave(), saveData.getGameConfiguration(),
         saveData.getConfigurableStores());
-    PlayingPageView playingPageView = new PlayingPageView(getStage(), "English", userId + "",
-        userId + "",
-        WIDTH, HEIGHT);
+    PlayingPageView playingPageView =
+        new PlayingPageView(getStage(), "English", userId + "", userId + "", WIDTH, HEIGHT);
     playingPageView.start();
   }
 
