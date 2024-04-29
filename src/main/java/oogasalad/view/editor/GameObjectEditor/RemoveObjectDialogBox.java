@@ -8,13 +8,20 @@ import javafx.scene.layout.HBox;
 
 import java.util.ResourceBundle;
 
+/**
+ * Dialog box for removing an object.
+ */
 public class RemoveObjectDialogBox {
     private static final String DEFAULT_RESOURCE_PACKAGE =
             "view.editor.GameObjectEditor.RemoveObjectDialogBox.";
     private final String displayTextLanguage = "EnglishDisplayText";
     private ResourceBundle displayTextResource;
 
-    // Method to get new size from the user
+    /**
+     * Displays a dialog box to get the name of the object to be removed.
+     *
+     * @return An array containing the name of the object to be removed, or null if the user cancels the action.
+     */
     public String[] getNewField() {
         displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + displayTextLanguage);
 
