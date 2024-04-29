@@ -8,12 +8,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import oogasalad.view.playing.PlayingPageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * A splash screen for the play mode.
  */
 public class PlayModeSplashScreen extends AbstractSplashScreen {
-
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.PlayModeSplashScreen.";
   private static final String DEFAULT_RESOURCE_FOLDER = "data/gameconfigurations";
   private static final String STYLES = "/play_mode_styles.css";
@@ -71,20 +72,44 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
         textResource.getString("loader"));
 
-    File[] saveFile = loaderListDisplay.open();
+    File[] fileArray = loaderListDisplay.open();
 
     String saveFilePath;
     String configFilePath;
-    if (saveFile[0] == null || saveFile[1] == null) {
+    if (fileArray[0] == null || fileArray[1] == null) {
       return;
     } else {
-      saveFilePath = saveFile[0].getName();
-      configFilePath = saveFile[1].getName();
+      saveFilePath = fileArray[0].getName();
+      configFilePath = fileArray[1].getName();
     }
 
     try {
 
       new PlayingPageView(stage, primaryLanguage, saveFilePath, configFilePath, 800, 600).start();
+
+    } catch (IOException exception) {
+      new Alert(AlertType.ERROR, textResource.getString("load_file_error")).showAndWait();
+    }
+  }
+
+
+  public void makeConfigChooser() {
+
+    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
+        textResource.getString("loader"));
+
+    File configFile = loaderListDisplay.openConfig();
+
+    String configFilePath;
+    if (configFile == null) {
+      return;
+    } else {
+      configFilePath = configFile.getName();
+    }
+
+    try {
+
+      new PlayingPageView(stage, primaryLanguage, configFilePath, 800, 600).start();
 
     } catch (IOException exception) {
       new Alert(AlertType.ERROR, textResource.getString("load_file_error")).showAndWait();

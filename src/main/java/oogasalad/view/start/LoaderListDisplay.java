@@ -59,7 +59,11 @@ public class LoaderListDisplay {
 
     HBox fileLists = new HBox(saveBox, configBox);
 
-    setupBottom(fileLists);
+    Button selectButton = new Button(propertiesBundle.getString("load"));
+    selectButton.getStyleClass().add("load");
+    selectButton.setOnAction(event -> selectSaveAndConfigFiles(saveView, configView));
+
+    setupBottom(fileLists, selectButton);
 
     File[] files = {selectedSaveFile, selectedConfigFile};
     return Arrays.copyOf(files, files.length);
@@ -75,18 +79,20 @@ public class LoaderListDisplay {
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
 
     HBox fileList = new HBox(viewBoxMaker(configView, propertiesBundle.getString("config_files")));
-    setupBottom(fileList);
-    return selectedSaveFile;
+
+    Button selectButton = new Button(propertiesBundle.getString("load"));
+    selectButton.getStyleClass().add("load");
+    selectButton.setOnAction(event -> selectOnlyConfigFile(configView));
+
+    setupBottom(fileList, selectButton);
+    return selectedConfigFile;
   }
 
   private VBox viewBoxMaker(ListView<String> view, String title) {
     return new VBox(new Label(title), view);
   }
 
-  private void setupBottom(HBox fileLists) {
-    Button selectButton = new Button(propertiesBundle.getString("load"));
-    selectButton.getStyleClass().add("load");
-    selectButton.setOnAction(event -> selectSaveAndConfigFiles(saveView, configView));
+  private void setupBottom(HBox fileLists, Button selectButton) {
 
     Button exitButton = new Button(propertiesBundle.getString("close"));
     exitButton.setOnAction(event -> myStage.close());
@@ -128,6 +134,13 @@ public class LoaderListDisplay {
     }
 
     return null;
+  }
+
+  private void selectOnlyConfigFile(ListView<String> configList) {
+    selectedConfigFile = selectFile(DEFAULT_CONFIG_FOLDER, configList);
+
+    Stage stage = (Stage) configList.getScene().getWindow();
+    stage.close();
   }
 
   private ListView<String> returnItemListView(String directoryPath) {

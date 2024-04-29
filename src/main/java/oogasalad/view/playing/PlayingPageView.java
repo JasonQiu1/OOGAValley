@@ -116,6 +116,23 @@ public class PlayingPageView {
     windowSize = new WindowSizeWrapper(windowWidth, windowHeight, game);
   }
 
+  public PlayingPageView(Stage primaryStage, String language, String configFilePath,
+      int windowWidth, int windowHeight) throws IOException {
+    GameInterface gameTemp;
+    stage = primaryStage;
+    primaryLanguage = language;
+    setFileLanguages();
+    try {
+      gameTemp = gameFactory.createGame(configFilePath);
+    } catch (IOException e) {
+      LOG.info("cannot find game saves, load from the default game");
+      gameTemp = gameFactory.createGame();
+    }
+    game = gameTemp;
+    energyProgress = new EnergyProgress(game);
+    windowSize = new WindowSizeWrapper(windowWidth, windowHeight, game);
+  }
+
   /**
    * Start the game
    */
