@@ -134,7 +134,7 @@ public class PropertiesDisplay extends VBox {
      */
     private void addMapProperty(String key) {
         AddNewMapPropertyDialogBox popup = new AddNewMapPropertyDialogBox();
-        String[] newFieldAndValue = popup.getNewField();
+        String[] newFieldAndValue = popup.getFields();
         if (newFieldAndValue != null) {
             objectPropertyMapDisplays.get(key).add(new ObjectPropertyDisplay(newFieldAndValue[0], newFieldAndValue[1],
                     getChildren(), findIndex(key) + 1));

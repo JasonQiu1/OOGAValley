@@ -5,13 +5,14 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import oogasalad.view.editor.GetDialogFields;
 
 import java.util.ResourceBundle;
 
 /**
  * Dialog box for removing an object.
  */
-public class RemoveObjectDialogBox {
+public class RemoveObjectDialogBox implements GetDialogFields {
     private static final String DEFAULT_RESOURCE_PACKAGE =
             "view.editor.GameObjectEditor.RemoveObjectDialogBox.";
     private final String displayTextLanguage = "EnglishDisplayText";
@@ -22,7 +23,8 @@ public class RemoveObjectDialogBox {
      *
      * @return An array containing the name of the object to be removed, or null if the user cancels the action.
      */
-    public String[] getNewField() {
+    @Override
+    public String[] getFields() {
         displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + displayTextLanguage);
 
         TextField textField1 = new TextField();
