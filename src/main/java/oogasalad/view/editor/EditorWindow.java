@@ -24,6 +24,7 @@ public class EditorWindow extends GridPane {
     add(goe, 2, 0);
     add(me, 1, 0);
     add(new BottomButtonContainer(new SaveAllButton(gc, re::getName), new AddPhotoButton(stage, this::savePhoto)), 1, 1);
+    stage.sizeToScene();
   }
 
   public void update(){

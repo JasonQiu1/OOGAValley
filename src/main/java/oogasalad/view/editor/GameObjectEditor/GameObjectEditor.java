@@ -25,6 +25,7 @@ public class GameObjectEditor extends VBox {
         super();
         this.update = update;
         super.setMinWidth(400);
+        super.setMaxWidth(500);
         EditorResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
         gc = new GameObjectController();
         gopd = new GameObjectPropertiesDisplay(update, gc);
