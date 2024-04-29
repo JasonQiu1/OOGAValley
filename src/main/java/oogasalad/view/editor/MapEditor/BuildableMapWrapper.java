@@ -13,11 +13,19 @@ import javafx.util.Duration;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderHorizontal;
 import oogasalad.view.editor.MapEditor.MapExtender.MapExtenderVertical;
 
+/**
+ * Wrapper for the buildable map in the map editor, providing scrolling functionality and additional UI elements.
+ */
 public class BuildableMapWrapper extends ScrollPane {
 
   private final BorderPane bp;
   private boolean rendered;
 
+  /**
+   * Constructs a BuildableMapWrapper object.
+   *
+   * @param bm The buildable map to be wrapped.
+   */
   public BuildableMapWrapper(BuildableMap bm) {
     super();
     bp = getBorderPane(bm);
@@ -47,27 +55,32 @@ public class BuildableMapWrapper extends ScrollPane {
         if (super.getWidth() > 3 + bp.getWidth()) {
           double padding = (super.getWidth() - bp.getWidth()) / 2;
           super.setPadding(new Insets(super.getPadding().getTop(), super.getPadding().getRight(),
-              super.getPadding().getBottom(), padding));
+                  super.getPadding().getBottom(), padding));
         } else {
           super.setPadding(new Insets(super.getPadding().getTop(), super.getPadding().getRight(),
-              super.getPadding().getBottom(), 0));
+                  super.getPadding().getBottom(), 0));
         }
         if (super.getHeight() > 3 + bp.getHeight()) {
           double padding = (super.getHeight() - bp.getHeight()) / 2;
           super.setPadding(
-              new Insets(padding, super.getPadding().getRight(), super.getPadding().getBottom(),
-                  super.getPadding().getLeft()));
+                  new Insets(padding, super.getPadding().getRight(), super.getPadding().getBottom(),
+                          super.getPadding().getLeft()));
         } else {
           super.setPadding(
-              new Insets(0, super.getPadding().getRight(), super.getPadding().getBottom(),
-                  super.getPadding().getLeft()));
+                  new Insets(0, super.getPadding().getRight(), super.getPadding().getBottom(),
+                          super.getPadding().getLeft()));
         }
       }));
       timeline.play();
     });
   }
 
-
+  /**
+   * Creates a BorderPane with map extender controls.
+   *
+   * @param bm The buildable map.
+   * @return The created BorderPane.
+   */
   private BorderPane getBorderPane(BuildableMap bm) {
     BorderPane bp = new BorderPane();
     bp.setCenter(bm.getGridPane());
@@ -88,6 +101,11 @@ public class BuildableMapWrapper extends ScrollPane {
     return bp;
   }
 
+  /**
+   * Sets the alignment of a node within the BorderPane to CENTER.
+   *
+   * @param n The node to set alignment for.
+   */
   private void setAlignment(Node n) {
     BorderPane.setAlignment(n, Pos.CENTER);
   }

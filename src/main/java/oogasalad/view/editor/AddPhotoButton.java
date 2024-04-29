@@ -3,35 +3,44 @@ package oogasalad.view.editor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
-import oogasalad.model.data.GameConfiguration;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
+/**
+ * The AddPhotoButton class represents a button for adding a photo.
+ * It allows users to select an image file and provides a callback to save the selected photo.
+ */
 public class AddPhotoButton extends Button {
+
+    /**
+     * Constructs an AddPhotoButton object.
+     *
+     * @param window    The parent window where the file chooser dialog will be displayed.
+     * @param savePhoto A consumer function that accepts the selected photo file and performs the saving operation.
+     */
     public AddPhotoButton(Window window, Consumer<File> savePhoto) {
         super("Add Photo"); //TODO: Resource Bundle
         setOnAction(e -> {
             File file = openFileChooser(window);
             if(file != null){
-                savePhoto.accept(openFileChooser(window));
+                savePhoto.accept(file);
             }
         });
 
     }
 
+    /**
+     * Opens a file chooser dialog to select an image file.
+     *
+     * @param window The parent window where the file chooser dialog will be displayed.
+     * @return The selected image file, or null if no file is selected.
+     */
     private File openFileChooser(Window window) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image File");
-
-        // Set the initial directory (optional)
-        // fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-
         // Set filters for file types (optional)
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),

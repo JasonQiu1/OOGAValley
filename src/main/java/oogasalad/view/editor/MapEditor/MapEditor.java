@@ -3,18 +3,25 @@ package oogasalad.view.editor.MapEditor;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
-import oogasalad.controller.MapController;
 import javafx.stage.Stage;
+import oogasalad.controller.MapController;
 import oogasalad.model.data.GameConfiguration;
 
-
+/**
+ * A container for the map editor components.
+ */
 public class MapEditor extends VBox {
-  //TODO: make this work
-  private BottomPanel bp;
-  private Stage stage;
-  private Scene backScene;
-  private GameConfiguration gc;
+  private final Stage stage;
+  private final Scene backScene;
+  private final GameConfiguration gc;
 
+  /**
+   * Constructs a MapEditor object.
+   *
+   * @param stage     The primary stage of the application.
+   * @param backScene The scene to return to when exiting the map editor.
+   * @param gc        The game configuration.
+   */
   public MapEditor(Stage stage, Scene backScene, GameConfiguration gc) {
     super();
     super.setAlignment(Pos.TOP_CENTER);
@@ -24,13 +31,16 @@ public class MapEditor extends VBox {
     update();
   }
 
-  public void update(){
+  /**
+   * Updates the map editor components.
+   */
+  public void update() {
     getChildren().clear();
     CellInfoPane cip = new CellInfoPane();
     BuildableMap bm = new BuildableMap(cip, new MapController(gc));
     TopPanel tp = new TopPanel(stage, backScene, bm);
     BuildableMapWrapper bmw = new BuildableMapWrapper(bm);
-    bp = new BottomPanel(GameConfiguration.getConfigurablesStore().getAllConfigurables());
+    BottomPanel bp = new BottomPanel(GameConfiguration.getConfigurablesStore().getAllConfigurables());
     getChildren().addAll(tp, bmw, bp, cip);
   }
 }

@@ -2,9 +2,16 @@ package oogasalad.view.editor.MapEditor;
 
 import javafx.scene.control.Alert;
 
+/**
+ * Alert dialog indicating that a certain type cannot be placed on the map.
+ */
 public class CannotPlaceOnMap {
 
-    //TODO: Resource Bundle
+    /**
+     * Constructs a CannotPlaceOnMap alert dialog.
+     *
+     * @param type The type that cannot be placed on the map.
+     */
     public CannotPlaceOnMap(String type) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Cannot Place On Map");

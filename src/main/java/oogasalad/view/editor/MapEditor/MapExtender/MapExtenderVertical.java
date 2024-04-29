@@ -7,17 +7,27 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import oogasalad.view.editor.MapEditor.BuildableMap;
 
+/**
+ * Represents a vertical map extender.
+ */
 public class MapExtenderVertical extends MapExtenderAbstract {
 
+  /**
+   * Constructs a MapExtenderVertical object.
+   *
+   * @param bm             The buildable map.
+   * @param onActionAdd    The event handler for the add action.
+   * @param onActionRemove The event handler for the remove action.
+   */
   public MapExtenderVertical(BuildableMap bm, EventHandler<MouseEvent> onActionAdd,
-      EventHandler<MouseEvent> onActionRemove) {
+                             EventHandler<MouseEvent> onActionRemove) {
     super(onActionAdd, onActionRemove);
     getAdder().setHeight(bm.getGridPane().getHeight());
     getRemover().setHeight(bm.getGridPane().getHeight());
     getAdder().setWidth(10);
     getRemover().setWidth(10);
 
-    //listen for propertyChanges
+    // Listen for property changes
     bm.getGridPane().heightProperty().addListener((observable, oldValue, newValue) -> {
       Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> {
         getAdder().setHeight(newValue.doubleValue() / 2);
