@@ -5,11 +5,19 @@ import java.util.Map;
 import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.InvalidRuleType;
 
+/**
+ * Class for data validation.
+ */
 public class DataValidation {
 
   private static Map<String, List<String>> types;
 
-
+  /**
+   * Validates the properties.
+   *
+   * @param properties The properties to validate.
+   * @throws InvalidRuleType If an invalid rule type is encountered.
+   */
   public static void validateProperties(Properties properties) throws InvalidRuleType {
     types = properties.getCopyOfPropertyTypes();
     for (Map.Entry<String, String> entry : properties.getCopyOfProperties().entrySet()) {
@@ -27,6 +35,13 @@ public class DataValidation {
     }
   }
 
+  /**
+   * Validates a key-value pair.
+   *
+   * @param key   The key to validate.
+   * @param value The value to validate.
+   * @throws InvalidRuleType If the rule type is invalid.
+   */
   public static void validate(String key, String value) throws InvalidRuleType {
     for (Map.Entry<String, List<String>> type : types.entrySet()) {
       if (type.getValue().contains(key)) {
@@ -70,64 +85,4 @@ public class DataValidation {
       throw new BadValueParseException(value, "double");
     }
   }
-
-  //        if (properties == null) {
-//            throw new IllegalArgumentException("Properties cannot be null");
-//        }
-//
-//        types = properties.getCopyOfPropertyTypes();
-//
-//        // Get the class of the Properties object
-//        Class<?> propertiesClass = properties.getClass();
-//
-//        // Get all declared fields of the Properties class
-//        Field[] fields = propertiesClass.getDeclaredFields();
-//
-//        // Iterate over the fields and print their names
-//        for (Field field : fields) {
-//            // Set accessible to true to access private fields
-//            field.setAccessible(true);
-//            // Get the value of the field for the properties object
-//            Object value = null;
-//            try {
-//                value = field.get(properties);
-//            } catch (IllegalAccessException e) {
-//                throw new RuntimeException(e);
-//            }
-//            if(value != null){
-//              //  validateProperty(value);
-//            }
-//
-//
-//            // Print the name and value of the field
-//            System.out.println("Field: " + field.getName() + ", Value: " + value);
-//        }
-//    }
-//
-//    private static void validateProperty(Map<?,?> map) {
-//        for (Map.Entry<?, ?> entry : map.entrySet()) {
-//            Object key = entry.getKey();
-//            Object value = entry.getValue();
-//
-//            // If the value is a map, recursively process it
-//            if (value instanceof Map) {
-//                validateProperty((Map<?, ?>) value);
-//            } else if (value instanceof List) {
-//                // If the value is a list, iterate over it and process each element
-//                for (Object listItem : (List<?>) value) {
-//                    if (listItem instanceof Map) {
-//                        validateProperty((Map<?, ?>) listItem);
-//                    } else {
-//                        // Process the value if it's not a map
-//                        validate(key, value);
-//                    }
-//                }
-//            } else {
-//                // Process the value if it's not a map
-//                validate(key, value);
-//            }
-//        }
-//    }
-//
-
 }

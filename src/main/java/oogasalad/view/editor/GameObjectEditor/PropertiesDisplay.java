@@ -4,48 +4,55 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import oogasalad.controller.GameObjectController;
 import oogasalad.controller.PropertyController;
-import oogasalad.view.editor.MapEditor.Selector;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
+/**
+ * Display for object properties.
+ */
 public class PropertiesDisplay extends VBox {
 
     private static final Logger LOG = LogManager.getLogger(GameObjectPropertiesDisplay.class);
     private PropertyController goc;
 
-    private final List<ObjectPropertyDisplay> ObjectPropertyDisplays;
-
+    private final List<ObjectPropertyDisplay> objectPropertyDisplays;
     private final Runnable update;
-    private final List<ObjectPropertyDisplay> ObjectPropertyListDisplays;
-    private final Map<String, List<ObjectPropertyDisplay>> ObjectPropertyMapDisplays;
-    public PropertiesDisplay(Runnable update, PropertyController pc){
+    private final List<ObjectPropertyDisplay> objectPropertyListDisplays;
+    private final Map<String, List<ObjectPropertyDisplay>> objectPropertyMapDisplays;
+
+    /**
+     * Constructs a PropertiesDisplay with specified update Runnable and PropertyController.
+     *
+     * @param update The Runnable to update.
+     * @param pc     The PropertyController managing properties.
+     */
+    public PropertiesDisplay(Runnable update, PropertyController pc) {
         super();
         this.update = update;
-        ObjectPropertyDisplays = new ArrayList<>();
-        ObjectPropertyMapDisplays = new TreeMap<>();
-        ObjectPropertyListDisplays = new ArrayList<>();
+        this.objectPropertyDisplays = new ArrayList<>();
+        this.objectPropertyMapDisplays = new TreeMap<>();
+        this.objectPropertyListDisplays = new ArrayList<>();
         super.setAlignment(Pos.CENTER);
         goc = pc;
-    };
+    }
 
-
+    /**
+     * Sets the contents of the display based on the selected key.
+     *
+     * @param key The key of the selected object.
+     */
     public void setContents(String key) {
         super.getChildren().clear();
-        ObjectPropertyDisplays.clear();
-        ObjectPropertyMapDisplays.clear();
+        objectPropertyDisplays.clear();
+        objectPropertyMapDisplays.clear();
         Label name = new Label(key);
         name.getStyleClass().add("object-name");
         super.getChildren().add(name);
 
         // Display properties
-        if(goc.getProperties() != null){
+        if (goc.getProperties() != null) {
             displayProperties(goc.getProperties());
             displayListProperties(goc.getListProperties());
             displayMapProperties(goc.getMapProperties());
@@ -53,19 +60,33 @@ public class PropertiesDisplay extends VBox {
         }
     }
 
-
+    /**
+     * Displays properties.
+     *
+     * @param properties The properties to display.
+     */
     private void displayProperties(Map<String, String> properties) {
         properties.forEach((propertyName, propertyValue) -> {
-            ObjectPropertyDisplays.add(new ObjectPropertyDisplay(propertyName, propertyValue, super.getChildren()));
+            objectPropertyDisplays.add(new ObjectPropertyDisplay(propertyName, propertyValue, super.getChildren()));
         });
     }
 
+    /**
+     * Displays list properties.
+     *
+     * @param listProperties The list properties to display.
+     */
     private void displayListProperties(Map<String, List<String>> listProperties) {
         listProperties.forEach((propertyName, propertyValues) -> {
-            ObjectPropertyListDisplays.add(new ObjectPropertyDisplay(propertyName, propertyValues.toString(), super.getChildren()));
+            objectPropertyListDisplays.add(new ObjectPropertyDisplay(propertyName, propertyValues.toString(), super.getChildren()));
         });
     }
 
+    /**
+     * Displays map properties.
+     *
+     * @param mapProperties The map properties to display.
+     */
     private void displayMapProperties(Map<String, Map<String, String>> mapProperties) {
         mapProperties.forEach((mapPropertyName, mapPropertyValues) -> {
             super.getChildren().add(new MapPropertiesContainer(mapPropertyName, this::addMapProperty, this::removeMapProperty));
@@ -73,56 +94,77 @@ public class PropertiesDisplay extends VBox {
             mapPropertyValues.forEach((propertyName, propertyValue) -> {
                 listOfOPDS.add(new ObjectPropertyDisplay(propertyName, propertyValue, super.getChildren()));
             });
-            ObjectPropertyMapDisplays.put(mapPropertyName, listOfOPDS);
+            objectPropertyMapDisplays.put(mapPropertyName, listOfOPDS);
         });
     }
 
+    /**
+     * Saves the properties.
+     */
     public void save() {
-        for (ObjectPropertyDisplay opd : ObjectPropertyDisplays) {
+        for (ObjectPropertyDisplay opd : objectPropertyDisplays) {
             goc.updateProperty(opd.getName(), opd.getValue());
         }
-        for(Map.Entry<String, List<ObjectPropertyDisplay>> entry : ObjectPropertyMapDisplays.entrySet()){
+        for (Map.Entry<String, List<ObjectPropertyDisplay>> entry : objectPropertyMapDisplays.entrySet()) {
             goc.updateMapProperty(entry.getKey(), createMap(entry.getValue()));
         }
-        for (ObjectPropertyDisplay opd : ObjectPropertyListDisplays) {
+        for (ObjectPropertyDisplay opd : objectPropertyListDisplays) {
             goc.updateListProperty(opd.getName(), opd.getValue());
         }
     }
 
+    /**
+     * Creates a map from a list of object property displays.
+     *
+     * @param value The list of object property displays.
+     * @return The created map.
+     */
     private Map<String, String> createMap(List<ObjectPropertyDisplay> value) {
         Map<String, String> mapOPD = new TreeMap<>();
-        for(ObjectPropertyDisplay opd : value){
+        for (ObjectPropertyDisplay opd : value) {
             mapOPD.put(opd.getName(), opd.getValue());
         }
         return mapOPD;
     }
 
-    private void addMapProperty(String key){
+    /**
+     * Adds a map property.
+     *
+     * @param key The key of the map property.
+     */
+    private void addMapProperty(String key) {
         AddNewMapPropertyDialogBox popup = new AddNewMapPropertyDialogBox();
         String[] newFieldAndValue = popup.getNewField();
-        if(newFieldAndValue != null){
-            ObjectPropertyMapDisplays.get(key).add(new ObjectPropertyDisplay(newFieldAndValue[0], newFieldAndValue[1],
+        if (newFieldAndValue != null) {
+            objectPropertyMapDisplays.get(key).add(new ObjectPropertyDisplay(newFieldAndValue[0], newFieldAndValue[1],
                     getChildren(), findIndex(key) + 1));
         }
     }
 
-    private void removeMapProperty(String key){
+    /**
+     * Removes a map property.
+     *
+     * @param key The key of the map property.
+     */
+    private void removeMapProperty(String key) {
         getChildren().remove(findIndex(key));
-        ObjectPropertyMapDisplays.get(key).remove(ObjectPropertyMapDisplays.get(key).size() - 1);
+        objectPropertyMapDisplays.get(key).remove(objectPropertyMapDisplays.get(key).size() - 1);
     }
 
+    /**
+     * Finds the index of a property.
+     *
+     * @param loc The location of the property.
+     * @return The index of the property.
+     */
     private int findIndex(String loc) {
         int counter = 0;
-        for(Node n : getChildren()){
-            if(n.getId() != null && n.getId().equals(loc)){
-                return counter + ObjectPropertyMapDisplays.get(loc).size();
+        for (Node n : getChildren()) {
+            if (n.getId() != null && n.getId().equals(loc)) {
+                return counter + objectPropertyMapDisplays.get(loc).size();
             }
             counter++;
         }
         return -1;
-    }
-
-    public void setGC(GameObjectController gc) {
-        goc = gc;
     }
 }
