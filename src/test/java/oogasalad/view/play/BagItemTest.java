@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import oogasalad.Main;
 import oogasalad.model.api.GameFactory;
+import oogasalad.view.Tool;
 import oogasalad.view.playing.component.BagItem;
 import oogasalad.view.playing.component.BagView;
 import org.junit.jupiter.api.BeforeAll;
@@ -59,7 +60,7 @@ public class BagItemTest extends ApplicationTest {
 
   @Test
   public void bagItemUpdatesImageCorrectly() throws MalformedURLException {
-    bagItem.setImage("newTest.png");
+    bagItem.setImage(Tool.getImagePath("newTest.png"));
     Image expectedImage = new Image(new File("data/images/newTest.png").toURI().toString(), 50, 50,
         false, true);
     assertEquals(expectedImage.getUrl(), bagItem.getImageView().getImage().getUrl());
