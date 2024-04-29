@@ -13,8 +13,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * A dialog box for displaying and selecting save and config files.
@@ -22,14 +20,14 @@ import org.apache.logging.log4j.Logger;
 public class LoaderListDisplay {
 
   public static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
-  private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.LoaderListDisplay.";
   private static final String DEFAULT_CONFIG_FOLDER = "data/gameconfigurations";
+  private static final String STYLES = "/styles.css";
   private final Stage primaryStage;
   private final ResourceBundle propertiesBundle;
+  private final Stage myStage;
   private File selectedSaveFile;
   private File selectedConfigFile;
-  private final Stage myStage;
   private ListView<String> saveView;
   private ListView<String> configView;
 
@@ -56,8 +54,8 @@ public class LoaderListDisplay {
     saveView = returnItemListView(DEFAULT_SAVES_FOLDER);
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
 
-    VBox saveBox = viewBoxMaker(saveView, "Save Files");
-    VBox configBox = viewBoxMaker(configView, "Config Files");
+    VBox saveBox = viewBoxMaker(saveView, propertiesBundle.getString("save_files"));
+    VBox configBox = viewBoxMaker(configView, propertiesBundle.getString("config_files"));
 
     HBox fileLists = new HBox(saveBox, configBox);
 
@@ -76,7 +74,7 @@ public class LoaderListDisplay {
   public File openConfig() {
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
 
-    HBox fileList = new HBox(viewBoxMaker(configView, "Config Files"));
+    HBox fileList = new HBox(viewBoxMaker(configView, propertiesBundle.getString("config_files")));
     setupBottom(fileList);
     return selectedSaveFile;
   }
@@ -103,10 +101,8 @@ public class LoaderListDisplay {
     ScrollPane scrollPane = new ScrollPane(vBox);
     scrollPane.setId("loader_scrollpane");
 
-    LOG.debug(selectedSaveFile);
-    LOG.debug(selectedSaveFile);
-
     Scene scene = new Scene(scrollPane);
+    scene.getStylesheets().add(getClass().getResource(STYLES).toExternalForm());
 
     myStage.initStyle(StageStyle.UNDECORATED);
     myStage.initOwner(primaryStage);
@@ -118,9 +114,6 @@ public class LoaderListDisplay {
   private void selectSaveAndConfigFiles(ListView<String> saveList, ListView<String> configList) {
     selectedSaveFile = selectFile(DEFAULT_SAVES_FOLDER, saveList);
     selectedConfigFile = selectFile(DEFAULT_CONFIG_FOLDER, configList);
-
-    LOG.debug(selectedConfigFile);
-    LOG.debug(selectedSaveFile);
 
     Stage stage = (Stage) saveList.getScene().getWindow();
     stage.close();
