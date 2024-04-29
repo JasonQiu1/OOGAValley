@@ -3,7 +3,6 @@ package oogasalad.view.social;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,15 +16,16 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import oogasalad.database.info.InfoService;
 import oogasalad.database.info.Thought;
+import oogasalad.view.branch.BranchBase;
 
-public class ThoughtsView extends Application {
+public class ThoughtsView extends BranchBase {
 
-  private Stage primaryStage;
 
-  @Override
-  public void start(Stage primaryStage) {
-    this.primaryStage = primaryStage;
+  public ThoughtsView(Stage stage, Scene previousScene) {
+    super(stage, previousScene);
+  }
 
+  public Scene getScene() {
     VBox thoughtBox = new VBox();
     thoughtBox.setSpacing(10);
     thoughtBox.setPadding(new Insets(10));
@@ -37,14 +37,17 @@ public class ThoughtsView extends Application {
     scrollPane.setFitToWidth(true);
     scrollPane.setFitToHeight(true);
 
+    Button backButton = new Button("Back");
+    backButton.setOnAction(e -> getStage().setScene(getPreviousScene()));
+
     Button sendThoughtButton = new Button("Send Thought");
     sendThoughtButton.setOnAction(e -> openSendThoughtPopup());
 
-    VBox root = new VBox(scrollPane, sendThoughtButton);
-    Scene scene = new Scene(root, 400, 350);
+    HBox buttonBox = new HBox(backButton, sendThoughtButton);
 
-    primaryStage.setScene(scene);
-    primaryStage.show();
+    VBox root = new VBox(scrollPane, buttonBox);
+    Scene scene = new Scene(root, 400, 350);
+    return scene;
   }
 
   private void updateThoughtsView(VBox thoughtBox) {
@@ -79,7 +82,7 @@ public class ThoughtsView extends Application {
       String formattedTime = currentTime.format(formatter);
       InfoService.addThought(userId, thoughtText, formattedTime);
       updateThoughtsView(
-          (VBox) ((ScrollPane) primaryStage.getScene().getRoot().getChildrenUnmodifiable()
+          (VBox) ((ScrollPane) getStage().getScene().getRoot().getChildrenUnmodifiable()
               .get(0)).getContent());
       popupStage.close();
     });
@@ -87,7 +90,7 @@ public class ThoughtsView extends Application {
     Button backButton = new Button("Back");
     backButton.setOnAction(e -> popupStage.close());
 
-    HBox buttonBox = new HBox(submitButton, backButton);
+    HBox buttonBox = new HBox(backButton, submitButton);
     buttonBox.setSpacing(10);
 
     borderPane.setCenter(thoughtTextArea);
@@ -98,7 +101,4 @@ public class ThoughtsView extends Application {
     popupStage.showAndWait();
   }
 
-  public static void main(String[] args) {
-    launch(args);
-  }
 }

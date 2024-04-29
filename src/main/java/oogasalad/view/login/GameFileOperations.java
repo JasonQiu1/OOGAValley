@@ -1,6 +1,5 @@
 package oogasalad.view.login;
 
-import com.google.gson.Gson;
 import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -11,6 +10,7 @@ import oogasalad.database.info.GameSaveData;
 import oogasalad.database.info.InfoService;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.playing.PlayingPageView;
+import oogasalad.view.social.ThoughtsView;
 
 public class GameFileOperations {
 
@@ -51,10 +51,22 @@ public class GameFileOperations {
       }
     });
 
+    Button sendThoughtButton = new Button("Center");
+    sendThoughtButton.setOnAction(e -> {
+      ThoughtsView thoughtsView = new ThoughtsView(stage, previousScene);
+      stage.setScene(thoughtsView.getScene());
+    });
+
     Button backButton = new Button("Back");
     backButton.setOnAction(e -> stage.setScene(previousScene));
 
-    vbox.getChildren().addAll(loadButton, saveButton, backButton);
+    Button logoutButton = new Button("Logout");
+    logoutButton.setOnAction(event -> {
+      UserSession.clearAllPreferences();
+      stage.close();
+    });
+
+    vbox.getChildren().addAll(loadButton, saveButton, sendThoughtButton, backButton, logoutButton);
 
     return new Scene(vbox);
   }
@@ -69,7 +81,7 @@ public class GameFileOperations {
     } else {
       System.out.println("Failed to load game!");
     }
-    PlayingPageView playingPageView = new PlayingPageView(stage, "English",userId+"",
+    PlayingPageView playingPageView = new PlayingPageView(stage, "English", userId + "",
         800, 600);
     playingPageView.start();
   }
