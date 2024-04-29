@@ -137,25 +137,11 @@ public class BagView extends StackPane {
       int column = i % colNum;
       int row = i / colNum;
       if (i >= itemOnShow.size()) {
-        BagItem bagItem = new BagItem(newItem.getKey().getKey(), newItem.getKey().getValue(),
-            bottomCellWidth,
-            bottomCellHeight, this, newItem.getValue());
-        newItemOnShow.add(new Item(newItemList.get(i).getKey().getKey(),
-            newItemList.get(i).getValue(), bagItem));
-        toolGridPane.add(bagItem.getView(), column, row);
+        updateNewItem(newItemList, newItem, newItemOnShow, i, column, row);
       } else {
-        Item item = itemOnShow.get(i);
-        if (!(item.imageUrl().equals(newItem.getKey().getKey()))) {
-          item.bagItem().setImage(Tool.getImagePath(newItem.getKey().getKey()));
-        }
-        if (item.num() != newItem.getValue()) {
-          item.bagItem().setNum(newItem.getValue());
-        }
-        item.bagItem().setName(newItem.getKey().getValue());
-        itemOnShow.set(i, new Item(newItem.getKey().getKey(), newItem.getValue(), item.bagItem()));
+        updateCurrentItem(i, newItem);
       }
     }
-    // remove the item from the list if the item is smaller than the
     List<Item> removed = new ArrayList<>();
     if (itemOnShow.size() > newItemList.size()) {
       for (int i = newItemList.size(); i < itemOnShow.size(); i++) {
@@ -166,5 +152,28 @@ public class BagView extends StackPane {
     } else {
       itemOnShow.addAll(newItemOnShow);
     }
+  }
+
+  private void updateCurrentItem(int i, Pair<Pair<String, String>, Integer> newItem) {
+    Item item = itemOnShow.get(i);
+    if (!(item.imageUrl().equals(newItem.getKey().getKey()))) {
+      item.bagItem().setImage(Tool.getImagePath(newItem.getKey().getKey()));
+    }
+    if (item.num() != newItem.getValue()) {
+      item.bagItem().setNum(newItem.getValue());
+    }
+    item.bagItem().setName(newItem.getKey().getValue());
+    itemOnShow.set(i, new Item(newItem.getKey().getKey(), newItem.getValue(), item.bagItem()));
+  }
+
+  private void updateNewItem(List<Pair<Pair<String, String>, Integer>> newItemList,
+      Pair<Pair<String, String>, Integer> newItem, List<Item> newItemOnShow, int i, int column,
+      int row) {
+    BagItem bagItem = new BagItem(newItem.getKey().getKey(), newItem.getKey().getValue(),
+        bottomCellWidth,
+        bottomCellHeight, this, newItem.getValue());
+    newItemOnShow.add(new Item(newItemList.get(i).getKey().getKey(),
+        newItemList.get(i).getValue(), bagItem));
+    toolGridPane.add(bagItem, column, row);
   }
 }
