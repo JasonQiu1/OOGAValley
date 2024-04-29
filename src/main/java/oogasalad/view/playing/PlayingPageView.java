@@ -224,9 +224,7 @@ public class PlayingPageView {
     Button btnOpenShop = setShopButton();
     timeLabel.getStyleClass().add("play-top-label");
     timeLabel.setId("time-label");
-    moneyBox = new CurrentMoneyHbox(game);
-    moneyBox.update();
-    moneyBox.setAlignment(Pos.CENTER);
+    moneyBox = setMoneyBox();
     Button sleepButton = setSleepButton();
     Button saveButton = setSaveButton();
     Button loginButton = new Button("Web");
@@ -277,6 +275,13 @@ public class PlayingPageView {
     setButtonSize(saveButton, windowSize.getTopButtonWidth(), windowSize.getTopButtonHeight(),
         windowSize.getTopFontSize());
     return saveButton;
+  }
+
+  private CurrentMoneyHbox setMoneyBox() {
+    CurrentMoneyHbox moneyBox = new CurrentMoneyHbox(game);
+    moneyBox.update();
+    moneyBox.setAlignment(Pos.CENTER);
+    return moneyBox;
   }
 
   private void setupCenter(BorderPane root) {

@@ -18,7 +18,7 @@ public class ResultPage {
 
   public void show() {
     new Alert(AlertType.CONFIRMATION,
-        "Your game has ended! \n Game Time: %s\n money:%d".formatted(
+        "Your game has ended! \nGame Time: %s\n money:%d".formatted(
             game.getGameState().getGameTime(), game.getGameState()
                 .getMoney())).showAndWait();
     stage.close();

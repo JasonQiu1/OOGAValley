@@ -50,8 +50,7 @@ public class BagItem extends StackPane {
     numLabel = new Label("" + num);
     numLabel.getStyleClass().add("item-num-label");
     imageContainer.getChildren().add(imageView);
-    selectedRectangle = new Rectangle(width, height, Color.BLUE);
-    selectedRectangle.setOpacity(0);
+    selectedRectangle = setUpSelected();
     imageContainer.getChildren().add(selectedRectangle);
     vBox.getChildren().addAll(imageContainer, numLabel);
     this.getChildren().add(vBox);
@@ -60,6 +59,12 @@ public class BagItem extends StackPane {
       bagView.select(this.name);
     });
     setId(name);
+  }
+
+  private Rectangle setUpSelected() {
+    Rectangle selectedRectangle = new Rectangle(width, height, Color.BLUE);
+    selectedRectangle.setOpacity(0);
+    return selectedRectangle;
   }
 
   public void reset() {
