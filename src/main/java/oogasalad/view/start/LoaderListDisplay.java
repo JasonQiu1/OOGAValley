@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -77,8 +78,10 @@ public class LoaderListDisplay {
    */
   public File openConfig() {
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
+    VBox configBox = viewBoxMaker(configView, propertiesBundle.getString("config_files"));
 
-    HBox fileList = new HBox(viewBoxMaker(configView, propertiesBundle.getString("config_files")));
+    HBox fileList = new HBox(configBox);
+    HBox.setHgrow(configBox, Priority.ALWAYS);
 
     Button selectButton = new Button(propertiesBundle.getString("load"));
     selectButton.getStyleClass().add("load");

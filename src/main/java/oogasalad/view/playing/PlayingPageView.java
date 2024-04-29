@@ -115,6 +115,17 @@ public class PlayingPageView {
     windowSize = new WindowSizeWrapper(windowWidth, windowHeight, game);
   }
 
+
+  /**
+   * Create a game Play given the config file Path
+   *
+   * @param primaryStage   the stage
+   * @param language       the language
+   * @param configFilePath the config path
+   * @param windowWidth    the width of the window
+   * @param windowHeight   the height of the window
+   * @throws IOException
+   */
   public PlayingPageView(Stage primaryStage, String language, String configFilePath,
       int windowWidth, int windowHeight) throws IOException {
     GameInterface gameTemp;

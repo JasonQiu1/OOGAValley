@@ -8,13 +8,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import oogasalad.view.playing.PlayingPageView;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * A splash screen for the play mode.
  */
 public class PlayModeSplashScreen extends AbstractSplashScreen {
+
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.PlayModeSplashScreen.";
   private static final String DEFAULT_RESOURCE_FOLDER = "data/gameconfigurations";
   private static final String STYLES = "/play_mode_styles.css";
@@ -93,6 +92,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   }
 
 
+  /**
+   * Displays the file chooser for selecting configurations only.
+   */
   public void makeConfigChooser() {
 
     LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
