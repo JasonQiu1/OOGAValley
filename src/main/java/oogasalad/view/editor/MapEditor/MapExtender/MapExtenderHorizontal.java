@@ -20,7 +20,7 @@ public class MapExtenderHorizontal extends MapExtenderAbstract {
    * @param onActionRemove The event handler for the remove action.
    */
   public MapExtenderHorizontal(BuildableMap bm, EventHandler<MouseEvent> onActionAdd,
-                               EventHandler<MouseEvent> onActionRemove) {
+      EventHandler<MouseEvent> onActionRemove) {
     super(onActionAdd, onActionRemove);
     getAdder().setHeight(10);
     getRemover().setHeight(10);

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-
 import oogasalad.model.api.ReadOnlyGameConfigurablesStore;
 import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.api.ReadOnlyGameState;
@@ -30,7 +29,6 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   public static final String GAMECONFIGURATION_DIRECTORY_PATH = "gameconfigurations";
 
   public static final String TEMPLATES_DIRECTORY_PATH = "templates";
-
 
 
   /**
@@ -91,7 +89,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
 
-    /**
+  /**
    * Serializes the instance to a JSON file.
    * <p>
    * Also saves the configurables store of the same name.
@@ -133,7 +131,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
   }
 
   public void updateRule(String rule, Map<String, String> newValue) {
-        rules.update(rule, newValue);
+    rules.update(rule, newValue);
   }
 
 
@@ -151,7 +149,7 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     return configurablesStore;
   }
 
-  private GameState initialState;
+  private final GameState initialState;
   private final Properties rules;
   private static GameConfigurablesStore configurablesStore;
   private static final DataFactory<GameConfiguration> GAME_CONFIGURATION_DATA_FACTORY =

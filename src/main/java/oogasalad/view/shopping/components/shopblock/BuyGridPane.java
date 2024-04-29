@@ -29,8 +29,8 @@ public class BuyGridPane extends ItemGridPane {
   protected BuyItemVbox createItemVbox(ItemView itemView) {
     BuyItemVbox buyItemVbox = new BuyItemVbox(itemView, "BuyItemButtonText", "buy");
     buyItemVbox.getButton().setOnAction(event -> {
-      PopUpStackPane popUp = new PopUpStackPane(getPopUpTextResource(), getParentStackPane(),
-          choice -> {
+      PopUpStackPane popUp =
+          new PopUpStackPane(getPopUpTextResource(), getParentStackPane(), choice -> {
             if (choice) {
               getGame().buyItem(itemView.getName());
               update(itemView);
@@ -38,7 +38,7 @@ public class BuyGridPane extends ItemGridPane {
           }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
       getParentStackPane().getChildren().add(popUp);
     });
-    buyItemVbox.getButton().setId("buy-button-"+itemView.getName());
+    buyItemVbox.getButton().setId("buy-button-" + itemView.getName());
     return buyItemVbox;
   }
 

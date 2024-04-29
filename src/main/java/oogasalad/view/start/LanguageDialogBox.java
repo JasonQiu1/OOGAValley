@@ -22,8 +22,8 @@ public class LanguageDialogBox {
   /**
    * Constructs a LanguageDialogBox.
    *
-   * @param mainStage  the main stage
-   * @param languages  an array of available languages
+   * @param mainStage the main stage
+   * @param languages an array of available languages
    */
   public LanguageDialogBox(Stage mainStage, String[] languages) {
     primaryStage = mainStage;

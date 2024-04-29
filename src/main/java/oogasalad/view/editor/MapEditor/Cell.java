@@ -1,5 +1,9 @@
 package oogasalad.view.editor.MapEditor;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
@@ -10,15 +14,12 @@ import oogasalad.controller.MapController;
 import oogasalad.model.api.exception.InvalidGameObjectType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents a single cell in the map grid.
  */
 public class Cell extends StackPane {
+
   private static final int HEIGHT = 37; // read from file
   private static final int WIDTH = 50;
   private static MapController gameMap;
@@ -77,14 +78,14 @@ public class Cell extends StackPane {
       setDisplayPanel(cip);
       base.setFill(Color.GRAY);
       super.getChildren().stream().skip(1) // Skip the first element
-              .forEach(node -> node.setOpacity(0.5));
+          .forEach(node -> node.setOpacity(0.5));
     });
 
     setOnMouseExited(event -> {
       cip.clearDisplay();
       base.setFill(Color.WHITE);
       super.getChildren().stream().skip(1) // Skip the first element
-              .forEach(node -> node.setOpacity(1));
+          .forEach(node -> node.setOpacity(1));
     });
   }
 

@@ -15,7 +15,7 @@ public abstract class ItemGridPane extends GridPane {
   private final ShoppingViewStackPane parentStackPane;
   private final String myLanguage = "EnglishPopUpText";
   private final GameInterface game;
-  private ResourceBundle popUpTextResource;
+  private final ResourceBundle popUpTextResource;
 
   public ItemGridPane(GameInterface game, List<ItemView> bagItemViews,
       ShoppingViewStackPane parentStackPane) {

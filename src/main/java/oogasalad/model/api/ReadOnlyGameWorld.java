@@ -1,11 +1,7 @@
 package oogasalad.model.api;
 
 import java.util.List;
-
-import oogasalad.model.api.exception.UnableToSetGameObject;
-import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.ItemsToAdd;
-import oogasalad.model.gameobject.Updatable;
 
 /**
  * Defines read-only operations that can be performed on the game world within a game. This
@@ -25,13 +21,12 @@ public interface ReadOnlyGameWorld {
    */
   List<String> getImagePath(int width, int height, int depth);
 
-  /** @deprecated Should not be used by view.
-   * Retrieves a list of items that should be added to the inventory as a result of interactions or
-   * events in the game world. This method typically follows updates or interactions that result in
-   * item generation or discovery.
-   *
+  /**
    * @return A list of ItemsToAdd, each representing items that are to be added to the player's
    * inventory.
+   * @deprecated Should not be used by view. Retrieves a list of items that should be added to the
+   * inventory as a result of interactions or events in the game world. This method typically
+   * follows updates or interactions that result in item generation or discovery.
    */
   List<ItemsToAdd> itemsToAddToInventory();
 

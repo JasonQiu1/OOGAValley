@@ -1,5 +1,6 @@
 package oogasalad.view.editor;
 
+import java.io.File;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -8,11 +9,9 @@ import oogasalad.view.editor.GameObjectEditor.GameObjectEditor;
 import oogasalad.view.editor.MapEditor.MapEditor;
 import oogasalad.view.editor.RuleEditor.RuleEditor;
 
-import java.io.File;
-
 /**
- * The EditorWindow class represents the main window for the game editor.
- * It contains methods to initialize and manage the editor window components.
+ * The EditorWindow class represents the main window for the game editor. It contains methods to
+ * initialize and manage the editor window components.
  */
 public class EditorWindow extends GridPane {
 
@@ -34,7 +33,8 @@ public class EditorWindow extends GridPane {
     add(ruleEditor, 0, 0);
     add(gameObjectEditor, 2, 0);
     add(mapEditor, 1, 0);
-    add(new BottomButtonContainer(new SaveAllButton(gc, ruleEditor::getName), new AddPhotoButton(stage, this::savePhoto)), 1, 1);
+    add(new BottomButtonContainer(new SaveAllButton(gc, ruleEditor::getName),
+        new AddPhotoButton(stage, this::savePhoto)), 1, 1);
     stage.sizeToScene();
   }
 

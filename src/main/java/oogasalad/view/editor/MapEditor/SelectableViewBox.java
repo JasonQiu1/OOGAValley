@@ -1,9 +1,9 @@
 package oogasalad.view.editor.MapEditor;
 
+import java.util.List;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import java.util.List;
 
 /**
  * Represents a box containing selectable views.

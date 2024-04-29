@@ -81,8 +81,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
    * @return A boolean representing whether a valid interaction took place.
    */
   public boolean interact(ReadOnlyItem item, int width, int height, int depth) {
-    Tile interactingTile = allTiles
-        .get(new CoordinateOfGameObjectRecord(width, height, depth));
+    Tile interactingTile = allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth));
     if (interactingTile.interactionValid(item)) {
       allTiles.get(new CoordinateOfGameObjectRecord(width, height, depth)).interact(item);
       return true;
@@ -188,8 +187,8 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   }
 
   /**
-   * Retrieves a map of all tiles in the game world, indexed by their coordinates.
-   * This is a protected method intended for internal use.
+   * Retrieves a map of all tiles in the game world, indexed by their coordinates. This is a
+   * protected method intended for internal use.
    *
    * @return a map linking {@link CoordinateOfGameObjectRecord} objects to {@link Tile} objects.
    */
@@ -198,12 +197,13 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   }
 
   /**
-   * Sets the map of all tiles in the game world. This method replaces the current map of tiles
-   * with the provided map. This is a protected method intended for internal use, particularly
-   * useful during reinitializations or updates where a completely new set of tiles needs to be
+   * Sets the map of all tiles in the game world. This method replaces the current map of tiles with
+   * the provided map. This is a protected method intended for internal use, particularly useful
+   * during reinitializations or updates where a completely new set of tiles needs to be
    * established.
    *
-   * @param temp The new map of {@link CoordinateOfGameObjectRecord} to {@link Tile} to be set as all tiles.
+   * @param temp The new map of {@link CoordinateOfGameObjectRecord} to {@link Tile} to be set as
+   *             all tiles.
    */
   protected void setAllTiles(Map<CoordinateOfGameObjectRecord, Tile> temp) {
     allTiles = temp;

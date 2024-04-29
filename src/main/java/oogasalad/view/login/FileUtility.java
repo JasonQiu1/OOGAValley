@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
+
 /**
  * Utility class for reading and writing JSON files
  */
@@ -26,9 +27,9 @@ public class FileUtility {
   public static void saveJsonToFile(int id, String gameSaveJson, String gameConfigJson,
       String storeJson) throws IOException {
     System.out.println("Saving game with id: " + id);
-    writeToFile(GAME_SAVES_DIRECTORY, "" + id + JSON_EXTENSION, gameSaveJson);
-    writeToFile(GAME_CONFIGURATIONS_DIRECTORY, "" + id + JSON_EXTENSION, gameConfigJson);
-    writeToFile(CONFIGURABLE_STORES_DIRECTORY, "" + id + JSON_EXTENSION, storeJson);
+    writeToFile(GAME_SAVES_DIRECTORY, id + JSON_EXTENSION, gameSaveJson);
+    writeToFile(GAME_CONFIGURATIONS_DIRECTORY, id + JSON_EXTENSION, gameConfigJson);
+    writeToFile(CONFIGURABLE_STORES_DIRECTORY, id + JSON_EXTENSION, storeJson);
   }
 
   private static void writeToFile(String directoryPath, String fileName, String jsonContent)
@@ -42,8 +43,8 @@ public class FileUtility {
 
   public static String[] readFileAsString(int id) throws IOException {
     String[] result = new String[3];
-    result[0] = new String(
-        Files.readAllBytes(Paths.get(GAME_SAVES_DIRECTORY + id + JSON_EXTENSION)));
+    result[0] =
+        new String(Files.readAllBytes(Paths.get(GAME_SAVES_DIRECTORY + id + JSON_EXTENSION)));
     result[1] = new String(
         Files.readAllBytes(Paths.get(GAME_CONFIGURATIONS_DIRECTORY + id + JSON_EXTENSION)));
     result[2] = new String(
@@ -89,8 +90,7 @@ public class FileUtility {
 
   public static Scene createScene(String path, EventHandlerSetup eventHandlerSetup)
       throws Exception {
-    String content = new String(Files.readAllBytes(
-        Path.of(path)));
+    String content = new String(Files.readAllBytes(Path.of(path)));
     JSONObject json = new JSONObject(content);
     JSONArray components = json.getJSONArray("components");
 

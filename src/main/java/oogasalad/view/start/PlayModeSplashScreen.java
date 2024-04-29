@@ -29,9 +29,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   /**
    * Constructs a PlayModeSplashScreen.
    *
-   * @param stageToUse   the stage to use
-   * @param language     the language
-   * @param backScene    the previous scene
+   * @param stageToUse the stage to use
+   * @param language   the language
+   * @param backScene  the previous scene
    */
   public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene) {
     super();
@@ -40,8 +40,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     previousScene = backScene;
 
     textResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Text");
-    buttonResource = ResourceBundle.getBundle(
-        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
+    buttonResource =
+        ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
   }
 
   /**
@@ -69,8 +69,8 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
    */
   public void makeChooser() {
 
-    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
-        textResource.getString("loader"));
+    LoaderListDisplay loaderListDisplay =
+        new LoaderListDisplay(stage, primaryLanguage, textResource.getString("loader"));
 
     File[] fileArray = loaderListDisplay.open();
 
