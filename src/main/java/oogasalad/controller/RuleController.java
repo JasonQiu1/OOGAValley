@@ -11,19 +11,29 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Controller class for managing rules.
+ */
 public class RuleController extends PropertyController {
-    private final GameConfiguration config;
+    private final GameConfiguration config; // The game configuration
+
+    /**
+     * Constructs a RuleController with the given GameConfiguration.
+     *
+     * @param gc The GameConfiguration used by the RuleController.
+     */
     public RuleController(GameConfiguration gc){
         super();
         config = gc;
     }
 
     /**
-     * Updates a rule only if it already exists.
+     * Updates a rule if it already exists.
      *
-     * @param rule     queried rule.
-     * @param newValue the value to set.
-     * @throws KeyNotFoundException if the rule does not exist.
+     * @param rule     The rule to be updated.
+     * @param newValue The new value of the rule.
+     * @throws InvalidRuleType     If the rule is invalid.
+     * @throws KeyNotFoundException If the rule does not exist.
      */
     public void updateRule(String rule, String newValue) throws InvalidRuleType {
         config.updateRule(rule, newValue);
@@ -33,7 +43,6 @@ public class RuleController extends PropertyController {
     public Map<String, String> getProperties() {
         return config.getRules().getCopyOfProperties();
     }
-
 
     @Override
     public Map<String, List<String>> getListProperties() {
@@ -60,6 +69,11 @@ public class RuleController extends PropertyController {
         config.updateRule(name, getList(value));
     }
 
+    /**
+     * Gets the name of the configuration.
+     *
+     * @return The name of the configuration.
+     */
     public String getName() {
         return config.getRules().getString("configName");
     }

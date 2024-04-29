@@ -2,8 +2,6 @@ package oogasalad.controller;
 
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.Properties;
-import oogasalad.model.gameplay.BuildableTileMap;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,15 +9,26 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
 
+/**
+ * Controller class for managing game objects and their properties.
+ */
 public class GameObjectController extends PropertyController {
-    private final Map<String, Properties> allGameObjects;
-    private Properties properties;
+    private final Map<String, Properties> allGameObjects; // Map to store all game objects
+    private Properties properties; // Current properties of the selected game object
 
+    /**
+     * Constructor for GameObjectController.
+     * Initializes the map of all game objects.
+     */
     public GameObjectController() {
         super();
         allGameObjects = GameConfiguration.getEditableConfigurablesStore().getAllEditableConfigurables();
     }
 
+    /**
+     * Sets the properties of the selected game object based on the key.
+     * @param key The key identifying the game object.
+     */
     public void setKey(String key) {
         for (Map.Entry<String, Properties> entry : allGameObjects.entrySet()) {
             if (entry.getValue().getCopyOfProperties().get("name").equals(key)) {
@@ -68,17 +77,30 @@ public class GameObjectController extends PropertyController {
         properties.update(name, getList(value));
     }
 
+    /**
+     * Creates a new game object with the specified type and name.
+     * @param type The type of the game object.
+     * @param name The name of the game object.
+     */
     public void newObject(String type, String name) {
         properties = GameConfiguration.templateProperties(type);
         properties.update("name", name);
         allGameObjects.put(name, properties);
     }
 
+    /**
+     * Removes the specified game object.
+     * @param name The name of the game object to be removed.
+     */
     public void removeObject(String name) {
         allGameObjects.remove(name);
     }
 
-    public void savaPhoto(File file) {
+    /**
+     * Saves the photo file to the data/images directory.
+     * @param file The photo file to be saved.
+     */
+    public void savePhoto(File file) {
         try {
             // Define the directory where the file will be saved
             File targetDirectory = new File("data/images");
@@ -90,7 +112,8 @@ public class GameObjectController extends PropertyController {
             Files.copy(file.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
         } catch (IOException e) {
-            // Display an error message if an exception occurs}
+            // Display an error message if an exception occurs
+            e.printStackTrace();
         }
     }
 }

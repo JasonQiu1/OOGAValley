@@ -2,13 +2,21 @@ package oogasalad.controller;
 
 import oogasalad.model.api.exception.UnableToSetGameObject;
 import oogasalad.model.data.GameConfiguration;
-import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameplay.BuildableTileMap;
 
 import java.util.List;
 
+/**
+ * Controller class for managing the game map and its contents.
+ */
 public class MapController {
-    private final BuildableTileMap btm;
+    private final BuildableTileMap btm; // The buildable tile map instance
+
+    /**
+     * Constructs a MapController with a given GameConfiguration.
+     *
+     * @param gc The GameConfiguration from which to initialize the buildable tile map.
+     */
     public MapController(GameConfiguration gc){
         btm = gc.getEditableInitialState().getEditableMap();
     }

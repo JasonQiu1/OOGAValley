@@ -47,6 +47,6 @@ public class GameObjectEditor extends VBox {
     }
 
     public void savePhoto(File file) {
-        gc.savaPhoto(file);
+        gc.savePhoto(file);
     }
 }
