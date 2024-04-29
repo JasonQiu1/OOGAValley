@@ -38,6 +38,7 @@ public class BagGridPane extends ItemGridPane {
           }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
       getParentStackPane().getChildren().add(popUp);
     });
+    bagItemVbox.getButton().setId("sell-button-"+itemView.getName());
     return bagItemVbox;
   }
 

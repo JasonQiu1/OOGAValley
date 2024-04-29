@@ -2,17 +2,15 @@ package oogasalad.view.shopping;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import java.util.Arrays;
+import java.util.Collections;
 import javafx.scene.layout.GridPane;
 import oogasalad.Main;
 import oogasalad.view.shopping.components.PageChangeBorderPane;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.Collections;
 import org.testfx.framework.junit5.ApplicationTest;
 
 public class PageChangeBorderPaneTest extends ApplicationTest {
@@ -20,6 +18,7 @@ public class PageChangeBorderPaneTest extends ApplicationTest {
   private PageChangeBorderPane<GridPane> pageChangeBorderPane;
   private GridPane gridPane1;
   private GridPane gridPane2;
+
   @BeforeAll
   public static void setUpClass() throws Exception {
     ApplicationTest.launch(Main.class);
@@ -37,7 +36,6 @@ public class PageChangeBorderPaneTest extends ApplicationTest {
   public void initialPageIsFirstGridPane() {
     assertEquals(gridPane1, pageChangeBorderPane.getCurrentGridPane());
   }
-
 
 
   @Test

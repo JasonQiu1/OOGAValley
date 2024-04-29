@@ -38,6 +38,7 @@ public class BuyGridPane extends ItemGridPane {
           }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
       getParentStackPane().getChildren().add(popUp);
     });
+    buyItemVbox.getButton().setId("buy-button-"+itemView.getName());
     return buyItemVbox;
   }
 

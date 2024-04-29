@@ -1,10 +1,9 @@
-package oogasalad.view.play;
+package oogasalad.view.playing;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import oogasalad.view.playing.PlayingPageView;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.Start;
 import util.DukeApplicationTest;
