@@ -26,7 +26,7 @@ public class BagGridPane extends ItemGridPane {
   }
 
   @Override
-  protected BagItemVbox createItemVbox(ItemView itemView) {
+  public BagItemVbox createItemVbox(ItemView itemView) {
     BagItemVbox bagItemVbox = new BagItemVbox(itemView, "SellItemButtonText", "sell");
     bagItemVbox.getButton().setOnAction(event -> {
       PopUpStackPane popUp = new PopUpStackPane(getPopUpTextResource(), getParentStackPane(),

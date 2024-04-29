@@ -1,4 +1,4 @@
-package oogasalad.view.shop;
+package oogasalad.view.shopping;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -6,10 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import javafx.scene.layout.GridPane;
 import oogasalad.Main;
-import oogasalad.model.api.GameFactory;
 import oogasalad.view.shopping.components.PageChangeBorderPane;
-import oogasalad.view.shopping.components.bagblock.BagStackPane;
-import oogasalad.view.shopping.components.shopblock.BuyGridPane;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
