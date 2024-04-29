@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class SaveAllButton extends Button {
     public SaveAllButton(GameConfiguration gc, Supplier<String> getFileName) {
-        super("Save All");
+        super("Save All"); //TODO: Resource Bundle
         setOnAction(e -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Save");

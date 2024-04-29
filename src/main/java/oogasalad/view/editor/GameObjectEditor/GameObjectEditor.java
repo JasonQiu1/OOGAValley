@@ -1,5 +1,6 @@
 package oogasalad.view.editor.GameObjectEditor;
 
+import java.io.File;
 import java.util.ResourceBundle;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -44,4 +45,7 @@ public class GameObjectEditor extends VBox {
         update.run();
     }
 
+    public void savePhoto(File file) {
+        gc.savaPhoto(file);
+    }
 }
