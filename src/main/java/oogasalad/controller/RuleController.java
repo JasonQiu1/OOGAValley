@@ -57,12 +57,7 @@ public class RuleController extends PropertyController {
 
     @Override
     public void updateListProperty(String name, String value) {
-        // Remove square brackets and split the string into elements
-        String[] elements = value.substring(1, value.length() - 1).split(", ");
-
-        // Add the trimmed elements to the ArrayList
-        List<String> arrayList = new ArrayList<>(Arrays.asList(elements));
-        config.updateRule(name, arrayList);
+        config.updateRule(name, getList(value));
     }
 
     public String getName() {

@@ -65,12 +65,7 @@ public class GameObjectController extends PropertyController {
 
     @Override
     public void updateListProperty(String name, String value) {
-        // Remove square brackets and split the string into elements
-        String[] elements = value.substring(1, value.length() - 1).split(", ");
-
-        // Add the trimmed elements to the ArrayList
-        List<String> arrayList = new ArrayList<>(Arrays.asList(elements));
-        properties.update(name, arrayList);
+        properties.update(name, getList(value));
     }
 
     public void newObject(String type, String name) {
