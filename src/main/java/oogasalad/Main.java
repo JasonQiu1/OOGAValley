@@ -26,10 +26,6 @@ public class Main extends Application {
   }
 
   @Override
-//  public void start(Stage primaryStage) {
-//    new StartScreen(primaryStage).open();
-//  }
-
   public void start(Stage primaryStage) {
     new StartScreen(primaryStage, "English", null).open();
   }
