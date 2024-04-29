@@ -41,9 +41,12 @@ public class LoaderListDisplay {
   }
 
   public File[] open() {
+    saveView = returnItemListView(DEFAULT_SAVES_FOLDER);
+    configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
 
-    VBox saveBox = viewBoxMaker(DEFAULT_SAVES_FOLDER, saveView, "Save Files");
-    VBox configBox = viewBoxMaker(DEFAULT_CONFIG_FOLDER, configView, "Config Files");
+
+    VBox saveBox = viewBoxMaker(saveView, "Save Files");
+    VBox configBox = viewBoxMaker(configView, "Config Files");
 
     HBox fileLists = new HBox(saveBox, configBox);
 
@@ -56,13 +59,14 @@ public class LoaderListDisplay {
   }
 
   public File openConfig() {
-    HBox fileList = new HBox(viewBoxMaker(DEFAULT_CONFIG_FOLDER, configView, "Config Files"));
+    configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
+
+    HBox fileList = new HBox(viewBoxMaker(configView, "Config Files"));
     setupBottom(fileList);
     return selectedSaveFile;
   }
 
-  private VBox viewBoxMaker (String path, ListView<String> view, String title) {
-    view = returnItemListView(path);
+  private VBox viewBoxMaker (ListView<String> view, String title) {
     return new VBox(new Label(title), view);
   }
 
@@ -83,6 +87,9 @@ public class LoaderListDisplay {
     vBox.setPrefSize(400, 400);
     ScrollPane scrollPane = new ScrollPane(vBox);
     scrollPane.setId("loader_scrollpane");
+
+    LOG.debug(selectedSaveFile);
+    LOG.debug(selectedSaveFile);
 
     Scene scene = new Scene(scrollPane);
 
