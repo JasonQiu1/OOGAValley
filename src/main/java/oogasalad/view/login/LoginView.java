@@ -20,7 +20,6 @@ public class LoginView extends Application {
   private GameInterface game;
   private Label helloLabel;
   private Scene loginScene;
-  private UserInfo userInfo;
   private VBox vbox;
 
   public LoginView(GameInterface game) {
@@ -31,7 +30,6 @@ public class LoginView extends Application {
 
   @Override
   public void start(Stage primaryStage) {
-    userInfo = new UserInfo(-1, "Guest");
     helloLabel = new Label("Welcome Guest!");
     int userId = UserSession.getUserId();
     setupUI(primaryStage);
@@ -53,13 +51,13 @@ public class LoginView extends Application {
 
   private void setupUI(Stage primaryStage) {
     Button loginButton = new Button("Login");
+    loginButton.setId("loginButton");
     loginButton.setOnAction(event -> {
       Login login = new Login(primaryStage, primaryStage.getScene(), game);
       primaryStage.setScene(new Scene(login.getScene()));
       primaryStage.show();
       login.setOnLoginSuccess((username, id) -> {
         helloLabel.setText("Welcome " + username + "!");
-        userInfo = new UserInfo(id, username);
         UserSession.saveUserLogin(id, username);
       });
     });
