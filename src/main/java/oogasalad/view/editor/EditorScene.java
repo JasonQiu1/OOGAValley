@@ -50,10 +50,10 @@ public class EditorScene extends Scene {
     LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, myPrimaryLanguage,
         propertiesBundle.getString("loader"));
 
-    File[] fileArray = loaderListDisplay.open();
+    File configFile = loaderListDisplay.openConfig();
 
     String saveFilePath;
-    String configFilePath = fileArray[1].getName();
+    String configFilePath = configFile.getName();
 //    if (fileArray[0] == null || fileArray[1] == null) {
 //      return;
 //    } else {
