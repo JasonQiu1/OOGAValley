@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
  * Represents the information panel for a cell in the map grid.
  */
 public class CellInfoPane extends HBox {
+
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.editor.MapEditor.CellInfoPane.";
   private final String displayTextLanguage = "EnglishDisplayText";
   private final ResourceBundle displayTextResource;
@@ -46,7 +47,7 @@ public class CellInfoPane extends HBox {
     yCor = ypos;
     contentString = buildContentString(content);
     displayText.setText(displayTextResource.getString("position") + " " + xCor + "," + yCor + "\n"
-            + displayTextResource.getString("cell") + " " + contentString);
+        + displayTextResource.getString("cell") + " " + contentString);
   }
 
   private String buildContentString(List<String> content) {
@@ -57,7 +58,8 @@ public class CellInfoPane extends HBox {
    * Clears the display content of the cell information panel.
    */
   public void clearDisplay() {
-    displayText.setText(displayTextResource.getString("position") + " \n" + displayTextResource.getString("cell")
+    displayText.setText(
+        displayTextResource.getString("position") + " \n" + displayTextResource.getString("cell")
             + " ");
   }
 

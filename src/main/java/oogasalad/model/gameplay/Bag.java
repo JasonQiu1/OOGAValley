@@ -1,6 +1,5 @@
 package oogasalad.model.gameplay;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,9 +70,9 @@ public class Bag implements ReadOnlyBag {
    */
   public void removeItem(String id, int amountToRemove) {
     Map<ReadOnlyItem, Integer> items = getItems();
-    for(Map.Entry<ReadOnlyItem, Integer> entry : items.entrySet()){
-      if(entry.getKey().getName().equals(id)){
-        if(entry.getValue() < amountToRemove){
+    for (Map.Entry<ReadOnlyItem, Integer> entry : items.entrySet()) {
+      if (entry.getKey().getName().equals(id)) {
+        if (entry.getValue() < amountToRemove) {
           throw new IllegalArgumentException("Not enough items to remove");
         } else if (entry.getValue() == amountToRemove) {
           items.remove(entry.getKey());

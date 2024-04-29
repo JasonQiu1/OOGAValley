@@ -19,8 +19,8 @@ import oogasalad.database.Thought;
 import oogasalad.view.branch.BranchBase;
 
 /**
- * This class is responsible for displaying the thoughts view for the game.
- * Do not have to refactor this class.
+ * This class is responsible for displaying the thoughts view for the game. Do not have to refactor
+ * this class.
  */
 
 public class ThoughtsView extends BranchBase {

@@ -13,7 +13,8 @@ public class SizeChangeButton extends Button {
    * Constructs a SizeChangeButton with the specified name and action to be performed on click.
    *
    * @param name   The name or label of the button.
-   * @param action The action to be performed when the button is clicked, accepting two integer parameters.
+   * @param action The action to be performed when the button is clicked, accepting two integer
+   *               parameters.
    */
   public SizeChangeButton(String name, BiConsumer<Integer, Integer> action) {
     super(name);

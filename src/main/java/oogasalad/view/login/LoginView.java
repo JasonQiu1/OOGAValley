@@ -38,8 +38,8 @@ public class LoginView extends Application {
       helloLabel.setText("Welcome " + username + "!");
       Button goBackButton = new Button("Go!");
       goBackButton.setOnAction(event -> {
-        GameFileOperations gameFileOperations = new GameFileOperations(primaryStage,
-            loginScene, userId, game);
+        GameFileOperations gameFileOperations =
+            new GameFileOperations(primaryStage, loginScene, userId, game);
         try {
           primaryStage.setScene(gameFileOperations.createScene());
         } catch (Exception e) {

@@ -17,11 +17,11 @@ public class PageChangeBorderPane<T extends GridPane> extends BorderPane {
 
   private Button leftButton;
   private Button rightButton;
-  private List<T> gridPanes;
+  private final List<T> gridPanes;
 
   private int currentPageIndex = 0;
   private GridPane currentGridPane;
-  private ItemStackPane<T> itemStackPane;
+  private final ItemStackPane<T> itemStackPane;
 
   public PageChangeBorderPane(List<T> gridPanes, ItemStackPane<T> itemStackPane) {
     super();
@@ -77,8 +77,7 @@ public class PageChangeBorderPane<T extends GridPane> extends BorderPane {
 
   private void enableButtons() {
     leftButton.setDisable(currentPageIndex == 0);
-    rightButton.setDisable(currentPageIndex == gridPanes.size() - 1
-        || gridPanes.size() == 0);
+    rightButton.setDisable(currentPageIndex == gridPanes.size() - 1 || gridPanes.size() == 0);
   }
 
   public GridPane getCurrentGridPane() {

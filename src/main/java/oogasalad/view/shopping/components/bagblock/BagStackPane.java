@@ -33,9 +33,9 @@ public class BagStackPane extends ItemStackPane<BagGridPane> {
     Map<? extends ReadOnlyItem, Integer> itemPriceMap = getBag().getItems();
     for (Entry<? extends ReadOnlyItem, Integer> entry : itemPriceMap.entrySet()) {
       ReadOnlyItem item = entry.getKey();
-      ItemView itemView = new ItemView(entry.getKey().getWorth(), item.getImagePath(),
-          item.getName(),
-          entry.getValue());
+      ItemView itemView =
+          new ItemView(entry.getKey().getWorth(), item.getImagePath(), item.getName(),
+              entry.getValue());
       itemViews.add(itemView);
     }
     return itemViews;
@@ -49,8 +49,8 @@ public class BagStackPane extends ItemStackPane<BagGridPane> {
   }
 
   @Override
-  protected PageChangeBorderPane createPageChangeBorderPane(
-      List<? extends GridPane> gridPanes, ItemStackPane itemStackPane) {
+  protected PageChangeBorderPane createPageChangeBorderPane(List<? extends GridPane> gridPanes,
+      ItemStackPane itemStackPane) {
     return new BagPageChangeBorderPane((List<BagGridPane>) gridPanes, (BagStackPane) itemStackPane);
   }
 

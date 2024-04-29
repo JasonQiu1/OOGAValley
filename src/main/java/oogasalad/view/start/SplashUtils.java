@@ -102,7 +102,7 @@ public class SplashUtils {
   /**
    * Animates a label's position.
    *
-   * @param l    the label to animate
+   * @param l      the label to animate
    * @param newVal the new value
    */
   public static void titleBob(Label l, Number newVal) {

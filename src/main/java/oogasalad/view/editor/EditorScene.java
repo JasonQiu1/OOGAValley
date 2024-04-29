@@ -5,8 +5,8 @@ import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
 
 /**
- * The EditorScene class represents a scene for the game editor.
- * It contains methods to initialize and start the editor scene.
+ * The EditorScene class represents a scene for the game editor. It contains methods to initialize
+ * and start the editor scene.
  */
 public class EditorScene extends Scene {
 
@@ -14,7 +14,8 @@ public class EditorScene extends Scene {
   private final String myPrimaryLanguage;
 
   /**
-   * Constructs an EditorScene object with a specified primary stage, language, back scene, and game configuration.
+   * Constructs an EditorScene object with a specified primary stage, language, back scene, and game
+   * configuration.
    *
    * @param primaryStage The primary stage for the editor scene.
    * @param language     The primary language used in the editor scene.

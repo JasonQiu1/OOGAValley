@@ -1,10 +1,9 @@
 package oogasalad.view.editor.RuleEditor;
 
+import java.util.ResourceBundle;
 import javafx.scene.layout.VBox;
 import oogasalad.controller.RuleController;
 import oogasalad.view.editor.GameObjectEditor.PropertiesDisplay;
-
-import java.util.ResourceBundle;
 
 /**
  * A VBox that displays all rules for editing.

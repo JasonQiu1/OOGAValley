@@ -169,11 +169,11 @@ public class BagView extends StackPane {
   private void updateNewItem(List<Pair<Pair<String, String>, Integer>> newItemList,
       Pair<Pair<String, String>, Integer> newItem, List<Item> newItemOnShow, int i, int column,
       int row) {
-    BagItem bagItem = new BagItem(newItem.getKey().getKey(), newItem.getKey().getValue(),
-        bottomCellWidth,
-        bottomCellHeight, this, newItem.getValue());
-    newItemOnShow.add(new Item(newItemList.get(i).getKey().getKey(),
-        newItemList.get(i).getValue(), bagItem));
+    BagItem bagItem =
+        new BagItem(newItem.getKey().getKey(), newItem.getKey().getValue(), bottomCellWidth,
+            bottomCellHeight, this, newItem.getValue());
+    newItemOnShow.add(
+        new Item(newItemList.get(i).getKey().getKey(), newItemList.get(i).getValue(), bagItem));
     toolGridPane.add(bagItem, column, row);
   }
 }

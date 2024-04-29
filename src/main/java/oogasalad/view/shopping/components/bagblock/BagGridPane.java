@@ -29,8 +29,8 @@ public class BagGridPane extends ItemGridPane {
   public BagItemVbox createItemVbox(ItemView itemView) {
     BagItemVbox bagItemVbox = new BagItemVbox(itemView, "SellItemButtonText", "sell");
     bagItemVbox.getButton().setOnAction(event -> {
-      PopUpStackPane popUp = new PopUpStackPane(getPopUpTextResource(), getParentStackPane(),
-          choice -> {
+      PopUpStackPane popUp =
+          new PopUpStackPane(getPopUpTextResource(), getParentStackPane(), choice -> {
             if (choice) {
               getGame().sellItem(itemView.getName());
               update(itemView);
@@ -38,7 +38,7 @@ public class BagGridPane extends ItemGridPane {
           }, "src/main/resources/view/popup/PopUpButtonInfo.csv");
       getParentStackPane().getChildren().add(popUp);
     });
-    bagItemVbox.getButton().setId("sell-button-"+itemView.getName());
+    bagItemVbox.getButton().setId("sell-button-" + itemView.getName());
     return bagItemVbox;
   }
 

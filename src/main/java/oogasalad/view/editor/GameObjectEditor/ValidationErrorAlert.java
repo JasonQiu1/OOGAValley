@@ -19,7 +19,7 @@ public class ValidationErrorAlert {
     alert.setTitle("Validation Error");
     alert.setHeaderText(null);
     alert.setContentText(
-            "Rule: " + ruleName + " must be of type " + type + "\nEntered: " + ruleValue);
+        "Rule: " + ruleName + " must be of type " + type + "\nEntered: " + ruleValue);
     alert.showAndWait();
   }
 }

@@ -99,8 +99,7 @@ public class PlayingPageView {
    */
 
   public PlayingPageView(Stage primaryStage, String language, String saveFilePath,
-      String configFilePath, int windowWidth,
-      int windowHeight) throws IOException {
+      String configFilePath, int windowWidth, int windowHeight) throws IOException {
     GameInterface gameTemp;
     stage = primaryStage;
     primaryLanguage = language;
@@ -178,12 +177,12 @@ public class PlayingPageView {
   }
 
   private void initModel() {
-    bagView = new BagView(game, 10, windowSize.getBottomCellWidth(),
-        windowSize.getBottomCellHeight(), windowSize.getBottomBoxWidth(),
-        windowSize.getBottomBoxHeight());
+    bagView =
+        new BagView(game, 10, windowSize.getBottomCellWidth(), windowSize.getBottomCellHeight(),
+            windowSize.getBottomBoxWidth(), windowSize.getBottomBoxHeight());
     bagView.setId("bagView");
-    landView = new LandView(game, windowSize.getLandGridPaneWidth(),
-        windowSize.getLandGridPaneHeight());
+    landView =
+        new LandView(game, windowSize.getLandGridPaneWidth(), windowSize.getLandGridPaneHeight());
     landView.setId("landView");
   }
 
@@ -328,8 +327,8 @@ public class PlayingPageView {
   }
 
   private void setFileLanguages() {
-    displayTextResource = ResourceBundle.getBundle(
-        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "DisplayText");
+    displayTextResource =
+        ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "DisplayText");
     menuButtons = DEFAULT_RESOURCE_FOLDER + primaryLanguage + "MenuButtons.csv";
   }
 
