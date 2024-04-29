@@ -2,7 +2,6 @@ package oogasalad.view.start;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,12 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,7 +21,7 @@ public class LoaderListDisplay {
   private static final Logger LOG = LogManager.getLogger(LoaderListDisplay.class);
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.LoaderListDisplay.";
   private static final String DEFAULT_CONFIG_FOLDER = "data/gameconfigurations";
-  private static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
+  public static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
   private File selectedSaveFile;
   private File selectedConfigFile;
   private final Stage primaryStage;
@@ -44,12 +41,10 @@ public class LoaderListDisplay {
     saveView = returnItemListView(DEFAULT_SAVES_FOLDER);
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
 
-
     VBox saveBox = viewBoxMaker(saveView, "Save Files");
     VBox configBox = viewBoxMaker(configView, "Config Files");
 
     HBox fileLists = new HBox(saveBox, configBox);
-
 
     setupBottom(fileLists);
 
@@ -66,7 +61,7 @@ public class LoaderListDisplay {
     return selectedSaveFile;
   }
 
-  private VBox viewBoxMaker (ListView<String> view, String title) {
+  private VBox viewBoxMaker(ListView<String> view, String title) {
     return new VBox(new Label(title), view);
   }
 
@@ -111,11 +106,12 @@ public class LoaderListDisplay {
     stage.close();
 
   }
+
   private File selectFile(String defaultDirectoryPath, ListView<String> listView) {
     String selectedFileName = listView.getSelectionModel().getSelectedItem();
 
     if (selectedFileName != null) {
-       return new File(defaultDirectoryPath + "/" + selectedFileName);
+      return new File(defaultDirectoryPath + "/" + selectedFileName);
 //      Stage stage = (Stage) listView.getScene().getWindow();
 //      stage.close();
     }
@@ -140,7 +136,6 @@ public class LoaderListDisplay {
 
     return listView;
   }
-
 
 
 }

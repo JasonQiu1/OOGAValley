@@ -33,6 +33,7 @@ import oogasalad.view.playing.component.LandView;
 import oogasalad.view.playing.component.ResultPage;
 import oogasalad.view.shopping.ShoppingView;
 import oogasalad.view.shopping.components.top.CurrentMoneyHbox;
+import oogasalad.view.start.LoaderListDisplay;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -65,7 +66,7 @@ public class PlayingPageView {
   private BagView bagView;
   private Scene previousScene;
   private Timeline timeline;
-  private StackPane root;
+  private final StackPane root = new StackPane();
   private CurrentMoneyHbox moneyBox;
 
   /**
@@ -106,20 +107,47 @@ public class PlayingPageView {
     primaryLanguage = language;
     setFileLanguages();
     try {
-      gameTemp = gameFactory.createGame(saveFilePath, configFilePath);
-    } catch (IOException e) {
-      LOG.info("cannot find game saves, load from the config");
       gameTemp = gameFactory.createGame(configFilePath, saveFilePath);
+    } catch (IOException e) {
+      LOG.info("cannot find game saves, load from the default game");
+      gameTemp = gameFactory.createGame();
     }
     game = gameTemp;
     energyProgress = new EnergyProgress(game);
     windowSize = new WindowSizeWrapper(windowWidth, windowHeight, game);
   }
 
+  /**
+   * Start the game
+   */
+  public void start() {
+    LOG.info("initializing game model");
+    initModel();
+    LOG.info("finish loading game model");
+    root.getStyleClass().add("playing-root");
+    BorderPane borderPane = new BorderPane();
+    setupTop(borderPane);
+    setupLeftRight(borderPane);
+    setupCenter(borderPane);
+    setupBottom(borderPane);
+    root.getChildren().addAll(borderPane);
+    StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
+    Scene scene = new Scene(root, windowSize.getWindowWidth(), windowSize.getWindowHeight());
+    scene.getStylesheets().add("styles.css");
+    scene.setOnKeyPressed(new GameKeyHandler(game));
+    stage.setTitle(displayTextResource.getString("play_title"));
+    stage.setScene(scene);
+    setUpdate();
+    stage.show();
+  }
+
+  /**
+   * Save the game to the file
+   */
   public void save() {
     FileChooser result = new FileChooser();
     result.setTitle(displayTextResource.getString("save_location"));
-    result.setInitialDirectory(new File("data/gamesaves"));
+    result.setInitialDirectory(new File(LoaderListDisplay.DEFAULT_SAVES_FOLDER));
     result.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
     result.setInitialFileName("test.json");
     File file = result.showSaveDialog(stage);
@@ -136,28 +164,6 @@ public class PlayingPageView {
     LOG.info("saving done");
   }
 
-
-  public void start() {
-    LOG.info("initializing game");
-    initModel();
-    LOG.info("finish loading game model");
-    root = new StackPane();
-    root.getStyleClass().add("playing-root");
-    BorderPane borderPane = new BorderPane();
-    setupTop(borderPane);
-    setupLeftRight(borderPane);
-    setupCenter(borderPane);
-    setupBottom(borderPane);
-    root.getChildren().addAll(borderPane);
-    StackPane.setAlignment(borderPane, javafx.geometry.Pos.TOP_LEFT);
-    Scene scene = new Scene(root, windowSize.getWindowWidth(), windowSize.getWindowHeight());
-    scene.getStylesheets().add("styles.css");
-    scene.setOnKeyPressed(new GameKeyHandler(game));
-    stage.setTitle(displayTextResource.getString("play_title"));
-    setUpdate();
-    stage.setScene(scene);
-    stage.show();
-  }
 
   private void openAndCloseMenu() {
     if (btm == null) {
@@ -214,35 +220,15 @@ public class PlayingPageView {
     topBox.setPrefSize(windowSize.getTopWidth(), windowSize.getTopHeight());
     topBox.getStyleClass().add("top-box");
     createHelpButton();
-    Button menu = new Button(displayTextResource.getString("menu"));
-    menu.setId("menu_button");
-    setButtonSize(menu, windowSize.getTopButtonWidth(), windowSize.getTopButtonHeight(),
-        windowSize.getTopFontSize());
-    menu.setOnAction(event -> openAndCloseMenu());
-    menu.getStyleClass().add("menu_button");
-    menu.setAlignment(Pos.CENTER);
-    Button btnOpenShop = new Button();
-    btnOpenShop.setId("shopButton");
-    btnOpenShop.setOnAction(e -> openShop());
+    Button menu = setUpMenuButton();
+    Button btnOpenShop = setShopButton();
     timeLabel.getStyleClass().add("play-top-label");
     timeLabel.setId("time-label");
-
     moneyBox = new CurrentMoneyHbox(game);
     moneyBox.update();
     moneyBox.setAlignment(Pos.CENTER);
-    Button sleepButton = new Button(displayTextResource.getString("sleep"));
-    setButtonSize(sleepButton, windowSize.getTopButtonWidth(), windowSize.getTopButtonHeight(),
-        windowSize.getTopFontSize());
-    sleepButton.setId("sleep-button");
-    sleepButton.setOnAction(event -> {
-      LOG.info("slept");
-      game.sleep();
-    });
-    Button saveButton = new Button(displayTextResource.getString("save"));
-    saveButton.setId("save-button");
-    saveButton.setOnAction(event -> save());
-    setButtonSize(saveButton, windowSize.getTopButtonWidth(), windowSize.getTopButtonHeight(),
-        windowSize.getTopFontSize());
+    Button sleepButton = setSleepButton();
+    Button saveButton = setSaveButton();
     Button loginButton = new Button("Web");
     loginButton.setId("login-button");
     setButtonSize(loginButton, windowSize.getTopButtonWidth(), windowSize.getTopButtonHeight(),
@@ -252,6 +238,45 @@ public class PlayingPageView {
         .addAll(menu, helpButton, sleepButton, saveButton, timeLabel, energyProgress, btnOpenShop,
             moneyBox, loginButton);
     root.setTop(topBox);
+  }
+
+  private Button setUpMenuButton() {
+    Button menu = new Button(displayTextResource.getString("menu"));
+    menu.setId("menu_button");
+    setButtonSize(menu, windowSize.getTopButtonWidth(), windowSize.getTopButtonHeight(),
+        windowSize.getTopFontSize());
+    menu.setOnAction(event -> openAndCloseMenu());
+    menu.getStyleClass().add("menu_button");
+    menu.setAlignment(Pos.CENTER);
+    return menu;
+  }
+
+  private Button setShopButton() {
+    Button btnOpenShop = new Button();
+    btnOpenShop.setId("shopButton");
+    btnOpenShop.setOnAction(e -> openShop());
+    return btnOpenShop;
+  }
+
+  private Button setSleepButton() {
+    Button sleepButton = new Button(displayTextResource.getString("sleep"));
+    setButtonSize(sleepButton, windowSize.getTopButtonWidth(), windowSize.getTopButtonHeight(),
+        windowSize.getTopFontSize());
+    sleepButton.setId("sleep-button");
+    sleepButton.setOnAction(event -> {
+      LOG.info("slept");
+      game.sleep();
+    });
+    return sleepButton;
+  }
+
+  private Button setSaveButton() {
+    Button saveButton = new Button(displayTextResource.getString("save"));
+    saveButton.setId("save-button");
+    saveButton.setOnAction(event -> save());
+    setButtonSize(saveButton, windowSize.getTopButtonWidth(), windowSize.getTopButtonHeight(),
+        windowSize.getTopFontSize());
+    return saveButton;
   }
 
   private void setupCenter(BorderPane root) {
