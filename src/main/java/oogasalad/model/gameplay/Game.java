@@ -89,7 +89,7 @@ public class Game implements GameInterface {
     if (lastEnergyRegenerationTime.getDifferenceInMinutes(copyOfGameTime)
         > energyRegenerationTime) {
       lastEnergyRegenerationTime.advance(energyRegenerationTime);
-      state.restoreEnergy(1);
+      state.restoreEnergy(configuration.getRules().getDouble("energyRecoveryAmount"));
     }
 
     // what to do when at 0 energy
