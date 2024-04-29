@@ -10,8 +10,8 @@ import oogasalad.database.realtime.GameService;
 
 public class JoinGameScene {
 
-  private Scene scene;
   private final MultiView multiView;
+  private Scene scene;
 
   public JoinGameScene(MultiView multiView) {
     this.multiView = multiView;

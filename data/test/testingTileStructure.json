@@ -11,7 +11,9 @@
     "expireTransformation": "",
     "destructable": false
   },
-  "listProperties": {},
+  "listProperties": {
+    "destructableTools": []
+  },
   "mapProperties": {
     "interactTransformations": {
       "validItem": "wheat",

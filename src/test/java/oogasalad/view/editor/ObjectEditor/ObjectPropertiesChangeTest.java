@@ -40,12 +40,12 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
                 .findFirst()
                 .orElse(null);
         bp.getSelectionModel().select(tab);
-        VBox wheat = lookup("#Hoe").queryAs(VBox.class);
+        VBox wheat = lookup("#HoeSelectable").queryAs(VBox.class);
         sleep(2000);
         clickOn(wheat);
         TextField tf = lookup("#worth").queryAs(TextField.class);
         tf.setText("6000");
-        Button save = lookup("#SaveProperties").queryButton();
+        Button save = lookup("#SavePropertiesHoe").queryButton();
         clickOn(save);
         sleep(1000);
         assertEquals("6000", GameConfiguration.getConfigurablesStore().getAllConfigurables().get("Hoe").getCopyOfProperties().get("worth"));
@@ -54,7 +54,7 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
     @Test
     @DisplayName("Test add property")
     public void testAddProperty(){
-        VBox collect = lookup("#COLLECTABLE").queryAs(VBox.class);
+        VBox collect = lookup("#COLLECTABLESelectable").queryAs(VBox.class);
         sleep(2000);
         clickOn(collect);
         Button add = lookup("#AddinteractDropMultipliers").queryButton();
@@ -65,7 +65,7 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
         value.setText("Duvall");
         press(KeyCode.ENTER);
         release(KeyCode.ENTER);
-        Button save = lookup("#SaveProperties").queryButton();
+        Button save = lookup("#SavePropertiesCOLLECTABLE").queryButton();
         clickOn(save);
         sleep(1000);
         assertTrue(GameConfiguration.getConfigurablesStore().getAllConfigurables().get("COLLECTABLE").getCopyOfMapProperties().get("interactDropMultipliers").containsKey("Robert"));
@@ -82,12 +82,12 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
                 .findFirst()
                 .orElse(null);
         bp.getSelectionModel().select(tab);
-        VBox collect = lookup("#Wheat").queryAs(VBox.class);
+        VBox collect = lookup("#WheatSelectable").queryAs(VBox.class);
         sleep(2000);
         clickOn(collect);
         Button add = lookup("#RemovedropsOnDestruction").queryButton();
         clickOn(add);
-        Button save = lookup("#SaveProperties").queryButton();
+        Button save = lookup("#SavePropertiesWheat").queryButton();
         clickOn(save);
         sleep(3000);
         assertFalse(GameConfiguration.getConfigurablesStore().getAllConfigurables().get("Wheat").getCopyOfMapProperties().get("dropsOnDestruction").containsKey("Wheat Bundle"));
@@ -97,12 +97,12 @@ public class ObjectPropertiesChangeTest extends DukeApplicationTest {
     @DisplayName("add image to collectable")
     public void addImageToCollectable() {
         assertEquals(null, GameConfiguration.getConfigurablesStore().getAllConfigurables().get("COLLECTABLE").getCopyOfProperties().get(""));
-        VBox collect = lookup("#COLLECTABLE").queryAs(VBox.class);
+        VBox collect = lookup("#COLLECTABLESelectable").queryAs(VBox.class);
         sleep(2000);
         clickOn(collect);
         TextField tf = lookup("#image").queryAs(TextField.class);
         tf.setText("hoe.png");
-        Button save = lookup("#SaveProperties").queryButton();
+        Button save = lookup("#SavePropertiesCOLLECTABLE").queryButton();
         clickOn(save);
         sleep(1000);
         assertEquals("hoe.png", GameConfiguration.getConfigurablesStore().getAllConfigurables().get("COLLECTABLE").getCopyOfProperties().get("image"));

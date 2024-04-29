@@ -7,6 +7,7 @@ import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.GameObjectEditor.GameObjectEditor;
 import oogasalad.view.editor.MapEditor.MapEditor;
 import oogasalad.view.editor.RuleEditor.RuleEditor;
+import oogasalad.view.editor.RuleEditor.SaveButtonContainer;
 
 public class EditorWindow extends GridPane {
 
@@ -21,14 +22,11 @@ public class EditorWindow extends GridPane {
     add(re, 0, 0);
     add(new GameObjectEditor(this::update), 2, 0);
     add(me, 1, 0);
-    add(new SaveAllButton(gc), 1, 1);
+    add(new SaveButtonContainer(new SaveAllButton(gc, re::getName)), 1, 1);
   }
 
   public void update(){
     me.update();
   }
 
-  public void setConfig(GameConfiguration gc) {
-    re.setConfig(gc);
-  }
 }

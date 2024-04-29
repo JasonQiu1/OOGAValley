@@ -13,7 +13,9 @@
         "expireTransformation": "",
         "destructable": "false"
       },
-      "listProperties": {},
+      "listProperties": {
+        "destructableTools": []
+      },
       "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {

@@ -12,7 +12,12 @@
     "destructable": true
     // change to a list of tools later?
   },
-  "listProperties": {},
+  "listProperties": {
+      // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+      "destructableTools": [
+        "Pickaxe"
+      ]
+    },
   "mapProperties": {
     "interactTransformations": {
     },

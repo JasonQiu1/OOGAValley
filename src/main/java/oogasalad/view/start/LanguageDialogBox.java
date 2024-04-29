@@ -14,7 +14,7 @@ public class LanguageDialogBox {
   private final String STYLES = "/language_dialog_box_styles.css";
   private final ComboBox<String> dropDownMenu;
   private Stage myStage;
-  private Stage primaryStage;
+  private final Stage primaryStage;
 
   public LanguageDialogBox(Stage mainStage, String[] languages) {
     primaryStage = mainStage;

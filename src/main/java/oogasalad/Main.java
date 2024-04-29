@@ -31,6 +31,6 @@ public class Main extends Application {
 //  }
 
   public void start(Stage primaryStage) {
-    new StartScreen(primaryStage, "English", null, new GameConfiguration()).open();
+    new StartScreen(primaryStage, "English", null).open();
   }
 }

@@ -10,8 +10,8 @@ import oogasalad.database.realtime.GameService;
 
 public class StartGameScene {
 
-  private Scene scene;
   private final MultiView gameApp;
+  private Scene scene;
 
   public StartGameScene(MultiView gameApp) {
     this.gameApp = gameApp;

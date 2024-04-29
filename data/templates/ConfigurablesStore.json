@@ -1,6 +1,82 @@
 // DEFAULT CONFIGURABLESSTORE
 {
   "configurables": {
+    "Foliage": {
+      "properties": {
+        "name": "Foliage",
+        "type": "Structure",
+        "image": "foliage.png",
+        "updatable": false,
+        "updateTime": 0,
+        "updateTransformation": "",
+        "expirable": false,
+        "expireTime": 0,
+        // or null
+        "expireTransformation": "",
+        // STRUCTURE ONLY
+        "destructable": true
+      },
+      "listProperties": {
+        // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+        "destructableTools": []
+      },
+      "mapProperties": {
+        "interactTransformations": {
+        },
+        "interactDropMultipliers": {
+        },
+        // STRUCTURE ONLY
+        "dropsOnDestruction": {
+        }
+      }
+    },
+    "Germinating Wheat": {
+      "properties": {
+        "name": "Germinating Wheat",
+        "type": "Structure",
+        "image": "germinating_wheat.png",
+        "updatable": true,
+        "updateTime": 120,
+        "updateTransformation": "Wheat",
+        "expirable": false,
+        "expireTime": 0,
+        // or null
+        "expireTransformation": "",
+        // STRUCTURE ONLY
+        "destructable": true
+      },
+      "listProperties": {
+        // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+        "destructableTools": [
+        ]
+      },
+      "mapProperties": {
+        "interactTransformations": {
+        },
+        "interactDropMultipliers": {
+        },
+        // STRUCTURE ONLY
+        "dropsOnDestruction": {
+        }
+      }
+    },
+    "Cake": {
+      "properties": {
+        "name": "Cake",
+        "type": "Item",
+        "image": "cake.png",
+        // sell price
+        "worth": 100,
+        // deducts an item from the inventory after being used
+        "consumable": true,
+        // amount to change energy after a successful interaction or use
+        "energyChange": 100,
+        // do not interact with the world, just consume and apply effects
+        "edible": true
+      },
+      "listProperties": {},
+      "mapProperties": {}
+    },
     "Boulder": {
       "properties": {
         "name": "Boulder",
@@ -15,7 +91,12 @@
         "destructable": true
         // change to a list of tools later?
       },
-      "listProperties": {},
+      "listProperties": {
+        // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+        "destructableTools": [
+          "Pickaxe"
+        ]
+      },
       "mapProperties": {
         "interactTransformations": {
         },
@@ -63,6 +144,7 @@
         // LAND ONLY
         // Seeds to the structure it plants on top of the land
         "plantableSeeds": {
+          "Wheat Seeds": "Foliage"
         }
         /*
         *  If interacted with by an item in "interactDrops", then drop the corresponding entry's items.
@@ -83,7 +165,7 @@
         "name": "Farmland",
         "type": "Land",
         "image": "farmland.png",
-        "updatable": false,
+        "updatable": true,
         "updateTime": 500,
         "updateTransformation": "Dirt",
         // turns back to dirt after a while
@@ -101,7 +183,7 @@
         // LAND ONLY
         // Seeds to the structure it plants on top of the land
         "plantableSeeds": {
-          "Wheat Seeds": "Wheat"
+          "Wheat Seeds": "Germinating Wheat"
         }
       }
     },
@@ -111,7 +193,11 @@
         "type": "Item",
         "image": "hoe.png",
         "worth": 100,
-        "consumable": false
+        "consumable": false,
+        // amount to change energy after a successful interaction or use
+        "energyChange": -1,
+        // do not interact with the world, just consume and apply effects
+        "edible": false
       },
       "listProperties": {},
       "mapProperties": {}
@@ -122,7 +208,12 @@
         "type": "Item",
         "image": "pickaxe.png",
         "worth": 500,
-        "consumable": false
+        "consumable": false,
+        // amount to change energy after a successful interaction or use
+        // if not enough energy, then don't interact
+        "energyChange": -2,
+        // do not interact with the world, just consume and apply effects
+        "edible": false
       },
       "listProperties": {},
       "mapProperties": {}
@@ -133,7 +224,12 @@
         "type": "Item",
         "image": "scythe.png",
         "worth": 100,
-        "consumable": false
+        "consumable": false,
+        // amount to change energy after a successful interaction or use
+        // if not enough energy, then don't interact
+        "energyChange": -1,
+        // do not interact with the world, just consume and apply effects
+        "edible": false
       },
       "listProperties": {},
       "mapProperties": {}
@@ -147,14 +243,18 @@
         "updateTime": 0,
         "updateTransformation": "",
         "expirable": true,
-        "expireTime": 120,
+        "expireTime": 1440,
         // or null
         "expireTransformation": "",
         // STRUCTURE ONLY
         "destructable": true
-        // change to a list of tools later?
       },
-      "listProperties": {},
+      "listProperties": {
+        // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
+        "destructableTools": [
+          "Scythe"
+        ]
+      },
       "mapProperties": {
         "interactTransformations": {
         },
@@ -173,7 +273,12 @@
         "type": "Item",
         "image": "wheat_item.png",
         "worth": 25,
-        "consumable": false
+        "consumable": false,
+        // amount to change energy after a successful interaction or use
+        // if not enough energy, then don't interact
+        "energyChange": 0,
+        // do not interact with the world, just consume and apply effects
+        "edible": false
       },
       "listProperties": {},
       "mapProperties": {}
@@ -184,7 +289,12 @@
         "type": "Item",
         "image": "wheat_seeds.png",
         "worth": 5,
-        "consumable": true
+        "consumable": true,
+        // amount to change energy after a successful interaction or use
+        // if not enough energy, then don't interact
+        "energyChange": -1,
+        // do not interact with the world, just consume and apply effects
+        "edible": false
       },
       "listProperties": {},
       "mapProperties": {}
@@ -205,7 +315,7 @@
         // If true, then the object should expire "lifeDuration" time after the object was placed.
         // If "expireTransformation" is non-null, then the object transforms into "GAME_OBJECT" when
         "expirable": true,
-        "expireTime": 120,
+        "expireTime": 1440,
         // or null
         "expireTransformation": ""
       },

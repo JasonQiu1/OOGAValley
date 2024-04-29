@@ -21,7 +21,7 @@ public class StartScreenTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    ss = new StartScreen(stage, "English", null, new GameConfiguration());
+    ss = new StartScreen(stage, "English", null);
     ss.open();
     this.create = (ChangePageButton) lookup("#Create").queryButton();
     this.play = (ChangePageButton) lookup("#Play").queryButton();

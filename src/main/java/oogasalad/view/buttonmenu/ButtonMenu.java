@@ -1,5 +1,6 @@
 package oogasalad.view.buttonmenu;
 
+import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Bounds;
@@ -18,18 +19,21 @@ import oogasalad.view.start.SplashUtils;
 
 public class ButtonMenu {
 
+  static final String DEFAULT_RESOURCE_PACKAGE = "view.buttonmenu.";
   private Scene menuScene;
   private Stage menuStage;
   private final Stage primaryStage;
   private final Scene previousScene;
   private final String primaryLanguage;
   private final String buttonsFilePath;
+  private ResourceBundle propertiesBundle;
 
-  private final String STYLES = "/view/buttonMenu/menu_style.css";
+  private final String STYLES = "/view/buttonmenu/menu_style.css";
 
   public ButtonMenu(Stage mainStage, String language, Scene backScene, String filePath) {
     primaryStage = mainStage;
     primaryLanguage = language;
+    propertiesBundle = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage);
     previousScene = backScene;
     buttonsFilePath = filePath;
 
@@ -52,7 +56,7 @@ public class ButtonMenu {
     VBox topBox = new VBox();
     topBox.getStyleClass().add("top_box");
 
-    Label title = new Label("Menu");
+    Label title = new Label(propertiesBundle.getString("menu"));
     topBox.getChildren().add(title);
     topBox.setAlignment(Pos.CENTER);
 

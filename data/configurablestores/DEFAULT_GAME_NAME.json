@@ -1,5 +1,19 @@
 {
   "configurables": {
+    "Cake": {
+      "properties": {
+        "name": "Cake",
+        "type": "Item",
+        "image": "cake.png",
+        "worth": "100",
+        "consumable": "true",
+        "energyChange": "100",
+        "edible": "true"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
     "Boulder": {
       "properties": {
         "name": "Boulder",
@@ -47,7 +61,7 @@
       "properties": {
         "name": "Farmland",
         "type": "Land",
-        "image": "farmland.jpg",
+        "image": "farmland.png",
         "updatable": "false",
         "updateTime": "500",
         "updateTransformation": "Dirt",
@@ -70,7 +84,10 @@
         "name": "Hoe",
         "type": "Item",
         "image": "hoe.png",
-        "worth": "100"
+        "worth": "100",
+        "consumable": "false",
+        "energyChange": "-1",
+        "edible": "false"
       },
       "listProperties": {},
       "propertiesType": {},
@@ -81,7 +98,10 @@
         "name": "Pickaxe",
         "type": "Item",
         "image": "pickaxe.png",
-        "worth": "500"
+        "worth": "500",
+        "consumable": "false",
+        "energyChange": "-2",
+        "edible": "false"
       },
       "listProperties": {},
       "propertiesType": {},
@@ -92,7 +112,10 @@
         "name": "Scythe",
         "type": "Item",
         "image": "scythe.png",
-        "worth": "100"
+        "worth": "100",
+        "consumable": "false",
+        "energyChange": "-1",
+        "edible": "false"
       },
       "listProperties": {},
       "propertiesType": {},
@@ -127,7 +150,10 @@
         "name": "Wheat Bundle",
         "type": "Item",
         "image": "wheat_item.png",
-        "worth": "25"
+        "worth": "25",
+        "consumable": "false",
+        "energyChange": "0",
+        "edible": "false"
       },
       "listProperties": {},
       "propertiesType": {},
@@ -138,11 +164,33 @@
         "name": "Wheat Seeds",
         "type": "Item",
         "image": "wheat_seeds.png",
-        "worth": "5"
+        "worth": "5",
+        "consumable": "true",
+        "energyChange": "-1",
+        "edible": "false"
       },
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {}
+    },
+    "COLLECTABLE": {
+      "properties": {
+        "name": "COLLECTABLE",
+        "type": "Collectable",
+        "image": "",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "true",
+        "expireTime": "120",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {}
+      }
     }
   }
 }

@@ -4971,6 +4971,10 @@
       {
         "type": "oogasalad.model.gameobject.Item",
         "data": "{\"itemId\":\"Scythe\"}"
+      },
+      {
+        "type": "oogasalad.model.gameobject.Item",
+        "data": "{\"itemId\":\"Cake\"}"
       }
     ],
     "previousRotationTime": {

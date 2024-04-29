@@ -1958,7 +1958,7 @@
   },
   "gameTime": {
     "previous": {
-      "data": "2024-04-28T18:47:46.992418Z"
+      "data": "2024-04-28T23:11:29.415304Z"
     },
     "accumulate": 0,
     "day": 1,
@@ -1986,21 +1986,18 @@
       {
         "type": "oogasalad.model.gameobject.Item",
         "data": "{\"itemId\":\"Scythe\"}"
+      },
+      {
+        "type": "oogasalad.model.gameobject.Item",
+        "data": "{\"itemId\":\"Cake\"}"
       }
     ],
     "previousRotationTime": {
       "type": "oogasalad.model.gameplay.GameTime",
-      "data": "{\"previous\":{\"data\":\"2024-04-28T18:47:46.992458Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
+      "data": "{\"previous\":{\"data\":\"2024-04-28T23:11:29.415326Z\"},\"accumulate\":0,\"day\":1,\"hour\":0,\"minute\":8}"
     },
     "shopRotationTime": 1440,
     "itemRotation": [
-      [
-        {
-          "type": "oogasalad.model.gameobject.Item",
-          "data": "{\"itemId\":\"Wheat Seeds\"}"
-        },
-        10.0
-      ],
       [
         {
           "type": "oogasalad.model.gameobject.Item",
@@ -2011,9 +2008,16 @@
       [
         {
           "type": "oogasalad.model.gameobject.Item",
-          "data": "{\"itemId\":\"Pickaxe\"}"
+          "data": "{\"itemId\":\"Wheat Seeds\"}"
         },
-        1000.0
+        10.0
+      ],
+      [
+        {
+          "type": "oogasalad.model.gameobject.Item",
+          "data": "{\"itemId\":\"Hoe\"}"
+        },
+        200.0
       ]
     ]
   },

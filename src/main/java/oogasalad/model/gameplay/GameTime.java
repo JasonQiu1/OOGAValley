@@ -47,7 +47,16 @@ public class GameTime implements GameTimeInterface {
     this.minute = minute;
   }
 
-  private void updateTime() {
+  /**
+   * Copy constructor
+   *
+   * @param other the other gametime to copy.
+   */
+  public GameTime(ReadOnlyGameTime other) {
+    this(other.getDay(), other.getHour(), other.getMinute());
+  }
+
+  public void advanceOneUnit() {
     minute += unit;
     if (minute >= 60) {
       minute = 0;
@@ -56,6 +65,17 @@ public class GameTime implements GameTimeInterface {
     if (hour >= 24) {
       hour = 0;
       day += 1;
+    }
+  }
+
+  /**
+   * Advance the given number of minutes.
+   *
+   * @param minutes the number of minutes to advance.
+   */
+  public void advance(int minutes) {
+    for (int i = 0; i < minutes / unit; i++) {
+      advanceOneUnit();
     }
   }
 
@@ -110,7 +130,7 @@ public class GameTime implements GameTimeInterface {
     accumulate += timeElapsedMillis;
     if (accumulate >= rate) {
       accumulate = 0;
-      updateTime();
+      advanceOneUnit();
     }
   }
 

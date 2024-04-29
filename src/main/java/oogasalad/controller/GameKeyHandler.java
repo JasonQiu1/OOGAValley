@@ -23,8 +23,15 @@ public class GameKeyHandler implements EventHandler<KeyEvent> {
   public void handle(KeyEvent event) {
     switch (event.getCode()) {
       case M:
-        LOG.info("Activated money cheat code!");
+        LOG.info("Activated cheat code: Added 1000 monies!");
         game.getEditableGameState().addMoney(1000);
+      case S:
+        LOG.info("Activated cheat code: Forced shop rotation!");
+        game.getEditableGameState().getEditableShop()
+            .forceItemRotation(game.getGameState().getGameTime());
+      case N:
+        LOG.info("Activated cheat code: Skip 1 hour ahead!");
+        game.getEditableGameState().getEditableGameTime().advance(60);
     }
   }
 }

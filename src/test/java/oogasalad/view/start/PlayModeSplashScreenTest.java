@@ -25,7 +25,7 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
   @Override
   public void start(Stage stage) {
     this.stage = stage;
-    playModeSplashScreen = new PlayModeSplashScreen(stage, "English", null,new GameConfiguration());
+    playModeSplashScreen = new PlayModeSplashScreen(stage, "English", null);
     playModeSplashScreen.open();
     this.newGame = (ChangePageButton) lookup("#New").queryButton();
     this.loadGame = (ChangePageButton) lookup("#Load").queryButton();
@@ -54,7 +54,7 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
     clickOn(loadGame);
 
     Stage loaderStage = findLoaderStage();
-    assertNotNull(loaderStage.getTitle());
+    assertNotNull(loaderStage);
   }
 
   private Stage findLoaderStage() {

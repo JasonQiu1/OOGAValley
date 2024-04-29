@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import oogasalad.database.realtime.Firebase;
 import oogasalad.model.api.GameInterface;
 
 /**
@@ -18,9 +17,10 @@ import oogasalad.model.api.GameInterface;
 
 public class LoginView extends Application {
 
-  private Label helloLabel;
-  private UserInfo userInfo;
   private GameInterface game;
+  private Label helloLabel;
+  private Scene loginScene;
+  private UserInfo userInfo;
   private VBox vbox;
 
   public LoginView(GameInterface game) {
@@ -28,16 +28,31 @@ public class LoginView extends Application {
     this.game = game;
   }
 
-  public static void main(String[] args) {
-    launch(args);
-  }
 
   @Override
   public void start(Stage primaryStage) {
-    Firebase.initializeFirebase();
-    Button loginButton = new Button("Login");
     userInfo = new UserInfo(-1, "Guest");
+    helloLabel = new Label("Welcome Guest!");
+    int userId = UserSession.getUserId();
+    setupUI(primaryStage);
+    if (userId != -1) {
+      String username = UserSession.getUsername();
+      helloLabel.setText("Welcome " + username + "!");
+      Button goBackButton = new Button("Go!");
+      goBackButton.setOnAction(event -> {
+        GameFileOperations gameFileOperations = new GameFileOperations(primaryStage,
+            loginScene, userId, game);
+        primaryStage.setScene(gameFileOperations.createScene());
+        primaryStage.show();
+      });
+      vbox.getChildren().add(goBackButton);
+    }
+    primaryStage.setScene(loginScene);
+    primaryStage.show();
+  }
 
+  private void setupUI(Stage primaryStage) {
+    Button loginButton = new Button("Login");
     loginButton.setOnAction(event -> {
       Login login = new Login(primaryStage, primaryStage.getScene(), game);
       primaryStage.setScene(new Scene(login.getScene()));
@@ -45,24 +60,15 @@ public class LoginView extends Application {
       login.setOnLoginSuccess((username, id) -> {
         helloLabel.setText("Welcome " + username + "!");
         userInfo = new UserInfo(id, username);
+        UserSession.saveUserLogin(id, username);
       });
     });
 
-
-    vbox = new VBox(10);
-    vbox.getChildren().addAll(loginButton);
+    vbox = new VBox(10, loginButton);
     vbox.setAlignment(Pos.CENTER);
-    BorderPane root = new BorderPane();
-    root.setCenter(vbox);
-
-    helloLabel = new Label("Welcome Guest!");
+    BorderPane root = new BorderPane(vbox, helloLabel, null, null, null);
     helloLabel.setAlignment(Pos.TOP_RIGHT);
     root.setTop(helloLabel);
-
-    Scene scene = new Scene(root, 300, 300);
-
-    primaryStage.setScene(scene);
-    primaryStage.setTitle("NewLoadView");
-    primaryStage.show();
+    loginScene = new Scene(root, 300, 300);
   }
 }

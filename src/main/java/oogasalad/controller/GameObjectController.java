@@ -11,14 +11,23 @@ import java.util.TreeMap;
 
 public class GameObjectController extends PropertyController{
     private final Map<String, Properties> allGameObjects;
+    private Properties properties;
     public GameObjectController(){
         super();
         allGameObjects = GameConfiguration.getEditableConfigurablesStore().getAllEditableConfigurables();
     }
 
+    public void setKey(String key){
+        for(Map.Entry<String, Properties>  entry : allGameObjects.entrySet()){
+            if(entry.getValue().getCopyOfProperties().get("name").equals(key)){
+                properties = allGameObjects.get(entry.getKey());
+            }
+        }
+    }
+
     @Override
-    public Map<String, String> getProperties(String key){
-        return removeType(allGameObjects.get(key).getCopyOfProperties());
+    public Map<String, String> getProperties(){
+        return removeType(properties.getCopyOfProperties());
     }
 
     private Map<String, String> removeType(Map<String, String> copyOfProperties) {
@@ -28,27 +37,27 @@ public class GameObjectController extends PropertyController{
     }
 
     @Override
-    public Map<String, List<String>> getListProperties(String key){
-        return allGameObjects.get(key).getListProperties();
+    public Map<String, List<String>> getListProperties(){
+        return properties.getListProperties();
     }
 
     @Override
-    public Map<String, Map<String, String>> getMapProperties(String key){
-        return allGameObjects.get(key).getCopyOfMapProperties();
+    public Map<String, Map<String, String>> getMapProperties(){
+        return properties.getCopyOfMapProperties();
     }
 
     @Override
-    public void updateProperty(String key, String name, String value) {
-        allGameObjects.get(key).update(name, value);
+    public void updateProperty(String name, String value) {
+        properties.update(name, value);
     }
 
     @Override
-    public void updateMapProperty(String key, String name, Map<String, String> newMap) {
-        allGameObjects.get(key).update(name, newMap);
+    public void updateMapProperty(String name, Map<String, String> newMap) {
+        properties.update(name, newMap);
     }
 
     @Override
-    public void updateListProperty(String lastSelectedSelectable, String name, String value) {
+    public void updateListProperty(String name, String value) {
 
     }
 };

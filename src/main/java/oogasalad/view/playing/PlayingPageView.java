@@ -71,11 +71,8 @@ public class PlayingPageView {
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.playing.";
   private static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/playing/";
   private static final Logger LOG = LogManager.getLogger(PlayingPageView.class);
-  private final String myLanguage = "EnglishDisplayText";
-  private final String menuLanguage = "EnglishMenuButtons.csv";
-  private final ResourceBundle displayTextResource =
-      ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + myLanguage);
-  private final String menuButtons = DEFAULT_RESOURCE_FOLDER + menuLanguage;
+  private ResourceBundle displayTextResource;
+  private String menuButtons;
   private final Label timeLabel = new Label();
 
   private final EnergyProgress energyProgress;
@@ -89,10 +86,8 @@ public class PlayingPageView {
   private LandView landView;
   private BagView bagView;
   private Scene previousScene;
-
   private Timeline timeline;
   private StackPane root;
-
   private CurrentMoneyHbox moneyBox;
 
   /**
@@ -105,6 +100,7 @@ public class PlayingPageView {
   public PlayingPageView(Stage primaryStage, String language, Scene backScene) {
     stage = primaryStage;
     primaryLanguage = language;
+    setFileLanguages();
     this.previousScene = backScene;
     game = gameFactory.createGame();
     energyProgress = new EnergyProgress(game);
@@ -113,16 +109,21 @@ public class PlayingPageView {
     initSize();
   }
 
-  public PlayingPageView(Stage primaryStage, String language, String fileName, int windowWidth,
+
+  public PlayingPageView(Stage primaryStage, String language, String saveFilePath,
+      String configFilePath, int windowWidth,
       int windowHeight) throws IOException {
     GameInterface gameTemp;
     stage = primaryStage;
     primaryLanguage = language;
+
+    setFileLanguages();
+
     try {
-      gameTemp = gameFactory.createGame(fileName, fileName);
+      gameTemp = gameFactory.createGame(saveFilePath, configFilePath);
     } catch (IOException e) {
       LOG.info("cannot find game saves, load from the config");
-      gameTemp = gameFactory.createGame(fileName);
+      gameTemp = gameFactory.createGame(configFilePath, saveFilePath);
     }
 
     game = gameTemp;
@@ -157,7 +158,7 @@ public class PlayingPageView {
 
   public void save() {
     FileChooser result = new FileChooser();
-    result.setTitle("save location ");
+    result.setTitle(displayTextResource.getString("save_location"));
     result.setInitialDirectory(new File("data/gamesaves"));
     result.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
     result.setInitialFileName("test.json");
@@ -171,7 +172,7 @@ public class PlayingPageView {
     } catch (IOException | InvalidPathException e) {
       new Alert(AlertType.ERROR, "saving failed").showAndWait();
     }
-    new Alert(AlertType.CONFIRMATION, "save done").showAndWait();
+    new Alert(AlertType.CONFIRMATION, displayTextResource.getString("save_done")).showAndWait();
     LOG.info("saving done");
   }
 
@@ -251,7 +252,7 @@ public class PlayingPageView {
     topBox.setPrefSize(topWidth, topHeight);
     topBox.getStyleClass().add("top-box");
     createHelpButton();
-    Button menu = new Button("Menu");
+    Button menu = new Button(displayTextResource.getString("menu"));
     menu.setId("menu_button");
     setButtonSize(menu, topButtonWidth, topButtonHeight, topFontSize);
     menu.setOnAction(event -> openAndCloseMenu());
@@ -262,17 +263,18 @@ public class PlayingPageView {
     btnOpenShop.setOnAction(e -> openShop());
     timeLabel.getStyleClass().add("play-top-label");
     timeLabel.setId("time-label");
+
     moneyBox = new CurrentMoneyHbox(game);
     moneyBox.update();
     moneyBox.setAlignment(Pos.CENTER);
-    Button sleepButton = new Button("sleep");
+    Button sleepButton = new Button(displayTextResource.getString("sleep"));
     setButtonSize(sleepButton, topButtonWidth, topButtonHeight, topFontSize);
     sleepButton.setId("sleep-button");
     sleepButton.setOnAction(event -> {
       LOG.info("slept");
       game.sleep();
     });
-    Button saveButton = new Button("save");
+    Button saveButton = new Button(displayTextResource.getString("save"));
     saveButton.setId("save-button");
     saveButton.setOnAction(event -> save());
     setButtonSize(saveButton, topButtonWidth, topButtonHeight, topFontSize);
@@ -326,6 +328,12 @@ public class PlayingPageView {
       Chat chatApp = new Chat(chatStage);
       chatApp.start();
     });
+  }
+
+  private void setFileLanguages() {
+    displayTextResource = ResourceBundle.getBundle(
+        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "DisplayText");
+    menuButtons = DEFAULT_RESOURCE_FOLDER + primaryLanguage + "MenuButtons.csv";
   }
 
   private void openLogin() {

@@ -43,10 +43,8 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
       LOG.info(methodName);
       Method method = clazz.getMethod(methodName, parameterTypes);
       System.out.println(clazz.getSimpleName());
-      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, Scene.class,
-          GameConfiguration.class);
-      Object instance = constructor.newInstance(stage, language, previousScene,
-          new GameConfiguration());
+      Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, Scene.class);
+      Object instance = constructor.newInstance(stage, language, previousScene);
 
       Object[] args = new Object[parameters.length]; // +1 for the stage
       System.arraycopy(parameters, 0, args, 0, parameters.length); // copy remaining parameters
