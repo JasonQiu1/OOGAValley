@@ -19,7 +19,7 @@ public class RemoveObjectButton extends Button {
         setId("RemoveObject");
         RemoveObjectDialogBox rodb = new RemoveObjectDialogBox();
         super.setOnAction(e -> {
-            String[] toBeRemoved = rodb.getNewField();
+            String[] toBeRemoved = rodb.getFields();
             if (toBeRemoved != null) {
                 remove.accept(toBeRemoved[0]);
             }

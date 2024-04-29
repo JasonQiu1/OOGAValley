@@ -5,13 +5,14 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import oogasalad.view.editor.GetDialogFields;
 
 import java.util.ResourceBundle;
 
 /**
  * Dialog box for adding a new object.
  */
-public class AddNewObjectDialogBox {
+public class AddNewObjectDialogBox implements GetDialogFields {
     private static final String DEFAULT_RESOURCE_PACKAGE =
             "view.editor.GameObjectEditor.AddNewObjectDialogBox.";
     private final String displayTextLanguage = "EnglishDisplayText";
@@ -22,7 +23,8 @@ public class AddNewObjectDialogBox {
      *
      * @return An array containing the type and name entered by the user, or null if the user cancels the operation.
      */
-    public String[] getNewField() {
+    @Override
+    public String[] getFields() {
         displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + displayTextLanguage);
 
         // Create text fields for type and name inputs

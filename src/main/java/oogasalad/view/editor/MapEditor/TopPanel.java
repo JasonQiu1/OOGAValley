@@ -8,7 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import oogasalad.view.start.ChangePageButton;
 
 import java.util.ResourceBundle;
 
@@ -49,9 +48,9 @@ public class TopPanel extends StackPane {
 
     SizeChangeButton scb = new SizeChangeButton(buttonResource.getString("size_change"), (newI, newJ) -> {
       SizeChangeDialogBox dialog = new SizeChangeDialogBox();
-      int[] newSize = dialog.getNewSize();
+      String[] newSize = dialog.getFields();
       if (newSize != null) {
-        bm.modifyGridSizeBL(newSize[1], newSize[0]);
+        bm.modifyGridSizeBL(Integer.parseInt(newSize[1]), Integer.parseInt(newSize[0]));
       }
     });
 

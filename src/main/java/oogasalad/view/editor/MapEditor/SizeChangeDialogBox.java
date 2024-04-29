@@ -6,11 +6,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import oogasalad.view.editor.GetDialogFields;
 
 /**
  * Dialog box for changing the size of a component.
  */
-class SizeChangeDialogBox {
+class SizeChangeDialogBox implements GetDialogFields {
 
     private static final String DEFAULT_RESOURCE_PACKAGE =
             "view.editor.MapEditor.SizeChangeDialogBox.";
@@ -22,7 +23,8 @@ class SizeChangeDialogBox {
      *
      * @return An array containing the new size inputted by the user [newRows, newColumns], or null if the user cancels.
      */
-    public int[] getNewSize() {
+    @Override
+    public String[] getFields() {
         displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + displayTextLanguage);
 
         TextField textField1 = new TextField();
@@ -52,11 +54,11 @@ class SizeChangeDialogBox {
      * @param text2 The input for new columns.
      * @return An array containing the parsed new size [newRows, newColumns], or null if the input is invalid.
      */
-    private int[] processInput(String text1, String text2) {
+    private String[] processInput(String text1, String text2) {
         try {
             int newI = Integer.parseInt(text1);
             int newJ = Integer.parseInt(text2);
-            return new int[]{newI, newJ};
+            return new String[]{text1, text2};
         } catch (NumberFormatException e) {
             showErrorPopup(displayTextResource.getString("invalid_type"), displayTextResource.getString("error_instruction"));
             return null; // Return null if parsing fails
@@ -76,4 +78,5 @@ class SizeChangeDialogBox {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 }

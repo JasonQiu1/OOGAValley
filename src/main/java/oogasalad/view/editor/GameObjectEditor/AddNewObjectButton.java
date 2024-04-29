@@ -23,7 +23,7 @@ public class AddNewObjectButton extends Button {
         // Set action event for the button
         super.setOnAction(e -> {
             // Display dialog box and get new object type and name
-            String[] newTypeAndName = anob.getNewField();
+            String[] newTypeAndName = anob.getFields();
             // If user entered valid values, call the newObject BiConsumer
             if(newTypeAndName != null){
                 newObject.accept(newTypeAndName[0], newTypeAndName[1]);
