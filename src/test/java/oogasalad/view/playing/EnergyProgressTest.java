@@ -1,4 +1,4 @@
-package oogasalad.view.play;
+package oogasalad.view.playing;
 
 import static org.junit.Assert.assertEquals;
 

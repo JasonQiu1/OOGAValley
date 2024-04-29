@@ -1,4 +1,4 @@
-package oogasalad.view.play;
+package oogasalad.view.playing;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import oogasalad.view.playing.PlayingPageView;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.Start;
 import org.testfx.util.WaitForAsyncUtils;

@@ -1,4 +1,4 @@
-package oogasalad.view.shop;
+package oogasalad.view.shopping;
 
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.mock;

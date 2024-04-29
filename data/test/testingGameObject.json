@@ -5,13 +5,15 @@
     "image": "/img/grass.jpg",
     "updatable": true,
     "updateTime": 10,
-    "updateTransformation":  "tilled_grass",
+    "updateTransformation": "tilled_grass",
     "expirable": false,
     "expireTime": 120,
     "expireTransformation": "",
     "destructable": true
   },
-  "listProperties": {},
+  "listProperties": {
+    "destructableTools": []
+  },
   "mapProperties": {
     "interactTransformations": {
       "validItem": "tilled_grass"
