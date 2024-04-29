@@ -15,6 +15,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * This class represents a window that displays lists of save and configuration files and allows the
+ * user to select one or both files.
+ */
 public class LoaderListDisplay {
 
   private static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
@@ -30,6 +34,13 @@ public class LoaderListDisplay {
   private ListView<String> saveView;
   private ListView<String> configView;
 
+  /**
+   * Constructs a LoaderListDisplay object.
+   *
+   * @param mainStage The main stage of the application
+   * @param language  The language to use for localization
+   * @param title     The title of the window
+   */
   public LoaderListDisplay(Stage mainStage, String language, String title) {
     primaryStage = mainStage;
     propertiesBundle = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + language);
@@ -37,6 +48,11 @@ public class LoaderListDisplay {
     myStage.setTitle(title);
   }
 
+  /**
+   * Opens the window and allows the user to select a save and configuration file.
+   *
+   * @return An array containing the selected save and configuration files
+   */
   public File[] open() {
     saveView = returnItemListView(DEFAULT_SAVES_FOLDER);
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
@@ -57,6 +73,11 @@ public class LoaderListDisplay {
     return Arrays.copyOf(files, files.length);
   }
 
+  /**
+   * Opens the window and allows the user to select a configuration file only.
+   *
+   * @return The selected configuration file
+   */
   public File openConfig() {
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
     VBox configBox = viewBoxMaker(configView, propertiesBundle.getString("config_files"));
@@ -139,13 +160,7 @@ public class LoaderListDisplay {
   private Button createButton(String text,
       javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
     Button button = new Button(text);
-    button.getStyleClass().add("load");
     button.setOnAction(handler);
     return button;
-  }
-
-  public interface FileSelectionListener {
-
-    void onFileSelected(File file);
   }
 }
