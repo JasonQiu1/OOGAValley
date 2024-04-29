@@ -1,4 +1,4 @@
-package oogasalad.database.info;
+package oogasalad.database;
 
 public class Message {
 

@@ -1,4 +1,4 @@
-package oogasalad.view.social;
+package oogasalad.view.login;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,8 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import oogasalad.database.info.InfoService;
-import oogasalad.database.info.Thought;
+import oogasalad.database.InfoService;
+import oogasalad.database.Thought;
 import oogasalad.view.branch.BranchBase;
 /**
  * This class is responsible for displaying the thoughts view for the game.
@@ -41,9 +41,11 @@ public class ThoughtsView extends BranchBase {
     scrollPane.setFitToHeight(true);
 
     Button backButton = new Button("Back");
+    backButton.setId("backButton");
     backButton.setOnAction(e -> getStage().setScene(getPreviousScene()));
 
     Button sendThoughtButton = new Button("Send Thought");
+    sendThoughtButton.setId("sendThoughtButton");
     sendThoughtButton.setOnAction(e -> openSendThoughtPopup());
 
     HBox buttonBox = new HBox(backButton, sendThoughtButton);
@@ -76,7 +78,9 @@ public class ThoughtsView extends BranchBase {
 
     BorderPane borderPane = new BorderPane();
     TextArea thoughtTextArea = new TextArea();
+    thoughtTextArea.setId("thoughtTextArea");
     Button submitButton = new Button("Submit");
+    submitButton.setId("submitButton");
     submitButton.setOnAction(e -> {
       String thoughtText = thoughtTextArea.getText();
       int userId = 1;
