@@ -25,6 +25,7 @@ public class LoaderListDisplay {
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.LoaderListDisplay.";
   private static final String DEFAULT_CONFIG_FOLDER = "data/gameconfigurations";
   private static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
+  private static final String STYLES = "/styles.css";
   private File selectedSaveFile;
   private File selectedConfigFile;
   private final Stage primaryStage;
@@ -45,8 +46,8 @@ public class LoaderListDisplay {
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
 
 
-    VBox saveBox = viewBoxMaker(saveView, "Save Files");
-    VBox configBox = viewBoxMaker(configView, "Config Files");
+    VBox saveBox = viewBoxMaker(saveView, propertiesBundle.getString("save_files"));
+    VBox configBox = viewBoxMaker(configView, propertiesBundle.getString("config_files"));
 
     HBox fileLists = new HBox(saveBox, configBox);
 
@@ -61,7 +62,7 @@ public class LoaderListDisplay {
   public File openConfig() {
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
 
-    HBox fileList = new HBox(viewBoxMaker(configView, "Config Files"));
+    HBox fileList = new HBox(viewBoxMaker(configView, propertiesBundle.getString("config_files")));
     setupBottom(fileList);
     return selectedSaveFile;
   }
@@ -88,10 +89,9 @@ public class LoaderListDisplay {
     ScrollPane scrollPane = new ScrollPane(vBox);
     scrollPane.setId("loader_scrollpane");
 
-    LOG.debug(selectedSaveFile);
-    LOG.debug(selectedSaveFile);
 
     Scene scene = new Scene(scrollPane);
+    scene.getStylesheets().add(getClass().getResource(STYLES).toExternalForm());
 
     myStage.initStyle(StageStyle.UNDECORATED);
     myStage.initOwner(primaryStage);

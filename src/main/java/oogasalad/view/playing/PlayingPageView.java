@@ -170,7 +170,7 @@ public class PlayingPageView {
       game.save(file.getName());
       game.getGameConfiguration().save(file.getName());
     } catch (IOException | InvalidPathException e) {
-      new Alert(AlertType.ERROR, "saving failed").showAndWait();
+      new Alert(AlertType.ERROR, displayTextResource.getString("saving_failed")).showAndWait();
     }
     new Alert(AlertType.CONFIRMATION, displayTextResource.getString("save_done")).showAndWait();
     LOG.info("saving done");
@@ -278,7 +278,7 @@ public class PlayingPageView {
     saveButton.setId("save-button");
     saveButton.setOnAction(event -> save());
     setButtonSize(saveButton, topButtonWidth, topButtonHeight, topFontSize);
-    Button loginButton = new Button("Web");
+    Button loginButton = new Button(displayTextResource.getString("web"));
     loginButton.setId("login-button");
     setButtonSize(loginButton, topButtonWidth, topButtonHeight, topFontSize);
     loginButton.setOnAction(e -> openLogin());
