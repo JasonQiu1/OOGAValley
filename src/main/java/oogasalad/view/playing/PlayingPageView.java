@@ -66,7 +66,6 @@ public class PlayingPageView {
   private BagView bagView;
   private Scene previousScene;
   private Timeline timeline;
-  private final StackPane root = new StackPane();
   private CurrentMoneyHbox moneyBox;
 
   /**
@@ -124,6 +123,8 @@ public class PlayingPageView {
     LOG.info("initializing game model");
     initModel();
     LOG.info("finish loading game model");
+
+    StackPane root = new StackPane();
     root.getStyleClass().add("playing-root");
     BorderPane borderPane = new BorderPane();
     setupTop(borderPane);
