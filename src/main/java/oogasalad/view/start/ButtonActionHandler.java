@@ -1,3 +1,7 @@
+/**
+ * This class represents an EventHandler for JavaFX buttons. It dynamically invokes a method of a specified class
+ * with the provided parameters when the associated button is clicked.
+ */
 package oogasalad.view.start;
 
 import java.lang.reflect.Constructor;
@@ -19,6 +23,16 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
   private final String[] parameters;
   private final Scene previousScene;
 
+  /**
+   * Constructs a ButtonActionHandler with the specified parameters.
+   *
+   * @param className the name of the class containing the method to be invoked
+   * @param methodName the name of the method to be invoked
+   * @param stage the primary stage
+   * @param language the language
+   * @param backScene the previous scene
+   * @param parameters the parameters to be passed to the method
+   */
   public ButtonActionHandler(String className, String methodName, Stage stage, String language,
       Scene backScene, String... parameters) {
     this.className = className;
@@ -26,10 +40,14 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
     this.stage = stage;
     this.language = language;
     this.previousScene = backScene;
-//    LOG.info(String.format("when called? %s", previousScene));
     this.parameters = parameters.clone();
   }
 
+  /**
+   * Invoked when a specific button is clicked.
+   *
+   * @param event the event triggered by the button click
+   */
   @Override
   public void handle(ActionEvent event) {
     try {
@@ -38,7 +56,6 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
       for (int i = 1; i < parameters.length; i++) {
         parameterTypes[i] = String.class; // Assume all parameters are strings
       }
-//      LOG.info(parameterTypes[0]);
       LOG.info(methodName);
       Method method = clazz.getMethod(methodName, parameterTypes);
       System.out.println(clazz.getSimpleName());
