@@ -1,6 +1,5 @@
 package oogasalad.view.login;
 
-import com.google.gson.Gson;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -34,7 +33,8 @@ public class FileUtility {
 
   public static String[] readFileAsString(int id) throws IOException {
     String[] result = new String[3];
-    result[0] = new String(Files.readAllBytes(Paths.get(GAME_SAVES_DIRECTORY + id + JSON_EXTENSION)));
+    result[0] = new String(
+        Files.readAllBytes(Paths.get(GAME_SAVES_DIRECTORY + id + JSON_EXTENSION)));
     result[1] = new String(
         Files.readAllBytes(Paths.get(GAME_CONFIGURATIONS_DIRECTORY + id + JSON_EXTENSION)));
     result[2] = new String(
