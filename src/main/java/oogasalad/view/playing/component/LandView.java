@@ -9,9 +9,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * A 2d grid representing the land and the plants (buildings).
  */
-public class LandView {
-
-  private final GridPane landGridPane = new GridPane();
+public class LandView extends GridPane {
 
   private final Pile[][] piles;
 
@@ -23,13 +21,14 @@ public class LandView {
 
 
   public LandView(GameInterface game, double landGridPaneWidth, double landGridPaneHeight) {
+    super();
     this.readOnlyGameWorld = game.getGameState().getGameWorld();
     this.game = game;
     piles = new Pile[readOnlyGameWorld.getHeight()][readOnlyGameWorld.getWidth()];
     for (int i = 0; i < piles.length; i++) {
       for (int j = 0; j < piles[0].length; j++) {
-        piles[i][j] = new Pile(i, j, this,landGridPaneWidth, landGridPaneHeight);
-        landGridPane.add(piles[i][j], j, i);
+        piles[i][j] = new Pile(i, j, this, landGridPaneWidth, landGridPaneHeight);
+        this.add(piles[i][j], j, i);
       }
     }
   }
@@ -50,18 +49,16 @@ public class LandView {
    *
    * @return the grid view to be displayed by javafx
    */
-  public GridPane getGridView() {
-    return landGridPane;
-  }
-
   public void interact(int x, int y) {
     LOG.info("interact with the gird at %d, %d".formatted(x, y));
     game.interact(x, y, 0);
   }
-  public int getHeight(){
+
+  public int getRow() {
     return piles.length;
   }
-  public int getWidth(){
+
+  public int getCol() {
     return piles[0].length;
   }
 }

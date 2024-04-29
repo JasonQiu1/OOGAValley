@@ -6,6 +6,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import oogasalad.view.shopping.Utils;
 
 /**
@@ -69,7 +71,8 @@ public class PageChangeBorderPane<T extends GridPane> extends BorderPane {
     if (currentPageIndex < 0 || currentPageIndex >= gridPanes.size()) {
       return;
     }
-    currentGridPane = gridPanes.get(currentPageIndex);
+//    currentGridPane = gridPanes.get(currentPageIndex);
+    currentGridPane.add(new Rectangle(100, 100, Color.WHEAT), 0, 0);
   }
 
   private void enableButtons() {

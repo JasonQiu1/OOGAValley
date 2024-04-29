@@ -155,6 +155,7 @@ public class PlayingPageView {
     result.setTitle("save location ");
     result.setInitialDirectory(new File("data/gamesaves"));
     result.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
+    result.setInitialFileName("test.json");
     File file = result.showSaveDialog(stage);
     if (file == null) {
       return;
@@ -162,10 +163,8 @@ public class PlayingPageView {
     try {
       game.save(file.getName());
       game.getGameConfiguration().save(file.getName());
-    } catch (IOException e) {
+    } catch (IOException | InvalidPathException e) {
       new Alert(AlertType.ERROR, "saving failed").showAndWait();
-    } catch (InvalidPathException e) {
-      new Alert(AlertType.ERROR, "path invalid").showAndWait();
     }
     new Alert(AlertType.CONFIRMATION, "save done").showAndWait();
     LOG.info("saving done");
@@ -208,7 +207,9 @@ public class PlayingPageView {
   private void initModel() {
     bagView = new BagView(game, 10, bottomCellWidth,
         bottomCellHeight, bottomBoxWidth, bottomBoxHeight);
+    bagView.setId("bagView");
     landView = new LandView(game, landGridPaneWidth, landGridPaneHeight);
+    landView.setId("landView");
   }
 
   private void setUpdate() {
@@ -246,6 +247,7 @@ public class PlayingPageView {
     topBox.getStyleClass().add("top-box");
     createHelpButton();
     Button menu = new Button("Menu");
+    menu.setId("menu_button");
     setButtonSize(menu, topButtonWidth, topButtonHeight, topFontSize);
     menu.setOnAction(event -> openAndCloseMenu());
     menu.getStyleClass().add("menu_button");
@@ -261,15 +263,16 @@ public class PlayingPageView {
     Button sleepButton = new Button("sleep");
     setButtonSize(sleepButton, topButtonWidth, topButtonHeight, topFontSize);
     sleepButton.setId("sleep-button");
-    sleepButton.setOnMouseClicked(event -> {
+    sleepButton.setOnAction(event -> {
       LOG.info("slept");
       game.sleep();
     });
     Button saveButton = new Button("save");
     saveButton.setId("save-button");
-    saveButton.setOnMouseClicked(event -> save());
+    saveButton.setOnAction(event -> save());
     setButtonSize(saveButton, topButtonWidth, topButtonHeight, topFontSize);
     Button loginButton = new Button("Web");
+    loginButton.setId("login-button");
     setButtonSize(loginButton, topButtonWidth, topButtonHeight, topFontSize);
     loginButton.setOnAction(e -> openLogin());
     topBox.getChildren()
@@ -279,7 +282,7 @@ public class PlayingPageView {
   }
 
   private void setupCenter(BorderPane root) {
-    root.setCenter(landView.getGridView());
+    root.setCenter(landView);
   }
 
   private void setupBottom(BorderPane root) {
@@ -329,18 +332,5 @@ public class PlayingPageView {
     button.setPrefWidth(width);
     button.setPrefHeight(height);
     button.setStyle(String.format("-fx-font-size: %.1fpx;", fontSize));
-  }
-
-
-  public StackPane getRoot() {
-    return root;
-  }
-
-  public void setWindowWidth(int windowWidth) {
-    this.windowWidth = windowWidth;
-  }
-
-  public void setWindowHeight(int windowHeight) {
-    this.windowHeight = windowHeight;
   }
 }
