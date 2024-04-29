@@ -17,7 +17,7 @@ public class MapEditor extends VBox {
 
   public MapEditor(Stage stage, Scene backScene, GameConfiguration gc) {
     super();
-    super.setAlignment(Pos.CENTER);
+    super.setAlignment(Pos.TOP_CENTER);
     this.stage = stage;
     this.backScene = backScene;
     this.gc = gc;

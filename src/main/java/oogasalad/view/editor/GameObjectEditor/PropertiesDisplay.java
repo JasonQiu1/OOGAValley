@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import oogasalad.controller.GameObjectController;
 import oogasalad.controller.PropertyController;
 import oogasalad.view.editor.MapEditor.Selector;
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +18,7 @@ import java.util.TreeMap;
 public class PropertiesDisplay extends VBox {
 
     private static final Logger LOG = LogManager.getLogger(GameObjectPropertiesDisplay.class);
-    private final PropertyController goc;
+    private PropertyController goc;
 
     private final List<ObjectPropertyDisplay> ObjectPropertyDisplays;
 
@@ -44,10 +45,12 @@ public class PropertiesDisplay extends VBox {
         super.getChildren().add(name);
 
         // Display properties
-        displayProperties(goc.getProperties());
-        displayListProperties(goc.getListProperties());
-        displayMapProperties(goc.getMapProperties());
-        super.getChildren().add(new SaveButton("save", e -> save(), update, key));
+        if(goc.getProperties() != null){
+            displayProperties(goc.getProperties());
+            displayListProperties(goc.getListProperties());
+            displayMapProperties(goc.getMapProperties());
+            super.getChildren().add(new SaveButton("save", e -> save(), update, key));
+        }
     }
 
 
@@ -117,5 +120,9 @@ public class PropertiesDisplay extends VBox {
             counter++;
         }
         return -1;
+    }
+
+    public void setGC(GameObjectController gc) {
+        goc = gc;
     }
 }

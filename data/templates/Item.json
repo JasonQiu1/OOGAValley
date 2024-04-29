@@ -1,20 +1,15 @@
-// DEFAULT: An item representing wheat seeds.
 {
   "properties": {
-    "name": "Wheat Seeds",
+    "name": "ITEM",
     "type": "Item",
-    "image":"wheat_seeds.png",
-    // sell price
-    "worth": 10,
-    // deducts an item from the inventory after being used
-    "consumable": true,
+    "image": "",
+    "worth": "",
+    "consumable": "",
     // amount to change energy after a successful interaction or use
-    // if not enough energy when energyChange is negative, then don't interact
-    "energyChange": 0,
+    "energyChange": "",
     // do not interact with the world, just consume and apply effects
-    "edible": false
+    "edible": ""
   },
   "listProperties": {},
   "mapProperties": {}
-  }
 }

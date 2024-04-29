@@ -33,19 +33,10 @@ public class TopPanel extends StackPane {
 
     Label l = new Label(titleResource.getString("map_editor")); //Resource Bundle This
     HBox hbox = new HBox(l);
-    hbox.setMinWidth(650);
+    hbox.setMinWidth(400);
+    hbox.setMaxWidth(400);
     hbox.setAlignment(Pos.CENTER);
     l.getStyleClass().add("map-label");
-//    SizeChangeButtonWrapper scbw = new SizeChangeButtonWrapper(
-//        new SizeChangeButton((newI, newJ) -> {
-//          // Show dialog to get new grid size
-//          SizeChangeDialogBox dialog = new SizeChangeDialogBox();
-//          int[] newSize = dialog.getNewSize();
-//          if (newSize != null) {
-//            // If user inputs new size, call modifyGridSize method
-//            bm.modifyGridSizeBL(newSize[1], newSize[0]);
-//          }
-//        }));
 
     SizeChangeButton scb =
         new SizeChangeButton(buttonResource.getString("size_change"), (newI, newJ) -> {
@@ -62,22 +53,12 @@ public class TopPanel extends StackPane {
     backButton.setOnAction(event -> goBack());
 
 
-//      HelpButtonWrapper hbw = new HelpButtonWrapper(
-//              new HelpButton(e -> {
-//                  // Show dialog to get new grid size
-//                  HelpDialogBox dialog = new HelpDialogBox();
-//                  dialog.show();
-//              }));
-
     HelpButton hb = new HelpButton(buttonResource.getString("help"), e -> {
       // Show dialog to get new grid size
       HelpDialogBox dialog = new HelpDialogBox();
       dialog.show(buttonResource.getString("help"));
     });
 
-//      GridPane gp = new GridPane();
-//      gp.add(hb, 0, 0);
-//      gp.add(scb, 1, 0);
     BorderPane bp = new BorderPane();
     bp.setLeft(hb);
     bp.setCenter(backButton);

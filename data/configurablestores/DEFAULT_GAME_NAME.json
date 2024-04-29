@@ -1,5 +1,51 @@
 {
   "configurables": {
+    "Foliage": {
+      "properties": {
+        "name": "Foliage",
+        "type": "Structure",
+        "image": "foliage.png",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "0",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {
+        "destructableTools": []
+      },
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {}
+      }
+    },
+    "Germinating Wheat": {
+      "properties": {
+        "name": "Germinating Wheat",
+        "type": "Structure",
+        "image": "germinating_wheat.png",
+        "updatable": "true",
+        "updateTime": "120",
+        "updateTransformation": "Wheat",
+        "expirable": "false",
+        "expireTime": "0",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {
+        "destructableTools": []
+      },
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {}
+      }
+    },
     "Cake": {
       "properties": {
         "name": "Cake",
@@ -27,7 +73,11 @@
         "expireTransformation": "",
         "destructable": "true"
       },
-      "listProperties": {},
+      "listProperties": {
+        "destructableTools": [
+          "Pickaxe"
+        ]
+      },
       "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {},
@@ -54,7 +104,9 @@
           "Hoe": "Farmland"
         },
         "interactDropMultipliers": {},
-        "plantableSeeds": {}
+        "plantableSeeds": {
+          "Wheat Seeds": "Foliage"
+        }
       }
     },
     "Farmland": {
@@ -62,7 +114,7 @@
         "name": "Farmland",
         "type": "Land",
         "image": "farmland.png",
-        "updatable": "false",
+        "updatable": "true",
         "updateTime": "500",
         "updateTransformation": "Dirt",
         "expirable": "false",
@@ -75,7 +127,7 @@
         "interactTransformations": {},
         "interactDropMultipliers": {},
         "plantableSeeds": {
-          "Wheat Seeds": "Wheat"
+          "Wheat Seeds": "Germinating Wheat"
         }
       }
     },
@@ -130,11 +182,15 @@
         "updateTime": "0",
         "updateTransformation": "",
         "expirable": "true",
-        "expireTime": "120",
+        "expireTime": "1440",
         "expireTransformation": "",
         "destructable": "true"
       },
-      "listProperties": {},
+      "listProperties": {
+        "destructableTools": [
+          "Scythe"
+        ]
+      },
       "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {},
@@ -173,16 +229,16 @@
       "propertiesType": {},
       "mapProperties": {}
     },
-    "COLLECTABLE": {
+    "Gem": {
       "properties": {
-        "name": "COLLECTABLE",
+        "name": "Gem",
         "type": "Collectable",
-        "image": "",
-        "updatable": "false",
-        "updateTime": "0",
+        "image": "gem.png",
+        "updatable": "",
+        "updateTime": "",
         "updateTransformation": "",
-        "expirable": "true",
-        "expireTime": "120",
+        "expirable": "",
+        "expireTime": "",
         "expireTransformation": ""
       },
       "listProperties": {},

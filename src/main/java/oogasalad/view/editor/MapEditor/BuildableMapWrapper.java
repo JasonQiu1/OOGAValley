@@ -22,12 +22,11 @@ public class BuildableMapWrapper extends ScrollPane {
     super();
     bp = getBorderPane(bm);
     HBox contentContainer = new HBox(bp); // Assuming BuildableMap extends Node
-    contentContainer.setPrefWidth(bp.getPrefWidth()); // Set initial preferred width
-    contentContainer.setPrefHeight(bp.getPrefHeight()); // Set initial preferred height
+    contentContainer.setPrefWidth(100); // Set initial preferred width
+    contentContainer.setPrefHeight(100); // Set initial preferred height
     contentContainer.setAlignment(Pos.CENTER);
     VBox vbox = new VBox(contentContainer);
     vbox.setAlignment(Pos.CENTER);
-    //vbox.setPadding(new Insets(2,2,2,2));
     super.setContent(vbox); // Set the content container
 
     super.setOnMouseClicked(e -> rendered = true);
@@ -36,7 +35,7 @@ public class BuildableMapWrapper extends ScrollPane {
     super.widthProperty().addListener((observable, oldValue, newValue) -> {
       Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(.3), event -> {
         if (!rendered) {
-          super.setPrefSize(super.getWidth(), super.getHeight());
+          super.setPrefSize(400, 400);
         }
       }));
       timeline.play();

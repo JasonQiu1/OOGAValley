@@ -7,26 +7,30 @@ import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.GameObjectEditor.GameObjectEditor;
 import oogasalad.view.editor.MapEditor.MapEditor;
 import oogasalad.view.editor.RuleEditor.RuleEditor;
-import oogasalad.view.editor.RuleEditor.SaveButtonContainer;
+
+import java.io.File;
 
 public class EditorWindow extends GridPane {
 
-  private final RuleEditor re;
-  private final MapEditor me;
+    private final MapEditor me;
+    private final GameObjectEditor goe;
 
   public EditorWindow(Stage stage, Scene backScene, GameConfiguration gc) {
     super();
-    //add(GameView, 0,0);
-    re = new RuleEditor(gc);
+    RuleEditor re = new RuleEditor(gc);
     me = new MapEditor(stage, backScene, gc);
+    goe = new GameObjectEditor(this::update);
     add(re, 0, 0);
-    add(new GameObjectEditor(this::update), 2, 0);
+    add(goe, 2, 0);
     add(me, 1, 0);
-    add(new SaveButtonContainer(new SaveAllButton(gc, re::getName)), 1, 1);
+    add(new BottomButtonContainer(new SaveAllButton(gc, re::getName), new AddPhotoButton(stage, this::savePhoto)), 1, 1);
+    stage.sizeToScene();
   }
 
   public void update(){
     me.update();
   }
-
+  public void savePhoto(File file){
+    goe.savePhoto(file);
+  }
 }
