@@ -24,7 +24,6 @@ import javafx.util.Duration;
 import oogasalad.controller.GameKeyHandler;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
-import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
 import oogasalad.view.login.LoginView;
@@ -91,7 +90,13 @@ public class PlayingPageView {
   private StackPane root;
   private CurrentMoneyHbox moneyBox;
 
-
+  /**
+   * Create a game Play with the default game
+   *
+   * @param primaryStage the stage
+   * @param language     the language of the game view
+   * @param backScene    the previous scene that creates the game
+   */
   public PlayingPageView(Stage primaryStage, String language, Scene backScene) {
     stage = primaryStage;
     primaryLanguage = language;
@@ -105,7 +110,8 @@ public class PlayingPageView {
   }
 
 
-  public PlayingPageView(Stage primaryStage, String language, String saveFilePath, String configFilePath, int windowWidth,
+  public PlayingPageView(Stage primaryStage, String language, String saveFilePath,
+      String configFilePath, int windowWidth,
       int windowHeight) throws IOException {
     GameInterface gameTemp;
     stage = primaryStage;
@@ -155,6 +161,7 @@ public class PlayingPageView {
     result.setTitle(displayTextResource.getString("save_location"));
     result.setInitialDirectory(new File("data/gamesaves"));
     result.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("Files", "*.json"));
+    result.setInitialFileName("test.json");
     File file = result.showSaveDialog(stage);
     if (file == null) {
       return;
@@ -162,10 +169,8 @@ public class PlayingPageView {
     try {
       game.save(file.getName());
       game.getGameConfiguration().save(file.getName());
-    } catch (IOException e) {
-      new Alert(AlertType.ERROR, displayTextResource.getString("saving_failed")).showAndWait();
-    } catch (InvalidPathException e) {
-      new Alert(AlertType.ERROR, displayTextResource.getString("path_invalid")).showAndWait();
+    } catch (IOException | InvalidPathException e) {
+      new Alert(AlertType.ERROR, "saving failed").showAndWait();
     }
     new Alert(AlertType.CONFIRMATION, displayTextResource.getString("save_done")).showAndWait();
     LOG.info("saving done");
@@ -208,7 +213,9 @@ public class PlayingPageView {
   private void initModel() {
     bagView = new BagView(game, 10, bottomCellWidth,
         bottomCellHeight, bottomBoxWidth, bottomBoxHeight);
+    bagView.setId("bagView");
     landView = new LandView(game, landGridPaneWidth, landGridPaneHeight);
+    landView.setId("landView");
   }
 
   private void setUpdate() {
@@ -246,6 +253,7 @@ public class PlayingPageView {
     topBox.getStyleClass().add("top-box");
     createHelpButton();
     Button menu = new Button(displayTextResource.getString("menu"));
+    menu.setId("menu_button");
     setButtonSize(menu, topButtonWidth, topButtonHeight, topFontSize);
     menu.setOnAction(event -> openAndCloseMenu());
     menu.getStyleClass().add("menu_button");
@@ -262,15 +270,16 @@ public class PlayingPageView {
     Button sleepButton = new Button(displayTextResource.getString("sleep"));
     setButtonSize(sleepButton, topButtonWidth, topButtonHeight, topFontSize);
     sleepButton.setId("sleep-button");
-    sleepButton.setOnMouseClicked(event -> {
+    sleepButton.setOnAction(event -> {
       LOG.info("slept");
       game.sleep();
     });
     Button saveButton = new Button(displayTextResource.getString("save"));
     saveButton.setId("save-button");
-    saveButton.setOnMouseClicked(event -> save());
+    saveButton.setOnAction(event -> save());
     setButtonSize(saveButton, topButtonWidth, topButtonHeight, topFontSize);
     Button loginButton = new Button("Web");
+    loginButton.setId("login-button");
     setButtonSize(loginButton, topButtonWidth, topButtonHeight, topFontSize);
     loginButton.setOnAction(e -> openLogin());
     topBox.getChildren()
@@ -280,7 +289,7 @@ public class PlayingPageView {
   }
 
   private void setupCenter(BorderPane root) {
-    root.setCenter(landView.getGridView());
+    root.setCenter(landView);
   }
 
   private void setupBottom(BorderPane root) {
@@ -322,7 +331,8 @@ public class PlayingPageView {
   }
 
   private void setFileLanguages() {
-    displayTextResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "DisplayText");
+    displayTextResource = ResourceBundle.getBundle(
+        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "DisplayText");
     menuButtons = DEFAULT_RESOURCE_FOLDER + primaryLanguage + "MenuButtons.csv";
   }
 
@@ -335,18 +345,5 @@ public class PlayingPageView {
     button.setPrefWidth(width);
     button.setPrefHeight(height);
     button.setStyle(String.format("-fx-font-size: %.1fpx;", fontSize));
-  }
-
-
-  public StackPane getRoot() {
-    return root;
-  }
-
-  public void setWindowWidth(int windowWidth) {
-    this.windowWidth = windowWidth;
-  }
-
-  public void setWindowHeight(int windowHeight) {
-    this.windowHeight = windowHeight;
   }
 }

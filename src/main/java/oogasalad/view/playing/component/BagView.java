@@ -14,7 +14,7 @@ import javafx.util.Pair;
 import oogasalad.model.api.GameInterface;
 import oogasalad.model.api.ReadOnlyBag;
 import oogasalad.model.api.ReadOnlyItem;
-import oogasalad.view.playing.PlayingPageView;
+import oogasalad.view.Tool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,8 +36,6 @@ public class BagView extends StackPane {
   private final List<Item> itemOnShow = new ArrayList<>();
 
   private final Logger LOG = LogManager.getLogger(BagView.class);
-  private final double bottomBoxWidth;
-  private final double bottomBoxHeight;
   private final double bottomCellWidth;
   private final double bottomCellHeight;
 
@@ -58,8 +56,6 @@ public class BagView extends StackPane {
     ImageView backgroundImageView = new ImageView(new Image(backGroundImageUrl));
     backgroundImageView.setFitWidth(bottomBoxWidth);
     backgroundImageView.setFitHeight(bottomBoxHeight);
-    this.bottomBoxHeight = bottomBoxHeight;
-    this.bottomBoxWidth = bottomBoxWidth;
     this.bottomCellHeight = bottomCellHeight;
     this.bottomCellWidth = bottomCellWidth;
     BorderPane borderPane = new BorderPane();
@@ -150,7 +146,7 @@ public class BagView extends StackPane {
       } else {
         Item item = itemOnShow.get(i);
         if (!(item.imageUrl().equals(newItem.getKey().getKey()))) {
-          item.bagItem().setImage(newItem.getKey().getKey());
+          item.bagItem().setImage(Tool.getImagePath(newItem.getKey().getKey()));
         }
         if (item.num() != newItem.getValue()) {
           item.bagItem().setNum(newItem.getValue());
