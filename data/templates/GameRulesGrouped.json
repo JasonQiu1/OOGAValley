@@ -10,6 +10,7 @@
     "energyAmount": 20,
     // regenerate 1 energy every 60 in-game minutes
     "energyRecoveryRate": 60,
+    "energyRecoveryAmount": 1,
     // collapsing takes you out for 2 days
     "collapseTimePenalty": 2880,
     // currently the shop rotates every day
@@ -60,7 +61,8 @@
       "timeGoal",
       "wakeHour",
       "shopRotationTime",
-      "shopRotationSize"
+      "shopRotationSize",
+      "energyRecoverAmount"
     ]
   }
 }
