@@ -24,6 +24,7 @@ import javafx.scene.layout.StackPane;
 
 public class EndView extends StackPane {
 
+  private Map<String, String> buttonDetails;
   /**
    * Constructor for the EndView class.
    *
@@ -44,7 +45,7 @@ public class EndView extends StackPane {
 
     HBox buttonBox = new HBox();
     buttonBox.setSpacing(10);
-    Map<String, String> buttonDetails = readButtonDetails();
+    buttonDetails = readButtonDetails();
     for (String key : buttonDetails.keySet()) {
       String[] details = buttonDetails.get(key).split(",");
       String id = details[0];
@@ -122,5 +123,7 @@ public class EndView extends StackPane {
     return null;
   }
 
-
+  public Map<String, String> getButtonDetails() {
+    return buttonDetails;
+  }
 }

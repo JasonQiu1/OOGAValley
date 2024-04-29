@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.playing.PlayingPageView;
@@ -23,86 +25,64 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   private final Stage stage;
   private final String primaryLanguage;
   private final Scene previousScene;
-  private String buttonLanguage;
-  private String titleLanguage;
   private ResourceBundle buttonResource;
-  private ResourceBundle titleResource;
-  private String buttonsPath;
-  private String myStageTitle;
-  private Scene myScene;
-  private LoaderListDisplay loaderListDisplay;
-  private Scene playModeScreen;
+  private ResourceBundle textResource;
 
-  public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene,
-      GameConfiguration gameConfiguration) {
+  public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene) {
     super();
     stage = stageToUse;
     primaryLanguage = language;
     previousScene = backScene;
-//    previousScene = stage.getScene();
-//    setFilesLanguage();
+
+    textResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Text");
+    buttonResource = ResourceBundle.getBundle(
+        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
   }
 
   @Override
   public void open() {
-    titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Title");
-    buttonResource = ResourceBundle.getBundle(
-        DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
+    String myStageTitle = textResource.getString("title");
+    String buttonsPath = buttonResource.getString("buttons_path");
 
-    myStageTitle = titleResource.getString("title");
-    buttonsPath = buttonResource.getString("buttons_path");
-
-//    LOG.info(String.valueOf(previousScene));
     ResourceString resourceString =
         new ResourceString(DEFAULT_RESOURCE_FOLDER, buttonsPath, myStageTitle, STYLES);
 
-    myScene = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
+    Scene myScene = setStage(stage, DEFAULT_WIDTH_PORTION, DEFAULT_HEIGHT_PORTION, resourceString,
         primaryLanguage, previousScene);
-//    LOG.info(String.format("the previous scene is still %s", previousScene));
 
     stage.setTitle(myStageTitle);
     stage.setScene(myScene);
     stage.show();
-//    LOG.info(String.format("after changing the scene %s", previousScene));
-
-//    try {
-//      sleep(5000);
-//    } catch (InterruptedException e) {
-//      throw new RuntimeException(e);
-//    }
-//    goBackScene(new Scene(new HBox()));
   }
 
 
   public void makeChooser() {
-//    FileChooserContainer resultContainer = new FileChooserContainer(null, DEFAULT_RESOURCE_FOLDER);
-//    LOG.debug(previousScene);
-//    Optional<File> file = resultContainer.showFileChooserDialog(stage);
-//    String filePath;
+
+    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
+        textResource.getString("loader"));
+
+    File[] saveFile = loaderListDisplay.open();
+
+    String saveFilePath;
+    String configFilePath;
+    if (saveFile[0] == null || saveFile[1] == null) {
+      return;
+    } else {
+      saveFilePath = saveFile[0].getName();
+      configFilePath = saveFile[1].getName();
+    }
 //    if (file.isPresent()) {
 //      filePath = file.get().getName();
-//      LOG.debug(String.format("what is the filePath %s", filePath));
 //    } else {
 //      return;
 //    }
 
-    loaderListDisplay = new LoaderListDisplay(stage, "Loader", DEFAULT_RESOURCE_FOLDER);
-
-    Optional<File> file = loaderListDisplay.open();
-
-    String filePath;
-    if (file.isPresent()) {
-      filePath = file.get().getName();
-      LOG.debug(String.format("what is the filePath %s", filePath));
-    } else {
-      return;
-    }
-    LOG.info(filePath);
     try {
-      new PlayingPageView(stage, primaryLanguage, filePath, 800, 600).start();
+
+      new PlayingPageView(stage, primaryLanguage, saveFilePath, configFilePath, 800, 600).start();
+
     } catch (IOException exception) {
-      LOG.error("Failed to load configuration file!");
-      throw new RuntimeException(exception);
+      new Alert(AlertType.ERROR, textResource.getString("load_file_error")).showAndWait();
     }
   }
 
@@ -111,20 +91,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
 //    Stage news = new Stage();
 //    news.setScene(previousScene);
 //    news.show();
-    new StartScreen(stage, primaryLanguage, null, new GameConfiguration()).open();
+    new StartScreen(stage, primaryLanguage, null).open();
 //    this.stage.setScene(previousScene);
   }
 
-  public String getMyStageTitle() {
-    return myStageTitle;
-  }
-
-  public Scene getMyScene() {
-    return myScene;
-  }
-
-  public LoaderListDisplay getLoaderListDisplay() {
-    return loaderListDisplay;
-  }
 
 }

@@ -1,17 +1,20 @@
 package oogasalad.view.login;
 
-import com.google.gson.Gson;
 import java.io.IOException;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import oogasalad.database.info.GameSaveData;
-import oogasalad.database.info.InfoService;
+import oogasalad.database.GameSaveData;
+import oogasalad.database.InfoService;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.playing.PlayingPageView;
 
+/**
+ * This class is responsible for displaying the new load screen for the game. This screen will allow
+ * the user to either login, start a new game, load a game, or go back to the previous screen.
+ */
 public class GameFileOperations {
 
   private Stage stage;
@@ -19,6 +22,15 @@ public class GameFileOperations {
   private int userId;
   private GameInterface game;
 
+
+  /**
+   * This is the constructor for the GameFileOperations class.
+   *
+   * @param stage
+   * @param previousScene
+   * @param userId
+   * @param game
+   */
   public GameFileOperations(Stage stage, Scene previousScene, int userId, GameInterface game) {
     this.stage = stage;
     this.previousScene = previousScene;
@@ -34,6 +46,7 @@ public class GameFileOperations {
     vbox.setPadding(new Insets(20));
 
     Button loadButton = new Button("Load Game");
+    loadButton.setId("loadButton");
     loadButton.setOnAction(e -> {
       try {
         loadGame();
@@ -43,6 +56,7 @@ public class GameFileOperations {
     });
 
     Button saveButton = new Button("Save Game");
+    saveButton.setId("saveButton");
     saveButton.setOnAction(e -> {
       try {
         saveGame();
@@ -51,10 +65,25 @@ public class GameFileOperations {
       }
     });
 
+    Button sendThoughtButton = new Button("Center");
+    sendThoughtButton.setId("sendThoughtButton");
+    sendThoughtButton.setOnAction(e -> {
+      ThoughtsView thoughtsView = new ThoughtsView(stage, previousScene);
+      stage.setScene(thoughtsView.getScene());
+    });
+
     Button backButton = new Button("Back");
+    backButton.setId("backButton");
     backButton.setOnAction(e -> stage.setScene(previousScene));
 
-    vbox.getChildren().addAll(loadButton, saveButton, backButton);
+    Button logoutButton = new Button("Logout");
+    logoutButton.setId("logoutButton");
+    logoutButton.setOnAction(event -> {
+      UserSession.clearAllPreferences();
+      stage.close();
+    });
+
+    vbox.getChildren().addAll(loadButton, saveButton, sendThoughtButton, backButton, logoutButton);
 
     return new Scene(vbox);
   }
@@ -69,7 +98,9 @@ public class GameFileOperations {
     } else {
       System.out.println("Failed to load game!");
     }
-    PlayingPageView playingPageView = new PlayingPageView(stage, "English",userId+"",
+
+    PlayingPageView playingPageView = new PlayingPageView(stage, "English", userId + "",
+        userId + "",
         800, 600);
     playingPageView.start();
   }

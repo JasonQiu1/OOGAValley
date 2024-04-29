@@ -11,7 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import oogasalad.database.info.InfoService;
+import oogasalad.database.InfoService;
 import oogasalad.view.branch.BranchBase;
 
 /**

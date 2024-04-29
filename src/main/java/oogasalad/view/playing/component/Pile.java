@@ -9,7 +9,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import oogasalad.view.playing.PlayingPageView;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,10 +25,11 @@ public class Pile extends StackPane {
   private final double landGridPaneHeight;
   private final LandView landview;
 
-  public Pile(int x, int y, LandView landView, double landGridPaneWidth, double landGridPaneHeight){
+  public Pile(int x, int y, LandView landView, double landGridPaneWidth,
+      double landGridPaneHeight) {
     super();
-    double height = landGridPaneHeight / landView.getHeight();
-    double width = landGridPaneWidth / landView.getWidth();
+    double height = landGridPaneHeight / landView.getRow();
+    double width = landGridPaneWidth / landView.getCol();
     this.landview = landView;
     this.landGridPaneWidth = landGridPaneWidth;
     this.landGridPaneHeight = landGridPaneHeight;
@@ -79,8 +79,8 @@ public class Pile extends StackPane {
       this.getChildren().set(index, placeholder);
       return;
     }
-    double height = landGridPaneHeight / landview.getHeight();
-    double width = landGridPaneWidth / landview.getWidth();
+    double height = landGridPaneHeight / landview.getRow();
+    double width = landGridPaneWidth / landview.getCol();
     ImageView imageView = new ImageView();
     Image image = new Image("file:data/images/" + url, width, height, false, true);
     imageView.setImage(image);

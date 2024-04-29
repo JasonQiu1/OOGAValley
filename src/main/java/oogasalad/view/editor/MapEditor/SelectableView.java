@@ -1,12 +1,9 @@
 package oogasalad.view.editor.MapEditor;
 
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.io.File;
-import java.net.MalformedURLException;
+import oogasalad.view.Tool;
 
 public class SelectableView extends ImageView {
 
@@ -22,13 +19,9 @@ public class SelectableView extends ImageView {
     this.title = new Label(title);
   }
 
-  private ImageView getPic(String pic) {
-      try {
-          return new ImageView(
-                  new Image(String.valueOf(new File("data/images/" + pic).toURI().toURL())));
-      } catch (MalformedURLException e) {
-          throw new RuntimeException(e);
-      }
+  public static ImageView getPic(String pic) {
+    String url = Tool.getImagePath(pic);
+    return new ImageView(new Image(url));
   }
 
   public Label getLabel() {

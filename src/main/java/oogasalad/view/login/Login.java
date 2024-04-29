@@ -12,7 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import oogasalad.database.info.InfoService;
+import oogasalad.database.InfoService;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.branch.BranchBase;
 
@@ -60,11 +60,14 @@ public class Login extends BranchBase {
 
     Label usernameLabel = new Label("Username:");
     TextField usernameField = new TextField();
+    usernameField.setId("usernameField");
 
     Label passwordLabel = new Label("Password:");
     PasswordField passwordField = new PasswordField();
+    passwordField.setId("passwordField");
 
     Button registerButton = new Button("Register");
+    registerButton.setId("registerButton");
     registerButton.setOnAction(e -> {
       Register registerView = new Register(getStage(), getStage().getScene());
       getStage().setScene(new Scene(registerView.getScene()));
@@ -72,6 +75,7 @@ public class Login extends BranchBase {
     });
 
     Button submitButton = new Button("Submit");
+    submitButton.setId("submitButton");
     submitButton.setOnAction(e -> {
       String username = usernameField.getText();
       String password = passwordField.getText();
@@ -80,20 +84,21 @@ public class Login extends BranchBase {
         id = InfoService.getUserId(username);
         invokeOnLoginSuccessCallback();
         invokeOnLoginSuccessCallback();
-        GameFileOperations gameOps = new GameFileOperations(getStage(), getStage().getScene(), id, game);
+        GameFileOperations gameOps = new GameFileOperations(getStage(), getStage().getScene(), id,
+            game);
         getStage().setScene(gameOps.createScene());
       } else {
         showAlert("Login Failed", "Invalid username or password");
       }
     });
     Button back = new Button("back");
+    back.setId("backButton");
     back.setOnMouseClicked(event -> {
       getStage().setScene(getPreviousScene());
     });
     vbox.getChildren()
         .addAll(titleLabel, usernameLabel, usernameField, passwordLabel, passwordField,
             submitButton, registerButton, back);
-
     return vbox;
   }
 

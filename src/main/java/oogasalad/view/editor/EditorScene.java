@@ -2,6 +2,8 @@ package oogasalad.view.editor;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import oogasalad.model.api.GameFactory;
+import oogasalad.model.api.ReadOnlyGameConfiguration;
 import oogasalad.model.data.GameConfiguration;
 
 public class EditorScene extends Scene {
@@ -11,6 +13,15 @@ public class EditorScene extends Scene {
 
   public EditorScene(Stage primaryStage, String language, Scene backScene, GameConfiguration gc) {
     super(new EditorWindow(primaryStage, backScene, gc));
+    stage = primaryStage;
+    myPrimaryLanguage = language;
+    //ew = new EditorWindow(new GameConfiguration());
+    //super.setRoot(ew);
+    super.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+  }
+
+  public EditorScene(Stage primaryStage, String language, Scene backScene) {
+    super(new EditorWindow(primaryStage, backScene, new GameConfiguration()));
     stage = primaryStage;
     myPrimaryLanguage = language;
     //ew = new EditorWindow(new GameConfiguration());

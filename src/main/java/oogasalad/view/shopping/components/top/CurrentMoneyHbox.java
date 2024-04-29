@@ -32,6 +32,7 @@ public class CurrentMoneyHbox extends HBox {
     addButton.setId("shopAddButton");
     moneyLabel.setPadding(new Insets(10, 0, 10, 20));
     moneyLabel.getStyleClass().add("shop-money-label");
+    moneyLabel.setId("shopMoneyLabel");
     Image coinImage = new Image("img/shop/coin.png");
     ImageView coinImageView = new ImageView(coinImage);
     coinImageView.setFitHeight(Utils.coinImageHeight);
