@@ -17,19 +17,29 @@ import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import oogasalad.view.start.SplashUtils;
 
+/**
+ * A menu for displaying buttons.
+ */
 public class ButtonMenu {
 
   static final String DEFAULT_RESOURCE_PACKAGE = "view.buttonmenu.";
-  private Scene menuScene;
-  private Stage menuStage;
   private final Stage primaryStage;
   private final Scene previousScene;
   private final String primaryLanguage;
   private final String buttonsFilePath;
-  private ResourceBundle propertiesBundle;
-
   private final String STYLES = "/view/buttonmenu/menu_style.css";
+  private Scene menuScene;
+  private Stage menuStage;
+  private final ResourceBundle propertiesBundle;
 
+  /**
+   * Constructs a ButtonMenu.
+   *
+   * @param mainStage     the main stage
+   * @param language      the language
+   * @param backScene     the previous scene
+   * @param filePath      the file path of the buttons
+   */
   public ButtonMenu(Stage mainStage, String language, Scene backScene, String filePath) {
     primaryStage = mainStage;
     primaryLanguage = language;
@@ -37,7 +47,7 @@ public class ButtonMenu {
     previousScene = backScene;
     buttonsFilePath = filePath;
 
-    primaryStage.sceneProperty().addListener(new ChangeListener<Scene>() {
+    primaryStage.sceneProperty().addListener(new ChangeListener<>() {
       @Override
       public void changed(ObservableValue<? extends Scene> observable, Scene oldValue,
           Scene newValue) {
@@ -46,6 +56,9 @@ public class ButtonMenu {
     });
   }
 
+  /**
+   * Opens the button menu.
+   */
   public void open() {
     menuStage = new Stage();
     menuStage.initStyle(StageStyle.UNDECORATED);
@@ -67,14 +80,13 @@ public class ButtonMenu {
 
     Group group = new Group(root);
 
-    ScrollPane scrollPane = new ScrollPane(group); // Put the Group inside a ScrollPane
-    scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER); // Disable horizontal scroll bar
-    scrollPane.setVbarPolicy(ScrollBarPolicy.AS_NEEDED); // Enable vertical scroll bar
-    scrollPane.setPrefHeight(400); // Set a fixed size for the scroll pane
-    scrollPane.setFitToWidth(true); // Disable fitting to width
-    scrollPane.setFitToHeight(false); // Disable fitting to height
+    ScrollPane scrollPane = new ScrollPane(group);
+    scrollPane.setHbarPolicy(ScrollBarPolicy.NEVER);
+    scrollPane.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
+    scrollPane.setPrefHeight(400);
+    scrollPane.setFitToWidth(true);
+    scrollPane.setFitToHeight(false);
 
-//    VBox.setVgrow(root, Priority.ALWAYS);
     root.setAlignment(Pos.CENTER);
     root.minHeightProperty().bind(scrollPane.heightProperty());
     root.prefHeightProperty().bind(scrollPane.heightProperty());
@@ -97,6 +109,9 @@ public class ButtonMenu {
     menuStage.show();
   }
 
+  /**
+   * Closes the button menu.
+   */
   public void closeMenu() {
     menuStage.close();
   }
