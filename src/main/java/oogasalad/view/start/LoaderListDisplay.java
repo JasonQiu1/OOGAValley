@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -56,7 +57,10 @@ public class LoaderListDisplay {
   }
 
   public File openConfig() {
-    HBox fileList = new HBox(viewBoxMaker(DEFAULT_CONFIG_FOLDER, configView, "Config Files"));
+    VBox configBox = viewBoxMaker(DEFAULT_CONFIG_FOLDER, configView, "Config Files");
+    HBox.setHgrow(configBox, Priority.ALWAYS);
+
+    HBox fileList = new HBox(configBox);
     setupBottom(fileList);
     return selectedSaveFile;
   }
