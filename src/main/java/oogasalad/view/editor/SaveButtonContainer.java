@@ -1,4 +1,4 @@
-package oogasalad.view.editor.RuleEditor;
+package oogasalad.view.editor;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

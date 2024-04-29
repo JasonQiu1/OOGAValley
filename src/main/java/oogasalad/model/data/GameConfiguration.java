@@ -31,6 +31,8 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
 
   public static final String TEMPLATES_DIRECTORY_PATH = "templates";
 
+
+
   /**
    * Initializes the game configuration to a set of default rules and initial state.
    */
@@ -88,7 +90,8 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     return configurablesStore;
   }
 
-  /**
+
+    /**
    * Serializes the instance to a JSON file.
    * <p>
    * Also saves the configurables store of the same name.
@@ -173,6 +176,15 @@ public class GameConfiguration implements ReadOnlyGameConfiguration {
     try {
       return CONFIGURABLES_DATA_FACTORY.load(
           Paths.get(TEMPLATES_DIRECTORY_PATH, "ConfigurablesStore").toString());
+    } catch (IOException e) {
+      LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static Properties templateProperties(String type) {
+    try {
+      return Properties.of(Paths.get(TEMPLATES_DIRECTORY_PATH, type).toString());
     } catch (IOException e) {
       LOG.error("Couldn't load default ConfigurablesStore 'templates/ConfigurablesStore.json'.");
       throw new RuntimeException(e);

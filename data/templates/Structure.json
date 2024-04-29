@@ -1,50 +1,27 @@
-// DEFAULT: A piece of wheat that is immediately harvestable and drops seeds and a wheat item.
-// Expires after 120 in-game minutes.
 {
   "properties": {
-    // PROPERTIES FOR ALL GAME OBJECTS
-    // This is the id of the object and must be unique within the game configuration,
-    // otherwise one will overwrite the other in an undefined way.
-    "name": "Wheat",
+    "name": "STRUCTURE",
     "type": "Structure",
-    // This is filename of the image which the view will use to display this object.
-    // The file must exist in the `data/images` directory.
-    "image": "wheat.png",
-    "updatable": false,
-    "updateTime": 0,
+    "image": "",
+    "updatable": "",
+    "updateTime": "",
     "updateTransformation": "",
-    // If true, then the object should expire "lifeDuration" time after the object was placed.
-    // If "expireTransformation" is non-null, then the object transforms into "GAME_OBJECT" when
-    "expirable": true,
-    "expireTime": 120,
-    // or null
+    "expirable": "",
+    "expireTime": "",
     "expireTransformation": "",
-    // if true, then can be destroyed by an interaction
-    "destructable": true
+    "destructable": ""
   },
   "listProperties": {
     // if empty, then can be destroyed by any item, otherwise only items listed can destroy this structure
     "destructableTools": [
-      "Scythe"
+      ""
     ]
   },
   "mapProperties": {
-    /*
-        *  Maps an item usage to transform the object into a different object.
-        *  e.g. "hoe":"tilledLand" | using a hoe transforms this land object into a tilledLand object.
-        */
     "interactTransformations": {
     },
-    /*
-    *  Maps an item usage to destroy/harvest/collect the object to a multiplier on the drops.
-    *  e.g. "enchanted_scythe":5 | using an enchanted scythe will multiply drops by 5x.
-    */
     "interactDropMultipliers": {
     },
-    // STRUCTURE ONLY
-    "dropsOnDestruction": {
-      "Wheat Seeds": 4,
-      "wheat_item": 1
-    }
+    "dropsOnDestruction": {} // currently doesn't drop anything
   }
 }

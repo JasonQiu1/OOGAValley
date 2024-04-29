@@ -24,7 +24,11 @@ public class GameObjectController extends PropertyController{
 
     @Override
     public Map<String, String> getProperties(){
-        return removeType(properties.getCopyOfProperties());
+        try {
+            return removeType(properties.getCopyOfProperties());
+        } catch (NullPointerException e){
+            return null;
+        }
     }
 
     private Map<String, String> removeType(Map<String, String> copyOfProperties) {
@@ -61,5 +65,11 @@ public class GameObjectController extends PropertyController{
         // Add the trimmed elements to the ArrayList
         List<String> arrayList = new ArrayList<>(Arrays.asList(elements));
         properties.update(name, arrayList);
+    }
+
+    public void newObject(String type, String name) {
+        properties = GameConfiguration.templateProperties(type);
+        properties.update("name", name);
+        allGameObjects.put(name, properties);
     }
 };

@@ -7,7 +7,6 @@ import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.editor.GameObjectEditor.GameObjectEditor;
 import oogasalad.view.editor.MapEditor.MapEditor;
 import oogasalad.view.editor.RuleEditor.RuleEditor;
-import oogasalad.view.editor.RuleEditor.SaveButtonContainer;
 
 public class EditorWindow extends GridPane {
 
