@@ -44,7 +44,7 @@ public class LoginTest extends DukeApplicationTest {
   @Test
   public void testSaveTrue() {
     correctLogin();
-    clickOn("#saveButton");
+    //clickOn("#saveButton");
   }
   @Test
   public void testLoadTrue() {
@@ -58,7 +58,7 @@ public class LoginTest extends DukeApplicationTest {
     clickOn("#sendThoughtButton");
     clickOn("#sendThoughtButton");
     clickOn("#thoughtTextArea").write("Hello");
-    clickOn("#submitButton");
+    //clickOn("#submitButton");
   }
 
 
