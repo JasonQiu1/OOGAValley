@@ -133,6 +133,29 @@ public class PlayingPageView {
     initSize();
   }
 
+  public PlayingPageView(Stage primaryStage, String language,
+      String configFilePath, int windowWidth,
+      int windowHeight) throws IOException {
+    GameInterface gameTemp;
+    stage = primaryStage;
+    primaryLanguage = language;
+
+    setFileLanguages();
+
+    try {
+      gameTemp = gameFactory.createGame(configFilePath);
+    } catch (IOException e) {
+      LOG.info("cannot find game saves, load from the config");
+      gameTemp = gameFactory.createGame(configFilePath);
+    }
+
+    game = gameTemp;
+    energyProgress = new EnergyProgress(game);
+    this.windowWidth = windowWidth;
+    this.windowHeight = windowHeight;
+    initSize();
+  }
+
   private void initSize() {
     padding = windowWidth / 100;
     landNumRows = game.getGameState().getGameWorld().getHeight();
@@ -313,7 +336,7 @@ public class PlayingPageView {
 
   private void openShop() {
     Scene scene = stage.getScene();
-    ShoppingView shoppingPageView = new ShoppingView(game, stage, scene, this);
+    ShoppingView shoppingPageView = new ShoppingView(game, stage, primaryLanguage, scene, this);
     Scene shoppingScene = new Scene(shoppingPageView.getScene());
     shoppingScene.getStylesheets().add("styles.css");
     stage.setScene(shoppingScene);
