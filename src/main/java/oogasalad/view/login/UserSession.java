@@ -2,7 +2,9 @@ package oogasalad.view.login;
 
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
-
+/**
+ * This class is responsible for managing the user session.
+ */
 public class UserSession {
 
   private static Preferences prefs = Preferences.userNodeForPackage(UserSession.class);

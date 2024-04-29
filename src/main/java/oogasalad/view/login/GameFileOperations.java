@@ -11,7 +11,10 @@ import oogasalad.database.info.InfoService;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.playing.PlayingPageView;
 import oogasalad.view.social.ThoughtsView;
-
+/**
+ * This class is responsible for displaying the new load screen for the game. This screen will allow
+ * the user to either login, start a new game, load a game, or go back to the previous screen.
+ */
 public class GameFileOperations {
 
   private Stage stage;
@@ -19,6 +22,15 @@ public class GameFileOperations {
   private int userId;
   private GameInterface game;
 
+
+  /**
+   * This is the constructor for the GameFileOperations class.
+   *
+   * @param stage
+   * @param previousScene
+   * @param userId
+   * @param game
+   */
   public GameFileOperations(Stage stage, Scene previousScene, int userId, GameInterface game) {
     this.stage = stage;
     this.previousScene = previousScene;

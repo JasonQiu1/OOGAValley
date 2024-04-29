@@ -17,6 +17,9 @@ import javafx.stage.Stage;
 import oogasalad.database.info.InfoService;
 import oogasalad.database.info.Thought;
 import oogasalad.view.branch.BranchBase;
+/**
+ * This class is responsible for displaying the thoughts view for the game.
+ */
 
 public class ThoughtsView extends BranchBase {
 
