@@ -8,6 +8,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * A dialog box for selecting the application language.
+ */
 public class LanguageDialogBox {
 
   private final StringProperty primaryLanguage = new SimpleStringProperty();
@@ -16,6 +19,12 @@ public class LanguageDialogBox {
   private Stage myStage;
   private final Stage primaryStage;
 
+  /**
+   * Constructs a LanguageDialogBox.
+   *
+   * @param mainStage  the main stage
+   * @param languages  an array of available languages
+   */
   public LanguageDialogBox(Stage mainStage, String[] languages) {
     primaryStage = mainStage;
 
@@ -30,6 +39,9 @@ public class LanguageDialogBox {
     dropDownMenu.setOnAction(e -> setPrimaryLanguage(dropDownMenu.getValue()));
   }
 
+  /**
+   * Opens the language dialog box.
+   */
   public void open() {
     myStage = new Stage();
     VBox root = new VBox();
@@ -47,6 +59,11 @@ public class LanguageDialogBox {
     myStage.show();
   }
 
+  /**
+   * Gets the primary language property.
+   *
+   * @return the primary language property
+   */
   public StringProperty primaryLanguageProperty() {
     return primaryLanguage;
   }

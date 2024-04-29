@@ -17,9 +17,17 @@ import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * Utility class for the start screen and splash screen.
+ */
 public class SplashUtils {
 
-
+  /**
+   * Reads comma-separated lines from a CSV file.
+   *
+   * @param filename the name of the CSV file
+   * @return a list of comma-separated values
+   */
   public static List<String[]> readCommaSeparatedCSVLines(String filename) {
     List<String[]> data = new ArrayList<>();
     try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -34,6 +42,12 @@ public class SplashUtils {
     return data;
   }
 
+  /**
+   * Reads comma-separated values from a CSV file.
+   *
+   * @param filename the name of the CSV file
+   * @return an array of comma-separated values
+   */
   public static String[] readCommaSeparatedCSV(String filename) {
     String[] values;
     try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -45,12 +59,30 @@ public class SplashUtils {
     return values;
   }
 
+  /**
+   * Creates buttons from a CSV file.
+   *
+   * @param filename     the name of the CSV file
+   * @param primaryStage the primary stage
+   * @param root         the root layout
+   * @param language     the language
+   * @param myScene      the scene
+   */
   public static void createButtonsFromFile(String filename, Stage primaryStage, VBox root,
       String language, Scene myScene) {
     List<String[]> buttonData = SplashUtils.readCommaSeparatedCSVLines(filename);
     makeButton(buttonData, primaryStage, root, language, myScene);
   }
 
+  /**
+   * Makes buttons from the button data.
+   *
+   * @param buttonData   the button data
+   * @param primaryStage the primary stage
+   * @param root         the root layout
+   * @param language     the language
+   * @param myScene      the scene
+   */
   public static void makeButton(List<String[]> buttonData, Stage primaryStage, VBox root,
       String language, Scene myScene) {
 
@@ -63,21 +95,16 @@ public class SplashUtils {
       button.setOnAction(
           new ButtonActionHandler(className, methodName, primaryStage, language, myScene,
               parameters));
-//      if (String.valueOf(this.getClass()).equals("class " + className)) {
-//        button.setOnAction(
-//            new ButtonActionHandler(className, methodName, primaryStage, language, previousScene,
-//                parameters));
-//      } else {
-//        button.setOnAction(
-//            new ButtonActionHandler(className, methodName, primaryStage, language, myScene,
-//                parameters));
-//      }
-      // TODO: Fix this
-
       root.getChildren().add(button);
     }
   }
 
+  /**
+   * Animates a label's position.
+   *
+   * @param l    the label to animate
+   * @param newVal the new value
+   */
   public static void titleBob(Label l, Number newVal) {
     Animation animation = createAnimation(l, newVal);
     animation.play();
@@ -87,6 +114,13 @@ public class SplashUtils {
     });
   }
 
+  /**
+   * Creates an animation for a label.
+   *
+   * @param l      the label
+   * @param newVal the new value
+   * @return the animation
+   */
   public static Animation createAnimation(Label l, Number newVal) {
     Path path = new Path();
     path.getElements().addAll(new MoveTo(l.getLayoutX() + newVal.doubleValue() / 2, l.getLayoutY()),

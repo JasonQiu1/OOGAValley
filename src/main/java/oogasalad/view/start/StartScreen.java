@@ -5,10 +5,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-
+/**
+ * This class represents the start screen of the application.
+ */
 public class StartScreen extends AbstractSplashScreen {
 
   public static final String DEFAULT_RESOURCE_FOLDER = "src/main/resources/view/start/StartScreen/";
@@ -16,9 +16,9 @@ public class StartScreen extends AbstractSplashScreen {
   public static final double DEFAULT_HEIGHT_PORTION = 0.9;
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.StartScreen.";
   private static final String STYLES = "/styles.css";
-  private static final Logger LOG = LogManager.getLogger(StartScreen.class);
-  private final String languagesListPath = "LanguagesList.csv";
+
   private final Stage stage;
+  private final Scene previousScene;
   private String buttonLanguage;
   private String titleLanguage;
   private ResourceBundle buttonResource;
@@ -31,15 +31,23 @@ public class StartScreen extends AbstractSplashScreen {
   private Scene startScreen;
 
   /**
-   * Creates StartScreen
+   * Creates a new StartScreen instance.
+   *
+   * @param stageToUse the primary stage
+   * @param language   the language
+   * @param backScene  the previous scene
    */
   public StartScreen(Stage stageToUse, String language, Scene backScene) {
     super();
     stage = stageToUse;
     myPrimaryLanguage = language;
     setLanguages();
+    previousScene = backScene;
   }
 
+  /**
+   * Opens the start screen.
+   */
   @Override
   public void open() {
     titleResource = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + titleLanguage);
@@ -58,36 +66,39 @@ public class StartScreen extends AbstractSplashScreen {
     stage.show();
   }
 
+  /**
+   * Retrieves the start screen scene.
+   *
+   * @return the start screen scene
+   */
   public Scene getStartScreen() {
     return startScreen;
   }
 
-
   private void setLanguages() {
     setFilesLanguage();
-    myLanguages = SplashUtils.readCommaSeparatedCSV(DEFAULT_RESOURCE_FOLDER + languagesListPath);
+    myLanguages = SplashUtils.readCommaSeparatedCSV(DEFAULT_RESOURCE_FOLDER + "LanguagesList.csv");
 
     languageDialogBox = new LanguageDialogBox(stage, myLanguages);
-    languageDialogBox.primaryLanguageProperty().addListener(new ChangeListener<String>() {
+    languageDialogBox.primaryLanguageProperty().addListener(new ChangeListener<>() {
       @Override
       public void changed(ObservableValue<? extends String> observable, String oldValue,
           String newValue) {
         myPrimaryLanguage = newValue;
-        LOG.debug(myPrimaryLanguage);
         new StartScreen(stage, myPrimaryLanguage, null).open();
       }
     });
   }
 
   private void setFilesLanguage() {
-    LOG.debug(String.format("going back to %s", myPrimaryLanguage));
     titleLanguage = myPrimaryLanguage + "Text";
     buttonLanguage = myPrimaryLanguage + "Buttons";
   }
 
+  /**
+   * Opens the language dialog box.
+   */
   public void openLanguageDialogBox() {
     languageDialogBox.open();
   }
-
-
 }

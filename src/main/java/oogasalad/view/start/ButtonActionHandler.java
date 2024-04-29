@@ -1,6 +1,6 @@
 /**
- * This class represents an EventHandler for JavaFX buttons. It dynamically invokes a method of a specified class
- * with the provided parameters when the associated button is clicked.
+ * This class represents an EventHandler for JavaFX buttons. It dynamically invokes a method of a
+ * specified class with the provided parameters when the associated button is clicked.
  */
 package oogasalad.view.start;
 
@@ -10,12 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class ButtonActionHandler implements EventHandler<ActionEvent> {
 
-  private static final Logger LOG = LogManager.getLogger(ButtonActionHandler.class);
   private final String className;
   private final String methodName;
   private final Stage stage;
@@ -56,7 +53,6 @@ public class ButtonActionHandler implements EventHandler<ActionEvent> {
       for (int i = 1; i < parameters.length; i++) {
         parameterTypes[i] = String.class; // Assume all parameters are strings
       }
-      LOG.info(methodName);
       Method method = clazz.getMethod(methodName, parameterTypes);
       System.out.println(clazz.getSimpleName());
       Constructor<?> constructor = clazz.getConstructor(Stage.class, String.class, Scene.class);

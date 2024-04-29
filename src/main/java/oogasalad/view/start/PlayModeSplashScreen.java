@@ -2,32 +2,36 @@ package oogasalad.view.start;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.playing.PlayingPageView;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
+/**
+ * A splash screen for the play mode.
+ */
 public class PlayModeSplashScreen extends AbstractSplashScreen {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.PlayModeSplashScreen.";
   private static final String DEFAULT_RESOURCE_FOLDER = "data/gameconfigurations";
-  private static final String DEFAULT_SAVES_FOLDER = "data/gamesaves";
   private static final String STYLES = "/play_mode_styles.css";
   private static final double DEFAULT_WIDTH_PORTION = 0.65;
   private static final double DEFAULT_HEIGHT_PORTION = 0.9;
-  private static final Logger LOG = LogManager.getLogger(PlayModeSplashScreen.class);
   private final Stage stage;
   private final String primaryLanguage;
   private final Scene previousScene;
-  private ResourceBundle buttonResource;
-  private ResourceBundle textResource;
+  private final ResourceBundle buttonResource;
+  private final ResourceBundle textResource;
 
+  /**
+   * Constructs a PlayModeSplashScreen.
+   *
+   * @param stageToUse   the stage to use
+   * @param language     the language
+   * @param backScene    the previous scene
+   */
   public PlayModeSplashScreen(Stage stageToUse, String language, Scene backScene) {
     super();
     stage = stageToUse;
@@ -39,6 +43,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
         DEFAULT_RESOURCE_PACKAGE + primaryLanguage + "Buttons");
   }
 
+  /**
+   * Opens the play mode splash screen.
+   */
   @Override
   public void open() {
     String myStageTitle = textResource.getString("title");
@@ -56,6 +63,9 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   }
 
 
+  /**
+   * Displays the file chooser for selecting game saves and configurations.
+   */
   public void makeChooser() {
 
     LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
@@ -71,11 +81,6 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
       saveFilePath = saveFile[0].getName();
       configFilePath = saveFile[1].getName();
     }
-//    if (file.isPresent()) {
-//      filePath = file.get().getName();
-//    } else {
-//      return;
-//    }
 
     try {
 
@@ -86,13 +91,11 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
     }
   }
 
+  /**
+   * Returns to the previous scene.
+   */
   public void goBackScene() {
-//    LOG.debug(String.format("going back to %s", previousScene));
-//    Stage news = new Stage();
-//    news.setScene(previousScene);
-//    news.show();
     new StartScreen(stage, primaryLanguage, null).open();
-//    this.stage.setScene(previousScene);
   }
 
 
