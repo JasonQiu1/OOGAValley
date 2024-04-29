@@ -13,7 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
-
+/**
+ * Utility class for reading and writing JSON files
+ */
 public class FileUtility {
 
   private static final String GAME_SAVES_DIRECTORY = "data/gamesaves/";

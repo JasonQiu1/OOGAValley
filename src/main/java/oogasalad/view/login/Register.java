@@ -9,7 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import oogasalad.database.InfoService;
 import oogasalad.view.branch.BranchBase;
-
+/**
+ * This class is responsible for displaying the registration page for the game.
+ */
 public class Register extends BranchBase {
 
   public Register(Stage stage, Scene previousScene) {

@@ -13,7 +13,9 @@ import oogasalad.database.InfoService;
 import oogasalad.model.api.GameInterface;
 import oogasalad.view.branch.BranchBase;
 import oogasalad.view.playing.PlayingPageView;
-
+/**
+ * Class to handle game file operations
+ */
 public class GameFileOperations extends BranchBase {
 
   private final int userId;
