@@ -42,15 +42,14 @@ public class LoginTest extends DukeApplicationTest {
   }
 
   @Test
-  public void testLoadTrue() {
-    correctLogin();
-    clickOn("#loadButton");
-  }
-
-  @Test
   public void testSaveTrue() {
     correctLogin();
     clickOn("#saveButton");
+  }
+  @Test
+  public void testLoadTrue() {
+    correctLogin();
+    clickOn("#loadButton");
   }
 
   @Test
