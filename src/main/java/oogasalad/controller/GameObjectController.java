@@ -4,10 +4,7 @@ import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.Properties;
 import oogasalad.model.gameplay.BuildableTileMap;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class GameObjectController extends PropertyController{
     private final Map<String, Properties> allGameObjects;
@@ -58,6 +55,11 @@ public class GameObjectController extends PropertyController{
 
     @Override
     public void updateListProperty(String name, String value) {
+        // Remove square brackets and split the string into elements
+        String[] elements = value.substring(1, value.length() - 1).split(", ");
 
+        // Add the trimmed elements to the ArrayList
+        List<String> arrayList = new ArrayList<>(Arrays.asList(elements));
+        properties.update(name, arrayList);
     }
 };
