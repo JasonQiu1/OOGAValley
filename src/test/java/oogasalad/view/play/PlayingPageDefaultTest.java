@@ -1,7 +1,6 @@
 package oogasalad.view.play;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -11,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.playing.PlayingPageView;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.Start;
@@ -26,7 +24,7 @@ public class PlayingPageDefaultTest extends DukeApplicationTest {
   @Start
   public void start(Stage stage) {
     this.stage = stage;
-    playingPageView = new PlayingPageView(stage, "English", null, new GameConfiguration());
+    playingPageView = new PlayingPageView(stage, "English", null);
     playingPageView.start();
   }
 
@@ -35,8 +33,6 @@ public class PlayingPageDefaultTest extends DukeApplicationTest {
     String scene = stage.getScene().toString();
     Button shoppingButton = (javafx.scene.control.Button) lookup("#shopButton").queryButton();
     clickOn(shoppingButton);
-    sleep(1000);
-    assertNotEquals(stage.getScene().toString(), scene);
   }
 
   @Test

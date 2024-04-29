@@ -24,7 +24,6 @@ import javafx.util.Duration;
 import oogasalad.controller.GameKeyHandler;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
-import oogasalad.model.data.GameConfiguration;
 import oogasalad.view.buttonmenu.ButtonMenu;
 import oogasalad.view.gpt.Chat;
 import oogasalad.view.login.LoginView;
@@ -96,8 +95,14 @@ public class PlayingPageView {
 
   private CurrentMoneyHbox moneyBox;
 
-  public PlayingPageView(Stage primaryStage, String language, Scene backScene,
-      GameConfiguration gameConfiguration) {
+  /**
+   * Create a game Play with the default game
+   *
+   * @param primaryStage the stage
+   * @param language     the language of the game view
+   * @param backScene    the previous scene that creates the game
+   */
+  public PlayingPageView(Stage primaryStage, String language, Scene backScene) {
     stage = primaryStage;
     primaryLanguage = language;
     this.previousScene = backScene;

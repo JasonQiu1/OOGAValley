@@ -42,7 +42,7 @@ public class StartScreen extends AbstractSplashScreen {
     super();
     stage = stageToUse;
     myPrimaryLanguage = language;
-    playingPageView = new PlayingPageView(stageToUse, language, null, gc);
+    playingPageView = new PlayingPageView(stageToUse, language, null);
     editorScene = new EditorScene(stageToUse, language, null, new GameConfiguration());
     setLanguages();
   }
