@@ -12,6 +12,7 @@ import oogasalad.view.playing.PlayingPageView;
 /**
  * A splash screen for the play mode.
  */
+
 public class PlayModeSplashScreen extends AbstractSplashScreen {
 
   private static final String DEFAULT_RESOURCE_PACKAGE = "view.start.PlayModeSplashScreen.";
