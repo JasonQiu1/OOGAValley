@@ -29,7 +29,7 @@ public class PlayingPageDefaultTest extends DukeApplicationTest {
 
   @Test
   public void testShoppingButton() {
-    String scene = stage.getScene().toString();
+    String scene = playingPageView.getStage().getScene().toString();
     Button shoppingButton = (javafx.scene.control.Button) lookup("#shopButton").queryButton();
     clickOn(shoppingButton);
   }

@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import oogasalad.model.api.GameFactory;
 import oogasalad.model.api.GameInterface;
@@ -65,7 +66,8 @@ public class OverAllShopTest extends DukeApplicationTest {
 
   @Test
   public void testSellYes() {
-    String before = lookup("#shopMoneyLabel").queryLabeled().getText();
+    Label money = lookup("#shopMoneyLabel").queryAs(Label.class);
+    String before = money.getText();
     Map<ReadOnlyItem, Integer> bagItem = game.getGameState().getBag().getItems();
     for (ReadOnlyItem item : bagItem.keySet()) {
       Button sellButton = (Button) lookup("#sell-button-" + item.getName()).queryButton();
@@ -74,7 +76,8 @@ public class OverAllShopTest extends DukeApplicationTest {
       Button yesButton = (Button) lookup("#yes-button").queryButton();
       assertNotNull(yesButton);
       clickOn(yesButton);
-      String after = lookup("#shopMoneyLabel").queryLabeled().getText();
+      String after = money.getText();
+
       assertNotEquals(before, after);
       break;
     }

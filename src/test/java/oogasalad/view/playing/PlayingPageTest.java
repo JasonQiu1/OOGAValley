@@ -22,11 +22,11 @@ public class PlayingPageTest extends DukeApplicationTest {
 
   @Test
   public void testShoppingButton() {
-    String scene = stage.getScene().toString();
+    String scene = playingPageView.getStage().getScene().toString();
     Button shoppingButton = (Button) lookup("#shopButton").queryButton();
     clickOn(shoppingButton);
     sleep(1000);
-    assertNotEquals(stage.getScene().toString(), scene);
+    assertNotEquals(playingPageView.getStage().getScene().toString(), scene);
   }
 
 

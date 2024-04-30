@@ -55,7 +55,7 @@ public class PlayingPageView {
   private final WindowSizeWrapper windowSize;
 
   private final EnergyProgress energyProgress;
-  private final Stage stage;
+  private Stage stage;
   private final String primaryLanguage;
 
   private final GameFactory gameFactory = new GameFactory();
@@ -76,7 +76,6 @@ public class PlayingPageView {
    * @param backScene    the previous scene that creates the game
    */
   public PlayingPageView(Stage primaryStage, String language, Scene backScene) {
-    stage = primaryStage;
     primaryLanguage = language;
     setFileLanguages();
     this.previousScene = backScene;
@@ -101,7 +100,6 @@ public class PlayingPageView {
   public PlayingPageView(Stage primaryStage, String language, String saveFilePath,
       String configFilePath, int windowWidth, int windowHeight) throws IOException {
     GameInterface gameTemp;
-    stage = primaryStage;
     primaryLanguage = language;
     setFileLanguages();
     try {
@@ -123,6 +121,8 @@ public class PlayingPageView {
    * Start the game
    */
   public void start() {
+    stage = new Stage();
+
     LOG.info("initializing game model");
     initModel();
     LOG.info("finish loading game model");
@@ -345,5 +345,9 @@ public class PlayingPageView {
     button.setPrefWidth(width);
     button.setPrefHeight(height);
     button.setStyle(String.format("-fx-font-size: %.1fpx;", fontSize));
+  }
+
+  public Stage getStage() {
+    return stage;
   }
 }
