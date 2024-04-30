@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -59,7 +60,13 @@ public class LoaderListDisplay {
 
     HBox fileLists = new HBox(saveBox, configBox);
 
-    setupBottom(fileLists);
+    Button selectButton = createButton(propertiesBundle.getString("load"), event -> {
+      selectSaveAndConfigFiles(saveView, configView);
+      myStage.close();
+    });
+
+
+    setupBottom(fileLists, selectButton);
 
     File[] files = {selectedSaveFile, selectedConfigFile};
     return Arrays.copyOf(files, files.length);
@@ -73,21 +80,25 @@ public class LoaderListDisplay {
    */
   public File openConfig() {
     configView = returnItemListView(DEFAULT_CONFIG_FOLDER);
+    VBox configBox = viewBoxMaker(configView, propertiesBundle.getString("config_files"));
 
-    HBox fileList = new HBox(viewBoxMaker(configView, propertiesBundle.getString("config_files")));
-    setupBottom(fileList);
-    return selectedSaveFile;
+    HBox fileList = new HBox(configBox);
+    HBox.setHgrow(configBox, Priority.ALWAYS);
+
+    Button selectButton = createButton(propertiesBundle.getString("load"), event -> {
+      selectOnlyConfigFile(configView);
+      myStage.close();
+    });
+
+    setupBottom(fileList, selectButton);
+    return selectedConfigFile;
   }
 
   private VBox viewBoxMaker(ListView<String> view, String title) {
     return new VBox(new Label(title), view);
   }
 
-  private void setupBottom(HBox fileLists) {
-    Button selectButton = new Button(propertiesBundle.getString("load"));
-    selectButton.getStyleClass().add("load");
-    selectButton.setOnAction(event -> selectSaveAndConfigFiles(saveView, configView));
-
+  private void setupBottom(HBox fileLists, Button selectButton) {
     Button exitButton = new Button(propertiesBundle.getString("close"));
     exitButton.setOnAction(event -> myStage.close());
 
@@ -114,10 +125,10 @@ public class LoaderListDisplay {
   private void selectSaveAndConfigFiles(ListView<String> saveList, ListView<String> configList) {
     selectedSaveFile = selectFile(DEFAULT_SAVES_FOLDER, saveList);
     selectedConfigFile = selectFile(DEFAULT_CONFIG_FOLDER, configList);
+  }
 
-    Stage stage = (Stage) saveList.getScene().getWindow();
-    stage.close();
-
+  private void selectOnlyConfigFile(ListView<String> configList) {
+    selectedConfigFile = selectFile(DEFAULT_CONFIG_FOLDER, configList);
   }
 
   private File selectFile(String defaultDirectoryPath, ListView<String> listView) {
@@ -145,6 +156,14 @@ public class LoaderListDisplay {
     }
 
     return listView;
+  }
+
+  private Button createButton(String text,
+      javafx.event.EventHandler<javafx.event.ActionEvent> handler) {
+    Button button = new Button(text);
+    button.getStyleClass().add(text);
+    button.setOnAction(handler);
+    return button;
   }
 
 

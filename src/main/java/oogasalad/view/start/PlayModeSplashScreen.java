@@ -92,6 +92,33 @@ public class PlayModeSplashScreen extends AbstractSplashScreen {
   }
 
   /**
+   * Displays the file chooser for selecting configurations only.
+   */
+  public void makeConfigChooser() {
+
+    LoaderListDisplay loaderListDisplay = new LoaderListDisplay(stage, primaryLanguage,
+        textResource.getString("loader"));
+
+    File configFile = loaderListDisplay.openConfig();
+
+    String configFilePath;
+    if (configFile == null) {
+      return;
+    } else {
+      configFilePath = configFile.getName();
+    }
+
+    try {
+
+      new PlayingPageView(stage, primaryLanguage, null, configFilePath, 800, 600).start();
+
+    } catch (IOException exception) {
+      new Alert(AlertType.ERROR, textResource.getString("load_file_error")).showAndWait();
+    }
+  }
+
+
+  /**
    * Returns to the previous scene.
    */
   public void goBackScene() {

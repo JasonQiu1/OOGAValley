@@ -105,7 +105,11 @@ public class PlayingPageView {
     primaryLanguage = language;
     setFileLanguages();
     try {
-      gameTemp = gameFactory.createGame(configFilePath, saveFilePath);
+      if (saveFilePath == null) {
+        gameTemp = gameFactory.createGame(configFilePath);
+      } else {
+        gameTemp = gameFactory.createGame(configFilePath, saveFilePath);
+      }
     } catch (IOException e) {
       LOG.info("cannot find game saves, load from the default game");
       gameTemp = gameFactory.createGame();

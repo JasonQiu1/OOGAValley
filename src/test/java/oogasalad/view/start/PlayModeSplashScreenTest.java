@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -38,9 +39,13 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
   @DisplayName("Test New Button")
   public void testOpenPlayingView() {
     clickOn(newGame);
-    push(KeyCode.DOWN);
-    Button load = lookup(".load").queryButton();
+
+    ListView<String> listView = lookup(".list_view").queryAs(ListView.class);
+    listView.getSelectionModel().select("test.json");
+
+    Button load = lookup(".Load").queryButton();
     clickOn(load);
+
     LOG.debug(String.format("the stage title is %s", stage.getTitle()));
     assertTrue(stage.getTitle().equals("Playing Mode"));
   }
@@ -51,7 +56,6 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
     clickOn(newGame);
     Stage loaderStage = findLoaderStage();
     assertNotNull(loaderStage);
-    assertTrue(stage.getTitle().equals("Playing Mode"));
   }
 
 
