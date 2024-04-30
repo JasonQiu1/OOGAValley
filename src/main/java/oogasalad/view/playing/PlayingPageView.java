@@ -76,6 +76,7 @@ public class PlayingPageView {
    * @param backScene    the previous scene that creates the game
    */
   public PlayingPageView(Stage primaryStage, String language, Scene backScene) {
+    stage = primaryStage;
     primaryLanguage = language;
     setFileLanguages();
     this.previousScene = backScene;
@@ -99,6 +100,7 @@ public class PlayingPageView {
 
   public PlayingPageView(Stage primaryStage, String language, String saveFilePath,
       String configFilePath, int windowWidth, int windowHeight) throws IOException {
+    stage = primaryStage;
     GameInterface gameTemp;
     primaryLanguage = language;
     setFileLanguages();
@@ -121,7 +123,7 @@ public class PlayingPageView {
    * Start the game
    */
   public void start() {
-    stage = new Stage();
+//    stage = new Stage();
     LOG.info("initializing game model");
     initModel();
     LOG.info("finish loading game model");
