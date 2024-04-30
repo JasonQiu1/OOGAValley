@@ -46,8 +46,15 @@ public class PlayModeSplashScreenTest extends DukeApplicationTest {
     Button load = lookup(".Load").queryButton();
     clickOn(load);
 
+    Stage gameStage = null;
+    for (Window stage : listTargetWindows()) {
+      Stage news = (Stage) stage;
+      if ("Playing Mode".equals(news.getTitle())) {
+        gameStage = news;
+      }
+    }
     LOG.debug(String.format("the stage title is %s", stage.getTitle()));
-    assertTrue(stage.getTitle().equals("Playing Mode"));
+    assertNotNull(gameStage);
   }
 
   @Test
