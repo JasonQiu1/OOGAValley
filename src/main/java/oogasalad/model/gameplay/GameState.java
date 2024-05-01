@@ -53,6 +53,7 @@ public class GameState implements ReadOnlyGameState {
     }
     this.gameTime = new GameTime(1, 8, 0);
     this.maxEnergy = rules.getInteger("energyAmount");
+    this.energy = this.maxEnergy;
     this.bag = new Bag();
     try {
       bag.addItems(rules.getStringIntegerMap("startingItems"));
