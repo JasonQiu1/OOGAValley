@@ -50,8 +50,8 @@
       "properties": {
         "name": "Cake",
         "type": "Item",
-        "image": "panda.png",
-        "worth": "1000",
+        "image": "cake.png",
+        "worth": "100",
         "consumable": "true",
         "energyChange": "100",
         "edible": "true"
@@ -87,7 +87,7 @@
     },
     "Dirt": {
       "properties": {
-        "name": "Land",
+        "name": "Dirt",
         "type": "Land",
         "image": "lava.jpg",
         "updatable": "false",
@@ -113,7 +113,7 @@
       "properties": {
         "name": "Farmland",
         "type": "Land",
-        "image": "farmland.png",
+        "image": "water.jpg",
         "updatable": "true",
         "updateTime": "500",
         "updateTransformation": "Dirt",
@@ -181,7 +181,7 @@
         "updatable": "false",
         "updateTime": "0",
         "updateTransformation": "",
-        "expirable": "true",
+        "expirable": "false",
         "expireTime": "1440",
         "expireTransformation": "",
         "destructable": "true"
@@ -246,6 +246,61 @@
       "mapProperties": {
         "interactTransformations": {},
         "interactDropMultipliers": {}
+      }
+    },
+    "wood": {
+      "properties": {
+        "name": "wood",
+        "type": "Item",
+        "image": "wood.jpg",
+        "worth": "200",
+        "consumable": "false",
+        "energyChange": "-1",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "axe": {
+      "properties": {
+        "name": "axe",
+        "type": "Item",
+        "image": "axe.png",
+        "worth": "2000",
+        "consumable": "false",
+        "energyChange": "-10",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "tree": {
+      "properties": {
+        "name": "tree",
+        "type": "Structure",
+        "image": "tree1.png",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "-1",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {
+        "destructableTools": [
+          "axe"
+        ]
+      },
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "wood": "5"
+        }
       }
     }
   }
