@@ -2707,7 +2707,7 @@
     "energy": 20.0,
     "money": 0,
     "shop": {
-      "itemRotationSize": 3,
+      "itemRotationSize": 5,
       "possibleItems": [
         {
           "type": "oogasalad.model.gameobject.Item",
@@ -2728,6 +2728,10 @@
         {
           "type": "oogasalad.model.gameobject.Item",
           "data": "{\"itemId\":\"Cake\"}"
+        },
+        {
+          "type": "oogasalad.model.gameobject.Item",
+          "data": "{\"itemId\":\"Fertilizer\"}"
         }
       ],
       "previousRotationTime": {
@@ -2788,18 +2792,18 @@
   },
   "rules": {
     "properties": {
-      "configName": "DEFAULT_GAME_NAME",
-      "author": "OOGAValley Devs",
-      "goalCondition": "time",
+      "configName": "sky_land",
+      "author": "Beilong Tang",
+      "goalCondition": "collect",
       "doEnergy": "true",
       "doEnergyRecovery": "true",
-      "onZeroEnergyStrategy": "collapse",
-      "energyAmount": "20",
+      "onZeroEnergyStrategy": "death",
+      "energyAmount": "100",
       "energyRecoveryRate": "60",
       "energyRecoveryAmount": "1",
       "collapseTimePenalty": "2880",
       "shopRotationTime": "1440",
-      "shopRotationSize": "3",
+      "shopRotationSize": "5",
       "wakeHour": "6",
       "timeMultiplier": "1",
       "timeGoal": "10080"
@@ -2810,7 +2814,8 @@
         "Hoe",
         "Pickaxe",
         "Scythe",
-        "Cake"
+        "Cake",
+        "Fertilizer"
       ]
     },
     "propertiesType": {
@@ -2843,7 +2848,7 @@
         "Wheat Seeds": "5"
       },
       "collectGoal": {
-        "Wheat": "10"
+        "Wheat Bundle": "50"
       }
     }
   }
