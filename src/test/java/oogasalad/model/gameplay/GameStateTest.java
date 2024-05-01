@@ -31,13 +31,6 @@ class GameStateTest {
     assertDoesNotThrow(() -> save("defaultState", defaultState));
   }
 
-  @Test
-  void deepCopy() {
-    GameState copy = new GameState(defaultState);
-
-    assertNotNull(copy.getBag());
-  }
-
   private void save(String dataFilePath, GameState state) throws IOException {
     gameStateFactory.save(Paths.get(TEST_DATA_DIRECTORY, dataFilePath).toString(), state);
   }

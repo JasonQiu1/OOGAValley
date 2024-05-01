@@ -13,6 +13,7 @@ import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.api.ReadOnlyProperties;
 import oogasalad.model.api.ReadOnlyShop;
 import oogasalad.model.api.exception.BadGsonLoadException;
+import oogasalad.model.api.exception.BadValueParseException;
 import oogasalad.model.api.exception.KeyNotFoundException;
 import oogasalad.model.data.DataFactory;
 import oogasalad.model.gameobject.Item;
@@ -34,59 +35,42 @@ public class GameState implements ReadOnlyGameState {
   public static final String GAMESTATE_DIRECTORY_PATH = "gamesaves";
 
   /**
-   * Initializes a default GameState.
+   * Initializes a GameState using a config and a world that it makes a copy of
    */
-  public GameState(ReadOnlyProperties properties) {
-    this.bag = new Bag();
-    this.gameWorld = new BuildableTileMap(10, 15, 1);
-    this.gameTime = new GameTime(1, 8, 0);
-    this.maxEnergy = properties.getInteger("energyAmount");
+  public GameState(ReadOnlyProperties rules) {
+    this(rules, new BuildableTileMap(10, 15, 1));
+  }
+
+  /**
+   * Initializes a GameState using a config and a world that it makes a copy of
+   */
+  public GameState(ReadOnlyProperties rules, GameWorld world) {
     try {
-      List<String> possibleItemStrings = properties.getStringList("shopPossibleItems");
+      this.gameWorld = BuildableTileMap.copyOf(world);
+    } catch (RuntimeException e) {
+      LOG.error("Failed to copy initial state from the game configuration");
+      throw new RuntimeException(e);
+    }
+    this.gameTime = new GameTime(1, 8, 0);
+    this.maxEnergy = rules.getInteger("energyAmount");
+    this.bag = new Bag();
+    try {
+      bag.addItems(rules.getStringIntegerMap("startingItems"));
+    } catch (KeyNotFoundException | BadValueParseException e) {
+      LOG.warn("Couldn't fill the bag with starting items!");
+    }
+    try {
+      List<String> possibleItemStrings = rules.getStringList("shopPossibleItems");
       List<ReadOnlyItem> possibleItems = new ArrayList<>();
       for (String id : possibleItemStrings) {
         possibleItems.add(new Item(id));
       }
-      this.shop = new Shop(gameTime, possibleItems, properties.getInteger("shopRotationSize"),
-          properties.getInteger("shopRotationTime"));
-    } catch (KeyNotFoundException e) {
+      this.shop = new Shop(gameTime, possibleItems, rules.getInteger("shopRotationSize"),
+          rules.getInteger("shopRotationTime"));
+    } catch (KeyNotFoundException | BadValueParseException e) {
       LOG.error("Couldn't load the shop!");
       throw new RuntimeException(e);
     }
-  }
-
-  /**
-   * Initializes a deep copy of GameState from the original.
-   *
-   * @param original the original GameState to copy.
-   */
-  public GameState(ReadOnlyGameState original) {
-    // It's going to be a really big task to implement deep-copying for everything in GameState,
-    // so we can just abuse Gson to save and load a copy instead.
-    String copyPath = Paths.get(TEMPORARY_DIRECTORY_PATH, "GAMESTATE_COPY").toString();
-    try {
-      FACTORY.save(copyPath, (GameState) original);
-    } catch (IOException e) {
-      LOG.error("Error saving a copy of a gamestate to '" + copyPath + ".json'");
-      throw new RuntimeException(e);
-    }
-
-    GameState copy;
-    try {
-      copy = FACTORY.load(copyPath);
-    } catch (IOException | BadGsonLoadException e) {
-      LOG.error("Error loading a copy of a gamestate to '" + copyPath + ".json'");
-      throw new RuntimeException(e);
-    }
-
-    gameWorld = copy.gameWorld;
-    gameTime = copy.gameTime;
-    bag = copy.bag;
-    shop = copy.shop;
-    money = copy.money;
-    energy = copy.energy;
-    selectedItem = copy.selectedItem;
-    maxEnergy = copy.maxEnergy;
   }
 
   /**
@@ -236,7 +220,6 @@ public class GameState implements ReadOnlyGameState {
     return amount;
   }
 
-  private static final String TEMPORARY_DIRECTORY_PATH = System.getProperty("java.io.tmpdir");
   private static final DataFactory<GameState> FACTORY = new DataFactory<>(GameState.class);
   private static final Logger LOG = LogManager.getLogger(GameState.class);
   private final BuildableTileMap gameWorld;

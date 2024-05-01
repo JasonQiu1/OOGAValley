@@ -44,9 +44,10 @@ public class Game implements GameInterface {
    * @param configuration the loaded configuration.
    * @throws IOException if the configuration file is not found.
    */
-  public Game(GameConfiguration configuration) throws IOException {
+  public Game(GameConfiguration configuration) {
     this.configuration = configuration;
-    state = new GameState(configuration.getInitialState());
+    state = new GameState(configuration.getRules(),
+        configuration.getEditableInitialState().getEditableGameWorld());
   }
 
   /**
@@ -57,7 +58,8 @@ public class Game implements GameInterface {
    */
   public Game(String configName) throws IOException {
     configuration = GameConfiguration.of(configName);
-    state = new GameState(configuration.getInitialState());
+    state = new GameState(configuration.getRules(),
+        configuration.getEditableInitialState().getEditableGameWorld());
   }
 
   /**

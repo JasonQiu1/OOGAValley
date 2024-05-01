@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import oogasalad.model.api.ReadOnlyItem;
 import oogasalad.model.data.GameConfiguration;
 import oogasalad.model.data.Properties;
@@ -114,5 +115,24 @@ class GameTest {
     game.getEditableGameState().restoreEnergy(-10000);
     game.update();
     assertTrue(game.isGameOver());
+  }
+
+  @Test
+  void loadConfigWithNewState() throws IOException {
+    GameConfiguration defaultConfig = new GameConfiguration();
+    final Map<String, String> startingItems = Map.of("Cake", "20");
+    final List<String> shopPossibleItems = List.of("Cake", "Scythe");
+    defaultConfig.updateRule("startingItems", startingItems);
+    defaultConfig.updateRule("shopPossibleItems", shopPossibleItems);
+    defaultConfig.getEditableInitialState().getEditableMap()
+        .setTileGameObject("Germinating Wheat", 0, 0, 0);
+    Game actual = new Game(defaultConfig);
+
+    assertTrue(actual.getEditableGameState().getEditableBag().contains(Map.of("Cake", 20)));
+    for (ReadOnlyItem item : actual.getEditableGameState().getEditableShop().getItems().keySet()) {
+      assertTrue(shopPossibleItems.contains(item.getName()));
+    }
+    assertEquals("Germinating Wheat",
+        actual.getEditableGameState().getEditableMap().getTileContents(0, 0, 0).get(1));
   }
 }
