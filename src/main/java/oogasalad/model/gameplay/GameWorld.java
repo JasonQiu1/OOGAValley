@@ -26,6 +26,7 @@ public class GameWorld implements ReadOnlyGameWorld, Updatable {
   private int width;
   private int depth;
 
+
   /**
    * Constructs a new GameWorld with specified dimensions.
    *

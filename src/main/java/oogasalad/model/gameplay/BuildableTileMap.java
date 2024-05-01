@@ -1,14 +1,20 @@
 package oogasalad.model.gameplay;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import oogasalad.model.api.exception.BadGsonLoadException;
 import oogasalad.model.api.exception.UnableToSetGameObject;
+import oogasalad.model.data.DataFactory;
 import oogasalad.model.gameobject.CoordinateOfGameObjectRecord;
 import oogasalad.model.gameobject.GameObject;
 import oogasalad.model.gameobject.Tile;
 import oogasalad.model.gameobject.gameobjectfactory.GameObjectFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Extends the GameWorld to include buildable and manipulable tile features, allowing dynamic
@@ -16,7 +22,44 @@ import oogasalad.model.gameobject.gameobjectfactory.GameObjectFactory;
  */
 public class BuildableTileMap extends GameWorld {
 
-  private static final GameObjectFactory factory = new GameObjectFactory();
+  private static final GameObjectFactory GAME_OBJECT_FACTORY = new GameObjectFactory();
+
+  private static final String TEMPORARY_DIRECTORY_PATH = System.getProperty("java.io.tmpdir");
+  private static final DataFactory<GameWorld> GAME_WORLD_FACTORY =
+      new DataFactory<>(GameWorld.class);
+
+
+  private static final DataFactory<BuildableTileMap> FACTORY =
+      new DataFactory<>(BuildableTileMap.class);
+  private static final Logger LOG = LogManager.getLogger(BuildableTileMap.class);
+
+  /**
+   * Create a copy of a GameWorld into a BuildableTileMap, which holds the same data.
+   *
+   * @param original the original GameWorld.
+   * @return the copy of the GameWorld as a BuildableTileMap
+   */
+  public static BuildableTileMap copyOf(GameWorld original) {
+    // It's going to be a really big task to implement deep-copying for everything in GameState,
+    // so we can just abuse Gson to save and load a copy instead.
+    String copyPath = Paths.get(TEMPORARY_DIRECTORY_PATH, "GAMESTATE_COPY").toString();
+    try {
+      GAME_WORLD_FACTORY.save(copyPath, original);
+    } catch (IOException e) {
+      LOG.error("Error saving a copy of a gameworld to '" + copyPath + ".json'");
+      throw new RuntimeException(e);
+    }
+
+    BuildableTileMap copy;
+    try {
+      copy = FACTORY.load(copyPath);
+    } catch (IOException | BadGsonLoadException e) {
+      LOG.error("Error loading a copy of the initial state in the game config to from '" + copyPath
+          + ".json'");
+      throw new RuntimeException(e);
+    }
+    return copy;
+  }
 
   /**
    * Constructs a BuildableTileMap with specified dimensions.
@@ -41,7 +84,8 @@ public class BuildableTileMap extends GameWorld {
   public void setTileGameObject(String id, int x, int y, int z) {
     CoordinateOfGameObjectRecord coord = new CoordinateOfGameObjectRecord(x, y, z);
     Tile tile = getAllTiles().get(coord);
-    GameObject gameObject = factory.createNewGameObject(id, new GameTime(0, 0, 0), new HashMap<>());
+    GameObject gameObject =
+        GAME_OBJECT_FACTORY.createNewGameObject(id, new GameTime(0, 0, 0), new HashMap<>());
     reflectTileCreation(tile, gameObject);
   }
 
@@ -111,5 +155,4 @@ public class BuildableTileMap extends GameWorld {
   public void removeTileTop(int column, int row, int depth) {
     getAllTiles().get(new CoordinateOfGameObjectRecord(column, row, depth)).removeTopContents();
   }
-
 }
