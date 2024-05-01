@@ -247,6 +247,40 @@
         "interactTransformations": {},
         "interactDropMultipliers": {}
       }
+    },
+    "Empty": {
+      "properties": {
+        "name": "Empty",
+        "type": "Land",
+        "image": "white.png",
+        "updatable": "false",
+        "updateTime": "-1",
+        "updateTransformation": "false",
+        "expirable": "false",
+        "expireTime": "false",
+        "expireTransformation": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "plantableSeeds": {}
+      }
+    },
+    "Fertilizer": {
+      "properties": {
+        "name": "Fertilizer",
+        "type": "Item",
+        "image": "fertilizer.png",
+        "worth": "20",
+        "consumable": "true",
+        "energyChange": "20",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
     }
   }
 }
