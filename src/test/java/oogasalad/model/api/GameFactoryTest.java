@@ -23,8 +23,8 @@ class GameFactoryTest {
 
   @Test
   void createGameConfig() throws IOException {
-    Game expected = new Game("testWorld1");
-    GameInterface actual = factory.createGame("testWorld1");
+    Game expected = new Game("x2.json");
+    GameInterface actual = factory.createGame("x2.json");
     assertEquals(expected.getGameConfiguration().getRules().getString("configName"),
         actual.getGameConfiguration().getRules().getString("configName"));
     assertEquals(expected.getGameState().getGameTime(), actual.getGameState().getGameTime());
