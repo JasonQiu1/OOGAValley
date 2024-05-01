@@ -257,13 +257,15 @@
         "updateTime": "-1",
         "updateTransformation": "false",
         "expirable": "false",
-        "expireTime": "false",
-        "expireTransformation": "false"
+        "expireTime": "0",
+        "expireTransformation": ""
       },
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {},
+        "interactTransformations": {
+          "Fertilizer": "Dirt"
+        },
         "interactDropMultipliers": {},
         "plantableSeeds": {}
       }
