@@ -49,7 +49,7 @@
         },
         "interactDropMultipliers": {},
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -102,7 +102,7 @@
         },
         "interactDropMultipliers": {},
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -155,7 +155,7 @@
         },
         "interactDropMultipliers": {},
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -177,6 +177,7 @@
           "DTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongD",
@@ -206,7 +207,7 @@
           "ZTool": "WrongD"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -228,6 +229,7 @@
           "ETool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongE",
@@ -257,7 +259,7 @@
           "ZTool": "WrongE"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -279,6 +281,7 @@
           "FTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongF",
@@ -308,7 +311,7 @@
           "ZTool": "WrongF"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -330,6 +333,7 @@
           "GTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongG",
@@ -359,7 +363,7 @@
           "ZTool": "WrongG"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -381,6 +385,7 @@
           "HTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongH",
@@ -410,7 +415,7 @@
           "ZTool": "WrongH"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -432,6 +437,7 @@
           "ITool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongI",
@@ -461,7 +467,7 @@
           "ZTool": "WrongI"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -483,6 +489,7 @@
           "JTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongJ",
@@ -512,7 +519,7 @@
           "ZTool": "WrongJ"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -534,6 +541,7 @@
           "KTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongK",
@@ -563,7 +571,7 @@
           "ZTool": "WrongK"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -585,6 +593,7 @@
           "LTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongL",
@@ -614,7 +623,7 @@
           "ZTool": "WrongL"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -636,6 +645,7 @@
           "MTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongM",
@@ -665,7 +675,7 @@
           "ZTool": "WrongM"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -687,6 +697,7 @@
           "NTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongN",
@@ -716,7 +727,7 @@
           "ZTool": "WrongN"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -738,6 +749,7 @@
           "OTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongO",
@@ -767,7 +779,7 @@
           "ZTool": "WrongO"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -789,6 +801,7 @@
           "PTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongP",
@@ -818,7 +831,7 @@
           "ZTool": "WrongP"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -840,6 +853,7 @@
           "QTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongQ",
@@ -869,7 +883,7 @@
           "ZTool": "WrongQ"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -891,6 +905,7 @@
           "RTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongR",
@@ -920,7 +935,7 @@
           "ZTool": "WrongR"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -942,6 +957,7 @@
           "STool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongS",
@@ -971,7 +987,7 @@
           "ZTool": "WrongS"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -993,6 +1009,7 @@
           "TTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongT",
@@ -1022,7 +1039,7 @@
           "ZTool": "WrongT"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -1044,6 +1061,7 @@
           "UTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongU",
@@ -1073,7 +1091,7 @@
           "ZTool": "WrongU"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -1095,6 +1113,7 @@
           "VTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongV",
@@ -1124,7 +1143,7 @@
           "ZTool": "WrongV"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -1146,6 +1165,7 @@
           "WTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongW",
@@ -1175,7 +1195,7 @@
           "ZTool": "WrongW"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -1197,6 +1217,7 @@
           "XTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongX",
@@ -1226,7 +1247,7 @@
           "ZTool": "WrongX"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -1248,6 +1269,7 @@
           "YTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongY",
@@ -1277,7 +1299,7 @@
           "ZTool": "WrongY"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -1299,6 +1321,7 @@
           "ZTool"
         ]
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "ATool": "WrongZ",
@@ -1328,7 +1351,7 @@
           "YTool": "WrongZ"
         },
         "dropsOnDestruction": {
-          "Correct": 1
+          "Correct": "1"
         }
       }
     },
@@ -1346,8 +1369,7 @@
         "destructable": "false"
       },
       "listProperties": {
-        "destructableTools": [
-        ]
+        "destructableTools": []
       },
       "propertiesType": {},
       "mapProperties": {
@@ -1355,8 +1377,7 @@
           "Undo": "AStructure"
         },
         "interactDropMultipliers": {},
-        "dropsOnDestruction": {
-        }
+        "dropsOnDestruction": {}
       }
     },
     "WrongB": {
@@ -1375,6 +1396,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "BStructure"
@@ -1399,6 +1421,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "CStructure"
@@ -1423,6 +1446,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "DStructure"
@@ -1447,6 +1471,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "EStructure"
@@ -1471,6 +1496,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "FStructure"
@@ -1495,6 +1521,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "GStructure"
@@ -1519,6 +1546,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "HStructure"
@@ -1543,6 +1571,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "IStructure"
@@ -1567,6 +1596,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "JStructure"
@@ -1591,6 +1621,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "KStructure"
@@ -1615,6 +1646,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "LStructure"
@@ -1639,6 +1671,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "MStructure"
@@ -1663,6 +1696,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "NStructure"
@@ -1687,6 +1721,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "OStructure"
@@ -1711,6 +1746,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "PStructure"
@@ -1735,6 +1771,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "QStructure"
@@ -1759,6 +1796,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "RStructure"
@@ -1783,6 +1821,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "SStructure"
@@ -1807,6 +1846,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "TStructure"
@@ -1831,6 +1871,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "UStructure"
@@ -1855,6 +1896,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "VStructure"
@@ -1879,6 +1921,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "WStructure"
@@ -1903,6 +1946,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "XStructure"
@@ -1927,6 +1971,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "YStructure"
@@ -1951,6 +1996,7 @@
       "listProperties": {
         "destructableTools": []
       },
+      "propertiesType": {},
       "mapProperties": {
         "interactTransformations": {
           "Undo": "ZStructure"
@@ -1974,11 +2020,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterB": {
@@ -1996,11 +2040,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterC": {
@@ -2018,11 +2060,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterD": {
@@ -2040,11 +2080,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterE": {
@@ -2062,11 +2100,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterF": {
@@ -2084,11 +2120,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterG": {
@@ -2106,11 +2140,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterH": {
@@ -2128,11 +2160,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterI": {
@@ -2150,11 +2180,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterJ": {
@@ -2172,11 +2200,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterK": {
@@ -2194,11 +2220,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterL": {
@@ -2216,11 +2240,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterM": {
@@ -2238,11 +2260,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterN": {
@@ -2260,11 +2280,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterO": {
@@ -2282,11 +2300,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterP": {
@@ -2304,11 +2320,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterQ": {
@@ -2326,11 +2340,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterR": {
@@ -2348,11 +2360,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterS": {
@@ -2370,11 +2380,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterT": {
@@ -2392,11 +2400,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterU": {
@@ -2414,11 +2420,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDropMultipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterV": {
@@ -2436,11 +2440,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDrop Multipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterW": {
@@ -2458,11 +2460,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDrop Multipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterX": {
@@ -2480,11 +2480,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDrop Multipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterY": {
@@ -2502,11 +2500,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDrop Multipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "LetterZ": {
@@ -2524,11 +2520,9 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {
-        "interactTransformations": {
-        },
+        "interactTransformations": {},
         "interactDrop Multipliers": {},
-        "plantableSeeds": {
-        }
+        "plantableSeeds": {}
       }
     },
     "ATool": {
@@ -2902,7 +2896,7 @@
         "image": "Undo.png",
         "worth": "0",
         "consumable": "false",
-        "energyChange": "1",
+        "energyChange": "-1",
         "edible": "false"
       },
       "listProperties": {},
@@ -2922,6 +2916,25 @@
       "listProperties": {},
       "propertiesType": {},
       "mapProperties": {}
+    },
+    "COLLECTABLE": {
+      "properties": {
+        "name": "COLLECTABLE",
+        "type": "Collectable",
+        "image": "",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "true",
+        "expireTime": "1440",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {}
+      }
     }
   }
 }

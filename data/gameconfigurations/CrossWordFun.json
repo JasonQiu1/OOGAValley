@@ -1661,25 +1661,25 @@
   },
   "rules": {
     "properties": {
-      "configName": "DEFAULT_GAME_NAME",
-      "author": "OOGAValley Devs",
-      "goalCondition": "time",
+      "configName": "CrossWordFun",
+      "author": "Spencer",
+      "goalCondition": "collect",
       "doEnergy": "true",
-      "doEnergyRecovery": "true",
-      "onZeroEnergyStrategy": "collapse",
-      "energyAmount": "20",
-      "energyRecoveryRate": "60",
-      "energyRecoveryAmount": "1",
+      "doEnergyRecovery": "false",
+      "onZeroEnergyStrategy": "death",
+      "energyAmount": "100",
+      "energyRecoveryRate": "0",
+      "energyRecoveryAmount": "0",
       "collapseTimePenalty": "2880",
       "shopRotationTime": "1440",
-      "shopRotationSize": "3",
+      "shopRotationSize": "1",
       "wakeHour": "6",
       "timeMultiplier": "1",
       "timeGoal": "10080"
     },
     "listProperties": {
       "shopPossibleItems": [
-        "ATool,BTool,CTool,DTool,ETool]"
+        "Undo"
       ]
     },
     "propertiesType": {
@@ -1707,12 +1707,36 @@
     },
     "mapProperties": {
       "startingItems": {
-        "Wheat Seeds": "5",
-        "Scythe": "1",
-        "Hoe": "1"
+        "ATool": 1,
+        "BTool": 1,
+        "CTool": 1,
+        "DTool": 1,
+        "ETool": 1,
+        "FTool": 1,
+        "GTool": 1,
+        "HTool": 1,
+        "ITool": 1,
+        "JTool": 1,
+        "KTool": 1,
+        "LTool": 1,
+        "MTool": 1,
+        "NTool": 1,
+        "OTool": 1,
+        "PTool": 1,
+        "QTool": 1,
+        "RTool": 1,
+        "STool": 1,
+        "TTool": 1,
+        "UTool": 1,
+        "VTool": 1,
+        "WTool": 1,
+        "XTool": 1,
+        "YTool": 1,
+        "ZTool": 1,
+        "Undo" : 1
       },
       "collectGoal": {
-        "Wheat": "10"
+        "Correct": 26
       }
     }
   }
