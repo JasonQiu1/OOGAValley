@@ -27,6 +27,7 @@
 
 * Saad Hakim
     * Reflection and reformatting
+    * Splash Screen UI
 
 ## Design Goals
 
@@ -66,7 +67,14 @@
       opening
       the shopping page, and `BagView.java` for displaying items in the bag.
 
-* Class #4
+* Class #4 AbstractSplashScreen.java
+  * This abstract is the class that is extended by `StartScreen.java` and 
+  `PlayModeSplashScreen.java`. This class abstracts the common functionality of these two
+  concrete classes, which in turn handle the user's navigation to `PlayingPageView.java`
+  and `EditorScene.java`.
+* Class #5 ButtonActionHandler
+  * Collaborating with `SplashUtils.java`, this class allows the implementation of reflection in 
+  the action of the buttons allowing the creation of different buttons from csv data files
 
 ## Assumptions or Simplifications
 
@@ -121,8 +129,10 @@
     * In our implementation now, there is no building. In order to add a building, we need to ...
       // TODO: finish this
 
-* Feature #2
-
+* Feature #2 Loading A Configuration File into the Authoring Environment
+    * In our current implementation, the user cannot load a configuration to the Authoring
+    Environment. Therefore, every time a user enters the Authoring Environment, they have to 
+    start with the default configuration.
 * Feature #3
 
 * Feature #4
