@@ -7,10 +7,10 @@
         "image": "",
         "updatable": "false",
         "updateTime": "0",
-        "updateTransformation": "",
+        "updateTransformation": "none",
         "expirable": "true",
         "expireTime": "1440",
-        "expireTransformation": ""
+        "expireTransformation": "none"
       },
       "listProperties": {},
       "propertiesType": {},
@@ -40,10 +40,10 @@
         "image": "blacksquare.png",
         "updatable": "false",
         "updateTime": "0",
-        "updateTransformation": "",
+        "updateTransformation": "none",
         "expirable": "false",
         "expireTime": "0",
-        "expireTransformation": "",
+        "expireTransformation": "none",
         "destructable": "false"
       },
       "listProperties": {
@@ -62,11 +62,11 @@
         "type": "Structure",
         "image": "pixelwater.png",
         "updatable": "false",
-        "updateTime": "",
-        "updateTransformation": "",
+        "updateTime": "0",
+        "updateTransformation": "none",
         "expirable": "false",
-        "expireTime": "",
-        "expireTransformation": "",
+        "expireTime": "0",
+        "expireTransformation": "none",
         "destructable": "true"
       },
       "listProperties": {
@@ -116,10 +116,10 @@
         "image": "whitesquare.jpg",
         "updatable": "false",
         "updateTime": "0",
-        "updateTransformation": "",
+        "updateTransformation": "none",
         "expirable": "false",
-        "expireTime": "",
-        "expireTransformation": ""
+        "expireTime": "0",
+        "expireTransformation": "none"
       },
       "listProperties": {},
       "propertiesType": {},
@@ -139,11 +139,11 @@
         "type": "Land",
         "image": "bigo.jpg",
         "updatable": "false",
-        "updateTime": "",
-        "updateTransformation": "",
+        "updateTime": "0",
+        "updateTransformation": "none",
         "expirable": "false",
-        "expireTime": "",
-        "expireTransformation": ""
+        "expireTime": "0",
+        "expireTransformation": "none"
       },
       "listProperties": {},
       "propertiesType": {},
