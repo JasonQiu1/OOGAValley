@@ -1449,14 +1449,15 @@
       "energyRecoveryAmount": "1",
       "collapseTimePenalty": "2880",
       "shopRotationTime": "1440",
-      "shopRotationSize": "0",
+      "shopRotationSize": "2",
       "wakeHour": "6",
       "timeMultiplier": "1",
       "timeGoal": "10080"
     },
     "listProperties": {
       "shopPossibleItems": [
-        ""
+        "Death",
+        "Cursor"
       ]
     },
     "propertiesType": {
