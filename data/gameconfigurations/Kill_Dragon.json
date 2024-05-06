@@ -3265,7 +3265,7 @@
     "properties": {
       "configName": "Kill_Dragon",
       "author": "Saad Hakim",
-      "goalCondition": "time",
+      "goalCondition": "collect",
       "doEnergy": "true",
       "doEnergyRecovery": "true",
       "onZeroEnergyStrategy": "collapse",
@@ -3315,7 +3315,7 @@
         "Hammer": "1"
       },
       "collectGoal": {
-        "Treasure": "10"
+        "Treasure": "7"
       }
     }
   }
