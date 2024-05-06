@@ -229,11 +229,11 @@
       "propertiesType": {},
       "mapProperties": {}
     },
-    "Gem": {
+    "COLLECTABLE": {
       "properties": {
-        "name": "Gem",
+        "name": "COLLECTABLE",
         "type": "Collectable",
-        "image": "gem.png",
+        "image": "",
         "updatable": "false",
         "updateTime": "0",
         "updateTransformation": "",

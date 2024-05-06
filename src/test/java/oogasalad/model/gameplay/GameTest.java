@@ -135,4 +135,12 @@ class GameTest {
     assertEquals("Germinating Wheat",
         actual.getEditableGameState().getEditableMap().getTileContents(0, 0, 0).get(1));
   }
+
+  @Test
+  void loadConfigWithNewStateEnergyShouldBeMax() throws IOException {
+    GameConfiguration defaultConfig = new GameConfiguration();
+    Game actual = new Game(defaultConfig);
+
+    assertEquals(defaultConfig.getRules().getInteger("energyAmount"), actual.getGameState().getEnergy());
+  }
 }

@@ -5020,6 +5020,7 @@
   "rules": {
     "properties": {
       "configName": "Bruh",
+      "configName": "PlayMe",
       "author": "OOGAValley Devs",
       "goalCondition": "time",
       "doEnergy": "true",
@@ -5068,9 +5069,9 @@
     },
     "mapProperties": {
       "startingItems": {
-        "Hoe": "1",
         "Scythe": "1",
-        "Wheat Seeds": "5"
+        "Wheat Seeds": "5",
+        "Hoe": "1"
       },
       "collectGoal": {
         "Wheat": "10"
