@@ -1,0 +1,402 @@
+{
+  "configurables": {
+    "COLLECTABLE": {
+      "properties": {
+        "name": "COLLECTABLE",
+        "type": "Collectable",
+        "image": "",
+        "updatable": "false",
+        "updateTime": "0",
+        "updateTransformation": "",
+        "expirable": "true",
+        "expireTime": "1440",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {}
+      }
+    },
+    "Cyborg": {
+      "properties": {
+        "name": "Cyborg",
+        "type": "Structure",
+        "image": "Cyborg.png",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {
+        "destructableTools": [
+          "Basic Sword"
+        ]
+      },
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "Parts": "3",
+          "Energy Canister": "1"
+        }
+      }
+    },
+    "BigZombie": {
+      "properties": {
+        "name": "BigZombie",
+        "type": "Structure",
+        "image": "BigZombie.png",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {
+        "destructableTools": [
+          "Mechanical Sword"
+        ]
+      },
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "Magic Shard": "10",
+          "Energy Canister": "3"
+        }
+      }
+    },
+    "Bowser": {
+      "properties": {
+        "name": "Bowser",
+        "type": "Structure",
+        "image": "Bowser.png",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {
+        "destructableTools": [
+          "Magical Sword"
+        ]
+      },
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "Trophy": "1"
+        }
+      }
+    },
+    "Grate": {
+      "properties": {
+        "name": "Grate",
+        "type": "Land",
+        "image": "Grate.jpg",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "plantableSeeds": {
+          "FabricatorItem": "Fabricator"
+        }
+      }
+    },
+    "Basic Sword": {
+      "properties": {
+        "name": "Basic Sword",
+        "type": "Item",
+        "image": "Sword.png",
+        "worth": "1",
+        "consumable": "true",
+        "energyChange": "-5",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "Metal Tile": {
+      "properties": {
+        "name": "Metal Tile",
+        "type": "Land",
+        "image": "MetalTile.jpg",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "Blue Jackhammer": "Grate"
+        },
+        "interactDropMultipliers": {},
+        "plantableSeeds": {}
+      }
+    },
+    "Gold Tile": {
+      "properties": {
+        "name": "Gold Tile",
+        "type": "Land",
+        "image": "GoldTile.jpg",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {
+          "Gold Jackhammer": "Gold Grate"
+        },
+        "interactDropMultipliers": {},
+        "plantableSeeds": {}
+      }
+    },
+    "Gold Grate": {
+      "properties": {
+        "name": "Gold Grate",
+        "type": "Land",
+        "image": "GoldGrate.jpg",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "plantableSeeds": {
+          "BlacksmithItem": "Blacksmith"
+        }
+      }
+    },
+    "Mechanical Sword": {
+      "properties": {
+        "name": "Mechanical Sword",
+        "type": "Item",
+        "image": "MechanicalSword.png",
+        "worth": "10",
+        "consumable": "true",
+        "energyChange": "-10",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "Magical Sword": {
+      "properties": {
+        "name": "Magical Sword",
+        "type": "Item",
+        "image": "MagicalSword.png",
+        "worth": "100",
+        "consumable": "false",
+        "energyChange": "15",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "Blue Jackhammer": {
+      "properties": {
+        "name": "Blue Jackhammer",
+        "type": "Item",
+        "image": "BlueJackHammer.png",
+        "worth": "15",
+        "consumable": "true",
+        "energyChange": "5",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "Gold Jackhammer": {
+      "properties": {
+        "name": "Gold Jackhammer",
+        "type": "Item",
+        "image": "GoldJackhammer.png",
+        "worth": "100",
+        "consumable": "true",
+        "energyChange": "10",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "Energy Canister": {
+      "properties": {
+        "name": "Energy Canister",
+        "type": "Item",
+        "image": "EnergyCanister.png",
+        "worth": "10",
+        "consumable": "true",
+        "energyChange": "5",
+        "edible": "true"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "Magic Shard": {
+      "properties": {
+        "name": "Magic Shard",
+        "type": "Item",
+        "image": "MagicStone.png",
+        "worth": "1000",
+        "consumable": "true",
+        "energyChange": "0",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "Fabricator": {
+      "properties": {
+        "name": "Fabricator",
+        "type": "Structure",
+        "image": "Fabricator.png",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {
+        "destructableTools": [
+          "Basic Sword"
+        ]
+      },
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "Mechanical Sword": "3"
+        }
+      }
+    },
+    "Blacksmith": {
+      "properties": {
+        "name": "Blacksmith",
+        "type": "Structure",
+        "image": "MagicalBlacksmith.png",
+        "updatable": "false",
+        "updateTime": "",
+        "updateTransformation": "",
+        "expirable": "false",
+        "expireTime": "",
+        "expireTransformation": "",
+        "destructable": "true"
+      },
+      "listProperties": {
+        "destructableTools": [
+          "Basic Sword"
+        ]
+      },
+      "propertiesType": {},
+      "mapProperties": {
+        "interactTransformations": {},
+        "interactDropMultipliers": {},
+        "dropsOnDestruction": {
+          "Magical Sword": "1"
+        }
+      }
+    },
+    "Parts": {
+      "properties": {
+        "name": "Parts",
+        "type": "Item",
+        "image": "Parts.png",
+        "worth": "250",
+        "consumable": "true",
+        "energyChange": "0",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "FabricatorItem": {
+      "properties": {
+        "name": "FabricatorItem",
+        "type": "Item",
+        "image": "Fabricator.png",
+        "worth": "1000",
+        "consumable": "true",
+        "energyChange": "0",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "BlacksmithItem": {
+      "properties": {
+        "name": "BlacksmithItem",
+        "type": "Item",
+        "image": "MagicalBlacksmith.png",
+        "worth": "4000",
+        "consumable": "true",
+        "energyChange": "0",
+        "edible": "false"
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    },
+    "Trophy": {
+      "properties": {
+        "name": "Trophy",
+        "type": "Item",
+        "image": "Trophy.jpg",
+        "worth": "",
+        "consumable": "",
+        "energyChange": "",
+        "edible": ""
+      },
+      "listProperties": {},
+      "propertiesType": {},
+      "mapProperties": {}
+    }
+  }
+}

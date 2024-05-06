@@ -89,7 +89,7 @@
       "properties": {
         "name": "Dirt",
         "type": "Land",
-        "image": "dirt.jpg",
+        "image": "hoe.png",
         "updatable": "false",
         "updateTime": "0",
         "updateTransformation": "",
@@ -135,7 +135,7 @@
       "properties": {
         "name": "Hoe",
         "type": "Item",
-        "image": "hoe.png",
+        "image": "dirt.jpg",
         "worth": "100",
         "consumable": "false",
         "energyChange": "-1",
@@ -234,11 +234,11 @@
         "name": "Gem",
         "type": "Collectable",
         "image": "gem.png",
-        "updatable": "",
-        "updateTime": "",
+        "updatable": "false",
+        "updateTime": "0",
         "updateTransformation": "",
-        "expirable": "",
-        "expireTime": "",
+        "expirable": "true",
+        "expireTime": "1440",
         "expireTransformation": ""
       },
       "listProperties": {},

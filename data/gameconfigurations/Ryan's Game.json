@@ -5019,16 +5019,16 @@
   },
   "rules": {
     "properties": {
-      "configName": "DEFAULT_GAME_NAME",
+      "configName": "Ryan\u0027s Game",
       "author": "OOGAValley Devs",
       "goalCondition": "time",
       "doEnergy": "true",
       "doEnergyRecovery": "true",
-      "doDeath": "false",
-      "doExhaustedEnergyCollapse": "true",
+      "onZeroEnergyStrategy": "collapse",
       "energyAmount": "20",
-      "energyRecoveryRate": "720",
-      "exhaustedEnergyCollapseTimePenalty": "1440",
+      "energyRecoveryRate": "60",
+      "energyRecoveryAmount": "1",
+      "collapseTimePenalty": "2880",
       "shopRotationTime": "1440",
       "shopRotationSize": "3",
       "wakeHour": "6",
@@ -5048,13 +5048,12 @@
       "String": [
         "configName",
         "author",
-        "goalCondition"
+        "goalCondition",
+        "onZeroEnergyStrategy"
       ],
       "boolean": [
         "doEnergy",
-        "doEnergyRecovery",
-        "doDeath",
-        "doExhaustedEnergyCollapse"
+        "doEnergyRecovery"
       ],
       "int": [
         "energyAmount",
@@ -5064,14 +5063,15 @@
         "timeGoal",
         "wakeHour",
         "shopRotationTime",
-        "shopRotationSize"
+        "shopRotationSize",
+        "energyRecoverAmount"
       ]
     },
     "mapProperties": {
       "startingItems": {
+        "Wheat Seeds": "5",
         "Hoe": "1",
-        "Scythe": "1",
-        "Wheat Seeds": "5"
+        "Scythe": "1"
       },
       "collectGoal": {
         "Wheat": "10"
